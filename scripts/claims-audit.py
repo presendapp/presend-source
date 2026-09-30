@@ -28,6 +28,8 @@ PATTERNS = {  # nom -> (motif, motif de contexte qui rend l'occurrence correcte)
     "reconnaissance vocale presentee comme locale": (r"(speech|voice|audio|vocal|voix|dictat)[^.\n]{0,160}(medical notes|legal dictation|notes m.dicales|dict.e juridique)|(medical notes|legal dictation|notes m.dicales|dict.e juridique)[^.\n]{0,160}(speech|voice|audio|vocal|voix)", r"use an offline|offline transcription|outil de transcription hors ligne|do not use|ne l.utilisez pas"),
     # 30 sept. : "no tracking" et variantes (8 langues) alors que Web Analytics est injecte sur chaque page (288 pieds de page + 168 pages corriges)
     "promesse 'no tracking' / 'no data collection'": (r"no[- ]tracking|tracking scripts monitor|no (data collection|ip storage|third-party trackers)|kein tracking|keine nachverfolgung|keine datenerfassung|pas de suivi|sans suivi|sans tracking|sans traçage|ne suivons pas les utilisateurs|sin seguimiento|sin rastreo|ni rastreamos|sin recopilación de datos|sem rastreamento|nem rastreamos|sem coleta de dados|(нет|без|никакого) отслеживания|не отслеживаем|без сбора данных|追跡(なし|も|しません|ありません)|トラッキングなし|一切収集しません|कोई ट्रैकिंग नहीं|ट्रैक नहीं करते|कोई डेटा संग्रह नहीं", r"_Edited 20\d\d-\d\d-\d\d: removed"),
+    # 30 sept. : le depot presend est prive (lien 404) ; code public dans presend-source. A RETIRER si presend redevient public.
+    "lien vers le depot prive presendapp/presend": (r"github\.com/presendapp/presend(?![-\w])", NEVER),
     "limite de debit presentee comme absente": (r"rate-limit tier walls|no rate.?limits?(?![-\w])", r"per-minute rate limits apply|was ambiguous|was wrong|do have rate limits"),
 }
 INTERNAL = {'PROJECT_CONTEXT.md', 'STRUCTURE.md', 'ROADMAP.md', 'WORKFLOW.md', 'SECURITY_DISCLOSURES.md'}
