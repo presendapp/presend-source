@@ -1,0 +1,6 @@
+.admin-container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .stat-card { background: #f8f9fa; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #0066cc; }
+    .stat-number { font-size: 2.5rem; font-weight: 700; color: #0066cc; }
+    .tool-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e9ecef; }
+    .loading { color: #6c757d; font-style: italic; }
+    .error { color: #dc3545; }

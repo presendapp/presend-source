@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo escanear un código QR desde una imagen — Guía Presend</title>
+<meta name="description" content="Aprende a decodificar códigos QR desde cualquier imagen o captura de pantalla sin instalar una aplicación. Funciona completamente en tu navegador, no se necesita subida.">
+<link rel="canonical" href="https://presend.pages.dev/es/tools/landings/scan-qr-code-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Scan a QR Code from an Image",
+  "description": "Step-by-step guide to decoding QR codes from uploaded images or camera using Presend's free browser-based scanner.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/scan-qr-code-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>presentar</a>
+  <a class='nav-link' href='/'>Todas las herramientas</a> <a class="nav-link" href="/es/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/qr-code-scanner'>← Escáner de códigos QR</a>
+  <article>
+    <h1>Cómo escanear un código QR a partir de una imagen</h1>
+    <p class="lede">¿Recibiste un código QR en un mensaje, correo electrónico o captura de pantalla? No es necesario instalar una aplicación de escáner independiente. Aquí se explica cómo decodificarlo instantáneamente en su navegador.</p>
+
+    <h2>¿Por qué escanear códigos QR a partir de imágenes?</h2>
+    <p>La mayoría de la gente piensa que los códigos QR son algo que se escanea con la cámara en el mundo real. Pero cada vez más, los códigos QR aparecen en contextos digitales: capturas de pantalla, archivos PDF, correos electrónicos, publicaciones en redes sociales y sitios web. Cuando no puedes escanear físicamente un código, o cuando el código está en la pantalla de tu computadora, necesitas una forma de decodificarlo a partir de un archivo de imagen.</p>
+
+    <h2>Escenarios comunes</h2>
+    <ul>
+      <li><strong>Capturas de pantalla</strong>— Un amigo te envió una contraseña de WiFi como captura de pantalla del código QR</li>
+      <li><strong>PDF</strong>— Entradas para eventos o tarjetas de embarque con códigos QR integrados</li>
+      <li><strong>Correos electrónicos</strong>— Códigos de respaldo de autenticación de dos factores o códigos QR de verificación</li>
+      <li><strong>redes sociales</strong>— Historias de Instagram o publicaciones de LinkedIn con códigos QR</li>
+      <li><strong>Sitios web</strong>— Enlaces de descarga o redireccionamientos de tiendas de aplicaciones mostrados como códigos QR</li>
+    </ul>
+
+    <h2>Cómo funciona el escáner de Presend</h2>
+    <p>Usos actuales<a href="https://github.com/cozmo/jsQR" target="_blank" rel="noopener">jsQR</a>, una biblioteca de decodificación de códigos QR de JavaScript puro. Todo el proceso ocurre en su navegador:</p>
+    <ol>
+      <li>Subes una imagen o concedes acceso a la cámara</li>
+      <li>jsQR analiza los datos de píxeles de la imagen para localizar el patrón del código QR</li>
+      <li>El texto decodificado (URL, credenciales WiFi, etc.) se muestra instantáneamente</li>
+    </ol>
+    <p><strong>Su imagen nunca se carga en un servidor.</strong>Esto es crucial para códigos QR confidenciales que contienen contraseñas WiFi privadas, tokens de autenticación o información personal.</p>
+
+    <h2>Guía paso a paso</h2>
+    <ol>
+      <li><strong>Abra el escáner</strong>- Ir a<a href="/es/tools/qr-code-scanner">Escáner de código QR</a></li>
+      <li><strong>Subir o usar cámara</strong>— Arrastre y suelte una imagen, haga clic para seleccionar un archivo o haga clic en "Usar cámara" para escanear en tiempo real</li>
+      <li><strong>obtener el resultado</strong>— El texto decodificado aparece instantáneamente debajo de la imagen.</li>
+      <li><strong>Copiar o abrir</strong>— Haga clic para copiar el texto o abra las URL directamente</li>
+    </ol>
+
+    <h2>Consejos para escanear mejor</h2>
+    <ul>
+      <li>Utilice imágenes de alta resolución: es posible que las imágenes borrosas o muy comprimidas no se decodifiquen</li>
+      <li>Asegúrese de que el código QR no esté recortado ni parcialmente oscurecido</li>
+      <li>Una buena iluminación ayuda al utilizar la opción de cámara.</li>
+      <li>Si un método falla (cargar vs cámara), prueba el otro</li>
+    </ul>
+
+    <h2>La privacidad importa</h2>
+    <p>Muchas aplicaciones de escáner QR cargan sus códigos escaneados en sus servidores para realizar análisis o publicidad. Algunos incluso contienen malware. El escáner de Presend está completamente abierto: el código está ahí en su navegador y sus datos nunca salen de su dispositivo. Esto lo hace seguro para escanear códigos confidenciales como:</p>
+    <ul>
+      <li>Direcciones de billeteras de criptomonedas</li>
+      <li>Redes WiFi privadas</li>
+      <li>Enlaces internos de la empresa</li>
+      <li>Códigos de configuración de autenticación de dos factores</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/es/tools/qr-code-scanner">Abrir escáner de códigos QR →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — herramientas gratuitas basadas en navegador. <a href="/about">Acerca de</a> · <a href="/privacy">Privacidad</a> <a href="/es/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# ============================================
+# Cloudflare Pages: Canonical redirects only
+# ============================================
+
+# Redirect .html -> pretty URLs (301 = SEO canonical)
+/tools/color-contrast.html /tools/color-contrast 301
+/tools/email-list-cleaner.html /tools/email-list-cleaner 301
+/tools/exif-remover.html /tools/exif-remover 301
+/tools/file-hash-checker.html /tools/file-hash-checker 301
+/tools/heic-converter.html /tools/heic-converter 301
+/tools/image-compressor.html /tools/image-compressor 301
+/tools/image-to-base64.html /tools/image-to-base64 301
+/tools/json-csv-converter.html /tools/json-csv-converter 301
+/tools/office-metadata-remover.html /tools/office-metadata-remover 301
+/tools/password-generator.html /tools/password-generator 301
+/tools/password-strength.html /tools/password-strength 301
+/tools/pdf-compress.html /tools/pdf-compress 301
+/tools/pdf-metadata-remover.html /tools/pdf-metadata-remover 301
+/tools/qr-code-generator.html /tools/qr-code-generator 301
+/tools/text-diff.html /tools/text-diff 301
+/tools/text-formatter.html /tools/text-formatter 301
+/tools/thread-splitter.html /tools/thread-splitter 301
+/tools/url-cleaner.html /tools/url-cleaner 301
+/tools/video-metadata-remover.html /tools/video-metadata-remover 301
+/tools/word-counter.html /tools/word-counter 301
+/tools/image-resizer.html /tools/image-resizer 301
+/tools/pdf-merger.html /tools/pdf-merger 301
+/about.html /about 301
+/privacy.html /privacy 301
+/faq.html /faq 301
+/alternatives.html /alternatives 301
+
+# Short share links
+/s/*  /api/resolve?hash=:splat  302

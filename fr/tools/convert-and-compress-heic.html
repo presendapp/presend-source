@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Convertir et compresser HEIC (Workflow) — Presend">
+  <meta property="og:description" content="Convert an iPhone HEIC photo to JPG and compress it — chained locally in your browser, nothing uploaded.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presend.pages.dev/tools/convert-and-compress-heic">
+<title>Convertir HEIC en JPG et compresser — Workflow gratuit, sans upload | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Convert an iPhone HEIC photo to JPG AND compress it in a single pass. Two tools chained together, 100% private, runs entirely in your browser. Free.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/convert-and-compress-heic" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Convertir et compresser HEIC (Workflow) — Presend">
+<meta name="twitter:description" content="Convert an iPhone HEIC photo to JPG and compress it — chained locally in your browser, nothing uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Workflow Convertir et compresser HEIC",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Chains HEIC to JPG conversion with image compression, entirely client-side. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/convert-and-compress-heic",
+  "mainEntityOfPage": "https://presend.pages.dev/tools/convert-and-compress-heic"
+}
+</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/convert-and-compress-heic" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/convert-and-compress-heic" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class='brand' href='/fr/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/fr/'>Tous les outils</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  PLACEHOLDER/a>
+  <h1>Convertir HEIC en JPG &amp; compresser</h1>
+  <p class="lede">Un workflow enchaîné : convertit une photo HEIC d'iPhone en JPG, puis compresse le résultat — en une seule fois, entièrement dans votre navigateur. Deux outils, un clic.</p>
+  <span class="trust-badge">Vos fichiers ne sont jamais envoyés à nos serveurs</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose a HEIC photo or drop it here">
+      <p class="primary">Déposez une photo HEIC ici, ou cliquez pour en choisir une</p>
+      <p class="secondary">.heic ou .heif. Rien ne quitte votre appareil.</p>
+      <input type="file" id="fileInput" accept=".heic,.heif,image/heic,image/heif">
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div style="margin-top:1rem;" id="qualityRow">
+      <label>Qualité de compression : <span id="qualityValue">80%</span></label><br>
+      <input type="range" id="qualitySlider" min="10" max="100" value="80" style="width:100%;">
+    </div>
+
+    <div id="stepsBox" style="display:none; margin-top:1.5rem;">
+      <div class="workflow-step" id="step1Box">1. Conversion HEIC vers JPG… <span id="step1Status"></span></div>
+      <div class="workflow-step" id="step2Box">2. Compression… <span id="step2Status"></span></div>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-row">
+        <div>
+          <div class="filename" id="resultName"></div>
+          <div class="meta" id="resultMeta"></div>
+        </div>
+        <a class="btn" id="downloadLink" download>Télécharger le JPG</a>
+      </div>
+      <button class="btn ghost" id="resetBtn" type="button">Traiter une autre photo</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — outils gratuits basés sur le navigateur. <a href="/about">À propos</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a></p>
+</footer>
+
+<script defer src="/vendor/heic2any.min.js"></script>
+<script src="/js/presets.js"></script>
+<script src="/js/image-ops.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+  const qualitySlider = document.getElementById('qualitySlider');
+  const qualityValue = document.getElementById('qualityValue');
+  const stepsBox = document.getElementById('stepsBox');
+  const step1Box = document.getElementById('step1Box');
+  const step2Box = document.getElementById('step2Box');
+  const step1Status = document.getElementById('step1Status');
+  const step2Status = document.getElementById('step2Status');
+
+  const MAX_SIZE = 50 * 1024 * 1024;
+  const TOOL_ID = 'convert-and-compress-heic';
+
+  (async function restorePreset() {
+    try {
+      const saved = await PresendPresets.get(TOOL_ID);
+      if (saved && saved.quality != null) {
+        qualitySlider.value = saved.quality;
+        qualityValue.textContent = saved.quality + '%';
+      }
+    } catch (e) { /* no saved preset, ignore */ }
+  })();
+
+  qualitySlider.addEventListener('input', () => {
+    qualityValue.textContent = qualitySlider.value + '%';
+    PresendPresets.set(TOOL_ID, { quality: Number(qualitySlider.value) });
+  });
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  function getExt(name) {
+    const m = name.match(/\.[^.]+$/);
+    return m ? m[0].toLowerCase() : '';
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    if (!file) return;
+    const ext = getExt(file.name);
+    const isHeic = ['.heic', '.heif'].includes(ext) ||
+                   ['image/heic', 'image/heif'].includes(file.type);
+    if (!isHeic) {
+      showError('Please choose a .heic or .heif file.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 50MB. Try a smaller photo.');
+      return;
+    }
+
+    const originalSize = file.size;
+    stepsBox.style.display = 'block';
+    step1Box.classList.add('active');
+    step1Status.textContent = '…';
+    step2Status.textContent = '';
+
+    try {
+      // Step 1: convert HEIC to JPG
+      const jpgBlob = await PresendImageOps.convertHeicToJpg(file, 92);
+      step1Status.textContent = '✓';
+      step1Box.classList.remove('active');
+      step1Box.classList.add('done');
+
+      // Step 2: compress the converted JPG
+      step2Box.classList.add('active');
+      const quality = Number(qualitySlider.value);
+      const finalBlob = await PresendImageOps.compressImage(jpgBlob, quality, 'image/jpeg');
+      step2Status.textContent = '✓';
+      step2Box.classList.remove('active');
+      step2Box.classList.add('done');
+
+      const cleanUrl = URL.createObjectURL(finalBlob);
+      const base = file.name.replace(/\.[^.]+$/, '');
+      const outName = base + '.jpg';
+      downloadLink.href = cleanUrl;
+      downloadLink.download = outName;
+      resultName.textContent = outName;
+      resultMeta.textContent = humanSize(originalSize) + ' → ' + humanSize(finalBlob.size);
+      result.classList.add('visible');
+
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tool: 'convert-and-compress-heic' })
+      }).catch(() => {});
+    } catch (err) {
+      showError('This file could not be converted. Make sure it\'s a valid HEIC photo.');
+      stepsBox.style.display = 'none';
+    }
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    stepsBox.style.display = 'none';
+    step1Box.classList.remove('active', 'done');
+    step2Box.classList.remove('active', 'done');
+    clearError();
+  });
+})();
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

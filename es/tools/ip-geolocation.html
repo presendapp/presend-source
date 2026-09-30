@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/ip-geolocation" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/ip-geolocation" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Geolocalización IP — Encuentre su IP, ciudad, país, ISP"/>
+<meta property="og:description" content="Encuentre su IP pública, ubicación aproximada, zona horaria e ISP, obtenidos en el servidor de Presend a partir de los datos de red de Cloudflare. Gratis."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://presend.pages.dev/es/tools/ip-geolocation"/>
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=IP+Geolocation"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<title>Geolocalización IP — Encuentre su IP, ciudad, país, ISP | Presend</title>
+<meta name="robots" content="index, follow"/>
+<meta name="description" content="Encuentre al instante su IP pública, ubicación aproximada, zona horaria e ISP. La consulta se hace en el servidor de Presend con los datos de red de Cloudflare; el mapa carga teselas de OpenStreetMap. Gratis."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/es/tools/ip-geolocation" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Geolocalización IP — Encuentre su IP, ciudad, país, ISP"/>
+<meta name="twitter:description" content="Encuentre su IP pública, ubicación aproximada, zona horaria e ISP, obtenidos en el servidor de Presend a partir de los datos de red de Cloudflare. Gratis."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "IP Geolocation",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Su IP pública, ubicación aproximada, zona horaria e ISP. Obtenidos en el servidor de Presend a partir de los datos de red de Cloudflare, sin servicio de geolocalización de terceros; el mapa usa teselas de OpenStreetMap.",
+  "url": "https://presend.pages.dev/es/tools/ip-geolocation"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"IP Geolocation","item":"https://presend.pages.dev/es/tools/ip-geolocation"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Find Your IP Address and Location",
+  "description": "Instantly discover your public IP address, city, country, timezone, and internet service provider.",
+  "totalTime": "PT2S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Open the tool", "text": "Visit the IP Geolocation page — your location is detected automatically.", "url": "https://presend.pages.dev/es/tools/ip-geolocation#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "View your details", "text": "See your IP address, city, country, timezone, ISP, and more in a clean card.", "url": "https://presend.pages.dev/es/tools/ip-geolocation#step2" }
+  ]
+}
+</script>
+<style>
+#ipDisplay { font-family:var(--font-mono,monospace); font-size:1.5rem; font-weight:700; color:var(--color-accent); text-align:center; padding:1rem; background:var(--color-bg-raised); border-radius:var(--radius); border:1px solid var(--color-line); }
+.result-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin-top:1.5rem; }
+.result-item { background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); padding:1rem; }
+.result-item label { display:block; font-size:0.8rem; color:var(--color-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.3rem; }
+.result-item span { font-size:1.1rem; font-weight:500; color:var(--color-text); word-break:break-word; }
+.result-item .flag { font-size:1.5rem; margin-right:0.3rem; }
+.map-placeholder { width:100%; height:200px; background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:var(--color-muted); margin-top:1rem; }
+.vpn-badge { display:inline-block; padding:0.2rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600; margin-left:0.5rem; }
+.vpn-badge.safe { background:#d4edda; color:#155724; }
+.vpn-badge.warn { background:#fff3cd; color:#856404; }
+.eu-badge { display:inline-block; padding:0.2rem 0.6rem; border-radius:999px; font-size:0.75rem; font-weight:600; background:#e7f3ff; color:#004085; margin-left:0.5rem; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/es/"><span class="brand-mark">●</span>Presend</a>
+  <a class="nav-link" href="/es/">Todas las herramientas</a> <a class="nav-link" href="/es/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/es/">← Volver</a>
+  <h1>Geolocalización IP</h1>
+  <p class="lede">Descubre tu dirección IP pública, ubicación aproximada, zona horaria y proveedor de servicios de internet. Tu navegador se conecta al servidor de Presend, que lee tu IP y su ubicación aproximada en los datos de red de Cloudflare; el mapa se dibuja con teselas de OpenStreetMap.</p>
+
+  <span class="trust-badge">Sin consultas de IP a terceros</span>
+
+  <div style="margin-top:2rem;">
+    <div id="ipDisplay">Detectando...</div>
+    
+    <div class="result-grid" id="resultGrid" style="display:none;">
+      <div class="result-item">
+        <label>País</label>
+        <span id="resCountry"><span class="flag" id="resFlag"></span><span id="resCountryName"></span></span>
+      </div>
+      <div class="result-item">
+        <label>Ciudad / Región</label>
+        <span id="resCity"></span>
+      </div>
+      <div class="result-item">
+        <label>Zona horaria</label>
+        <span id="resTimezone"></span>
+      </div>
+      <div class="result-item">
+        <label>ISP / Organización</label>
+        <span id="resOrg"></span>
+      </div>
+      <div class="result-item">
+        <label>Coordenadas</label>
+        <span id="resCoords"></span>
+      </div>
+      <div class="result-item">
+        <label>Moneda</label>
+        <span id="resCurrency"></span>
+      </div>
+      <div class="result-item">
+        <label>Idioma</label>
+        <span id="resLanguage"></span>
+      </div>
+      <div class="result-item">
+        <label>Continente</label>
+        <span id="resContinent"></span>
+      </div>
+    </div>
+
+    <div id="vpnStatus" style="margin-top:1rem; text-align:center; display:none;"></div>
+    <div id="euStatus" style="text-align:center; display:none;"></div>
+
+    <div class="map-placeholder" id="mapPlaceholder" style="display:none;">
+      🗺️ Map view requires JavaScript
+    </div>
+
+    <div id="errorMsg" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); color:var(--color-muted); text-align:center;"></div>
+  </div>
+
+  <section class="wrap" style="margin-top:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;">Herramientas relacionadas</h2>
+    <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/es/tools/url-cleaner">
+        <div><h3>Limpiador de URL</h3><p>Elimina parámetros de seguimiento de las URL.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/es/tools/text-moderator">
+        <div><h3>Moderador de texto</h3><p>Detecta spam y lenguaje tóxico.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/es/tools/phone-validator">
+        <div><h3>Validador de teléfono</h3><p>Valida y formatea números de teléfono.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">¿Cómo funciona?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    Esta herramienta usa la conexión de tu navegador a nuestro servidor, que detecta tu dirección IP pública mediante encabezados HTTP estándar (<code>CF-Connecting-IP</code>). La ubicación, la zona horaria y el operador de red provienen de los datos que Cloudflare adjunta a cada solicitud (<code>request.cf</code>): no se llama a ningún servicio de geolocalización de terceros. La IP también se compara con la lista pública de nodos de salida de Tor. Tu IP puede conservarse hasta 2 minutos como clave de limitación de solicitudes, y Presend no la almacena de ninguna otra forma. El mapa se dibuja con teselas de OpenStreetMap, que tu navegador descarga directamente de los servidores de OpenStreetMap: estos ven tu IP y la zona mostrada.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/es/about">About</a> · <a href="/es/privacy">Privacy</a> · <a href="/es/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function () {
+  const ipDisplay = document.getElementById('ipDisplay');
+  const resultGrid = document.getElementById('resultGrid');
+  const resFlag = document.getElementById('resFlag');
+  const resCountryName = document.getElementById('resCountryName');
+  const resCity = document.getElementById('resCity');
+  const resTimezone = document.getElementById('resTimezone');
+  const resOrg = document.getElementById('resOrg');
+  const resCoords = document.getElementById('resCoords');
+  const resCurrency = document.getElementById('resCurrency');
+  const resLanguage = document.getElementById('resLanguage');
+  const resContinent = document.getElementById('resContinent');
+  const vpnStatus = document.getElementById('vpnStatus');
+  const euStatus = document.getElementById('euStatus');
+  const mapPlaceholder = document.getElementById('mapPlaceholder');
+  const errorMsg = document.getElementById('errorMsg');
+
+  // Country code to emoji flag
+  function getFlagEmoji(countryCode) {
+    if (!countryCode || countryCode === 'unknown') return '🌐';
+    const codePoints = countryCode
+      .toUpperCase()
+      .split('')
+      .map(char => 127397 + char.charCodeAt(0));
+    return String.fromCodePoint(...codePoints);
+  }
+
+  async function lookup() {
+    try {
+      const res = await fetch('/api/ip');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+
+      if (data.error) throw new Error(data.error);
+
+      // Display IP
+      ipDisplay.textContent = data.ip;
+
+      // Fill results
+      resFlag.textContent = getFlagEmoji(data.country);
+      resCountryName.textContent = (data.country_name || data.country) + (data.country ? ' (' + data.country + ')' : '');
+      resCity.textContent = [data.city, data.region].filter(Boolean).join(', ') || 'Desconocido';
+      resTimezone.textContent = data.timezone || 'Desconocido';
+      resOrg.textContent = data.org || 'Desconocido';
+      resCoords.textContent = (data.latitude && data.longitude) ? `${data.latitude}, ${data.longitude}` : 'Desconocido';
+      resCurrency.textContent = data.currency || 'Desconocido';
+      resLanguage.textContent = data.language || 'Desconocido';
+      resContinent.textContent = data.continent || 'Desconocido';
+
+      // VPN badge
+      if (data.is_vpn) {
+        vpnStatus.innerHTML = '<span class="vpn-badge warn">⚠️ VPN / Proxy detectado</span>';
+        vpnStatus.style.display = 'block';
+      } else {
+        vpnStatus.innerHTML = '<span class="vpn-badge safe">✓ Conexión directa</span>';
+        vpnStatus.style.display = 'block';
+      }
+
+      // EU badge
+      if (data.is_eu) {
+        euStatus.innerHTML = '<span class="eu-badge">🇪🇺 Unión Europea</span>';
+        euStatus.style.display = 'block';
+      }
+
+      // Show map placeholder with coordinates
+      if (data.latitude && data.longitude) {
+        mapPlaceholder.innerHTML = `<a href="https://www.openstreetmap.org/?mlat=${data.latitude}&mlon=${data.longitude}&zoom=12" target="_blank" rel="noopener" style="color:var(--color-accent); text-decoration:none;">🗺️ Ver en OpenStreetMap (${data.latitude}, ${data.longitude})</a>`;
+        mapPlaceholder.style.display = 'flex';
+      } else {
+        mapPlaceholder.style.display = 'none';
+      }
+
+      resultGrid.style.display = 'grid';
+
+    } catch (e) {
+      ipDisplay.textContent = 'No se pudo detectar';
+      errorMsg.textContent = 'Error: ' + e.message + '. No se pudo determinar tu dirección IP. Inténtalo de nuevo más tarde.';
+      errorMsg.style.display = 'block';
+    }
+  }
+
+  lookup();
+})();
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'ip-geolocation' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'ip-geolocation' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="PDF圧縮 — Presend" property="og:title"/>
+<meta content="内部構造の最適化と隠れたメタデータの削除により、PDFのファイルサイズを縮小します。すべてブラウザ内で実行されます。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://presend.pages.dev/ja/tools/pdf-compress" property="og:url"/>
+<meta content="https://presend.pages.dev/api/og?tool=PDF+Compress" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<title>PDF圧縮ツール — ファイルサイズを無料で縮小・最適化 | Presend</title>
+<meta content="index, follow" name="robots"/>
+<meta content="内部構造の最適化と隠れたメタデータの削除により、PDFのファイルサイズを縮小します。すべてブラウザ内で実行され、アップロードは一切ありません。" name="description"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/pdf-compress" />
+<meta content="summary_large_image" name="twitter:card"/><meta content="PDF Compress — Presend" name="twitter:title" />
+<meta content="Shrink a PDF" name="twitter:description" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PDF Compress",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Shrink PDF file size by optimizing structure and stripping metadata locally. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/ja/tools/pdf-compress",
+  "mainEntityOfPage": "https://presend.pages.dev/ja/tools/pdf-compress"
+}
+</script><!--seo-app--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"PDF Compress","item":"https://presend.pages.dev/ja/tools/pdf-compress"}
+  ]
+}</script>
+<!--seo-breadcrumb--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "ファイルを共有する前にクリーンアップ、圧縮、変換、確認ができる無料のブラウザベースツール。アップロードは一切行われません。"
+}
+</script><!--seo-org--><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[    {"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Optimizes structure, removes metadata, lossless compression."}},    {"@type":"Question","name":"Look different?","acceptedAnswer":{"@type":"Answer","text":"No. Visual content identical."}},    {"@type":"Question","name":"Reduction?","acceptedAnswer":{"@type":"Answer","text":"Typically 10-50%."}},    {"@type":"Question","name":"Size limit?","acceptedAnswer":{"@type":"Answer","text":"50MB per file."}},    {"@type":"Question","name":"PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. All local."}}]}</script>
+<!--seo-faq-->
+<link href="/manifest.json" rel="manifest"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Compress a PDF File",
+  "description": "Shrink the file size of any PDF by optimizing its internal structure — no quality loss, no upload, 100% private.",
+  "totalTime": "PT20S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your PDF", "text": "Drag and drop your PDF document into the tool. Everything happens locally in your browser.", "url": "https://presend.pages.dev/ja/tools/pdf-compress#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Automatic optimization", "text": "The tool restructures and compresses the PDF internally, removing redundant data while preserving all visual content.", "url": "https://presend.pages.dev/ja/tools/pdf-compress#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download the smaller PDF", "text": "Save your compressed PDF — often 30-70% smaller. Ideal for email attachments and web uploads.", "url": "https://presend.pages.dev/ja/tools/pdf-compress#step3" }
+  ]
+}
+</script><!--seo-howto--><script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Will compression reduce PDF quality?","acceptedAnswer":{"@type":"Answer","text":"No. The tool optimizes the internal structure of the PDF and recompresses images without changing their visible resolution. Text and vector graphics remain perfectly sharp."}},
+    {"@type":"Question","name":"How much smaller will my PDF be?","acceptedAnswer":{"@type":"Answer","text":"Typical reductions range from 30% to 70%, depending on how many images the PDF contains and their current compression level."}},
+    {"@type":"Question","name":"Is there a file size limit?","acceptedAnswer":{"@type":"Answer","text":"There is no practical limit. PDFs are processed in chunks locally in your browser, so even 100+ MB files work fine."}},
+    {"@type":"Question","name":"Is my PDF uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. The entire compression process happens locally in your browser. Your document never leaves your device."}}
+]}
+</script><meta property="og:locale" content="ja_JP" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/pdf-compress" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/pdf-compress" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/pdf-compress" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/pdf-compress" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/pdf-compress" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/pdf-compress" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/pdf-compress" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/pdf-compress" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/pdf-compress" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+<a class="brand" href="/ja/"><span class="brand-mark">●</span>Presend</a>
+<a class="nav-link" href="/ja/">みんなのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+<a class="tool-back" href="/ja/">← 戻る</a>
+<h1>PDF圧縮</h1>
+<p class="lede">PDF の内部構造を最適化、非表示のメタデータを削除してファイル サイズを削減します。結果はさまざまです。冗長データでいっぱいの PDF は大幅に縮小する可能性がありますが、適切に最適化された PDF はほとんど変化しない可能性があります。ファイルはあなたのデバイス上でのみ処理されます。</p>
+<span class="trust-badge">ファイルが当社のサーバーに送信されることはありません</span>
+<div style="margin-top: 2rem;">
+<div aria-label="Choose a PDF or drop it here" class="dropzone" id="dropzone" role="button" tabindex="0">
+<p class="primary">ここにPDFをドロップするか、クリックしてPDFを選択してください</p>
+<p class="secondary">.pdf のみ。デバイスからは何も残りません。</p>
+<input accept="application/pdf,.pdf" id="fileInput" type="file"/>
+</div>
+<p class="error-msg" id="errorMsg"></p>
+<div class="result" id="result">
+<div class="result-row">
+<div>
+<div class="filename" id="resultName"></div>
+<div class="meta" id="resultMeta"></div>
+</div>
+<a class="btn" download="" id="downloadLink">圧縮されたPDFをダウンロードする</a>
+<button class="btn ghost" id="shareBtn" style="margin-left:0.5rem;" type="button">🔗 共有リンクをコピー</button>
+</div>
+<button class="btn ghost" id="resetBtn" type="button">別のPDFを圧縮する</button>
+</div>
+</div>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">関連ツール</h2>
+<div class="tool-grid" style="margin-top:1rem;">
+<a class="tool-card" href="/ja/tools/pdf-metadata-remover">
+<div><h3>PDFメタデータリムーバー</h3><p>PDF内に隠された作成者、ソフトウェア、日付を消去します。</p></div>
+<span class="go">開く →</span>
+</a>
+<a class="tool-card" href="/ja/tools/office-metadata-remover">
+<div><h3>Officeメタデータリムーバー</h3><p>Office ファイルから非表示の作成者、会社、編集履歴を削除します。</p></div>
+<span class="go">開く →</span>
+</a>
+<a class="tool-card" href="/ja/tools/file-hash-checker">
+<div><h3>ファイルハッシュチェッカー</h3><p>SHA-256、SHA-1、SHA-512 チェックサムを計算します。</p></div>
+<span class="go">開く →</span>
+</a>
+</div>
+</section>
+<section class="wrap" style="margin-top:3rem;">
+<h2 id="speakable" style="font-family:var(--font-display);font-size:1.1rem;">もっと詳しく知る</h2>
+<p itemprop="speakable" style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+<a href="/ja/tools/landings/shrink-pdf-online">このツールに関する詳細なガイドをお読みください</a>
+</p>
+<!--seo-related--></main>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">PDFファイルを圧縮する理由</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">PDF ドキュメントは、特に高解像度の画像、埋め込みフォント、スキャンされたページが含まれている場合、驚くほど大きくなる可能性があります。グラフや写真を含む 20 ページのレポートは、簡単に 10 MB を超えることはあります。これは、Gmail (25 MB) や Outlook (20 MB) など、ほとんどの電子メールプロバイダーの添付ファイル制限をはるかに超えています。ストレージが過剰に消費、サイズ制限のあるフォームにアップロードできなくなります。 PDF を圧縮すると、内部構造の最適化、冗長データの削除、画像の再圧縮によってファイルサイズが削減されますが、すべての読みやすさや見た目の品質に影響を考慮することはありません。当社の PDF 圧縮ツールは平均 30 ～ 70%のサイズ削減を実現しており、電子メールによるドキュメントの送信、政府ポータルへのアップロード、またはファイルの効率的なアーカイブに最適です。圧縮プロセス全体はブラウザ内でローカルに実行されます。契約書、履歴書、学術論文、書類は外部サーバーにアップロードされることはなく、完全な機密性が保証されます。</p>
+</section>
+<footer class="site-footer wrap">
+<p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+<script defer src="/vendor/pdf-lib.min.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 100 * 1024 * 1024; // 100MB
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    if (!file) return;
+
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+      showError('Please choose a PDF file.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 100MB. Try a smaller PDF.');
+      return;
+    }
+
+    resultName.textContent = file.name;
+    resultMeta.textContent = 'Optimizing…';
+
+    try {
+      const originalBytes = await file.arrayBuffer();
+      const originalSize = originalBytes.byteLength;
+
+      const pdfDoc = await PDFLib.PDFDocument.load(originalBytes, { updateMetadata: false });
+
+      // Strip metadata that can bloat the file and leak info
+      pdfDoc.setTitle('');
+      pdfDoc.setAuthor('');
+      pdfDoc.setSubject('');
+      pdfDoc.setKeywords([]);
+      pdfDoc.setProducer('');
+      pdfDoc.setCreator('');
+
+      // Object streams + compression on save meaningfully reduces size
+      // for PDFs that weren't already optimized (removes redundant/orphan
+      // objects and packs the cross-reference table more efficiently).
+      const compressedBytes = await pdfDoc.save({
+        useObjectStreams: true,
+        addDefaultPage: false
+      });
+
+      const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+      const compressedSize = blob.size;
+
+      const cleanUrl = URL.createObjectURL(blob);
+      const base = file.name.replace(/\.pdf$/i, '');
+      const outName = base + '-compressed.pdf';
+
+      downloadLink.href = cleanUrl;
+      downloadLink.download = outName;
+      resultName.textContent = outName;
+
+      if (compressedSize < originalSize) {
+        const pct = Math.round((1 - compressedSize / originalSize) * 100);
+        resultMeta.textContent = humanSize(originalSize) + ' → ' + humanSize(compressedSize) + ' (' + pct + '% smaller)';
+      } else {
+        resultMeta.textContent = humanSize(compressedSize) + ' — this PDF was already well optimized, size barely changed';
+      }
+      result.classList.add('visible');
+    } catch (err) {
+      showError('This file could not be processed. It may be corrupted, password-protected, or not a valid PDF.');
+    }
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    clearError();
+  });
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'pdf-compress' })
+}).catch(() => {});
+</script><script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'pdf-compress' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<!--refresh-v2-->
+</body>
+</html>

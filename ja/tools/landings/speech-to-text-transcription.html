@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>音声を無料でテキストに書き起こす方法 — Presendガイド</title>
+<meta name="description" content="ブラウザ内蔵の音声認識で声をテキストに変換する方法。無料・アプリ不要。ChromeとEdgeでは、音声はGoogleまたはMicrosoftが処理します。">
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/landings/speech-to-text-transcription" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Transcribe Speech to Text for Free",
+  "description": "Step-by-step guide to voice transcription using your browser's native Web Speech API. 100% private, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/speech-to-text-transcription"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>プレゼンする</a>
+  <a class='nav-link' href='/'>すべてのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/speech-to-text'>← 音声からテキストへ</a>
+  <article>
+    <h1>無料で音声をテキストに書き写す方法</h1>
+    <p class="lede">ボイスメモや会議の録音、口述したメモをテキストにしたいですか？ブラウザでできます。サブスクリプションもアカウントも不要で、Presendには何もアップロードされません。</p>
+
+    <h2>なぜブラウザベースの文字起こしをするのでしょうか?</h2>
+    <p>Otter.ai、Rev、Trint などの人気の文字起こしサービスでは、音声をクラウド サーバーにアップロードする必要があります。これにより、次のようないくつかの問題が発生します。</p>
+    <ul>
+      <li><strong>プライバシー</strong> — クラウドの文字起こしサービスは、他社のサーバーで音声を処理します。ChromeとEdgeのブラウザ音声認識も同じなので、このページはプライバシー保護にはなりません。</li>
+      <li><strong>料金</strong>— ほとんどのサービスは、月単位のサブスクリプションまたは分単位の料金を請求します。</li>
+      <li><strong>遅れ</strong>— アップロード + 処理 + ダウンロードに時間がかかります</li>
+      <li><strong>アカウントが必要です</strong>— アカウントを作成し、利用規約に同意する必要があります</li>
+    </ul>
+
+    <h2>Web Speech API の仕組み</h2>
+    <p>最新のブラウザには、<a href="https://wicg.github.io/speech-api/" target="_blank" rel="noopener">ウェブスピーチAPI</a>。何が起こるかというと、次のとおりです。</p>
+    <ol>
+      <li>ブラウザへのマイクアクセスを許可します</li>
+      <li>ブラウザの音声サービスが音声をテキストに変換します。ChromeはGoogleのサーバーに、EdgeはMicrosoftのサーバーに送信し、SafariはAppleの音声認識を使用します</li>
+      <li>転写されたテキストはリアルタイムで Web ページにストリーミングされます。</li>
+      <li>Presendのサーバーには何も送信されませんが、ブラウザの音声サービスは音声を受け取ります</li>
+    </ol>
+
+    <h2>サポートされている言語</h2>
+    <p>言語サポートはブラウザとオペレーティング システムによって異なります。ほとんどのシステムは以下をサポートしています。</p>
+    <ul>
+      <li>英語 (米国、英国、オーストラリア、インド)</li>
+      <li>フランス語、スペイン語、ドイツ語、イタリア語、ポルトガル語</li>
+      <li>日本語、韓国語、中国語（簡体字・繁体字）</li>
+      <li>アラビア語、ヒンディー語、ロシア語、オランダ語、ポーランド語、トルコ語</li>
+    </ul>
+    <p>言語が利用できない場合、ブラウザはサポートされている最も近い言語にフォールバックします。</p>
+
+    <h2>精度のためのベストプラクティス</h2>
+    <ul>
+      <li><strong>良いマイクを使う</strong>— ラップトップの内蔵マイクも機能しますが、USB ヘッドセットまたは専用マイクを使用すると精度が大幅に向上します</li>
+      <li><strong>背景ノイズを最小限に抑える</strong>— 静かな部屋ではより鮮明なトランスクリプトが作成されます</li>
+      <li><strong>はっきりと話す</strong>— 一貫した音量を発音し維持する</li>
+      <li><strong>文と文の間で一時停止する</strong>— エンジンがテキストを正しくセグメント化するのに役立ちます</li>
+      <li><strong>句読点をチェックする</strong>— API は句読点を自動的に挿入しますが、編集が必要な場合があります。</li>
+    </ul>
+
+    <h2>制限事項</h2>
+    <ul>
+      <li><strong>Firefox</strong>音声認識はサポートしていません (合成のみ)。 Chrome、Edge、または Safari を使用してください。</li>
+      <li><strong>長いセッション</strong>一部のブラウザでは 60 秒後にタイムアウトする場合があります。この問題が発生した場合は、単純に再起動してください。</li>
+      <li><strong>アクセントと方言</strong>あまり一般的ではないバリアントの精度が低下する可能性があります。</li>
+      <li><strong>専門用語</strong>（医療、法律、技術）後編集が必要な場合があります。</li>
+      <li><strong>機密性の高い音声には不向き</strong> — ChromeとEdgeでは音声が端末の外に送信されます。医療、法律、その他の機密の口述には、オフラインの文字起こしツールを使ってください。</li>
+    </ul>
+
+    <h2>ステップバイステップのガイド</h2>
+    <ol>
+      <li><strong>ツールを開く</strong>— に移動<a href="/ja/tools/speech-to-text">音声からテキストへの変換</a></li>
+      <li><strong>言語を選択してください</strong>— ドロップダウン メニューから選択します</li>
+      <li><strong>「リスニングを開始」をクリックします</strong>— プロンプトが表示されたらマイクへのアクセスを許可します</li>
+      <li><strong>自然に話す</strong>— 話すとテキストが表示されます</li>
+      <li><strong>「停止」をクリックします</strong>終わったら</li>
+      <li><strong>コピーまたはダウンロード</strong>— .txt ファイルとして保存するか、クリップボードにコピーします</li>
+    </ol>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ja/tools/speech-to-text">Speech-to-Text を開く →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

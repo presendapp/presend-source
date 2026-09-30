@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="DNS Lookup (A, AAAA, MX, TXT, NS) — Presend">
+<meta property="og:description" content="Look up A, AAAA, CNAME, MX, TXT and NS records for any domain in one call. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/dns-lookup">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=DNS+Lookup">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Free DNS Lookup API — A, AAAA, MX, TXT, NS | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Look up A, AAAA, CNAME, MX, TXT and NS records for any domain in one call. Free, no signup, no API key. See the underlying API call for your own code.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/dns-lookup" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DNS Lookup (A, AAAA, MX, TXT, NS) — Presend">
+<meta name="twitter:description" content="Look up A, AAAA, CNAME, MX, TXT and NS records for any domain in one call. Free, no signup.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DNS Lookup",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Look up A, AAAA, CNAME, MX, TXT and NS records for a domain in one call, via Cloudflare DNS-over-HTTPS. Free API, no signup, no API key.",
+  "url": "https://presend.pages.dev/tools/dns-lookup"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"DNS Lookup","item":"https://presend.pages.dev/tools/dns-lookup"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Which DNS record types does this check?","acceptedAnswer":{"@type":"Answer","text":"A, AAAA, CNAME, MX, TXT and NS by default, all in a single call. You can also narrow to just one type using the type parameter."}},
+  {"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"Cloudflare's public DNS-over-HTTPS resolver -- the same infrastructure that powers 1.1.1.1, queried live for every request."}},
+  {"@type":"Question","name":"Why check DNS records manually instead of just visiting the site?","acceptedAnswer":{"@type":"Answer","text":"DNS records reveal infrastructure a browser hides: which mail servers handle a domain's email (MX), what SPF/verification TXT records are published, and which nameservers actually control the domain -- useful for verifying a domain before trusting it, debugging email delivery, or auditing your own infrastructure."}},
+  {"@type":"Question","name":"Can I use this in my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. This page calls the same free, public API endpoint you can call directly: GET /api/dns-lookup?domain=example.com. No signup or API key required."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Look Up DNS Records for a Domain",
+  "description": "Look up A, AAAA, MX, TXT and NS records for any domain, for free.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Type a domain name", "text": "Enter any domain name into the input field.", "url": "https://presend.pages.dev/tools/dns-lookup#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Get real-time results", "text": "The tool queries live DNS via Cloudflare's resolver and shows all 6 common record types at once.", "url": "https://presend.pages.dev/tools/dns-lookup#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Reuse the API call", "text": "Copy the exact API call shown below the results to use the same lookup in your own code, for free.", "url": "https://presend.pages.dev/tools/dns-lookup#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/dns-lookup" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/dns-lookup" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>DNS Lookup</h1>
+  <p class="lede">Look up A, AAAA, CNAME, MX, TXT and NS records for any domain in one call — via Cloudflare's DNS-over-HTTPS resolver. Free, live, no signup.</p>
+
+  <span class="trust-badge">Live DNS query — nothing stored</span>
+
+  <div style="margin-top: 2rem;">
+    <label for="domainInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">Domain name</label>
+    <input type="text" id="domainInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="example.com" autocomplete="off" spellcheck="false" value="cloudflare.com">
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+    <div id="loadingBox" style="display:none;margin-top:1rem;color:var(--color-muted);font-size:0.9rem;">Looking up…</div>
+
+    <div id="resultBox" style="margin-top:1.5rem;display:none;">
+      <div id="recordsContainer"></div>
+
+      <div style="margin-top:1rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">API call used</strong>
+        <pre id="apiCallDisplay" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Which DNS record types does this check?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">A, AAAA, CNAME, MX, TXT and NS by default, all in a single call. You can also narrow to just one type using the type parameter.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Where does the data come from?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Cloudflare's public DNS-over-HTTPS resolver -- the same infrastructure that powers 1.1.1.1, queried live for every request.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why check DNS records manually instead of just visiting the site?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">DNS records reveal infrastructure a browser hides: which mail servers handle a domain's email (MX), what SPF/verification TXT records are published, and which nameservers actually control the domain -- useful for verifying a domain before trusting it, debugging email delivery, or auditing your own infrastructure.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I use this in my own code?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. This page calls the same free, public API endpoint you can call directly: GET /api/dns-lookup?domain=example.com. No signup or API key required.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/whois-lookup'>
+        <div><h3>WHOIS / Domain Age Lookup</h3><p>Registrar, age, and expiration via RDAP.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/redirect-trace'>
+        <div><h3>Redirect Chain Tracer</h3><p>See every hop a URL takes before landing.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/ip-reputation'>
+        <div><h3>IP Reputation Check</h3><p>Check an IPv4 against known spam netblocks.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('domainInput');
+  const errorBox = document.getElementById('errorBox');
+  const loadingBox = document.getElementById('loadingBox');
+  const resultBox = document.getElementById('resultBox');
+  const apiCallDisplay = document.getElementById('apiCallDisplay');
+  const recordsContainer = document.getElementById('recordsContainer');
+
+  let debounceTimer = null;
+
+  function renderRecords(records) {
+    const order = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS'];
+    let html = '';
+    for (const type of order) {
+      const values = records[type];
+      if (!values) continue;
+      html += '<div style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);margin-bottom:0.75rem;">';
+      html += '<strong style="font-family:var(--font-mono);">' + type + '</strong> <span style="color:var(--color-muted);font-size:0.85rem;">(' + values.length + ')</span>';
+      if (values.length === 0) {
+        html += '<p style="color:var(--color-muted);margin-top:0.5rem;">No records</p>';
+      } else {
+        html += '<ul style="margin-top:0.5rem;padding-left:1.25rem;font-family:var(--font-mono);font-size:0.9rem;">';
+        for (const v of values) {
+          const text = typeof v === 'object' ? (v.priority + ' ' + v.exchange) : v;
+          html += '<li>' + text + '</li>';
+        }
+        html += '</ul>';
+      }
+      html += '</div>';
+    }
+    recordsContainer.innerHTML = html;
+  }
+
+  async function lookup(domain) {
+    const url = 'https://presend.pages.dev/api/dns-lookup?domain=' + encodeURIComponent(domain);
+    apiCallDisplay.textContent = 'GET ' + url;
+    loadingBox.style.display = 'block';
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      loadingBox.style.display = 'none';
+
+      if (!res.ok) {
+        errorBox.textContent = data.error || 'Lookup failed.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      renderRecords(data.records || {});
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loadingBox.style.display = 'none';
+      errorBox.textContent = 'Could not complete the lookup. Try again shortly.';
+      errorBox.style.display = 'block';
+    }
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const domain = input.value.trim();
+    if (!domain) { resultBox.style.display = 'none'; errorBox.style.display = 'none'; return; }
+    debounceTimer = setTimeout(() => lookup(domain), 600);
+  });
+
+  lookup(input.value.trim());
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DNS Lookup",
+  "url": "https://presend.pages.dev/tools/dns-lookup",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Look up A, AAAA, CNAME, MX, TXT and NS records for a domain, calling Presend's free public API live."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'dns-lookup' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

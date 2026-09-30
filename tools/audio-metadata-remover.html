@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Audio Metadata Remover — Presend">
+  <meta property="og:description" content="Strip ID3 tags and hidden metadata from MP3 and M4A files without re-encoding, without sending data to servers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presend.pages.dev/tools/audio-metadata-remover">
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=Audio+Metadata+Remover">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+<title>Remove Audio Metadata (ID3 Tags) — Free Online | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Strip ID3 tags, artist, album art and other hidden metadata from MP3 and M4A files. 100% private, runs entirely in your browser. Free.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="../style.min.css" rel="preload" as="style"/>
+    <link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/audio-metadata-remover" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Audio Metadata Remover — Presend">
+<meta name="twitter:description" content="Strip ID3 tags and hidden metadata from MP3 and M4A files without re-encoding, without sending data to servers.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Audio Metadata Remover",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Remove ID3 tags and hidden metadata from MP3 and M4A files locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/audio-metadata-remover"
+}
+</script>
+<!--seo-app-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Audio Metadata Remover","item":"https://presend.pages.dev/tools/audio-metadata-remover"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What audio metadata can be removed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool removes ID3 tags (title, artist, album, year, genre, track number), album artwork, and other embedded metadata from MP3, M4A, WAV, FLAC, OGG, and WMA files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will removing metadata affect audio quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The tool strips only the metadata tags without re-encoding the audio. The sound quality remains exactly the same as the original file."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my audio file uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All processing happens locally in your browser using JavaScript. Your audio file never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I process multiple files at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can select multiple audio files and the tool will remove metadata from all of them simultaneously. Each cleaned file can be downloaded individually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MP3, M4A (AAC), WAV, FLAC, OGG, and WMA files are supported. The tool detects the format automatically and handles the appropriate metadata format."
+      }
+    }
+  ]
+}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Remove Metadata from an Audio File",
+  "description": "Strip ID3 tags and hidden metadata from MP3 or M4A files — entirely in your browser, no upload needed.",
+  "totalTime": "PT10S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your audio file", "text": "Drag and drop your MP3 or M4A file into the drop zone. Your file is processed locally and never uploaded to any server.", "url": "https://presend.pages.dev/tools/audio-metadata-remover#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Metadata is stripped automatically", "text": "ID3 tags or metadata atoms are removed instantly, without re-encoding the audio.", "url": "https://presend.pages.dev/tools/audio-metadata-remover#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download the clean file", "text": "Click Download to save your audio file with all metadata removed. Audio quality and file size remain unchanged.", "url": "https://presend.pages.dev/tools/audio-metadata-remover#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/audio-metadata-remover" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/audio-metadata-remover" />
+<meta property="og:locale" content="en_US" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>Audio Metadata Remover</h1>
+  <p class="lede">MP3 and M4A files often carry embedded artist, album, comment and album-art metadata — sometimes including information you didn't mean to share. This strips that hidden data without re-encoding, so audio quality and file size stay the same. The file is processed on your device only.</p>
+
+  <span class="trust-badge">Your files are never sent to our servers</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose an audio file or drop it here">
+      <p class="primary">Drop an MP3 or M4A file here, or click to choose one</p>
+      <p class="secondary">.mp3 or .m4a. Nothing leaves your device.</p>
+      <input type="file" id="fileInput" accept=".mp3,.m4a,audio/mpeg,audio/mp4,audio/x-m4a">
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+    <div class="result" id="result">
+      <div class="result-row">
+        <div>
+          <div class="filename" id="resultName"></div>
+          <div class="meta" id="resultMeta"></div>
+        </div>
+        <a class="btn" id="downloadLink" download>Download cleaned audio</a>
+        <button class="btn ghost" id="shareBtn" type="button" style="margin-left:0.5rem;">🔗 Copy share link</button>
+      </div>
+      <button class="btn ghost" id="resetBtn" type="button">Clean another file</button>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What audio metadata can be removed?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">The tool removes ID3 tags (title, artist, album, year, genre, track number), album artwork, and other embedded metadata from MP3, M4A, WAV, FLAC, OGG, and WMA files.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Will removing metadata affect audio quality?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. The tool strips only the metadata tags without re-encoding the audio. The sound quality remains exactly the same as the original file.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Is my audio file uploaded to a server?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Never. All processing happens locally in your browser using JavaScript. Your audio file never leaves your device.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I process multiple files at once?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. You can select multiple audio files and the tool will remove metadata from all of them simultaneously. Each cleaned file can be downloaded individually.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What formats are supported?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">MP3, M4A (AAC), WAV, FLAC, OGG, and WMA files are supported. The tool detects the format automatically and handles the appropriate metadata format.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/video-metadata-remover'>
+        <div><h3>Video Metadata Remover</h3><p>Strip hidden GPS location and device data from videos.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/exif-remover'>
+        <div><h3>EXIF Remover</h3><p>Strip hidden location and camera data from a photo.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/office-metadata-remover'>
+        <div><h3>Office Metadata Remover</h3><p>Strip hidden author and revision data from Word, Excel and PowerPoint files.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">What metadata hides in MP3 and M4A files?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    Audio files carry more than just sound. MP3 files use ID3 tags to store the artist, album, track title, year, genre, comments, and sometimes embedded cover art — all stored right alongside the audio data. M4A/AAC files use a similar metadata structure inside their container format. This information is often added automatically by ripping software, DAWs, or podcast editing tools, and can reveal software versions, personal comments, or file history you didn't intend to share. Our Audio Metadata Remover strips all of this out while leaving the actual audio data completely untouched — no re-encoding, no quality loss, no change in file size beyond the stripped metadata itself. Everything runs locally in your browser.
+  </p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+  const MAX_SIZE = 300 * 1024 * 1024;
+  const STRIP_FROM_MOOV = ['udta', 'meta'];
+  const STRIP_TOP_LEVEL = ['meta', 'uuid'];
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  function getExt(name) {
+    const m = name.match(/\.[^.]+$/);
+    return m ? m[0].toLowerCase() : '';
+  }
+
+  // ---------- MP3 (ID3v1 + ID3v2) ----------
+  function stripId3FromMp3(buffer) {
+    const view = new DataView(buffer);
+    let start = 0;
+    let end = buffer.byteLength;
+
+    // ID3v2 at the start: "ID3" magic + 2 version bytes + 1 flags byte + 4-byte synchsafe size
+    if (buffer.byteLength >= 10 &&
+        view.getUint8(0) === 0x49 && view.getUint8(1) === 0x44 && view.getUint8(2) === 0x33) {
+      const s0 = view.getUint8(6) & 0x7f;
+      const s1 = view.getUint8(7) & 0x7f;
+      const s2 = view.getUint8(8) & 0x7f;
+      const s3 = view.getUint8(9) & 0x7f;
+      const tagSize = (s0 << 21) | (s1 << 14) | (s2 << 7) | s3;
+      start = 10 + tagSize;
+      if (start > end) start = 0; // malformed guard
+    }
+
+    // ID3v1 at the end: last 128 bytes starting with "TAG"
+    if (end - start >= 128) {
+      const tagStart = end - 128;
+      if (view.getUint8(tagStart) === 0x54 && view.getUint8(tagStart + 1) === 0x41 && view.getUint8(tagStart + 2) === 0x47) {
+        end = tagStart;
+      }
+    }
+
+    return new Uint8Array(buffer, start, end - start);
+  }
+
+  // ---------- M4A/AAC (MP4 container, same box structure as video) ----------
+  function readBoxType(view, offset) {
+    let s = '';
+    for (let i = 0; i < 4; i++) s += String.fromCharCode(view.getUint8(offset + 4 + i));
+    return s;
+  }
+  function parseBoxHeader(view, offset, bufferLength) {
+    const size32 = view.getUint32(offset);
+    const type = readBoxType(view, offset);
+    if (size32 === 1) {
+      const hi = view.getUint32(offset + 8);
+      const lo = view.getUint32(offset + 12);
+      const size = hi * 4294967296 + lo;
+      return { type, start: offset, headerSize: 16, size, extended: true };
+    }
+    if (size32 === 0) {
+      return { type, start: offset, headerSize: 8, size: bufferLength - offset, extended: false };
+    }
+    return { type, start: offset, headerSize: 8, size: size32, extended: false };
+  }
+  function walkBoxes(buffer, view, start, end) {
+    const boxes = [];
+    let offset = start;
+    while (offset < end) {
+      const box = parseBoxHeader(view, offset, end);
+      if (box.size <= 0 || offset + box.size > end) break;
+      boxes.push(box);
+      offset += box.size;
+    }
+    return boxes;
+  }
+  function rebuildMoovWithoutMetadata(buffer, view, moovBox) {
+    const children = walkBoxes(buffer, view, moovBox.start + moovBox.headerSize, moovBox.start + moovBox.size);
+    const kept = children.filter(c => !STRIP_FROM_MOOV.includes(c.type));
+    const keptBytesLength = kept.reduce((sum, c) => sum + c.size, 0);
+    const newSize = moovBox.headerSize + keptBytesLength;
+    const out = new Uint8Array(newSize);
+    const outView = new DataView(out.buffer);
+    if (moovBox.headerSize === 8) {
+      outView.setUint32(0, newSize);
+      out.set(new Uint8Array(buffer, moovBox.start + 4, 4), 4);
+    } else {
+      outView.setUint32(0, 1);
+      out.set(new Uint8Array(buffer, moovBox.start + 4, 4), 4);
+      outView.setUint32(8, Math.floor(newSize / 4294967296));
+      outView.setUint32(12, newSize % 4294967296);
+    }
+    let pos = moovBox.headerSize;
+    for (const c of kept) {
+      out.set(new Uint8Array(buffer, c.start, c.size), pos);
+      pos += c.size;
+    }
+    return out;
+  }
+  function stripMetadataFromM4a(buffer) {
+    const view = new DataView(buffer);
+    const topBoxes = walkBoxes(buffer, view, 0, buffer.byteLength);
+    if (!topBoxes.some(b => b.type === 'moov')) {
+      throw new Error('no moov atom found');
+    }
+    const pieces = [];
+    for (const box of topBoxes) {
+      if (STRIP_TOP_LEVEL.includes(box.type)) continue;
+      if (box.type === 'moov') {
+        pieces.push(rebuildMoovWithoutMetadata(buffer, view, box));
+      } else {
+        pieces.push(new Uint8Array(buffer, box.start, box.size));
+      }
+    }
+    return pieces;
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    if (!file) return;
+
+    const ext = getExt(file.name);
+    if (!['.mp3', '.m4a'].includes(ext)) {
+      showError('Please choose an MP3 or M4A file.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 300MB. Try a smaller file.');
+      return;
+    }
+
+    resultName.textContent = file.name;
+    resultMeta.textContent = 'Processing…';
+
+    try {
+      const buffer = await file.arrayBuffer();
+      let pieces;
+      let mimeType;
+
+      if (ext === '.mp3') {
+        pieces = [stripId3FromMp3(buffer)];
+        mimeType = 'audio/mpeg';
+      } else {
+        pieces = stripMetadataFromM4a(buffer);
+        mimeType = 'audio/mp4';
+      }
+
+      const blob = new Blob(pieces, { type: file.type || mimeType });
+      const cleanUrl = URL.createObjectURL(blob);
+      const base = file.name.replace(/\.[^.]+$/, '');
+      const outName = base + '-clean' + ext;
+
+      downloadLink.href = cleanUrl;
+      downloadLink.download = outName;
+      resultName.textContent = outName;
+      resultMeta.textContent = humanSize(blob.size) + ' — metadata removed, audio untouched';
+      result.classList.add('visible');
+    } catch (err) {
+      showError('This file could not be processed. It may be corrupted or use an unsupported structure.');
+    }
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    clearError();
+  });
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'audio-metadata-remover' })
+}).catch(() => {});
+</script>
+<script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'audio-metadata-remover' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+</body>
+</html>

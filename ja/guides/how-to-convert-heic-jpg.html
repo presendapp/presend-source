@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="あらゆるデバイスでHEICをJPGに変換する方法 — Presend">
+<meta property="og:description" content="iPhoneはデフォルトで写真をHEIC形式で保存します。これが互換性の問題を引き起こす理由と、ブラウザで即座にJPGに変換する方法を解説します。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-convert-heic-jpg">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>あらゆるデバイスでHEICをJPGに変換する方法 — ステップバイステップガイド | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="iPhoneはデフォルトで写真をHEIC形式で保存します。これが互換性の問題を引き起こす理由と、ブラウザで即座にJPGに変換する方法を解説します。">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/guides/how-to-convert-heic-jpg" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="How to Convert HEIC to JPG on Any Device — Presend">
+<meta name="twitter:description" content="iPhones save photos as HEIC by default. Learn why this causes compatibility issues and how to convert to JPG instantly in your browser.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Convert HEIC to JPG on Any Device",
+  "description": "iPhones save photos as HEIC by default. Learn why this causes compatibility issues and how to convert to JPG instantly in your browser.",
+  "url": "https://presend.pages.dev/guides/how-to-convert-heic-jpg",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "ファイルを共有する前にクリーンアップ、圧縮、変換、確認ができる無料のブラウザベースツール。アップロードは一切行われません。"
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Convert HEIC to JPG on Any Device",
+  "description": "iPhones save photos as HEIC by default. Learn why this causes compatibility issues and how to convert to JPG instantly in your browser.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Understand HEIC format",
+      "text": "HEIC is Apple's default photo format. It's efficient but unsupported by many apps, websites and Windows PCs.",
+      "url": "https://presend.pages.dev/guides/how-to-convert-heic-jpg#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Use the HEIC Converter",
+      "text": "Upload your HEIC file to the converter. It runs entirely in your browser using the heic2any library.",
+      "url": "https://presend.pages.dev/guides/how-to-convert-heic-jpg#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Preserve quality",
+      "text": "The conversion preserves original image quality. HEIC to JPEG at high quality produces visually identical results.",
+      "url": "https://presend.pages.dev/guides/how-to-convert-heic-jpg#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Optional: clean and compress",
+      "text": "After converting, use the EXIF Remover to strip location data, then the Image Compressor if you need smaller files.",
+      "url": "https://presend.pages.dev/guides/how-to-convert-heic-jpg#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-convert-heic-jpg" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="ja_JP" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "HEICを無料でJPGに変換するには？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "オンラインツールをご利用ください。HEICファイルをドラッグ＆ドロップすると、ブラウザ内で即座にJPGに変換されます。サーバーへのアップロードはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "iPhoneでも変換できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、iPhone、Android、Windows、Mac、Linuxのすべてのデバイスで動作します。すべてブラウザ内で処理されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "画質は維持されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい、変換は元の画像品質を保持します。追加の圧縮は適用されません。"
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://presend.pages.dev/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ガイド",
+      "item": "https://presend.pages.dev/ja/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "あらゆるデバイスでHEICをJPGに変換する方法",
+      "item": "https://presend.pages.dev/ja/guides/how-to-convert-heic-jpg"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/ja/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/ja/'>All tools</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/ja/'>← Back</a>
+  <article>
+    <h1>あらゆるデバイスでHEICをJPGに変換する方法</h1>
+    <p class="lede">HEIC(High Efficiency Image Container)はAppleの標準の写真形式です。同じ画質でもJPEGより小さいファイルを生成しますが、多くのアプリ、ウェブサイト、古い端末では開けません。</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">なぜiPhoneはHEICを使うのですか?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">AppleがHEICに切り替えたのは、JPEGよりもおよそ2倍効率的だからです。写真の保存容量が少なくて済みます。欠点は互換性です。Windows、多くのAndroid端末、ほとんどのウェブプラットフォームはHEICをネイティブにサポートしていません。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">プライバシーに配慮した変換方法</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">写真をどこかのオンライン変換サービスにアップロードする代わりに、当サイトの<a href='/ja/tools/heic-converter'>HEICからJPGへの変換ツール</a>をご利用ください。heic2anyライブラリを使用し、すべてブラウザ内で処理されます。写真が端末から外部に送信されることはありません。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">変換すると画質は落ちますか?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">変換によって元の画質は維持されます。HEICとJPEGはどちらも非可逆形式ですが、高品質でHEICからJPEGへトランスコードすると、見た目には同一の結果になります。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">一括処理のヒント</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">複数のHEICファイルがある場合は、まずすべて変換し、次に<a href='/ja/tools/exif-remover'>EXIF削除ツール</a>で位置情報を取り除き、メール用にファイルサイズを小さくしたい場合は最後に<a href='/ja/tools/image-compressor'>画像圧縮ツール</a>をご利用ください。</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザ内蔵ツール。ローカルで動作します。アカウント不要。匿名のアクセス数カウントのみ。 <a href="/ja/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<!--refresh-v2-->
+</body>
+</html>

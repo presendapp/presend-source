@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/landings/speech-to-text-transcription" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/landings/speech-to-text-transcription" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Transcribe Speech to Text for Free — Presend Guide</title>
+<meta name="description" content="Learn how to convert your voice to text with your browser's built-in speech recognition. Free and without an app. In Chrome and Edge, the audio is processed by Google or Microsoft.">
+<link rel="canonical" href="https://presend.pages.dev/tools/landings/speech-to-text-transcription" />
+<link href="../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Transcribe Speech to Text for Free",
+  "description": "Step-by-step guide to voice transcription using your browser's native Web Speech API. 100% private, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/speech-to-text-transcription"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/speech-to-text'>← Speech-to-Text</a>
+  <article>
+    <h1>How to Transcribe Speech to Text for Free</h1>
+    <p class="lede">Need to convert a voice memo, meeting recording, or dictated notes into text? Your browser can do it — no subscription, no account, nothing uploaded to Presend.</p>
+
+    <h2>Why browser-based transcription?</h2>
+    <p>Popular transcription services like Otter.ai, Rev, or Trint require uploading your audio to their cloud servers. This creates several problems:</p>
+    <ul>
+      <li><strong>Privacy</strong> — Cloud transcription processes your audio on someone else's servers. Browser speech recognition does too in Chrome and Edge, so this page is not a privacy shield.</li>
+      <li><strong>Cost</strong> — Most services charge monthly subscriptions or per-minute fees</li>
+      <li><strong>Delay</strong> — Upload + processing + download takes time</li>
+      <li><strong>Account required</strong> — You must create an account and accept terms of service</li>
+    </ul>
+
+    <h2>How the Web Speech API works</h2>
+    <p>Modern browsers include a native speech recognition engine through the <a href="https://wicg.github.io/speech-api/" target="_blank" rel="noopener">Web Speech API</a>. Here's what happens:</p>
+    <ol>
+      <li>You grant microphone access to the browser</li>
+      <li>Your browser's speech service turns the audio into text: Chrome sends it to Google's servers, Edge to Microsoft's, and Safari uses Apple's speech recognition</li>
+      <li>The transcribed text streams back to the webpage in real-time</li>
+      <li>Nothing is sent to Presend's servers, but the browser's speech service does receive your audio</li>
+    </ol>
+
+    <h2>Supported languages</h2>
+    <p>Language support depends on your browser and operating system. Most systems support:</p>
+    <ul>
+      <li>English (US, UK, Australia, India)</li>
+      <li>French, Spanish, German, Italian, Portuguese</li>
+      <li>Japanese, Korean, Chinese (Simplified and Traditional)</li>
+      <li>Arabic, Hindi, Russian, Dutch, Polish, Turkish</li>
+    </ul>
+    <p>If a language isn't available, your browser will fall back to the closest supported variant.</p>
+
+    <h2>Best practices for accuracy</h2>
+    <ul>
+      <li><strong>Use a good microphone</strong> — Built-in laptop mics work, but a USB headset or dedicated mic improves accuracy significantly</li>
+      <li><strong>Minimize background noise</strong> — Quiet rooms produce cleaner transcripts</li>
+      <li><strong>Speak clearly</strong> — Enunciate and maintain consistent volume</li>
+      <li><strong>Pause between sentences</strong> — Helps the engine segment text correctly</li>
+      <li><strong>Check punctuation</strong> — The API inserts some punctuation automatically, but you may need to edit</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li><strong>Firefox</strong> does not support speech recognition (only synthesis). Use Chrome, Edge, or Safari.</li>
+      <li><strong>Long sessions</strong> may timeout after 60 seconds in some browsers. Simply restart if this happens.</li>
+      <li><strong>Accents and dialects</strong> may reduce accuracy for less common variants.</li>
+      <li><strong>Specialized vocabulary</strong> (medical, legal, technical) may require post-editing.</li>
+      <li><strong>Not for confidential audio</strong> — In Chrome and Edge the audio leaves your device. For medical, legal or other confidential dictation, use an offline transcription tool.</li>
+    </ul>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the tool</strong> — Go to <a href="/tools/speech-to-text">Speech-to-Text</a></li>
+      <li><strong>Select your language</strong> — Choose from the dropdown menu</li>
+      <li><strong>Click Start listening</strong> — Allow microphone access when prompted</li>
+      <li><strong>Speak naturally</strong> — Text appears as you talk</li>
+      <li><strong>Click Stop</strong> when finished</li>
+      <li><strong>Copy or download</strong> — Save as a .txt file or copy to clipboard</li>
+    </ol>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/tools/speech-to-text">Open Speech-to-Text →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

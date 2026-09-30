@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/link-preview" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/link-preview" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/link-preview" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/link-preview" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/link-preview" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/link-preview" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/link-preview" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/link-preview" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/link-preview" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Link-Vorschau — Presend"/>
+<meta property="og:description" content="Extrahiere Open-Graph-Metadaten aus jeder URL: Titel, Beschreibung, Bild, Favicon. Der Server von Presend ruft die Seite für dich ab und speichert die URL nicht. Kostenlos."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://presend.pages.dev/de/tools/link-preview"/>
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Link+Preview"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<title>Link-Vorschau & Open-Graph-Scraper — Kostenlose Metadaten-Extraktion | Presend</title>
+<meta name="robots" content="index, follow"/>
+<meta name="description" content="Füge eine beliebige URL ein und extrahiere sofort ihre Open-Graph-Metadaten: Titel, Beschreibung, Bild, Site-Name, Favicon. Der Server von Presend ruft die Seite für dich ab und speichert die URL nicht. Kostenlos."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/de/tools/link-preview" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Link-Vorschau — Presend"/>
+<meta name="twitter:description" content="Extrahiere Open-Graph-Metadaten aus jeder URL: Titel, Beschreibung, Bild, Favicon. Der Server von Presend ruft die Seite für dich ab und speichert die URL nicht. Kostenlos."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Link Preview",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Open-Graph-Metadaten aus jeder URL: Titel, Beschreibung, Bild, Site-Name, Favicon. Die Seite wird vom Server von Presend abgerufen, der die URL nicht speichert; Vorschaubild und Favicon werden direkt von der Website geladen.",
+  "url": "https://presend.pages.dev/de/tools/link-preview"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/de/tools/"},
+    {"@type":"ListItem","position":3,"name":"Link Preview","item":"https://presend.pages.dev/de/tools/link-preview"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Extract Link Metadata",
+  "description": "Paste any URL to instantly see its Open Graph preview card — title, description, image and favicon.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste a URL", "text": "Enter or paste the web page URL you want to analyze.", "url": "https://presend.pages.dev/de/tools/link-preview#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Click Scrape", "text": "Press the Scrape button to fetch the page metadata via our secure proxy.", "url": "https://presend.pages.dev/de/tools/link-preview#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "View results", "text": "See the preview card and raw JSON data extracted from the page.", "url": "https://presend.pages.dev/de/tools/link-preview#step3" }
+  ]
+}
+</script>
+<link rel="manifest" href="/manifest.json"/>
+<style>
+.url-input { width:100%; padding:0.8rem 1rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg); font-family:var(--font-body); font-size:1rem; }
+.preview-card { margin-top:1.5rem; border:1px solid var(--color-line); border-radius:var(--radius); overflow:hidden; background:var(--color-bg-raised); display:none; }
+.preview-card.visible { display:block; }
+.preview-image { width:100%; height:200px; object-fit:cover; background:var(--color-bg); }
+.preview-body { padding:1rem; }
+.preview-title { font-weight:600; font-size:1.1rem; color:var(--color-text); margin-bottom:0.4rem; }
+.preview-desc { color:var(--color-muted); font-size:0.95rem; line-height:1.5; }
+.preview-meta { display:flex; align-items:center; gap:0.5rem; margin-top:0.75rem; font-size:0.85rem; color:var(--color-muted); }
+.preview-meta img { width:16px; height:16px; border-radius:2px; }
+.json-output { margin-top:1rem; padding:1rem; background:var(--color-bg); border:1px solid var(--color-line); border-radius:var(--radius); font-family:monospace; font-size:0.85rem; overflow-x:auto; white-space:pre-wrap; word-break:break-all; color:var(--color-text); display:none; }
+.json-output.visible { display:block; }
+.error-msg { color:#dc3545; margin-top:0.75rem; font-size:0.9rem; }
+.status { text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.75rem; min-height:1.5em; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/de/"><span class="brand-mark">●</span>Presend</a>
+  <a class="nav-link" href="/de/">Alle Werkzeuge</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/de/">← Zurück</a>
+  <h1>Link-Vorschau</h1>
+  <p class="lede">Füge eine beliebige URL ein und extrahiere sofort ihre Open-Graph-Metadaten — Titel, Beschreibung, Bild, Site-Name und Favicon. Unser serverseitiger Proxy übernimmt CORS für dich.</p>
+
+  <span class="trust-badge">Deine URL wird niemals auf unseren Servern gespeichert</span>
+
+  <div style="margin-top:2rem;">
+    <label for="urlInput" style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.4rem;">URL der Webseite</label>
+    <input type="url" id="urlInput" class="url-input" placeholder="https://example.com/article" value="https://presend.pages.dev">
+
+    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+      <button class="btn" id="scrapeBtn" type="button">🔍 Analysieren</button>
+      <button class="btn ghost" id="clearBtn" type="button">Löschen</button>
+    </div>
+
+    <div class="status" id="status">Bereit</div>
+    <div class="error-msg" id="errorMsg" style="display:none;"></div>
+
+    <div class="preview-card" id="previewCard">
+      <img class="preview-image" id="previewImage" src="" alt="Preview" style="display:none;">
+      <div class="preview-body">
+        <div class="preview-title" id="previewTitle"></div>
+        <div class="preview-desc" id="previewDesc"></div>
+        <div class="preview-meta">
+          <img id="previewFavicon" src="" alt="" style="display:none;">
+          <span id="previewSite"></span>
+          <span>·</span>
+          <span id="previewType"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="json-output" id="jsonOutput"></div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Verwandte Tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/de/tools/url-cleaner">
+        <div><h3>URL-Bereiniger</h3><p>Entferne Tracking-Parameter aus jedem Link.</p></div>
+        <span class="go">Öffnen →</span>
+      </a>
+      <a class="tool-card" href="/de/tools/text-formatter">
+        <div><h3>Textformatierer</h3><p>Wandle Text in Fett-, Kursiv- und Unicode-Stile um.</p></div>
+        <span class="go">Öffnen →</span>
+      </a>
+      <a class="tool-card" href="/de/tools/word-counter">
+        <div><h3>Wortzähler</h3><p>Zähle Wörter, Zeichen und Lesezeit.</p></div>
+        <span class="go">Öffnen →</span>
+      </a>
+  </div>
+</section>
+
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Wie funktioniert es?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">Wenn du eine URL eingibst, ruft unser serverseitiger Proxy den Seiteninhalt in deinem Namen ab — und umgeht dabei die CORS-Beschränkungen des Browsers. Anschließend wird das HTML analysiert, um Open-Graph-Tags (<code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:site_name</code>) zu extrahieren, und bei fehlenden OG-Daten wird auf Standard-HTML-Tags zurückgegriffen. Die extrahierten Metadaten werden als strukturiertes JSON zurückgegeben und als visuelle Vorschaukarte dargestellt. Presend speichert die URL nicht (deine IP kann bis zu 2 Minuten als Schlüssel für die Ratenbegrenzung gespeichert werden). Die geprüfte Website sieht eine Anfrage vom Server von Presend, und anschließend lädt dein Browser Vorschaubild und Favicon direkt von dieser Website, die damit auch deine IP sieht.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend – kostenlose browserbasierte Tools.<a href="/de/about">Über</a> · <a href="/de/privacy">Privatsphäre</a> · <a href="/de/api">API</a></p>
+</footer>
+
+<script>
+(function () {
+  const urlInput = document.getElementById('urlInput');
+  const scrapeBtn = document.getElementById('scrapeBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const status = document.getElementById('status');
+  const errorMsg = document.getElementById('errorMsg');
+  const previewCard = document.getElementById('previewCard');
+  const previewImage = document.getElementById('previewImage');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewDesc = document.getElementById('previewDesc');
+  const previewFavicon = document.getElementById('previewFavicon');
+  const previewSite = document.getElementById('previewSite');
+  const previewType = document.getElementById('previewType');
+  const jsonOutput = document.getElementById('jsonOutput');
+
+  async function scrape() {
+    const url = urlInput.value.trim();
+    if (!url) {
+      status.textContent = 'Bitte gib eine URL ein';
+      return;
+    }
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      status.textContent = 'Die URL muss mit http:// oder https:// beginnen';
+      return;
+    }
+
+    scrapeBtn.disabled = true;
+    status.textContent = 'Wird analysiert...';
+    errorMsg.style.display = 'none';
+    previewCard.classList.remove('visible');
+    jsonOutput.classList.remove('visible');
+
+    try {
+      const res = await fetch('/api/scrape?url=' + encodeURIComponent(url));
+      const data = await res.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Update preview card
+      previewTitle.textContent = data.title || 'Kein Titel gefunden';
+      previewDesc.textContent = data.description || 'Keine Beschreibung gefunden';
+      previewSite.textContent = data.siteName || new URL(data.url).hostname;
+      previewType.textContent = data.type || 'website';
+
+      if (data.image) {
+        previewImage.src = data.image;
+        previewImage.style.display = 'block';
+        previewImage.onerror = () => { previewImage.style.display = 'none'; };
+      } else {
+        previewImage.style.display = 'none';
+      }
+
+      if (data.favicon) {
+        previewFavicon.src = data.favicon;
+        previewFavicon.style.display = 'inline-block';
+        previewFavicon.onerror = () => { previewFavicon.style.display = 'none'; };
+      } else {
+        previewFavicon.style.display = 'none';
+      }
+
+      previewCard.classList.add('visible');
+
+      // Show raw JSON
+      jsonOutput.textContent = JSON.stringify(data, null, 2);
+      jsonOutput.classList.add('visible');
+
+      status.textContent = 'Fertig';
+    } catch (e) {
+      errorMsg.textContent = 'Fehler: ' + e.message;
+      errorMsg.style.display = 'block';
+      status.textContent = 'Fehlgeschlagen';
+    } finally {
+      scrapeBtn.disabled = false;
+    }
+  }
+
+  scrapeBtn.addEventListener('click', scrape);
+  clearBtn.addEventListener('click', () => {
+    urlInput.value = '';
+    previewCard.classList.remove('visible');
+    jsonOutput.classList.remove('visible');
+    errorMsg.style.display = 'none';
+    status.textContent = 'Bereit';
+  });
+  urlInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') scrape(); });
+})();
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'link-preview' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'link-preview' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

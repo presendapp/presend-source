@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Como verificar se um arquivo baixado é seguro — Presend">
+<meta property="og:description" content="Aprenda a verificar a soma de verificação SHA-256 de um arquivo para confirmar que ele não foi adulterado, corrompido ou substituído por malware.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Como verificar se um arquivo baixado é seguro — Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Aprenda a verificar a soma de verificação SHA-256 de um arquivo para confirmar que ele não foi adulterado, corrompido ou substituído por malware.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Como verificar se um arquivo baixado é seguro — Presend">
+<meta name="twitter:description" content="Learn how to check a file">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Como verificar se um arquivo baixado é seguro",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Ferramentas gratuitas baseadas no navegador para limpar, comprimir, converter e verificar seus arquivos antes de compartilhá-los. Nada é enviado para servidores."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Como verificar se um arquivo baixado é seguro",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Understand what a checksum is",
+      "text": "A checksum is a unique fingerprint of a file's contents. If even one byte changes, the checksum changes completely.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Find the expected hash",
+      "text": "The software publisher usually lists the expected SHA-256 hash on their download page.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Calculate the hash locally",
+      "text": "Use the File Hash Checker to compute SHA-256, SHA-1 and SHA-512 entirely in your browser.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Compare and decide",
+      "text": "If the calculated hash matches the expected hash exactly, the file is safe. If not, delete it and re-download from the official source.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="pt_BR" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://presend.pages.dev/pt/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guias",
+      "item": "https://presend.pages.dev/pt/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Como verificar se um arquivo baixado é seguro",
+      "item": "https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/pt/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/pt/'>All tools</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/pt/'>← Back</a>
+  <article>
+    <h1>Como verificar se um arquivo baixado é seguro</h1>
+    <p class="lede">Quando você baixa software, um documento ou qualquer arquivo da internet, como sabe que é o verdadeiro? Uma das formas mais confiáveis é verificar sua soma de verificação criptográfica.</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">O que é uma soma de verificação?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Uma soma de verificação é uma cadeia de caracteres única gerada a partir do conteúdo de um arquivo. Se mesmo um único byte mudar — por corrupção ou adulteração maliciosa — a soma de verificação muda completamente. SHA-256 é o padrão da indústria para esta verificação.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Como verificar SHA-256</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">O publicador do arquivo geralmente fornece o hash SHA-256 esperado. Você calcula o hash do arquivo baixado e compara os dois. Se corresponderem exatamente, o arquivo está intacto. Use nosso <a href='/pt/tools/file-hash-checker'>verificador de hash de arquivos</a> para calcular SHA-256, SHA-1 e SHA-512 instantaneamente no seu navegador.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Sinais de alerta para observar</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Se a soma de verificação não corresponder, não abra o arquivo. Exclua-o e baixe novamente da fonte oficial. Tenha especial cuidado com executáveis, PDFs de remetentes desconhecidos e arquivos de redes peer-to-peer.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Por que fazer isso no navegador?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Nossa ferramenta funciona inteiramente no seu dispositivo. Seu arquivo nunca é enviado para um servidor, o que é crítico quando você lida com downloads sensíveis ou confidenciais.</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — ferramentas gratuitas no navegador. Funciona localmente. Sem conta. Apenas contagem anônima de visitas. <a href="/pt/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é uma soma de verificação?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uma soma de verificação é uma impressão digital única gerada a partir do conteúdo de um arquivo. Se mesmo um byte mudar, o hash muda completamente — tornando-o perfeito para verificar a integridade do arquivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como verificar SHA-256",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cole o arquivo e o hash esperado em nossa ferramenta. A ferramenta calcula o hash SHA-256 do seu arquivo e o compara instantaneamente com o hash fornecido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sinais de alerta para observar",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se os hashes não corresponderem, o arquivo pode estar corrompido ou adulterado. Nunca execute executáveis de fontes não confiáveis sem verificação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que fazer isso no navegador?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nossa ferramenta funciona totalmente no lado do cliente — seus arquivos nunca deixam seu dispositivo. Isso é mais seguro do que fazer upload para verificadores de hash online que poderiam armazenar seus dados."
+      }
+    }
+  ]
+}
+</script>
+<!--refresh-v2-->
+</body>
+</html>

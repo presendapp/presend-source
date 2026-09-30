@@ -1,0 +1,9 @@
+{
+  "name": "Presend",
+  "description": "Free MCP server: 37 security & dev API tools -- WHOIS, DNS, CVE, IP reputation, Cosmos SDK.",
+  "homepage": "https://presend.pages.dev",
+  "endpoint": "https://presend.pages.dev/mcp",
+  "transport": "streamable-http",
+  "protocolVersion": "2025-06-18",
+  "registry": "io.github.presendapp/presend-mcp"
+}

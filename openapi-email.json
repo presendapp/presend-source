@@ -1,0 +1,372 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Presend Email & Phone Verification API",
+    "description": "Free email and phone verification: syntax + MX + disposable-domain checks, SPF/DKIM/DMARC email security analysis, and phone number validation with IP-based country fallback. No signup, no API key.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://presend.pages.dev/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://presend.pages.dev/api",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/email-validate": {
+      "get": {
+        "summary": "Validate an email address",
+        "description": "Checks syntax and verifies the domain has a valid MX record.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@example.com"
+            },
+            "description": "Email address to validate for correct syntax and a resolvable domain."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "syntax_valid": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "mx_checked": {
+                      "type": "boolean"
+                    },
+                    "has_mx": {
+                      "type": "boolean"
+                    },
+                    "mx_count": {
+                      "type": "integer"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "email": "test@gmail.com",
+                  "syntax_valid": true,
+                  "domain": "gmail.com",
+                  "mx_checked": true,
+                  "has_mx": true,
+                  "mx_count": 5,
+                  "valid": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-disposable": {
+      "get": {
+        "summary": "Detect disposable email domains",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@mailinator.com"
+            },
+            "description": "Email address to check against a list of known disposable/temporary email domains."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Disposable status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "disposable": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "email": "test@mailinator.com",
+                  "domain": "mailinator.com",
+                  "disposable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-verify": {
+      "get": {
+        "summary": "Combined email verification",
+        "description": "Chains syntax check, MX lookup, disposable-domain detection, and generic/role-account detection in a single call.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@example.com"
+            },
+            "description": "Email address to run through combined syntax, disposable-domain, and MX-record checks."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Combined verification result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "syntax_valid": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "mx_checked": {
+                      "type": "boolean"
+                    },
+                    "has_mx": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "mx_count": {
+                      "type": "integer"
+                    },
+                    "disposable": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "role_account": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "valid": {"type": "boolean", "nullable": true, "description": "true: syntax OK, MX record found, not disposable. false: conclusive failure, see reason. null: the MX lookup could not be completed (reason mx_lookup_failed); retry later, do not treat as invalid."},
+                    "reason": {"type": "string", "nullable": true, "description": "invalid_syntax, no_mx_record, disposable_domain or mx_lookup_failed; null when valid is true."}
+                  }
+                },
+                "example": {
+                  "email": "test@gmail.com",
+                  "syntax_valid": true,
+                  "domain": "gmail.com",
+                  "mx_checked": true,
+                  "has_mx": true,
+                  "mx_count": 5,
+                  "disposable": false,
+                  "role_account": false,
+                  "valid": true,
+                  "reason": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/phone-verify": {
+      "get": {
+        "summary": "Validate and format a phone number",
+        "description": "Validates and formats via libphonenumber-js. If \u201ccountry\u201d is omitted for a number without a leading +, the caller's IP-derived country (Cloudflare edge geolocation) is used as the default.",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "+14155552671"
+            },
+            "description": "Phone number to validate and format, ideally in E.164 format (e.g. +14155552671)."
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "description": "ISO 3166-1 alpha-2 country code (e.g. US, FR), used to interpret a number with no leading +.",
+            "schema": {
+              "type": "string",
+              "example": "US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation and formatting result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "type": "string"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "country": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "country_calling_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "type": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "formats": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "e164": {
+                          "type": "string"
+                        },
+                        "international": {
+                          "type": "string"
+                        },
+                        "national": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "default_country_used": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "ip_inferred_country": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "number": "4155552671",
+                  "valid": true,
+                  "country": "US",
+                  "country_calling_code": "1",
+                  "type": "Fixed or mobile",
+                  "formats": {
+                    "e164": "+14155552671",
+                    "international": "+1 415 555 2671",
+                    "national": "(415) 555-2671",
+                    "uri": "tel:+14155552671"
+                  },
+                  "default_country_used": "US",
+                  "ip_inferred_country": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-security": {
+      "get": {
+        "summary": "Domain email anti-spoofing check (SPF/DMARC/DKIM)",
+        "description": "Checks SPF strength, DMARC policy, and a best-effort DKIM lookup against common selectors. DKIM has no fixed DNS location, so absence of a match does not prove DKIM is unconfigured.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to check SPF, DKIM, and DMARC records for, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Anti-spoofing configuration report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "score": {
+                      "type": "integer"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    },
+                    "spf": {
+                      "type": "object"
+                    },
+                    "dmarc": {
+                      "type": "object"
+                    },
+                    "dkim": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "google.com",
+                  "score": 65,
+                  "verdict": "Partially protected \u2014 see recommendations.",
+                  "spf": {
+                    "configured": true,
+                    "record": "v=spf1 include:_spf.google.com ~all",
+                    "strength": "moderate"
+                  },
+                  "dmarc": {
+                    "configured": true,
+                    "record": "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com",
+                    "policy": "reject",
+                    "enforced": true
+                  },
+                  "dkim": {
+                    "checked_selectors": 13,
+                    "found_selectors": [],
+                    "note": "Best-effort: only common selectors are tested. A domain can have valid DKIM under a custom selector not listed here \u2014 absence of a match does not prove DKIM is unconfigured."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="ファイルを共有する前にメタデータを削除する方法 — Presend">
+<meta property="og:description" content="写真、PDF、Office文書、動画から、共有前に隠されたEXIF、GPS、作成者、ソフトウェアのデータを削除する方法を学びます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>共有前にメタデータを削除する方法 — ステップバイステップガイド | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="写真、PDF、Office文書、動画から共有前に隠されたメタデータを削除する方法を学びます。EXIF、GPS、作成者情報を安全に除去。ブラウザ内で完結。">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/guides/how-to-remove-metadata-before-sharing" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="ファイルを共有する前にメタデータを削除する方法 — Presend">
+<meta name="twitter:description" content="写真、PDF、Office文書、動画から、共有前に隠されたEXIF、GPS、作成者、ソフトウェアのデータを削除する方法を学びます。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ファイルを共有する前にメタデータを削除する方法",
+  "description": "写真、PDF、Office文書、動画から、共有前に隠されたEXIF、GPS、作成者、ソフトウェアのデータを削除する方法を学びます。",
+  "url": "https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "ファイルを共有する前にクリーンアップ、圧縮、変換、確認ができる無料のブラウザベースツール。アップロードは一切行われません。"
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "ファイルを共有する前にメタデータを削除する方法",
+  "description": "写真、PDF、Office文書、動画から、共有前に隠されたEXIF、GPS、作成者、ソフトウェアのデータを削除する方法を学びます。",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "写真：EXIF・GPSデータの削除",
+      "text": "Use the EXIF Remover to strip GPS coordinates, camera model and timestamps from JPG, PNG and WebP images.",
+      "url": "https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "PDFs: Clear author and software info",
+      "text": "Use the PDF Metadata Remover to clear author name, creator software and creation dates from PDF files.",
+      "url": "https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Office documents: Strip edit history",
+      "text": "Use the Office Metadata Remover to remove author names, company info and revision history from Word, Excel and PowerPoint files.",
+      "url": "https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Videos: Remove GPS and device data",
+      "text": "Use the Video Metadata Remover to strip GPS coordinates and device model from MP4 and MOV videos without re-encoding.",
+      "url": "https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-remove-metadata-before-sharing" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="ja_JP" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://presend.pages.dev/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ガイド",
+      "item": "https://presend.pages.dev/ja/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "共有前にメタデータを削除する方法",
+      "item": "https://presend.pages.dev/ja/guides/how-to-remove-metadata-before-sharing"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/ja/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/ja/'>All tools</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/ja/'>← Back</a>
+  <article>
+    <h1>共有前にメタデータを削除する方法</h1>
+    <p class="lede">作成または編集したすべてのファイルには、名前、GPS座標、使用したソフトウェア、タイムスタンプなどの見えないメタデータが含まれています。メールで送信したり、アップロードしたり、投稿したりする前に、これらのデータを削除することをお勧めします。安全かつプライバシーを守りながら行う方法は以下の通りです。</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">1. 写真：EXIF・GPSデータの削除</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">スマートフォンで写真を撮ると、正確なGPS位置情報、カメラモデル、写真が撮影された日時を含むEXIFデータが埋め込まれます。当サイトの<a href='/ja/tools/exif-remover'>EXIF削除ツール</a>を使用すれば、ワンクリックですべて削除できます。画像はブラウザ内でローカルに再描画されます — アップロードは行われません。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">2. PDFs: Clear author and software info</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">PDFには、作成者名、作成に使用されたソフトウェア、作成日などが保存されることがよくあります。当サイトの<a href='/ja/tools/pdf-metadata-remover'>PDFメタデータ削除ツール</a>は、ファイルを共有する前にすべての標準ドキュメント情報を消去します。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">3. Office documents: Strip edit history</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Word、Excel、PowerPointファイルには、変更履歴、作成者名、企業情報、コメントなどが含まれることがあります。<a href='/ja/tools/office-metadata-remover'>Officeメタデータ削除ツール</a>を使用してクリーニングしてください。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">4. Videos: Remove GPS and device data</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">スマートフォンで録画したMP4およびMOV動画には、GPS座標や端末モデル情報が含まれることがあります。<a href='/ja/tools/video-metadata-remover'>動画メタデータ削除ツール</a>は、動画を再エンコードすることなくこれらのメタデータを削除します。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">なぜ重要なのか</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">メタデータは、あなたが住んでいる場所、働いている場所、使用している端末、ファイルを作成した日時を明らかにする可能性があります。ジャーナリスト、活動家、弁護士、またはプライバシーを重視するすべての人にとって、メタデータを削除することは、ファイルを公開して共有する前の基本的な衛生管理の一歩です。</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザ内蔵ツール。ローカルで動作します。アカウント不要。匿名のアクセス数カウントのみ。 <a href="/ja/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "1. 写真：EXIF・GPSデータの削除",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "写真にはGPS座標、カメラモデル、タイムスタンプを含むEXIFメタデータが含まれています。私たちのEXIFリムーバーは、画像品質を保持しながらすべてのデータを削除します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2. PDF：作成者とソフトウェア情報の消去",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDFには作成者名、会社、使用したソフトウェアが保存されています。私たちのPDFメタデータリムーバーは、この隠れた情報を完全に削除します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "3. Office文書：編集履歴の削除",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Word、Excel、PowerPointファイルには作成者名、会社情報、編集履歴が含まれています。私たちのOfficeメタデータリムーバーはすべての痕跡を消去します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "4. 動画：GPSとデバイスデータの削除",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "動画にはGPS座標とデバイス情報が含まれることがあります。私たちの動画メタデータリムーバーは、MP4およびMOVファイルからすべての追跡データを削除します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "なぜ重要なのか",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "メタデータを含むファイルを共有すると、位置、身元、習慣などの個人情報が露出します。削除することで、共有前にプライバシーを保護できます。"
+      }
+    }
+  ]
+}
+</script>
+<!--refresh-v2-->
+</body>
+</html>

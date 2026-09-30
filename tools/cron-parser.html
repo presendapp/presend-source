@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Cron Expression Parser — Presend">
+<meta property="og:description" content="Paste a cron expression and see it explained in plain English, with the next run times.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/cron-parser">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Cron+Expression+Parser">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Cron Expression Parser — Free, No Upload | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Paste a cron expression and see it explained in plain English, with the next 5 run times. 100% private, runs in your browser. Free.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/cron-parser" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Cron Expression Parser — Presend">
+<meta name="twitter:description" content="Paste a cron expression and see it explained in plain English, with the next run times.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cron Expression Parser",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Explain a 5-field cron expression in plain English and compute the next run times, entirely in your browser. No upload, no server.",
+  "url": "https://presend.pages.dev/tools/cron-parser"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Cron Expression Parser","item":"https://presend.pages.dev/tools/cron-parser"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What is a cron expression?","acceptedAnswer":{"@type":"Answer","text":"A cron expression is a 5-field string used to schedule recurring tasks on Unix-like systems: minute, hour, day of month, month, and day of week. For example, 0 9 * * 1-5 means 9:00 AM every weekday."}},
+  {"@type":"Question","name":"What does the asterisk (*) mean?","acceptedAnswer":{"@type":"Answer","text":"An asterisk means \"every value\" for that field. For example, an asterisk in the hour field means the job runs every hour."}},
+  {"@type":"Question","name":"What happens when both day-of-month and day-of-week are set?","acceptedAnswer":{"@type":"Answer","text":"When both fields are restricted (not an asterisk), cron treats them as OR, not AND: the job runs when either condition is met. This is a common source of confusion, and this tool applies that rule when computing next run times."}},
+  {"@type":"Question","name":"Is my cron expression sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Parsing and computing the next run times happens entirely in your browser using JavaScript. Nothing is sent anywhere."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Read a Cron Expression",
+  "description": "Understand and validate a cron expression locally in your browser — no upload, no server, 100% private.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste your cron expression", "text": "Enter a standard 5-field cron expression into the input field. The explanation updates instantly as you type.", "url": "https://presend.pages.dev/tools/cron-parser#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Read the plain-English explanation", "text": "The tool translates the 5 fields into a readable sentence describing when the job runs.", "url": "https://presend.pages.dev/tools/cron-parser#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Check the next run times", "text": "See the next 5 times the expression would actually fire, computed correctly including the day-of-month/day-of-week OR rule.", "url": "https://presend.pages.dev/tools/cron-parser#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/cron-parser" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/cron-parser" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>Cron Expression Parser</h1>
+  <p class="lede">Paste a 5-field cron expression and see it explained in plain English, plus the next 5 times it would actually run. Nothing leaves your browser.</p>
+
+  <span class="trust-badge">Your cron expression is never sent to our servers</span>
+
+  <div style="margin-top: 2rem;">
+    <label for="cronInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">Cron expression</label>
+    <input type="text" id="cronInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="0 9 * * 1-5" autocomplete="off" spellcheck="false" value="0 9 * * 1-5">
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+
+    <div id="resultBox" style="margin-top:1.5rem;">
+      <div style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);background:var(--color-bg);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">Plain English</strong>
+        <p id="explanation" style="margin-top:0.5rem;font-size:1.1rem;">—</p>
+      </div>
+
+      <div style="margin-top:1rem;padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">Next 5 run times (your local timezone)</strong>
+        <ol id="nextRuns" style="margin-top:0.5rem;line-height:1.9;font-family:var(--font-mono);font-size:0.95rem;padding-left:1.25rem;"></ol>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);font-size:0.85rem;color:var(--color-muted);line-height:1.7;">
+      <strong>Field order:</strong> minute (0-59) · hour (0-23) · day of month (1-31) · month (1-12) · day of week (0-6, 0 = Sunday)<br>
+      <strong>Supported syntax:</strong> <code>*</code> (any), <code>5</code> (exact), <code>1-5</code> (range), <code>1,3,5</code> (list), <code>*/15</code> (step)
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is a cron expression?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">A cron expression is a 5-field string used to schedule recurring tasks on Unix-like systems: minute, hour, day of month, month, and day of week. For example, 0 9 * * 1-5 means 9:00 AM every weekday.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What does the asterisk (*) mean?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">An asterisk means "every value" for that field. For example, an asterisk in the hour field means the job runs every hour.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What happens when both day-of-month and day-of-week are set?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">When both fields are restricted (not an asterisk), cron treats them as OR, not AND: the job runs when either condition is met. This is a common source of confusion, and this tool applies that rule when computing next run times.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Is my cron expression sent to a server?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. Parsing and computing the next run times happens entirely in your browser using JavaScript. Nothing is sent anywhere.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/json-csv-converter'>
+        <div><h3>JSON ↔ CSV Converter</h3><p>Convert between JSON and CSV formats instantly.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/text-diff'>
+        <div><h3>Text Diff Checker</h3><p>Compare two texts side by side to spot changes.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/color-contrast'>
+        <div><h3>Color Contrast Checker</h3><p>Check WCAG accessibility contrast ratios.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  function joinNatural(items) {
+    if (items.length === 1) return items[0];
+    if (items.length === 2) return items[0] + ' and ' + items[1];
+    return items.slice(0, -1).join(', ') + ', and ' + items[items.length - 1];
+  }
+
+  function parseField(field, min, max) {
+    const values = new Set();
+    for (const part of field.split(',')) {
+      let [range, step] = part.split('/');
+      step = step ? parseInt(step, 10) : 1;
+      if (!step || step < 1) throw new Error('Invalid step in "' + part + '"');
+      let start = min, end = max;
+      if (range !== '*') {
+        if (range.includes('-')) {
+          [start, end] = range.split('-').map(Number);
+        } else {
+          start = end = parseInt(range, 10);
+        }
+        if (isNaN(start) || isNaN(end)) throw new Error('Invalid value in "' + part + '"');
+      }
+      if (start < min || end > max || start > end) {
+        throw new Error('"' + part + '" is out of range (' + min + '-' + max + ')');
+      }
+      for (let v = start; v <= end; v += step) values.add(v);
+    }
+    return values;
+  }
+
+  function parseCron(expr) {
+    const parts = expr.trim().split(/\s+/);
+    if (parts.length !== 5) throw new Error('Expected 5 fields (minute hour day month weekday), got ' + parts.length);
+    const [min, hour, dom, month, dow] = parts;
+    return {
+      minutes: parseField(min, 0, 59),
+      hours: parseField(hour, 0, 23),
+      domSet: parseField(dom, 1, 31),
+      months: parseField(month, 1, 12),
+      dowSet: parseField(dow, 0, 6),
+      domRestricted: dom !== '*',
+      dowRestricted: dow !== '*',
+    };
+  }
+
+  function nextRuns(expr, count, from) {
+    const c = parseCron(expr);
+    const results = [];
+    let d = new Date(from);
+    d.setSeconds(0, 0);
+    d.setMinutes(d.getMinutes() + 1);
+    let iterations = 0;
+    const maxIterations = 600000;
+    while (results.length < count && iterations < maxIterations) {
+      iterations++;
+      const minute = d.getMinutes(), hour = d.getHours(), dom = d.getDate(),
+            month = d.getMonth() + 1, dow = d.getDay();
+
+      const domMatch = c.domSet.has(dom);
+      const dowMatch = c.dowSet.has(dow);
+      const dayMatches = (c.domRestricted && c.dowRestricted) ? (domMatch || dowMatch) : (domMatch && dowMatch);
+
+      if (c.minutes.has(minute) && c.hours.has(hour) && c.months.has(month) && dayMatches) {
+        results.push(new Date(d));
+      }
+      d.setMinutes(d.getMinutes() + 1);
+    }
+    if (results.length < count) throw new Error('This expression may never run (checked over a year ahead)');
+    return results;
+  }
+
+  function describeField(field, singular, plural, names) {
+    const parts = field.split(',').map(part => {
+      if (part.includes('/')) {
+        const [range, step] = part.split('/');
+        const label = range === '*' ? 'every ' + step + ' ' + (step > 1 ? plural : singular) : 'every ' + step + ' ' + (step > 1 ? plural : singular) + ' from ' + range;
+        return { text: label, isStep: true };
+      }
+      if (part.includes('-')) {
+        const [start, end] = part.split('-');
+        return { text: names ? names[start] + ' through ' + names[end] : start + ' through ' + end, isStep: false };
+      }
+      return { text: names ? names[part] : part, isStep: false };
+    });
+    if (parts.length === 1) return parts[0];
+    return { text: joinNatural(parts.map(p => p.text)), isStep: false, multi: true };
+  }
+
+  function explainCron(expr) {
+    const [min, hour, dom, month, dow] = expr.trim().split(/\s+/);
+    const dowNames = { '0':'Sunday','1':'Monday','2':'Tuesday','3':'Wednesday','4':'Thursday','5':'Friday','6':'Saturday' };
+    const monthNames = { '1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'August','9':'September','10':'October','11':'November','12':'December' };
+
+    let time;
+    if (min === '*' && hour === '*') {
+      time = 'every minute';
+    } else if (min.includes('/') && hour === '*') {
+      time = 'every ' + min.split('/')[1] + ' minutes';
+    } else if (hour !== '*' && min === '0') {
+      const h = describeField(hour, 'hour', 'hours');
+      time = h.isStep ? h.text : 'at ' + h.text + ':00';
+    } else if (hour !== '*' && min !== '*') {
+      time = 'at ' + hour.padStart(2,'0') + ':' + min.padStart(2,'0');
+    } else {
+      time = 'at minute ' + min;
+    }
+
+    const parts = [time];
+    if (dom !== '*') {
+      const d = describeField(dom, 'day', 'days');
+      parts.push(d.isStep ? d.text + ' of the month' : 'on ' + (d.multi ? 'days' : 'day') + ' ' + d.text + ' of the month');
+    }
+    if (dow !== '*') {
+      const d = describeField(dow, 'day', 'days', dowNames);
+      parts.push((dom !== '*' ? 'or on ' : 'on ') + d.text);
+    }
+    if (month !== '*') {
+      const m = describeField(month, 'month', 'months', monthNames);
+      parts.push('in ' + m.text);
+    }
+    return parts.join(' ') + '.';
+  }
+
+  const input = document.getElementById('cronInput');
+  const explanation = document.getElementById('explanation');
+  const nextRunsList = document.getElementById('nextRuns');
+  const errorBox = document.getElementById('errorBox');
+  const resultBox = document.getElementById('resultBox');
+
+  function update() {
+    const expr = input.value.trim();
+    if (!expr) {
+      errorBox.style.display = 'none';
+      resultBox.style.display = 'none';
+      return;
+    }
+    try {
+      const explanationText = explainCron(expr);
+      const runs = nextRuns(expr, 5, new Date());
+      explanation.textContent = explanationText;
+      nextRunsList.innerHTML = runs.map(d => '<li>' + d.toLocaleString() + '</li>').join('');
+      errorBox.style.display = 'none';
+      resultBox.style.display = 'block';
+    } catch (e) {
+      errorBox.textContent = e.message;
+      errorBox.style.display = 'block';
+      resultBox.style.display = 'none';
+    }
+  }
+
+  input.addEventListener('input', update);
+  update();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Cron Expression Parser",
+  "url": "https://presend.pages.dev/tools/cron-parser",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Explain a cron expression in plain English and compute the next run times entirely client-side."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'cron-parser' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

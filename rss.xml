@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Presend Blog</title>
+    <link>https://presend.pages.dev/blog/</link>
+    <atom:link href="https://presend.pages.dev/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Guides and comparisons for Presend's free privacy tools and API</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 30 Sep 2026 15:25:32 +0000</lastBuildDate>
+    <item>
+      <title>EXIF Remover vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/exif-remover-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/exif-remover-comparison/</guid>
+      <description>EXIF Remover vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>EXIF Remover — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/exif-remover-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/exif-remover-faq/</guid>
+      <description>EXIF Remover — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the EXIF Remover — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/exif-remover-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/exif-remover-guide/</guid>
+      <description>How to Use the EXIF Remover — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>File Hash Checker vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/file-hash-checker-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/file-hash-checker-comparison/</guid>
+      <description>File Hash Checker vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>File Hash Checker — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/file-hash-checker-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/file-hash-checker-faq/</guid>
+      <description>File Hash Checker — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the File Hash Checker — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/file-hash-checker-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/file-hash-checker-guide/</guid>
+      <description>How to Use the File Hash Checker — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>HEIC Converter vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/heic-converter-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/heic-converter-comparison/</guid>
+      <description>HEIC Converter vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>HEIC Converter — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/heic-converter-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/heic-converter-faq/</guid>
+      <description>HEIC Converter — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the HEIC Converter — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/heic-converter-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/heic-converter-guide/</guid>
+      <description>How to Use the HEIC Converter — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Image Compressor vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/image-compressor-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/image-compressor-comparison/</guid>
+      <description>Image Compressor vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Image Compressor — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/image-compressor-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/image-compressor-faq/</guid>
+      <description>Image Compressor — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the Image Compressor — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/image-compressor-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/image-compressor-guide/</guid>
+      <description>How to Use the Image Compressor — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Password Generator vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/password-generator-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/password-generator-comparison/</guid>
+      <description>Password Generator vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Password Generator — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/password-generator-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/password-generator-faq/</guid>
+      <description>Password Generator — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the Password Generator — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/password-generator-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/password-generator-guide/</guid>
+      <description>How to Use the Password Generator — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>PDF Compressor vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-compress-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-compress-comparison/</guid>
+      <description>PDF Compressor vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>PDF Compressor — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-compress-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-compress-faq/</guid>
+      <description>PDF Compressor — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the PDF Compressor — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-compress-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-compress-guide/</guid>
+      <description>How to Use the PDF Compressor — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>PDF Metadata Remover vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-metadata-remover-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-metadata-remover-comparison/</guid>
+      <description>PDF Metadata Remover vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>PDF Metadata Remover — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-metadata-remover-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-metadata-remover-faq/</guid>
+      <description>PDF Metadata Remover — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the PDF Metadata Remover — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/pdf-metadata-remover-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/pdf-metadata-remover-guide/</guid>
+      <description>How to Use the PDF Metadata Remover — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>QR Code Generator vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/qr-code-generator-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/qr-code-generator-comparison/</guid>
+      <description>QR Code Generator vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>QR Code Generator — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/qr-code-generator-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/qr-code-generator-faq/</guid>
+      <description>QR Code Generator — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the QR Code Generator — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/qr-code-generator-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/qr-code-generator-guide/</guid>
+      <description>How to Use the QR Code Generator — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>URL Cleaner vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/url-cleaner-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/url-cleaner-comparison/</guid>
+      <description>URL Cleaner vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>URL Cleaner — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/url-cleaner-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/url-cleaner-faq/</guid>
+      <description>URL Cleaner — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the URL Cleaner — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/url-cleaner-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/url-cleaner-guide/</guid>
+      <description>How to Use the URL Cleaner — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Word Counter vs Alternatives — Which One Is Best? — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/word-counter-comparison/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/word-counter-comparison/</guid>
+      <description>Word Counter vs Alternatives — Which One Is Best?. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>Word Counter — Frequently Asked Questions — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/word-counter-faq/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/word-counter-faq/</guid>
+      <description>Word Counter — Frequently Asked Questions. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How to Use the Word Counter — Complete Guide — Presend Blog</title>
+      <link>https://presend.pages.dev/blog/word-counter-guide/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/word-counter-guide/</guid>
+      <description>How to Use the Word Counter — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+  </channel>
+</rss>

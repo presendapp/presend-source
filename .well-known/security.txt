@@ -1,0 +1,5 @@
+Contact: https://github.com/presendapp/presend/security/advisories/new
+Expires: 2027-09-11T00:00:00.000Z
+Preferred-Languages: en, fr
+Canonical: https://presend.pages.dev/.well-known/security.txt
+Policy: https://github.com/presendapp/presend/security/policy

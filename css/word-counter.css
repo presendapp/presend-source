@@ -1,0 +1,5 @@
+.counter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.counter-card { padding: 1rem; border: 1px solid var(--color-line); border-radius: var(--radius); background: var(--color-bg-raised); text-align: center; }
+.counter-value { font-size: 2rem; font-weight: 600; font-family: var(--font-display); color: var(--color-accent); }
+.counter-label { font-size: 0.8rem; color: var(--color-muted); margin-top: 0.3rem; }
+.reading-time { font-size: 0.85rem; color: var(--color-muted); margin-top: 0.5rem; }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIを使用して画像の背景を削除する方法 — Presendガイド</title>
+<meta name="description" content="ブラウザで動作するAIを使用して、写真の背景を削除する方法を学びます。アップロード不要、アカウント不要、ウォーターマークなし。完全にプライベート。">
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/landings/remove-image-background" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Remove Image Backgrounds with AI",
+  "description": "Complete guide to AI background removal using @imgly/background-removal running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/remove-image-background"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>プレゼンする</a>
+  <a class='nav-link' href='/'>すべてのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/background-remover'>← 背景除去ツール</a>
+  <article>
+    <h1>AI を使用して画像の背景を削除する方法</h1>
+    <p class="lede">Product photos, portraits, and marketing images look professional with clean transparent backgrounds. Here's how to do it without uploading your images to a cloud service.</p>
+
+    <h2>背景の削除によるプライバシーの問題</h2>
+    <p>Remove.bg、Adobe Express、Canva などのサービスは背景の削除に優れていますが、いずれも画像をサーバーにアップロードする必要があります。これにより、次のようなリスクが生じます。</p>
+    <ul>
+      <li><strong>データの保持</strong>— あなたの写真は「サービス向上」のために無期限に保存される場合があります</li>
+      <li><strong>利用規約</strong>— 一部のプラットフォームは、アップロードされたコンテンツに対する広範な権利を主張しています</li>
+      <li><strong>データ侵害</strong>— 評判の良いサービスでも危険にさらされる可能性があります</li>
+      <li><strong>企業スパイ活動</strong>— 未公開の製品写真や独自のデザインが流出</li>
+      <li><strong>個人的暴露</strong>— 身分証明書、医療画像、または親密な写真が暴露された場合</li>
+    </ul>
+
+    <h2>ブラウザベースの AI の仕組み</h2>
+    <p>プレゼンの用途<a href="https://github.com/imgly/background-removal-js" target="_blank" rel="noopener">@imgly/背景削除</a>、ブラウザ用に最適化された機械学習モデル:</p>
+    <ol>
+      <li>ONNX モデル (~4MB) は一度ダウンロードされ、ブラウザにキャッシュされます。</li>
+      <li>WebGL が利用可能な場合、GPU での推論を高速化します</li>
+      <li>モデルは画像を前景 (被写体) と背景に分割します。</li>
+      <li>結果はアルファ チャネル (透明度) 付きの PNG としてレンダリングされます。</li>
+    </ol>
+    <p><strong>デバイスからピクセルがゼロになります。</strong>これは、クラウドベースの代替手段とは根本的に異なります。</p>
+
+    <h2>何が最も効果的か</h2>
+    <p>AI モデルは何百万もの画像でトレーニングされており、以下の点で非常に優れたパフォーマンスを発揮します。</p>
+    <ul>
+      <li><strong>ポートレート</strong>— 人物、顔写真、プロフィール写真</li>
+      <li><strong>製品</strong>— 無地またはシンプルな背景の電子商取引アイテム</li>
+      <li><strong>ペット</strong>— 輪郭がはっきりした動物</li>
+      <li><strong>乗り物</strong>— 車、バイク、エッジが定義された物体</li>
+    </ul>
+    <p>困難なケースには次のようなものがあります。</p>
+    <ul>
+      <li>雑多な背景に対する非常に細い髪または毛皮</li>
+      <li>透明または反射する物体 (ガラス、水)</li>
+      <li>非常に低解像度の画像</li>
+      <li>背景色に溶け込む被写体</li>
+    </ul>
+
+    <h2>ユースケース</h2>
+    <ul>
+      <li><strong>電子商取引</strong>— Amazon、eBay、Shopify 用のきれいな製品写真</li>
+      <li><strong>ソーシャルメディア</strong>— プロフィール写真、ステッカー、ミーム</li>
+      <li><strong>プレゼンテーション</strong>— 背景を邪魔しないプロフェッショナルなスライド</li>
+      <li><strong>マーケティング</strong>— チャネル全体で一貫したブランド イメージ</li>
+      <li><strong>パスポートの写真</strong>— 公文書用の白背景</li>
+      <li><strong>デザイン業務</strong>— 被写体を重ねて合成画像にする</li>
+    </ul>
+
+    <h2>ステップバイステップのガイド</h2>
+    <ol>
+      <li><strong>ツールを開く</strong>— に移動<a href="/ja/tools/background-remover">背景除去剤</a></li>
+      <li><strong>写真をアップロードする</strong>— ドラッグ アンド ドロップ、または JPG、PNG、または WebP を選択します (最大 10MB まで)</li>
+      <li><strong>処理を待つ</strong>— AI が画像を分析してセグメント化します (5 ～ 15 秒)</li>
+      <li><strong>比較する</strong>— オリジナルと結果を並べて表示</li>
+      <li><strong>ダウンロード</strong>— 透明な PNG として保存し、いつでも使用できます</li>
+    </ol>
+
+    <h2>最良の結果を得るためのヒント</h2>
+    <ul>
+      <li>高解像度の画像を使用します。AI はより詳細な情報を処理できます。</li>
+      <li>適切な照明とコントラストがセグメンテーションの精度に役立ちます</li>
+      <li>シンプルな背景 (単色) は、混雑したシーンよりもきれいなエッジを生成します</li>
+      <li>髪の場合は、露出不足よりもわずかに露出オーバーの背景の方が効果的です。</li>
+      <li>結果が完璧でない場合は、被写体に焦点を合わせるためにトリミングしてみてください</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ja/tools/background-remover">背景リムーバーを開く→</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

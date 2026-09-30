@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>आवाज़ को मुफ्त में टेक्स्ट में कैसे ट्रांसक्राइब करें — Presend गाइड</title>
+<meta name="description" content="अपने ब्राउज़र की बिल्ट-इन वाक् पहचान से आवाज़ को टेक्स्ट में बदलना सीखें। मुफ़्त और बिना ऐप के। Chrome और Edge में ऑडियो Google या Microsoft प्रोसेस करते हैं।">
+<link rel="canonical" href="https://presend.pages.dev/hi/tools/landings/speech-to-text-transcription" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Transcribe Speech to Text for Free",
+  "description": "Step-by-step guide to voice transcription using your browser's native Web Speech API. 100% private, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/speech-to-text-transcription"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>प्रस्तुत करें</a>
+  <a class='nav-link' href='/'>सभी उपकरण</a> <a class="nav-link" href="/hi/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/speech-to-text'>← भाषण-से-पाठ</a>
+  <article>
+    <h1>भाषण को टेक्स्ट में मुफ़्त में कैसे ट्रांसक्राइब करें</h1>
+    <p class="lede">क्या आप वॉइस मेमो, मीटिंग रिकॉर्डिंग या बोले गए नोट्स को टेक्स्ट में बदलना चाहते हैं? आपका ब्राउज़र यह कर सकता है: न सदस्यता, न खाता, Presend पर कुछ भी अपलोड नहीं होता।</p>
+
+    <h2>ब्राउज़र-आधारित प्रतिलेखन क्यों?</h2>
+    <p>Otter.ai, Rev, या Trint जैसी लोकप्रिय ट्रांसक्रिप्शन सेवाओं को आपके ऑडियो को उनके क्लाउड सर्वर पर अपलोड करने की आवश्यकता होती है। इससे कई समस्याएँ पैदा होती हैं:</p>
+    <ul>
+      <li><strong>गोपनीयता</strong> — क्लाउड ट्रांसक्रिप्शन सेवाएँ आपका ऑडियो किसी और के सर्वर पर प्रोसेस करती हैं। Chrome और Edge में ब्राउज़र की वाक् पहचान भी ऐसा ही करती है, इसलिए यह पेज गोपनीयता की सुरक्षा नहीं है।</li>
+      <li><strong>लागत</strong>— अधिकांश सेवाएँ मासिक सदस्यता या प्रति मिनट शुल्क लेती हैं</li>
+      <li><strong>देरी</strong>— अपलोड + प्रोसेसिंग + डाउनलोड में समय लगता है</li>
+      <li><strong>खाता आवश्यक है</strong>— आपको एक खाता बनाना होगा और सेवा की शर्तों को स्वीकार करना होगा</li>
+    </ul>
+
+    <h2>वेब स्पीच एपीआई कैसे काम करता है</h2>
+    <p>आधुनिक ब्राउज़रों में एक देशी वाक् पहचान इंजन शामिल होता है<a href="https://wicg.github.io/speech-api/" target="_blank" rel="noopener">वेब स्पीच एपीआई</a>. यहाँ क्या होता है:</p>
+    <ol>
+      <li>आप ब्राउज़र को माइक्रोफ़ोन एक्सेस प्रदान करते हैं</li>
+      <li>आपके ब्राउज़र की वाक् सेवा ऑडियो को टेक्स्ट में बदलती है: Chrome इसे Google के सर्वर पर, Edge Microsoft के सर्वर पर भेजता है, और Safari Apple की वाक् पहचान का उपयोग करता है</li>
+      <li>लिखित पाठ वास्तविक समय में वेबपेज पर वापस स्ट्रीम हो जाता है</li>
+      <li>Presend के सर्वर पर कुछ नहीं भेजा जाता, लेकिन ब्राउज़र की वाक् सेवा को आपका ऑडियो मिलता है</li>
+    </ol>
+
+    <h2>समर्थित भाषाएँ</h2>
+    <p>भाषा समर्थन आपके ब्राउज़र और ऑपरेटिंग सिस्टम पर निर्भर करता है। अधिकांश सिस्टम समर्थन करते हैं:</p>
+    <ul>
+      <li>अंग्रेज़ी (यूएस, यूके, ऑस्ट्रेलिया, भारत)</li>
+      <li>French, Spanish, German, Italian, Portuguese</li>
+      <li>जापानी, कोरियाई, चीनी (सरलीकृत और पारंपरिक)</li>
+      <li>अरबी, हिंदी, रूसी, डच, पोलिश, तुर्की</li>
+    </ul>
+    <p>यदि कोई भाषा उपलब्ध नहीं है, तो आपका ब्राउज़र निकटतम समर्थित संस्करण पर वापस आ जाएगा।</p>
+
+    <h2>सटीकता के लिए सर्वोत्तम अभ्यास</h2>
+    <ul>
+      <li><strong>एक अच्छे माइक्रोफोन का प्रयोग करें</strong>— अंतर्निर्मित लैपटॉप माइक काम करते हैं, लेकिन एक यूएसबी हेडसेट या समर्पित माइक सटीकता में काफी सुधार करता है</li>
+      <li><strong>पृष्ठभूमि शोर कम करें</strong>- शांत कमरे स्वच्छ प्रतिलेख उत्पन्न करते हैं</li>
+      <li><strong>स्पष्ट रूप से बोलो</strong>- उच्चारण करें और लगातार मात्रा बनाए रखें</li>
+      <li><strong>वाक्यों के बीच रुकें</strong>- इंजन सेगमेंट टेक्स्ट को सही ढंग से मदद करता है</li>
+      <li><strong>विराम चिह्न की जाँच करें</strong>- एपीआई स्वचालित रूप से कुछ विराम चिह्न सम्मिलित करता है, लेकिन आपको संपादित करने की आवश्यकता हो सकती है</li>
+    </ul>
+
+    <h2>सीमाएँ</h2>
+    <ul>
+      <li><strong>फ़ायरफ़ॉक्स</strong>वाक् पहचान (केवल संश्लेषण) का समर्थन नहीं करता। क्रोम, एज या सफारी का उपयोग करें।</li>
+      <li><strong>लंबे सत्र</strong>कुछ ब्राउज़रों में 60 सेकंड के बाद टाइमआउट हो सकता है। यदि ऐसा होता है तो बस पुनः आरंभ करें।</li>
+      <li><strong>उच्चारण और बोलियाँ</strong>कम सामान्य वेरिएंट के लिए सटीकता कम हो सकती है।</li>
+      <li><strong>विशिष्ट शब्दावली</strong>(चिकित्सा, कानूनी, तकनीकी) के लिए पोस्ट-संपादन की आवश्यकता हो सकती है।</li>
+      <li><strong>गोपनीय ऑडियो के लिए नहीं</strong> — Chrome और Edge में ऑडियो आपके डिवाइस से बाहर जाता है। मेडिकल, कानूनी या अन्य गोपनीय डिक्टेशन के लिए ऑफ़लाइन ट्रांसक्रिप्शन टूल का उपयोग करें।</li>
+    </ul>
+
+    <h2>चरण-दर-चरण मार्गदर्शिका</h2>
+    <ol>
+      <li><strong>टूल खोलें</strong>- जाओ<a href="/hi/tools/speech-to-text">भाषण से पाठ</a></li>
+      <li><strong>अपनी भाषा का चयन करें</strong>- ड्रॉपडाउन मेनू से चुनें</li>
+      <li><strong>सुनना प्रारंभ करें पर क्लिक करें</strong>- संकेत मिलने पर माइक्रोफ़ोन एक्सेस की अनुमति दें</li>
+      <li><strong>स्वाभाविक रूप से बोलें</strong>- जैसे ही आप बात करते हैं टेक्स्ट प्रकट होता है</li>
+      <li><strong>रोकें पर क्लिक करें</strong>समाप्त होने पर</li>
+      <li><strong>कॉपी करें या डाउनलोड करें</strong>- .txt फ़ाइल के रूप में सहेजें या क्लिपबोर्ड पर कॉपी करें</li>
+    </ol>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/hi/tools/speech-to-text">Open Speech-to-Text →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/hi/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

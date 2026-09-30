@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="QR Code Scanner — Presend"/>
+  <meta property="og:description" content="Scan and decode QR codes from an image or your camera without sending data to servers."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://presend.pages.dev/pt/tools/qr-code-scanner"/>
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=QR+Code+Scanner"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+<title>Digitalize códigos QR sem enviar dados – online grátis | Apresentar</title>
+<meta name="robots" content="index, follow"/>
+  <meta name="description" content="Decode QR codes from an uploaded image or your camera. 100% private, runs entirely in your browser. Free."/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/pt/tools/qr-code-scanner"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="QR Code Scanner — Presend"/>
+<meta name="twitter:description" content="Scan and decode QR codes from an image or your camera without sending data to servers."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QR Code Scanner",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Decode QR codes from an uploaded image or live camera feed locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/pt/tools/qr-code-scanner"
+}
+</script>
+<!--seo-app-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"QR Code Scanner","item":"https://presend.pages.dev/pt/tools/qr-code-scanner"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nada é carregado."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Este leitor de código QR é seguro para uso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O leitor de código QR é executado inteiramente no seu navegador. Sua imagem ou feed de câmera nunca é carregado em nenhum servidor. Tudo é processado localmente usando JavaScript."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso escanear um código QR a partir de uma captura de tela?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutamente. Você pode fazer upload de qualquer arquivo de imagem (PNG, JPG, WebP, GIF) ou colar uma captura de tela diretamente. A ferramenta irá decodificar o código QR instantaneamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Isso funciona em telefones celulares?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A ferramenta funciona em todos os navegadores modernos, incluindo Chrome, Safari, Firefox e Edge em desktops e dispositivos móveis. Você também pode usar a câmera do seu telefone diretamente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que tipos de códigos QR posso digitalizar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Você pode digitalizar códigos QR padrão contendo URLs, texto, credenciais de Wi-Fi, cartões de contato (vCard), endereços de e-mail, números de telefone e muito mais."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso instalar um aplicativo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nenhuma instalação é necessária. Esta é uma ferramenta baseada na web que funciona diretamente no seu navegador. Sem downloads, sem contas, sem necessidade de permissões além do acesso à câmera, se você decidir usá-la."
+      }
+    }
+  ]
+}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Scan a QR Code Online",
+  "description": "Decode a QR code from an image or your camera — entirely in your browser, no upload needed.",
+  "totalTime": "PT10S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Choose a scan method", "text": "Upload an image containing a QR code, or click 'Use camera' to scan live.", "url": "https://presend.pages.dev/pt/tools/qr-code-scanner#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Let it decode", "text": "The QR code is detected and decoded automatically, entirely on your device.", "url": "https://presend.pages.dev/pt/tools/qr-code-scanner#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Copy or open the result", "text": "The decoded content appears instantly. Copy it, or click it directly if it's a link.", "url": "https://presend.pages.dev/pt/tools/qr-code-scanner#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/qr-code-scanner" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/pt/tools/qr-code-scanner" />
+<meta property="og:locale" content="pt_BR"/>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/pt/"><span class="brand-mark">●</span>Apresentar</a>
+  <a class="nav-link" href="/pt/">Todas as ferramentas</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/pt/">← Voltar</a>
+  <h1>Leitor de código QR</h1>
+  <p class="lede">Decodifique um código QR de uma imagem ou de sua câmera. Tudo acontece instantaneamente no seu navegador – nada é enviado para lugar nenhum.</p>
+
+  <span class="trust-badge">Seus arquivos nunca são enviados para nossos servidores</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" style="background:var(--color-bg-raised); border:2px dashed var(--color-line); border-radius:var(--radius); padding:2rem; text-align:center; cursor:pointer;">
+      <p style="margin:0; color:var(--color-muted);">Solte uma imagem de código QR aqui ou clique para escolher um arquivo</p>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;">
+    </div>
+
+    <div style="text-align:center; margin-top:1rem;">
+      <button class="btn ghost" id="cameraBtn" type="button">📷 Use a câmera</button>
+    </div>
+
+    <video id="cameraVideo" playsinline style="display:none; width:100%; max-width:480px; margin:1rem auto; display:none; border-radius:var(--radius);"></video>
+    <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div class="result" id="result" style="text-align:center; display:none;">
+      <p style="font-size:0.9rem; color:var(--color-muted); margin-bottom:0.4rem;">Conteúdo decodificado:</p>
+      <div id="decodedOutput" style="background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); padding:1rem; word-break:break-all; text-align:left; font-family:monospace;"></div>
+      <div style="margin-top:1rem;">
+        <button class="btn" id="copyBtn" type="button">Copiar conteúdo</button>
+        <button class="btn ghost" id="resetBtn" type="button" style="margin-left:0.5rem;">Digitalize outro</button>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Ferramentas relacionadas</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/pt/tools/qr-code-generator">
+        <div><h3>Gerador de código QR</h3><p>Crie códigos QR escaneáveis a partir de texto, URLs e senhas de WiFi.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/pt/tools/url-cleaner">
+        <div><h3>Limpador de URL</h3><p>Remova os parâmetros de rastreamento dos URLs.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/pt/tools/password-generator">
+        <div><h3>Gerador de senha</h3><p>Gere senhas aleatórias fortes.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+  </div>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Como funciona a leitura de código QR?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">Os códigos QR codificam dados usando uma grade de quadrados pretos e brancos que um scanner lê para reconstruir o texto original, link ou detalhes de contato. Nosso QR Code Scanner decodifica isso diretamente em seu navegador usando processamento de imagem JavaScript – nenhuma imagem é carregada em um servidor e nenhuma filmagem de câmera é transmitida ou armazenada. Você pode fazer upload de uma foto ou captura de tela contendo um código QR ou usar a câmera do seu dispositivo para digitalizar um ao vivo. Isso é especialmente útil para verificar um código QR desconhecido antes de abrir o link que ele contém ou para ler códigos QR de materiais impressos, telas ou documentos. O conteúdo decodificado é exibido instantaneamente como texto simples, pronto para copiar ou clicar se for um URL.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — ferramentas gratuitas baseadas em navegador.<a href="/pt/about">Sobre</a> · <a href="/pt/privacy">Privacidade</a> · <a href="/pt/api">API</a></p>
+</footer>
+
+<script defer src="/vendor/jsqr.min.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const cameraBtn = document.getElementById('cameraBtn');
+  const cameraVideo = document.getElementById('cameraVideo');
+  const hiddenCanvas = document.getElementById('hiddenCanvas');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const decodedOutput = document.getElementById('decodedOutput');
+  const copyBtn = document.getElementById('copyBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let cameraStream = null;
+  let scanLoopId = null;
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+  }
+  function showResult(text) {
+    stopCamera();
+    decodedOutput.textContent = text;
+    result.style.display = 'block';
+    dropzone.style.display = 'none';
+    cameraBtn.style.display = 'none';
+  }
+  function resetUI() {
+    result.style.display = 'none';
+    dropzone.style.display = 'block';
+    cameraBtn.style.display = 'inline-block';
+    cameraVideo.style.display = 'none';
+    fileInput.value = '';
+    clearError();
+  }
+
+  function decodeImageFile(file) {
+    clearError();
+    if (!file || !file.type.startsWith('image/')) {
+      showError('Please choose an image file.');
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      const canvas = hiddenCanvas;
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const code = window.jsQR(imageData.data, imageData.width, imageData.height);
+      if (code && code.data) {
+        showResult(code.data);
+      } else {
+        showError('No QR code found in this image. Try a clearer photo.');
+      }
+      URL.revokeObjectURL(img.src);
+    };
+    img.onerror = () => showError('Could not load this image.');
+    img.src = URL.createObjectURL(file);
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.style.borderColor = 'var(--color-accent, #666)'; });
+  dropzone.addEventListener('dragleave', () => { dropzone.style.borderColor = 'var(--color-line)'; });
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.style.borderColor = 'var(--color-line)';
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) decodeImageFile(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) decodeImageFile(fileInput.files[0]);
+  });
+
+  async function startCamera() {
+    clearError();
+    try {
+      cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      cameraVideo.srcObject = cameraStream;
+      cameraVideo.style.display = 'block';
+      dropzone.style.display = 'none';
+      await cameraVideo.play();
+      scanFrame();
+    } catch (err) {
+      showError('Could not access camera. Check permissions or try uploading an image instead.');
+    }
+  }
+
+  function scanFrame() {
+    if (!cameraStream) return;
+    const canvas = hiddenCanvas;
+    if (cameraVideo.videoWidth === 0) {
+      scanLoopId = requestAnimationFrame(scanFrame);
+      return;
+    }
+    canvas.width = cameraVideo.videoWidth;
+    canvas.height = cameraVideo.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(cameraVideo, 0, 0, canvas.width, canvas.height);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = window.jsQR(imageData.data, imageData.width, imageData.height);
+    if (code && code.data) {
+      showResult(code.data);
+      return;
+    }
+    scanLoopId = requestAnimationFrame(scanFrame);
+  }
+
+  function stopCamera() {
+    if (scanLoopId) cancelAnimationFrame(scanLoopId);
+    scanLoopId = null;
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(t => t.stop());
+      cameraStream = null;
+    }
+    cameraVideo.style.display = 'none';
+  }
+
+  cameraBtn.addEventListener('click', startCamera);
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(decodedOutput.textContent);
+      copyBtn.textContent = '✅ Copied!';
+      setTimeout(() => copyBtn.textContent = 'Copy content', 2000);
+    } catch (e) {
+      showError('Could not copy to clipboard.');
+    }
+  });
+  resetBtn.addEventListener('click', resetUI);
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'qr-code-scanner' })
+}).catch(() => {});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

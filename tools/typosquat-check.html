@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Package Typosquat Checker (npm, PyPI) — Presend">
+<meta property="og:description" content="Flags package names that look like a typo of a popular npm/PyPI package. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/typosquat-check">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Typosquat+Check">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Free Package Typosquat Checker API (npm, PyPI) | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Check whether a package name looks like a typo of a well-known npm or PyPI package -- the classic typosquatting attack pattern. Free, no signup, no API key.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/typosquat-check" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Package Typosquat Checker (npm, PyPI) — Presend">
+<meta name="twitter:description" content="Flags package names that look like a typo of a popular npm/PyPI package. Free, no signup.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Package Typosquat Checker",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Flags a package name within edit-distance 2 of a curated list of well-known npm/PyPI packages -- the classic typosquatting pattern. Free API, no signup, no API key.",
+  "url": "https://presend.pages.dev/tools/typosquat-check"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Package Typosquat Checker","item":"https://presend.pages.dev/tools/typosquat-check"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What is package typosquatting?","acceptedAnswer":{"@type":"Answer","text":"Publishing a malicious package with a name one keystroke away from a popular one, hoping a developer mistypes 'npm install' or copy-pastes a bad example. It's one of the best-documented supply-chain attack techniques."}},
+  {"@type":"Question","name":"Why not use an exhaustive list of every package?","acceptedAnswer":{"@type":"Answer","text":"Typosquatting specifically targets the most famous names -- attackers want maximum accidental installs. A curated list of genuinely well-known packages covers the highest-value attack surface better than a noisy top-5000-by-downloads feed would."}},
+  {"@type":"Question","name":"What does a clean result actually mean?","acceptedAnswer":{"@type":"Answer","text":"It means the name isn't a close match to anything on this curated list -- it does not mean the package is safe. Pair this with a vulnerability check for known CVEs and a repo health check for the source."}},
+  {"@type":"Question","name":"Can I use this in my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. This page calls the same free, public API endpoint you can call directly: GET /api/typosquat-check?ecosystem=npm&package=lodas. No signup or API key required."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check a Package Name for Typosquatting",
+  "description": "Check whether a package name looks like a typo of a well-known package, for free.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Choose an ecosystem and type a package name", "text": "Select npm or PyPI, then type the package name you're about to install.", "url": "https://presend.pages.dev/tools/typosquat-check#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Get real-time results", "text": "The tool checks the name against a curated list of well-known packages using edit distance.", "url": "https://presend.pages.dev/tools/typosquat-check#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Reuse the API call", "text": "Copy the exact API call shown below the results to use the same check in your own code, for free.", "url": "https://presend.pages.dev/tools/typosquat-check#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/typosquat-check" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/typosquat-check" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>Package Typosquat Checker</h1>
+  <p class="lede">Check whether a package name looks like a typo of a well-known npm or PyPI package — the classic typosquatting attack pattern. Free, live, no signup.</p>
+
+  <span class="trust-badge">Live check — nothing stored</span>
+
+  <div style="margin-top: 2rem;">
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+      <div style="flex:1; min-width:140px;">
+        <label for="ecosystemSelect" style="display:block; font-weight:500; margin-bottom:0.5rem;">Ecosystem</label>
+        <select id="ecosystemSelect" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-size:1rem;">
+          <option value="npm" selected>npm</option>
+          <option value="PyPI">PyPI</option>
+        </select>
+      </div>
+      <div style="flex:2; min-width:180px;">
+        <label for="packageInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">Package name</label>
+        <input type="text" id="packageInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="lodas" autocomplete="off" spellcheck="false" value="lodas">
+      </div>
+    </div>
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+    <div id="loadingBox" style="display:none;margin-top:1rem;color:var(--color-muted);font-size:0.9rem;">Checking…</div>
+
+    <div id="resultBox" style="margin-top:1.5rem;display:none;">
+      <div id="summaryBox" style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);"></div>
+      <div id="matchesContainer" style="margin-top:1rem;"></div>
+
+      <div style="margin-top:1rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">API call used</strong>
+        <pre id="apiCallDisplay" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is package typosquatting?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Publishing a malicious package with a name one keystroke away from a popular one, hoping a developer mistypes 'npm install' or copy-pastes a bad example. It's one of the best-documented supply-chain attack techniques.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why not use an exhaustive list of every package?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Typosquatting specifically targets the most famous names -- attackers want maximum accidental installs. A curated list of genuinely well-known packages covers the highest-value attack surface better than a noisy top-5000-by-downloads feed would.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What does a clean result actually mean?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">It means the name isn't a close match to anything on this curated list -- it does not mean the package is safe. Pair this with a vulnerability check for known CVEs and a repo health check for the source.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I use this in my own code?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. This page calls the same free, public API endpoint you can call directly: GET /api/typosquat-check?ecosystem=npm&amp;package=lodas. No signup or API key required.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/vulnerability-check'>
+        <div><h3>Package Vulnerability Checker</h3><p>Check a package/version for known CVEs.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/repo-health-check'>
+        <div><h3>GitHub Repo Health Check</h3><p>Stars, forks, license, and archived status for a repo.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/whois-lookup'>
+        <div><h3>WHOIS / Domain Age Lookup</h3><p>Registrar, age, and expiration via RDAP.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  const ecosystemSelect = document.getElementById('ecosystemSelect');
+  const packageInput = document.getElementById('packageInput');
+  const errorBox = document.getElementById('errorBox');
+  const loadingBox = document.getElementById('loadingBox');
+  const resultBox = document.getElementById('resultBox');
+  const summaryBox = document.getElementById('summaryBox');
+  const matchesContainer = document.getElementById('matchesContainer');
+  const apiCallDisplay = document.getElementById('apiCallDisplay');
+
+  let debounceTimer = null;
+
+  async function check() {
+    const ecosystem = ecosystemSelect.value;
+    const pkg = packageInput.value.trim();
+    if (!pkg) { resultBox.style.display = 'none'; errorBox.style.display = 'none'; return; }
+
+    const url = 'https://presend.pages.dev/api/typosquat-check?ecosystem=' + encodeURIComponent(ecosystem) + '&package=' + encodeURIComponent(pkg);
+    apiCallDisplay.textContent = 'GET ' + url;
+    loadingBox.style.display = 'block';
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      loadingBox.style.display = 'none';
+
+      if (!res.ok) {
+        errorBox.textContent = data.error || 'Check failed.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      if (data.is_known_popular_package) {
+        summaryBox.innerHTML = '<strong style="color:#2f6f3e;">✓ This is an exact match to a well-known package -- not a typo.</strong>';
+      } else if (data.suspicious) {
+        summaryBox.innerHTML = '<strong style="color:#8A3324;">⚠ Suspicious -- looks like a possible typo</strong>';
+      } else {
+        summaryBox.innerHTML = '<strong style="color:var(--color-muted);">No close match found on the curated list.</strong>';
+      }
+
+      let html = '';
+      for (const m of (data.similar_to || [])) {
+        html += '<div style="padding:0.75rem 1rem;border:1px solid var(--color-line);border-radius:var(--radius);margin-top:0.5rem;display:flex;justify-content:space-between;">';
+        html += '<span style="font-family:var(--font-mono);">' + m.name + '</span>';
+        html += '<span style="color:var(--color-muted);font-size:0.85rem;">edit distance ' + m.distance + '</span>';
+        html += '</div>';
+      }
+      matchesContainer.innerHTML = html;
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loadingBox.style.display = 'none';
+      errorBox.textContent = 'Could not complete the check. Try again shortly.';
+      errorBox.style.display = 'block';
+    }
+  }
+
+  function debouncedCheck() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(check, 600);
+  }
+
+  packageInput.addEventListener('input', debouncedCheck);
+  ecosystemSelect.addEventListener('change', check);
+
+  check();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Package Typosquat Checker",
+  "url": "https://presend.pages.dev/tools/typosquat-check",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Flags package names that look like a typo of a popular package, calling Presend's free public API live."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'typosquat-check' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

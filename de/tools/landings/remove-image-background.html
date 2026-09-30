@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wie man Bildhintergründe mit KI entfernt — Presend Guide</title>
+<meta name="description" content="Lerne, wie du Hintergründe von Fotos mit KI entfernst, die in deinem Browser läuft. Kein Upload, kein Konto, kein Wasserzeichen. Vollständig privat.">
+<link rel="canonical" href="https://presend.pages.dev/de/tools/landings/remove-image-background" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Remove Image Backgrounds with AI",
+  "description": "Complete guide to AI background removal using @imgly/background-removal running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/remove-image-background"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Präsentieren</a>
+  <a class='nav-link' href='/'>Alle Werkzeuge</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/background-remover'>← Hintergrundentferner</a>
+  <article>
+    <h1>So entfernen Sie Bildhintergründe mit KI</h1>
+    <p class="lede">Produktfotos, Porträts und Marketingbilder sehen mit sauberen transparenten Hintergründen professionell aus. Hier erfahren Sie, wie Sie dies tun, ohne Ihre Bilder auf einen Cloud-Dienst hochzuladen.</p>
+
+    <h2>Das Datenschutzproblem bei der Hintergrundentfernung</h2>
+    <p>Dienste wie remove.bg, Adobe Express und Canva bieten eine hervorragende Hintergrundentfernung, erfordern jedoch alle das Hochladen Ihres Bildes auf ihre Server. Dadurch entstehen Risiken:</p>
+    <ul>
+      <li><strong>Datenaufbewahrung</strong>— Ihre Fotos können zur „Serviceverbesserung“ auf unbestimmte Zeit gespeichert werden.</li>
+      <li><strong>Nutzungsbedingungen</strong>— Einige Plattformen beanspruchen weitreichende Rechte an hochgeladenen Inhalten</li>
+      <li><strong>Datenschutzverletzungen</strong>— Selbst seriöse Dienste können kompromittiert werden</li>
+      <li><strong>Unternehmensspionage</strong>– Unveröffentlichte Produktfotos oder proprietäre Designs sind durchgesickert</li>
+      <li><strong>Persönliche Exposition</strong>– Offenlegung von Ausweisdokumenten, medizinischen Bildern oder intimen Fotos</li>
+    </ul>
+
+    <h2>Wie browserbasierte KI funktioniert</h2>
+    <p>Präsentieren Sie Verwendungsmöglichkeiten<a href="https://github.com/imgly/background-removal-js" target="_blank" rel="noopener">@imgly/background-removal</a>, ein für den Browser optimiertes maschinelles Lernmodell:</p>
+    <ol>
+      <li>Das ONNX-Modell (~4 MB) wird einmal heruntergeladen und in Ihrem Browser zwischengespeichert</li>
+      <li>WebGL beschleunigt die Inferenz auf Ihrer GPU, sofern verfügbar</li>
+      <li>Das Modell segmentiert das Bild in Vordergrund (Motiv) und Hintergrund</li>
+      <li>Das Ergebnis wird als PNG mit einem Alphakanal (Transparenz) gerendert.</li>
+    </ol>
+    <p><strong>Null Pixel verlassen Ihr Gerät.</strong>Dies unterscheidet sich grundlegend von cloudbasierten Alternativen.</p>
+
+    <h2>Was am besten funktioniert</h2>
+    <p>Das KI-Modell wird auf Millionen von Bildern trainiert und schneidet außergewöhnlich gut ab bei:</p>
+    <ul>
+      <li><strong>Porträts</strong>– Personen, Porträts, Profilbilder</li>
+      <li><strong>Produkte</strong>– E-Commerce-Artikel auf schlichtem oder schlichtem Hintergrund</li>
+      <li><strong>Haustiere</strong>— Tiere mit klaren Umrissen</li>
+      <li><strong>Fahrzeuge</strong>– Autos, Fahrräder und Objekte mit definierten Kanten</li>
+    </ul>
+    <p>Zu den herausfordernden Fällen gehören:</p>
+    <ul>
+      <li>Sehr feines Haar oder Fell vor lebhaftem Hintergrund</li>
+      <li>Transparente oder reflektierende Gegenstände (Glas, Wasser)</li>
+      <li>Bilder mit extrem niedriger Auflösung</li>
+      <li>Motive, die mit der Hintergrundfarbe verschmelzen</li>
+    </ul>
+
+    <h2>Anwendungsfälle</h2>
+    <ul>
+      <li><strong>E-Commerce</strong>— Bereinigen Sie Produktfotos für Amazon, eBay, Shopify</li>
+      <li><strong>Soziale Medien</strong>— Profilbilder, Aufkleber, Memes</li>
+      <li><strong>Präsentationen</strong>— Professionelle Folien ohne störende Hintergründe</li>
+      <li><strong>Marketing</strong>— Konsistente Markenbilder über alle Kanäle hinweg</li>
+      <li><strong>Passfotos</strong>— Weißer Hintergrund für offizielle Dokumente</li>
+      <li><strong>Designarbeit</strong>— Überlagern Sie Motive in zusammengesetzten Bildern</li>
+    </ul>
+
+    <h2>Schritt-für-Schritt-Anleitung</h2>
+    <ol>
+      <li><strong>Öffnen Sie das Tool</strong>– Gehe zu<a href="/de/tools/background-remover">Hintergrundentferner</a></li>
+      <li><strong>Laden Sie Ihr Foto hoch</strong>— Ziehen Sie es per Drag-and-Drop oder wählen Sie ein JPG, PNG oder WebP (bis zu ~10 MB) aus.</li>
+      <li><strong>Warten Sie auf die Bearbeitung</strong>— Die KI analysiert und segmentiert Ihr Bild (5–15 Sekunden)</li>
+      <li><strong>Vergleichen</strong>— Die Nebeneinanderansicht zeigt Original und Ergebnis</li>
+      <li><strong>Herunterladen</strong>— Als transparentes PNG speichern, bereit für jede Verwendung</li>
+    </ol>
+
+    <h2>Tipps für beste Ergebnisse</h2>
+    <ul>
+      <li>Verwenden Sie hochauflösende Bilder – die KI kann mit mehr Details arbeiten</li>
+      <li>Gute Beleuchtung und Kontrast tragen zur Genauigkeit der Segmentierung bei</li>
+      <li>Einfache Hintergründe (Volltonfarben) erzeugen klarere Kanten als lebhafte Szenen</li>
+      <li>Bei Haaren funktionieren leicht überbelichtete Hintergründe besser als unterbelichtete</li>
+      <li>Wenn das Ergebnis nicht perfekt ist, versuchen Sie es mit dem Zuschneiden, um den Fokus auf das Motiv zu richten</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/de/tools/background-remover">Öffnen Sie den Hintergrundentferner →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – kostenlose browserbasierte Tools.<a href="/about">Um</a> · <a href="/privacy">Privatsphäre</a> <a href="/de/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wie man Text aus Bildern und Screenshots extrahiert — Presend Guide</title>
+<meta name="description" content="Lerne, wie du Text aus jedem Bild, Screenshot oder gescannten Dokument mit Tesseract.js OCR kopierst. Mehr als 100 Sprachen, funktioniert in deinem Browser, kein Upload.">
+<link rel="canonical" href="https://presend.pages.dev/de/tools/landings/extract-text-from-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Extract Text from Images and Screenshots",
+  "description": "Complete guide to OCR using Tesseract.js running locally in your browser. Supports 100+ languages, paste from clipboard, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/extract-text-from-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Präsentieren</a>
+  <a class='nav-link' href='/'>Alle Werkzeuge</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/screenshot-to-text'>← Screenshot zum Text</a>
+  <article>
+    <h1>So extrahieren Sie Text aus Bildern und Screenshots</h1>
+    <p class="lede">Müssen Sie Text aus einem Screenshot kopieren, ein Dokument scannen oder eine gedruckte Seite digitalisieren? Die OCR-Technologie macht es sofort möglich – und mit Presend geschieht es vollständig in Ihrem Browser.</p>
+
+    <h2>Was ist OCR?</h2>
+    <p>OCR (Optical Character Recognition) ist die Technologie, die Bilder von Text in maschinenlesbaren Text umwandelt. Damit können Sie:</p>
+    <ul>
+      <li>Kopieren Sie Text aus einem Screenshot einer Website, der die Auswahl blockiert</li>
+      <li>Durchsuchen Sie gescannte PDFs</li>
+      <li>Digitalisieren Sie gedruckte Dokumente, ohne sie noch einmal abtippen zu müssen</li>
+      <li>Extrahieren Sie Daten aus Fotos von Quittungen, Formularen oder Schildern</li>
+      <li>Übersetzen Sie Text in Bildern, indem Sie ihn zunächst extrahieren</li>
+    </ul>
+
+    <h2>Das Datenschutzrisiko von Cloud OCR</h2>
+    <p>Die meisten OCR-Dienste – Google Vision, Azure Computer Vision, Amazon Textract – erfordern das Hochladen Ihres Bildes in deren Cloud. Dies ist problematisch für:</p>
+    <ul>
+      <li><strong>Krankenakten</strong>– Patientendaten durch HIPAA/DSGVO geschützt</li>
+      <li><strong>Juristische Dokumente</strong>— Anwaltsgeheimnis, NDAs</li>
+      <li><strong>Finanzberichte</strong>— Bankdaten, Steuerunterlagen</li>
+      <li><strong>Geschützte Informationen</strong>— Interne Memos, Quellcode-Screenshots</li>
+      <li><strong>Persönliche Korrespondenz</strong>— Private Nachrichten, E-Mails</li>
+    </ul>
+    <p>Sogar Dienste, die behaupten, Dateien sofort zu löschen, verarbeiten sie dennoch in ihrer Infrastruktur, wodurch Prüfpfade entstehen und potenzielle Gefährdungen entstehen.</p>
+
+    <h2>So funktioniert Tesseract.js</h2>
+    <p><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a>ist eine reine JavaScript-Portierung der Tesseract OCR-Engine von Google, kompiliert für WebAssembly. Es läuft vollständig in Ihrem Browser:</p>
+    <ol>
+      <li>Das Sprachmodell (traineddata) wird einmal pro Sprache heruntergeladen (~4 MB für Englisch).</li>
+      <li>Das Bild wird lokal mit Ihrer CPU oder GPU verarbeitet</li>
+      <li>Der erkannte Text wird direkt an die Webseite zurückgegeben</li>
+      <li>Es wird nichts an einen externen Server übermittelt</li>
+    </ol>
+    <p>Tesseract ist dieselbe Engine, die Google Books, die Kamerafunktion von Google Translate und unzählige Apps zum Scannen von Dokumenten antreibt. Es unterstützt<strong>Über 100 Sprachen</strong>einschließlich Skripten wie Arabisch, Chinesisch, Japanisch, Devanagari und Kyrillisch.</p>
+
+    <h2>Unterstützte Eingabemethoden</h2>
+    <ul>
+      <li><strong>Ziehen und ablegen</strong>— Legen Sie ein beliebiges Bild auf dem Werkzeug ab</li>
+      <li><strong>Dateiauswahl</strong>— Klicken Sie, um ein Bild zu durchsuchen und auszuwählen</li>
+      <li><strong>Aus der Zwischenablage einfügen</strong>— Drücken Sie Strg+V (oder Befehl+V) an einer beliebigen Stelle auf der Seite, um einen Screenshot direkt einzufügen</li>
+    </ul>
+
+    <h2>Genauigkeitstipps</h2>
+    <ul>
+      <li><strong>Auflösung ist wichtig</strong>— Bilder mit höherer Auflösung führen zu besseren Ergebnissen. 300 DPI ist ideal für gescannte Dokumente.</li>
+      <li><strong>Der Kontrast ist der Schlüssel</strong>— Dunkler Text auf hellem Hintergrund funktioniert am besten. Invertierte Farben oder geringer Kontrast verringern die Genauigkeit.</li>
+      <li><strong>Verzerrung minimieren</strong>— Gerader, nicht gedrehter Text ist am einfachsten zu erkennen</li>
+      <li><strong>Saubere Bilder</strong>— Entfernen Sie nach Möglichkeit Rauschen, Falten und Schatten</li>
+      <li><strong>Richtige Sprache</strong>— Wählen Sie im Dropdown-Menü die richtige Sprache aus. Text in gemischten Sprachen funktioniert, weist jedoch möglicherweise eine geringere Genauigkeit auf</li>
+    </ul>
+
+    <h2>Anwendungsfälle</h2>
+    <ul>
+      <li><strong>Studenten</strong>— Kopieren Sie Text aus Lehrbuchfotos oder Vorlesungsfolien</li>
+      <li><strong>Entwickler</strong>— Extrahieren Sie Code aus Screenshots oder Fehlermeldungen</li>
+      <li><strong>Journalisten</strong>— Zitieren Sie Text aus Bildern von Dokumenten</li>
+      <li><strong>Forscher</strong>— Digitalisieren Sie gedruckte Arbeiten und Artikel</li>
+      <li><strong>Administratoren</strong>— Konvertieren Sie gescannte Formulare in bearbeitbaren Text</li>
+      <li><strong>Reisende</strong>— Schilder, Speisekarten und Dokumente in Fremdsprachen lesen</li>
+    </ul>
+
+    <h2>Schritt-für-Schritt-Anleitung</h2>
+    <ol>
+      <li><strong>Öffnen Sie das Tool</strong>– Gehe zu<a href="/de/tools/screenshot-to-text">Screenshot zum Text</a></li>
+      <li><strong>Sprache auswählen</strong>— Wählen Sie die Sprache des Textes in Ihrem Bild</li>
+      <li><strong>Hochladen oder einfügen</strong>— Ziehen Sie ein Bild, klicken Sie, um es auszuwählen, oder drücken Sie Strg+V, um es aus der Zwischenablage einzufügen</li>
+      <li><strong>Warten Sie auf Anerkennung</strong>— Die Verarbeitung dauert je nach Bildgröße einige Sekunden</li>
+      <li><strong>Überprüfen und bearbeiten</strong>— Überprüfen Sie den extrahierten Text auf Fehler</li>
+      <li><strong>Kopieren oder herunterladen</strong>— Als TXT-Datei speichern oder in die Zwischenablage kopieren</li>
+    </ol>
+
+    <h2>Einschränkungen</h2>
+    <ul>
+      <li><strong>Handschrift</strong>— Tesseract funktioniert am besten mit gedrucktem Text. Bei kursiver oder unordentlicher Handschrift ist die Genauigkeit geringer.</li>
+      <li><strong>Komplexe Layouts</strong>– Mehrspaltiger Text, Tabellen und Formulare müssen möglicherweise manuell neu formatiert werden.</li>
+      <li><strong>Dekorative Schriftarten</strong>— Stilisierter oder künstlerischer Text wird möglicherweise nicht erkannt.</li>
+      <li><strong>Sehr kleiner Text</strong>– Text unter 10 Pixel wird möglicherweise übersehen.</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/de/tools/screenshot-to-text">Öffnen Sie „Screenshot to Text“ →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – kostenlose browserbasierte Tools.<a href="/about">Um</a> · <a href="/privacy">Privatsphäre</a> <a href="/de/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/document-preview" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/document-preview" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/document-preview" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/document-preview" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/document-preview" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/document-preview" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/document-preview" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/document-preview" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/document-preview" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Générateur d'aperçu de document — PDF, Word, Excel, PowerPoint"/>
+<meta property="og:description" content="Aperçu de documents PDF, Word, Excel, PowerPoint. 100% privé, traitement local dans le navigateur."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://presend.pages.dev/fr/tools/document-preview"/>
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Document+Preview"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<title>Générateur d'aperçu de document — PDF, Word, Excel, PowerPoint | Presend</title>
+<meta name="robots" content="index, follow"/>
+<meta name="description" content="Générez un aperçu miniature de PDF, Word, Excel, PowerPoint. Traitement local dans votre navigateur, fichier jamais envoyé. Gratuit."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/document-preview" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Générateur d'aperçu de document — PDF, Word, Excel, PowerPoint"/>
+<meta name="twitter:description" content="Aperçu de documents PDF, Word, Excel, PowerPoint. 100% privé, traitement local dans le navigateur."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Document Preview",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Generate thumbnail previews from PDF, Word, Excel, PowerPoint. No upload, 100% private.",
+  "url": "https://presend.pages.dev/fr/tools/document-preview"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Document Preview","item":"https://presend.pages.dev/fr/tools/document-preview"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Generate Document Previews",
+  "description": "Upload any document and instantly create a thumbnail preview directly in your browser.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your file", "text": "Drag and drop or select a PDF, Word, Excel, or PowerPoint file.", "url": "https://presend.pages.dev/fr/tools/document-preview#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "View the preview", "text": "See an instant thumbnail rendering of your document's first page.", "url": "https://presend.pages.dev/fr/tools/document-preview#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download as image", "text": "Save the preview as a PNG image for sharing or archiving.", "url": "https://presend.pages.dev/fr/tools/document-preview#step3" }
+  ]
+}
+</script>
+<style>
+.drop-zone { border:2px dashed var(--color-line); border-radius:var(--radius); padding:2.5rem 2rem; text-align:center; background:var(--color-bg-raised); transition:border-color 0.2s, background 0.2s; cursor:pointer; margin-top:1.5rem; }
+.drop-zone:hover, .drop-zone.dragover { border-color:var(--color-accent); background:var(--color-bg); }
+.drop-zone .icon { font-size:2.5rem; margin-bottom:0.5rem; }
+.drop-zone p { color:var(--color-muted); margin:0; font-size:0.95rem; }
+.drop-zone input { display:none; }
+.preview-area { margin-top:1.5rem; text-align:center; }
+.preview-area canvas { max-width:100%; border:1px solid var(--color-line); border-radius:var(--radius); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+.preview-area .doc-info { margin-top:1rem; color:var(--color-muted); font-size:0.9rem; }
+.preview-area .pages-nav { display:flex; justify-content:center; gap:0.5rem; margin-top:1rem; }
+.preview-area .pages-nav button { padding:0.4rem 0.8rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-bg-raised); cursor:pointer; font-size:0.85rem; }
+.preview-area .pages-nav button:disabled { opacity:0.4; cursor:not-allowed; }
+.preview-area .pages-nav span { align-self:center; color:var(--color-muted); font-size:0.9rem; }
+.btn-row { display:flex; gap:0.5rem; margin-top:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-row .btn { min-width:140px; }
+.status { text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.75rem; min-height:1.5em; }
+.loader { display:none; align-items:center; justify-content:center; gap:0.6rem; margin-top:0.75rem; color:var(--color-muted); font-size:0.9rem; }
+.loader .spinner { width:18px; height:18px; border:2px solid var(--color-line); border-top-color:var(--color-accent); border-radius:50%; animation:spin 1s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.file-types { display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; flex-wrap:wrap; }
+.file-types span { font-size:0.8rem; color:var(--color-muted); background:var(--color-bg-raised); padding:0.2rem 0.6rem; border-radius:999px; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/fr/"><span class="brand-mark">●</span>Presend</a>
+  <a class="nav-link" href="/fr/">Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/fr/">← Retour</a>
+  <h1>Aperçu de document</h1>
+  <p class="lede">Téléchargez n'importe quel fichier PDF, Word, Excel ou PowerPoint et générez instantanément un aperçu miniature de sa première page. Tout se passe localement dans votre navigateur — votre fichier ne quitte jamais votre appareil.</p>
+
+  <span class="trust-badge">Votre fichier n'est jamais téléchargé sur nos serveurs</span>
+
+  <div style="margin-top:2rem;">
+    <div class="drop-zone" id="dropZone">
+      <div class="icon">📄</div>
+      <p><strong>Cliquez pour téléverser</strong> ou glissez-déposez un fichier ici</p>
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation">
+    </div>
+
+    <div class="file-types">
+      <span>📕 PDF</span>
+      <span>📝 Word</span>
+      <span>📊 Excel</span>
+      <span>📽️ PowerPoint</span>
+    </div>
+
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <span>Génération de l'aperçu...</span>
+    </div>
+
+    <div class="preview-area" id="previewArea" style="display:none;">
+      <canvas id="previewCanvas"></canvas>
+      <div class="doc-info" id="docInfo"></div>
+      <div class="pages-nav" id="pagesNav" style="display:none;">
+        <button id="prevPage" type="button">← Précédent</button>
+        <span id="pageNum">Page 1 sur 1</span>
+        <button id="nextPage" type="button">Suivant →</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="downloadBtn" type="button">⬇️ Télécharger PNG</button>
+        <button class="btn ghost" id="clearBtn" type="button">🗑️ Effacer</button>
+      </div>
+    </div>
+
+    <div class="status" id="status">Prêt — téléversez un document pour l'aperçu</div>
+  </div>
+
+  <section class="wrap" style="margin-top:3rem;">
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;">Outils associés</h2>
+    <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/fr/tools/pdf-compress">
+        <div><h3>Compresseur PDF</h3><p>Réduisez la taille d'un PDF sans perte de qualité.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+      <a class="tool-card" href="/fr/tools/pdf-merger">
+        <div><h3>Fusionneur PDF</h3><p>Combinez plusieurs PDF en un seul.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+      <a class="tool-card" href="/fr/tools/html-to-pdf">
+        <div><h3>HTML vers PDF</h3><p>Convertissez du HTML en documents PDF professionnels.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Comment ça marche ?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    Pour les <strong>fichiers PDF</strong>, cet outil utilise <a href="https://mozilla.github.io/pdf.js/" target="_blank" rel="noopener">PDF.js</a> (la bibliothèque officielle de Mozilla) pour restituer la première page directement sur un canvas HTML5 dans votre navigateur. Pour les <strong>fichiers Office</strong> (Word, Excel, PowerPoint), l'outil extrait le contenu textuel et les informations structurelles pour générer un aperçu textuel lisible. Comme tout le traitement se fait localement, vos documents sensibles ne sont jamais transmis à un serveur.
+  </p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/fr/about">About</a> · <a href="/fr/privacy">Privacy</a> · <a href="/fr/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script type="module">
+(function () {
+  const dropZone = document.getElementById('dropZone');
+  const fileInput = document.getElementById('fileInput');
+  const loader = document.getElementById('loader');
+  const previewArea = document.getElementById('previewArea');
+  const previewCanvas = document.getElementById('previewCanvas');
+  const docInfo = document.getElementById('docInfo');
+  const pagesNav = document.getElementById('pagesNav');
+  const prevPage = document.getElementById('prevPage');
+  const nextPage = document.getElementById('nextPage');
+  const pageNum = document.getElementById('pageNum');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const status = document.getElementById('status');
+
+  let pdfDoc = null;
+  let currentPage = 1;
+  let totalPages = 1;
+  let currentFileName = '';
+
+  // PDF.js dynamic import
+  async function loadPDFJS() {
+    const pdfjsLib = await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs';
+    return pdfjsLib;
+  }
+
+  function formatBytes(bytes) {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B','KB','MB','GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+  }
+
+  async function renderPDFPage(pageNum) {
+    const pdfjsLib = await loadPDFJS();
+    const page = await pdfDoc.getPage(pageNum);
+    const scale = 1.5;
+    const viewport = page.getViewport({ scale });
+
+    previewCanvas.width = viewport.width;
+    previewCanvas.height = viewport.height;
+    const ctx = previewCanvas.getContext('2d');
+
+    await page.render({ canvasContext: ctx, viewport }).promise;
+    currentPage = pageNum;
+    document.getElementById('pageNum').textContent = `Page ${currentPage} sur ${totalPages}`;
+    prevPage.disabled = currentPage <= 1;
+    nextPage.disabled = currentPage >= totalPages;
+  }
+
+  async function handlePDF(file) {
+    try {
+      loader.style.display = 'flex';
+      status.textContent = 'Chargement du PDF...';
+
+      const arrayBuffer = await file.arrayBuffer();
+      const pdfjsLib = await loadPDFJS();
+      pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      totalPages = pdfDoc.numPages;
+
+      await renderPDFPage(1);
+
+      docInfo.textContent = `${file.name} • ${formatBytes(file.size)} • ${totalPages} page${totalPages > 1 ? 's' : ''}`;
+      pagesNav.style.display = totalPages > 1 ? 'flex' : 'none';
+      previewArea.style.display = 'block';
+      status.textContent = 'Aperçu PDF prêt';
+    } catch (e) {
+      status.textContent = 'Erreur de lecture du PDF : ' + e.message;
+    } finally {
+      loader.style.display = 'none';
+    }
+  }
+
+  async function handleOffice(file) {
+    try {
+      loader.style.display = 'flex';
+      status.textContent = 'Lecture du document Office...';
+
+      const arrayBuffer = await file.arrayBuffer();
+      const zip = await JSZip.loadAsync(arrayBuffer);
+
+      // Try to extract text from various Office formats
+      let textContent = '';
+      let title = '';
+
+      // Word / PowerPoint: word/document.xml or ppt/slides/slide1.xml
+      const docXml = zip.file('word/document.xml') || zip.file('ppt/slides/slide1.xml');
+      if (docXml) {
+        const xml = await docXml.async('text');
+        // Simple XML text extraction (strip tags)
+        textContent = xml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 2000);
+        // Try to find title
+        const titleMatch = xml.match(/<w:pStyle w:val="Title"[^>]*>[\s\S]*?<w:t>([^<]+)<\/w:t>/);
+        if (titleMatch) title = titleMatch[1];
+      }
+
+      // Excel: xl/worksheets/sheet1.xml
+      const sheetXml = zip.file('xl/worksheets/sheet1.xml');
+      if (sheetXml) {
+        const xml = await sheetXml.async('text');
+        textContent = xml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().substring(0, 2000);
+      }
+
+      if (!textContent) {
+        throw new Error('Could not extract content from this Office file');
+      }
+
+      // Render text preview on canvas
+      const ctx = previewCanvas.getContext('2d');
+      previewCanvas.width = 600;
+      previewCanvas.height = 800;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, 600, 800);
+      ctx.fillStyle = '#333333';
+      ctx.font = 'bold 18px Arial';
+      ctx.fillText(title || file.name, 30, 40);
+      ctx.fillStyle = '#666666';
+      ctx.font = '12px Arial';
+      ctx.fillText('Office Document Preview', 30, 65);
+      ctx.fillStyle = '#333333';
+      ctx.font = '14px Arial';
+
+      const words = textContent.split(' ');
+      let line = '';
+      let y = 100;
+      for (let i = 0; i < words.length && y < 780; i++) {
+        const testLine = line + words[i] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > 540 && i > 0) {
+          ctx.fillText(line, 30, y);
+          line = words[i] + ' ';
+          y += 22;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, 30, y);
+
+      // Add footer
+      ctx.fillStyle = '#999999';
+      ctx.font = '11px Arial';
+      ctx.fillText('Preview generated by Presend — presend.pages.dev', 30, 780);
+
+      docInfo.textContent = `${file.name} • ${formatBytes(file.size)} • Document Office (aperçu texte)`;
+      pagesNav.style.display = 'none';
+      previewArea.style.display = 'block';
+      status.textContent = 'Aperçu Office prêt (extraction de texte)';
+    } catch (e) {
+      status.textContent = 'Erreur de lecture du fichier Office : ' + e.message;
+    } finally {
+      loader.style.display = 'none';
+    }
+  }
+
+  async function handleFile(file) {
+    if (!file) return;
+    currentFileName = file.name;
+
+    const ext = file.name.split('.').pop().toLowerCase();
+
+    if (ext === 'pdf') {
+      await handlePDF(file);
+    } else if (['doc','docx','xls','xlsx','ppt','pptx'].includes(ext)) {
+      // Check if JSZip is available, load if not
+      if (typeof JSZip === 'undefined') {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+      await handleOffice(file);
+    } else {
+      status.textContent = 'Type de fichier non pris en charge. Veuillez téléverser un PDF, Word, Excel ou PowerPoint.';
+    }
+  }
+
+  // Event listeners
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropZone.classList.add('dragover');
+  });
+
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('dragover');
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropZone.classList.remove('dragover');
+    const files = e.dataTransfer.files;
+    if (files.length) handleFile(files[0]);
+  });
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length) handleFile(fileInput.files[0]);
+  });
+
+  prevPage.addEventListener('click', () => {
+    if (currentPage > 1) renderPDFPage(currentPage - 1);
+  });
+
+  nextPage.addEventListener('click', () => {
+    if (currentPage < totalPages) renderPDFPage(currentPage + 1);
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = currentFileName.replace(/\.[^.]+$/, '') + '_preview.png';
+    link.href = previewCanvas.toDataURL('image/png');
+    link.click();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    pdfDoc = null;
+    currentPage = 1;
+    totalPages = 1;
+    previewArea.style.display = 'none';
+    fileInput.value = '';
+    status.textContent = 'Prêt — téléversez un document pour l'aperçu';
+  });
+})();
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'document-preview' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'document-preview' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

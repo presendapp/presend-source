@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="Speech-to-Text — Presend"/>
+  <meta property="og:description" content="Transcrivez la parole en texte avec la reconnaissance vocale intégrée à votre navigateur. Dans Chrome et Edge, l'audio est traité sur les serveurs de Google ou de Microsoft."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://presend.pages.dev/fr/tools/speech-to-text"/>
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=Speech-to-Text"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+<title>Discours en texte (transcription vocale) — Gratuit en ligne | Présenter</title>
+<meta name="robots" content="index, follow"/>
+  <meta name="description" content="Transcrivez votre voix en texte en temps réel grâce à la reconnaissance vocale de votre navigateur. Gratuit. Dans Chrome et Edge, l'audio est envoyé aux serveurs de Google ou de Microsoft."/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/speech-to-text"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Speech-to-Text — Presend"/>
+<meta name="twitter:description" content="Transcrivez la parole en texte avec la reconnaissance vocale intégrée à votre navigateur. Dans Chrome et Edge, l'audio est traité sur les serveurs de Google ou de Microsoft."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Speech-to-Text",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Transcription vocale en temps réel avec l'API Web Speech de votre navigateur. Rien n'est envoyé à Presend ; dans Chrome et Edge, le navigateur envoie l'audio aux serveurs de Google ou de Microsoft.",
+  "url": "https://presend.pages.dev/fr/tools/speech-to-text"
+}
+</script>
+<!--seo-app-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Speech-to-Text","item":"https://presend.pages.dev/fr/tools/speech-to-text"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Rien n'est jamais téléversé."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ma voix est-elle enregistrée ou téléversée ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pas par Presend. La reconnaissance est faite par l'API Web Speech de votre navigateur, et dans Chrome et Edge le navigateur envoie l'audio aux serveurs de Google ou de Microsoft pour le transcrire. Ne l'utilisez pas pour des contenus confidentiels."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelles langues sont prises en charge ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La plupart des langues principales sont prises en charge dont l'anglais, l'espagnol, le français, l'allemand, l'italien, le portugais, le japonais, le russe, l'hindi, le chinois, le coréen et bien d'autres. La prise en charge dépend de votre navigateur et système d'exploitation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cela fonctionne-t-il hors ligne ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En général, non. Dans Chrome et Edge, la reconnaissance vocale s'exécute sur les serveurs de Google ou de Microsoft et nécessite une connexion Internet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je télécharger la transcription ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Vous pouvez copier le texte transcrit dans votre presse-papiers ou le télécharger en fichier texte brut. Le texte est formaté avec des horodatages si vous activez cette option."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi Firefox n'est-il pas pris en charge ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Firefox n'implémente actuellement pas l'API Web Speech pour la reconnaissance vocale. Nous recommandons d'utiliser Chrome, Edge ou Safari pour la meilleure expérience."
+      }
+    }
+  ]
+}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Transcribe Speech to Text",
+  "description": "Convert your spoken words into written text using your browser's native speech engine — entirely local, no upload needed.",
+  "totalTime": "PT10S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Allow microphone access", "text": "Click the microphone button and allow your browser to access your microphone when prompted.", "url": "https://presend.pages.dev/fr/tools/speech-to-text#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Start speaking", "text": "Speak clearly into your microphone. The text appears in real-time as you talk.", "url": "https://presend.pages.dev/fr/tools/speech-to-text#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Copy or download", "text": "Click Stop when finished, then copy the transcript to your clipboard or download it as a .txt file.", "url": "https://presend.pages.dev/fr/tools/speech-to-text#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Speech-to-Text — Presend"/>
+<meta name="twitter:description" content="Transcrivez la parole en texte avec la reconnaissance vocale intégrée à votre navigateur. Dans Chrome et Edge, l'audio est traité sur les serveurs de Google ou de Microsoft."/>
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/speech-to-text"/>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/speech-to-text"/>
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/speech-to-text"/>
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/speech-to-text"/>
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/speech-to-text"/>
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/speech-to-text"/>
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/speech-to-text"/>
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/speech-to-text"/>
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/fr/tools/speech-to-text"/>
+<meta property="og:locale" content="fr_FR"/>
+<style>
+#transcriptBox { width:100%; min-height:200px; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg); font-family:var(--font-body); font-size:1rem; line-height:1.6; resize:vertical; margin-top:1rem; }
+.mic-btn { width:100%; padding:1rem; font-size:1.1rem; font-weight:600; border-radius:var(--radius); border:none; cursor:pointer; transition:all 0.2s; }
+.mic-btn.recording { background:#dc3545; color:#fff; }
+.mic-btn:not(.recording) { background:var(--color-accent); color:#fff; }
+.mic-btn:hover { opacity:0.9; }
+.lang-select { width:100%; padding:0.6rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-bg); font-family:var(--font-body); font-size:1rem; margin-top:0.5rem; }
+.status { text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.5rem; min-height:1.5em; }
+.btn-row { display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap; }
+.btn-row .btn { flex:1; min-width:120px; }
+.no-support { background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); padding:1.2rem; text-align:center; color:var(--color-muted); }
+.no-support strong { color:var(--color-text); display:block; margin-bottom:0.5rem; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/fr/"><span class="brand-mark">●</span>Présenter</a>
+  <a class="nav-link" href="/fr/">Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/fr/">← Retour</a>
+  <h1>Parole en texte</h1>
+  <p class="lede">Parlez et voyez vos mots apparaître instantanément. Utilise la reconnaissance vocale intégrée à votre navigateur : dans Chrome et Edge, l'audio est envoyé aux serveurs de Google ou de Microsoft, ne l'utilisez donc pas pour des contenus confidentiels.</p>
+
+  <span class="trust-badge">Rien n'est envoyé à Presend</span>
+
+  <div style="margin-top: 2rem;">
+    <div id="supportMsg"></div>
+
+    <div id="controls" style="display:none;">
+      <label style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.3rem;">Langue</label>
+      <select id="langSelect" class="lang-select">
+        <option value="en-US">Anglais (États-Unis)</option>
+        <option value="en-GB">Anglais (Royaume-Uni)</option>
+        <option value="fr-FR">Français</option>
+        <option value="es-ES">espagnol</option>
+        <option value="de-DE">Allemand</option>
+        <option value="pt-BR">Portugais (Brésil)</option>
+        <option value="it-IT">Italien</option>
+        <option value="ja-JP">日本語</option>
+        <option value="ko-KR">한국어</option>
+        <option value="zh-CN">中文 (简体)</option>
+        <option value="ru-RU">russe</option>
+        <option value="nl-NL">Pays-Bas</option>
+        <option value="pl-PL">Polski</option>
+        <option value="tr-TR">Turc</option>
+        <option value="ar-SA">العربية</option>
+        <option value="hi-IN">हिन्दी</option>
+      </select>
+
+      <button class="mic-btn" id="micBtn" type="button" style="margin-top:1rem;">🎙️ Commencez à écouter</button>
+      <div class="status" id="status">Cliquez sur le bouton et autorisez l'accès au microphone</div>
+
+      <textarea id="transcriptBox" placeholder="Your transcript will appear here..." spellcheck="false"></textarea>
+
+      <div class="btn-row">
+        <button class="btn" id="copyBtn" type="button">📋 Copier le texte</button>
+        <a class="btn" id="downloadBtn" download="transcript.txt">⬇️ Téléchargez le .txt</a>
+        <button class="btn ghost" id="clearBtn" type="button">🗑️ Effacer</button>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Outils associés</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/fr/tools/text-formatter">
+        <div><h3>Formateur de texte</h3><p>Convertissez le texte en styles gras, italique et Unicode.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+      <a class="tool-card" href="/fr/tools/word-counter">
+        <div><h3>Compteur de mots</h3><p>Comptez les mots, les caractères et le temps de lecture.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+      <a class="tool-card" href="/fr/tools/text-diff">
+        <div><h3>Vérificateur de différences de texte</h3><p>Comparez deux textes côte à côte.</p></div>
+        <span class="go">Ouvrir →</span>
+      </a>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Apprendre encore plus</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/fr/tools/landings/speech-to-text-transcription">Lisez notre guide détaillé sur cet outil</a>
+  </p>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Comment ça marche ?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    Cet outil utilise l'<a href="https://wicg.github.io/speech-api/" target="_blank" rel="noopener">API vocale Web</a>, une fonctionnalité du navigateur qui convertit la parole en texte. Presend ne reçoit jamais votre audio, mais le navigateur peut l'envoyer à son éditeur : Chrome l'envoie aux serveurs de Google, Edge à ceux de Microsoft. La prise en charge et la précision dépendent de votre navigateur et de votre système. Pour des conversations confidentielles, des notes médicales ou une dictée juridique, utilisez plutôt un outil de transcription hors ligne.
+  </p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend – outils gratuits basés sur un navigateur.<a href="/fr/about">À propos</a> · <a href="/fr/privacy">Confidentialité</a> · <a href="/fr/api">API</a></p>
+</footer>
+
+<script>
+(function () {
+  const supportMsg = document.getElementById('supportMsg');
+  const controls = document.getElementById('controls');
+  const micBtn = document.getElementById('micBtn');
+  const status = document.getElementById('status');
+  const transcriptBox = document.getElementById('transcriptBox');
+  const langSelect = document.getElementById('langSelect');
+  const copyBtn = document.getElementById('copyBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const clearBtn = document.getElementById('clearBtn');
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    supportMsg.innerHTML = '<div class="no-support"><strong>Your browser does not support speech recognition.</strong><br>Please use Chrome, Edge, or Safari. Firefox does not support the Web Speech API for recognition yet.</div>';
+    return;
+  }
+
+  controls.style.display = 'block';
+
+  let recognition = null;
+  let isRecording = false;
+  let finalTranscript = '';
+
+  function initRecognition() {
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = langSelect.value;
+
+    recognition.onstart = () => {
+      isRecording = true;
+      micBtn.textContent = '⏹️ Stop listening';
+      micBtn.classList.add('recording');
+      status.textContent = 'Listening... speak now';
+    };
+
+    recognition.onend = () => {
+      isRecording = false;
+      micBtn.textContent = '🎙️ Start listening';
+      micBtn.classList.remove('recording');
+      status.textContent = 'Click the button to start again';
+    };
+
+    recognition.onerror = (e) => {
+      if (e.error === 'no-speech') {
+        status.textContent = 'No speech detected. Try speaking louder or closer to the microphone.';
+      } else if (e.error === 'audio-capture') {
+        status.textContent = 'No microphone found. Check that your microphone is connected and allowed.';
+      } else if (e.error === 'not-allowed') {
+        status.textContent = 'Microphone access denied. Please allow microphone access in your browser settings.';
+      } else {
+        status.textContent = 'Error: ' + e.error;
+      }
+      isRecording = false;
+      micBtn.textContent = '🎙️ Start listening';
+      micBtn.classList.remove('recording');
+    };
+
+    recognition.onresult = (e) => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const transcript = e.results[i][0].transcript;
+        if (e.results[i].isFinal) {
+          finalTranscript += transcript + ' ';
+        } else {
+          interim += transcript;
+        }
+      }
+      transcriptBox.value = finalTranscript + interim;
+      updateDownload();
+    };
+  }
+
+  function updateDownload() {
+    const blob = new Blob([transcriptBox.value], { type: 'text/plain' });
+    downloadBtn.href = URL.createObjectURL(blob);
+  }
+
+  micBtn.addEventListener('click', () => {
+    if (isRecording) {
+      recognition.stop();
+    } else {
+      initRecognition();
+      recognition.start();
+    }
+  });
+
+  langSelect.addEventListener('change', () => {
+    if (isRecording) {
+      recognition.stop();
+      setTimeout(() => {
+        initRecognition();
+        recognition.start();
+      }, 300);
+    }
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(transcriptBox.value);
+    const old = copyBtn.textContent;
+    copyBtn.textContent = '✅ Copied!';
+    setTimeout(() => copyBtn.textContent = old, 2000);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    finalTranscript = '';
+    transcriptBox.value = '';
+    updateDownload();
+  });
+
+  transcriptBox.addEventListener('input', updateDownload);
+  updateDownload();
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'speech-to-text' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'speech-to-text' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

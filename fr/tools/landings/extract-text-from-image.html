@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment extraire du texte à partir d'images et de captures d'écran — Guide Presend</title>
+<meta name="description" content="Apprenez à copier du texte depuis n'importe quelle image, capture d'écran ou document numérisé grâce à Tesseract.js OCR. Plus de 100 langues, fonctionne dans votre navigateur, aucun téléversement.">
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/landings/extract-text-from-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Extract Text from Images and Screenshots",
+  "description": "Complete guide to OCR using Tesseract.js running locally in your browser. Supports 100+ languages, paste from clipboard, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/extract-text-from-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Présenter</a>
+  <a class='nav-link' href='/'>Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/screenshot-to-text'>← Capture d'écran en texte</a>
+  <article>
+    <h1>Comment extraire du texte à partir d'images et de captures d'écran</h1>
+    <p class="lede">Besoin de copier le texte d'une capture d'écran, de numériser un document ou de numériser une page imprimée ? La technologie OCR le rend instantané – et avec Presend, cela se produit entièrement dans votre navigateur.</p>
+
+    <h2>Qu’est-ce que l’OCR ?</h2>
+    <p>OCR (Optical Character Recognition) est la technologie qui convertit les images de texte en texte lisible par machine. C'est ce qui vous permet :</p>
+    <ul>
+      <li>Copier le texte d'une capture d'écran d'un site Web qui bloque la sélection</li>
+      <li>Rechercher dans les PDF numérisés</li>
+      <li>Numérisez les documents imprimés sans retaper</li>
+      <li>Extraire des données à partir de photos de reçus, de formulaires ou de panneaux</li>
+      <li>Traduisez le texte en images en l’extrayant d’abord</li>
+    </ul>
+
+    <h2>Le risque de confidentialité de l’OCR cloud</h2>
+    <p>La plupart des services OCR (Google Vision, Azure Computer Vision, Amazon Textract) nécessitent le téléchargement de votre image sur leur cloud. Cela pose problème pour :</p>
+    <ul>
+      <li><strong>Dossiers médicaux</strong>— Données des patients protégées par HIPAA/GDPR</li>
+      <li><strong>Documents juridiques</strong>— Privilège avocat-client, NDA</li>
+      <li><strong>États financiers</strong>— Coordonnées bancaires, documents fiscaux</li>
+      <li><strong>Informations exclusives</strong>— Mémos internes, captures d'écran du code source</li>
+      <li><strong>Correspondance personnelle</strong>— Messages privés, emails</li>
+    </ul>
+    <p>Même les services qui prétendent supprimer les fichiers immédiatement les traitent sur leur infrastructure, créant ainsi des pistes d’audit et une exposition potentielle.</p>
+
+    <h2>Comment fonctionne Tesseract.js</h2>
+    <p><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a>est un port JavaScript pur du moteur OCR Tesseract de Google, compilé sur WebAssembly. Il s'exécute entièrement dans votre navigateur :</p>
+    <ol>
+      <li>Le modèle linguistique (traineddata) est téléchargé une fois par langue (~ 4 Mo pour l'anglais)</li>
+      <li>L'image est traitée localement à l'aide de votre CPU ou GPU</li>
+      <li>Le texte reconnu est renvoyé directement sur la page Web</li>
+      <li>Rien n'est transmis à un serveur externe</li>
+    </ol>
+    <p>Tesseract est le même moteur qui alimente Google Books, la fonction appareil photo de Google Translate et d'innombrables applications de numérisation de documents. Il prend en charge<strong>100+ langues</strong>y compris des scripts comme l'arabe, le chinois, le japonais, le devanagari et le cyrillique.</p>
+
+    <h2>Méthodes de saisie prises en charge</h2>
+    <ul>
+      <li><strong>Glisser et déposer</strong>— Déposez n'importe quelle image sur l'outil</li>
+      <li><strong>Sélecteur de fichiers</strong>— Cliquez pour parcourir et sélectionner une image</li>
+      <li><strong>Coller depuis le presse-papiers</strong>— Appuyez sur Ctrl+V (ou Cmd+V) n'importe où sur la page pour coller directement une capture d'écran</li>
+    </ul>
+
+    <h2>Conseils de précision</h2>
+    <ul>
+      <li><strong>La résolution est importante</strong>— Les images à plus haute résolution produisent de meilleurs résultats. 300 DPI est idéal pour les documents numérisés.</li>
+      <li><strong>Le contraste est la clé</strong>— Le texte sombre sur fond clair fonctionne mieux. Les couleurs inversées ou un faible contraste réduisent la précision.</li>
+      <li><strong>Minimiser l'inclinaison</strong>— Le texte droit et sans rotation est le plus facile à reconnaître</li>
+      <li><strong>Images nettes</strong>— Supprimez le bruit, les plis et les ombres lorsque cela est possible</li>
+      <li><strong>Langue correcte</strong>— Sélectionnez la bonne langue dans la liste déroulante. Le texte en langues mixtes fonctionne mais peut être moins précis</li>
+    </ul>
+
+    <h2>Cas d'utilisation</h2>
+    <ul>
+      <li><strong>Étudiants</strong>— Copiez du texte à partir de photos de manuels ou de diapositives de cours</li>
+      <li><strong>Développeurs</strong>— Extraire le code des captures d'écran ou des messages d'erreur</li>
+      <li><strong>Journalistes</strong>— Citer du texte à partir d'images de documents</li>
+      <li><strong>Chercheurs</strong>— Numériser les papiers et articles imprimés</li>
+      <li><strong>Administrateurs</strong>— Convertir les formulaires numérisés en texte modifiable</li>
+      <li><strong>Voyageurs</strong>— Lire des panneaux, des menus et des documents en langues étrangères</li>
+    </ul>
+
+    <h2>Guide étape par étape</h2>
+    <ol>
+      <li><strong>Ouvrez l'outil</strong>— Aller à<a href="/fr/tools/screenshot-to-text">Capture d'écran en texte</a></li>
+      <li><strong>Sélectionnez la langue</strong>— Choisissez la langue du texte dans votre image</li>
+      <li><strong>Télécharger ou coller</strong>— Faites glisser une image, cliquez pour la sélectionner ou appuyez sur Ctrl+V pour la coller depuis le presse-papiers</li>
+      <li><strong>Attendre la reconnaissance</strong>— Le traitement prend quelques secondes en fonction de la taille de l'image</li>
+      <li><strong>Réviser et modifier</strong>— Vérifiez le texte extrait pour détecter d'éventuelles erreurs</li>
+      <li><strong>Copier ou télécharger</strong>— Enregistrer sous forme de fichier .txt ou copier dans le presse-papiers</li>
+    </ol>
+
+    <h2>Limites</h2>
+    <ul>
+      <li><strong>Écriture</strong>— Tesseract fonctionne mieux sur le texte imprimé. L’écriture cursive ou désordonnée a une précision moindre.</li>
+      <li><strong>Dispositions complexes</strong>— Le texte, les tableaux et les formulaires multicolonnes peuvent nécessiter un reformatage manuel.</li>
+      <li><strong>Polices décoratives</strong>— Le texte stylisé ou artistique peut ne pas être reconnu.</li>
+      <li><strong>Très petit texte</strong>— Le texte de moins de 10 px peut être manqué.</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/fr/tools/screenshot-to-text">Ouvrir la capture d'écran en texte →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – outils gratuits basés sur un navigateur.<a href="/about">À propos</a> · <a href="/privacy">Confidentialité</a> <a href="/fr/api">API</a></p>
+</footer>
+</body>
+</html>

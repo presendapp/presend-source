@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Verificador de hash de archivo — Presend" property="og:title"/>
+<meta content="Calcula las sumas de comprobación SHA-256, SHA-1 y SHA-512 de cualquier archivo, totalmente en tu navegador. Verifica que tus descargas sean auténticas y no hayan sido alteradas." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://presend.pages.dev/es/tools/file-hash-checker" property="og:url"/>
+<meta content="https://presend.pages.dev/api/og?tool=File+Hash+Checker" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<title>Comprobador de hash de archivos: Presend</title>
+<meta content="index, follow" name="robots"/>
+<meta content="Calcula las sumas de comprobación SHA-256, SHA-1 y SHA-512 para verificar la integridad de cualquier archivo. Totalmente en tu navegador: sin subidas, sin..." name="description"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/es/tools/file-hash-checker" />
+<meta content="summary_large_image" name="twitter:card"/><meta content="File Hash Checker — Presend" name="twitter:title" />
+<meta content="Calculate SHA-256, SHA-1 and SHA-512 checksums of any file, entirely in your browser. Verify downloads are authentic and untampered." name="twitter:description" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "File Hash Checker",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Calculate SHA-256, SHA-1 and SHA-512 checksums locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/es/tools/file-hash-checker"
+}
+</script><!--seo-app--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"File Hash Checker","item":"https://presend.pages.dev/es/tools/file-hash-checker"}
+  ]
+}</script>
+<!--seo-breadcrumb--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Herramientas gratuitas basadas en el navegador para limpiar, comprimir, convertir y verificar tus archivos antes de compartirlos. Nada se sube nunca."
+}
+</script><!--seo-org--><link href="/manifest.json" rel="manifest"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Verify a File with SHA-256",
+  "description": "Calculate SHA-256, SHA-1, and SHA-512 checksums of any file to verify its integrity — entirely in your browser, no upload needed.",
+  "totalTime": "PT30S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Select your file", "text": "Drag and drop any file into the tool, or click to browse. The file is read in chunks directly in your browser — nothing is uploaded.", "url": "https://presend.pages.dev/es/tools/file-hash-checker#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Wait for processing", "text": "The tool calculates SHA-256, SHA-1, and SHA-512 hashes simultaneously using the Web Crypto API. Even large files are handled efficiently.", "url": "https://presend.pages.dev/es/tools/file-hash-checker#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Compare the hash", "text": "Copy the generated hash and compare it with the hash provided by the software publisher. If they match, your file is authentic and untampered.", "url": "https://presend.pages.dev/es/tools/file-hash-checker#step3" }
+  ]
+}</script>
+<!--seo-howto--><meta property="og:locale" content="es_ES" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/file-hash-checker" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/file-hash-checker" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/file-hash-checker" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/file-hash-checker" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/file-hash-checker" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/file-hash-checker" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/file-hash-checker" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/file-hash-checker" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/file-hash-checker" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+<a class="brand" href="/es/"><span class="brand-mark">●</span>Presend</a>
+<a class="nav-link" href="/es/">Todas las herramientas</a> <a class="nav-link" href="/es/api">API</a>
+</header>
+<main class="wrap">
+<a class="tool-back" href="/es/">← Volver</a>
+<h1>Comprobador de hash de archivos</h1>
+<p class="lede">Calcule la suma de comprobación SHA-256, SHA-1 y SHA-512 de cualquier archivo para verificar que no haya sido alterado ni dañado. Todo se ejecuta en su dispositivo: el archivo nunca se carga.</p>
+<span class="trust-badge">Tus archivos nunca se envían a nuestros servidores.</span>
+<div style="margin-top: 2rem;">
+<div aria-label="Choose a file or drop it here" class="dropzone" id="dropzone" role="button" tabindex="0">
+<p class="primary">Suelta un archivo aquí o haz clic para elegir uno.</p>
+<p class="secondary">Cualquier tipo de archivo. Nada sale de tu dispositivo.</p>
+<input id="fileInput" type="file"/>
+</div>
+<p class="error-msg" id="errorMsg"></p>
+<div class="result" id="result">
+<div class="result-row">
+<div>
+<div class="filename" id="resultName"></div>
+<div class="meta" id="resultMeta"></div>
+</div>
+</div>
+<div id="hashList" style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.8rem;"></div>
+<button class="btn ghost" id="resetBtn" style="margin-top:1rem;" type="button">comprobar otro archivo</button>
+<button class="btn ghost" id="shareBtn" style="margin-left:0.5rem;" type="button">🔗 Copiar enlace para compartir</button>
+</div>
+</div>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Herramientas relacionadas</h2>
+<div class="tool-grid" style="margin-top:1rem;">
+<a class="tool-card" href="/es/tools/pdf-metadata-remover">
+<div><h3>Eliminador de metadatos PDF</h3><p>Borre el autor, el software y las fechas ocultas dentro de un PDF.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/es/tools/office-metadata-remover">
+<div><h3>Eliminador de metadatos de Office</h3><p>Elimina el autor, la empresa y el historial de edición ocultos de los archivos de Office.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/es/tools/exif-remover">
+<div><h3>Eliminador EXIF</h3><p>Elimina la ubicación oculta y los datos de la cámara de una foto.</p></div>
+<span class="go">Abrir →</span>
+</a>
+</div>
+</section>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Más información</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+<a href="/es/guides/how-to-verify-downloaded-file-safe">Lea nuestra guía: Cómo verificar que un archivo descargado sea seguro</a>
+</p>
+</section><!--seo-related-tools--></main>
+<footer class="site-footer wrap">
+<p>Presend — herramientas gratuitas basadas en navegador. <a href="/es/about">Acerca de</a> · <a href="/es/privacy">Privacidad</a> · <a href="/es/api">API</a></p>
+</footer>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const hashList = document.getElementById('hashList');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 500 * 1024 * 1024; // 500MB, hashing is memory-bound in-browser
+  const ALGOS = [
+    { label: 'SHA-256', name: 'SHA-256' },
+    { label: 'SHA-1', name: 'SHA-1' },
+    { label: 'SHA-512', name: 'SHA-512' }
+  ];
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  function bufToHex(buf) {
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    hashList.innerHTML = '';
+    if (!file) return;
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 500MB. Try a smaller file.');
+      return;
+    }
+
+    resultName.textContent = file.name;
+    resultMeta.textContent = humanSize(file.size) + ' — hashing…';
+
+    try {
+      const buffer = await file.arrayBuffer();
+      for (const algo of ALGOS) {
+        const digest = await crypto.subtle.digest(algo.name, buffer);
+        const hex = bufToHex(digest);
+
+        const row = document.createElement('div');
+        row.style.cssText = 'background:var(--color-bg-raised); border:1px solid var(--color-line); border-radius:var(--radius); padding:0.7rem 0.9rem;';
+        row.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem;">
+            <span style="font-family:var(--font-mono); font-size:0.8rem; color:var(--color-muted);">${algo.label}</span>
+            <button class="btn ghost copy-btn" type="button" style="padding:0.3em 0.8em; font-size:0.8rem;">Copy</button>
+          </div>
+          <div style="font-family:var(--font-mono); font-size:0.82rem; word-break:break-all; margin-top:0.3rem;">${hex}</div>
+        `;
+        row.querySelector('.copy-btn').addEventListener('click', () => {
+          navigator.clipboard.writeText(hex);
+          const btn = row.querySelector('.copy-btn');
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = old, 1200);
+        });
+        hashList.appendChild(row);
+      }
+      resultMeta.textContent = humanSize(file.size);
+      result.classList.add('visible');
+    } catch (err) {
+      showError('Could not hash this file. Try again or use a different file.');
+    }
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    hashList.innerHTML = '';
+    clearError();
+  });
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'file-hash-checker' })
+}).catch(() => {});
+</script><script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'file-hash-checker' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<!--refresh-v2-->
+</body>
+</html>

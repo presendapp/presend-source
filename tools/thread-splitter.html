@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+
+
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Thread Splitter — Presend">
+<meta property="og:description" content="Break long articles into Twitter/X or LinkedIn threads without uploading.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/thread-splitter">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Thread+Splitter">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Split Text for Twitter Threads — No Upload, Free | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Break long articles into Twitter/X or LinkedIn threads without uploading. Auto-counts characters and adds numbering. 100% private, runs in your browser. Free.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/thread-splitter" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Thread Splitter — Presend">
+<meta name="twitter:description" content="Break long articles into Twitter/X or LinkedIn threads without uploading.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Thread Splitter",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Split long text into social media threads locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/thread-splitter"
+}
+</script>
+<link rel="stylesheet" href="/css/thread-splitter.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Thread Splitter","item":"https://presend.pages.dev/tools/thread-splitter"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is the character limit for Twitter/X?","acceptedAnswer":{"@type":"Answer","text":"Twitter/X allows 280 characters per post. Some accounts (verified/premium) have a 4,000 or 25,000 character limit, but 280 remains the standard for maximum reach."}},
+    {"@type":"Question","name":"How does the thread splitter work?","acceptedAnswer":{"@type":"Answer","text":"The tool breaks your long text into multiple posts, each under the character limit, and numbers them automatically (1/, 2/, 3/, etc.) for easy copying."}},
+    {"@type":"Question","name":"Can I customize the numbering format?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can choose between \"1/5\" style numbering, \"Thread 🧵\" headers, or plain splits without numbering."}},
+    {"@type":"Question","name":"Is my text uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. The splitting happens entirely in your browser. Your drafts, announcements, and content never leave your device."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Split Text into a Twitter/X Thread",
+  "description": "Break long text into multiple posts under 280 characters — entirely in your browser, no upload needed.",
+  "totalTime": "PT10S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste your long text", "text": "Copy and paste your article, announcement, or story into the text area. The tool accepts any length.", "url": "https://presend.pages.dev/tools/thread-splitter#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Choose thread options", "text": "Select your numbering style (1/5, Thread 🧵, or plain) and character limit (280 for standard, 4000 for premium accounts).", "url": "https://presend.pages.dev/tools/thread-splitter#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Copy the thread", "text": "The tool splits your text into perfectly sized posts. Copy each post individually, or copy the entire thread at once for easy posting.", "url": "https://presend.pages.dev/tools/thread-splitter#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/thread-splitter" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/thread-splitter" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/thread-splitter" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/thread-splitter" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/thread-splitter" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/thread-splitter" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/thread-splitter" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/thread-splitter" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/thread-splitter" />
+<meta property="og:locale" content="en_US" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>Thread Splitter</h1>
+  <p class="lede">Paste a long article, blog post or idea and split it into a Twitter/X or LinkedIn thread. Auto-counts characters, adds numbering, and formats each post for copy-paste.</p>
+
+  <span class="trust-badge">Your data is never sent to our servers</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="platform-row">
+      <button class="btn" id="btnTwitter" type="button">Twitter/X (280)</button>
+        <button class="btn ghost" id="shareBtn" type="button" style="margin-left:0.5rem;">🔗 Copy share link</button>
+      <button class="btn ghost" id="btnLinkedIn" type="button">LinkedIn (3000)</button>
+      <button class="btn ghost" id="btnMastodon" type="button">Mastodon (500)</button>
+      <button class="btn ghost" id="btnCustom" type="button">Custom</button>
+      <input type="number" id="customLimit" value="500" style="width:80px; padding:0.4rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); display:none;" aria-label="Custom character limit">
+    </div>
+
+    <label for="inputText" style="display:block; font-weight:500; margin-bottom:0.5rem;">Paste your text</label>
+    <textarea id="inputText" rows="8" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-size:0.95rem; resize:vertical;" placeholder="Paste your article, blog post, or long idea here..."></textarea>
+
+    <div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+      <button class="btn" id="splitBtn" type="button">Split into thread</button>
+      <button class="btn ghost" id="copyAllBtn" type="button" disabled>Copy all</button>
+      <button class="btn ghost" id="clearBtn" type="button">Clear</button>
+    </div>
+
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div class="result" id="result" style="margin-top:1.5rem;">
+      <h2 style="font-family: var(--font-display); font-size:1.05rem; margin-bottom:0.5rem;">Thread preview</h2>
+      <div id="threadOutput"></div>
+    </div>
+  </div>
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is the character limit for Twitter/X?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Twitter/X allows 280 characters per post. Some accounts (verified/premium) have a 4,000 or 25,000 character limit, but 280 remains the standard for maximum reach.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">How does the thread splitter work?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">The tool breaks your long text into multiple posts, each under the character limit, and numbers them automatically (1/, 2/, 3/, etc.) for easy copying.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I customize the numbering format?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. You can choose between &quot;1/5&quot; style numbering, &quot;Thread 🧵&quot; headers, or plain splits without numbering.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Is my text uploaded to a server?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. The splitting happens entirely in your browser. Your drafts, announcements, and content never leave your device.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/text-formatter'>
+        <div><h3>Social Media Text Formatter</h3><p>Convert text to bold, italic and Unicode styles.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/word-counter'>
+        <div><h3>Word Counter</h3><p>Count words, characters and sentences.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/text-diff'>
+        <div><h3>Text Diff</h3><p>Compare two texts side-by-side.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Learn more</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/tools/landings/split-text-twitter-thread">Read our detailed guide about this tool</a>
+  </p>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. Runs locally. No account. Anonymous visit counts only. · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script src="/js/presets.js"></script>
+<script>
+(function () {
+  const LIMITS = { twitter: 280, linkedin: 3000, mastodon: 500 };
+  let platform = 'twitter';
+  let limit = LIMITS.twitter;
+  const TOOL_ID = 'thread-splitter';
+
+  const inputText = document.getElementById('inputText');
+  const splitBtn = document.getElementById('splitBtn');
+  const copyAllBtn = document.getElementById('copyAllBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const threadOutput = document.getElementById('threadOutput');
+  const customLimit = document.getElementById('customLimit');
+
+  const btnTwitter = document.getElementById('btnTwitter');
+  const btnLinkedIn = document.getElementById('btnLinkedIn');
+  const btnMastodon = document.getElementById('btnMastodon');
+  const btnCustom = document.getElementById('btnCustom');
+
+  function showError(msg) { errorMsg.textContent = msg; errorMsg.classList.add('visible'); }
+  function clearError() { errorMsg.textContent = ''; errorMsg.classList.remove('visible'); }
+
+  function setPlatform(p, skipSave) {
+    platform = p;
+    if (!skipSave) PresendPresets.set(TOOL_ID, { platform: p, customLimit: customLimit.value });
+    [btnTwitter, btnLinkedIn, btnMastodon, btnCustom].forEach(b => b.classList.add('ghost'));
+    if (p === 'twitter') { btnTwitter.classList.remove('ghost'); limit = LIMITS.twitter; customLimit.style.display = 'none'; }
+    if (p === 'linkedin') { btnLinkedIn.classList.remove('ghost'); limit = LIMITS.linkedin; customLimit.style.display = 'none'; }
+    if (p === 'mastodon') { btnMastodon.classList.remove('ghost'); limit = LIMITS.mastodon; customLimit.style.display = 'none'; }
+    if (p === 'custom') { btnCustom.classList.remove('ghost'); customLimit.style.display = 'inline-block'; limit = parseInt(customLimit.value) || 500; }
+  }
+
+  function splitText(text, maxLen) {
+    const sentences = text.match(/[^.!?]+[.!?]+[\s"]*/g) || [text];
+    const posts = [];
+    let current = '';
+    sentences.forEach(s => {
+      s = s.trim();
+      if (!s) return;
+      const test = current ? current + ' ' + s : s;
+      if (test.length <= maxLen) {
+        current = test;
+      } else {
+        if (current) posts.push(current);
+        current = s;
+        if (current.length > maxLen) {
+          while (current.length > maxLen) {
+            let cut = current.lastIndexOf(' ', maxLen);
+            if (cut < maxLen * 0.5) cut = maxLen;
+            posts.push(current.slice(0, cut).trim());
+            current = current.slice(cut).trim();
+          }
+        }
+      }
+    });
+    if (current) posts.push(current);
+    return posts;
+  }
+
+  splitBtn.addEventListener('click', () => {
+    clearError();
+    const text = inputText.value.trim();
+    if (!text) { showError('Paste some text to split.'); return; }
+    if (platform === 'custom') limit = parseInt(customLimit.value) || 500;
+
+    const posts = splitText(text, limit);
+    threadOutput.innerHTML = '';
+    posts.forEach((post, i) => {
+      const div = document.createElement('div');
+      div.className = 'thread-post' + (post.length > limit ? ' over' : '');
+      div.innerHTML = '<span class="num">' + (i+1) + '/' + posts.length + '</span><div class="content">' + escapeHtml(post) + '</div><div class="count">' + post.length + '/' + limit + ' chars</div>';
+      threadOutput.appendChild(div);
+    });
+    result.classList.add('visible');
+    copyAllBtn.disabled = false;
+  });
+
+  copyAllBtn.addEventListener('click', async () => {
+    const posts = Array.from(threadOutput.querySelectorAll('.content')).map(d => d.textContent);
+    const text = posts.map((p, i) => (i+1) + '/' + posts.length + '\n' + p).join('\n\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      copyAllBtn.textContent = 'Copied!';
+      setTimeout(() => copyAllBtn.textContent = 'Copy all', 2000);
+    } catch (e) { showError('Could not copy to clipboard.'); }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    inputText.value = '';
+    threadOutput.innerHTML = '';
+    result.classList.remove('visible');
+    copyAllBtn.disabled = true;
+    clearError();
+  });
+
+  (async function restorePreset() {
+    try {
+      const saved = await PresendPresets.get(TOOL_ID);
+      if (saved && saved.platform) {
+        if (saved.customLimit != null) customLimit.value = saved.customLimit;
+        setPlatform(saved.platform, true);
+      }
+    } catch (e) { /* no saved preset, ignore */ }
+  })();
+
+  btnTwitter.addEventListener('click', () => setPlatform('twitter'));
+  btnLinkedIn.addEventListener('click', () => setPlatform('linkedin'));
+  btnMastodon.addEventListener('click', () => setPlatform('mastodon'));
+  btnCustom.addEventListener('click', () => setPlatform('custom'));
+  customLimit.addEventListener('change', () => { if (platform === 'custom') PresendPresets.set(TOOL_ID, { platform, customLimit: customLimit.value }); });
+
+  function escapeHtml(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Thread Splitter",
+  "url": "https://presend.pages.dev/tools/thread-splitter",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Split long text into social media threads entirely client-side."
+}
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'thread-splitter' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'thread-splitter' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+</body>
+</html>

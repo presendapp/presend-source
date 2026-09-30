@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Comment nettoyer les URLs avant de les partager sur les réseaux sociaux — Presend">
+<meta property="og:description" content="Supprimez les paramètres de suivi UTM, fbclid, gclid et autres avant de partager vos liens. Gardez des liens propres et confidentiels.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-clean-urls-for-sharing">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Comment nettoyer les URLs avant de les partager — Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Supprimez les paramètres de suivi UTM, fbclid, gclid et autres avant de partager vos liens. Gardez des liens propres et confidentiels.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/fr/guides/how-to-clean-urls-for-sharing" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Comment nettoyer les URLs avant de les partager sur les réseaux sociaux — Presend">
+<meta name="twitter:description" content="Remove UTM, fbclid, gclid and other tracking parameters from links before sharing them. Keep your links clean and private.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Comment nettoyer les URLs avant de les partager sur les réseaux sociaux",
+  "description": "Remove UTM, fbclid, gclid and other tracking parameters from links before sharing them. Keep your links clean and private.",
+  "url": "https://presend.pages.dev/guides/how-to-clean-urls-for-sharing",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Outils gratuits basés sur le navigateur pour nettoyer, compresser, convertir et vérifier vos fichiers avant de les partager. Rien n'est jamais téléchargé."
+}</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Comment nettoyer les URLs avant de les partager sur les réseaux sociaux",
+  "description": "Remove UTM, fbclid, gclid and other tracking parameters from links before sharing them. Keep your links clean and private.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Identify tracking parameters",
+      "text": "Look for utm_source, utm_medium, fbclid, gclid and other tracking strings appended to URLs.",
+      "url": "https://presend.pages.dev/guides/how-to-clean-urls-for-sharing#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Understand why they matter",
+      "text": "These parameters track who clicked what, leak your browsing context, and make links unnecessarily long.",
+      "url": "https://presend.pages.dev/guides/how-to-clean-urls-for-sharing#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Use the URL Cleaner",
+      "text": "Paste the messy link into the URL Cleaner. It removes 50+ known tracking parameters instantly.",
+      "url": "https://presend.pages.dev/guides/how-to-clean-urls-for-sharing#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Copy and share the clean link",
+      "text": "Review what was removed, then copy the clean URL and share it anywhere without the tracking baggage.",
+      "url": "https://presend.pages.dev/guides/how-to-clean-urls-for-sharing#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-clean-urls-for-sharing" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="fr_FR" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://presend.pages.dev/fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://presend.pages.dev/fr/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Comment nettoyer les URLs avant de les partager",
+      "item": "https://presend.pages.dev/fr/guides/how-to-clean-urls-for-sharing"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/fr/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/fr/'>All tools</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/fr/'>← Back</a>
+  <article>
+    <h1>Comment nettoyer les URLs avant de les partager</h1>
+    <p class="lede">Les liens copiés depuis les réseaux sociaux, les newsletters ou les publicités sont souvent remplis de paramètres de traçage qui indiquent à la plateforme du destinataire d'où vient le lien. Voici comment les retirer.</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Que sont les paramètres de traçage ?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Les tags UTM (utm_source, utm_medium, utm_campaign), les identifiants de clic Facebook (fbclid), les identifiants de clic Google (gclid) et des dizaines d'autres paramètres sont ajoutés aux URLs pour tracer qui a cliqué sur quoi. Ils rendent les liens longs, laids et intrusifs.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Pourquoi les retirer ?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Les liens propres ont l'air plus professionnels, ne divulguent pas votre contexte de navigation et ne casseront pas si le service de traçage change. Ils sont aussi plus courts et plus faciles à partager dans des messages avec une limite de caractères.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Comment nettoyer une URL</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Collez le lien bordélique dans notre <a href='/fr/tools/url-cleaner'>outil de nettoyage d'URL</a>. Il détecte et supprime automatiquement plus de 50 paramètres de traçage connus tout en préservant la destination réelle. Rien n'est envoyé à aucun serveur.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Cela affecte-t-il les liens d'affiliation ?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Si vous avez besoin de conserver certains paramètres (comme les identifiants d'affiliation), vous pouvez examiner ce qui a été retiré avant de copier le lien propre. L'outil vous montre exactement ce qu'il a supprimé.</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — outils gratuits dans le navigateur. Fonctionne localement. Pas de compte. Seulement un comptage anonyme des visites. <a href="/fr/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Que sont les paramètres de traçage ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les paramètres de traçage comme UTM, fbclid et gclid sont ajoutés par les plateformes marketing pour surveiller d'où viennent les clics. Ils peuvent révéler vos habitudes de navigation et rendre les liens désordonnés lors du partage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pourquoi les retirer ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Supprimer les paramètres de traçage protège votre vie privée en empêchant les plateformes de vous suivre sur le web. Cela rend aussi les liens plus propres et professionnels."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment nettoyer une URL",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collez simplement votre URL dans notre outil et cliquez sur nettoyer. L'outil supprime automatiquement tous les paramètres de traçage connus tout en préservant la fonctionnalité du lien principal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cela affecte-t-il les liens d'affiliation ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non — les codes de suivi d'affiliation intégrés dans le chemin de l'URL sont conservés. Seuls les paramètres de traçage inutiles sont supprimés."
+      }
+    }
+  ]
+}
+</script>
+<!--refresh-v2-->
+</body>
+</html>

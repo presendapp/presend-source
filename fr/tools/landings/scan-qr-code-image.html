@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment scanner un code QR à partir d'une image — Guide Presend</title>
+<meta name="description" content="Apprenez à décoder les codes QR depuis n'importe quelle image ou capture d'écran sans installer d'application. Fonctionne entièrement dans votre navigateur, aucun téléversement nécessaire.">
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/landings/scan-qr-code-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Scan a QR Code from an Image",
+  "description": "Step-by-step guide to decoding QR codes from uploaded images or camera using Presend's free browser-based scanner.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/scan-qr-code-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Présenter</a>
+  <a class='nav-link' href='/'>Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/qr-code-scanner'>← Scanner de codes QR</a>
+  <article>
+    <h1>Comment scanner un code QR à partir d'une image</h1>
+    <p class="lede">Vous avez reçu un code QR dans un message, un e-mail ou une capture d'écran ? Pas besoin d'installer une application de scanner distincte. Voici comment le décoder instantanément dans votre navigateur.</p>
+
+    <h2>Pourquoi scanner les codes QR à partir d'images ?</h2>
+    <p>La plupart des gens considèrent les codes QR comme quelque chose que vous scannez avec votre appareil photo dans le monde réel. Mais de plus en plus, les codes QR apparaissent dans des contextes numériques : captures d’écran, PDF, e-mails, publications sur les réseaux sociaux et sites Web. Lorsque vous ne pouvez pas scanner physiquement un code – ou lorsque le code est sur l'écran de votre ordinateur – vous avez besoin d'un moyen de le décoder à partir d'un fichier image.</p>
+
+    <h2>Scénarios courants</h2>
+    <ul>
+      <li><strong>Captures d'écran</strong>— Un ami vous a envoyé un mot de passe WiFi sous forme de capture d'écran du code QR</li>
+      <li><strong>PDF</strong>— Billets d'événement ou cartes d'embarquement avec codes QR intégrés</li>
+      <li><strong>E-mails</strong>— Codes de sauvegarde d'authentification à deux facteurs ou codes QR de vérification</li>
+      <li><strong>Réseaux sociaux</strong>— Histoires Instagram ou publications LinkedIn avec codes QR</li>
+      <li><strong>Sites Web</strong>— Liens de téléchargement ou redirections de l'App Store affichés sous forme de codes QR</li>
+    </ul>
+
+    <h2>Comment fonctionne le scanner de Presend</h2>
+    <p>Utilisations actuelles<a href="https://github.com/cozmo/jsQR" target="_blank" rel="noopener">jsQR</a>, une bibliothèque de décodage de codes QR JavaScript pure. L'ensemble du processus se déroule dans votre navigateur :</p>
+    <ol>
+      <li>Vous téléchargez une image ou autorisez l'accès à l'appareil photo</li>
+      <li>jsQR analyse les données des pixels de l'image pour localiser le modèle de code QR</li>
+      <li>Le texte décodé (URL, identifiants WiFi, etc.) s'affiche instantanément</li>
+    </ol>
+    <p><strong>Votre image n'est jamais téléchargée sur un serveur.</strong>Ceci est crucial pour les codes QR sensibles contenant des mots de passe WiFi privés, des jetons d'authentification ou des informations personnelles.</p>
+
+    <h2>Guide étape par étape</h2>
+    <ol>
+      <li><strong>Ouvrez le scanner</strong>— Aller à<a href="/fr/tools/qr-code-scanner">Scanner de codes QR</a></li>
+      <li><strong>Télécharger ou utiliser l'appareil photo</strong>— Faites glisser et déposez une image, cliquez pour sélectionner un fichier ou cliquez sur "Utiliser l'appareil photo" pour numériser en temps réel</li>
+      <li><strong>Obtenez le résultat</strong>— Le texte décodé apparaît instantanément sous l'image</li>
+      <li><strong>Copier ou ouvrir</strong>— Cliquez pour copier le texte ou ouvrir directement les URL</li>
+    </ol>
+
+    <h2>Conseils pour une meilleure numérisation</h2>
+    <ul>
+      <li>Utilisez des images haute résolution : les images floues ou fortement compressées risquent de ne pas être décodées.</li>
+      <li>Assurez-vous que le code QR n'est pas tronqué ou partiellement masqué</li>
+      <li>Un bon éclairage aide lors de l'utilisation de l'option caméra</li>
+      <li>Si une méthode échoue (téléchargement ou caméra), essayez l'autre</li>
+    </ul>
+
+    <h2>Questions de confidentialité</h2>
+    <p>De nombreuses applications de scanner QR téléchargent vos codes numérisés sur leurs serveurs à des fins d'analyse ou de publicité. Certains contiennent même des logiciels malveillants. Le scanner de Presend est complètement ouvert : le code se trouve directement dans votre navigateur et vos données ne quittent jamais votre appareil. Cela permet de scanner en toute sécurité des codes sensibles tels que :</p>
+    <ul>
+      <li>Adresses des portefeuilles de crypto-monnaie</li>
+      <li>Réseaux WiFi privés</li>
+      <li>Liens internes à l'entreprise</li>
+      <li>Codes de configuration de l'authentification à deux facteurs</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/fr/tools/qr-code-scanner">Ouvrir le scanner de code QR →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – outils gratuits basés sur un navigateur.<a href="/about">À propos</a> · <a href="/privacy">Confidentialité</a> <a href="/fr/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /embed
+Disallow: /admin
+Disallow: /*/embed
+Disallow: /*/admin
+Disallow: /.backup-seo-20260731/
+
+Sitemap: https://presend.pages.dev/sitemap.xml

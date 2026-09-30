@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="Video Compressor — Presend"/>
+  <meta property="og:description" content="Compress MP4 and MOV videos to reduce file size without leaving your browser. Powered by FFmpeg.wasm."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://presend.pages.dev/es/tools/video-compressor"/>
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=Video+Compressor"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+<title>Comprime vídeos sin cargarlos — Gratis en línea | presentar</title>
+<meta name="robots" content="index, follow"/>
+  <meta name="description" content="Shrink MP4 and MOV file sizes with adjustable quality. Funciona completamente en tu navegador usando FFmpeg.wasm. Tu vídeo nunca abandona tu dispositivo."/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/es/tools/video-compressor"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Video Compressor — Presend"/>
+<meta name="twitter:description" content="Compress MP4 and MOV videos to reduce file size without leaving your browser. Powered by FFmpeg.wasm."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Video Compressor",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Compress MP4 and MOV videos with adjustable CRF quality. Funciona localmente vía FFmpeg.wasm. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/es/tools/video-compressor"
+}
+</script>
+<!--seo-app-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Video Compressor","item":"https://presend.pages.dev/es/tools/video-compressor"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nada se sube nunca."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿La compresión reducirá la calidad del vídeo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La herramienta utiliza codificación CRF (Constant Rate Factor) que equilibra de forma inteligente el tamaño y la calidad del archivo. Puede ajustar el control deslizante de calidad: valores más bajos = mejor calidad pero archivos más grandes, valores más altos = archivos más pequeños con cierta pérdida de calidad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué formatos de vídeo son compatibles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La herramienta admite archivos MP4, MOV, AVI, MKV, WebM y FLV. La salida es MP4 (H.264) para máxima compatibilidad en todos los dispositivos y plataformas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Existe un límite de tamaño de archivo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No hay límite artificial. Sin embargo, los archivos muy grandes (más de 2 GB) pueden causar problemas de memoria en el navegador. La herramienta procesa videos completamente localmente usando FFmpeg.wasm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo lleva la compresión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El tiempo de compresión depende de la CPU de su dispositivo, la resolución del video y la calidad deseada. Un vídeo típico de 1 minuto de 1080p tarda entre 30 y 90 segundos en una computadora moderna."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Mi video está subido a alguna parte?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En absoluto. Todo el proceso de compresión se ejecuta localmente en su navegador utilizando FFmpeg compilado en WebAssembly. Tu vídeo nunca sale de tu dispositivo."
+      }
+    }
+  ]
+}</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Compress a Video",
+  "description": "Reduce your video's file size using FFmpeg.wasm running entirely in your browser — no upload needed.",
+  "totalTime": "PT2M",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your video", "text": "Drag and drop or click to select an MP4 or MOV file from your device.", "url": "https://presend.pages.dev/es/tools/video-compressor#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Choose quality", "text": "Adjust the CRF slider — lower for better quality, higher for smaller files. A preview helps you decide.", "url": "https://presend.pages.dev/es/tools/video-compressor#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download compressed video", "text": "Click Compress and wait for FFmpeg.wasm to process. Download the smaller file when ready.", "url": "https://presend.pages.dev/es/tools/video-compressor#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Video Compressor — Presend"/>
+<meta name="twitter:description" content="Compress MP4 and MOV videos to reduce file size without leaving your browser. Powered by FFmpeg.wasm."/>
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/video-compressor"/>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/video-compressor"/>
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/video-compressor"/>
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/video-compressor"/>
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/video-compressor"/>
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/video-compressor"/>
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/video-compressor"/>
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/video-compressor"/>
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/es/tools/video-compressor"/>
+<meta property="og:locale" content="es_ES"/>
+<style>
+.dropzone { background:var(--color-bg-raised); border:2px dashed var(--color-line); border-radius:var(--radius); padding:2rem; text-align:center; cursor:pointer; transition:border-color 0.2s; }
+.dropzone:hover, .dropzone.dragover { border-color:var(--color-accent); }
+.dropzone .primary { font-weight:500; margin-bottom:0.3rem; }
+.dropzone .secondary { font-size:0.85rem; color:var(--color-muted); }
+#fileInput { display:none; }
+.result { display:none; margin-top:1.5rem; }
+.result.visible { display:block; }
+.result-row { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+.filename { font-weight:500; }
+.meta { font-size:0.85rem; color:var(--color-muted); }
+.quality-row { display:flex; gap:1rem; align-items:center; margin:1rem 0; flex-wrap:wrap; }
+.quality-row label { font-size:0.9rem; color:var(--color-muted); }
+.quality-row input[type="range"] { flex:1; min-width:150px; }
+.quality-val { font-family:var(--font-mono); font-weight:600; min-width:3ch; }
+.progress-wrap { background:var(--color-bg-raised); border-radius:var(--radius); height:8px; overflow:hidden; margin:1rem 0; }
+.progress-bar { height:100%; background:var(--color-accent); width:0%; transition:width 0.3s; }
+.spinner { display:inline-block; width:16px; height:16px; border:2px solid var(--color-line); border-top-color:var(--color-accent); border-radius:50%; animation:spin 1s linear infinite; margin-right:0.5rem; vertical-align:middle; }
+@keyframes spin { to { transform:rotate(360deg); } }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/es/"><span class="brand-mark">●</span>presentar</a>
+  <a class="nav-link" href="/es/">Todas las herramientas</a> <a class="nav-link" href="/es/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/es/">← Volver</a>
+  <h1>Compresor de vídeo</h1>
+  <p class="lede">Reduzca los archivos MP4 y MOV antes de compartirlos. Con tecnología de FFmpeg.wasm: su video se procesa completamente en su navegador y nunca se carga.</p>
+
+  <span class="trust-badge">Tu vídeo nunca se envía a nuestros servidores.</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose a video or drop it here">
+      <p class="primary">Suelta un vídeo aquí o haz clic para elegir uno.</p>
+      <p class="secondary">.mp4 o .mov. Hasta ~500 MB dependiendo de la RAM de su dispositivo.</p>
+      <input type="file" id="fileInput" accept=".mp4,.mov,video/mp4,video/quicktime">
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div class="result" id="result">
+      <div class="result-row">
+        <div>
+          <div class="filename" id="resultName"></div>
+          <div class="meta" id="resultMeta"></div>
+        </div>
+      </div>
+
+      <div class="quality-row">
+        <label>Calidad (CRF)</label>
+        <input type="range" id="crfSlider" min="18" max="35" step="1" value="28">
+        <span class="quality-val" id="crfVal">28</span>
+        <span style="font-size:0.8rem; color:var(--color-muted);">Menor = mejor calidad, archivo más grande</span>
+      </div>
+
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      <div class="status" id="status" style="text-align:center; color:var(--color-muted); font-size:0.9rem;"></div>
+
+      <div class="btn-row" style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
+        <button class="btn" id="compressBtn" type="button"><span class="spinner" id="btnSpinner" style="display:none;"></span>Comprimir vídeo</button>
+        <a class="btn" id="downloadLink" download style="display:none;">⬇️ Descargar</a>
+        <button class="btn ghost" id="resetBtn" type="button">Comprimir otro</button>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Herramientas relacionadas</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/es/tools/image-compressor">
+        <div><h3>Compresor de imagen</h3><p>Reduce el tamaño del archivo de una foto antes de enviarla por correo electrónico o subirla.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/es/tools/video-metadata-remover">
+        <div><h3>Eliminador de metadatos de vídeo</h3><p>Elimine los datos ocultos del dispositivo y del GPS de los vídeos MP4/MOV.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+      <a class="tool-card" href="/es/tools/image-resizer">
+        <div><h3>Cambiar tamaño de imagen</h3><p>Cambie el tamaño de cualquier foto a las dimensiones exactas.</p></div>
+        <span class="go">Abrir →</span>
+      </a>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Más información</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/es/tools/landings/compress-video-online">Lea nuestra guía detallada sobre esta herramienta</a>
+  </p>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">¿Cómo funciona FFmpeg.wasm?</h2>
+  <p style="color:var(--var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener">FFmpeg.wasm</a>es un puerto WebAssembly de la herramienta de procesamiento de video FFmpeg estándar de la industria. Se ejecuta completamente dentro del entorno limitado de su navegador: sin servidor, sin nube, sin carga. Su archivo de video se carga en la memoria del navegador, el motor WASM lo procesa y el resultado se ofrece como descarga. Los únicos datos que salen de su dispositivo son el binario FFmpeg.wasm de ~25 MB obtenido de la CDN en la primera carga (almacenado en caché después). Esto lo hace ideal para comprimir videos confidenciales, secuencias patentadas o cualquier contenido que no desee confiar a un servicio en línea.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — herramientas gratuitas basadas en navegador. <a href="/es/about">Acerca de</a> · <a href="/es/privacy">Privacidad</a> · <a href="/es/api">API</a></p>
+</footer>
+
+<script type="module">
+import { FFmpeg } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js';
+import { fetchFile } from 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js';
+
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const errorMsg = document.getElementById('errorMsg');
+const result = document.getElementById('result');
+const resultName = document.getElementById('resultName');
+const resultMeta = document.getElementById('resultMeta');
+const crfSlider = document.getElementById('crfSlider');
+const crfVal = document.getElementById('crfVal');
+const compressBtn = document.getElementById('compressBtn');
+const btnSpinner = document.getElementById('btnSpinner');
+const downloadLink = document.getElementById('downloadLink');
+const resetBtn = document.getElementById('resetBtn');
+const progressBar = document.getElementById('progressBar');
+const status = document.getElementById('status');
+
+const MAX_SIZE = 500 * 1024 * 1024; // 500MB soft limit
+
+let currentFile = null;
+let ffmpeg = null;
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.classList.add('visible');
+}
+function clearError() {
+  errorMsg.textContent = '';
+  errorMsg.classList.remove('visible');
+}
+function humanSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+async function initFFmpeg() {
+  if (ffmpeg) return ffmpeg;
+  ffmpeg = new FFmpeg();
+  ffmpeg.on('log', ({ message }) => {
+    // console.log(message);
+  });
+  ffmpeg.on('progress', ({ progress }) => {
+    const pct = Math.round(progress * 100);
+    progressBar.style.width = pct + '%';
+    status.textContent = `Processing... ${pct}%`;
+  });
+  await ffmpeg.load({
+    coreURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js',
+    wasmURL: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm',
+  });
+  return ffmpeg;
+}
+
+function handleFile(file) {
+  clearError();
+  result.classList.remove('visible');
+  downloadLink.style.display = 'none';
+  compressBtn.style.display = 'inline-block';
+  progressBar.style.width = '0%';
+  status.textContent = '';
+  if (!file) return;
+
+  const ext = (file.name.match(/\.[^.]+$/) || [''])[0].toLowerCase();
+  if (!['.mp4', '.mov'].includes(ext)) {
+    showError('Please choose an MP4 or MOV file.');
+    return;
+  }
+  if (file.size > MAX_SIZE) {
+    showError('This file is larger than 500MB. Try a smaller video or use a desktop app.');
+    return;
+  }
+
+  currentFile = file;
+  resultName.textContent = file.name;
+  resultMeta.textContent = humanSize(file.size) + ' — CRF ' + crfSlider.value;
+  result.classList.add('visible');
+}
+
+dropzone.addEventListener('click', () => fileInput.click());
+dropzone.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+});
+fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+['dragenter', 'dragover'].forEach(evt =>
+  dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+);
+['dragleave', 'drop'].forEach(evt =>
+  dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+);
+dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+crfSlider.addEventListener('input', () => {
+  crfVal.textContent = crfSlider.value;
+  if (currentFile) resultMeta.textContent = humanSize(currentFile.size) + ' — CRF ' + crfSlider.value;
+});
+
+compressBtn.addEventListener('click', async () => {
+  if (!currentFile) return;
+  compressBtn.disabled = true;
+  btnSpinner.style.display = 'inline-block';
+  status.textContent = 'Loading FFmpeg.wasm (first time only)...';
+
+  try {
+    const ff = await initFFmpeg();
+    const inputName = 'input' + (currentFile.name.match(/\.[^.]+$/) || ['.mp4'])[0];
+    const outputName = 'output.mp4';
+
+    status.textContent = 'Reading file...';
+    await ffmpeg.writeFile(inputName, await fetchFile(currentFile));
+
+    const crf = crfSlider.value;
+    status.textContent = 'Compressing...';
+    await ffmpeg.exec([
+      '-i', inputName,
+      '-c:v', 'libx264',
+      '-crf', crf,
+      '-preset', 'fast',
+      '-c:a', 'aac',
+      '-b:a', '128k',
+      '-movflags', '+faststart',
+      '-y', outputName
+    ]);
+
+    status.textContent = 'Preparing download...';
+    const data = await ffmpeg.readFile(outputName);
+    const blob = new Blob([data.buffer], { type: 'video/mp4' });
+    const url = URL.createObjectURL(blob);
+
+    downloadLink.href = url;
+    downloadLink.download = currentFile.name.replace(/\.[^.]+$/, '-compressed.mp4');
+    downloadLink.style.display = 'inline-block';
+    compressBtn.style.display = 'none';
+
+    const saved = currentFile.size - blob.size;
+    const savedPct = currentFile.size > 0 ? Math.round((saved / currentFile.size) * 100) : 0;
+    resultMeta.textContent = humanSize(currentFile.size) + ' → ' + humanSize(blob.size) + ' (' + (savedPct > 0 ? '-' : '+') + Math.abs(savedPct) + '%)' + ' — CRF ' + crf;
+    status.textContent = 'Done!';
+
+    // Cleanup
+    await ffmpeg.deleteFile(inputName);
+    await ffmpeg.deleteFile(outputName);
+  } catch (err) {
+    console.error(err);
+    showError('Compression failed: ' + (err.message || 'Unknown error. Try a smaller file or different browser.'));
+    status.textContent = '';
+  } finally {
+    compressBtn.disabled = false;
+    btnSpinner.style.display = 'none';
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  fileInput.value = '';
+  currentFile = null;
+  result.classList.remove('visible');
+  downloadLink.style.display = 'none';
+  compressBtn.style.display = 'inline-block';
+  progressBar.style.width = '0%';
+  status.textContent = '';
+  clearError();
+});
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'video-compressor' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'video-compressor' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

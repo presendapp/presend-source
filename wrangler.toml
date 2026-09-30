@@ -1,0 +1,17 @@
+name = "presend"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "."
+
+# Liaison KV de production pour l'analytics/rate-limiting best-effort.
+# L'ID de namespace n'est pas un secret -- sans jeton API du compte
+# Cloudflare, personne ne peut lire les donnees meme en le connaissant.
+# Les fonctions de l'API traitent gracieusement l'absence de ce binding
+# en local (limitation de debit simplement ignoree, jamais de plantage).
+[[kv_namespaces]]
+binding = "PRESEND_ANALYTICS"
+id = "a7ea802fd79f40b7a50daefd97170368"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "presend-feedback"
+database_id = "9a6232b4-74a4-4071-898f-bd36b23dba54"

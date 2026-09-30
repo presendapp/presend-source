@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="So überprüfen Sie, ob eine heruntergeladene Datei sicher ist — Presend">
+<meta property="og:description" content="Erfahren Sie, wie Sie die SHA-256-Prüfsumme einer Datei überprüfen, um sicherzustellen, dass sie nicht manipuliert, beschädigt oder durch Malware ersetzt wurde.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Überprüfen, ob eine heruntergeladene Datei sicher ist — Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Erfahren Sie, wie Sie die SHA-256-Prüfsumme einer Datei überprüfen, um sicherzustellen, dass sie nicht manipuliert, beschädigt oder durch Malware ersetzt wurde.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="So überprüfen Sie, ob eine heruntergeladene Datei sicher ist — Presend">
+<meta name="twitter:description" content="Learn how to check a file">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "So überprüfen Sie, ob eine heruntergeladene Datei sicher ist",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Kostenlose browserbasierte Tools zum Bereinigen, Komprimieren, Konvertieren und Überprüfen Ihrer Dateien, bevor Sie sie teilen. Es wird nie etwas hochgeladen."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "So überprüfen Sie, ob eine heruntergeladene Datei sicher ist",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Understand what a checksum is",
+      "text": "A checksum is a unique fingerprint of a file's contents. If even one byte changes, the checksum changes completely.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Find the expected hash",
+      "text": "The software publisher usually lists the expected SHA-256 hash on their download page.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Calculate the hash locally",
+      "text": "Use the File Hash Checker to compute SHA-256, SHA-1 and SHA-512 entirely in your browser.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Compare and decide",
+      "text": "If the calculated hash matches the expected hash exactly, the file is safe. If not, delete it and re-download from the official source.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="de_DE" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://presend.pages.dev/de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Anleitungen",
+      "item": "https://presend.pages.dev/de/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Überprüfen, ob eine heruntergeladene Datei sicher ist",
+      "item": "https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/de/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/de/'>All tools</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/de/'>← Back</a>
+  <article>
+    <h1>Überprüfen, ob eine heruntergeladene Datei sicher ist</h1>
+    <p class="lede">Wenn Sie Software, ein Dokument oder eine beliebige Datei aus dem Internet herunterladen, wie wissen Sie, dass sie echt ist? Eine der zuverlässigsten Methoden ist die Überprüfung der kryptografischen Prüfsumme.</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Was ist eine Prüfsumme?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Eine Prüfsumme ist eine eindeutige Zeichenkette, die aus dem Inhalt einer Datei generiert wird. Wenn sich auch nur ein einziges Byte ändert — durch Beschädigung oder böswillige Manipulation — ändert sich die Prüfsumme vollständig. SHA-256 ist der Industriestandard für diese Überprüfung.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">So überprüfen Sie SHA-256</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Der Herausgeber der Datei stellt normalerweise den erwarteten SHA-256-Hash bereit. Sie berechnen den Hash der heruntergeladenen Datei und vergleichen die beiden. Wenn sie exakt übereinstimmen, ist die Datei intakt. Nutzen Sie unseren <a href='/de/tools/file-hash-checker'>Datei-Hash-Prüfer</a>, um SHA-256, SHA-1 und SHA-512 sofort in Ihrem Browser zu berechnen.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Warnsignale, auf die Sie achten sollten</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Wenn die Prüfsumme nicht übereinstimmt, öffnen Sie die Datei nicht. Löschen Sie sie und laden Sie sie erneut von der offiziellen Quelle herunter. Seien Sie besonders vorsichtig mit ausführbaren Dateien, PDFs von unbekannten Absendern und Dateien aus Peer-to-Peer-Netzwerken.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Warum im Browser?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Unser Tool läuft vollständig auf Ihrem Gerät. Ihre Datei wird niemals auf einen Server hochgeladen, was entscheidend ist, wenn Sie mit sensiblen oder vertraulichen Downloads zu tun haben.</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — kostenlose browserbasierte Tools. Läuft lokal. Kein Konto. Nur anonyme Besuchszählung. <a href="/de/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was ist eine Prüfsumme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eine Prüfsumme ist ein eindeutiger Fingerabdruck, der aus dem Inhalt einer Datei generiert wird. Wenn sich auch nur ein Byte ändert, ändert sich der Hash vollständig — ideal zur Überprüfung der Dateiintegrität."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "So überprüfen Sie SHA-256",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fügen Sie die Datei und den erwarteten Hash in unser Tool ein. Das Tool berechnet den SHA-256-Hash Ihrer Datei und vergleicht ihn sofort mit dem bereitgestellten Hash."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Warnsignale, auf die Sie achten sollten",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wenn die Hashes nicht übereinstimmen, kann die Datei beschädigt oder manipuliert sein. Führen Sie niemals ausführbare Dateien aus nicht vertrauenswürdigen Quellen ohne Überprüfung aus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Warum im Browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unser Tool läuft vollständig clientseitig — Ihre Dateien verlassen niemals Ihr Gerät. Das ist sicherer als das Hochladen zu Online-Hash-Checkern, die Ihre Daten speichern könnten."
+      }
+    }
+  ]
+}
+</script>
+<!--refresh-v2-->
+</body>
+</html>

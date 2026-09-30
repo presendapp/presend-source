@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Free IP Reputation Check — Presend">
+<meta property="og:description" content="Check an IPv4 against a curated list of known spam/hijacker-controlled netblocks. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/ip-reputation">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=IP+Reputation">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Free IP Reputation Check API — No Signup, No Key | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Check any IPv4 address against a curated list of netblocks known to be entirely spam/hijacker-controlled. Free, no signup, no API key.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/ip-reputation" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Free IP Reputation Check — Presend">
+<meta name="twitter:description" content="Check an IPv4 against a curated list of known spam/hijacker-controlled netblocks. Free, no signup.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "IP Reputation Check",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Checks an IPv4 address against a curated list of netblocks known to be entirely spam/hijacker-controlled. Free API, no signup, no API key.",
+  "url": "https://presend.pages.dev/tools/ip-reputation"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"IP Reputation Check","item":"https://presend.pages.dev/tools/ip-reputation"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What is Spamhaus DROP?","acceptedAnswer":{"@type":"Answer","text":"Don't Route Or Peer -- a free, public list maintained by The Spamhaus Project of netblocks known to be entirely controlled by spammers or hijackers. It's used by ISPs and firewalls worldwide."}},
+  {"@type":"Question","name":"Why is this free when other IP reputation services require signup?","acceptedAnswer":{"@type":"Answer","text":"Every dedicated IP reputation/abuse service we researched (AbuseIPDB, Abstract, Opportify, and others) requires account signup and an API key even on their free tier. This tool uses a genuinely public, keyless data source instead."}},
+  {"@type":"Question","name":"Does a clean result mean the IP is safe?","acceptedAnswer":{"@type":"Answer","text":"No. This checks one specific list, not a full reputation score. A clean result means the IP is not on Spamhaus DROP -- it does not guarantee the IP has no other history of abuse."}},
+  {"@type":"Question","name":"Can I use this in my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. This page calls the same free, public API endpoint you can call directly: GET /api/ip-reputation?ip=1.2.3.4. No signup or API key required."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check an IP Address's Reputation",
+  "description": "Check any IPv4 address against a curated blocklist, for free.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Type an IPv4 address", "text": "Enter any IPv4 address into the input field.", "url": "https://presend.pages.dev/tools/ip-reputation#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Get real-time results", "text": "The tool checks the address against a curated blocklist live and shows whether it's listed.", "url": "https://presend.pages.dev/tools/ip-reputation#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Reuse the API call", "text": "Copy the exact API call shown below the results to use the same check in your own code, for free.", "url": "https://presend.pages.dev/tools/ip-reputation#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/ip-reputation" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/ip-reputation" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>IP Reputation Check</h1>
+  <p class="lede">Check any IPv4 address against a curated list of netblocks known to be entirely spam/hijacker-controlled. Free, live, no signup.</p>
+
+  <span class="trust-badge">Live check — nothing stored</span>
+
+  <div style="margin-top: 2rem;">
+    <label for="ipInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">IPv4 address</label>
+    <input type="text" id="ipInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="1.2.3.4" autocomplete="off" spellcheck="false" value="8.8.8.8">
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+    <div id="loadingBox" style="display:none;margin-top:1rem;color:var(--color-muted);font-size:0.9rem;">Checking…</div>
+
+    <div id="resultBox" style="margin-top:1.5rem;display:none;">
+      <div id="summaryBox" style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);"></div>
+
+      <div style="margin-top:1rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">API call used</strong>
+        <pre id="apiCallDisplay" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is Spamhaus DROP?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Don't Route Or Peer -- a free, public list maintained by The Spamhaus Project of netblocks known to be entirely controlled by spammers or hijackers. It's used by ISPs and firewalls worldwide.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why is this free when other IP reputation services require signup?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Every dedicated IP reputation/abuse service we researched (AbuseIPDB, Abstract, Opportify, and others) requires account signup and an API key even on their free tier. This tool uses a genuinely public, keyless data source instead.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Does a clean result mean the IP is safe?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. This checks one specific list, not a full reputation score. A clean result means the IP is not on Spamhaus DROP -- it does not guarantee the IP has no other history of abuse.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I use this in my own code?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. This page calls the same free, public API endpoint you can call directly: GET /api/ip-reputation?ip=1.2.3.4. No signup or API key required.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/dns-lookup'>
+        <div><h3>DNS Lookup</h3><p>A, AAAA, MX, TXT, NS records for a domain.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/redirect-trace'>
+        <div><h3>Redirect Chain Tracer</h3><p>See every hop a URL takes before landing.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/whois-lookup'>
+        <div><h3>WHOIS / Domain Age Lookup</h3><p>Registrar, age, and expiration via RDAP.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('ipInput');
+  const errorBox = document.getElementById('errorBox');
+  const loadingBox = document.getElementById('loadingBox');
+  const resultBox = document.getElementById('resultBox');
+  const summaryBox = document.getElementById('summaryBox');
+  const apiCallDisplay = document.getElementById('apiCallDisplay');
+
+  let debounceTimer = null;
+
+  async function check(ip) {
+    const url = 'https://presend.pages.dev/api/ip-reputation?ip=' + encodeURIComponent(ip);
+    apiCallDisplay.textContent = 'GET ' + url;
+    loadingBox.style.display = 'block';
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      loadingBox.style.display = 'none';
+
+      if (!res.ok) {
+        errorBox.textContent = data.error || 'Check failed.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      if (data.listed) {
+        summaryBox.innerHTML = '<strong style="color:#8A3324;">⚠ Listed on Spamhaus DROP</strong>' +
+          '<p style="margin-top:0.5rem;color:var(--color-muted);">Matched range: <span style="font-family:var(--font-mono);">' + data.matched_range + '</span>' +
+          (data.reference ? ' (' + data.reference + ')' : '') + '</p>';
+      } else {
+        summaryBox.innerHTML = '<strong style="color:#2f6f3e;">✓ Not on Spamhaus DROP</strong>' +
+          '<p style="margin-top:0.5rem;color:var(--color-muted);">Checked against ' + (data.list_size || '~1,700') + ' known-bad netblocks.</p>';
+      }
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loadingBox.style.display = 'none';
+      errorBox.textContent = 'Could not complete the check. Try again shortly.';
+      errorBox.style.display = 'block';
+    }
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const ip = input.value.trim();
+    if (!ip) { resultBox.style.display = 'none'; errorBox.style.display = 'none'; return; }
+    debounceTimer = setTimeout(() => check(ip), 600);
+  });
+
+  check(input.value.trim());
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "IP Reputation Check",
+  "url": "https://presend.pages.dev/tools/ip-reputation",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Checks an IPv4 against a curated blocklist, calling Presend's free public API live."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'ip-reputation' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

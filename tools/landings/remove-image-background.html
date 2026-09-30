@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/landings/remove-image-background" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/landings/remove-image-background" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Remove Image Backgrounds with AI — Presend Guide</title>
+<meta name="description" content="Learn how to remove backgrounds from photos using AI that runs in your browser. No upload, no account, no watermark. Completely private.">
+<link rel="canonical" href="https://presend.pages.dev/tools/landings/remove-image-background" />
+<link href="../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Remove Image Backgrounds with AI",
+  "description": "Complete guide to AI background removal using @imgly/background-removal running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/remove-image-background"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/background-remover'>← Background Remover</a>
+  <article>
+    <h1>How to Remove Image Backgrounds with AI</h1>
+    <p class="lede">Product photos, portraits, and marketing images look professional with clean transparent backgrounds. Here's how to do it without uploading your images to a cloud service.</p>
+
+    <h2>The privacy problem with background removal</h2>
+    <p>Services like remove.bg, Adobe Express, and Canva offer excellent background removal, but they all require uploading your image to their servers. This creates risks:</p>
+    <ul>
+      <li><strong>Data retention</strong> — Your photos may be stored indefinitely for "service improvement"</li>
+      <li><strong>Terms of service</strong> — Some platforms claim broad rights to uploaded content</li>
+      <li><strong>Data breaches</strong> — Even reputable services can be compromised</li>
+      <li><strong>Corporate espionage</strong> — Unreleased product photos or proprietary designs leaked</li>
+      <li><strong>Personal exposure</strong> — ID documents, medical images, or intimate photos exposed</li>
+    </ul>
+
+    <h2>How browser-based AI works</h2>
+    <p>Presend uses <a href="https://github.com/imgly/background-removal-js" target="_blank" rel="noopener">@imgly/background-removal</a>, a machine learning model optimized for the browser:</p>
+    <ol>
+      <li>The ONNX model (~4MB) downloads once and caches in your browser</li>
+      <li>WebGL accelerates inference on your GPU when available</li>
+      <li>The model segments the image into foreground (subject) and background</li>
+      <li>The result is rendered as a PNG with an alpha channel (transparency)</li>
+    </ol>
+    <p><strong>Zero pixels leave your device.</strong> This is fundamentally different from cloud-based alternatives.</p>
+
+    <h2>What works best</h2>
+    <p>The AI model is trained on millions of images and performs exceptionally well on:</p>
+    <ul>
+      <li><strong>Portraits</strong> — People, headshots, profile pictures</li>
+      <li><strong>Products</strong> — E-commerce items on plain or simple backgrounds</li>
+      <li><strong>Pets</strong> — Animals with clear outlines</li>
+      <li><strong>Vehicles</strong> — Cars, bikes, and objects with defined edges</li>
+    </ul>
+    <p>Challenging cases include:</p>
+    <ul>
+      <li>Very fine hair or fur against busy backgrounds</li>
+      <li>Transparent or reflective objects (glass, water)</li>
+      <li>Extremely low-resolution images</li>
+      <li>Subjects that blend into the background color</li>
+    </ul>
+
+    <h2>Use cases</h2>
+    <ul>
+      <li><strong>E-commerce</strong> — Clean product photos for Amazon, eBay, Shopify</li>
+      <li><strong>Social media</strong> — Profile pictures, stickers, memes</li>
+      <li><strong>Presentations</strong> — Professional slides without distracting backgrounds</li>
+      <li><strong>Marketing</strong> — Consistent brand imagery across channels</li>
+      <li><strong>Passport photos</strong> — White background for official documents</li>
+      <li><strong>Design work</strong> — Layer subjects into composite images</li>
+    </ul>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the tool</strong> — Go to <a href="/tools/background-remover">Background Remover</a></li>
+      <li><strong>Upload your photo</strong> — Drag and drop or select a JPG, PNG, or WebP (up to ~10MB)</li>
+      <li><strong>Wait for processing</strong> — The AI analyzes and segments your image (5–15 seconds)</li>
+      <li><strong>Compare</strong> — Side-by-side view shows original and result</li>
+      <li><strong>Download</strong> — Save as transparent PNG, ready for any use</li>
+    </ol>
+
+    <h2>Tips for best results</h2>
+    <ul>
+      <li>Use high-resolution images — the AI has more detail to work with</li>
+      <li>Good lighting and contrast help segmentation accuracy</li>
+      <li>Simple backgrounds (solid colors) produce cleaner edges than busy scenes</li>
+      <li>For hair, slightly overexposed backgrounds work better than underexposed</li>
+      <li>If the result isn't perfect, try cropping to focus on the subject</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/tools/background-remover">Open Background Remover →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

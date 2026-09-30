@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Conversor JSON ↔ CSV — Presend" property="og:title"/>
+<meta content="Converta entre JSON e CSV instantaneamente no seu navegador. Sem upload, sem servidor, 100% privado." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://presend.pages.dev/pt/tools/json-csv-converter" property="og:url"/>
+<meta content="https://presend.pages.dev/api/og?tool=JSON+↔+CSV+Converter" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<title>Conversor JSON ↔ CSV — Ferramenta online gratuita | Presend</title>
+<meta content="index, follow" name="robots"/>
+<meta content="Converta JSON para CSV ou CSV para JSON instantaneamente no seu navegador. Cole seus dados e obtenha o resultado. Sem upload, sem servidor, 100% privado e..." name="description"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/pt/tools/json-csv-converter" />
+<meta content="summary_large_image" name="twitter:card"/><meta content="JSON ↔ CSV Converter — Presend" name="twitter:title" />
+<meta content="Convert between JSON and CSV instantly in your browser. No upload, no server, 100% private." name="twitter:description" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "JSON CSV Converter",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Convert JSON to CSV and CSV to JSON locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/pt/tools/json-csv-converter"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"JSON CSV Converter","item":"https://presend.pages.dev/pt/tools/json-csv-converter"}
+  ]
+}</script>
+<!--seo-breadcrumb--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Ferramentas gratuitas baseadas no navegador para limpar, comprimir, converter e verificar seus arquivos antes de compartilhá-los. Nada é enviado para servidores."
+}
+</script><!--seo-org--><link href="/manifest.json" rel="manifest"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Can I convert CSV to JSON?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tool supports bidirectional conversion: JSON to CSV and CSV to JSON. Just paste or upload your data and select the direction."}},
+    {"@type":"Question","name":"What if my JSON is nested?","acceptedAnswer":{"@type":"Answer","text":"The tool flattens nested JSON objects using dot notation (e.g., user.name) so they fit into CSV columns. Arrays are converted to comma-separated strings."}},
+    {"@type":"Question","name":"Is my data uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All conversion happens locally in your browser. Your sensitive data never leaves your device."}},
+    {"@type":"Question","name":"What delimiter does the CSV use?","acceptedAnswer":{"@type":"Answer","text":"The output CSV uses commas by default and wraps values in quotes when necessary. It is compatible with Excel, Google Sheets, and all major spreadsheet software."}}
+]}
+</script><!--seo-faq--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Convert JSON to CSV",
+  "description": "Convert between JSON and CSV formats instantly — entirely in your browser, no upload needed.",
+  "totalTime": "PT15S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste your data", "text": "Copy and paste your JSON or CSV data into the text area. The tool auto-detects the format and validates the structure.", "url": "https://presend.pages.dev/pt/tools/json-csv-converter#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Choose conversion direction", "text": "Select JSON to CSV or CSV to JSON. For nested JSON, the tool flattens objects using dot notation for clean column names.", "url": "https://presend.pages.dev/pt/tools/json-csv-converter#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Copy or download the result", "text": "The converted data appears instantly. Copy it to your clipboard or download as a file. Paste into Excel, Google Sheets, or your database.", "url": "https://presend.pages.dev/pt/tools/json-csv-converter#step3" }
+  ]
+}</script>
+<!--seo-howto--><meta property="og:locale" content="pt_BR" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/json-csv-converter" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/json-csv-converter" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/json-csv-converter" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/json-csv-converter" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/json-csv-converter" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/json-csv-converter" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/json-csv-converter" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/json-csv-converter" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/json-csv-converter" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+<a class="brand" href="/pt/"><span class="brand-mark">●</span>Presend</a>
+<a class="nav-link" href="/pt/">Todas as ferramentas</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+<main class="wrap">
+<a class="tool-back" href="/pt/">← Voltar</a>
+<h1>Conversor JSON ↔ CSV</h1>
+<p class="lede">Converta entre os formatos JSON e CSV instantaneamente. Cole seus dados ou solte um arquivo – tudo é processado no seu dispositivo.</p>
+<span class="trust-badge">Seus dados nunca são enviados para nossos servidores</span>
+<div style="margin-top: 2rem;">
+<div style="display:flex; gap:0.5rem; margin-bottom:1rem; flex-wrap:wrap;">
+<button class="btn" id="modeJsonToCsv" type="button">JSON → CSV</button>
+<button class="btn ghost" id="shareBtn" style="margin-left:0.5rem;" type="button">🔗 Copiar link de compartilhamento</button>
+<button class="btn ghost" id="modeCsvToJson" type="button">CSV → JSON</button>
+</div>
+<label for="inputArea" id="inputLabel" style="display:block; font-weight:500; margin-bottom:0.5rem;">Cole JSON aqui</label>
+<textarea id="inputArea" placeholder='[
+  {"name": "Alice", "age": 30},
+  {"name": "Bob", "age": 25}
+]' rows="8" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; resize:vertical;"></textarea>
+<div style="margin-top:1rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+<button class="btn" id="convertBtn" type="button">Conversor</button>
+<button class="btn ghost" disabled="" id="copyBtn" type="button">Copiar resultado</button>
+<button class="btn ghost" disabled="" id="downloadBtn" type="button">Download</button>
+<button class="btn ghost" id="clearBtn" type="button">Claro</button>
+</div>
+<p class="error-msg" id="errorMsg"></p>
+<div class="result" id="result" style="margin-top:1.5rem;">
+<h2 style="font-family: var(--font-display); font-size:1.05rem; margin-bottom:0.5rem;">Resultado</h2>
+<textarea id="outputArea" readonly="" rows="10" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:0.85rem; background:var(--color-bg-raised); resize:vertical;"></textarea>
+<div id="stats" style="margin-top:0.75rem; font-size:0.85rem; color:var(--color-muted);"></div>
+</div>
+</div>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Ferramentas relacionadas</h2>
+<div class="tool-grid" style="margin-top:1rem;">
+<a class="tool-card" href="/pt/tools/text-diff">
+<div><h3>Diferença de texto</h3><p>Compare dois textos lado a lado.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/pt/tools/email-list-cleaner">
+<div><h3>Limpador de lista de e-mail</h3><p>Limpe e desduplicar listas de e-mail.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/pt/tools/word-counter">
+<div><h3>Contador de palavras</h3><p>Conte palavras, caracteres e frases.</p></div>
+<span class="go">Abrir →</span>
+</a>
+</div>
+</section>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Saber mais</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+<a href="/pt/tools/landings/convert-json-to-csv-online">Leia nosso guia detalhado sobre esta ferramenta</a>
+</p>
+<!--seo-related--></main>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Quando você precisa da conversão JSON ↔ CSV?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">JSON e CSV são os dois formatos de dados mais comuns em fluxos de trabalho modernos, mas atendem a especificidades diferentes. JSON é uma linguagem nativa de APIs, aplicativos web e bancos de dados NoSQL — ele lida com estruturas aninhadas, arrays e relacionamentos complexos. CSV é o formato universal para planilhas, Excel, Planilhas Google e sistemas corporativos legados – é plano, simples e legível por humanos. Você precisa de JSON para CSV ao exportar dados de API para análise no Excel, migrar exportações de banco de dados para partes interessadas não técnicas ou preparar dados para ferramentas de marketing por email. Você precisa de CSV para JSON ao importar dados de planilhas para um aplicativo da web, alimentar dados estruturados para uma API ou converter resultados de pesquisas para uma equipe de desenvolvedores. Nosso conversor lida com ambas as facilidades instantâneas, encontrando objetos JSON aninháveis com notação de ponto e preservando tipos de dados. Toda a conversão acontece no seu navegador – sem upload, sem servidor, sem exposição de dados. Perfeito para lidar com dados, solicitações de clientes, registros financeiros ou informações comerciais comerciais.</p>
+</section>
+<footer class="site-footer wrap">
+<p>Presend — ferramentas gratuitas baseadas no navegador. Executa localmente. Sem conta. Apenas contagem anônima de visitas. <a href="/pt/api">API</a></p>
+</footer>
+<script>
+(function () {
+  let mode = 'json-to-csv';
+
+  const inputArea = document.getElementById('inputArea');
+  const inputLabel = document.getElementById('inputLabel');
+  const outputArea = document.getElementById('outputArea');
+  const convertBtn = document.getElementById('convertBtn');
+  const copyBtn = document.getElementById('copyBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const stats = document.getElementById('stats');
+  const modeJsonToCsv = document.getElementById('modeJsonToCsv');
+  const modeCsvToJson = document.getElementById('modeCsvToJson');
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+
+  function setMode(newMode) {
+    mode = newMode;
+    if (mode === 'json-to-csv') {
+      modeJsonToCsv.classList.remove('ghost');
+      modeCsvToJson.classList.add('ghost');
+      inputLabel.textContent = 'Paste JSON here';
+      inputArea.placeholder = '[\n  {"name": "Alice", "age": 30},\n  {"name": "Bob", "age": 25}\n]';
+    } else {
+      modeCsvToJson.classList.remove('ghost');
+      modeJsonToCsv.classList.add('ghost');
+      inputLabel.textContent = 'Paste CSV here';
+      inputArea.placeholder = 'name,age\nAlice,30\nBob,25';
+    }
+    result.classList.remove('visible');
+    copyBtn.disabled = true;
+    downloadBtn.disabled = true;
+    clearError();
+  }
+
+  function escapeCsv(val) {
+    const s = String(val == null ? '' : val);
+    if (s.includes(',') || s.includes('"') || s.includes('\n') || s.includes('\r')) {
+      return '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }
+
+  function jsonToCsv(jsonText) {
+    let data;
+    try {
+      data = JSON.parse(jsonText);
+    } catch (e) {
+      throw new Error('Invalid JSON: ' + e.message);
+    }
+    if (!Array.isArray(data)) {
+      if (typeof data === 'object' && data !== null) data = [data];
+      else throw new Error('JSON must be an array of objects or a single object.');
+    }
+    if (data.length === 0) return { csv: '', rows: 0, cols: 0 };
+    const keys = Array.from(new Set(data.flatMap(Object.keys)));
+    const lines = [keys.map(escapeCsv).join(',')];
+    data.forEach(row => {
+      lines.push(keys.map(k => escapeCsv(row[k])).join(','));
+    });
+    return { csv: lines.join('\n'), rows: data.length, cols: keys.length };
+  }
+
+  function csvToJson(csvText) {
+    const lines = csvText.trim().split(/\r?\n/);
+    if (lines.length < 2) throw new Error('CSV needs at least a header row and one data row.');
+    const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, '').replace(/""/g, '"'));
+    const rows = [];
+    for (let i = 1; i < lines.length; i++) {
+      if (!lines[i].trim()) continue;
+      const values = [];
+      let current = '';
+      let inQuotes = false;
+      for (let j = 0; j < lines[i].length; j++) {
+        const ch = lines[i][j];
+        if (ch === '"') {
+          if (inQuotes && lines[i][j+1] === '"') { current += '"'; j++; }
+          else { inQuotes = !inQuotes; }
+        } else if (ch === ',' && !inQuotes) {
+          values.push(current.trim());
+          current = '';
+        } else {
+          current += ch;
+        }
+      }
+      values.push(current.trim());
+      const obj = {};
+      headers.forEach((h, idx) => { obj[h] = values[idx] !== undefined ? values[idx].replace(/^"|"$/g, '').replace(/""/g, '"') : ''; });
+      rows.push(obj);
+    }
+    return { json: JSON.stringify(rows, null, 2), rows: rows.length, cols: headers.length };
+  }
+
+  convertBtn.addEventListener('click', () => {
+    clearError();
+    const text = inputArea.value.trim();
+    if (!text) { showError('Paste some data to convert.'); return; }
+    try {
+      if (mode === 'json-to-csv') {
+        const res = jsonToCsv(text);
+        outputArea.value = res.csv;
+        stats.textContent = res.rows + ' row' + (res.rows !== 1 ? 's' : '') + ' · ' + res.cols + ' column' + (res.cols !== 1 ? 's' : '');
+      } else {
+        const res = csvToJson(text);
+        outputArea.value = res.json;
+        stats.textContent = res.rows + ' row' + (res.rows !== 1 ? 's' : '') + ' · ' + res.cols + ' column' + (res.cols !== 1 ? 's' : '');
+      }
+      result.classList.add('visible');
+      copyBtn.disabled = false;
+      downloadBtn.disabled = false;
+    } catch (e) {
+      showError(e.message);
+      result.classList.remove('visible');
+    }
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(outputArea.value);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => copyBtn.textContent = 'Copy result', 2000);
+    } catch (e) { showError('Could not copy to clipboard.'); }
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    const blob = new Blob([outputArea.value], { type: mode === 'json-to-csv' ? 'text/csv' : 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = mode === 'json-to-csv' ? 'converted.csv' : 'converted.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    inputArea.value = '';
+    outputArea.value = '';
+    result.classList.remove('visible');
+    copyBtn.disabled = true;
+    downloadBtn.disabled = true;
+    clearError();
+  });
+
+  modeJsonToCsv.addEventListener('click', () => setMode('json-to-csv'));
+  modeCsvToJson.addEventListener('click', () => setMode('csv-to-json'));
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JSON CSV Converter",
+  "url": "https://presend.pages.dev/pt/tools/json-csv-converter",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Convert JSON to CSV and CSV to JSON entirely client-side."
+}
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'json-csv-converter' })
+}).catch(() => {});
+</script><script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'json-csv-converter' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<!--refresh-v2-->
+</body>
+</html>

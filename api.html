@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Presend API for Developers — Free, Privacy-First</title>
+<meta name="description" content="Free REST API, no key or signup: supply-chain checks (typosquatting, npm maintainer changes, OSV vulnerabilities), security headers, DNS and RDAP lookups, email and IBAN validation.">
+<meta property="og:title" content="Presend API for Developers">
+<meta property="og:description" content="Free REST API, no key or signup: supply-chain checks (typosquatting, npm maintainer changes, OSV vulnerabilities), security headers, DNS and RDAP lookups, email and IBAN validation.">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<link rel="canonical" href="https://presend.pages.dev/api">
+<link href="style.min.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "Presend API",
+  "description": "Free security, verification and developer-utility API -- 48 endpoints including npm maintainer-change detection, OSV.dev vulnerability checks, typosquat detection, WHOIS/DNS lookups, Cosmos SDK transaction decoding, and an MCP server for AI agents. No signup, no API key required.",
+  "url": "https://presend.pages.dev/api",
+  "documentation": "https://presend.pages.dev/openapi.json",
+  "provider": {
+    "@type": "Organization",
+    "name": "Presend"
+  }
+}
+</script>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/api" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/api" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/api" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/api" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/api" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/api" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/api" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/api" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/api" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class="brand" href="/"><span class="brand-mark">●</span> Presend</a>
+</header>
+<main class="wrap">
+  <h1>Presend API for Developers</h1>
+  <p class="lede">Free server-side endpoints for common utility tasks, plus embeddable client-side tools. No API key required. No signup.</p>
+
+  <h2>Server-side endpoints</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    These run on Cloudflare's edge network and return JSON. Fair-use only — no official SLA, and heavy or automated traffic may be throttled without notice.
+  </p>
+  <p id="python-user-agent" style="color:var(--color-muted); max-width:60ch;">
+    <strong>Python users:</strong> requests sent with the default <code>urllib</code> User-Agent (<code>Python-urllib/3.x</code>) are rejected by Cloudflare with <code>HTTP 403</code> and the body <code>error code: 1010</code>. Set any explicit User-Agent. <code>requests</code>, curl and Node send one that is accepted.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">import json, urllib.request
+req = urllib.request.Request("https://presend.pages.dev/api/uuid", headers={"User-Agent": "my-app/1.0"})
+print(json.load(urllib.request.urlopen(req)))</pre>
+
+  <h3 id="POST-api-hash">POST /api/hash</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Returns SHA-256, SHA-1 and SHA-512 for any file up to 20MB.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.pdf \
+  https://presend.pages.dev/api/hash
+
+# {"size_bytes":17,"hashes":{"sha256":"...","sha1":"...","sha512":"..."}}</pre>
+  <h3 id="POST-api-file-type">POST /api/file-type</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Detects a file's real type from its binary signature, and flags a mismatch against the claimed Content-Type — catches disguised files (e.g. an executable renamed as a photo) that slip past naive upload filters.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @suspicious.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/file-type</pre>
+  <h3 id="POST-api-malware-check">POST /api/malware-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Hashes an uploaded file (SHA-256) and checks it against MalwareBazaar (abuse.ch), a free database of known malware samples — hash plus check in one call.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.exe https://presend.pages.dev/api/malware-check</pre>
+
+  <h3 id="GET-api-url-clean">GET /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Strips 60+ tracking parameters (utm_*, fbclid, gclid...) from a URL.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-clean?url=https://example.com/?utm_source=x"
+
+# {"clean":"https://example.com/","removed":1,"valid":true}</pre>
+
+  <h3 id="POST-api-url-clean">POST /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Same, batched — up to 100 URLs per request.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"urls":["https://a.com?fbclid=x","https://b.com?gclid=y"]}' \
+  https://presend.pages.dev/api/url-clean</pre>
+
+  <h3 id="GET-api-ip">GET /api/ip</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Returns the caller's IP with geolocation, currency, language, EU flag, and Tor exit-node detection (checked against the official Tor Project public exit list). Geolocation runs entirely at Cloudflare's edge — no third-party API call.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl https://presend.pages.dev/api/ip</pre>
+
+  <h3 id="GET-api-uuid">GET /api/uuid</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Generates random UUIDs (v4), up to 100 per request.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/uuid?count=5"</pre>
+
+  <h3 id="GET-api-base64">GET /api/base64</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Encode or decode Base64 text.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/base64?action=encode&text=hello"</pre>
+
+  <h3 id="GET-api-jwt-decode">GET /api/jwt-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Decodes a JWT's header and payload (does not verify the signature).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/jwt-decode?token=eyJhbGci..."</pre>
+  <h3 id="POST-api-jwt-verify">POST /api/jwt-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Actually verifies a JWT's cryptographic signature (HS256/384/512, RS/PS256/384/512, ES256/384/512) via the Workers-native Web Crypto API — plus exp/nbf claim checks. Provide a "secret" for HMAC, or a "jwk"/"jwks_url" for asymmetric algorithms.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"token":"...","secret":"..."}' https://presend.pages.dev/api/jwt-verify</pre>
+
+  <h3 id="GET-api-timestamp">GET /api/timestamp</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Current time, or convert between Unix timestamp and ISO date.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/timestamp?unix=1700000000"</pre>
+
+  <h3 id="GET-api-color">GET /api/color</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Convert between hex, RGB and HSL color formats.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/color?hex=ff5733"</pre>
+
+  <h3 id="GET-api-user-agent">GET /api/user-agent</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Parses a User-Agent string into browser, OS and device type.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/user-agent"</pre>
+
+  <h3 id="GET-api-password">GET /api/password</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Generates a cryptographically secure password with entropy estimate.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password?length=20&symbols=1"</pre>
+
+  <h3 id="GET-api-email-validate">GET /api/email-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Validates email syntax and checks that the domain has an MX record. It does not probe the mailbox, so it cannot confirm the address exists; use email-verify to also detect disposable domains and role accounts.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-validate?email=foo@example.com"</pre>
+
+  <h3 id="GET-api-favicon">GET /api/favicon</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Fetches the favicon URL for any domain.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/favicon?domain=github.com"</pre>
+
+  <h3 id="GET-api-csv-json">GET/POST /api/csv-json</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Converts between JSON and CSV. Nested objects are stringified, not flattened.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"direction":"json-to-csv","data":"[{\"a\":1}]"}' \
+  https://presend.pages.dev/api/csv-json</pre>
+
+  <h3 id="GET-api-password-breach">GET /api/password-breach</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks if a password appears in known data breaches (Have I Been Pwned). Only the first 5 characters of its SHA-1 hash are sent to HIBP (k-anonymity), and Presend does not log it. But this is a GET request, so the password travels in the URL, where browsers, proxies or server logs may record it: for real passwords, use POST /api/password-check.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password-breach?password=..."</pre>
+
+  <h3 id="POST-api-password-check">POST /api/password-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Combines strength/entropy scoring with an optional breach check in one call — the password travels in the POST body, never in a URL. Same k-anonymity guarantee as password-breach.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"password":"..."}' https://presend.pages.dev/api/password-check</pre>
+
+  <h3 id="GET-api-email-disposable">GET /api/email-disposable</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Detects disposable/throwaway email providers from a list of 576+ known domains.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-disposable?email=foo@mailinator.com"</pre>
+  <h3 id="GET-api-email-verify">GET /api/email-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Combines syntax, MX lookup, disposable-domain detection and role-account detection (info@, admin@...) in one call, free and without a key. It does not probe the mailbox.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-verify?email=foo@example.com"</pre>
+
+  <h3 id="GET-api-phone-verify">GET /api/phone-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Validates and formats a phone number (E.164, international, national) via libphonenumber-js. If no country is given for a number without a "+" prefix, the caller's IP-derived country is used automatically.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/phone-verify?number=%2B14155552671"</pre>
+
+  <h3 id="GET-api-email-security">GET /api/email-security</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks a domain's anti-spoofing email setup: SPF strength, DMARC policy, and a best-effort DKIM lookup against common selectors.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-security?domain=example.com"</pre>
+
+  <h3 id="GET-api-security-scan">GET /api/security-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Combines security-headers + url-reputation + subdomains into one report with an overall score and verdict — one call instead of three.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-scan?url=https://example.com"</pre>
+  <h3 id="POST-api-qr-scan">POST /api/qr-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Decodes a QR code from an uploaded image, and if it links to a URL, checks it against URLhaus for malware/phishing indicators — decode plus reputation check in one call. QR-code phishing ("quishing") is one of the fastest-growing phishing vectors.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "file=@qrcode.png" https://presend.pages.dev/api/qr-scan</pre>
+  <h3 id="GET-api-security-headers">GET /api/security-headers</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Audits HTTP security headers (CSP, HSTS, X-Frame-Options...) and gives a letter grade.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-headers?url=https://example.com"</pre>
+
+  <h3 id="GET-api-url-reputation">GET /api/url-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks a URL against URLhaus, a public malware/phishing database.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-reputation?url=https://example.com"</pre>
+
+  <h3 id="GET-api-subdomains">GET /api/subdomains</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Passive subdomain discovery via Certificate Transparency logs (crt.sh) — for auditing your own attack surface. Note: depends on crt.sh, which has occasional downtime outside our control.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/subdomains?domain=example.com"</pre>
+  <h3 id="GET-api-ai-crawler-check">GET /api/ai-crawler-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Fetches robots.txt and reports which known AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, etc.) are allowed or blocked. Free, no signup required.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ai-crawler-check?domain=example.com"</pre>
+
+  <h3 id="GET-api-ip-reputation">GET /api/ip-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks an IPv4 or IPv6 address against a curated list of netblocks known to be hijacked or controlled by spam/cyber-crime operations. One specific list, not a full reputation score. The copy is refreshed at most once a day; the response includes the list date, attribution, and a <code>stale</code> flag if the upstream source has been unreachable long enough for the copy to be over 48 hours old. For a check on every request in your own middleware, loading the list locally is usually the better design.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ip-reputation?ip=1.2.3.4"</pre>
+  <h3 id="GET-api-dns-lookup">GET /api/dns-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">A, AAAA, CNAME, MX, TXT and NS records in one call via Cloudflare's DNS-over-HTTPS resolver, or a single type with <code>type=</code>.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/dns-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-whois-lookup">GET /api/whois-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Registrar, creation and expiration dates, domain age and nameservers via RDAP, the HTTPS-based successor to legacy WHOIS.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/whois-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-redirect-trace">GET /api/redirect-trace</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Follows a URL's full redirect chain (up to 15 hops) and records each hop's status code and destination, not just the final URL.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/redirect-trace?url=http://github.com"</pre>
+
+  <h2>Supply-chain security</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Dependency risk checks. typosquat-check and maintainer-change-check are heuristics: signals for triage, not verdicts.
+  </p>
+  <h3 id="GET-api-typosquat-check">GET /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Flags package names that are a near-miss of a curated list of well-known npm and PyPI packages (1 edit for 4-7 character names, 2 for 8+; names of 3 characters or fewer are not fuzzy-matched). PyPI names are normalized (PEP 503); reviewed legitimate look-alikes are marked <code>known_legitimate</code>.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/typosquat-check?ecosystem=npm&amp;package=lodahs"</pre>
+  <h3 id="POST-api-typosquat-check">POST /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Batch mode: up to 100 names in one request, counted as a single request for rate limiting. An invalid entry returns an error for that entry without failing the batch.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodahs","expres","react"]}' https://presend.pages.dev/api/typosquat-check</pre>
+  <h3 id="GET-api-maintainer-change-check">GET /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;"><strong>npm only.</strong> Flags a previously unseen human publisher taking over a package after 180+ days of inactivity, within the last 365 days: the pattern behind the event-stream compromise (2018). Handoffs to a publisher who already maintains another package with 100,000+ weekly downloads, and transitions to npm trusted publishing, are reported separately without raising the flag. It does <strong>not</strong> detect a hijacked existing maintainer account or a malicious release by the original maintainer, since the publisher identity does not change.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/maintainer-change-check?ecosystem=npm&amp;package=lodash"</pre>
+  <h3 id="POST-api-maintainer-change-check">POST /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Batch mode: up to 20 npm packages in one request, counted as a single request for rate limiting. A missing package or registry failure is reported per entry without failing the batch.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodash","express"]}' https://presend.pages.dev/api/maintainer-change-check</pre>
+  <h3 id="GET-api-vulnerability-check">GET /api/vulnerability-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks a package version against OSV.dev: npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, NuGet. To look up a CVE or GHSA identifier directly, use cve-lookup.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vulnerability-check?ecosystem=npm&amp;package=lodash&amp;version=4.17.15"</pre>
+  <h3 id="GET-api-repo-health-check">GET /api/repo-health-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Stars, forks, open issues, license, archived status and days since last push for a GitHub repository, via the GitHub REST API.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/repo-health-check?repo=lodash/lodash"</pre>
+  <h3 id="GET-api-supply-chain-check">GET /api/supply-chain-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check and repo-health-check (repository resolved from registry metadata when possible) into one call with an overall verdict.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/supply-chain-check?ecosystem=npm&amp;package=lodash"</pre>
+
+  <h2>Blockchain</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Free tools for the Cosmos and EVM ecosystems. No signup, no API key.
+  </p>
+  <h3 id="GET-api-address-risk">GET /api/address-risk</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Checks a crypto address against every OFAC Specially Designated Nationals (SDN) digital currency address list. EVM (0x...) and Bitcoin (bc1..., 1..., 3...) addresses are fully covered; addresses of other chains are flagged when listed. Cosmos SDK (bech32) addresses return <code>sanctioned: null</code> when not listed, since OFAC has published no entries for Cosmos SDK chains.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/address-risk?address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"</pre>
+  <h3 id="GET-api-tx-decode">GET /api/tx-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Decodes a raw, signed Cosmos SDK transaction (protobuf TxRaw bytes, base64) into readable JSON -- messages, fee, gas, signer info, signatures. No external dependency, decodes common bank/staking/gov/authz message types including nested MsgExec.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/tx-decode?tx=CpwBCpEBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEnEK..."</pre>
+  <h3 id="GET-api-rpc-check">GET /api/rpc-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Audits a public CometBFT RPC endpoint for a Cosmos SDK chain: node status, health, peer connectivity, and whether unsafe administrative methods (dial_seeds, dial_peers, unsafe_flush_mempool) appear to be exposed. Read-only -- never invokes any unsafe method itself.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/rpc-check?url=https://cosmos-rpc.publicnode.com"</pre>
+
+  <h2>Utilities</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Small, focused tools with no external dependency wherever possible.
+  </p>
+  <h3 id="GET-api-iban-validate">GET /api/iban-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Validates an IBAN via the ISO 7064 mod-97 checksum, with country-specific length checks. Pure algorithm -- no external data source.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/iban-validate?iban=DE89370400440532013000"</pre>
+  <h3 id="GET-api-vat-validate">GET /api/vat-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Validates an EU VAT number in real time via the official European Commission VIES service -- returns the registered company name and address when valid.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
+  <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Extracts Open Graph, Twitter Card, and basic &lt;head&gt; metadata from a URL -- the same data used to render a link preview card in a chat app.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Direct CVE/GHSA lookup by identifier via OSV.dev. Complements vulnerability-check (which needs package+ecosystem+version) for when you already have an identifier from a scanner report.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
+
+  <h2>Chained workflows</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    These endpoints process files or text server-side in a single call. Processing is stateless: nothing is written to disk, nothing is logged, and the input is discarded as soon as the response is sent.
+  </p>
+  <h3 id="POST-api-merge-and-compress-pdf">POST /api/merge-and-compress-pdf</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Merges 2+ PDF files into one document, then compresses the result and strips metadata (title, author, producer) — in one request instead of two.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.pdf" -F "files=@b.pdf" https://presend.pages.dev/api/merge-and-compress-pdf -o merged.pdf</pre>
+  <h3 id="POST-api-clean-image">POST /api/clean-image</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Strips EXIF/GPS from JPEG and text metadata from PNG via direct binary parsing — pixel data is never re-encoded, so there's zero quality loss (unlike canvas-based approaches, which always recompress).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @photo.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/clean-image -o clean.jpg</pre>
+  <h3 id="POST-api-image-similarity">POST /api/image-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Perceptual hash (dHash) for 1 or 2 JPEG/PNG images. Unlike a cryptographic hash, this survives re-compression and minor edits — send 2 images to compare them directly with a similarity score and verdict.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.jpg" -F "files=@b.png" https://presend.pages.dev/api/image-similarity</pre>
+  <h3 id="POST-api-text-similarity">POST /api/text-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">SimHash for 1 or 2 texts — the text equivalent of image-similarity. Detects paraphrased or lightly-edited near-duplicate content, unlike a cryptographic hash. Unrelated texts typically score ~50% by chance, not 0%.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"texts":["text a","text b"]}' https://presend.pages.dev/api/text-similarity</pre>
+
+  <h2>Client-side tools (embed)</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Most file-processing tools (EXIF removal, PDF compression, etc.) also run entirely in the browser as standalone widgets — nothing is uploaded. Use these instead of the API above when you want a drop-in UI rather than a server call. Embed them directly:
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
+&lt;iframe 
+  src="https://presend.pages.dev/tools/exif-remover?embed=1" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+&gt;&lt;/iframe&gt;</pre>
+
+  <h2>Available Tools</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="/tools/file-hash-checker"><div><h3>File Hash Checker</h3><p>SHA-256 / SHA-1 / SHA-512 — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/tools/url-cleaner"><div><h3>URL Cleaner</h3><p>Strip tracking params — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/tools/ip-geolocation"><div><h3>IP Geolocation</h3><p>IP, location, currency — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>UUID Generator</h3><p>Random UUIDs — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Base64 Encoder/Decoder</h3><p>Encode/decode text — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>JWT Decoder</h3><p>Decode JWT tokens — server API available</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Timestamp Converter</h3><p>Unix/ISO date conversion — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Color Converter</h3><p>Hex/RGB/HSL — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>User-Agent Parser</h3><p>Browser/OS detection — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Password Generator API</h3><p>Secure passwords with entropy — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Email Validator</h3><p>Syntax + MX record check — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Favicon Fetcher</h3><p>Get any site's favicon — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>CSV/JSON Converter</h3><p>Bidirectional — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Password Breach Check</h3><p>HIBP-powered — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Disposable Email Detector</h3><p>576+ known domains — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Security Headers Analyzer</h3><p>CSP, HSTS grade — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>URL Reputation Check</h3><p>Malware/phishing lookup — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Attack Surface Discovery</h3><p>Passive subdomain enum — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Address Risk Check</h3><p>OFAC sanctions check (EVM, Bitcoin) — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>Cosmos Tx Decoder</h3><p>Decode raw Cosmos SDK transactions — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/api"><div><h3>RPC Check</h3><p>Audit a CometBFT RPC endpoint — server API</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/tools/exif-remover"><div><h3>EXIF Remover</h3><p>Strip GPS and metadata from photos (client-side)</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/tools/pdf-compress"><div><h3>PDF Compress</h3><p>Reduce PDF file size (client-side)</p></div><span class="go">Docs →</span></a>
+    <a class="tool-card" href="/tools/password-generator"><div><h3>Password Generator</h3><p>Cryptographically secure passwords (client-side)</p></div><span class="go">Docs →</span></a>
+  </div>
+
+  <h3 id="GET-api-api-stats">GET /api/api-stats</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Public usage counters per endpoint, aggregated by day. No cookies, no IP stored.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/api-stats"</pre>
+
+  <h2>npm Package</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    A zero-dependency JS client wrapping every endpoint above.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">npm install presend-api</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">const presend = require('presend-api');
+const { uuids } = await presend.generateUuid(3);</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    <a href="https://www.npmjs.com/package/presend-api">View on npm</a>
+  </p>
+
+  <h2>Embeddable Widget</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Drop a working tool into your own site — no iframe, powered by our API directly. Supports: url-cleaner, uuid, color.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">&lt;div data-presend-tool="url-cleaner"&gt;&lt;/div&gt;
+&lt;script src="https://presend.pages.dev/widget.js" async&gt;&lt;/script&gt;</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    Add <code>data-badge="false"</code> to hide the "Powered by Presend" credit link.
+  </p>
+
+  <h2>OpenAPI Spec</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Machine-readable spec for all server-side endpoints: <a href="/openapi.json">openapi.json</a>
+  </p>
+
+  <h2>RapidAPI</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Also listed on RapidAPI, split by focus area if you only need one part of the catalog:
+  </p>
+  <ul style="color:var(--color-muted); max-width:60ch;">
+    <li><a href="https://rapidapi.com/presendapp/api/presend-api">Presend API</a> -- the full catalog (Cybersecurity)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-blockchain-crypto-compliance-api">Presend Blockchain & Crypto Compliance API</a> -- OFAC checks, Cosmos SDK tx decoding, RPC auditing (Finance)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-email-phone-verification-api">Presend Email & Phone Verification API</a> -- email and phone verification (Email)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-developer-tools-api">Presend Developer Tools API</a> -- UUID, Base64, timestamp, IP geolocation, PDF/image tools (Tools)</li>
+  </ul>
+
+  <h2>Status</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Live uptime, monitored independently from 4 regions (EU, US, Asia, Australia), checked every 3 minutes.
+  </p>
+  <p>
+    <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">presend.betteruptime.com</a>
+  </p>
+
+  <h2>Postman Collection</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Ready-to-import collection covering all 48 endpoints, generated from the OpenAPI spec above.
+  </p>
+  <p>
+    <a href="https://god.gw.postman.com/run-collection/57808683-783f3f64-0f9f-433e-95f6-518520d14ccf?action=collection%2Ffork&collection-url=entityId%3D57808683-783f3f64-0f9f-433e-95f6-518520d14ccf%26entityType%3Dcollection%26workspaceId%3D8ffb507b-4140-4e42-8a44-fd6926d0b25b" target="_blank" rel="noopener">
+      <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="height:32px;">
+    </a>
+  </p>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    Or download the raw file: <a href="/postman_collection.json">postman_collection.json</a>.
+  </p>
+
+  <h2>Open Source</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    All tools are open source. Contribute on GitHub or fork for your own projects.
+    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+  </p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:title" content="Screenshot to Text (OCR) — Presend"/>
+  <meta property="og:description" content="Tesseractを使用して、画像とスクリーンショットからテキストを抽出します。js. 画像はサーバーに送信されることはありません。"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://presend.pages.dev/ja/tools/screenshot-to-text"/>
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=Screenshot+to+Text"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+<title>画像からテキストを抽出 (OCR) — 無料オンライン |プレゼンする</title>
+<meta name="robots" content="index, follow"/>
+  <meta name="description" content="Tesseractを使用して、スクリーンショット、写真、スキャンした文書からテキストをコピーします。js running in your browser. 100% private, nothing leaves your device."/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/screenshot-to-text"/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Screenshot to Text (OCR) — Presend"/>
+<meta name="twitter:description" content="Tesseractを使用して、画像とスクリーンショットからテキストを抽出します。js. 画像はサーバーに送信されることはありません。"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Screenshot to Text",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Tesseractを使用して、画像とスクリーンショットからテキストを抽出します。js ブラウザ内でローカルに実行されるOCR。 Supports 100+ languages. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/ja/tools/screenshot-to-text"
+}
+</script>
+<!--seo-app-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Screenshot to Text","item":"https://presend.pages.dev/ja/tools/screenshot-to-text"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. 何もアップロードされることはありません。"
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "OCR とは何ですか?またどのように機能しますか?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "OCR（光学式文字認識）は、画像からテキストを抽出する技術です。このツールは、ブラウザ内で完全に実行される強力なオープンソース OCR エンジンである Tesseract.js を使用します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "OCR はどの言語を認識できますか?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "このツールは、英語、フランス語、スペイン語、ドイツ語、ポルトガル語、日本語、ロシア語、ヒンディー語、中国語、アラビア語などを含む 100 以上の言語をサポートしています。処理前に言語を選択できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "私の画像はサーバーにアップロードされていますか?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "いいえ。OCR 処理は、WebAssembly にコンパイルされた Tesseract.js を使用してブラウザ内で完全に行われます。画像がデバイスから離れることはありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "手書きのメモからテキストを抽出できますか?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "このツールは、印刷されたテキストに最適に機能します。手書き認識は可能ですが、精度は手書きの読みやすさやスタイルによって異なります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "どのような画像形式がサポートされていますか?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG、JPG、WebP、GIF、および BMP ファイルがサポートされています。ファイルをアップロードしたり、クリップボードから貼り付けたり、画像をツールに直接ドラッグ アンド ドロップしたりできます。"
+      }
+    }
+  ]
+}</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Extract Text from an Image",
+  "description": "Copy text from screenshots and photos using Tesseract.js running entirely in your browser — no upload needed.",
+  "totalTime": "PT30S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload or paste your image", "text": "Drag and drop a photo, click to select a file, or press Ctrl+V to paste a screenshot directly from your clipboard.", "url": "https://presend.pages.dev/ja/tools/screenshot-to-text#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Select language", "text": "Choose the language of the text in your image for best accuracy.", "url": "https://presend.pages.dev/ja/tools/screenshot-to-text#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Copy the extracted text", "text": "Review the recognized text, click Copy to clipboard, or download as a .txt file.", "url": "https://presend.pages.dev/ja/tools/screenshot-to-text#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Screenshot to Text (OCR) — Presend"/>
+<meta name="twitter:description" content="Tesseractを使用して、画像とスクリーンショットからテキストを抽出します。js. 画像はサーバーに送信されることはありません。"/>
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/screenshot-to-text"/>
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/ja/tools/screenshot-to-text"/>
+<meta property="og:locale" content="ja_JP"/>
+<style>
+.dropzone { background:var(--color-bg-raised); border:2px dashed var(--color-line); border-radius:var(--radius); padding:2rem; text-align:center; cursor:pointer; transition:border-color 0.2s; }
+.dropzone:hover, .dropzone.dragover { border-color:var(--color-accent); }
+.dropzone .primary { font-weight:500; margin-bottom:0.3rem; }
+.dropzone .secondary { font-size:0.85rem; color:var(--color-muted); }
+#fileInput { display:none; }
+.paste-hint { text-align:center; font-size:0.85rem; color:var(--color-muted); margin-top:0.5rem; }
+.result { display:none; margin-top:1.5rem; }
+.result.visible { display:block; }
+.preview-wrap { text-align:center; margin:1rem 0; }
+.preview-wrap img { max-width:100%; max-height:300px; border-radius:var(--radius); border:1px solid var(--color-line); }
+#textOutput { width:100%; min-height:200px; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg); font-family:var(--font-mono); font-size:0.95rem; line-height:1.6; resize:vertical; }
+.lang-select { width:100%; padding:0.6rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-bg); font-family:var(--font-body); font-size:1rem; margin-bottom:1rem; }
+.progress-wrap { background:var(--color-bg-raised); border-radius:var(--radius); height:8px; overflow:hidden; margin:1rem 0; }
+.progress-bar { height:100%; background:var(--color-accent); width:0%; transition:width 0.3s; }
+.btn-row { display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap; }
+.btn-row .btn { flex:1; min-width:120px; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/ja/"><span class="brand-mark">●</span>プレゼンする</a>
+  <a class="nav-link" href="/ja/">みんなのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/ja/">← 戻る</a>
+  <h1>スクリーンショットをテキストに変換</h1>
+  <p class="lede">画像またはスクリーンショットからテキストをコピーします。 Tesseract.js は完全にブラウザ内で実行されます。画像はアップロードされません。</p>
+
+  <span class="trust-badge">あなたの画像が当社のサーバーに送信されることはありません</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose an image or drop it here">
+      <p class="primary">ここにスクリーンショットをドロップするか、クリックしてスクリーンショットを選択してください</p>
+      <p class="secondary">JPG、PNG、WebP、GIF、BMP。 Ctrl+Vでも貼り付け可能です。</p>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+    <p class="paste-hint">💡 ヒント: 次のコマンドを使用して、クリップボードから直接貼り付けることもできます。<kbd>Ctrl+V</kbd>（または<kbd>Cmd+V</kbd>)</p>
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div class="progress-wrap" id="progressWrap" style="display:none;"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="status" id="status" style="text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.5rem;"></div>
+
+    <div class="result" id="result">
+      <label style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.3rem;">検出された言語</label>
+      <select id="langSelect" class="lang-select">
+        <option value="eng" selected>英語</option>
+        <option value="fra">フランセ</option>
+        <option value="spa">スペイン語</option>
+        <option value="deu">ドイツ語</option>
+        <option value="ita">イタリアーノ</option>
+        <option value="por">ポルトガル語</option>
+        <option value="rus">Русский</option>
+        <option value="chi_sim">中文 (简体)</option>
+        <option value="chi_tra">中文 (繁體)</option>
+        <option value="jpn">日本語</option>
+        <option value="kor">한국어</option>
+        <option value="ara">ああ</option>
+        <option value="hin">हिन्दी</option>
+        <option value="nld">オランダ</option>
+        <option value="pol">ポルスキ</option>
+        <option value="tur">テュルクチェ語</option>
+        <option value="swe">スヴェンスカ</option>
+        <option value="dan">ダンスク</option>
+        <option value="nor">ノルスク</option>
+        <option value="fin">スオミ</option>
+        <option value="ces">チェシュティナ</option>
+        <option value="hun">マジャール語</option>
+        <option value="ell">Ελληνικά</option>
+        <option value="heb">イエス</option>
+        <option value="tha">ไทย</option>
+        <option value="vie">ティエン・ヴィエット</option>
+        <option value="ind">インドネシア語</option>
+      </select>
+
+      <div class="preview-wrap">
+        <img id="previewImg" alt="Uploaded image">
+      </div>
+
+      <label style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.3rem;">抽出されたテキスト</label>
+      <textarea id="textOutput" spellcheck="false" placeholder="Text will appear here..."></textarea>
+
+      <div class="btn-row">
+        <button class="btn" id="copyBtn" type="button">📋 テキストをコピーする</button>
+        <a class="btn" id="downloadBtn" download="extracted-text.txt">⬇️ .txt をダウンロード</a>
+        <button class="btn ghost" id="resetBtn" type="button">🗑️クリア</button>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">関連ツール</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/ja/tools/image-to-base64">
+        <div><h3>画像をBase64に変換</h3><p>画像を Base64 データ URI に変換します。</p></div>
+        <span class="go">開く→</span>
+      </a>
+      <a class="tool-card" href="/ja/tools/text-formatter">
+        <div><h3>テキストフォーマッタ</h3><p>テキストを太字、斜体、Unicode スタイルに変換します。</p></div>
+        <span class="go">開く→</span>
+      </a>
+      <a class="tool-card" href="/ja/tools/word-counter">
+        <div><h3>ワードカウンター</h3><p>単語、文字、読書時間をカウントします。</p></div>
+        <span class="go">開く→</span>
+      </a>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">もっと詳しく知る</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/ja/tools/landings/extract-text-from-image">このツールに関する詳細なガイドをお読みください</a>
+  </p>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Tesseract.js はどのように機能しますか?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">このツールが使用するのは、<a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a>、WebAssembly にコンパイルされた Google の Tesseract OCR エンジンの純粋な JavaScript ポートです。言語モデル (英語の場合は最大 4MB) が一度ダウンロードされ、ブラウザーにキャッシュされます。すべてのテキスト認識はデバイス上でローカルに行われます。画像データが当社のサーバーに送信されることはありません。これは、クラウド OCR サービスには決してアップロードしたくない医療記録、法的契約書、財務諸表、独自のスクリーンショットなどの機密文書にとって重要です。 Tesseract.js は 100 以上の言語をサポートし、クリアでハイコントラストなテキストで商用クラウド API に匹敵する精度を実現します。</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const progressWrap = document.getElementById('progressWrap');
+  const progressBar = document.getElementById('progressBar');
+  const status = document.getElementById('status');
+  const result = document.getElementById('result');
+  const previewImg = document.getElementById('previewImg');
+  const textOutput = document.getElementById('textOutput');
+  const langSelect = document.getElementById('langSelect');
+  const copyBtn = document.getElementById('copyBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 10 * 1024 * 1024;
+  let worker = null;
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function setProgress(pct, text) {
+    progressWrap.style.display = 'block';
+    progressBar.style.width = pct + '%';
+    status.textContent = text || '';
+  }
+
+  async function createWorker(lang) {
+    if (worker) await worker.terminate();
+    setProgress(5, 'Loading Tesseract engine...');
+    worker = await Tesseract.createWorker(lang, 1, {
+      logger: m => {
+        if (m.status === 'recognizing text') {
+          setProgress(10 + Math.round(m.progress * 85), 'Recognizing text...');
+        } else if (m.status === 'loading language traineddata') {
+          setProgress(5 + Math.round(m.progress * 5), 'Loading language model...');
+        }
+      },
+      errorHandler: err => console.error('Tesseract error:', err)
+    });
+    return worker;
+  }
+
+  async function processImage(fileOrUrl) {
+    clearError();
+    result.classList.remove('visible');
+    progressWrap.style.display = 'none';
+    progressBar.style.width = '0%';
+    status.textContent = '';
+    textOutput.value = '';
+
+    let imageUrl;
+    if (typeof fileOrUrl === 'string') {
+      imageUrl = fileOrUrl;
+    } else {
+      if (!fileOrUrl.type.startsWith('image/')) {
+        showError('Please choose an image file.');
+        return;
+      }
+      if (fileOrUrl.size > MAX_SIZE) {
+        showError('This image is larger than 10MB. Try a smaller file.');
+        return;
+      }
+      imageUrl = URL.createObjectURL(fileOrUrl);
+    }
+
+    previewImg.src = imageUrl;
+    result.classList.add('visible');
+
+    try {
+      const lang = langSelect.value;
+      const w = await createWorker(lang);
+      setProgress(95, 'Finalizing...');
+      const { data: { text } } = await w.recognize(imageUrl);
+      textOutput.value = text.trim() || '(No text detected in this image)';
+      setProgress(100, 'Done!');
+      updateDownload();
+
+      if (typeof fileOrUrl !== 'string') {
+        setTimeout(() => URL.revokeObjectURL(imageUrl), 5000);
+      }
+    } catch (err) {
+      console.error(err);
+      showError('OCR failed: ' + (err.message || 'Try a clearer image with better contrast.'));
+      setProgress(0, '');
+      progressWrap.style.display = 'none';
+    }
+  }
+
+  function updateDownload() {
+    const blob = new Blob([textOutput.value], { type: 'text/plain' });
+    downloadBtn.href = URL.createObjectURL(blob);
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files[0]) processImage(e.target.files[0]);
+  });
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => {
+    const file = e.dataTransfer.files[0];
+    if (file) processImage(file);
+  });
+
+  // Paste from clipboard
+  document.addEventListener('paste', (e) => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.startsWith('image/')) {
+        const file = items[i].getAsFile();
+        if (file) processImage(file);
+        break;
+      }
+    }
+  });
+
+  langSelect.addEventListener('change', () => {
+    if (previewImg.src && previewImg.src !== window.location.href) {
+      processImage(previewImg.src);
+    }
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(textOutput.value);
+    const old = copyBtn.textContent;
+    copyBtn.textContent = '✅ Copied!';
+    setTimeout(() => copyBtn.textContent = old, 2000);
+  });
+
+  textOutput.addEventListener('input', updateDownload);
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    progressWrap.style.display = 'none';
+    progressBar.style.width = '0%';
+    status.textContent = '';
+    textOutput.value = '';
+    previewImg.src = '';
+    clearError();
+    if (worker) { worker.terminate(); worker = null; }
+  });
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'screenshot-to-text' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'screenshot-to-text' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

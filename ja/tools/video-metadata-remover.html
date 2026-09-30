@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="動画メタデータ削除ツール — Presend" property="og:title"/>
+<meta content="共有前にMP4/MOV動画から隠れたGPS位置情報とデバイスデータを削除します。すべてブラウザ内で実行されます。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://presend.pages.dev/ja/tools/video-metadata-remover" property="og:url"/>
+<meta content="https://presend.pages.dev/api/og?tool=Video+Metadata+Remover" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<title>ビデオメタデータリムーバー — 無料オンラインツール | Presend</title>
+<meta content="index, follow" name="robots"/>
+<meta content="共有する前にMP4/MOV動画から隠れたGPS位置情報とデバイスデータを削除します。すべてブラウザ内で実行され、アップロードは一切ありません。" name="description"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/video-metadata-remover" />
+<meta content="summary_large_image" name="twitter:card"/><meta content="Video Metadata Remover — Presend" name="twitter:title" />
+<meta content="Strip hidden GPS location and device data from MP4/MOV videos before you share them, entirely in your browser." name="twitter:description" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Video Metadata Remover",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Strip hidden GPS location and device data from MP4/MOV videos locally. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/ja/tools/video-metadata-remover",
+  "mainEntityOfPage": "https://presend.pages.dev/ja/tools/video-metadata-remover"
+}
+</script><!--seo-app--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Video Metadata Remover","item":"https://presend.pages.dev/ja/tools/video-metadata-remover"}
+  ]
+}</script>
+<!--seo-breadcrumb--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "ファイルを共有する前にクリーンアップ、圧縮、変換、確認ができる無料のブラウザベースツール。アップロードは一切行われません。"
+}
+</script><!--seo-org--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What metadata is removed from videos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPS coordinates, device model, software version, creation date, and other EXIF-like metadata embedded in MP4/MOV files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will this re-encode my video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The tool strips the metadata container without touching the video or audio streams. Quality remains identical."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MP4 and MOV files, which cover the vast majority of smartphone videos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I remove metadata from other formats?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently only MP4 and MOV are supported. AVI, MKV and other formats may be added in the future."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my video uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The file is processed entirely in your browser. It is never uploaded or transmitted anywhere."
+      }
+    }
+  ]
+}
+</script><!--seo-faq--><link href="/manifest.json" rel="manifest"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Remove Metadata from a Video",
+  "description": "Strip hidden GPS location and device data from MP4 and MOV videos — entirely in your browser, no upload needed.",
+  "totalTime": "PT30S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your video", "text": "Drag and drop your MP4 or MOV file into the tool. The video is processed locally — it never leaves your device or touches any server.", "url": "https://presend.pages.dev/ja/tools/video-metadata-remover#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Review detected metadata", "text": "The tool shows you what hidden data was found: GPS coordinates, device model, recording date, camera settings, and software version.", "url": "https://presend.pages.dev/ja/tools/video-metadata-remover#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download the clean video", "text": "Click Download to save a new version of your video with all metadata stripped. The video and audio quality remain 100% identical.", "url": "https://presend.pages.dev/ja/tools/video-metadata-remover#step3" }
+  ]
+}</script>
+<!--seo-howto--><meta property="og:locale" content="ja_JP" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/video-metadata-remover" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/video-metadata-remover" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+<a class="brand" href="/ja/"><span class="brand-mark">●</span>Presend</a>
+<a class="nav-link" href="/ja/">みんなのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+<a class="tool-back" href="/ja/">← 戻る</a>
+<h1>ビデオメタデータリムーバー</h1>
+<p class="lede">携帯電話にはビデオ ファイル内に GPS 規定やデバイス情報が埋め込まれていることがよくありますが、ほとんどの人は確認しようとは思いません。 これにより、再エンコードせずに MP4/MOV ファイルから隠されたデータが削除されるため、品質とファイル サイズは変わりません。 ファイルはあなたのデバイス上でのみ処理されます。</p>
+<span class="trust-badge">ファイルが当社のサーバーに送信されることはありません</span>
+<div style="margin-top: 2rem;">
+<div aria-label="Choose a video or drop it here" class="dropzone" id="dropzone" role="button" tabindex="0">
+<p class="primary">ここにビデオを落とすか、クリックしてビデオを選択してください</p>
+<p class="secondary">.mp4 または .mov。デバイスからは何も残りません。</p>
+<input accept=".mp4,.mov,video/mp4,video/quicktime" id="fileInput" type="file"/>
+</div>
+<p class="error-msg" id="errorMsg"></p>
+<div class="result" id="result">
+<div class="result-row">
+<div>
+<div class="filename" id="resultName"></div>
+<div class="meta" id="resultMeta"></div>
+</div>
+<a class="btn" download="" id="downloadLink">きれいになったビデオをダウンロードする</a>
+<button class="btn ghost" id="shareBtn" style="margin-left:0.5rem;" type="button">🔗 共有リンクをコピー</button>
+</div>
+<button class="btn ghost" id="resetBtn" type="button">別のビデオをクリーンアップする</button>
+</div>
+</div>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">関連ツール</h2>
+<div class="tool-grid" style="margin-top:1rem;">
+<a class="tool-card" href="/ja/tools/exif-remover">
+<div><h3>エクシフリムーバー</h3><p>非表示の位置情報とカメラのデータを写真から削除します。</p></div>
+<span class="go">開く →</span>
+</a>
+<a class="tool-card" href="/ja/tools/image-compressor">
+<div><h3>画像圧縮器</h3><p>写真を電子メールで送信したりアップロードしたりする前に、写真のファイルサイズを縮小します。</p></div>
+<span class="go">開く →</span>
+</a>
+<a class="tool-card" href="/ja/tools/file-hash-checker">
+<div><h3>ファイルハッシュチェッカー</h3><p>SHA-256、SHA-1、SHA-512 チェックサムを計算します。</p></div>
+<span class="go">開く →</span>
+</a>
+</div>
+</section>
+<section class="wrap" style="margin-top:3rem;">
+<h2 id="speakable" style="font-family:var(--font-display);font-size:1.1rem;">もっと詳しく知る</h2>
+<p itemprop="speakable" style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+<a href="/ja/tools/landings/strip-metadata-pdf">ガイドをお読みください: 写真やドキュメントを共有する前にメタデータを削除する方法</a>
+</p>
+<!--seo-related--></main>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">動画からメタデータを削除するのはなぜですか?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">スマートフォンでキャプチャされた MP4 および MOV ビデオ ファイルには、ほとんどの人が認識しているよりもはるかに多くの情報を割り出す広範なメタデータが含まれています。敏感な地域で取材するアドバイザー、イベントを記録活動する家、休暇のビデオを共有旅行する者にとって、このメタデータは自宅の住所、勤務先、または旅行パターンを定める危険な性状がある可能性があります。企業にとっても、ビデオのメタデータによって機密の撮影場所や機器の詳細がそのまま漏洩する可能性があります。当社のビデオメタデータリムーバーは、ビデオを再エンコードせずに、MP4およびMOVファイルからすべてのGPS 位置情報、デバイス情報、およびタイムスタンプを削除します。これは、品質を失うことなく、瞬時に処理されることを意味します。すべてがブラウザ内でローカルに行われます。ビデオはサーバーにアップロードされることはなく、プライバシーを重視するクリエイター、専門家、一般ユーザーにとって最も安全な選択肢となります。</p>
+</section>
+<footer class="site-footer wrap">
+<p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 300 * 1024 * 1024; // 300MB, kept in memory during processing
+  const STRIP_FROM_MOOV = ['udta', 'meta']; // metadata containers: GPS, device, keys/ilst
+  const STRIP_TOP_LEVEL = ['meta', 'uuid']; // top-level metadata / XMP-style boxes
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  function getExt(name) {
+    const m = name.match(/\.[^.]+$/);
+    return m ? m[0].toLowerCase() : '';
+  }
+
+  function readBoxType(view, offset) {
+    let s = '';
+    for (let i = 0; i < 4; i++) s += String.fromCharCode(view.getUint8(offset + 4 + i));
+    return s;
+  }
+
+  // Parses a single box header at `offset`. Handles 32-bit and 64-bit sizes,
+  // and size==0 (box extends to end of buffer, e.g. a trailing mdat).
+  function parseBoxHeader(view, offset, bufferLength) {
+    const size32 = view.getUint32(offset);
+    const type = readBoxType(view, offset);
+    if (size32 === 1) {
+      const hi = view.getUint32(offset + 8);
+      const lo = view.getUint32(offset + 12);
+      const size = hi * 4294967296 + lo;
+      return { type, start: offset, headerSize: 16, size, extended: true };
+    }
+    if (size32 === 0) {
+      return { type, start: offset, headerSize: 8, size: bufferLength - offset, extended: false };
+    }
+    return { type, start: offset, headerSize: 8, size: size32, extended: false };
+  }
+
+  function walkBoxes(buffer, view, start, end) {
+    const boxes = [];
+    let offset = start;
+    while (offset < end) {
+      const box = parseBoxHeader(view, offset, end);
+      if (box.size <= 0 || offset + box.size > end) break; // malformed guard
+      boxes.push(box);
+      offset += box.size;
+    }
+    return boxes;
+  }
+
+  // Rebuilds `moov` with certain direct child boxes removed, patching its size.
+  function rebuildMoovWithoutMetadata(buffer, view, moovBox) {
+    const children = walkBoxes(buffer, view, moovBox.start + moovBox.headerSize, moovBox.start + moovBox.size);
+    const kept = children.filter(c => !STRIP_FROM_MOOV.includes(c.type));
+    const keptBytesLength = kept.reduce((sum, c) => sum + c.size, 0);
+    const newSize = moovBox.headerSize + keptBytesLength;
+
+    const out = new Uint8Array(newSize);
+    const outView = new DataView(out.buffer);
+
+    if (moovBox.headerSize === 8) {
+      outView.setUint32(0, newSize);
+      out.set(new Uint8Array(buffer, moovBox.start + 4, 4), 4); // copy 'moov' type bytes
+    } else {
+      outView.setUint32(0, 1);
+      out.set(new Uint8Array(buffer, moovBox.start + 4, 4), 4);
+      outView.setUint32(8, Math.floor(newSize / 4294967296));
+      outView.setUint32(12, newSize % 4294967296);
+    }
+
+    let pos = moovBox.headerSize;
+    for (const c of kept) {
+      out.set(new Uint8Array(buffer, c.start, c.size), pos);
+      pos += c.size;
+    }
+    return out;
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    if (!file) return;
+
+    const ext = getExt(file.name);
+    if (!['.mp4', '.mov'].includes(ext)) {
+      showError('Please choose an MP4 or MOV file.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 300MB. Try a smaller video.');
+      return;
+    }
+
+    resultName.textContent = file.name;
+    resultMeta.textContent = 'Processing…';
+
+    try {
+      const buffer = await file.arrayBuffer();
+      const view = new DataView(buffer);
+      const topBoxes = walkBoxes(buffer, view, 0, buffer.byteLength);
+
+      if (!topBoxes.some(b => b.type === 'moov')) {
+        showError('This doesn\'t look like a valid MP4/MOV file (no moov atom found).');
+        return;
+      }
+
+      const pieces = [];
+      for (const box of topBoxes) {
+        if (STRIP_TOP_LEVEL.includes(box.type)) continue; // drop entirely
+        if (box.type === 'moov') {
+          pieces.push(rebuildMoovWithoutMetadata(buffer, view, box));
+        } else {
+          // mdat, ftyp, free, wide, etc. copied byte-for-byte, untouched
+          pieces.push(new Uint8Array(buffer, box.start, box.size));
+        }
+      }
+
+      const blob = new Blob(pieces, { type: file.type || 'video/mp4' });
+      const cleanUrl = URL.createObjectURL(blob);
+      const base = file.name.replace(/\.[^.]+$/, '');
+      const outName = base + '-clean' + ext;
+
+      downloadLink.href = cleanUrl;
+      downloadLink.download = outName;
+      resultName.textContent = outName;
+      resultMeta.textContent = humanSize(blob.size) + ' — metadata removed, video untouched';
+      result.classList.add('visible');
+    } catch (err) {
+      showError('This file could not be processed. It may be corrupted or use an unsupported structure.');
+    }
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    clearError();
+  });
+})();
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'video-metadata-remover' })
+}).catch(() => {});
+</script><script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'video-metadata-remover' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<!--refresh-v2-->
+</body>
+</html>

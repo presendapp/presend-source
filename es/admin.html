@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presentador administrador: panel de análisis</title>
+  <meta property="og:title" content="Presentador administrador: panel de análisis">
+  <meta property="og:description" content="Panel de administración de Presend"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presentador administrador: panel de análisis">
+<meta name="twitter:description" content="Panel de administración de Presend">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presend.pages.dev/es/admin.html">
+  <meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="stylesheet" href="/css/admin.css">
+<meta property="og:locale" content="es_ES" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/admin" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/admin" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/admin" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/admin" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/admin" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/admin" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/admin" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/admin" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta name="description" content="Panel de administración de las herramientas de privacidad Presend. Ve analíticas, métricas de uso y rendimiento. Todos los datos permanecen locales." />
+<link rel="canonical" href="https://presend.pages.dev/es/admin" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://presend.pages.dev/es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Admin",
+      "item": "https://presend.pages.dev/es/admin"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="admin-container">
+<h1>📊 Presentador de análisis</h1>
+<p class="loading" id="status">Cargando estadísticas...</p>
+<div class="stat-card">
+<div class="stat-number" id="total">—</div>
+<div>Total de acciones rastreadas</div>
+</div>
+<div class="stat-card">
+<h2>Por herramienta</h2>
+<div id="tools-list">Cargando...</div>
+</div>
+<p style="margin-top: 2rem; color: #6c757d; font-size: 0.9rem;">🔒 La privacidad es lo primero: sin cookies, sin almacenamiento de IP, sin rastreadores de terceros.</p>
+</div>
+<script>
+    async function loadStats() {
+      try {
+        const res = await fetch('/api/stats');
+        const data = await res.json();
+        
+        document.getElementById('status').textContent = 'Last updated: ' + new Date().toLocaleString();
+        document.getElementById('total').textContent = data.total.toLocaleString();
+        
+        const toolsDiv = document.getElementById('tools-list');
+        if (!data.tools || Object.keys(data.tools).length === 0) {
+          toolsDiv.innerHTML = '<p>No data yet.</p>';
+          return;
+        }
+        
+        let html = '';
+        for (const [tool, dates] of Object.entries(data.tools)) {
+          const toolTotal = Object.values(dates).reduce((a, b) => a + b, 0);
+          html += `<div class="tool-row"><strong>${tool}</strong> <span>${toolTotal.toLocaleString()}</span></div>`;
+          for (const [date, count] of Object.entries(dates)) {
+            html += `<div class="tool-row" style="padding-left: 1rem; font-size: 0.9rem; color: #6c757d;">
+              ${date} — ${count.toLocaleString()}
+            </div>`;
+          }
+        }
+        toolsDiv.innerHTML = html;
+      } catch (e) {
+        document.getElementById('status').textContent = 'Error loading stats';
+        document.getElementById('status').className = 'error';
+      }
+    }
+    
+    loadStats();
+    setInterval(loadStats, 30000);
+  </script><script src="/sw-register.js"></script>
+<!--refresh-v2-->
+</body>
+</html>

@@ -1,0 +1,5 @@
+.fmt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.fmt-card { padding: 1rem; border: 1px solid var(--color-line); border-radius: var(--radius); background: var(--color-bg-raised); cursor: pointer; transition: border-color 0.15s; }
+.fmt-card:hover { border-color: var(--color-accent); }
+.fmt-card h4 { font-size: 0.8rem; color: var(--color-muted); margin: 0 0 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.fmt-card .sample { font-size: 1.1rem; word-break: break-word; }

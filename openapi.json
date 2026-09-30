@@ -1,0 +1,4417 @@
+{
+  "openapi": "3.0.3",
+  "security": [],
+  "info": {
+    "title": "Presend API",
+    "description": "Presend's free API: 48 endpoints for security, verification, blockchain/crypto compliance, and everyday developer utilities. No signup, no API key, no paid tiers (per-minute rate limits apply). Covers file hashing & malware/phishing checks, JWT decode/verify, DNS & WHOIS lookup, package vulnerability and typosquatting checks, IP reputation, redirect-chain tracing, GitHub repo health signals, Cosmos SDK transaction decoding, OFAC sanctions screening for crypto addresses, CometBFT RPC auditing, IBAN/VAT validation, link metadata extraction, direct CVE lookup, PDF/image tools, and more.",
+    "version": "1.1.0",
+    "contact": {
+      "url": "https://presend.pages.dev/api"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/presendapp/presend/blob/main/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://presend.pages.dev/api",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/hash": {
+      "post": {
+        "summary": "Hash a file",
+        "description": "Returns SHA-256, SHA-1 and SHA-512 for a file up to 20MB.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "size_bytes": {
+                      "type": "integer"
+                    },
+                    "hashes": {
+                      "type": "object",
+                      "properties": {
+                        "sha256": {
+                          "type": "string"
+                        },
+                        "sha1": {
+                          "type": "string"
+                        },
+                        "sha512": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "size_bytes": 779,
+                  "hashes": {
+                    "sha256": "9fcf8cc7f3c462e27b2e11748cc18a65b15efb8608820e74364fd963510c07e1",
+                    "sha1": "ac83a80b823c45ccc9d37bad0f96e85abde0a826",
+                    "sha512": "d1ed56bf6fbfa25d1ca78c1bb2bcec0da61d3d812201104e5fda375165c8b33f339160d64c4ea64f78436a70692e5f99b95ba1396fe9d6364d0ece8e5678feeb"
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "File too large"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/file-type": {
+      "post": {
+        "summary": "Detect real file type from binary signature",
+        "description": "Detects a file's real type from its binary signature (\"magic bytes\"), and flags a mismatch against the claimed Content-Type -- catches disguised files that slip past naive upload filters.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Detection result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "size_bytes": {
+                      "type": "integer"
+                    },
+                    "claimed_type": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "detected": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "mime": {
+                          "type": "string"
+                        },
+                        "extension": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "mismatch": {
+                      "type": "boolean"
+                    },
+                    "warning": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "size_bytes": 563,
+                  "claimed_type": "image/jpeg",
+                  "detected": {
+                    "mime": "image/png",
+                    "extension": "png",
+                    "label": null
+                  },
+                  "mismatch": true,
+                  "warning": "Claimed type \"image/jpeg\" does not match the file's actual signature (detected: \"image/png\"). This can indicate a disguised or mislabeled file."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/malware-check": {
+      "post": {
+        "summary": "Hash a file and check it against known malware",
+        "description": "Computes SHA-256 and checks it against MalwareBazaar (abuse.ch), a free database of confirmed malware samples. Only catches already-known samples -- a 'not found' result does not guarantee the file is safe.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash and malware check result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "size_bytes": {
+                      "type": "integer"
+                    },
+                    "sha256": {
+                      "type": "string"
+                    },
+                    "malwarebazaar": {
+                      "type": "object"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "size_bytes": 1413,
+                  "sha256": "9d4bf7140f85022b1702e6a2471e5d73a8256cb32c635b2de01714ab2a842917",
+                  "malwarebazaar": {
+                    "checked": true,
+                    "known_malware": false
+                  },
+                  "verdict": "Not found in MalwareBazaar. This does not guarantee the file is safe \u2014 only that this exact file is not currently known to this database."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/iban-validate": {
+      "get": {
+        "summary": "Validate an IBAN",
+        "description": "Validates an IBAN via the ISO 7064 mod-97 checksum, with country-specific length checks. No external data source -- pure algorithm.",
+        "parameters": [
+          {
+            "name": "iban",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "DE89370400440532013000"
+            },
+            "description": "IBAN to validate. Spaces are ignored."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "iban": {"type": "string"},
+                    "valid": {"type": "boolean"},
+                    "country_code": {"type": "string"},
+                    "formatted": {"type": "string"},
+                    "reason": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "iban": "DE89370400440532013000",
+                  "valid": true,
+                  "country_code": "DE",
+                  "formatted": "DE89 3704 0044 0532 0130 00"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/link-metadata": {
+      "get": {
+        "summary": "Extract Open Graph / Twitter Card metadata from a URL",
+        "description": "Extracts title, description, canonical URL, Open Graph tags, and Twitter Card tags from a page's <head> -- the same data used to render a link preview card in a chat app.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://github.com/presendapp/presend"
+            },
+            "description": "URL to extract metadata from."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Extracted metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {"type": "string"},
+                    "title": {"type": "string"},
+                    "description": {"type": "string"},
+                    "canonical_url": {"type": "string", "nullable": true},
+                    "open_graph": {"type": "object"},
+                    "twitter_card": {"type": "object"}
+                  }
+                },
+                "example": {
+                  "url": "https://github.com/presendapp/presend",
+                  "title": "GitHub - presendapp/presend",
+                  "description": "Free privacy-first browser tools + a security API",
+                  "canonical_url": null,
+                  "open_graph": {
+                    "title": "GitHub - presendapp/presend",
+                    "description": "Free privacy-first browser tools + a security API",
+                    "image": "https://repository-images.githubusercontent.com/1290162882/c4785be5-6cef-415e-b278-9744d2dbc57d",
+                    "type": "object",
+                    "site_name": "GitHub",
+                    "url": "https://github.com/presendapp/presend"
+                  },
+                  "twitter_card": {
+                    "card": "summary_large_image",
+                    "title": "GitHub - presendapp/presend",
+                    "description": "Free privacy-first browser tools + a security API",
+                    "image": "https://repository-images.githubusercontent.com/1290162882/c4785be5-6cef-415e-b278-9744d2dbc57d"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/vat-validate": {
+      "get": {
+        "summary": "Validate an EU VAT number",
+        "description": "Validates an EU VAT number in real time via the official European Commission VIES (VAT Information Exchange System) service -- returns the registered company name and address when valid.",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "IE"
+            },
+            "description": "2-letter EU country code (EL for Greece, XI for Northern Ireland). Optional if vat includes the prefix."
+          },
+          {
+            "name": "vat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "6388047V"
+            },
+            "description": "VAT number, with or without the country prefix (e.g. \"6388047V\" with country=IE, or \"IE6388047V\" alone)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "country_code": {"type": "string"},
+                    "vat_number": {"type": "string"},
+                    "valid": {"type": "boolean"},
+                    "name": {"type": "string", "nullable": true},
+                    "address": {"type": "string", "nullable": true},
+                    "request_date": {"type": "string"},
+                    "source": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "country_code": "IE",
+                  "vat_number": "6388047V",
+                  "valid": true,
+                  "name": "GOOGLE IRELAND LIMITED",
+                  "address": "3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4",
+                  "request_date": "2026-09-24T20:44:05.415Z",
+                  "source": "European Commission VIES (VAT Information Exchange System), official."
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/cve-lookup": {
+      "get": {
+        "summary": "Direct CVE/GHSA lookup by identifier",
+        "description": "Looks up a CVE or GHSA identifier directly via OSV.dev. Complements vulnerability-check (which needs package+ecosystem+version) for when you already have an identifier from a scanner report or advisory.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "CVE-2021-44228"
+            },
+            "description": "CVE, GHSA, or other OSV-native identifier."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vulnerability details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "url": {"type": "string"},
+                    "id": {"type": "string"},
+                    "found": {"type": "boolean"},
+                    "summary": {"type": "string"},
+                    "severity": {"type": "array"},
+                    "affected": {"type": "array"},
+                    "references": {"type": "array"}
+                  }
+                },
+                "example": {
+                  "id": "CVE-2021-44228",
+                  "found": true,
+                  "summary": "Apache Log4j2 JNDI features do not protect against attacker controlled LDAP",
+                  "severity": [{"type": "CVSS_V3", "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"}],
+                  "affected": [{"ecosystem": "Maven", "package": "org.apache.logging.log4j:log4j-core", "fixed_in": "2.15.0"}],
+                  "url": "https://osv.dev/vulnerability/CVE-2021-44228"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/url-clean": {
+      "get": {
+        "summary": "Clean a single URL",
+        "description": "Strips 60+ tracking parameters from a URL.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://example.com/page?utm_source=newsletter"
+            },
+            "description": "URL to strip tracking parameters from (utm_*, fbclid, gclid, and similar)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cleaned URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "original": {
+                      "type": "string"
+                    },
+                    "clean": {
+                      "type": "string"
+                    },
+                    "removed": {
+                      "type": "integer"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "original": "https://example.com/?utm_source=test",
+                  "clean": "https://example.com/",
+                  "removed": 1,
+                  "valid": true
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      },
+      "post": {
+        "summary": "Clean a batch of URLs",
+        "description": "Strips tracking parameters from up to 100 URLs at once.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 100,
+                    "description": "Array of URLs to strip tracking parameters from in a single batch request."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cleaned URLs batch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "total_tracking_params_removed": {
+                      "type": "integer"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "original": {
+                            "type": "string"
+                          },
+                          "clean": {
+                            "type": "string"
+                          },
+                          "removed": {
+                            "type": "integer"
+                          },
+                          "valid": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "count": 1,
+                  "total_tracking_params_removed": 2,
+                  "results": [
+                    {
+                      "original": "https://example.com/?utm_source=test&fbclid=abc",
+                      "clean": "https://example.com/",
+                      "removed": 2,
+                      "valid": true
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/uuid": {
+      "get": {
+        "summary": "Generate UUIDs",
+        "description": "Generates up to 100 random UUID v4 values.",
+        "parameters": [
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "maximum": 100,
+              "example": 3
+            },
+            "description": "Number of UUIDs (v4) to generate. Defaults to 1 if omitted."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generated UUIDs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "uuids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "count": 2,
+                  "uuids": [
+                    "a87ef3ba-c3d9-45e9-8e39-d16bc9d30565",
+                    "97194a22-f868-421d-b716-fd34d04db07a"
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/base64": {
+      "get": {
+        "summary": "Encode or decode Base64",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "encode",
+                "decode"
+              ],
+              "example": "encode"
+            },
+            "description": "Either \"encode\" or \"decode\"."
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 10000,
+              "example": "Hello, world!"
+            },
+            "description": "Text to encode, or Base64 string to decode."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Encoded/decoded result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "action": {
+                      "type": "string"
+                    },
+                    "input": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "action": "encode",
+                  "input": "Hello",
+                  "result": "SGVsbG8="
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/jwt-decode": {
+      "get": {
+        "summary": "Decode a JWT",
+        "description": "Decodes the header and payload of a JWT. Does not verify the signature.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U"
+            },
+            "description": "The JWT to decode. Decodes header and payload only -- does not verify the signature (use /jwt-verify for that)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decoded JWT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "note": {"type": "string"},
+                    "header": {
+                      "type": "object"
+                    },
+                    "payload": {
+                      "type": "object"
+                    },
+                    "signature_verified": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "header": {
+                    "alg": "HS256",
+                    "typ": "JWT"
+                  },
+                  "payload": {
+                    "sub": "1234567890",
+                    "name": "Test User",
+                    "exp": 9999999999
+                  },
+                  "signature_verified": false,
+                  "note": "Signature not verified \u2014 decode only."
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JWT"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/jwt-verify": {
+      "post": {
+        "summary": "Verify a JWT's cryptographic signature",
+        "description": "Actually verifies the signature (HS256/384/512, RS/PS256/384/512, ES256/384/512) via the Workers-native Web Crypto API, plus exp/nbf claim checks. Unlike /jwt-decode, this performs real cryptographic verification.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "token"
+                ],
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "description": "The JWT to verify. Checks the cryptographic signature -- use /jwt-decode if you only need to read the header and payload."
+                  },
+                  "secret": {
+                    "type": "string",
+                    "description": "Required for HS256/384/512."
+                  },
+                  "jwk": {
+                    "type": "object",
+                    "description": "Public key in JWK format, for RS/PS/ES algorithms."
+                  },
+                  "jwks_url": {
+                    "type": "string",
+                    "description": "URL to a JWKS document; the key is matched by the token's \"kid\" header."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "header": {
+                      "type": "object"
+                    },
+                    "payload": {
+                      "type": "object"
+                    },
+                    "algorithm": {
+                      "type": "string"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "time_issues": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "header": {
+                    "alg": "HS256",
+                    "typ": "JWT"
+                  },
+                  "payload": {
+                    "sub": "1234567890",
+                    "name": "Test User",
+                    "exp": 9999999999
+                  },
+                  "algorithm": "HS256",
+                  "valid": true,
+                  "time_issues": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ip": {
+      "get": {
+        "summary": "Get caller IP geolocation",
+        "description": "Returns the caller's IP with city, country, currency, language, EU flag, and Tor exit-node detection (official Tor Project public list). Geolocation is read directly from Cloudflare's edge \u2014 no third-party API call.",
+        "responses": {
+          "200": {
+            "description": "IP geolocation data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "region": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "country": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "continent": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "latitude": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "longitude": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "postal": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "timezone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "asn": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "org": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "currency": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "language": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_eu": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "tor": {
+                      "type": "object",
+                      "properties": {
+                        "checked": {
+                          "type": "boolean"
+                        },
+                        "is_tor": {
+                          "type": "boolean",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "ip": "31.165.126.104",
+                  "city": "Fribourg",
+                  "region": "Fribourg",
+                  "country": "CH",
+                  "continent": "EU",
+                  "latitude": "46.80237",
+                  "longitude": "7.15128",
+                  "postal": "1701",
+                  "timezone": "Europe/Zurich",
+                  "asn": 6730,
+                  "org": "sunrise Communications AG",
+                  "currency": "CHF",
+                  "language": "de",
+                  "is_eu": false,
+                  "tor": {
+                    "checked": true,
+                    "is_tor": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timestamp": {
+      "get": {
+        "summary": "Convert timestamps",
+        "description": "Current time, or convert between Unix timestamp and ISO date.",
+        "parameters": [
+          {
+            "name": "unix",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1700000000
+            },
+            "description": "Unix timestamp (seconds since epoch) to convert to a human-readable date. Provide either unix or date, not both."
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "2023-11-14T22:13:20Z"
+            },
+            "description": "Date/time string to convert to a Unix timestamp. Provide either unix or date, not both."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted timestamp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "unix_seconds": {
+                      "type": "integer"
+                    },
+                    "unix_milliseconds": {
+                      "type": "integer"
+                    },
+                    "iso_8601": {
+                      "type": "string"
+                    },
+                    "utc_string": {
+                      "type": "string"
+                    },
+                    "day_of_week": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "unix_seconds": 1735689600,
+                  "unix_milliseconds": 1735689600000,
+                  "iso_8601": "2025-01-01T00:00:00.000Z",
+                  "utc_string": "Wed, 01 Jan 2025 00:00:00 GMT",
+                  "day_of_week": "Wednesday"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/color": {
+      "get": {
+        "summary": "Convert color formats",
+        "description": "Convert between hex, RGB and HSL.",
+        "parameters": [
+          {
+            "name": "hex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "#ff0000"
+            },
+            "description": "Hex color code, e.g. #ff0000 or ff0000. Provide exactly one of hex, rgb, or hsl."
+          },
+          {
+            "name": "rgb",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "255,0,0"
+            },
+            "description": "RGB color, e.g. 255,0,0. Provide exactly one of hex, rgb, or hsl."
+          },
+          {
+            "name": "hsl",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "0,100%,50%"
+            },
+            "description": "HSL color, e.g. 0,100%,50%. Provide exactly one of hex, rgb, or hsl."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted color",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hex": {
+                      "type": "string"
+                    },
+                    "rgb": {
+                      "type": "string"
+                    },
+                    "rgb_values": {
+                      "type": "object",
+                      "properties": {
+                        "r": {
+                          "type": "integer"
+                        },
+                        "g": {
+                          "type": "integer"
+                        },
+                        "b": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "hsl": {
+                      "type": "string"
+                    },
+                    "hsl_values": {
+                      "type": "object",
+                      "properties": {
+                        "h": {
+                          "type": "integer"
+                        },
+                        "s": {
+                          "type": "integer"
+                        },
+                        "l": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "hex": "#1f3a5f",
+                  "rgb": "rgb(31, 58, 95)",
+                  "rgb_values": {
+                    "r": 31,
+                    "g": 58,
+                    "b": 95
+                  },
+                  "hsl": "hsl(215, 51%, 25%)",
+                  "hsl_values": {
+                    "h": 215,
+                    "s": 51,
+                    "l": 25
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-agent": {
+      "get": {
+        "summary": "Parse a User-Agent string",
+        "parameters": [
+          {
+            "name": "ua",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            },
+            "description": "User-Agent string to parse. If omitted, the request's own User-Agent header is parsed instead."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parsed User-Agent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user_agent": {
+                      "type": "string"
+                    },
+                    "parsed": {
+                      "type": "object",
+                      "properties": {
+                        "browser": {
+                          "type": "string"
+                        },
+                        "browser_version": {
+                          "type": "string"
+                        },
+                        "os": {
+                          "type": "string"
+                        },
+                        "os_version": {
+                          "type": "string"
+                        },
+                        "device_type": {
+                          "type": "string"
+                        },
+                        "is_bot": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "user_agent": "Mozilla/5.0 (Windows NT 10.0) Chrome/120.0",
+                  "parsed": {
+                    "browser": "Chrome",
+                    "browser_version": "120.0",
+                    "os": "Windows",
+                    "os_version": "10.0",
+                    "device_type": "desktop",
+                    "is_bot": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/password": {
+      "get": {
+        "summary": "Generate a secure password",
+        "parameters": [
+          {
+            "name": "length",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 16,
+              "maximum": 128,
+              "example": 16
+            },
+            "description": "Desired password length. Defaults to a reasonable secure length if omitted."
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "example": "1"
+            },
+            "description": "Whether to include symbol characters. 1 for yes, 0 for no."
+          },
+          {
+            "name": "uppercase",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "example": "1"
+            },
+            "description": "Whether to include uppercase letters. 1 for yes, 0 for no."
+          },
+          {
+            "name": "numbers",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "example": "1"
+            },
+            "description": "Whether to include numeric digits. 1 for yes, 0 for no."
+          },
+          {
+            "name": "exclude_ambiguous",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "0",
+                "1"
+              ],
+              "example": "0"
+            },
+            "description": "Whether to exclude visually ambiguous characters (e.g. 0/O, 1/l). 1 for yes, 0 for no."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generated password with entropy estimate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "password": {
+                      "type": "string"
+                    },
+                    "length": {
+                      "type": "integer"
+                    },
+                    "entropy_bits": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "password": "P36rTrCxder059JU",
+                  "length": 16,
+                  "entropy_bits": 95
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-validate": {
+      "get": {
+        "summary": "Validate an email address",
+        "description": "Checks syntax and verifies the domain has a valid MX record.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@example.com"
+            },
+            "description": "Email address to validate for correct syntax and a resolvable domain."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "syntax_valid": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "mx_checked": {
+                      "type": "boolean"
+                    },
+                    "has_mx": {
+                      "type": "boolean"
+                    },
+                    "mx_count": {
+                      "type": "integer"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "email": "test@gmail.com",
+                  "syntax_valid": true,
+                  "domain": "gmail.com",
+                  "mx_checked": true,
+                  "has_mx": true,
+                  "mx_count": 5,
+                  "valid": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favicon": {
+      "get": {
+        "summary": "Fetch a domain's favicon URL",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to fetch the favicon URL for, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Favicon URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "favicon": {
+                      "type": "string"
+                    }, "source": {"type": "string", "enum": ["declared", "default"], "description": "declared: the homepage declares this icon in a <link rel=\"icon\"> tag. default: none declared (or homepage unreachable), so the conventional /favicon.ico is returned without being checked."}, "note": {"type": "string", "description": "Present when source is default: explains that the URL is an unverified guess."}
+                  }
+                },
+                "example": {
+                  "domain": "github.com",
+                  "favicon": "https://github.githubassets.com/favicons/favicon.svg", "source": "declared"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Disallowed domain"
+          }
+        }
+      }
+    },
+    "/csv-json": {
+      "get": {
+        "summary": "Convert between JSON and CSV (GET)",
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json-to-csv",
+                "csv-to-json"
+              ],
+              "example": "csv-to-json"
+            },
+            "description": "Either \"csv-to-json\" or \"json-to-csv\"."
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "name,age\nAlice,30"
+            },
+            "description": "The CSV or JSON text to convert, matching the chosen direction."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "usage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "usage": "GET /api/csv-json?direction=json-to-csv|csv-to-json&data=<url-encoded text>  \u2014  or POST { \"direction\": \"...\", \"data\": \"...\" }"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Convert between JSON and CSV (POST)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "direction": {
+                    "type": "string",
+                    "enum": [
+                      "json-to-csv",
+                      "csv-to-json"
+                    ],
+                    "description": "Either \"csv-to-json\" or \"json-to-csv\"."
+                  },
+                  "data": {
+                    "type": "string",
+                    "description": "The CSV or JSON text to convert, matching the chosen direction."
+                  }
+                },
+                "required": [
+                  "direction",
+                  "data"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Converted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    },
+                    "cols": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "result": "[\n  {\n    \"name\": \"Alice\",\n    \"age\": \"30\"\n  }\n]",
+                  "rows": 1,
+                  "cols": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/password-breach": {
+      "get": {
+        "summary": "Check if a password has been breached",
+        "description": "Uses HIBP k-anonymity \u2014 only 5 hash chars are sent externally.",
+        "parameters": [
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "correcthorsebatterystaple"
+            },
+            "description": "Password to check against known data-breach corpora. Only a 5-character SHA-1 hash prefix is sent to HIBP (k-anonymity), but the password itself travels in this request's URL; for real passwords, prefer the password-check endpoint (POST body)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Breach status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "breached": {
+                      "type": "boolean"
+                    },
+                    "breach_count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "breached": true,
+                  "breach_count": 2266543
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/password-check": {
+      "post": {
+        "summary": "Combined password strength + breach check",
+        "description": "Chains entropy/strength scoring with an optional HIBP breach check in a single call. Password is sent in the JSON body, never in a URL.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "password"
+                ],
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "description": "Password to evaluate for strength (length, character variety, common patterns)."
+                  },
+                  "check_breach": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to also check the password against known data-breach corpora via k-anonymity. true or false."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Strength analysis and optional breach result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "length": {
+                      "type": "integer"
+                    },
+                    "entropy_bits": {
+                      "type": "integer"
+                    },
+                    "strength": {
+                      "type": "string",
+                      "enum": [
+                        "very_weak",
+                        "weak",
+                        "fair",
+                        "good",
+                        "strong"
+                      ]
+                    },
+                    "estimated_crack_time": {
+                      "type": "string"
+                    },
+                    "checks": {
+                      "type": "object"
+                    },
+                    "breach": {
+                      "type": "object",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "length": 11,
+                  "entropy_bits": 57,
+                  "strength": "fair",
+                  "estimated_crack_time": "2 days",
+                  "checks": {
+                    "length_ok": false,
+                    "has_lowercase": true,
+                    "has_uppercase": false,
+                    "has_number": true,
+                    "has_symbol": false,
+                    "no_repeated_pattern": true
+                  },
+                  "breach": {
+                    "checked": true,
+                    "breached": true,
+                    "breach_count": 2266543
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-disposable": {
+      "get": {
+        "summary": "Detect disposable email domains",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@mailinator.com"
+            },
+            "description": "Email address to check against a list of known disposable/temporary email domains."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Disposable status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "disposable": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "email": "test@mailinator.com",
+                  "domain": "mailinator.com",
+                  "disposable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-verify": {
+      "get": {
+        "summary": "Combined email verification",
+        "description": "Chains syntax check, MX lookup, disposable-domain detection, and generic/role-account detection in a single call.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "test@example.com"
+            },
+            "description": "Email address to run through combined syntax, disposable-domain, and MX-record checks."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Combined verification result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "syntax_valid": {
+                      "type": "boolean"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "mx_checked": {
+                      "type": "boolean"
+                    },
+                    "has_mx": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "mx_count": {
+                      "type": "integer"
+                    },
+                    "disposable": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "role_account": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "valid": {"type": "boolean", "nullable": true, "description": "true: syntax OK, MX record found, not disposable. false: conclusive failure, see reason. null: the MX lookup could not be completed (reason mx_lookup_failed); retry later, do not treat as invalid."},
+                    "reason": {"type": "string", "nullable": true, "description": "invalid_syntax, no_mx_record, disposable_domain or mx_lookup_failed; null when valid is true."}
+                  }
+                },
+                "example": {
+                  "email": "test@gmail.com",
+                  "syntax_valid": true,
+                  "domain": "gmail.com",
+                  "mx_checked": true,
+                  "has_mx": true,
+                  "mx_count": 5,
+                  "disposable": false,
+                  "role_account": false,
+                  "valid": true,
+                  "reason": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/phone-verify": {
+      "get": {
+        "summary": "Validate and format a phone number",
+        "description": "Validates and formats via libphonenumber-js. If \u201ccountry\u201d is omitted for a number without a leading +, the caller's IP-derived country (Cloudflare edge geolocation) is used as the default.",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "+14155552671"
+            },
+            "description": "Phone number to validate and format, ideally in E.164 format (e.g. +14155552671)."
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "description": "ISO 3166-1 alpha-2 country code (e.g. US, FR), used to interpret a number with no leading +.",
+            "schema": {
+              "type": "string",
+              "example": "US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validation and formatting result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "type": "string"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "country": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "country_calling_code": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "type": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "formats": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "e164": {
+                          "type": "string"
+                        },
+                        "international": {
+                          "type": "string"
+                        },
+                        "national": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "default_country_used": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "ip_inferred_country": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "number": "4155552671",
+                  "valid": true,
+                  "country": "US",
+                  "country_calling_code": "1",
+                  "type": "Fixed or mobile",
+                  "formats": {
+                    "e164": "+14155552671",
+                    "international": "+1 415 555 2671",
+                    "national": "(415) 555-2671",
+                    "uri": "tel:+14155552671"
+                  },
+                  "default_country_used": "US",
+                  "ip_inferred_country": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email-security": {
+      "get": {
+        "summary": "Domain email anti-spoofing check (SPF/DMARC/DKIM)",
+        "description": "Checks SPF strength, DMARC policy, and a best-effort DKIM lookup against common selectors. DKIM has no fixed DNS location, so absence of a match does not prove DKIM is unconfigured.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to check SPF, DKIM, and DMARC records for, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Anti-spoofing configuration report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "score": {
+                      "type": "integer"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    },
+                    "spf": {
+                      "type": "object"
+                    },
+                    "dmarc": {
+                      "type": "object"
+                    },
+                    "dkim": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "google.com",
+                  "score": 65,
+                  "verdict": "Partially protected \u2014 see recommendations.",
+                  "spf": {
+                    "configured": true,
+                    "record": "v=spf1 include:_spf.google.com ~all",
+                    "strength": "moderate"
+                  },
+                  "dmarc": {
+                    "configured": true,
+                    "record": "v=DMARC1; p=reject; rua=mailto:mailauth-reports@google.com",
+                    "policy": "reject",
+                    "enforced": true
+                  },
+                  "dkim": {
+                    "checked_selectors": 13,
+                    "found_selectors": [],
+                    "note": "Best-effort: only common selectors are tested. A domain can have valid DKIM under a custom selector not listed here \u2014 absence of a match does not prove DKIM is unconfigured."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-scan": {
+      "get": {
+        "summary": "Combined security posture report",
+        "description": "Combines security-headers, url-reputation, and subdomains into a single overall score and verdict, run in parallel.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://example.com"
+            },
+            "description": "URL to run a combined security posture check against (headers, reputation, and related signals)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Combined security report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "overall_score": {
+                      "type": "integer"
+                    },
+                    "overall_grade": {
+                      "type": "string"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    },
+                    "security_headers": {
+                      "type": "object"
+                    },
+                    "reputation": {
+                      "type": "object"
+                    },
+                    "attack_surface": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://github.com",
+                  "domain": "github.com",
+                  "overall_score": 85,
+                  "overall_grade": "A",
+                  "verdict": "No major issues found.",
+                  "security_headers": {
+                    "checked": true,
+                    "score": 85,
+                    "grade": "A",
+                    "checks": [
+                      {
+                        "header": "HSTS",
+                        "present": true,
+                        "value": "max-age=31536000; includeSubdomains; preload",
+                        "points": 20,
+                        "max_points": 20,
+                        "advice": null
+                      },
+                      {
+                        "header": "Content-Security-Policy",
+                        "present": true,
+                        "value": "default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net productionresultssa1.blob.core.windows.net productionresultssa2.blob.core.windows.net productionresultssa3.blob.core.windows.net productionresultssa4.blob.core.windows.net productionresultssa5.blob.core.windows.net productionresultssa6.blob.core.windows.net productionresultssa7.blob.core.windows.net productionresultssa8.blob.core.windows.net productionresultssa9.blob.core.windows.net productionresultssa10.blob.core.windows.net productionresultssa11.blob.core.windows.net productionresultssa12.blob.core.windows.net productionresultssa13.blob.core.windows.net productionresultssa14.blob.core.windows.net productionresultssa15.blob.core.windows.net productionresultssa16.blob.core.windows.net productionresultssa17.blob.core.windows.net productionresultssa18.blob.core.windows.net productionresultssa19.blob.core.windows.net github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com wss://production-copilot-host.webpubsub.azure.com edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com user-images.githubusercontent.com private-user-images.githubusercontent.com opengraph.githubassets.com repository-images.githubusercontent.com marketplace-screenshots.githubusercontent.com copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com explore-feed.github.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com secured-user-images.githubusercontent.com private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/",
+                        "points": 25,
+                        "max_points": 25,
+                        "advice": null
+                      },
+                      {
+                        "header": "X-Content-Type-Options",
+                        "present": true,
+                        "value": "nosniff",
+                        "points": 10,
+                        "max_points": 10,
+                        "advice": null
+                      },
+                      {
+                        "header": "X-Frame-Options",
+                        "present": true,
+                        "value": "deny",
+                        "points": 15,
+                        "max_points": 15,
+                        "advice": null
+                      },
+                      {
+                        "header": "Referrer-Policy",
+                        "present": true,
+                        "value": "origin-when-cross-origin, strict-origin-when-cross-origin",
+                        "points": 10,
+                        "max_points": 10,
+                        "advice": null
+                      },
+                      {
+                        "header": "Permissions-Policy",
+                        "present": false,
+                        "value": null,
+                        "points": 0,
+                        "max_points": 10,
+                        "advice": "Add a Permissions-Policy to restrict access to browser features (camera, geolocation, etc.)."
+                      },
+                      {
+                        "header": "X-XSS-Protection",
+                        "present": true,
+                        "value": "0",
+                        "points": 5,
+                        "max_points": 5,
+                        "advice": null
+                      },
+                      {
+                        "header": "Cross-Origin-Opener-Policy",
+                        "present": false,
+                        "value": null,
+                        "points": 0,
+                        "max_points": 5,
+                        "advice": "Add Cross-Origin-Opener-Policy to isolate your browsing context from cross-origin windows."
+                      }
+                    ]
+                  },
+                  "reputation": {
+                    "checked": true,
+                    "malicious": false,
+                    "status": "not_found"
+                  },
+                  "attack_surface": {
+                    "checked": true,
+                    "count": 117,
+                    "subdomains": [
+                      "api.mcp.github.com",
+                      "api.security.github.com",
+                      "api.stars.github.com",
+                      "asset-generator.github.com",
+                      "atom-installer.github.com",
+                      "awesome-copilot.github.com",
+                      "branch.github.com",
+                      "brandguide.github.com",
+                      "bug-bash.github.com",
+                      "camo.github.com",
+                      "central.github.com",
+                      "cla.github.com",
+                      "classroom.github.com",
+                      "cloud.github.com",
+                      "codespaces-dev.github.com",
+                      "codespaces-ppe.github.com",
+                      "codespaces.github.com",
+                      "communication.github.com",
+                      "community.github.com",
+                      "copilot-billing-preview.github.com",
+                      "copilot-reports.github.com",
+                      "design-camp.github.com",
+                      "dev-days.github.com",
+                      "dev.gtm.github.com",
+                      "docs-front-door.github.com",
+                      "docs.github.com",
+                      "dodgeball.github.com",
+                      "ducky.github.com",
+                      "edu.github.com",
+                      "education.github.com",
+                      "emails.github.com",
+                      "enterprise.github.com",
+                      "examadmin-uat.github.com",
+                      "examadmin.github.com",
+                      "examregistration-api.github.com",
+                      "examregistration-uat-api.github.com",
+                      "examregistration-uat.github.com",
+                      "examregistration.github.com",
+                      "f.cloud.github.com",
+                      "fast.github.com",
+                      "gameoff.github.com",
+                      "garage.github.com",
+                      "ghicons.github.com",
+                      "gist.github.com",
+                      "github.com",
+                      "graphql-stage.github.com",
+                      "graphql.github.com",
+                      "gsnlink.github.com",
+                      "help.github.com",
+                      "helpnext.github.com",
+                      "hq.github.com",
+                      "id.github.com",
+                      "import.github.com",
+                      "import2.github.com",
+                      "importer2.github.com",
+                      "jira.github.com",
+                      "jobs.github.com",
+                      "lab-sandbox.github.com",
+                      "lab.github.com",
+                      "learn.github.com",
+                      "livesend.github.com",
+                      "m.communication.github.com",
+                      "mac-installer.github.com",
+                      "mailing.github.com",
+                      "maintainers.github.com",
+                      "model-launchkit.github.com",
+                      "mona-arcade.github.com",
+                      "octocaptcha.review-lab.github.com",
+                      "octostatus-production.github.com",
+                      "offer.github.com",
+                      "partnerportal.github.com",
+                      "pkg.github.com",
+                      "porter.github.com",
+                      "porter2.github.com",
+                      "proxima-review-lab.github.com",
+                      "raw.github.com",
+                      "registry.github.com",
+                      "render-lab.github.com",
+                      "render.github.com",
+                      "res.communication.github.com",
+                      "review-lab.github.com",
+                      "rs.github.com",
+                      "schrauger.github.com",
+                      "skyline.github.com",
+                      "slack.github.com",
+                      "smtp.github.com",
+                      "spotlights-feed.github.com",
+                      "staging-lab.github.com",
+                      "status.github.com",
+                      "stg.github.com",
+                      "styleguide.github.com",
+                      "support.enterprise.github.com",
+                      "t.communication.github.com",
+                      "talks.github.com",
+                      "visualstudio.github.com",
+                      "vpn-ca.iad.github.com",
+                      "vscode-auth.github.com",
+                      "workspaces-dev.github.com",
+                      "workspaces-ppe.github.com",
+                      "workspaces.github.com"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/qr-scan": {
+      "post": {
+        "summary": "Decode a QR code and check its URL reputation",
+        "description": "Decodes a QR code from an uploaded JPEG/PNG image. If the content is a URL, checks it against URLhaus for malware/phishing indicators in the same call. QR-code phishing (\"quishing\") is one of the fastest-growing phishing vectors, bypassing text-based filters.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "JPEG or PNG image, max 10MB."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Decoded content and, if applicable, reputation check",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "type": "boolean"
+                    },
+                    "content": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_url": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "reputation": {
+                      "type": "object",
+                      "nullable": true
+                    },
+                    "verdict": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "found": true,
+                  "content": "https://presend.pages.dev",
+                  "is_url": true,
+                  "reputation": {
+                    "checked": true,
+                    "malicious": false,
+                    "status": "not_found"
+                  },
+                  "verdict": "QR code links to a URL not currently flagged by URLhaus. This does not guarantee safety \u2014 only that it is not currently listed."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/security-headers": {
+      "get": {
+        "summary": "Audit HTTP security headers",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://example.com"
+            },
+            "description": "URL to audit HTTP security headers for (CSP, HSTS, X-Frame-Options, etc.)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Security grade and per-header breakdown",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "score": {
+                      "type": "integer"
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "header": {
+                            "type": "string"
+                          },
+                          "present": {
+                            "type": "boolean"
+                          },
+                          "value": {
+                            "type": "string", "nullable": true
+                          },
+                          "points": {
+                            "type": "integer"
+                          },
+                          "max_points": {
+                            "type": "integer"
+                          },
+                          "advice": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://github.com",
+                  "grade": "A",
+                  "score": 85,
+                  "checks": [
+                    {
+                      "header": "HSTS",
+                      "present": true,
+                      "value": "max-age=31536000; includeSubdomains; preload",
+                      "points": 20,
+                      "max_points": 20,
+                      "advice": null
+                    },
+                    {
+                      "header": "Content-Security-Policy",
+                      "present": true,
+                      "value": "default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net productionresultssa1.blob.core.windows.net productionresultssa2.blob.core.windows.net productionresultssa3.blob.core.windows.net productionresultssa4.blob.core.windows.net productionresultssa5.blob.core.windows.net productionresultssa6.blob.core.windows.net productionresultssa7.blob.core.windows.net productionresultssa8.blob.core.windows.net productionresultssa9.blob.core.windows.net productionresultssa10.blob.core.windows.net productionresultssa11.blob.core.windows.net productionresultssa12.blob.core.windows.net productionresultssa13.blob.core.windows.net productionresultssa14.blob.core.windows.net productionresultssa15.blob.core.windows.net productionresultssa16.blob.core.windows.net productionresultssa17.blob.core.windows.net productionresultssa18.blob.core.windows.net productionresultssa19.blob.core.windows.net github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com wss://production-copilot-host.webpubsub.azure.com edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com user-images.githubusercontent.com private-user-images.githubusercontent.com opengraph.githubassets.com repository-images.githubusercontent.com marketplace-screenshots.githubusercontent.com copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com explore-feed.github.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com secured-user-images.githubusercontent.com private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/",
+                      "points": 25,
+                      "max_points": 25,
+                      "advice": null
+                    },
+                    {
+                      "header": "X-Content-Type-Options",
+                      "present": true,
+                      "value": "nosniff",
+                      "points": 10,
+                      "max_points": 10,
+                      "advice": null
+                    },
+                    {
+                      "header": "X-Frame-Options",
+                      "present": true,
+                      "value": "deny",
+                      "points": 15,
+                      "max_points": 15,
+                      "advice": null
+                    },
+                    {
+                      "header": "Referrer-Policy",
+                      "present": true,
+                      "value": "origin-when-cross-origin, strict-origin-when-cross-origin",
+                      "points": 10,
+                      "max_points": 10,
+                      "advice": null
+                    },
+                    {
+                      "header": "Permissions-Policy",
+                      "present": false,
+                      "value": null,
+                      "points": 0,
+                      "max_points": 10,
+                      "advice": "Add a Permissions-Policy to restrict access to browser features (camera, geolocation, etc.)."
+                    },
+                    {
+                      "header": "X-XSS-Protection",
+                      "present": true,
+                      "value": "0",
+                      "points": 5,
+                      "max_points": 5,
+                      "advice": null
+                    },
+                    {
+                      "header": "Cross-Origin-Opener-Policy",
+                      "present": false,
+                      "value": null,
+                      "points": 0,
+                      "max_points": 5,
+                      "advice": "Add Cross-Origin-Opener-Policy to isolate your browsing context from cross-origin windows."
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/url-reputation": {
+      "get": {
+        "summary": "Check URL against malware/phishing database",
+        "description": "Uses URLhaus (abuse.ch).",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://example.com"
+            },
+            "description": "URL to check against known phishing/malware URL databases."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reputation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "malicious": {
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://example.com",
+                  "malicious": false,
+                  "status": "not_found",
+                  "note": "Not found in URLhaus. This does not guarantee the URL is safe \u2014 only that it is not currently listed."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subdomains": {
+      "get": {
+        "summary": "Passive subdomain discovery",
+        "description": "Via Certificate Transparency logs (crt.sh). Depends on a third-party service with occasional downtime.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to passively discover subdomains for via Certificate Transparency logs, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of discovered subdomains",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "subdomains": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "github.com",
+                  "count": 117,
+                  "subdomains": [
+                    "api.mcp.github.com",
+                    "api.security.github.com",
+                    "api.stars.github.com",
+                    "asset-generator.github.com",
+                    "atom-installer.github.com",
+                    "awesome-copilot.github.com",
+                    "branch.github.com",
+                    "brandguide.github.com",
+                    "bug-bash.github.com",
+                    "camo.github.com",
+                    "central.github.com",
+                    "cla.github.com",
+                    "classroom.github.com",
+                    "cloud.github.com",
+                    "codespaces-dev.github.com",
+                    "codespaces-ppe.github.com",
+                    "codespaces.github.com",
+                    "communication.github.com",
+                    "community.github.com",
+                    "copilot-billing-preview.github.com",
+                    "copilot-reports.github.com",
+                    "design-camp.github.com",
+                    "dev-days.github.com",
+                    "dev.gtm.github.com",
+                    "docs-front-door.github.com",
+                    "docs.github.com",
+                    "dodgeball.github.com",
+                    "ducky.github.com",
+                    "edu.github.com",
+                    "education.github.com",
+                    "emails.github.com",
+                    "enterprise.github.com",
+                    "examadmin-uat.github.com",
+                    "examadmin.github.com",
+                    "examregistration-api.github.com",
+                    "examregistration-uat-api.github.com",
+                    "examregistration-uat.github.com",
+                    "examregistration.github.com",
+                    "f.cloud.github.com",
+                    "fast.github.com",
+                    "gameoff.github.com",
+                    "garage.github.com",
+                    "ghicons.github.com",
+                    "gist.github.com",
+                    "github.com",
+                    "graphql-stage.github.com",
+                    "graphql.github.com",
+                    "gsnlink.github.com",
+                    "help.github.com",
+                    "helpnext.github.com",
+                    "hq.github.com",
+                    "id.github.com",
+                    "import.github.com",
+                    "import2.github.com",
+                    "importer2.github.com",
+                    "jira.github.com",
+                    "jobs.github.com",
+                    "lab-sandbox.github.com",
+                    "lab.github.com",
+                    "learn.github.com",
+                    "livesend.github.com",
+                    "m.communication.github.com",
+                    "mac-installer.github.com",
+                    "mailing.github.com",
+                    "maintainers.github.com",
+                    "model-launchkit.github.com",
+                    "mona-arcade.github.com",
+                    "octocaptcha.review-lab.github.com",
+                    "octostatus-production.github.com",
+                    "offer.github.com",
+                    "partnerportal.github.com",
+                    "pkg.github.com",
+                    "porter.github.com",
+                    "porter2.github.com",
+                    "proxima-review-lab.github.com",
+                    "raw.github.com",
+                    "registry.github.com",
+                    "render-lab.github.com",
+                    "render.github.com",
+                    "res.communication.github.com",
+                    "review-lab.github.com",
+                    "rs.github.com",
+                    "schrauger.github.com",
+                    "skyline.github.com",
+                    "slack.github.com",
+                    "smtp.github.com",
+                    "spotlights-feed.github.com",
+                    "staging-lab.github.com",
+                    "status.github.com",
+                    "stg.github.com",
+                    "styleguide.github.com",
+                    "support.enterprise.github.com",
+                    "t.communication.github.com",
+                    "talks.github.com",
+                    "visualstudio.github.com",
+                    "vpn-ca.iad.github.com",
+                    "vscode-auth.github.com",
+                    "workspaces-dev.github.com",
+                    "workspaces-ppe.github.com",
+                    "workspaces.github.com",
+                    "ws.help.github.com",
+                    "ws.support.github.com",
+                    "www.api.security.github.com",
+                    "www.api.stars.github.com",
+                    "www.communication.github.com",
+                    "www.github.com",
+                    "www.graphql-stage.github.com",
+                    "www.graphql.github.com",
+                    "www.jira.github.com",
+                    "www.maintainers.github.com",
+                    "www.partnerportal.github.com",
+                    "www.render-lab.github.com",
+                    "www.skyline.github.com",
+                    "www.smtp.github.com",
+                    "www.support.enterprise.github.com",
+                    "www.visualstudio.github.com",
+                    "www.ws.support.github.com"
+                  ],
+                  "source": "Certificate Transparency logs (crt.sh) \u2014 passive, publicly available data."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai-crawler-check": {
+      "get": {
+        "summary": "Check which AI crawlers are allowed by robots.txt",
+        "description": "Fetches robots.txt and reports which known AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, etc.) are allowed or blocked. Free, no signup required.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to check, e.g. example.com. robots.txt is fetched from https://<domain>/robots.txt."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Per-bot allow/block report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": { "wildcard_rules_note": {"type": "string"},
+                    "domain": {
+                      "type": "string"
+                    },
+                    "robots_txt_found": {
+                      "type": "boolean"
+                    },
+                    "summary": {
+                      "type": "object"
+                    },
+                    "wildcard_rules": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "nullable": true
+                    },
+                    "bots": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "github.com",
+                  "robots_txt_found": true,
+                  "summary": {
+                    "blocked": 0,
+                    "partial": 15,
+                    "allowed": 0
+                  },
+                  "wildcard_rules": [
+                    "Disallow: /*/*/pulse",
+                    "Disallow: /*/*/projects",
+                    "Disallow: /*/*/forks",
+                    "Disallow: /*/*/issues/new",
+                    "Disallow: /*/*/milestones/new",
+                    "Disallow: /*/*/issues/search",
+                    "Disallow: /*/*/commits/",
+                    "Disallow: /*/*/branches",
+                    "Disallow: /*/*/contributors",
+                    "Disallow: /*/*/tags",
+                    "Disallow: /*/*/stargazers",
+                    "Disallow: /*/*/watchers",
+                    "Disallow: /*/*/network",
+                    "Disallow: /*/*/graphs",
+                    "Disallow: /*/*/compare",
+                    "Disallow: /*/tree/",
+                    "Disallow: /gist/",
+                    "Disallow: /*/download",
+                    "Disallow: /*/revisions",
+                    "Disallow: /*/commits/*?author",
+                    "Disallow: /*/commits/*?path",
+                    "Disallow: /*/comments",
+                    "Disallow: /*/archive/",
+                    "Disallow: /*/blame/",
+                    "Disallow: /*/raw/",
+                    "Disallow: /*/cache/",
+                    "Disallow: /.git/",
+                    "Disallow: */.git/",
+                    "Disallow: /*.git$",
+                    "Disallow: /search/advanced",
+                    "Disallow: /search$",
+                    "Disallow: /*q=",
+                    "Disallow: /*.atom$",
+                    "Disallow: /ekansa/Open-Context-Data",
+                    "Disallow: /ekansa/opencontext-*",
+                    "Disallow: */tarball/",
+                    "Disallow: */zipball/",
+                    "Disallow: /*source=*",
+                    "Disallow: /*ref_cta=*",
+                    "Disallow: /*plan=*",
+                    "Disallow: /*return_to=*",
+                    "Disallow: /*ref_loc=*",
+                    "Disallow: /*setup_organization=*",
+                    "Disallow: /*source_repo=*",
+                    "Disallow: /*ref_page=*",
+                    "Disallow: /*source=*",
+                    "Disallow: /*referrer=*",
+                    "Disallow: /*report=*",
+                    "Disallow: /*author=*",
+                    "Disallow: /*since=*",
+                    "Disallow: /*until=*",
+                    "Disallow: /*commits?author=*",
+                    "Disallow: /*report-abuse?report=*",
+                    "Disallow: /*tab=*",
+                    "Allow: /*?tab=achievements&achievement=*",
+                    "Disallow: /account-login",
+                    "Disallow: /Explodingstuff/",
+                    "Disallow: /copilot/",
+                    "Disallow: /copilot/c/"
+                  ],
+                  "wildcard_rules_note": "Shown once here; any bot below with matched_by=\"wildcard\" is governed by these rules (no bot-specific override).",
+                  "bots": [
+                    {
+                      "token": "GPTBot",
+                      "company": "OpenAI",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "ChatGPT-User",
+                      "company": "OpenAI",
+                      "category": "ai-assistant",
+                      "respects_robots_txt": false,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "OAI-SearchBot",
+                      "company": "OpenAI",
+                      "category": "ai-search",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "ClaudeBot",
+                      "company": "Anthropic",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Claude-User",
+                      "company": "Anthropic",
+                      "category": "ai-assistant",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Claude-SearchBot",
+                      "company": "Anthropic",
+                      "category": "ai-search",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Google-Extended",
+                      "company": "Google",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "PerplexityBot",
+                      "company": "Perplexity",
+                      "category": "ai-search",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Perplexity-User",
+                      "company": "Perplexity",
+                      "category": "ai-assistant",
+                      "respects_robots_txt": false,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "CCBot",
+                      "company": "Common Crawl",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Bytespider",
+                      "company": "ByteDance",
+                      "category": "ai-training",
+                      "respects_robots_txt": false,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Meta-ExternalAgent",
+                      "company": "Meta",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Applebot-Extended",
+                      "company": "Apple",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Amazonbot",
+                      "company": "Amazon",
+                      "category": "ai-training",
+                      "respects_robots_txt": true,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    },
+                    {
+                      "token": "Diffbot",
+                      "company": "Diffbot",
+                      "category": "ai-training",
+                      "respects_robots_txt": false,
+                      "allowed": "partial",
+                      "matched_by": "wildcard",
+                      "matched_rules": null
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/merge-and-compress-pdf": {
+      "post": {
+        "summary": "Merge and compress PDFs",
+        "description": "Merges 2+ PDF files into one document, then compresses the result and strips metadata (title, author, producer). Chains two operations in a single call \u2014 most free APIs require calling merge and compress separately and gluing the results together yourself.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "description": "2 or more PDF files, max 20 files / 30MB total."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merged and compressed PDF file",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clean-image": {
+      "post": {
+        "summary": "Strip image metadata (EXIF/GPS)",
+        "description": "Removes EXIF/GPS data from JPEG (APP1 segment) and text metadata from PNG (tEXt/zTXt/iTXt/eXIf/tIME chunks) via direct binary parsing. Pixel data is never re-encoded, so there is zero quality loss \u2014 unlike canvas-based approaches, which always recompress.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cleaned image, same format as input",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image-similarity": {
+      "post": {
+        "summary": "Perceptual image hash / similarity comparison",
+        "description": "Computes a perceptual hash (dHash, 64-bit) for 1 or 2 JPEG/PNG images. Unlike a cryptographic hash, this survives re-compression, minor resizing, and small edits. Send 2 images to get a direct similarity comparison.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "description": "1 file (hash only) or 2 files (compare). JPEG/PNG, max 10MB each."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash (1 file) or comparison result (2 files)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "files": [
+                    {
+                      "filename": "similar_a.png",
+                      "width": 200,
+                      "height": 200,
+                      "hash": "00000003060c1020"
+                    },
+                    {
+                      "filename": "similar_a2.jpg",
+                      "width": 200,
+                      "height": 200,
+                      "hash": "00000003060c1020"
+                    }
+                  ],
+                  "hamming_distance": 0,
+                  "similarity_percent": 100,
+                  "verdict": "Near-identical (likely the same image, possibly re-compressed or lightly edited)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text-similarity": {
+      "post": {
+        "summary": "Text similarity via SimHash (1 or 2 texts)",
+        "description": "Computes a 64-bit SimHash (over word shingles) for 1 or 2 texts. Unlike a cryptographic hash, this detects paraphrased or lightly-edited near-duplicate content. Send 2 texts to get a direct similarity comparison. Unrelated texts typically score ~50% by chance, not 0%.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "texts"
+                ],
+                "properties": {
+                  "texts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "1 text (hash only) or 2 texts (compare). Max 200,000 characters each."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash (1 text) or comparison result (2 texts)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "texts": [
+                    {
+                      "length": 62,
+                      "hash": "11cead9a82394f07"
+                    },
+                    {
+                      "length": 62,
+                      "hash": "11cead9a82394f07"
+                    }
+                  ],
+                  "hamming_distance": 0,
+                  "similarity_percent": 100,
+                  "verdict": "Near-identical (likely the same text, possibly with trivial edits)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dns-lookup": {
+      "get": {
+        "summary": "DNS record lookup (A, AAAA, CNAME, MX, TXT, NS)",
+        "description": "Via Cloudflare's DNS-over-HTTPS resolver. Returns all 6 common record types in one call by default, or a single type with &type=.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to look up, e.g. example.com."
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "A",
+                "AAAA",
+                "CNAME",
+                "MX",
+                "TXT",
+                "NS"
+              ],
+              "example": "A"
+            },
+            "description": "Narrow to a single record type. Omit to get all 6 at once."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DNS records for the domain",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "records": {
+                      "type": "object",
+                      "properties": {
+                        "A": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "AAAA": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "CNAME": {
+                          "type": "array",
+                          "items": {}
+                        },
+                        "MX": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "priority": {
+                                "type": "integer"
+                              },
+                              "exchange": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "TXT": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "NS": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "cloudflare.com",
+                  "records": {
+                    "A": [
+                      "104.16.133.229",
+                      "104.16.132.229"
+                    ],
+                    "AAAA": [
+                      "2606:4700::6810:85e5",
+                      "2606:4700::6810:84e5"
+                    ],
+                    "CNAME": [],
+                    "MX": [
+                      {
+                        "priority": 5,
+                        "exchange": "mxa-canary.global.inbound.cf-emailsecurity.net"
+                      },
+                      {
+                        "priority": 5,
+                        "exchange": "mxb-canary.global.inbound.cf-emailsecurity.net"
+                      },
+                      {
+                        "priority": 10,
+                        "exchange": "mxa.global.inbound.cf-emailsecurity.net"
+                      },
+                      {
+                        "priority": 10,
+                        "exchange": "mxb.global.inbound.cf-emailsecurity.net"
+                      }
+                    ],
+                    "TXT": [
+                      "MS=ms70274184",
+                      "_neqmkgaq1lq9it5s8qmetrhbnu121wb",
+                      "_wkjc0fot0d7qrvrdt78bxkj2e2o67d2",
+                      "ZOOM_verify_7LFBvOO9SIigypFG2xRlMA",
+                      "asv=894f6d1f9f83bcf44e4b1bc40bc1c4aa",
+                      "apple-domain-verification=DNnWJoArJobFJKhJ",
+                      "status-page-domain-verification=r14frwljwbxs",
+                      "canva-site-verification=oOyaVnHC-OiFoR1BPvetNA",
+                      "docker-verification=c578e21c-34fb-4474-9b90-d55ee4cba10c",
+                      "miro-verification=bdd7dfa0a49adfb43ad6ddfaf797633246c07356",
+                      "facebook-domain-verification=h9mm6zopj6p2po54woa16m5bskm6oo",
+                      "databank-domain-verification-hkehd2=fzgu4kmbZwMoW99zENgO4u8NL",
+                      "onetrust-domain-verification=bd5cd08a1e9644799fdb98ed7d60c9cb",
+                      "uber-domain-verification=58086039-150a-42a4-a4be-b4032921aa0f",
+                      "logmein-verification-code=b3433c86-3823-4808-8a7e-58042469f654",
+                      "creatopy-domain-verification=97d2ca50-9b6f-4a21-9bdb-fbb630e4cec7",
+                      "google-site-verification=C7thfNeXVahkVhniiqTI1iSVnElKR_kBBtnEHkeGDlo",
+                      "google-site-verification=ZdlQZLBBAPkxeFTCM1rpiB_ibtGff_JF5KllNKwDR9I",
+                      "liveramp-site-verification=EhH1MqgwbndTWl1AN64hOTKz7hc1s80yUpchLbgpfY0",
+                      "stripe-verification=5096d01ff2cf194285dd51cae18f24fa9c26dc928cebac3636d462b4c6925623",
+                      "stripe-verification=bf1a94e6b16ace2502a4a7fff574a25c8a45291054960c883c59be39d1788db9",
+                      "drift-domain-verification=f037808a26ae8b25bc13b1f1f2b4c3e0f78c03e67f24cefdd4ec520efa8e719f",
+                      "cisco-ci-domain-verification=27e926884619804ef987ae4aa1c4168f6b152ada84f4c8bfc74eb2bd2912ad72",
+                      "atlassian-domain-verification=WxxKyN9aLnjEsoOjUYI6T0bb5vcqmKzaIkC9Rx2QkNb751G3LL/cus8/ZDOgh8xB",
+                      "_saml-domain-challenge.2dc00405-79cd-457b-b288-a119c6f0c7b7.71996d53-d178-4ba9-bef4-7f7e46edab74.cloudflare.com=1c8736fd-84b2-4197-985f-3fb2852f2457",
+                      "DirectFedAuthUrl=https://cloudflare-security.cloudflareaccess.com/cdn-cgi/access/sso/saml/dba6756ad312fc13c45f705cf7f5e87f4d658be016c41f950329aa4085b3abc1",
+                      "DirectFedAuthUrl=https://cloudflare-security.cloudflareaccess.com/cdn-cgi/access/sso/saml/ebec933773c69c93420d13e6776adb8c4a190f6281f9d132bcebd7dcb0967bdd",
+                      "v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
+                    ],
+                    "NS": [
+                      "ns3.cloudflare.com",
+                      "ns4.cloudflare.com",
+                      "ns5.cloudflare.com",
+                      "ns6.cloudflare.com",
+                      "ns7.cloudflare.com"
+                    ]
+                  },
+                  "source": "Cloudflare DNS-over-HTTPS resolver \u2014 public DNS, no data from your own network is queried."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/whois-lookup": {
+      "get": {
+        "summary": "Domain registration lookup (WHOIS via RDAP)",
+        "description": "Registrar, creation/expiration dates, domain age, nameservers via RDAP -- the modern HTTPS-based successor to legacy WHOIS.",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to look up registration details for via RDAP, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Domain registration data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "registered": {
+                      "type": "boolean"
+                    },
+                    "registrar": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "string"
+                    },
+                    "expires": {
+                      "type": "string"
+                    },
+                    "last_changed": {
+                      "type": "string"
+                    },
+                    "age_days": {
+                      "type": "integer"
+                    },
+                    "nameservers": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "status": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "cloudflare.com",
+                  "registered": true,
+                  "registrar": "Cloudflare, Inc.",
+                  "created": "2009-02-17T22:07:54Z",
+                  "expires": "2033-02-17T22:07:54Z",
+                  "last_changed": "2024-01-09T16:45:28Z",
+                  "age_days": 6413,
+                  "nameservers": [
+                    "ns3.cloudflare.com",
+                    "ns4.cloudflare.com",
+                    "ns5.cloudflare.com",
+                    "ns6.cloudflare.com",
+                    "ns7.cloudflare.com"
+                  ],
+                  "status": [
+                    "client delete prohibited",
+                    "client transfer prohibited",
+                    "client update prohibited",
+                    "server delete prohibited",
+                    "server transfer prohibited",
+                    "server update prohibited"
+                  ],
+                  "source": "RDAP (rdap.org) -- the ICANN-mandated successor to legacy WHOIS."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vulnerability-check": {
+      "get": {
+        "summary": "Package vulnerability check (OSV.dev)",
+        "description": "Checks a package/version against OSV.dev (Google's Open Source Vulnerabilities database) -- npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, NuGet.",
+        "parameters": [
+          {
+            "name": "ecosystem",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "npm"
+            },
+            "description": "Package ecosystem, e.g. npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, or NuGet."
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "lodash"
+            },
+            "description": "Package name to check against OSV.dev for known CVEs."
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "4.17.15"
+            },
+            "description": "Omit to check all versions of the package."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vulnerability report for the package/version",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "package": {
+                      "type": "string"
+                    },
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "string"
+                    },
+                    "vulnerable": {
+                      "type": "boolean"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "vulnerabilities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "cve": {
+                            "type": "string"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "severity": {
+                            "type": "string"
+                          },
+                          "fixed_in": {
+                            "type": "string"
+                          },
+                          "published": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "package": "lodash",
+                  "ecosystem": "npm",
+                  "version": "4.17.15",
+                  "vulnerable": true,
+                  "count": 6,
+                  "vulnerabilities": [
+                    {
+                      "id": "GHSA-29mw-wpgm-hmr9",
+                      "cve": "CVE-2020-28500",
+                      "summary": "Regular Expression Denial of Service (ReDoS) in lodash",
+                      "severity": "MODERATE",
+                      "fixed_in": "4.17.21",
+                      "published": "2022-01-06T20:30:46Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-29mw-wpgm-hmr9"
+                    },
+                    {
+                      "id": "GHSA-35jh-r3h4-6jhm",
+                      "cve": "CVE-2021-23337",
+                      "summary": "Command Injection in lodash",
+                      "severity": "HIGH",
+                      "fixed_in": "4.17.21",
+                      "published": "2021-05-06T16:05:51Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-35jh-r3h4-6jhm"
+                    },
+                    {
+                      "id": "GHSA-f23m-r3pf-42rh",
+                      "cve": "CVE-2025-13465",
+                      "summary": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
+                      "severity": "MODERATE",
+                      "fixed_in": "4.18.0",
+                      "published": "2026-04-01T23:50:27Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-f23m-r3pf-42rh"
+                    },
+                    {
+                      "id": "GHSA-p6mc-m468-83gw",
+                      "cve": "CVE-2020-8203",
+                      "summary": "Prototype Pollution in lodash",
+                      "severity": "HIGH",
+                      "fixed_in": "4.17.19",
+                      "published": "2020-07-15T19:15:48Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw"
+                    },
+                    {
+                      "id": "GHSA-r5fr-rjxr-66jc",
+                      "cve": "CVE-2021-23337",
+                      "summary": "lodash vulnerable to Code Injection via `_.template` imports key names",
+                      "severity": "HIGH",
+                      "fixed_in": "4.18.0",
+                      "published": "2026-04-01T23:51:12Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc"
+                    },
+                    {
+                      "id": "GHSA-xxjr-mmjv-4gpg",
+                      "cve": "CVE-2025-13465",
+                      "summary": "Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions",
+                      "severity": "MODERATE",
+                      "fixed_in": "4.17.23",
+                      "published": "2026-01-21T23:01:22Z",
+                      "url": "https://osv.dev/vulnerability/GHSA-xxjr-mmjv-4gpg"
+                    }
+                  ],
+                  "source": "OSV.dev (Google) -- aggregates the GitHub Advisory Database plus ecosystem-native advisories."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/typosquat-check": {
+      "post": {
+        "summary": "Batch package name typosquatting check",
+        "description": "Checks up to 100 package names in one request, counted as a single request for rate limiting. Same analysis as GET; an invalid entry yields {package, error} instead of failing the batch.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ecosystem",
+                  "packages"
+                ],
+                "properties": {
+                  "ecosystem": {
+                    "type": "string",
+                    "enum": [
+                      "npm",
+                      "PyPI"
+                    ],
+                    "example": "npm"
+                  },
+                  "packages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "lodas",
+                      "expres",
+                      "react"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "suspicious_count": {
+                      "type": "integer"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "description": "One entry per input name, in input order. Same fields as the GET response, or {package, error} for an invalid entry.",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON body, unsupported ecosystem, empty list, or more than 100 names"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      },
+      "get": {
+        "summary": "Package name typosquatting check",
+        "description": "Flags package names that are a near-miss of a curated list of well-known npm/PyPI packages (Damerau-Levenshtein: 1 edit for 4-7 character names, 2 for 8+; names of 3 characters or fewer are not fuzzy-matched) -- the classic typosquatting pattern. A batch POST variant is available.",
+        "parameters": [
+          {
+            "name": "ecosystem",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "npm",
+                "PyPI"
+              ],
+              "example": "npm"
+            },
+            "description": "Package ecosystem, e.g. npm or PyPI."
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "lodahs"
+            },
+            "description": "Package name to check for likely typosquatting of a well-known package in the given ecosystem."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Typosquatting analysis for the package name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "package": {
+                      "type": "string"
+                    },
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "is_known_popular_package": {
+                      "type": "boolean"
+                    },
+                    "known_legitimate": {
+                      "type": "boolean",
+                      "description": "True when the name resembles a well-known package but is itself a manually reviewed legitimate package (e.g. preact vs react, psycopg vs psycopg2). Such names are not flagged as suspicious."
+                    },
+                    "suspicious": {
+                      "type": "boolean"
+                    },
+                    "similar_to": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "distance": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "package": "lodas",
+                  "ecosystem": "npm",
+                  "is_known_popular_package": false,
+                  "known_legitimate": false,
+                  "suspicious": true,
+                  "similar_to": [
+                    {
+                      "name": "lodash",
+                      "distance": 1
+                    }
+                  ],
+                  "note": "Name is within edit-distance 2 of a well-known package. Verify this is the package you meant to install, not a look-alike.",
+                  "source": "Curated list of ~165 well-known npm packages, checked via Damerau-Levenshtein edit distance (transpositions, omissions, insertions, substitutions). Not an exhaustive top-N-by-downloads feed."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ip-reputation": {
+      "get": {
+        "summary": "IP reputation check against a curated blocklist",
+        "description": "Checks an IPv4 or IPv6 address against a curated list of netblocks known to be hijacked or controlled by spam/cyber-crime operations. The list copy is refreshed at most once a day; the response includes the list date, attribution and a stale flag if the upstream source has been unreachable long enough for the copy to be over 48 hours old. Free, no signup.",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1.2.3.4"
+            },
+            "description": "IPv4 or IPv6 address to check (IPv4-mapped IPv6 such as ::ffff:1.2.3.4 is checked against the IPv4 list) against a curated list of known hijacked or cyber-crime-controlled netblocks."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reputation check result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string"
+                    },
+                    "ip_version": {"type": "integer", "enum": [4, 6]}, "listed": {
+                      "type": "boolean"
+                    },
+                    "matched_range": {
+                      "type": "string"
+                    },
+                    "reference": {
+                      "type": "string"
+                    },
+                    "list_size": {
+                      "type": "integer"
+                    }, "list_date": {"type": "string", "description": "Date of the list version used (YYYY-MM-DD)"}, "data_age_hours": {"type": "number"}, "stale": {"type": "boolean", "description": "True if the list copy is older than 48 hours (upstream unreachable)"}, "attribution": {"type": "string"}, "terms": {"type": "string"},
+                    "source": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "ip": "1.19.100.100", "ip_version": 4,
+                  "listed": true,
+                  "matched_range": "1.19.0.0/16",
+                  "reference": "SBL434604",
+                  "list_size": 1711,
+                  "list_date": "2026-09-25",
+                  "data_age_hours": 2.4,
+                  "stale": false,
+                  "source": "Spamhaus DROP (Don't Route Or Peer) -- netblocks known to be hijacked or controlled by spam/cyber-crime operations. IPv4 and IPv6 (separate lists). Spamhaus re-evaluates listings daily; this service refreshes its copy at most once a day.",
+                  "attribution": "(c) 2026 The Spamhaus Project SLU",
+                  "terms": "https://www.spamhaus.org/drop/terms/",
+                  "note": "This IP falls within a netblock Spamhaus lists as entirely controlled by spammers or hijackers."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/address-risk": {
+      "get": {
+        "summary": "Crypto address risk check (OFAC SDN)",
+        "description": "Checks a crypto address against every OFAC Specially Designated Nationals (SDN) digital currency address list (per-asset lists such as ETH, USDT, USDC, XBT, TRX). EVM (0x...) and Bitcoin (bc1..., 1..., 3...) addresses are fully covered: sanctioned is true or false, with the matching lists. Addresses of other chains are flagged when listed. Cosmos SDK (bech32) addresses return sanctioned: null when not listed, since OFAC has published no entries for Cosmos SDK chains. Free, no signup.",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+            },
+            "description": "Address to screen: EVM (0x + 40 hex chars) or Bitcoin (bc1..., 1..., 3...), both fully covered. Addresses of other chains are matched against their lists too; bech32 addresses of other chains (e.g. cosmos1...) return sanctioned: null (unchecked, not clean) when not listed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address risk check result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "sanctioned": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "matched_lists": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    },
+                    "lists_checked": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "list_size": {
+                      "type": "integer"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "format": "evm",
+                  "sanctioned": false,
+                  "matched_lists": [],
+                  "lists_checked": ["ARB", "BCH", "BSC", "BSV", "BTG", "DASH", "ETC", "ETH", "LTC", "SOL", "TRX", "USDC", "USDT", "XBT", "XMR", "XRP", "XVG", "ZEC"],
+                  "list_size": 1053,
+                  "source": "OFAC Specially Designated Nationals (SDN) list, digital currency addresses (all per-asset lists), republished nightly by 0xB10C/ofac-sanctioned-digital-currency-addresses from the official sdn_advanced.xml.",
+                  "note": "Not on any OFAC SDN digital currency address list. This is one specific, US-government sanctions list -- not a full risk score, and a clean result here does not mean the address is otherwise trustworthy."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tx-decode": {
+      "get": {
+        "summary": "Cosmos SDK transaction decoder",
+        "description": "Decodes a raw, signed Cosmos SDK transaction (protobuf TxRaw bytes, base64-encoded) into readable JSON -- messages, fee, gas, signer info, and signatures. Hand-rolled protobuf reader, no external dependency. Message contents are decoded for common bank/staking/gov/authz types (including recursive MsgExec, up to a depth cap); other types are returned as their type URL plus raw hex. Free, no signup.",
+        "parameters": [
+          {
+            "name": "tx",
+            "in": "query",
+            "required": true,
+            "schema": { "example": "CuYDCqEBCiUvY29zbW9zLnN0YWtpbmcudjFiZXRhMS5Nc2dVbmRlbGVnYXRlEngKLWNvc21vczFjNG16ajdhdTg3bm1qNHNzZWx4bGRwcWRrbjc5cHZ1ZXM2NHBtNxI0Y29zbW9zdmFsb3BlcjFmZjBkdzhrYXdzbnhrcmdqN3A2NWt2dzdqeHhha3lmOG41ODNneBoRCgV1YXRvbRIIMTAwMDc5OTgKnQEKJS9jb3Ntb3Muc3Rha2luZy52MWJldGExLk1zZ1VuZGVsZWdhdGUSdAotY29zbW9zMWM0bXpqN2F1ODdubWo0c3NlbHhsZHBxZGtuNzlwdnVlczY0cG03EjRjb3Ntb3N2YWxvcGVyMTAycnV2cHYyc3JtdW5mZmZ4YXZ0dHhuaGV6bG42Zm5jNTRhdDhjGg0KBXVhdG9tEgQyNTY1Cp8BCiUvY29zbW9zLnN0YWtpbmcudjFiZXRhMS5Nc2dVbmRlbGVnYXRlEnYKLWNvc21vczFjNG16ajdhdTg3bm1qNHNzZWx4bGRwcWRrbjc5cHZ1ZXM2NHBtNxI0Y29zbW9zdmFsb3BlcjEwd2xqeHBsMDMwNTNoOTY5MGFwbXllYWtseTN5bGhlanJ1Y3Z0bRoPCgV1YXRvbRIGMzQwMDAwEmgKUApGCh8vY29zbW9zLmNyeXB0by5zZWNwMjU2azEuUHViS2V5EiMKIQI7ZbLGHK+7zfRSXqRGcxwFlGQywiNxHSw6x98l8IROyxIECgIIARgPEhQKDgoFdWF0b20SBTIwMDg1EInLehpA1osMdhghyuDtm5Fo/mcBsv+mtq11yzWtJitfbuy2v1MFxllKQZ2iifqkJmtVwpwcjCDh8+JtBFHuD4k60938EA==",
+              "type": "string"
+            },
+            "description": "Base64-encoded Cosmos SDK TxRaw protobuf bytes, as returned by any chain's CometBFT RPC /block (result.block.data.txs[]) or /tx_search endpoints."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decoded transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tx_bytes_length": {
+                      "type": "integer"
+                    },
+                    "body": {
+                      "type": "object"
+                    },
+                    "auth_info": {
+                      "type": "object"
+                    },
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "tx_bytes_length": 329,
+                  "body": {
+                    "messages": [
+                      {
+                        "type": "/cosmos.bank.v1beta1.MsgSend",
+                        "decoded": true,
+                        "from_address": "cosmos1j2ryq6rjmat3f33lwmqzqgtnmen5xx5c8kt2cx",
+                        "to_address": "cosmos10ravwpzftfrapd60v94lmc9m5rw4lqzw42t3np",
+                        "amount": [
+                          {
+                            "denom": "uatom",
+                            "amount": "31669466"
+                          }
+                        ]
+                      }
+                    ],
+                    "memo": "283677",
+                    "timeout_height": "0"
+                  },
+                  "auth_info": {
+                    "signer_infos": [
+                      {
+                        "public_key": {
+                          "type": "/cosmos.crypto.secp256k1.PubKey",
+                          "key_hex": "0349cdc3ac24fa7d5cee997afe7593f3b3698d1efb8a0f56b14287e6ed8fb096f0"
+                        },
+                        "sequence": "3"
+                      }
+                    ],
+                    "fee": {
+                      "amount": [
+                        {
+                          "denom": "uatom",
+                          "amount": "534"
+                        }
+                      ],
+                      "gas_limit": "106619",
+                      "payer": "",
+                      "granter": ""
+                    }
+                  },
+                  "signatures": [
+                    "631ce1c45a2c8121d4c3a0aae76598ff8f0a8b0145f59b6cd037aff90685d2e7115fe85e316184af2f238a597bd002cc76f6ad052c36f51feba9315774c7402c"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/redirect-trace": {
+      "get": {
+        "summary": "Full redirect chain trace",
+        "description": "Follows a URL's complete redirect chain (up to 15 hops), recording each hop's status and destination -- not just the final URL.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://bit.ly/example"
+            },
+            "description": "URL to follow the full redirect chain for, hop by hop."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The full redirect chain",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "requested_url": {
+                      "type": "string"
+                    },
+                    "hop_count": {
+                      "type": "integer"
+                    },
+                    "hops": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "integer"
+                          },
+                          "hostname": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "final_url": {
+                      "type": "string"
+                    },
+                    "final_status": {
+                      "type": "integer"
+                    },
+                    "crossed_domains": {
+                      "type": "boolean"
+                    },
+                    "unique_hostnames": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "requested_url": "https://httpbin.org/redirect/2",
+                  "hop_count": 3,
+                  "hops": [
+                    {
+                      "url": "https://httpbin.org/redirect/2",
+                      "status": 302,
+                      "hostname": "httpbin.org"
+                    },
+                    {
+                      "url": "https://httpbin.org/relative-redirect/1",
+                      "status": 302,
+                      "hostname": "httpbin.org"
+                    },
+                    {
+                      "url": "https://httpbin.org/get",
+                      "status": 200,
+                      "hostname": "httpbin.org"
+                    }
+                  ],
+                  "final_url": "https://httpbin.org/get",
+                  "final_status": 200,
+                  "crossed_domains": false,
+                  "unique_hostnames": [
+                    "httpbin.org"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc-check": {
+      "get": {
+        "summary": "CometBFT RPC health and safety audit",
+        "description": "Audits a public CometBFT RPC endpoint for a Cosmos SDK chain: node status, health, peer connectivity, and whether unsafe administrative RPC methods (dial_seeds, dial_peers, unsafe_flush_mempool) appear to be publicly exposed. Read-only -- never invokes any unsafe method itself; exposure is detected by inspecting the node's own passive route listing. Free, no signup.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://cosmos-rpc.publicnode.com"
+            },
+            "description": "Base URL of a CometBFT RPC endpoint to audit."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RPC audit result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "reachable": {
+                      "type": "boolean"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    },
+                    "tls": {
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "object"
+                    },
+                    "health": {
+                      "type": "object"
+                    },
+                    "net_info": {
+                      "type": "object"
+                    },
+                    "abci_info": {
+                      "type": "object"
+                    },
+                    "unsafe_methods": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://cosmos-rpc.publicnode.com",
+                  "reachable": true,
+                  "verdict": "Node reachable, no major issues found.",
+                  "tls": {
+                    "used": true,
+                    "note": null
+                  },
+                  "status": {
+                    "checked": true,
+                    "chain_id": "cosmoshub-4",
+                    "moniker": "Tendermint",
+                    "node_version": "0.38.22",
+                    "catching_up": false,
+                    "latest_block_height": "33024358",
+                    "latest_block_time": "2026-09-18T08:27:15.65595602Z"
+                  },
+                  "health": {
+                    "checked": true,
+                    "healthy": true,
+                    "error": null
+                  },
+                  "net_info": {
+                    "checked": true,
+                    "listening": true,
+                    "n_peers": "63"
+                  },
+                  "abci_info": {
+                    "checked": true,
+                    "app_version": "v28.1.0",
+                    "last_block_height": "33024358"
+                  },
+                  "unsafe_methods": {
+                    "checked": true,
+                    "exposed": false,
+                    "methods_found": [],
+                    "note": "No unsafe RPC methods found in this node's route listing."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/repo-health-check": {
+      "get": {
+        "summary": "GitHub repository health signals",
+        "description": "Stars, forks, open issues, license, archived status, and days since last push for a GitHub repo, via the GitHub REST API.",
+        "parameters": [
+          {
+            "name": "repo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "lodash/lodash"
+            },
+            "description": "GitHub repository in owner/name format, e.g. lodash/lodash."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Repository health signals",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "repo": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "boolean"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "stars": {
+                      "type": "integer"
+                    },
+                    "forks": {
+                      "type": "integer"
+                    },
+                    "open_issues": {
+                      "type": "integer"
+                    },
+                    "created": {
+                      "type": "string"
+                    },
+                    "age_days": {
+                      "type": "integer"
+                    },
+                    "last_push": {
+                      "type": "string"
+                    },
+                    "days_since_last_push": {
+                      "type": "integer"
+                    },
+                    "archived": {
+                      "type": "boolean"
+                    },
+                    "is_fork": {
+                      "type": "boolean"
+                    },
+                    "license": {
+                      "type": "string"
+                    },
+                    "default_branch": {
+                      "type": "string"
+                    },
+                    "topics": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "repo": "lodash/lodash",
+                  "found": true,
+                  "description": "A modern JavaScript utility library delivering modularity, performance, & extras.",
+                  "stars": 61280,
+                  "forks": 7188,
+                  "open_issues": 105,
+                  "created": "2012-04-07T04:11:46Z",
+                  "age_days": 5270,
+                  "last_push": "2026-09-09T16:29:09Z",
+                  "days_since_last_push": 1,
+                  "archived": false,
+                  "is_fork": false,
+                  "license": "NOASSERTION",
+                  "default_branch": "main",
+                  "topics": [
+                    "javascript",
+                    "lodash",
+                    "modules",
+                    "utilities"
+                  ],
+                  "url": "https://github.com/lodash/lodash",
+                  "source": "GitHub REST API."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/maintainer-change-check": {
+      "post": {
+        "summary": "Batch npm maintainer change check",
+        "description": "Checks up to 20 npm packages in one request, counted as a single request for rate limiting. Same analysis as GET; a missing package yields found=false and a registry failure or invalid entry yields an error field, without failing the batch.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ecosystem",
+                  "packages"
+                ],
+                "properties": {
+                  "ecosystem": {
+                    "type": "string",
+                    "enum": [
+                      "npm"
+                    ],
+                    "example": "npm"
+                  },
+                  "packages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 20,
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "lodash",
+                      "express",
+                      "event-stream"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "suspicious_count": {
+                      "type": "integer"
+                    },
+                    "error_count": {
+                      "type": "integer"
+                    },
+                    "recent_window_days": {
+                      "type": "integer"
+                    },
+                    "results": {
+                      "type": "array",
+                      "description": "One entry per input name, in input order. Same fields as the GET response, or {package, error} for an invalid entry.",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON body, unsupported ecosystem, empty list, or more than 20 names"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      },
+      "get": {
+        "summary": "Detect a suspicious npm package maintainer change",
+        "description": "Flags a previously unseen human publisher taking over an npm package after 180+ days of inactivity, within the last 365 days -- the pattern behind the event-stream compromise (2018). Older handoffs are counted but not flagged; transitions to npm trusted publishing (verified OIDC identity, not just a bot-like account name) and pre-release versions are reported separately without raising the flag. Does NOT detect a hijacked existing maintainer account (ua-parser-js, 2021) or a malicious release by an existing maintainer (colors.js, 2022). A batch POST variant is available. npm only for now.",
+        "parameters": [
+          {
+            "name": "ecosystem",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "npm"
+            },
+            "description": "Currently only \"npm\" is supported."
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "lodash"
+            },
+            "description": "Package name, e.g. lodash"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Maintainer change analysis for the package",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "package": {"type": "string"},
+                    "ecosystem": {"type": "string"},
+                    "found": {"type": "boolean"},
+                    "current_maintainers": {"type": "array", "items": {"type": "string"}},
+                    "total_distinct_publishers": {"type": "integer"},
+                    "latest_version": {
+                      "type": "object",
+                      "properties": {
+                        "version": {"type": "string"},
+                        "publisher": {"type": "string"},
+                        "published": {"type": "string"}
+                      }
+                    },
+                    "suspicious": {"type": "boolean"},
+                    "flagged_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "version": {"type": "string"},
+                          "publisher": {"type": "string"},
+                          "published": {"type": "string"},
+                          "previous_publisher": {"type": "string"},
+                          "dormancy_days": {"type": "integer"},
+                          "reason": {"type": "string"}, "publisher_check": {"type": "string", "enum": ["done", "unavailable"], "description": "Whether the new publisher's other packages could be looked up. unavailable (e.g. npm search rate limit): the event stays flagged without that check."}
+                        }
+                      }
+                    },
+                    "ci_publisher_events": {"type": "array", "items": {"type": "object", "properties": {"version": {"type": "string"}, "publisher": {"type": "string"}, "published": {"type": "string"}, "previous_publisher": {"type": "string"}, "dormancy_days": {"type": "integer"}, "reason": {"type": "string"}, "trusted_publisher": {"type": "string", "description": "Trusted publishing provider id set by the npm registry (e.g. github, gitlab). Only verified trusted publishing exempts an event; a bot-like account name does not."}}}}, "established_publisher_events": {"type": "array", "description": "Events whose new publisher already maintains another widely used npm package (100,000+ weekly downloads, excluding this one): most likely a legitimate maintainer handover. Reported, but they do not trigger suspicious.", "items": {"type": "object", "properties": {"version": {"type": "string"}, "publisher": {"type": "string"}, "published": {"type": "string"}, "previous_publisher": {"type": "string"}, "dormancy_days": {"type": "integer"}, "reason": {"type": "string"}, "publisher_other_package": {"type": "object", "properties": {"package": {"type": "string"}, "weekly_downloads": {"type": "integer"}}}}}}, "prerelease_events": {"type": "array", "items": {"type": "object", "properties": {"version": {"type": "string"}, "publisher": {"type": "string"}, "published": {"type": "string"}, "previous_publisher": {"type": "string"}, "dormancy_days": {"type": "integer"}, "reason": {"type": "string"}}}}, "historical_events_count": {"type": "integer"}, "recent_window_days": {"type": "integer"}, "note": {"type": "string"}
+                  }
+                },
+                "example": {
+                  "package": "lodash",
+                  "ecosystem": "npm",
+                  "found": true,
+                  "current_maintainers": ["jdalton"],
+                  "total_distinct_publishers": 3,
+                  "latest_version": {"version": "4.18.1", "publisher": "jdalton", "published": "2026-04-01"},
+                  "suspicious": false, "flagged_events": [], "ci_publisher_events": [], "established_publisher_events": [], "prerelease_events": [], "historical_events_count": 1, "recent_window_days": 365, "note": "Flags a previously unseen human publisher taking over after 180+ days of inactivity, within the last 365 days. New publishers who already maintain another widely used package (100,000+ weekly downloads) are listed under established_publisher_events without triggering suspicious. Heuristic signal for manual review, not proof of compromise. Does not detect a hijacked existing account or a malicious release by an existing maintainer."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/supply-chain-check": {
+      "get": {
+        "summary": "Combined supply-chain risk check",
+        "description": "Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check, and repo-health-check (auto-resolved from registry metadata when possible) into a single call with one overall verdict.",
+        "parameters": [
+          {
+            "name": "ecosystem",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "npm"
+            },
+            "description": "Package ecosystem. maintainer-change-check only runs for npm."
+          },
+          {
+            "name": "package",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "lodash"
+            },
+            "description": "Package name to check."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Combined supply-chain risk report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "package": {
+                      "type": "string"
+                    },
+                    "ecosystem": {
+                      "type": "string"
+                    },
+                    "github_repo_resolved": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "overall_risk": {
+                      "type": "string"
+                    },
+                    "flags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "checks": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "package": "lodash",
+                  "ecosystem": "npm",
+                  "github_repo_resolved": "lodash/lodash",
+                  "overall_risk": "review_recommended",
+                  "flags": [
+                    "maintainer_change",
+                    "known_vulnerabilities"
+                  ],
+                  "checks": {
+                    "typosquat": "...",
+                    "maintainer_change": "...",
+                    "vulnerability": "...",
+                    "repo_health": "..."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

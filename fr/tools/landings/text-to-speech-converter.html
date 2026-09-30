@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment convertir du texte en parole gratuitement — Guide Presend</title>
+<meta name="description" content="Découvrez comment transformer un texte écrit en parole naturelle avec le moteur vocal intégré à votre navigateur. Sans téléchargement ni compte, et Presend ne reçoit jamais votre texte.">
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/landings/text-to-speech-converter" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Convert Text to Speech for Free",
+  "description": "Guide pas à pas de la synthèse vocale avec l'API speechSynthesis de votre navigateur. Presend ne reçoit jamais votre texte ; avec les voix de votre appareil, il reste sur votre appareil.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/text-to-speech-converter"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/text-to-speech'>← Text-to-Speech</a>
+  <article>
+    <h1>How to Convert Text to Speech for Free</h1>
+    <p class="lede">Besoin de relire un texte, d'écouter un article dans les transports ou de créer une voix off ? Votre navigateur peut lire n'importe quel texte à voix haute, sans abonnement ni envoi à Presend. Avec les voix de votre appareil, le texte ne quitte jamais votre appareil.</p>
+
+    <h2>Why browser-based text-to-speech?</h2>
+    <p>Cloud TTS services like Amazon Polly, Google Cloud Text-to-Speech, or ElevenLabs produce excellent results but require:</p>
+    <ul>
+      <li>Uploading your text to their servers</li>
+      <li>API keys and developer accounts</li>
+      <li>Paying per character or per minute</li>
+      <li>Accepting terms that may allow training on your data</li>
+    </ul>
+    <p>Pour un usage personnel, des brouillons ou des contenus sensibles, la synthèse vocale du navigateur est rapide, gratuite et, avec les voix de votre appareil, privée : le texte reste sur votre appareil.</p>
+
+    <h2>How speechSynthesis works</h2>
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis" target="_blank" rel="noopener">Web Speech API's speechSynthesis interface</a> is built into every modern browser. It uses your operating system's voices:</p>
+    <ul>
+      <li><strong>Windows</strong> — Microsoft David, Zira, and other system voices</li>
+      <li><strong>macOS</strong> — High-quality Siri voices (Alex, Samantha, etc.)</li>
+      <li><strong>Linux</strong> — espeak, Festival, or Piper depending on your distro</li>
+      <li><strong>Android/iOS</strong> — Device-native TTS engines with regional accents</li>
+    </ul>
+    <p>Avec ces voix système, le texte est traité entièrement sur votre appareil. Certains navigateurs proposent aussi des voix en ligne (voix Google dans Chrome, voix Microsoft « Online (Natural) » dans Edge) qui envoient le texte à Google ou Microsoft. L'outil de Presend les signale « en ligne » dans la liste des voix et vous avertit quand l'une d'elles est sélectionnée.</p>
+
+    <h2>Use cases</h2>
+    <ul>
+      <li><strong>Proofreading</strong> — Hearing your writing read aloud catches errors your eyes miss</li>
+      <li><strong>Accessibility</strong> — Listen to articles, emails, or documents if reading is difficult</li>
+      <li><strong>Language learning</strong> — Hear pronunciation of foreign text</li>
+      <li><strong>Content creation</strong> — Quick voiceover drafts for videos or presentations</li>
+      <li><strong>Multitasking</strong> — Listen while cooking, exercising, or commuting</li>
+    </ul>
+
+    <h2>Adjusting voice settings</h2>
+    <p>Presend's tool lets you control:</p>
+    <ul>
+      <li><strong>Voice</strong> — Select from all voices installed on your system, grouped by language</li>
+      <li><strong>Speed</strong> — From 0.5× (slow) to 2.0× (fast). 1.0× is natural conversational pace</li>
+      <li><strong>Pitch</strong> — Higher or lower tone. Useful for emphasis or matching content mood</li>
+    </ul>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the tool</strong> — Go to <a href="/fr/tools/text-to-speech">Text-to-Speech</a></li>
+      <li><strong>Paste your text</strong> — Type or paste up to a few thousand characters</li>
+      <li><strong>Choose a voice</strong> — Pick a language and specific voice</li>
+      <li><strong>Adjust speed and pitch</strong> — Fine-tune to your preference</li>
+      <li><strong>Click Speak</strong> — Listen instantly</li>
+      <li><strong>Use Pause/Stop</strong> — Control playback as needed</li>
+    </ol>
+
+    <h2>Recording the output</h2>
+    <p>Most browsers cannot directly capture synthesized audio due to security sandboxing. To save TTS output as an audio file, use your operating system's screen recorder with audio capture:</p>
+    <ul>
+      <li><strong>Windows</strong> — Xbox Game Bar (Win+G) or OBS Studio</li>
+      <li><strong>macOS</strong> — QuickTime Player (File > New Audio Recording) or Cmd+Shift+5</li>
+      <li><strong>Linux</strong> — OBS Studio or parec with ffmpeg</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/fr/tools/text-to-speech">Open Text-to-Speech →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/fr/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

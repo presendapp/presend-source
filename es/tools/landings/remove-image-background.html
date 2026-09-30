@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo eliminar fondos de imágenes con IA — Guía Presend</title>
+<meta name="description" content="Aprende a eliminar fondos de fotos usando IA que funciona en tu navegador. Sin subida, sin cuenta, sin marca de agua. Completamente privado.">
+<link rel="canonical" href="https://presend.pages.dev/es/tools/landings/remove-image-background" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Remove Image Backgrounds with AI",
+  "description": "Complete guide to AI background removal using @imgly/background-removal running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/remove-image-background"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>presentar</a>
+  <a class='nav-link' href='/'>Todas las herramientas</a> <a class="nav-link" href="/es/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/background-remover'>← Eliminador de fondo</a>
+  <article>
+    <h1>Cómo eliminar fondos de imágenes con IA</h1>
+    <p class="lede">Las fotografías de productos, los retratos y las imágenes de marketing tienen un aspecto profesional con fondos limpios y transparentes. Aquí se explica cómo hacerlo sin cargar sus imágenes en un servicio en la nube.</p>
+
+    <h2>El problema de la privacidad con la eliminación del fondo</h2>
+    <p>Servicios como remove.bg, Adobe Express y Canva ofrecen una excelente eliminación de fondo, pero todos requieren cargar su imagen en sus servidores. Esto crea riesgos:</p>
+    <ul>
+      <li><strong>Retención de datos</strong>— Sus fotos pueden almacenarse indefinidamente para "mejorar el servicio"</li>
+      <li><strong>Términos de servicio</strong>— Algunas plataformas reclaman amplios derechos sobre el contenido subido.</li>
+      <li><strong>Violaciones de datos</strong>— Incluso los servicios de buena reputación pueden verse comprometidos</li>
+      <li><strong>Espionaje corporativo</strong>— Se filtraron fotografías de productos inéditas o diseños patentados.</li>
+      <li><strong>exposición personal</strong>— Documentos de identificación, imágenes médicas o fotografías íntimas expuestas.</li>
+    </ul>
+
+    <h2>Cómo funciona la IA basada en navegador</h2>
+    <p>Usos actuales<a href="https://github.com/imgly/background-removal-js" target="_blank" rel="noopener">@imgly/eliminación-de-fondo</a>, un modelo de aprendizaje automático optimizado para el navegador:</p>
+    <ol>
+      <li>El modelo ONNX (~4 MB) se descarga una vez y se almacena en caché en su navegador</li>
+      <li>WebGL acelera la inferencia en tu GPU cuando esté disponible</li>
+      <li>El modelo segmenta la imagen en primer plano (sujeto) y fondo.</li>
+      <li>El resultado se representa como PNG con un canal alfa (transparencia)</li>
+    </ol>
+    <p><strong>Cero píxeles salen de tu dispositivo.</strong>Esto es fundamentalmente diferente de las alternativas basadas en la nube.</p>
+
+    <h2>¿Qué funciona mejor?</h2>
+    <p>El modelo de IA se entrena con millones de imágenes y funciona excepcionalmente bien en:</p>
+    <ul>
+      <li><strong>Retratos</strong>— Personas, retratos, fotos de perfil.</li>
+      <li><strong>Productos</strong>— Artículos de comercio electrónico con fondos lisos o simples</li>
+      <li><strong>Mascotas</strong>— Animales con contornos claros.</li>
+      <li><strong>Vehículos</strong>— Coches, bicicletas y objetos con bordes definidos.</li>
+    </ul>
+    <p>Los casos desafiantes incluyen:</p>
+    <ul>
+      <li>Cabello o pelaje muy fino sobre fondos ocupados.</li>
+      <li>Objetos transparentes o reflectantes (vidrio, agua)</li>
+      <li>Imágenes de resolución extremadamente baja</li>
+      <li>Sujetos que se mezclan con el color de fondo.</li>
+    </ul>
+
+    <h2>Casos de uso</h2>
+    <ul>
+      <li><strong>Comercio electrónico</strong>— Fotos limpias de productos para Amazon, eBay, Shopify</li>
+      <li><strong>redes sociales</strong>— Imágenes de perfil, pegatinas, memes.</li>
+      <li><strong>Presentaciones</strong>— Diapositivas profesionales sin fondos que distraigan</li>
+      <li><strong>Marketing</strong>— Imágenes de marca consistentes en todos los canales</li>
+      <li><strong>Fotos de pasaporte</strong>— Fondo blanco para documentos oficiales.</li>
+      <li><strong>Trabajo de diseño</strong>— Colocar sujetos en capas en imágenes compuestas</li>
+    </ul>
+
+    <h2>Guía paso a paso</h2>
+    <ol>
+      <li><strong>Abre la herramienta</strong>- Ir a<a href="/es/tools/background-remover">Eliminador de fondo</a></li>
+      <li><strong>Sube tu foto</strong>— Arrastra y suelta o selecciona un JPG, PNG o WebP (hasta ~10 MB)</li>
+      <li><strong>Esperar procesamiento</strong>— La IA analiza y segmenta tu imagen (5 a 15 segundos)</li>
+      <li><strong>Comparar</strong>— La vista lado a lado muestra el original y el resultado</li>
+      <li><strong>Descargar</strong>— Guardar como PNG transparente, listo para cualquier uso</li>
+    </ol>
+
+    <h2>Consejos para obtener mejores resultados</h2>
+    <ul>
+      <li>Utilice imágenes de alta resolución: la IA tiene más detalles con los que trabajar</li>
+      <li>Una buena iluminación y contraste ayudan a la precisión de la segmentación</li>
+      <li>Los fondos simples (colores sólidos) producen bordes más limpios que las escenas ocupadas</li>
+      <li>Para el cabello, los fondos ligeramente sobreexpuestos funcionan mejor que los subexpuestos.</li>
+      <li>Si el resultado no es perfecto, intenta recortar para centrarte en el sujeto.</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/es/tools/background-remover">Abrir Eliminador de fondo →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — herramientas gratuitas basadas en navegador. <a href="/about">Acerca de</a> · <a href="/privacy">Privacidad</a> <a href="/es/api">API</a></p>
+</footer>
+</body>
+</html>

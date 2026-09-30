@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="WHOIS / Domain Age Lookup — Presend">
+<meta property="og:description" content="Check a domain's registrar, age, and expiration date via RDAP. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/whois-lookup">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=WHOIS+Lookup">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Free WHOIS / Domain Age Lookup API | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Check any domain's registrar, registration date, age in days, and expiration via RDAP. Free, no signup, no API key. See the underlying API call for your own code.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/whois-lookup" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="WHOIS / Domain Age Lookup — Presend">
+<meta name="twitter:description" content="Check a domain's registrar, age, and expiration date via RDAP. Free, no signup.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WHOIS / Domain Age Lookup",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Look up a domain's registrar, registration date, age, and expiration via RDAP, the modern successor to WHOIS. Free API, no signup, no API key.",
+  "url": "https://presend.pages.dev/tools/whois-lookup"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"WHOIS / Domain Age Lookup","item":"https://presend.pages.dev/tools/whois-lookup"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What is RDAP and how is it different from WHOIS?","acceptedAnswer":{"@type":"Answer","text":"RDAP (Registration Data Access Protocol) is the modern, HTTPS-based, structured-JSON successor to legacy WHOIS, which uses a raw text protocol on port 43. This tool uses RDAP under the hood, since it's the ICANN-mandated replacement and works reliably over standard HTTPS."}},
+  {"@type":"Question","name":"Why does domain age matter?","acceptedAnswer":{"@type":"Answer","text":"A domain registered hours or days ago is a common signal used in phishing and scam detection. Established domains that have existed for years are generally, though not always, more trustworthy than brand-new ones."}},
+  {"@type":"Question","name":"Does this tool store the domains I look up?","acceptedAnswer":{"@type":"Answer","text":"No. Each lookup is a live, stateless call to the RDAP registry data -- nothing is logged or stored beyond standard, anonymized request metrics."}},
+  {"@type":"Question","name":"Can I use this in my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. This page calls the same free, public API endpoint you can call directly: GET /api/whois-lookup?domain=example.com. No signup or API key required."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check a Domain's Registration and Age",
+  "description": "Look up any domain's registrar, age, and expiration date via RDAP, for free.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Type a domain name", "text": "Enter any domain name into the input field.", "url": "https://presend.pages.dev/tools/whois-lookup#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Get real-time results", "text": "The tool queries RDAP live and shows the registrar, registration date, age, expiration, and nameservers.", "url": "https://presend.pages.dev/tools/whois-lookup#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Reuse the API call", "text": "Copy the exact API call shown below the results to use the same lookup in your own code, for free.", "url": "https://presend.pages.dev/tools/whois-lookup#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/whois-lookup" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/whois-lookup" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>WHOIS / Domain Age Lookup</h1>
+  <p class="lede">Check a domain's registrar, registration date, age, and expiration via RDAP — the modern successor to WHOIS. Free, live, no signup.</p>
+
+  <span class="trust-badge">Live RDAP lookup — nothing stored</span>
+
+  <div style="margin-top: 2rem;">
+    <label for="domainInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">Domain name</label>
+    <input type="text" id="domainInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="example.com" autocomplete="off" spellcheck="false" value="github.com">
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+    <div id="loadingBox" style="display:none;margin-top:1rem;color:var(--color-muted);font-size:0.9rem;">Looking up…</div>
+
+    <div id="resultBox" style="margin-top:1.5rem;display:none;">
+      <div style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);">
+        <div class="score-grid">
+          <div class="score-card"><div class="score-value" id="rRegistrar">—</div><div class="score-label">Registrar</div></div>
+          <div class="score-card"><div class="score-value" id="rAge">—</div><div class="score-label">Age (days)</div></div>
+          <div class="score-card"><div class="score-value" id="rCreated">—</div><div class="score-label">Registered</div></div>
+          <div class="score-card"><div class="score-value" id="rExpires">—</div><div class="score-label">Expires</div></div>
+        </div>
+        <div id="rNameservers" style="margin-top:1rem;font-size:0.9rem;color:var(--color-muted);"></div>
+      </div>
+
+      <div style="margin-top:1rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">API call used</strong>
+        <pre id="apiCallDisplay" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is RDAP and how is it different from WHOIS?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">RDAP (Registration Data Access Protocol) is the modern, HTTPS-based, structured-JSON successor to legacy WHOIS, which uses a raw text protocol on port 43. This tool uses RDAP under the hood, since it's the ICANN-mandated replacement and works reliably over standard HTTPS.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why does domain age matter?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">A domain registered hours or days ago is a common signal used in phishing and scam detection. Established domains that have existed for years are generally, though not always, more trustworthy than brand-new ones.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Does this tool store the domains I look up?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. Each lookup is a live, stateless call to the RDAP registry data -- nothing is logged or stored beyond standard, anonymized request metrics.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I use this in my own code?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. This page calls the same free, public API endpoint you can call directly: GET /api/whois-lookup?domain=example.com. No signup or API key required.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/dns-lookup'>
+        <div><h3>DNS Lookup</h3><p>A, AAAA, MX, TXT, NS records for a domain.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/redirect-trace'>
+        <div><h3>Redirect Chain Tracer</h3><p>See every hop a URL takes before landing.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/ip-reputation'>
+        <div><h3>IP Reputation Check</h3><p>Check an IPv4 against known spam netblocks.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('domainInput');
+  const errorBox = document.getElementById('errorBox');
+  const loadingBox = document.getElementById('loadingBox');
+  const resultBox = document.getElementById('resultBox');
+  const apiCallDisplay = document.getElementById('apiCallDisplay');
+
+  let debounceTimer = null;
+
+  async function lookup(domain) {
+    const url = 'https://presend.pages.dev/api/whois-lookup?domain=' + encodeURIComponent(domain);
+    apiCallDisplay.textContent = 'GET ' + url;
+    loadingBox.style.display = 'block';
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      loadingBox.style.display = 'none';
+
+      if (!res.ok) {
+        errorBox.textContent = data.error || 'Lookup failed.';
+        errorBox.style.display = 'block';
+        return;
+      }
+      if (data.registered === false) {
+        errorBox.textContent = domain + ' does not appear to be registered (or this TLD does not publish RDAP data).';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      document.getElementById('rRegistrar').textContent = data.registrar || '—';
+      document.getElementById('rAge').textContent = data.age_days != null ? data.age_days : '—';
+      document.getElementById('rCreated').textContent = data.created ? data.created.slice(0, 10) : '—';
+      document.getElementById('rExpires').textContent = data.expires ? data.expires.slice(0, 10) : '—';
+      const ns = (data.nameservers || []).slice(0, 6).join(', ');
+      document.getElementById('rNameservers').textContent = ns ? 'Nameservers: ' + ns : '';
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loadingBox.style.display = 'none';
+      errorBox.textContent = 'Could not complete the lookup. Try again shortly.';
+      errorBox.style.display = 'block';
+    }
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const domain = input.value.trim();
+    if (!domain) { resultBox.style.display = 'none'; errorBox.style.display = 'none'; return; }
+    debounceTimer = setTimeout(() => lookup(domain), 600);
+  });
+
+  lookup(input.value.trim());
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "WHOIS / Domain Age Lookup",
+  "url": "https://presend.pages.dev/tools/whois-lookup",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Look up a domain's registrar, age, and expiration via RDAP, calling Presend's free public API live."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'whois-lookup' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# Cloudflare
+.wrangler/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# Temp
+*.log
+*.tmp
+
+# Fichiers internes : jamais publies (depot et site publics, exposition decouverte le 27 sept.)
+PROJECT_CONTEXT.md
+STRUCTURE.md
+ROADMAP.md
+WORKFLOW.md
+SECURITY_DISCLOSURES.md
+MARKETING.md
+SUBMIT.md
+submit_directories.md
+scripts/watch.txt

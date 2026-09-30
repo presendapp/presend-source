@@ -1,0 +1,10 @@
+.diff-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.diff-wrap textarea { min-height: 200px; }
+@media (max-width: 640px) { .diff-wrap { grid-template-columns: 1fr; } }
+.diff-result { margin-top: 1.5rem; }
+.diff-line { display: flex; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.6; }
+.diff-line-num { width: 2.5rem; color: var(--color-muted); text-align: right; padding-right: 0.75rem; flex-shrink: 0; }
+.diff-line-content { flex: 1; padding: 0 0.5rem; border-radius: 3px; }
+.diff-added { background: #d4edda; }
+.diff-removed { background: #f8d7da; }
+.diff-unchanged { background: transparent; }

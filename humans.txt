@@ -1,0 +1,17 @@
+/* TEAM */
+  Developer: Presend
+  Site: https://presend.pages.dev
+  From: France
+
+/* SITE */
+  Last update: 2026-08-15
+  Language: English
+  Doctype: HTML5
+  Standards: HTML5, CSS3, ES6
+  Components: Vanilla JS, Cloudflare Pages, Cloudflare Workers
+  IDE: VS Code
+
+/* TOOLS */
+  40 free privacy tools
+  41 SEO landing pages
+  100% browser-based — no upload, no server, no tracking

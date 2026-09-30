@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/landings/extract-text-from-image" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/landings/extract-text-from-image" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Extract Text from Images and Screenshots — Presend Guide</title>
+<meta name="description" content="Learn how to copy text from any image, screenshot, or scanned document using Tesseract.js OCR. 100+ languages, runs in your browser, no upload.">
+<link rel="canonical" href="https://presend.pages.dev/tools/landings/extract-text-from-image" />
+<link href="../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Extract Text from Images and Screenshots",
+  "description": "Complete guide to OCR using Tesseract.js running locally in your browser. Supports 100+ languages, paste from clipboard, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/extract-text-from-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/screenshot-to-text'>← Screenshot to Text</a>
+  <article>
+    <h1>How to Extract Text from Images and Screenshots</h1>
+    <p class="lede">Need to copy text from a screenshot, scan a document, or digitize a printed page? OCR technology makes it instant — and with Presend, it happens entirely in your browser.</p>
+
+    <h2>What is OCR?</h2>
+    <p>OCR (Optical Character Recognition) is the technology that converts images of text into machine-readable text. It's what lets you:</p>
+    <ul>
+      <li>Copy text from a screenshot of a website that blocks selection</li>
+      <li>Search through scanned PDFs</li>
+      <li>Digitize printed documents without retyping</li>
+      <li>Extract data from photos of receipts, forms, or signs</li>
+      <li>Translate text in images by first extracting it</li>
+    </ul>
+
+    <h2>The privacy risk of cloud OCR</h2>
+    <p>Most OCR services — Google Vision, Azure Computer Vision, Amazon Textract — require uploading your image to their cloud. This is problematic for:</p>
+    <ul>
+      <li><strong>Medical records</strong> — Patient data protected by HIPAA/GDPR</li>
+      <li><strong>Legal documents</strong> — Attorney-client privilege, NDAs</li>
+      <li><strong>Financial statements</strong> — Bank details, tax documents</li>
+      <li><strong>Proprietary information</strong> — Internal memos, source code screenshots</li>
+      <li><strong>Personal correspondence</strong> — Private messages, emails</li>
+    </ul>
+    <p>Even services that claim to delete files immediately still process them on their infrastructure, creating audit trails and potential exposure.</p>
+
+    <h2>How Tesseract.js works</h2>
+    <p><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a> is a pure JavaScript port of Google's Tesseract OCR engine, compiled to WebAssembly. It runs entirely in your browser:</p>
+    <ol>
+      <li>The language model (traineddata) downloads once per language (~4MB for English)</li>
+      <li>The image is processed locally using your CPU or GPU</li>
+      <li>The recognized text is returned directly to the webpage</li>
+      <li>Nothing is transmitted to any external server</li>
+    </ol>
+    <p>Tesseract is the same engine that powers Google Books, Google Translate's camera feature, and countless document scanning apps. It supports <strong>100+ languages</strong> including scripts like Arabic, Chinese, Japanese, Devanagari, and Cyrillic.</p>
+
+    <h2>Supported input methods</h2>
+    <ul>
+      <li><strong>Drag and drop</strong> — Drop any image onto the tool</li>
+      <li><strong>File picker</strong> — Click to browse and select an image</li>
+      <li><strong>Paste from clipboard</strong> — Press Ctrl+V (or Cmd+V) anywhere on the page to paste a screenshot directly</li>
+    </ul>
+
+    <h2>Accuracy tips</h2>
+    <ul>
+      <li><strong>Resolution matters</strong> — Higher resolution images produce better results. 300 DPI is ideal for scanned documents.</li>
+      <li><strong>Contrast is key</strong> — Dark text on light backgrounds works best. Inverted colors or low contrast reduce accuracy.</li>
+      <li><strong>Minimize skew</strong> — Straight, non-rotated text is easiest to recognize</li>
+      <li><strong>Clean images</strong> — Remove noise, creases, and shadows when possible</li>
+      <li><strong>Correct language</strong> — Select the right language from the dropdown. Mixed-language text works but may have lower accuracy</li>
+    </ul>
+
+    <h2>Use cases</h2>
+    <ul>
+      <li><strong>Students</strong> — Copy text from textbook photos or lecture slides</li>
+      <li><strong>Developers</strong> — Extract code from screenshots or error messages</li>
+      <li><strong>Journalists</strong> — Quote text from images of documents</li>
+      <li><strong>Researchers</strong> — Digitize printed papers and articles</li>
+      <li><strong>Administrators</strong> — Convert scanned forms to editable text</li>
+      <li><strong>Travelers</strong> — Read signs, menus, and documents in foreign languages</li>
+    </ul>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the tool</strong> — Go to <a href="/tools/screenshot-to-text">Screenshot to Text</a></li>
+      <li><strong>Select language</strong> — Choose the language of the text in your image</li>
+      <li><strong>Upload or paste</strong> — Drag an image, click to select, or press Ctrl+V to paste from clipboard</li>
+      <li><strong>Wait for recognition</strong> — Processing takes a few seconds depending on image size</li>
+      <li><strong>Review and edit</strong> — Check the extracted text for any errors</li>
+      <li><strong>Copy or download</strong> — Save as a .txt file or copy to clipboard</li>
+    </ol>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li><strong>Handwriting</strong> — Tesseract works best on printed text. Cursive or messy handwriting has lower accuracy.</li>
+      <li><strong>Complex layouts</strong> — Multi-column text, tables, and forms may need manual reformatting.</li>
+      <li><strong>Decorative fonts</strong> — Stylized or artistic text may not be recognized.</li>
+      <li><strong>Very small text</strong> — Text under 10px may be missed.</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/tools/screenshot-to-text">Open Screenshot to Text →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

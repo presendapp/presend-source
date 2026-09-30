@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/landings/scan-qr-code-image" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/landings/scan-qr-code-image" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Scan a QR Code from an Image — Presend Guide</title>
+<meta name="description" content="Learn how to decode QR codes from any image or screenshot without installing an app. Works entirely in your browser, no upload needed.">
+<link rel="canonical" href="https://presend.pages.dev/tools/landings/scan-qr-code-image" />
+<link href="../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Scan a QR Code from an Image",
+  "description": "Step-by-step guide to decoding QR codes from uploaded images or camera using Presend's free browser-based scanner.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/scan-qr-code-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/qr-code-scanner'>← QR Code Scanner</a>
+  <article>
+    <h1>How to Scan a QR Code from an Image</h1>
+    <p class="lede">Received a QR code in a message, email, or screenshot? No need to install a separate scanner app. Here's how to decode it instantly in your browser.</p>
+
+    <h2>Why scan QR codes from images?</h2>
+    <p>Most people think of QR codes as something you scan with your camera in the real world. But increasingly, QR codes appear in digital contexts: screenshots, PDFs, emails, social media posts, and websites. When you can't physically scan a code — or when the code is on your computer screen — you need a way to decode it from an image file.</p>
+
+    <h2>Common scenarios</h2>
+    <ul>
+      <li><strong>Screenshots</strong> — A friend sent you a WiFi password as a QR code screenshot</li>
+      <li><strong>PDFs</strong> — Event tickets or boarding passes with embedded QR codes</li>
+      <li><strong>Emails</strong> — Two-factor authentication backup codes or verification QR codes</li>
+      <li><strong>Social media</strong> — Instagram stories or LinkedIn posts with QR codes</li>
+      <li><strong>Websites</strong> — Download links or app store redirects displayed as QR codes</li>
+    </ul>
+
+    <h2>How Presend's scanner works</h2>
+    <p>Presend uses <a href="https://github.com/cozmo/jsQR" target="_blank" rel="noopener">jsQR</a>, a pure JavaScript QR code decoding library. The entire process happens in your browser:</p>
+    <ol>
+      <li>You upload an image or grant camera access</li>
+      <li>jsQR analyzes the image pixel data to locate the QR code pattern</li>
+      <li>The decoded text (URL, WiFi credentials, etc.) is displayed instantly</li>
+    </ol>
+    <p><strong>Your image is never uploaded to a server.</strong> This is crucial for sensitive QR codes containing private WiFi passwords, authentication tokens, or personal information.</p>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the scanner</strong> — Go to <a href="/tools/qr-code-scanner">QR Code Scanner</a></li>
+      <li><strong>Upload or use camera</strong> — Drag and drop an image, click to select a file, or click "Use camera" to scan in real-time</li>
+      <li><strong>Get the result</strong> — The decoded text appears instantly below the image</li>
+      <li><strong>Copy or open</strong> — Click to copy the text, or open URLs directly</li>
+    </ol>
+
+    <h2>Tips for better scanning</h2>
+    <ul>
+      <li>Use high-resolution images — blurry or heavily compressed images may not decode</li>
+      <li>Ensure the QR code isn't cropped or partially obscured</li>
+      <li>Good lighting helps when using the camera option</li>
+      <li>If one method fails (upload vs camera), try the other</li>
+    </ul>
+
+    <h2>Privacy matters</h2>
+    <p>Many QR scanner apps upload your scanned codes to their servers for analytics or advertising. Some even contain malware. Presend's scanner is completely open — the code is right there in your browser, and your data never leaves your device. This makes it safe for scanning sensitive codes like:</p>
+    <ul>
+      <li>Cryptocurrency wallet addresses</li>
+      <li>Private WiFi networks</li>
+      <li>Internal company links</li>
+      <li>Two-factor authentication setup codes</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/tools/qr-code-scanner">Open QR Code Scanner →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

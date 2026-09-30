@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="PDF मर्ज और कंप्रेस करें (वर्कफ़्लो) — Presend">
+  <meta property="og:description" content="Combine multiple PDFs into one document, then compress it — chained locally in your browser, nothing uploaded.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presend.pages.dev/tools/merge-and-compress-pdf">
+<title>PDF मर्ज करें और कंप्रेस करें — मुफ़्त चेन वर्कफ़्लो, अपलोड नहीं | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Combine multiple PDF files into one document AND compress the result in a single pass. Two tools chained together, 100% private, runs entirely in your browser. Free.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="../../style.min.css" rel="preload" as="style"/>
+    <link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/hi/tools/merge-and-compress-pdf" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="PDF मर्ज और कंप्रेस करें (वर्कफ़्लो) — Presend">
+<meta name="twitter:description" content="Combine multiple PDFs into one document, then compress it — chained locally in your browser, nothing uploaded.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PDF मर्ज और कंप्रेस वर्कफ़्लो",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Chains PDF merging with PDF compression, entirely client-side. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/merge-and-compress-pdf",
+  "mainEntityOfPage": "https://presend.pages.dev/tools/merge-and-compress-pdf"
+}
+</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/merge-and-compress-pdf" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/merge-and-compress-pdf" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/"><span class="brand-mark">●</span> Presend</a>
+  <a class="nav-link" href="/">सभी उपकरण</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <h1>PDF मर्ज करें &amp; कंप्रेस करें</h1>
+  <p class="lede">एक चेन वर्कफ़्लो: कई PDF को एक दस्तावेज़ में मिलाता है, फिर परिणाम को कंप्रेस करता है — एक ही बार में, पूरी तरह से आपके ब्राउज़र में। दो टूल, एक क्लिक।</p>
+
+  <section class="tool-card" style="margin-top:2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload PDF files to merge and compress">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>PDF फ़ाइलें यहाँ डालें</strong> या ब्राउज़ करने के लिए क्लिक करें</p>
+      <p style="color:var(--color-muted);font-size:0.85rem;">2 या अधिक PDF चुनें। क्रम बदलने के लिए खींचें।</p>
+      <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple style="display:none;">
+    </div>
+
+    <div id="fileList" style="margin-top:1rem;"></div>
+
+    <div id="controls" style="display:none;margin-top:1rem;text-align:center;">
+      <button class="btn" id="mergeBtn" type="button">मर्ज करें &amp; कंप्रेस करें</button>
+      <button class="btn ghost" id="clearBtn" type="button" style="margin-left:0.5rem;">सभी साफ़ करें</button>
+    </div>
+
+    <div id="stepsBox" style="display:none; margin-top:1.5rem;">
+      <div class="workflow-step" id="step1Box">1. PDF मर्ज हो रहे हैं… <span id="step1Status"></span></div>
+      <div class="workflow-step" id="step2Box">2. कंप्रेस हो रहा है… <span id="step2Status"></span></div>
+    </div>
+
+    <div id="result" style="display:none;margin-top:1.5rem;">
+      <div class="result-box">
+        <div class="result-info">
+          <div class="result-name" id="resultName"></div>
+          <div class="result-meta" id="resultMeta"></div>
+        </div>
+        <a class="btn" id="downloadLink" download>मर्ज्ड &amp; कंप्रेस्ड PDF डाउनलोड करें</a>
+      </div>
+    </div>
+
+    <div id="error" class="error" role="alert" style="display:none;margin-top:1rem;"></div>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — मुफ़्त ब्राउज़र-आधारित उपकरण। <a href="/about">जानकारी</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a></p>
+</footer>
+
+<script defer src="/vendor/pdf-lib.min.js"></script>
+<script src="/js/pdf-ops.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const fileList = document.getElementById('fileList');
+  const controls = document.getElementById('controls');
+  const mergeBtn = document.getElementById('mergeBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const errorDiv = document.getElementById('error');
+  const stepsBox = document.getElementById('stepsBox');
+  const step1Box = document.getElementById('step1Box');
+  const step2Box = document.getElementById('step2Box');
+  const step1Status = document.getElementById('step1Status');
+  const step2Status = document.getElementById('step2Status');
+
+  let files = [];
+
+  function showError(msg) {
+    errorDiv.textContent = msg;
+    errorDiv.style.display = 'block';
+  }
+  function clearError() {
+    errorDiv.textContent = '';
+    errorDiv.style.display = 'none';
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function renderFileList() {
+    fileList.innerHTML = '';
+    if (files.length === 0) {
+      controls.style.display = 'none';
+      return;
+    }
+    files.forEach((file, index) => {
+      const div = document.createElement('div');
+      div.style.cssText = 'display:flex;align-items:center;gap:0.75rem;padding:0.5rem;background:#f8f9fa;border-radius:8px;margin-bottom:0.5rem;cursor:grab;';
+      div.draggable = true;
+      div.innerHTML = `<span style="color:#6c757d;font-weight:700;">${index + 1}.</span> <span style="flex:1;">${file.name}</span> <span style="color:#6c757d;font-size:0.85rem;">${humanSize(file.size)}</span> <button type="button" data-index="${index}" style="background:none;border:none;color:#dc3545;cursor:pointer;font-size:1.2rem;">&times;</button>`;
+
+      div.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', index); });
+      div.addEventListener('dragover', (e) => { e.preventDefault(); });
+      div.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const from = parseInt(e.dataTransfer.getData('text/plain'));
+        const to = index;
+        const item = files.splice(from, 1)[0];
+        files.splice(to, 0, item);
+        renderFileList();
+      });
+
+      div.querySelector('button').addEventListener('click', () => {
+        files.splice(index, 1);
+        renderFileList();
+      });
+
+      fileList.appendChild(div);
+    });
+    controls.style.display = 'block';
+  }
+
+  function handleFiles(newFiles) {
+    const pdfs = Array.from(newFiles).filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+    if (pdfs.length === 0) {
+      showError('Please select PDF files only.');
+      return;
+    }
+    files = files.concat(pdfs);
+    renderFileList();
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+  dropzone.addEventListener('dragleave', () => { dropzone.classList.remove('dragover'); });
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener('change', () => { handleFiles(fileInput.files); fileInput.value = ''; });
+
+  clearBtn.addEventListener('click', () => {
+    files = [];
+    renderFileList();
+    result.style.display = 'none';
+    stepsBox.style.display = 'none';
+    step1Box.classList.remove('active', 'done');
+    step2Box.classList.remove('active', 'done');
+  });
+
+  mergeBtn.addEventListener('click', async () => {
+    if (files.length < 2) { showError('Please select at least 2 PDF files.'); return; }
+
+    clearError();
+    mergeBtn.textContent = 'Processing...';
+    mergeBtn.disabled = true;
+    result.style.display = 'none';
+    stepsBox.style.display = 'block';
+    step1Box.classList.add('active');
+    step1Status.textContent = '…';
+    step2Status.textContent = '';
+
+    try {
+      const originalTotalSize = files.reduce((sum, f) => sum + f.size, 0);
+
+      // Step 1: merge
+      const mergedBlob = await PresendPdfOps.mergePdfs(files);
+      step1Status.textContent = '✓';
+      step1Box.classList.remove('active');
+      step1Box.classList.add('done');
+
+      // Step 2: compress the merged result
+      step2Box.classList.add('active');
+      const finalBlob = await PresendPdfOps.compressPdf(mergedBlob);
+      step2Status.textContent = '✓';
+      step2Box.classList.remove('active');
+      step2Box.classList.add('done');
+
+      const url = URL.createObjectURL(finalBlob);
+      downloadLink.href = url;
+      downloadLink.download = 'merged-compressed.pdf';
+      resultName.textContent = 'merged-compressed.pdf';
+      const pct = originalTotalSize > finalBlob.size ? Math.round((1 - finalBlob.size / originalTotalSize) * 100) : 0;
+      resultMeta.textContent = humanSize(originalTotalSize) + ' → ' + humanSize(finalBlob.size) + (pct > 0 ? ' (' + pct + '% smaller)' : '');
+      result.style.display = 'block';
+
+      fetch('/api/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tool: 'merge-and-compress-pdf' })
+      }).catch(() => {});
+    } catch (e) {
+      showError('Could not process these PDFs. They may be encrypted or corrupted.');
+      stepsBox.style.display = 'none';
+    } finally {
+      mergeBtn.textContent = 'मर्ज & कंप्रेस';
+      mergeBtn.disabled = false;
+    }
+  });
+})();
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

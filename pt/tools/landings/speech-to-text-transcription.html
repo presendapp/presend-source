@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como transcrever fala em texto gratuitamente — Guia Presend</title>
+<meta name="description" content="Aprenda a converter sua voz em texto com o reconhecimento de voz integrado ao navegador. Grátis e sem aplicativo. No Chrome e no Edge, o áudio é processado pelo Google ou pela Microsoft.">
+<link rel="canonical" href="https://presend.pages.dev/pt/tools/landings/speech-to-text-transcription" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Transcribe Speech to Text for Free",
+  "description": "Step-by-step guide to voice transcription using your browser's native Web Speech API. 100% private, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/speech-to-text-transcription"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Apresentar</a>
+  <a class='nav-link' href='/'>Todas as ferramentas</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/speech-to-text'>← Fala para Texto</a>
+  <article>
+    <h1>Como transcrever fala para texto gratuitamente</h1>
+    <p class="lede">Precisa converter um áudio de voz, a gravação de uma reunião ou anotações ditadas em texto? Seu navegador faz isso: sem assinatura, sem conta, nada é enviado ao Presend.</p>
+
+    <h2>Por que transcrição baseada em navegador?</h2>
+    <p>Serviços de transcrição populares como Otter.ai, Rev ou Trint exigem o upload do seu áudio para seus servidores em nuvem. Isso cria vários problemas:</p>
+    <ul>
+      <li><strong>Privacidade</strong> — Serviços de transcrição na nuvem processam seu áudio nos servidores de outra empresa. O reconhecimento de voz do navegador também, no Chrome e no Edge, então esta página não é uma proteção de privacidade.</li>
+      <li><strong>Custo</strong>— A maioria dos serviços cobra assinaturas mensais ou taxas por minuto</li>
+      <li><strong>Atraso</strong>— Upload + processamento + download leva tempo</li>
+      <li><strong>Conta necessária</strong>— Você deve criar uma conta e aceitar os termos de serviço</li>
+    </ul>
+
+    <h2>Como funciona a API Web Speech</h2>
+    <p>Os navegadores modernos incluem um mecanismo nativo de reconhecimento de fala por meio do<a href="https://wicg.github.io/speech-api/" target="_blank" rel="noopener">API de fala da Web</a>. Aqui está o que acontece:</p>
+    <ol>
+      <li>Você concede acesso de microfone ao navegador</li>
+      <li>O serviço de voz do navegador converte o áudio em texto: o Chrome envia aos servidores do Google, o Edge aos da Microsoft e o Safari usa o reconhecimento de voz da Apple</li>
+      <li>O texto transcrito é transmitido de volta para a página da web em tempo real</li>
+      <li>Nada é enviado aos servidores do Presend, mas o serviço de voz do navegador recebe o seu áudio</li>
+    </ol>
+
+    <h2>Idiomas suportados</h2>
+    <p>O suporte ao idioma depende do seu navegador e sistema operacional. A maioria dos sistemas suporta:</p>
+    <ul>
+      <li>Inglês (EUA, Reino Unido, Austrália, Índia)</li>
+      <li>Francês, Espanhol, Alemão, Italiano, Português</li>
+      <li>Japonês, Coreano, Chinês (Simplificado e Tradicional)</li>
+      <li>Árabe, Hindi, Russo, Holandês, Polonês, Turco</li>
+    </ul>
+    <p>Se um idioma não estiver disponível, seu navegador retornará para a variante compatível mais próxima.</p>
+
+    <h2>Melhores práticas para precisão</h2>
+    <ul>
+      <li><strong>Use um bom microfone</strong>— Os microfones integrados do laptop funcionam, mas um fone de ouvido USB ou um microfone dedicado melhoram significativamente a precisão</li>
+      <li><strong>Minimize o ruído de fundo</strong>– Salas silenciosas produzem transcrições mais limpas</li>
+      <li><strong>Fale claramente</strong>- Enuncie e mantenha um volume consistente</li>
+      <li><strong>Pausa entre frases</strong>— Ajuda o mecanismo a segmentar o texto corretamente</li>
+      <li><strong>Verifique a pontuação</strong>— A API insere alguma pontuação automaticamente, mas pode ser necessário editar</li>
+    </ul>
+
+    <h2>Limitações</h2>
+    <ul>
+      <li><strong>Raposa de fogo</strong>não suporta reconhecimento de fala (apenas síntese). Use Chrome, Edge ou Safari.</li>
+      <li><strong>Sessões longas</strong>pode atingir o tempo limite após 60 segundos em alguns navegadores. Simplesmente reinicie se isso acontecer.</li>
+      <li><strong>Sotaques e dialetos</strong>pode reduzir a precisão para variantes menos comuns.</li>
+      <li><strong>Vocabulário especializado</strong>(médico, jurídico, técnico) pode exigir pós-edição.</li>
+      <li><strong>Não para áudio confidencial</strong> — No Chrome e no Edge o áudio sai do seu dispositivo. Para ditados médicos, jurídicos ou outros confidenciais, use uma ferramenta de transcrição offline.</li>
+    </ul>
+
+    <h2>Guia passo a passo</h2>
+    <ol>
+      <li><strong>Abra a ferramenta</strong>- Vá para<a href="/pt/tools/speech-to-text">Fala para texto</a></li>
+      <li><strong>Selecione seu idioma</strong>- Escolha no menu suspenso</li>
+      <li><strong>Clique em Começar a ouvir</strong>— Permitir acesso ao microfone quando solicitado</li>
+      <li><strong>Fale naturalmente</strong>— O texto aparece enquanto você fala</li>
+      <li><strong>Clique em Parar</strong>quando terminar</li>
+      <li><strong>Copie ou baixe</strong>— Salve como um arquivo .txt ou copie para a área de transferência</li>
+    </ol>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/pt/tools/speech-to-text">Abra a conversão de fala em texto →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — ferramentas gratuitas baseadas em navegador.<a href="/about">Sobre</a> · <a href="/privacy">Privacidade</a> <a href="/pt/api">API</a></p>
+</footer>
+</body>
+</html>

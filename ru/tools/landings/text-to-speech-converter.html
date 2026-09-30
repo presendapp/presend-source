@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как бесплатно преобразовать текст в речь — Руководство Presend</title>
+<meta name="description" content="Узнайте, как превратить текст в естественную речь с помощью встроенного голосового движка браузера. Без загрузок и аккаунта, а Presend никогда не получает ваш текст.">
+<link rel="canonical" href="https://presend.pages.dev/ru/tools/landings/text-to-speech-converter" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Convert Text to Speech for Free",
+  "description": "Пошаговое руководство по синтезу речи с помощью API speechSynthesis вашего браузера. Presend никогда не получает ваш текст; с голосами вашего устройства он остаётся на устройстве.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/text-to-speech-converter"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>представить</a>
+  <a class='nav-link' href='/'>Все инструменты</a> <a class="nav-link" href="/ru/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/text-to-speech'>← Преобразование текста в речь</a>
+  <article>
+    <h1>Как конвертировать текст в речь бесплатно</h1>
+    <p class="lede">Нужно вычитать эссе, послушать статью в дороге или записать озвучку? Браузер может прочитать вслух любой текст — без подписки и без отправки в Presend. С голосами вашего устройства текст никогда не покидает его.</p>
+
+    <h2>Почему преобразование текста в речь на основе браузера?</h2>
+    <p>Облачные сервисы TTS, такие как Amazon Polly, Google Cloud Text-to-Speech или ElevenLabs, дают отличные результаты, но требуют:</p>
+    <ul>
+      <li>Загрузка вашего текста на их серверы</li>
+      <li>Ключи API и учетные записи разработчиков</li>
+      <li>Оплата за символ или за минуту</li>
+      <li>Принятие условий, которые могут разрешить обучение на ваших данных</li>
+    </ul>
+    <p>Для личного использования, черновиков или конфиденциальных материалов синтез речи в браузере быстр, бесплатен и, с голосами вашего устройства, приватен: текст остаётся на устройстве.</p>
+
+    <h2>Как работает речевой синтез</h2>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis" target="_blank" rel="noopener">Интерфейс SpeechSynthesis API Web Speech API</a>встроен в каждый современный браузер. Он использует голоса вашей операционной системы:</p>
+    <ul>
+      <li><strong>Окна</strong>— Microsoft Дэвид, Зира и другие системные голоса</li>
+      <li><strong>macOS</strong>— Высококачественные голоса Siri (Алекс, Саманта и т. д.)</li>
+      <li><strong>Линукс</strong>— espeak, Festival или Piper в зависимости от вашего дистрибутива</li>
+      <li><strong>Android/iOS</strong>— Собственные двигатели TTS с региональными акцентами.</li>
+    </ul>
+    <p>С этими системными голосами текст обрабатывается полностью на вашем устройстве. Некоторые браузеры также предлагают онлайн-голоса (голоса Google в Chrome, голоса Microsoft «Online (Natural)» в Edge), которые отправляют текст в Google или Microsoft. Инструмент Presend отмечает их в списке голосов как «онлайн» и предупреждает, когда выбран один из них.</p>
+
+    <h2>Варианты использования</h2>
+    <ul>
+      <li><strong>Корректура</strong>— Когда вы слышите, как ваш текст читается вслух, вы замечаете ошибки, которые пропускают ваши глаза.</li>
+      <li><strong>Доступность</strong>— Прослушивайте статьи, электронные письма или документы, если чтение затруднено.</li>
+      <li><strong>Изучение языка</strong>— Слушайте произношение иностранного текста</li>
+      <li><strong>Создание контента</strong>— Быстрая озвучка для видео или презентаций.</li>
+      <li><strong>Многозадачность</strong>— Слушайте, пока готовите, занимаетесь спортом или едете на работу</li>
+    </ul>
+
+    <h2>Настройка голосовых настроек</h2>
+    <p>Инструмент Presend позволяет вам контролировать:</p>
+    <ul>
+      <li><strong>Голос</strong>— Выберите из всех голосов, установленных в вашей системе, сгруппированных по языку.</li>
+      <li><strong>Скорость</strong>— От 0,5× (медленно) до 2,0× (быстро). 1,0× — естественный темп разговора</li>
+      <li><strong>Подача</strong>— Повышенный или пониженный тон. Полезно для акцентирования внимания или соответствия настроению контента.</li>
+    </ul>
+
+    <h2>Пошаговое руководство</h2>
+    <ol>
+      <li><strong>Откройте инструмент</strong>— Иди в<a href="/ru/tools/text-to-speech">Преобразование текста в речь</a></li>
+      <li><strong>Вставьте свой текст</strong>— Введите или вставьте до нескольких тысяч символов.</li>
+      <li><strong>Выберите голос</strong>— Выберите язык и конкретный голос</li>
+      <li><strong>Отрегулируйте скорость и шаг</strong>— Точная настройка по вашим предпочтениям</li>
+      <li><strong>Нажмите «Говорить»</strong>— Слушайте мгновенно</li>
+      <li><strong>Используйте паузу/остановку</strong>— Управляйте воспроизведением по мере необходимости</li>
+    </ol>
+
+    <h2>Запись вывода</h2>
+    <p>Большинство браузеров не могут напрямую захватывать синтезированный звук из-за изолированной программной среды безопасности. Чтобы сохранить вывод TTS в виде аудиофайла, используйте программу записи экрана вашей операционной системы с функцией захвата звука:</p>
+    <ul>
+      <li><strong>Окна</strong>— Игровая панель Xbox (Win+G) или OBS Studio</li>
+      <li><strong>macOS</strong>— QuickTime Player («Файл» > «Новая аудиозапись») или Cmd+Shift+5.</li>
+      <li><strong>Линукс</strong>— OBS Studio или парек с ffmpeg</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ru/tools/text-to-speech">Открыть преобразование текста в речь →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — бесплатные браузерные инструменты.<a href="/about">О</a> · <a href="/privacy">Конфиденциальность</a> <a href="/ru/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/landings/compress-video-online" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/landings/compress-video-online" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Compress a Video Without Losing Quality — Presend Guide</title>
+<meta name="description" content="Learn how to shrink MP4 and MOV file sizes using FFmpeg.wasm in your browser. No upload, no quality loss, completely private.">
+<link rel="canonical" href="https://presend.pages.dev/tools/landings/compress-video-online" />
+<link href="../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compress a Video Without Losing Quality",
+  "description": "Complete guide to video compression using FFmpeg.wasm running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/compress-video-online"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/video-compressor'>← Video Compressor</a>
+  <article>
+    <h1>How to Compress a Video Without Losing Quality</h1>
+    <p class="lede">Video files are huge. A 2-minute 4K clip can easily exceed 500MB. Here's how to shrink them for email, social media, or storage — without uploading to a cloud service.</p>
+
+    <h2>Why video compression matters</h2>
+    <p>Modern phones record at resolutions and bitrates that most sharing platforms don't need:</p>
+    <ul>
+      <li><strong>Email attachments</strong> — Most providers limit to 25MB</li>
+      <li><strong>WhatsApp</strong> — Compresses your video aggressively, often ruining quality</li>
+      <li><strong>Social media</strong> — Instagram, Twitter, and TikTok re-encode everything anyway</li>
+      <li><strong>Cloud storage</strong> — Google Drive and iCloud fill up fast with uncompressed video</li>
+      <li><strong>Website hosting</strong> — Large videos slow down page load times and hurt SEO</li>
+    </ul>
+
+    <h2>The problem with online compressors</h2>
+    <p>Most "free video compressor" websites work like this:</p>
+    <ol>
+      <li>You upload your video to their server</li>
+      <li>They process it (often watermarked or quality-limited on free tiers)</li>
+      <li>You download the result</li>
+    </ol>
+    <p>This means your personal videos, proprietary footage, or sensitive content sits on a stranger's server. Some services:</p>
+    <ul>
+      <li>Add watermarks to free outputs</li>
+      <li>Limit file size or duration</li>
+      <li>Require email registration</li>
+      <li>Keep copies of your uploads</li>
+      <li>Sell "premium" features that should be basic</li>
+    </ul>
+
+    <h2>How FFmpeg.wasm works</h2>
+    <p><a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener">FFmpeg.wasm</a> is a WebAssembly port of FFmpeg, the industry-standard video processing tool used by YouTube, Netflix, and virtually every video platform. It runs entirely in your browser:</p>
+    <ul>
+      <li>The ~25MB WASM binary downloads once and caches</li>
+      <li>Your video is loaded into browser memory</li>
+      <li>FFmpeg processes it using the same algorithms as the desktop version</li>
+      <li>The result is offered as a download — never sent to a server</li>
+    </ul>
+
+    <h2>Understanding CRF (quality control)</h2>
+    <p>Presend uses H.264 encoding with a Constant Rate Factor (CRF) setting:</p>
+    <table style="width:100%; margin:1rem 0; border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--color-line);"><th style="text-align:left; padding:0.5rem;">CRF Value</th><th style="text-align:left; padding:0.5rem;">Quality</th><th style="text-align:left; padding:0.5rem;">Best For</th></tr>
+      <tr><td style="padding:0.5rem;">18–20</td><td style="padding:0.5rem;">Visually lossless</td><td style="padding:0.5rem;">Archival, professional editing</td></tr>
+      <tr><td style="padding:0.5rem;">21–23</td><td style="padding:0.5rem;">High quality</td><td style="padding:0.5rem;">General use, YouTube uploads</td></tr>
+      <tr><td style="padding:0.5rem;">24–28</td><td style="padding:0.5rem;">Good quality, smaller</td><td style="padding:0.5rem;">Social media, email, web</td></tr>
+      <tr><td style="padding:0.5rem;">29–35</td><td style="padding:0.5rem;">Acceptable, very small</td><td style="padding:0.5rem;">Preview, draft, mobile sharing</td></tr>
+    </table>
+    <p>Lower CRF = higher quality, larger file. Higher CRF = smaller file, more compression artifacts. The default of 28 is a good balance for most use cases.</p>
+
+    <h2>Step-by-step guide</h2>
+    <ol>
+      <li><strong>Open the tool</strong> — Go to <a href="/tools/video-compressor">Video Compressor</a></li>
+      <li><strong>Upload your video</strong> — Drag and drop or select an MP4 or MOV file (up to ~500MB)</li>
+      <li><strong>Adjust CRF</strong> — Use the slider to balance quality vs file size</li>
+      <li><strong>Click Compress</strong> — Wait for FFmpeg.wasm to process (first load takes ~10s)</li>
+      <li><strong>Download</strong> — Save the compressed file with the size reduction shown</li>
+    </ol>
+
+    <h2>Tips for best results</h2>
+    <ul>
+      <li>Start with CRF 28 and adjust based on the result</li>
+      <li>For social media, CRF 26–28 usually provides excellent quality at half the original size</li>
+      <li>For email, aim for under 25MB total</li>
+      <li>The tool preserves the original resolution — only the bitrate is reduced</li>
+      <li>Audio is compressed to 128kbps AAC, which is transparent for most content</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/tools/video-compressor">Open Video Compressor →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+</body>
+</html>

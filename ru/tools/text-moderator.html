@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/text-moderator" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/text-moderator" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/text-moderator" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/text-moderator" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/text-moderator" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/text-moderator" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/text-moderator" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/text-moderator" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/text-moderator" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Модератор текста — Обнаружение спама и токсичного языка"/>
+<meta property="og:description" content="Обнаруживайте спам и токсичный язык в комментариях. 100% приватно, работает в браузере."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://presend.pages.dev/ru/tools/text-moderator"/>
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Text+Moderator"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<title>Модератор текста — Обнаружение спама и токсичного языка | Presend</title>
+<meta name="robots" content="index, follow"/>
+<meta name="description" content="Обнаруживайте спам, токсичный язык, оскорбления и подозрительные ссылки. 100% приватно, работает в браузере. Бесплатно."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ru/tools/text-moderator" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Модератор текста — Обнаружение спама и токсичного языка"/>
+<meta name="twitter:description" content="Обнаруживайте спам и токсичный язык в комментариях. 100% приватно, работает в браузере."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Text Moderator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Detect spam, toxic language, insults and suspicious links in text. No upload, 100% private.",
+  "url": "https://presend.pages.dev/ru/tools/text-moderator"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Text Moderator","item":"https://presend.pages.dev/ru/tools/text-moderator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Moderate Text Content",
+  "description": "Paste any text to detect spam, toxic language and suspicious links.",
+  "totalTime": "PT3S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Paste text", "text": "Enter or paste the text you want to analyze.", "url": "https://presend.pages.dev/ru/tools/text-moderator#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Click Analyze", "text": "Press the Analyze button to scan for spam, toxicity and suspicious links.", "url": "https://presend.pages.dev/ru/tools/text-moderator#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Review results", "text": "See the safety score, detected issues, and highlighted problematic words or links.", "url": "https://presend.pages.dev/ru/tools/text-moderator#step3" }
+  ]
+}
+</script>
+<link rel="manifest" href="/manifest.json"/>
+<style>
+.text-input { width:100%; min-height:120px; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg); font-family:var(--font-body); font-size:1rem; line-height:1.6; resize:vertical; }
+.result-card { margin-top:1.5rem; padding:1.2rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg-raised); display:none; }
+.result-card.visible { display:block; }
+.result-card.safe { border-left:4px solid #28a745; }
+.result-card.warning { border-left:4px solid #ffc107; }
+.result-card.danger { border-left:4px solid #dc3545; }
+.score-row { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+.score-badge { padding:0.4rem 0.8rem; border-radius:20px; font-weight:600; font-size:0.9rem; color:#fff; }
+.score-badge.safe { background:#28a745; }
+.score-badge.warning { background:#ffc107; color:#333; }
+.score-badge.danger { background:#dc3545; }
+.score-bar { flex:1; height:8px; background:var(--color-line); border-radius:4px; overflow:hidden; }
+.score-bar-fill { height:100%; border-radius:4px; transition:width 0.3s ease; }
+.score-bar-fill.safe { background:#28a745; }
+.score-bar-fill.warning { background:#ffc107; }
+.score-bar-fill.danger { background:#dc3545; }
+.issues-list { margin-top:1rem; }
+.issue-item { display:flex; align-items:flex-start; gap:0.6rem; padding:0.5rem 0; border-bottom:1px solid var(--color-line); }
+.issue-item:last-child { border-bottom:none; }
+.issue-icon { font-size:1.1rem; flex-shrink:0; }
+.issue-text { font-size:0.9rem; color:var(--color-text); }
+.issue-text .highlight { background:#ffeb3b; padding:0 2px; border-radius:2px; }
+.issue-text .link-highlight { background:#ffc107; padding:0 2px; border-radius:2px; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:1rem; margin-top:1rem; }
+.stat-box { text-align:center; padding:0.8rem; background:var(--color-bg); border-radius:8px; }
+.stat-value { font-size:1.5rem; font-weight:600; color:var(--color-text); }
+.stat-label { font-size:0.8rem; color:var(--color-muted); margin-top:0.2rem; }
+.status { text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.75rem; min-height:1.5em; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/ru/"><span class="brand-mark">●</span>Presend</a>
+  <a class="nav-link" href="/ru/">Все инструменты</a> <a class="nav-link" href="/ru/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/ru/">← Назад</a>
+  <h1>Модератор текста</h1>
+  <p class="lede">Вставьте любой текст, чтобы обнаружить спам, токсичный язык, оскорбления и подозрительные ссылки. Идеально подходит для модерации комментариев, отзывов, постов на форумах и пользовательского контента. 100% конфиденциально — всё выполняется в вашем браузере.</p>
+
+  <span class="trust-badge">Ваш текст никогда не отправляется на наши серверы</span>
+
+  <div style="margin-top:2rem;">
+    <label for="textInput" style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.4rem;">Текст для анализа</label>
+    <textarea id="textInput" class="text-input" placeholder="Вставьте текст сюда: комментарии, отзывы, посты на форумах, сообщения...">This is a great product! I love it. Visit https://example.com for more info.</textarea>
+
+    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+      <button class="btn" id="analyzeBtn" type="button">🔍 Анализировать</button>
+      <button class="btn ghost" id="clearBtn" type="button">Очистить</button>
+    </div>
+
+    <div class="status" id="status">Готово</div>
+
+    <div class="result-card" id="resultCard">
+      <div class="score-row">
+        <span class="score-badge" id="scoreBadge">Безопасно</span>
+        <div class="score-bar">
+          <div class="score-bar-fill" id="scoreBarFill" style="width:0%"></div>
+        </div>
+        <span id="scorePercent">0%</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value" id="statToxic">0</div>
+          <div class="stat-label">Токсичные слова</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statSpam">0</div>
+          <div class="stat-label">Сигналы спама</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statLinks">0</div>
+          <div class="stat-label">Подозрительные ссылки</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="statCaps">0%</div>
+          <div class="stat-label">ЗАГЛАВНЫЕ</div>
+        </div>
+      </div>
+
+      <div class="issues-list" id="issuesList"></div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Сопутствующие инструменты</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/ru/tools/text-formatter">
+        <div><h3>Форматирование текста</h3><p>Преобразуйте текст в жирный, курсив и Unicode-стили.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="tool-card" href="/ru/tools/word-counter">
+        <div><h3>Счётчик слов</h3><p>Считайте слова, символы и время чтения.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="tool-card" href="/ru/tools/url-cleaner">
+        <div><h3>Очистка URL</h3><p>Удаляйте параметры отслеживания из любой ссылки.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+  </div>
+</section>
+
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Как это работает?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">Этот инструмент использует тщательно подобранный многоязычный список слов и эвристические правила, полностью работающие в вашем браузере. Он обнаруживает токсичный язык (оскорбления, ругательства), паттерны спама (чрезмерные заглавные буквы, повторяющиеся символы, подозрительные ключевые слова) и рискованные ссылки (сокращатели URL, фишинговые домены, URL на основе IP). Текст никогда не отправляется на наши серверы — анализ происходит локально через JavaScript.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/ru/about">About</a> · <a href="/ru/privacy">Privacy</a> · <a href="/ru/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function () {
+  const textInput = document.getElementById('textInput');
+  const analyzeBtn = document.getElementById('analyzeBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const status = document.getElementById('status');
+  const resultCard = document.getElementById('resultCard');
+  const scoreBadge = document.getElementById('scoreBadge');
+  const scoreBarFill = document.getElementById('scoreBarFill');
+  const scorePercent = document.getElementById('scorePercent');
+  const statToxic = document.getElementById('statToxic');
+  const statSpam = document.getElementById('statSpam');
+  const statLinks = document.getElementById('statLinks');
+  const statCaps = document.getElementById('statCaps');
+  const issuesList = document.getElementById('issuesList');
+
+  // Multilingual toxic word lists (simplified for demo — expand as needed)
+  const TOXIC_WORDS = {
+    en: ['stupid','idiot','moron','damn','hell','crap','shit','fuck','ass','bitch','bastard','dumb','loser','trash','garbage','worthless','hate','kill','die','suicide'],
+    fr: ['con','connard','conne','merde','putain','salope','enculé','bâtard','fdp','nique','crever','débile','imbécile','crétin','salaud','pourri'],
+    es: ['mierda','puta','cabron','maricón','imbécil','idiota','estúpido','maldito','basura','muérete'],
+    de: ['scheisse','verdammt','idiot','dummkopf','arschloch','hurensohn','fotze','schwachsinnig','dreck'],
+    pt: ['merda','puta','caralho','fdp','idiota','estúpido','burro','nojo','lixo'],
+    it: ['merda','stronzo','bastardo','coglione','idiota','stupido','cretino','vaffanculo'],
+    ru: ['блядь','сука','хуй','пизда','ебать','идиот','дурак','ублюдок','тварь','гад'],
+    hi: ['चूतिया','मादरचोद','भेंचोद','लौड़ा','गांडू','हरामी','कमीना','साला'],
+    ja: ['バカ','アホ','クソ','死ね','消えろ','馬鹿','糞','畜生'],
+    zh: ['傻逼','他妈的','混蛋','去死','垃圾','废物','死','滚']
+  };
+
+  const ALL_TOXIC = Object.values(TOXIC_WORDS).flat();
+
+  // Spam keywords and patterns
+  const SPAM_KEYWORDS = [
+    'click here','buy now','limited time','act now','urgent','winner','congratulations',
+    'free money','earn extra cash','make money fast','work from home','risk free',
+    'no obligation','call now','order now','special promotion','credit card',
+    'lottery','million dollars','act immediately','exclusive deal','100% free',
+    'double your','earn per week','extra cash','fast cash','financial freedom',
+    'get paid','incredible deal','lose weight','miracle','money back','no experience',
+    'not junk','not spam','offer expires','once in lifetime','one time','promise you',
+    'satisfaction guaranteed','save big','save up to','special promotion','this is not',
+    'web traffic','weight loss','while supplies last','win big','you are a winner',
+    'you have been selected','zero chance','zero risk','бесплатно','кредит','заработок',
+    'казино','виагра','порно','скидка','акция','подарок','gratuit','gagner','crédit',
+    'prêt','argent facile','enrichissez-vous'
+  ];
+
+  // Suspicious URL patterns
+  const SUSPICIOUS_PATTERNS = [
+    /bit\.ly|tinyurl|t\.co|goo\.gl|ow\.ly|short\.link|is\.gd|cli\.gs|tr\.im/i,
+    /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/, // IP addresses
+    /(free|win|prize|gift|bonus|cash|money)\.(tk|ml|ga|cf|gq)/i, // Free domains with spam keywords
+    /(login|signin|verify|confirm|update|secure)\-[a-z0-9]+\./i, // Phishing patterns
+    /(bank|paypal|apple|google|microsoft|amazon|facebook)\.[a-z0-9\-]+\.(tk|ml|ga|cf|gq|xyz|top|click|link)/i, // Brand phishing on cheap TLDs
+  ];
+
+  const URL_SHORTENERS = ['bit.ly','tinyurl.com','t.co','goo.gl','ow.ly','is.gd','buff.ly','short.link'];
+
+  function findToxicWords(text) {
+    const lower = text.toLowerCase();
+    const found = [];
+    ALL_TOXIC.forEach(word => {
+      const regex = new RegExp('\\\\b' + word + '\\\\b', 'gi');
+      const matches = lower.match(regex);
+      if (matches) {
+        matches.forEach(() => found.push(word));
+      }
+    });
+    return found;
+  }
+
+  function findSpamSignals(text) {
+    const lower = text.toLowerCase();
+    const signals = [];
+    SPAM_KEYWORDS.forEach(keyword => {
+      if (lower.includes(keyword)) {
+        signals.push(keyword);
+      }
+    });
+    // Check for excessive repetition
+    const words = text.split(/\\s+/);
+    const wordCounts = {};
+    words.forEach(w => {
+      const clean = w.toLowerCase().replace(/[^a-zà-ÿа-я]/g, '');
+      if (clean.length > 2) wordCounts[clean] = (wordCounts[clean] || 0) + 1;
+    });
+    Object.entries(wordCounts).forEach(([word, count]) => {
+      if (count > 3) signals.push(`повторяющееся слово "${word}" (${count}x)`);
+    });
+    // Check for excessive punctuation
+    const exclCount = (text.match(/!/g) || []).length;
+    if (exclCount > 3) signals.push(`чрезмерное количество восклицательных знаков (${exclCount})`);
+    const questCount = (text.match(/\\?/g) || []).length;
+    if (questCount > 3) signals.push(`чрезмерное количество вопросительных знаков (${questCount})`);
+    // Check for ALL CAPS words
+    const capsWords = text.split(/\\s+/).filter(w => w.length > 2 && w === w.toUpperCase() && /[A-Z]/.test(w));
+    if (capsWords.length > 2) signals.push(`чрезмерное количество слов ЗАГЛАВНЫМИ буквами (${capsWords.length})`);
+    return signals;
+  }
+
+  function findSuspiciousLinks(text) {
+    const links = [];
+    const urlRegex = /https?:\\/\\/[^\\s<>\"{}|\\\\^`\\[\\]]+/gi;
+    const matches = text.match(urlRegex) || [];
+    matches.forEach(url => {
+      let reason = null;
+      // Check URL shorteners
+      if (URL_SHORTENERS.some(s => url.includes(s))) {
+        reason = 'сокращатель URL (скрывает конечный пункт назначения)';
+      }
+      // Check IP addresses
+      else if (/\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}/.test(url)) {
+        reason = 'URL с IP-адресом (подозрительно)';
+      }
+      // Check suspicious patterns
+      else if (SUSPICIOUS_PATTERNS.some(p => p.test(url))) {
+        reason = 'соответствует шаблону фишинга';
+      }
+      // Check for HTTP (not HTTPS)
+      else if (url.startsWith('http://')) {
+        reason = 'незашифрованная HTTP-ссылка';
+      }
+      if (reason) links.push({ url, reason });
+    });
+    return links;
+  }
+
+  function calculateCapsPercent(text) {
+    const letters = text.replace(/[^a-zA-Z]/g, '');
+    if (!letters) return 0;
+    const caps = letters.replace(/[^A-Z]/g, '');
+    return Math.round((caps.length / letters.length) * 100);
+  }
+
+  function analyze() {
+    const text = textInput.value.trim();
+    if (!text) {
+      status.textContent = 'Please enter some text';
+      return;
+    }
+
+    analyzeBtn.disabled = true;
+    status.textContent = 'Анализируется...';
+
+    const toxicWords = findToxicWords(text);
+    const spamSignals = findSpamSignals(text);
+    const suspiciousLinks = findSuspiciousLinks(text);
+    const capsPercent = calculateCapsPercent(text);
+
+    // Calculate score (0-100, higher = more risky)
+    let score = 0;
+    score += toxicWords.length * 15;
+    score += spamSignals.length * 10;
+    score += suspiciousLinks.length * 20;
+    score += Math.min(capsPercent, 30); // Cap caps contribution at 30
+
+    score = Math.min(score, 100);
+
+    // Determine category
+    let category, className;
+    if (score === 0) {
+      category = 'Безопасно';
+      className = 'safe';
+    } else if (score < 30) {
+      category = 'Низкий риск';
+      className = 'safe';
+    } else if (score < 60) {
+      category = 'Подозрительно';
+      className = 'warning';
+    } else {
+      category = 'Опасно';
+      className = 'danger';
+    }
+
+    // Update UI
+    resultCard.className = 'result-card visible ' + className;
+    scoreBadge.textContent = category;
+    scoreBadge.className = 'score-badge ' + className;
+    scoreBarFill.style.width = score + '%';
+    scoreBarFill.className = 'score-bar-fill ' + className;
+    scorePercent.textContent = score + '% риска';
+
+    statToxic.textContent = toxicWords.length;
+    statSpam.textContent = spamSignals.length;
+    statLinks.textContent = suspiciousLinks.length;
+    statCaps.textContent = capsPercent + '%';
+
+    // Build issues list
+    issuesList.innerHTML = '';
+    if (toxicWords.length > 0) {
+      const unique = [...new Set(toxicWords)];
+      issuesList.innerHTML += '<div class=\"issue-item\"><span class=\"issue-icon\">🤬</span><div class=\"issue-text\">Обнаружен токсичный язык: <span class=\"highlight\">' + unique.join('</span>, <span class=\"highlight\">') + '</span></div></div>';
+    }
+    spamSignals.forEach(signal => {
+      issuesList.innerHTML += '<div class=\"issue-item\"><span class=\"issue-icon\">📢</span><div class=\"issue-text\">Сигнал спама: ' + signal + '</div></div>';
+    });
+    suspiciousLinks.forEach(link => {
+      issuesList.innerHTML += '<div class=\"issue-item\"><span class=\"issue-icon\">🔗</span><div class=\"issue-text\">Подозрительная ссылка: <span class=\"link-highlight\">' + link.url + '</span> — ' + link.reason + '</div></div>';
+    });
+    if (capsPercent > 30) {
+      issuesList.innerHTML += '<div class=\"issue-item\"><span class=\"issue-icon\">🔤</span><div class=\"issue-text\">Чрезмерное использование заглавных букв: ' + capsPercent + '% букв написаны ЗАГЛАВНЫМИ</div></div>';
+    }
+    if (toxicWords.length === 0 && spamSignals.length === 0 && suspiciousLinks.length === 0 && capsPercent <= 30) {
+      issuesList.innerHTML += '<div class=\"issue-item\"><span class=\"issue-icon\">✅</span><div class=\"issue-text\">Проблем не обнаружено. Этот текст выглядит безопасным.</div></div>';
+    }
+
+    status.textContent = 'Анализ завершён';
+    analyzeBtn.disabled = false;
+  }
+
+  analyzeBtn.addEventListener('click', analyze);
+  clearBtn.addEventListener('click', () => {
+    textInput.value = '';
+    resultCard.classList.remove('visible');
+    status.textContent = 'Ready';
+  });
+})();
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'text-moderator' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'text-moderator' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

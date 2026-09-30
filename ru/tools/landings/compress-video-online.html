@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как сжать видео без потери качества — Руководство Presend</title>
+<meta name="description" content="Научитесь уменьшать размер файлов MP4 и MOV с помощью FFmpeg.wasm в вашем браузере. Без загрузки, без потери качества, полностью приватно.">
+<link rel="canonical" href="https://presend.pages.dev/ru/tools/landings/compress-video-online" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compress a Video Without Losing Quality",
+  "description": "Complete guide to video compression using FFmpeg.wasm running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/compress-video-online"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>представить</a>
+  <a class='nav-link' href='/'>Все инструменты</a> <a class="nav-link" href="/ru/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/video-compressor'>← Видео компрессор</a>
+  <article>
+    <h1>Как сжать видео без потери качества</h1>
+    <p class="lede">Видеофайлы огромны. Двухминутный клип 4K может легко превысить 500 МБ. Вот как можно сжать их для электронной почты, социальных сетей или хранилища — без загрузки в облачный сервис.</p>
+
+    <h2>Почему сжатие видео важно</h2>
+    <p>Современные телефоны записывают с разрешением и битрейтом, которые не нужны большинству платформ обмена:</p>
+    <ul>
+      <li><strong>Вложения электронной почты</strong>— Большинство провайдеров ограничивают размер до 25 МБ.</li>
+      <li><strong>WhatsApp</strong>— Агрессивно сжимает видео, часто ухудшая качество.</li>
+      <li><strong>Социальные сети</strong>— Instagram, Twitter и TikTok все равно все перекодируют</li>
+      <li><strong>Облачное хранилище</strong>— Google Drive и iCloud быстро заполняются несжатым видео.</li>
+      <li><strong>Хостинг веб-сайтов</strong>— Большие видео замедляют загрузку страницы и вредят SEO.</li>
+    </ul>
+
+    <h2>Проблема с онлайн-компрессорами</h2>
+    <p>Большинство сайтов «бесплатных видеокомпрессоров» работают следующим образом:</p>
+    <ol>
+      <li>Вы загружаете свое видео на их сервер</li>
+      <li>Они обрабатывают его (часто с водяными знаками или с ограничением качества на бесплатных уровнях).</li>
+      <li>Вы скачиваете результат</li>
+    </ol>
+    <p>Это означает, что ваши личные видео, собственные видеоматериалы или конфиденциальный контент находятся на чужом сервере. Некоторые услуги:</p>
+    <ul>
+      <li>Добавляйте водяные знаки в бесплатные результаты</li>
+      <li>Ограничить размер или продолжительность файла</li>
+      <li>Требовать регистрацию по электронной почте</li>
+      <li>Сохраняйте копии своих загрузок</li>
+      <li>Продавайте «премиальные» функции, которые должны быть базовыми.</li>
+    </ul>
+
+    <h2>Как работает FFmpeg.wasm</h2>
+    <p><a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener">FFmpeg.wasm</a>— это порт FFmpeg на WebAssembly, стандартного инструмента обработки видео, используемого YouTube, Netflix и практически всеми видеоплатформами. Он полностью работает в вашем браузере:</p>
+    <ul>
+      <li>Бинарный файл WASM размером ~25 МБ загружается один раз и кэшируется.</li>
+      <li>Ваше видео загружается в память браузера</li>
+      <li>FFmpeg обрабатывает его, используя те же алгоритмы, что и настольная версия.</li>
+      <li>Результат предлагается для загрузки и никогда не отправляется на сервер.</li>
+    </ul>
+
+    <h2>Понимание CRF (контроль качества)</h2>
+    <p>Presend использует кодировку H.264 с настройкой коэффициента постоянной скорости (CRF):</p>
+    <table style="width:100%; margin:1rem 0; border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--color-line);"><th style="text-align:left; padding:0.5rem;">Значение ИРК</th><th style="text-align:left; padding:0.5rem;">Качество</th><th style="text-align:left; padding:0.5rem;">Лучшее для</th></tr>
+      <tr><td style="padding:0.5rem;">18–20</td><td style="padding:0.5rem;">Визуально без потерь</td><td style="padding:0.5rem;">Архивное, профессиональное редактирование</td></tr>
+      <tr><td style="padding:0.5rem;">21–23</td><td style="padding:0.5rem;">Высокое качество</td><td style="padding:0.5rem;">Общее использование, загрузка на YouTube</td></tr>
+      <tr><td style="padding:0.5rem;">24–28</td><td style="padding:0.5rem;">Хорошее качество, меньше</td><td style="padding:0.5rem;">Социальные сети, электронная почта, Интернет</td></tr>
+      <tr><td style="padding:0.5rem;">29–35</td><td style="padding:0.5rem;">Приемлемо, очень мало</td><td style="padding:0.5rem;">Предварительный просмотр, черновик, обмен на мобильных устройствах</td></tr>
+    </table>
+    <p>Меньший CRF = более высокое качество, больший размер файла. Более высокий CRF = файл меньшего размера, больше артефактов сжатия. Значение по умолчанию, равное 28, является хорошим балансом для большинства случаев использования.</p>
+
+    <h2>Пошаговое руководство</h2>
+    <ol>
+      <li><strong>Откройте инструмент</strong>— Иди в<a href="/ru/tools/video-compressor">Видео Компрессор</a></li>
+      <li><strong>Загрузите свое видео</strong>— Перетащите или выберите файл MP4 или MOV (до ~ 500 МБ)</li>
+      <li><strong>Отрегулировать CRF</strong>— Используйте ползунок, чтобы сбалансировать качество и размер файла.</li>
+      <li><strong>Нажмите «Сжать».</strong>— Подождите, пока обработается FFmpeg.wasm (первая загрузка занимает ~10 с)</li>
+      <li><strong>Скачать</strong>— Сохраните сжатый файл с указанным уменьшением размера.</li>
+    </ol>
+
+    <h2>Советы для достижения наилучших результатов</h2>
+    <ul>
+      <li>Начните с CRF 28 и корректируйте в зависимости от результата.</li>
+      <li>Для социальных сетей CRF 26–28 обычно обеспечивает превосходное качество при вдвое меньшем исходном размере.</li>
+      <li>Для электронной почты стремитесь к общему размеру менее 25 МБ.</li>
+      <li>Инструмент сохраняет исходное разрешение — снижается только битрейт.</li>
+      <li>Аудио сжимается в формат AAC со скоростью 128 кбит/с, который прозрачен для большинства контента.</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ru/tools/video-compressor">Открыть видеокомпрессор →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — бесплатные браузерные инструменты.<a href="/about">О</a> · <a href="/privacy">Конфиденциальность</a> <a href="/ru/api">API</a></p>
+</footer>
+</body>
+</html>

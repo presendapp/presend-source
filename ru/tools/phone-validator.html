@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin/>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com"/>
+    <link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/phone-validator" />
+    <link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/phone-validator" />
+    <link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/phone-validator" />
+    <link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/phone-validator" />
+    <link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/phone-validator" />
+    <link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/phone-validator" />
+    <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/phone-validator" />
+    <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/phone-validator" />
+    <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/phone-validator" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta property="og:title" content="Валидатор телефона — E.164, международный, национальный формат"/>
+<meta property="og:description" content="Проверяйте и форматируйте номера телефонов в E.164, национальный или международный. 100% приватно, работает в браузере."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://presend.pages.dev/ru/tools/phone-validator"/>
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Phone+Validator"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<title>Валидатор телефона — E.164, международный, национальный формат | Presend</title>
+<meta name="robots" content="index, follow"/>
+<meta name="description" content="Проверяйте номера телефонов, форматируйте в E.164, международный или национальный формат, определяйте страну. 100% приватно, работает в браузере. Бесплатно."/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ru/tools/phone-validator" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Валидатор телефона — E.164, международный, национальный формат"/>
+<meta name="twitter:description" content="Проверяйте и форматируйте номера телефонов в E.164, национальный или международный. 100% приватно, работает в браузере."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Phone Validator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Validate phone numbers, format as E.164, international or national, identify country and carrier type. No upload, 100% private.",
+  "url": "https://presend.pages.dev/ru/tools/phone-validator"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Phone Validator","item":"https://presend.pages.dev/ru/tools/phone-validator"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Validate a Phone Number",
+  "description": "Paste any phone number to check its validity and see formatted versions.",
+  "totalTime": "PT3S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Enter a phone number", "text": "Type or paste the phone number you want to validate, with or without country code.", "url": "https://presend.pages.dev/ru/tools/phone-validator#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Select country (optional)", "text": "Choose the expected country if the number has no international prefix.", "url": "https://presend.pages.dev/ru/tools/phone-validator#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "View results", "text": "See if the number is valid, its formatted versions, and the detected country.", "url": "https://presend.pages.dev/ru/tools/phone-validator#step3" }
+  ]
+}
+</script>
+<link rel="manifest" href="/manifest.json"/>
+<style>
+.phone-input { width:100%; padding:0.8rem 1rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg); font-family:var(--font-body); font-size:1rem; }
+.country-select { width:100%; padding:0.6rem; border:1px solid var(--color-line); border-radius:8px; background:var(--color-bg); font-family:var(--font-body); font-size:1rem; margin-top:0.5rem; }
+.result-card { margin-top:1.5rem; padding:1.2rem; border:1px solid var(--color-line); border-radius:var(--radius); background:var(--color-bg-raised); display:none; }
+.result-card.visible { display:block; }
+.result-card.valid { border-left:4px solid #28a745; }
+.result-card.invalid { border-left:4px solid #dc3545; }
+.result-row { display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--color-line); }
+.result-row:last-child { border-bottom:none; }
+.result-label { color:var(--color-muted); font-size:0.9rem; }
+.result-value { font-weight:500; color:var(--color-text); font-size:0.95rem; }
+.status { text-align:center; color:var(--color-muted); font-size:0.9rem; margin-top:0.75rem; min-height:1.5em; }
+.error-msg { color:#dc3545; margin-top:0.75rem; font-size:0.9rem; }
+</style>
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class="brand" href="/ru/"><span class="brand-mark">●</span>Presend</a>
+  <a class="nav-link" href="/ru/">Все инструменты</a> <a class="nav-link" href="/ru/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class="tool-back" href="/ru/">← Назад</a>
+  <h1>Валидатор номера телефона</h1>
+  <p class="lede">Вставьте любой номер телефона, чтобы проверить его, отформатировать в E.164, международном или национальном формате и определить страну. 100% конфиденциально — всё выполняется в вашем браузере с помощью libphonenumber-js.</p>
+
+  <span class="trust-badge">Ваш номер никогда не отправляется на наши серверы</span>
+
+  <div style="margin-top:2rem;">
+    <label for="phoneInput" style="display:block; font-size:0.9rem; color:var(--color-muted); margin-bottom:0.4rem;">Номер телефона</label>
+    <input type="tel" id="phoneInput" class="phone-input" placeholder="+1 650 253 0000 or 06502530000">
+
+    <label for="countrySelect" style="display:block; font-size:0.9rem; color:var(--color-muted); margin-top:1rem; margin-bottom:0.4rem;">Страна по умолчанию (если нет префикса +)</label>
+    <select id="countrySelect" class="country-select">
+      <option value="US">🇺🇸 United States</option>
+      <option value="GB">🇬🇧 United Kingdom</option>
+      <option value="FR" selected>🇫🇷 France</option>
+      <option value="DE">🇩🇪 Germany</option>
+      <option value="ES">🇪🇸 Spain</option>
+      <option value="IT">🇮🇹 Italy</option>
+      <option value="CA">🇨🇦 Canada</option>
+      <option value="AU">🇦🇺 Australia</option>
+      <option value="JP">🇯🇵 Japan</option>
+      <option value="BR">🇧🇷 Brazil</option>
+      <option value="IN">🇮🇳 India</option>
+      <option value="CN">🇨🇳 China</option>
+      <option value="RU">🇷🇺 Russia</option>
+      <option value="MX">🇲🇽 Mexico</option>
+      <option value="NL">🇳🇱 Netherlands</option>
+      <option value="BE">🇧🇪 Belgium</option>
+      <option value="CH">🇨🇭 Switzerland</option>
+      <option value="SE">🇸🇪 Sweden</option>
+      <option value="NO">🇳🇴 Norway</option>
+      <option value="DK">🇩🇰 Denmark</option>
+      <option value="FI">🇫🇮 Finland</option>
+      <option value="PL">🇵🇱 Poland</option>
+      <option value="AT">🇦🇹 Austria</option>
+      <option value="PT">🇵🇹 Portugal</option>
+    </select>
+
+    <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+      <button class="btn" id="validateBtn" type="button">✅ Проверить</button>
+      <button class="btn ghost" id="clearBtn" type="button">Очистить</button>
+    </div>
+
+    <div class="status" id="status">Готово</div>
+    <div class="error-msg" id="errorMsg" style="display:none;"></div>
+
+    <div class="result-card" id="resultCard">
+      <div class="result-row">
+        <span class="result-label">Действителен</span>
+        <span class="result-value" id="resValid"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Страна</span>
+        <span class="result-value" id="resCountry"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Тип</span>
+        <span class="result-value" id="resType"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">E.164</span>
+        <span class="result-value" id="resE164"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Международный</span>
+        <span class="result-value" id="resIntl"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Национальный</span>
+        <span class="result-value" id="resNational"></span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">URI (tel:)</span>
+        <span class="result-value" id="resUri"></span>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Сопутствующие инструменты</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class="tool-card" href="/ru/tools/email-list-cleaner">
+        <div><h3>Очистка списка e-mail</h3><p>Проверяйте и удаляйте дубликаты email-адресов.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="tool-card" href="/ru/tools/url-cleaner">
+        <div><h3>Очистка URL</h3><p>Удаляйте параметры отслеживания из любой ссылки.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+      <a class="tool-card" href="/ru/tools/text-formatter">
+        <div><h3>Форматирование текста</h3><p>Преобразуйте текст в жирный, курсив и Unicode-стили.</p></div>
+        <span class="go">Открыть →</span>
+      </a>
+  </div>
+</section>
+
+
+<!--seo-related-tools-->
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Как это работает?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">Этот инструмент использует <a href="https://gitlab.com/catamphetamine/libphonenumber-js" target="_blank" rel="noopener">libphonenumber-js</a>, облегчённый порт библиотеки libphonenumber от Google, полностью работающий в вашем браузере через WebAssembly. Он анализирует номер согласно международным стандартам, проверяет его по плану нумерации страны и форматирует в E.164, международном и национальном форматах. Данные никогда не отправляются на наши серверы.</p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/ru/about">About</a> · <a href="/ru/privacy">Privacy</a> · <a href="/ru/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script type="module">
+import { parsePhoneNumberFromString, getCountries, getCountryCallingCode } from 'https://cdn.jsdelivr.net/npm/libphonenumber-js@1.12.6/+esm';
+
+const phoneInput = document.getElementById('phoneInput');
+const countrySelect = document.getElementById('countrySelect');
+const validateBtn = document.getElementById('validateBtn');
+const clearBtn = document.getElementById('clearBtn');
+const status = document.getElementById('status');
+const errorMsg = document.getElementById('errorMsg');
+const resultCard = document.getElementById('resultCard');
+const resValid = document.getElementById('resValid');
+const resCountry = document.getElementById('resCountry');
+const resType = document.getElementById('resType');
+const resE164 = document.getElementById('resE164');
+const resIntl = document.getElementById('resIntl');
+const resNational = document.getElementById('resNational');
+const resUri = document.getElementById('resUri');
+
+function getCountryName(code) {
+  const names = {
+    US: 'United States', GB: 'United Kingdom', FR: 'France', DE: 'Germany',
+    ES: 'Spain', IT: 'Italy', CA: 'Canada', AU: 'Australia', JP: 'Japan',
+    BR: 'Brazil', IN: 'India', CN: 'China', RU: 'Russia', MX: 'Mexico',
+    NL: 'Netherlands', BE: 'Belgium', CH: 'Switzerland', SE: 'Sweden',
+    NO: 'Norway', DK: 'Denmark', FI: 'Finland', PL: 'Poland', AT: 'Austria',
+    PT: 'Portugal'
+  };
+  return names[code] || code;
+}
+
+function getNumberType(type) {
+  const types = {
+    MOBILE: 'Mobile', FIXED_LINE: 'Fixed line', FIXED_LINE_OR_MOBILE: 'Fixed or mobile',
+    PREMIUM_RATE: 'Premium rate', TOLL_FREE: 'Toll-free', SHARED_COST: 'Shared cost',
+    VOIP: 'VoIP', PERSONAL_NUMBER: 'Personal', PAGER: 'Pager', UAN: 'UAN',
+    UNKNOWN: 'Unknown', VOICEMAIL: 'Voicemail'
+  };
+  return types[type] || type || 'Unknown';
+}
+
+function validate() {
+  const raw = phoneInput.value.trim();
+  if (!raw) {
+    status.textContent = 'Please enter a phone number';
+    return;
+  }
+
+  const country = countrySelect.value;
+  const phoneNumber = parsePhoneNumberFromString(raw, country);
+
+  resultCard.classList.remove('visible', 'valid', 'invalid');
+  errorMsg.style.display = 'none';
+
+  if (!phoneNumber) {
+    resultCard.classList.add('visible', 'invalid');
+    resValid.textContent = '❌ No — cannot parse number';
+    resCountry.textContent = '—';
+    resType.textContent = '—';
+    resE164.textContent = '—';
+    resIntl.textContent = '—';
+    resNational.textContent = '—';
+    resUri.textContent = '—';
+    status.textContent = 'Invalid number';
+    return;
+  }
+
+  if (phoneNumber.isValid()) {
+    resultCard.classList.add('visible', 'valid');
+    resValid.textContent = '✅ Yes';
+    resCountry.textContent = getCountryName(phoneNumber.country) + ' (+' + phoneNumber.countryCallingCode + ')';
+    resType.textContent = getNumberType(phoneNumber.getType());
+    resE164.textContent = phoneNumber.format('E.164');
+    resIntl.textContent = phoneNumber.formatInternational();
+    resNational.textContent = phoneNumber.formatNational();
+    resUri.textContent = phoneNumber.getURI();
+    status.textContent = 'Valid number';
+  } else {
+    resultCard.classList.add('visible', 'invalid');
+    resValid.textContent = '❌ No — invalid for ' + getCountryName(country);
+    // Try to show what we could parse
+    resCountry.textContent = phoneNumber.country ? getCountryName(phoneNumber.country) : '—';
+    resType.textContent = '—';
+    resE164.textContent = '—';
+    resIntl.textContent = '—';
+    resNational.textContent = '—';
+    resUri.textContent = '—';
+    status.textContent = 'Invalid number';
+  }
+}
+
+validateBtn.addEventListener('click', validate);
+clearBtn.addEventListener('click', () => {
+  phoneInput.value = '';
+  resultCard.classList.remove('visible', 'valid', 'invalid');
+  errorMsg.style.display = 'none';
+  status.textContent = 'Ready';
+});
+phoneInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') validate(); });
+
+// Auto-validate on paste after a short delay
+phoneInput.addEventListener('paste', () => {
+  setTimeout(validate, 100);
+});
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'phone-validator' })
+}).catch(() => {});
+</script>
+<script>
+document.getElementById('shareBtn') && document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'phone-validator' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

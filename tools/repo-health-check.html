@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="GitHub Repo Health Check — Presend">
+<meta property="og:description" content="Stars, forks, license, archived status and days since last push for a GitHub repo. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/repo-health-check">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Repo+Health+Check">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>Free GitHub Repo Health Check API | Presend</title>
+<meta name="robots" content="index, follow">
+<meta name="description" content="Check a GitHub repo's stars, forks, open issues, license, archived status and days since last push in one call. Free, no signup, no API key.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/repo-health-check" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="GitHub Repo Health Check — Presend">
+<meta name="twitter:description" content="Stars, forks, license, archived status and days since last push for a GitHub repo. Free, no signup.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GitHub Repo Health Check",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Stars, forks, open issues, license, archived status, and days since last push for a GitHub repo, via the GitHub REST API. Free API, no signup, no API key.",
+  "url": "https://presend.pages.dev/tools/repo-health-check"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"GitHub Repo Health Check","item":"https://presend.pages.dev/tools/repo-health-check"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What does 'days since last push' actually tell you?","acceptedAnswer":{"@type":"Answer","text":"A repo that hasn't been pushed to in years may be abandoned -- security issues go unpatched, dependencies go stale, and questions go unanswered. It's a quick, useful signal before depending on a project, though not definitive on its own."}},
+  {"@type":"Question","name":"What happens if I check an old or renamed repo?","acceptedAnswer":{"@type":"Answer","text":"If the owner/name you checked has been renamed, the result includes a moved_to field showing where it now lives, and the health data shown is for that current location -- not a broken result."}},
+  {"@type":"Question","name":"Why pair this with a vulnerability check?","acceptedAnswer":{"@type":"Answer","text":"Repo health (is it maintained, is it archived) and known CVEs (is a specific version flagged) are two different, complementary signals -- a well-maintained repo can still have a disclosed vulnerability in an old version, and an abandoned repo might have no known CVEs simply because nobody's looking."}},
+  {"@type":"Question","name":"Can I use this in my own code?","acceptedAnswer":{"@type":"Answer","text":"Yes. This page calls the same free, public API endpoint you can call directly: GET /api/repo-health-check?repo=owner/name. No signup or API key required."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check a GitHub Repo's Health",
+  "description": "Check stars, forks, license, and activity for a GitHub repo, for free.",
+  "totalTime": "PT5S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Type an owner/repo", "text": "Enter a GitHub repo in the form owner/name.", "url": "https://presend.pages.dev/tools/repo-health-check#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Get real-time results", "text": "The tool queries the GitHub REST API live and shows stars, forks, license, and last push date.", "url": "https://presend.pages.dev/tools/repo-health-check#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Reuse the API call", "text": "Copy the exact API call shown below the results to use the same check in your own code, for free.", "url": "https://presend.pages.dev/tools/repo-health-check#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/repo-health-check" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/repo-health-check" />
+</head>
+<body>
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>GitHub Repo Health Check</h1>
+  <p class="lede">Stars, forks, open issues, license, archived status and days since last push for a GitHub repo, in one call. Free, live, no signup.</p>
+
+  <span class="trust-badge">Live GitHub API query — nothing stored</span>
+
+  <div style="margin-top: 2rem;">
+    <label for="repoInput" style="display:block; font-weight:500; margin-bottom:0.5rem;">Repository (owner/name)</label>
+    <input type="text" id="repoInput" style="width:100%; padding:1rem; border:1px solid var(--color-line); border-radius:var(--radius); font-family:var(--font-mono); font-size:1.1rem;" placeholder="facebook/react" autocomplete="off" spellcheck="false" value="lodash/lodash">
+
+    <div id="errorBox" style="display:none;margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:#fdecea;color:#8A3324;font-size:0.9rem;"></div>
+    <div id="loadingBox" style="display:none;margin-top:1rem;color:var(--color-muted);font-size:0.9rem;">Looking up…</div>
+
+    <div id="resultBox" style="margin-top:1.5rem;display:none;">
+      <div id="movedNotice" style="display:none;margin-bottom:1rem;padding:0.75rem 1rem;border-radius:var(--radius);background:var(--color-bg);font-size:0.9rem;"></div>
+      <div style="padding:1rem;border:1px solid var(--color-line);border-radius:var(--radius);">
+        <div class="score-grid">
+          <div class="score-card"><div class="score-value" id="rStars">—</div><div class="score-label">Stars</div></div>
+          <div class="score-card"><div class="score-value" id="rForks">—</div><div class="score-label">Forks</div></div>
+          <div class="score-card"><div class="score-value" id="rIssues">—</div><div class="score-label">Open issues</div></div>
+          <div class="score-card"><div class="score-value" id="rDaysAgo">—</div><div class="score-label">Days since push</div></div>
+        </div>
+        <div id="rMeta" style="margin-top:1rem;font-size:0.9rem;color:var(--color-muted);"></div>
+      </div>
+
+      <div style="margin-top:1rem;padding:1rem;background:var(--color-bg);border-radius:var(--radius);">
+        <strong style="font-size:0.85rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:0.05em;">API call used</strong>
+        <pre id="apiCallDisplay" style="margin-top:0.5rem;font-family:var(--font-mono);font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+      </div>
+    </div>
+  </div>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What does 'days since last push' actually tell you?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">A repo that hasn't been pushed to in years may be abandoned -- security issues go unpatched, dependencies go stale, and questions go unanswered. It's a quick, useful signal before depending on a project, though not definitive on its own.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What happens if I check an old or renamed repo?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">If the owner/name you checked has been renamed, the result includes a moved_to field showing where it now lives, and the health data shown is for that current location -- not a broken result.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why pair this with a vulnerability check?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Repo health (is it maintained, is it archived) and known CVEs (is a specific version flagged) are two different, complementary signals -- a well-maintained repo can still have a disclosed vulnerability in an old version, and an abandoned repo might have no known CVEs simply because nobody's looking.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Can I use this in my own code?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. This page calls the same free, public API endpoint you can call directly: GET /api/repo-health-check?repo=owner/name. No signup or API key required.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/vulnerability-check'>
+        <div><h3>Package Vulnerability Checker</h3><p>Check a package/version for known CVEs.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/typosquat-check'>
+        <div><h3>Typosquat Checker</h3><p>Flags package names that look like a typo of a popular one.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/whois-lookup'>
+        <div><h3>WHOIS / Domain Age Lookup</h3><p>Registrar, age, and expiration via RDAP.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('repoInput');
+  const errorBox = document.getElementById('errorBox');
+  const loadingBox = document.getElementById('loadingBox');
+  const resultBox = document.getElementById('resultBox');
+  const movedNotice = document.getElementById('movedNotice');
+  const apiCallDisplay = document.getElementById('apiCallDisplay');
+
+  let debounceTimer = null;
+
+  async function lookup(repo) {
+    const url = 'https://presend.pages.dev/api/repo-health-check?repo=' + encodeURIComponent(repo);
+    apiCallDisplay.textContent = 'GET ' + url;
+    loadingBox.style.display = 'block';
+    errorBox.style.display = 'none';
+    resultBox.style.display = 'none';
+    movedNotice.style.display = 'none';
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      loadingBox.style.display = 'none';
+
+      if (!res.ok || data.found === false) {
+        errorBox.textContent = data.error || (repo + ' was not found on GitHub.');
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      if (data.moved_to) {
+        movedNotice.textContent = data.note_rename || (repo + ' was renamed/moved -- showing data for ' + data.moved_to + '.');
+        movedNotice.style.display = 'block';
+      }
+
+      document.getElementById('rStars').textContent = data.stars != null ? data.stars.toLocaleString() : '—';
+      document.getElementById('rForks').textContent = data.forks != null ? data.forks.toLocaleString() : '—';
+      document.getElementById('rIssues').textContent = data.open_issues != null ? data.open_issues : '—';
+      document.getElementById('rDaysAgo').textContent = data.days_since_last_push != null ? data.days_since_last_push : '—';
+
+      const bits = [];
+      if (data.license) bits.push('License: ' + data.license);
+      if (data.archived) bits.push('⚠ Archived');
+      if (data.default_branch) bits.push('Default branch: ' + data.default_branch);
+      document.getElementById('rMeta').textContent = bits.join(' · ');
+
+      resultBox.style.display = 'block';
+    } catch (e) {
+      loadingBox.style.display = 'none';
+      errorBox.textContent = 'Could not complete the lookup. Try again shortly.';
+      errorBox.style.display = 'block';
+    }
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    const repo = input.value.trim();
+    if (!repo || !repo.includes('/')) { resultBox.style.display = 'none'; errorBox.style.display = 'none'; return; }
+    debounceTimer = setTimeout(() => lookup(repo), 700);
+  });
+
+  lookup(input.value.trim());
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GitHub Repo Health Check",
+  "url": "https://presend.pages.dev/tools/repo-health-check",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Checks a GitHub repo's stars, forks, license, and activity, calling Presend's free public API live."
+}
+</script>
+<script>
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'repo-health-check' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+</body>
+</html>

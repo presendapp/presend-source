@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Presend API for Developers — 無料・プライバシー重視</title>
+<meta name="description" content="プライバシーツール向けの無料API：ファイルハッシュ化、URLクリーニング、IPジオロケーション。サーバーサイドエンドポイント、APIキー不要。">
+<meta property="og:title" content="Presend API for Developers">
+<meta property="og:description" content="無料の開発者向けAPI：SHAハッシュ化、URLトラッキングパラメータ除去、IPジオロケーション、埋め込み可能なクライアントサイドツール。">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<link rel="canonical" href="https://presend.pages.dev/ja/api">
+<link href="../style.min.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "Presend API",
+  "description": "Free API for file privacy and utility tools",
+  "url": "https://presend.pages.dev/api",
+  "provider": {
+    "@type": "Organization",
+    "name": "Presend"
+  }
+}
+</script>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/api" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/api" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/api" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/api" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/api" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/api" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/api" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/api" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/api" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class="brand" href="/ja/"><span class="brand-mark">●</span> Presend</a>
+</header>
+<main class="wrap">
+  <h1>開発者向け Presend API</h1>
+  <p class="lede">一般的なタスク向けの無料サーバーサイドエンドポイントと、埋め込み可能なクライアントサイドツール。APIキー不要。登録不要。</p>
+
+  <h2>サーバーサイドエンドポイント</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Cloudflareのエッジネットワーク上で動作し、JSONを返します。フェアユースのみ — 公式SLAはなく、大量または自動化されたトラフィックは予告なく制限される場合があります。
+  </p>
+
+  <p id="python-user-agent" style="color:var(--color-muted); max-width:60ch;">
+    <strong>Python をお使いの方へ:</strong> <code>urllib</code> の既定の User-Agent（<code>Python-urllib/3.x</code>）で送信したリクエストは、Cloudflare によって <code>HTTP 403</code>、本文 <code>error code: 1010</code> で拒否されます。任意の User-Agent を明示的に設定してください。<code>requests</code>、curl、Node が送る User-Agent は受け付けられます。
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">import json, urllib.request
+req = urllib.request.Request("https://presend.pages.dev/api/uuid", headers={"User-Agent": "my-app/1.0"})
+print(json.load(urllib.request.urlopen(req)))</pre>
+
+  <h3 id="POST-api-hash">POST /api/hash</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">20MB までのファイルの SHA-256、SHA-1、SHA-512 を返します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.pdf \
+  https://presend.pages.dev/api/hash
+
+# {"size_bytes":17,"hashes":{"sha256":"...","sha1":"...","sha512":"..."}}</pre>
+
+  <h3 id="POST-api-file-type">POST /api/file-type</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">ファイルのバイナリシグネチャから実際の種類を判定し、申告された Content-Type との不一致を検出します。単純なアップロードフィルターをすり抜ける偽装ファイル（写真に見せかけた実行ファイルなど）を見つけられます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @suspicious.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/file-type</pre>
+  <h3 id="POST-api-malware-check">POST /api/malware-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">アップロードされたファイルのハッシュ（SHA-256）を計算し、既知のマルウェア検体を集めた無料データベース MalwareBazaar（abuse.ch）と照合します。ハッシュ計算と照合を 1 回の呼び出しで行います。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.exe https://presend.pages.dev/api/malware-check</pre>
+
+  <h3 id="GET-api-url-clean">GET /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">URL から 60 種類以上のトラッキングパラメーター（utm_*、fbclid、gclid...）を取り除きます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-clean?url=https://example.com/?utm_source=x"
+
+# {"clean":"https://example.com/","removed":1,"valid":true}</pre>
+
+  <h3 id="POST-api-url-clean">POST /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">同じ処理をまとめて実行します。1 リクエストで最大 100 件の URL。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"urls":["https://a.com?fbclid=x","https://b.com?gclid=y"]}' \
+  https://presend.pages.dev/api/url-clean</pre>
+
+  <h3 id="GET-api-ip">GET /api/ip</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Returns the caller's IP with geolocation, currency, language and EU/VPN flags.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl https://presend.pages.dev/api/ip</pre>
+
+  <h3 id="GET-api-uuid">GET /api/uuid</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">ランダムな UUID（v4）を 1 リクエストで最大 100 件生成します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/uuid?count=5"</pre>
+
+  <h3 id="GET-api-base64">GET /api/base64</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">テキストを Base64 でエンコード・デコードします。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/base64?action=encode&text=hello"</pre>
+
+  <h3 id="GET-api-jwt-decode">GET /api/jwt-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">JWT のヘッダーとペイロードをデコードします（署名は検証しません。検証には jwt-verify を使ってください）。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/jwt-decode?token=eyJhbGci..."</pre>
+
+  <h3 id="POST-api-jwt-verify">POST /api/jwt-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Workers ネイティブの Web Crypto API で JWT の暗号署名（HS256/384/512、RS/PS256/384/512、ES256/384/512）を実際に検証し、exp/nbf クレームも確認します。HMAC には「secret」、非対称アルゴリズムには「jwk」または「jwks_url」を指定してください。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"token":"...","secret":"..."}' https://presend.pages.dev/api/jwt-verify</pre>
+
+  <h3 id="GET-api-timestamp">GET /api/timestamp</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">現在時刻の取得、または Unix タイムスタンプと ISO 日付の相互変換を行います。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/timestamp?unix=1700000000"</pre>
+
+  <h3 id="GET-api-color">GET /api/color</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">hex、RGB、HSL の色形式を相互に変換します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/color?hex=ff5733"</pre>
+
+  <h3 id="GET-api-user-agent">GET /api/user-agent</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">User-Agent 文字列を解析し、ブラウザー、OS、デバイスの種類を判定します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/user-agent"</pre>
+
+  <h3 id="GET-api-password">GET /api/password</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">暗号学的に安全なパスワードを、エントロピーの推定値付きで生成します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password?length=20&symbols=1"</pre>
+
+  <h3 id="GET-api-email-validate">GET /api/email-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">メールアドレスの構文と、ドメインに MX レコードがあるかを確認します。メールボックスへの問い合わせは行わないため、アドレスが実在するかは確認できません。使い捨てドメインや役割アカウントも検出するには email-verify を使ってください。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-validate?email=foo@example.com"</pre>
+
+  <h3 id="GET-api-favicon">GET /api/favicon</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">任意のドメインのファビコン URL を取得します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/favicon?domain=github.com"</pre>
+
+  <h3 id="GET-api-csv-json">GET/POST /api/csv-json</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">JSON と CSV を相互に変換します。ネストしたオブジェクトは平坦化されず、文字列になります。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"direction":"json-to-csv","data":"[{\"a\":1}]"}' \
+  https://presend.pages.dev/api/csv-json</pre>
+
+  <h3 id="GET-api-password-breach">GET /api/password-breach</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">パスワードが既知のデータ漏えいに含まれるかを確認します（Have I Been Pwned）。HIBP に送られるのは SHA-1 ハッシュの先頭 5 文字だけで（k-匿名性）、Presend はパスワードを記録しません。ただし GET リクエストのため、パスワードは URL に含まれて送信され、ブラウザー、プロキシ、サーバーのログに記録される可能性があります。実際のパスワードには POST /api/password-check を使ってください。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password-breach?password=..."</pre>
+  <h3 id="POST-api-password-check">POST /api/password-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">強度・エントロピーのスコアリングと、任意の漏洩チェックを1回の呼び出しで組み合わせます。パスワードはPOSTボディで送信され、URLには含まれません。password-breachと同じk-匿名性保証を提供します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"password":"..."}' https://presend.pages.dev/api/password-check</pre>
+
+  <h3 id="GET-api-email-disposable">GET /api/email-disposable</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">576 以上の既知ドメインのリストから、使い捨てメールサービスを検出します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-disposable?email=foo@mailinator.com"</pre>
+  <h3 id="GET-api-email-verify">GET /api/email-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">構文チェック、MXレコード検索、使い捨てドメイン検出、汎用アカウント検出（info@、admin@など）を1回の呼び出しで組み合わせます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-verify?email=foo@example.com"</pre>
+  <h3 id="GET-api-phone-verify">GET /api/phone-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">libphonenumber-jsを使用して電話番号を検証し、フォーマットします（E.164、国際形式、国内形式）。「+」が付いていない番号に国が指定されていない場合、発信者のIPから推定された国が自動的に使用されます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/phone-verify?number=%2B14155552671"</pre>
+
+  <h3 id="GET-api-email-security">GET /api/email-security</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">ドメインのメールなりすまし対策を確認します: SPF の強度、DMARC ポリシー、一般的なセレクターでのベストエフォートの DKIM 検索。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-security?domain=example.com"</pre>
+
+  <h3 id="GET-api-security-scan">GET /api/security-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">security-headers、url-reputation、subdomains を 1 つのレポートにまとめ、総合スコアと判定を返します。3 回の呼び出しが 1 回で済みます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-scan?url=https://example.com"</pre>
+  <h3 id="POST-api-qr-scan">POST /api/qr-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">アップロードされた画像の QR コードをデコードし、URL を含む場合は URLhaus でマルウェアやフィッシングの兆候を確認します。デコードと評判チェックを 1 回の呼び出しで行います。QR コードを使ったフィッシング（「クイッシング」）は、最も急増しているフィッシング手口の一つです。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "file=@qrcode.png" https://presend.pages.dev/api/qr-scan</pre>
+  <h3 id="GET-api-security-headers">GET /api/security-headers</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">HTTP セキュリティヘッダー（CSP、HSTS、X-Frame-Options...）を監査し、アルファベットの評価を付けます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-headers?url=https://example.com"</pre>
+
+  <h3 id="GET-api-url-reputation">GET /api/url-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">公開のマルウェア・フィッシングデータベース URLhaus で URL を確認します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-reputation?url=https://example.com"</pre>
+
+  <h3 id="GET-api-subdomains">GET /api/subdomains</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Certificate Transparency ログ（crt.sh）による受動的なサブドメイン探索です。自分の攻撃対象領域の監査に使います。注意: crt.sh に依存しており、当方では制御できない停止が時折発生します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/subdomains?domain=example.com"</pre>
+
+  <h3 id="GET-api-ai-crawler-check">GET /api/ai-crawler-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">robots.txt を取得し、既知の AI クローラー（GPTBot、ClaudeBot、PerplexityBot、Google-Extended、CCBot など）が許可されているかブロックされているかを報告します。無料・登録不要です。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ai-crawler-check?domain=example.com"</pre>
+
+  <h3 id="GET-api-ip-reputation">GET /api/ip-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">IPv4 または IPv6 アドレスを、乗っ取られた、またはスパム・サイバー犯罪集団に支配されていることが知られているネットブロックの厳選リストと照合します。特定の 1 つのリストであり、総合的な評判スコアではありません。コピーの更新は 1 日 1 回までです。レスポンスにはリストの日付、出典表示、そしてコピーが 48 時間以上古くなるほど提供元に接続できなかった場合の <code>stale</code> フラグが含まれます。自分のミドルウェアで毎リクエストを確認する場合は、通常リストをローカルに読み込むほうが良い設計です。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ip-reputation?ip=1.2.3.4"</pre>
+  <h3 id="GET-api-dns-lookup">GET /api/dns-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">A、AAAA、CNAME、MX、TXT、NS レコードを Cloudflare の DNS over HTTPS リゾルバー経由で 1 回の呼び出しで取得します。<code>type=</code> で 1 種類だけを指定することもできます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/dns-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-whois-lookup">GET /api/whois-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">レジストラ、登録日と有効期限、ドメインの年齢、ネームサーバーを、従来の WHOIS の後継である HTTPS ベースの RDAP で取得します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/whois-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-redirect-trace">GET /api/redirect-trace</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">URL のリダイレクトチェーン全体（最大 15 ホップ）をたどり、最終 URL だけでなく各ホップのステータスコードと転送先を記録します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/redirect-trace?url=http://github.com"</pre>
+
+  <h2>サプライチェーンセキュリティ</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    依存関係のリスクチェックです。typosquat-check と maintainer-change-check はヒューリスティックであり、判定ではなく確認の優先順位付けのためのシグナルです。
+  </p>
+  <h3 id="GET-api-typosquat-check">GET /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">よく知られた npm・PyPI パッケージの厳選リストの名前に酷似したパッケージ名を検出します（4〜7 文字の名前は 1 文字違い、8 文字以上は 2 文字違いまで。3 文字以下の名前はあいまい比較しません）。PyPI の名前は正規化されます（PEP 503）。確認済みの正当な類似名には <code>known_legitimate</code> が付きます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/typosquat-check?ecosystem=npm&amp;package=lodahs"</pre>
+  <h3 id="POST-api-typosquat-check">POST /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで最大 100 件の名前を送れ、レート制限上は 1 リクエストとして数えます。無効な項目はその項目だけエラーを返し、バッチ全体は失敗しません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodahs","expres","react"]}' https://presend.pages.dev/api/typosquat-check</pre>
+  <h3 id="GET-api-maintainer-change-check">GET /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;"><strong>npm のみ。</strong>過去 365 日以内に、180 日以上更新のなかったパッケージを、これまで見られなかった人間の公開者が引き継いだ場合に検出します。event-stream 侵害（2018 年）の背後にあったパターンです。週 10 万ダウンロード以上の別パッケージを既に保守している公開者への引き継ぎや、npm の trusted publishing への移行は、フラグを立てずに別途報告します。公開者の ID は変わらないため、既存のメンテナーアカウントの乗っ取りや、元のメンテナーによる悪意あるリリースは検出<strong>しません</strong>。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/maintainer-change-check?ecosystem=npm&amp;package=lodash"</pre>
+  <h3 id="POST-api-maintainer-change-check">POST /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで最大 20 件の npm パッケージを送れ、レート制限上は 1 リクエストとして数えます。存在しないパッケージやレジストリの障害は項目ごとに報告され、バッチ全体は失敗しません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodash","express"]}' https://presend.pages.dev/api/maintainer-change-check</pre>
+  <h3 id="GET-api-vulnerability-check">GET /api/vulnerability-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">パッケージのバージョンを OSV.dev で確認します: npm、PyPI、Go、crates.io、Maven、RubyGems、Packagist、NuGet。CVE や GHSA の識別子を直接調べるには cve-lookup を使ってください。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vulnerability-check?ecosystem=npm&amp;package=lodash&amp;version=4.17.15"</pre>
+  <h3 id="GET-api-repo-health-check">GET /api/repo-health-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">GitHub REST API 経由で、GitHub リポジトリのスター数、フォーク数、未解決の Issue 数、ライセンス、アーカイブ状態、最終 push からの日数を取得します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/repo-health-check?repo=lodash/lodash"</pre>
+  <h3 id="GET-api-supply-chain-check">GET /api/supply-chain-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">maintainer-change-check（npm のみ）、vulnerability-check、typosquat-check、repo-health-check（可能な場合はレジストリのメタデータからリポジトリを特定）を 1 回の呼び出しにまとめ、総合判定を返します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/supply-chain-check?ecosystem=npm&amp;package=lodash"</pre>
+
+  <h2>ブロックチェーン</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Cosmos と EVM のエコシステム向けの無料ツールです。登録不要、API キー不要です。
+  </p>
+  <h3 id="GET-api-address-risk">GET /api/address-risk</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">暗号資産アドレスを、OFAC の SDN（Specially Designated Nationals）に含まれるすべてのデジタル通貨アドレスリストと照合します。EVM（0x...）と Bitcoin（bc1...、1...、3...）のアドレスは完全に対応しています。その他のチェーンのアドレスは、リストに載っていれば検出されます。Cosmos SDK（bech32）のアドレスは、リストにない場合 <code>sanctioned: null</code> を返します。OFAC は Cosmos SDK チェーンのエントリを一件も公開していないためです。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/address-risk?address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"</pre>
+  <h3 id="GET-api-tx-decode">GET /api/tx-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">署名済みの生の Cosmos SDK トランザクション（protobuf の TxRaw バイト列、base64）を読みやすい JSON にデコードします -- メッセージ、手数料、ガス、署名者情報、署名。外部依存なしで、ネストした MsgExec を含む一般的な bank/staking/gov/authz のメッセージ型をデコードします。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/tx-decode?tx=CpwBCpEBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEnEK..."</pre>
+  <h3 id="GET-api-rpc-check">GET /api/rpc-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Cosmos SDK チェーンの公開 CometBFT RPC エンドポイントを監査します: ノードの状態、ヘルス、ピア接続、そして安全でない管理メソッド（dial_seeds、dial_peers、unsafe_flush_mempool）が公開されているように見えるかどうか。読み取り専用です -- 安全でないメソッドを自ら呼び出すことはありません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/rpc-check?url=https://cosmos-rpc.publicnode.com"</pre>
+
+  <h2>ユーティリティ</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    できる限り外部依存のない、小さく用途を絞ったツールです。
+  </p>
+  <h3 id="GET-api-iban-validate">GET /api/iban-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">ISO 7064 mod-97 チェックサムと国ごとの桁数チェックで IBAN を検証します。純粋なアルゴリズムで、外部データソースは使いません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/iban-validate?iban=DE89370400440532013000"</pre>
+  <h3 id="GET-api-vat-validate">GET /api/vat-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">欧州委員会の公式 VIES サービスで EU の VAT 番号をリアルタイムに検証します -- 有効な場合は登録済みの会社名と住所を返します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
+  <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">URL から Open Graph、Twitter Card、基本的な &lt;head&gt; のメタデータを抽出します -- チャットアプリがリンクプレビューのカードを表示するのと同じデータです。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">OSV.dev で識別子から CVE/GHSA を直接検索します。スキャナーのレポートなどで既に識別子がある場合に、vulnerability-check（パッケージ・エコシステム・バージョンが必要）を補完します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
+
+  <h2>連携ワークフロー</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    これら2つのエンドポイントは、サーバー側で複数の処理を1回の呼び出しに連携させます 。処理はステートレスです：ディスクへの書き込みなし、ログなし、レスポンス送信直後にファイルは破棄されます。
+  </p>
+  <h3 id="POST-api-merge-and-compress-pdf">POST /api/merge-and-compress-pdf</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">2つ以上のPDFファイルを1つの文書に結合し、結果を圧縮してメタデータ（タイトル、作成者、作成ソフト）を削除します — 2回のリクエストではなく1回で完了します。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.pdf" -F "files=@b.pdf" https://presend.pages.dev/api/merge-and-compress-pdf -o merged.pdf</pre>
+  <h3 id="POST-api-clean-image">POST /api/clean-image</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">直接バイナリ解析により、JPEGのEXIF/GPSとPNGのテキストメタデータを削除します — ピクセルデータは再エンコードされないため、画質の劣化は一切ありません（常に再圧縮されるcanvasベースの方式とは異なります）。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @photo.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/clean-image -o clean.jpg</pre>
+
+  <h3 id="POST-api-image-similarity">POST /api/image-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">JPEG/PNG 画像 1 枚または 2 枚の知覚ハッシュ（dHash）です。暗号学的ハッシュと違い、再圧縮や軽微な編集に強く、2 枚送れば類似度スコアと判定で直接比較できます。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.jpg" -F "files=@b.png" https://presend.pages.dev/api/image-similarity</pre>
+  <h3 id="POST-api-text-similarity">POST /api/text-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">テキスト 1 件または 2 件の SimHash です。image-similarity のテキスト版にあたります。暗号学的ハッシュと違い、言い換えや軽微な編集を加えた重複に近い内容を検出します。無関係なテキストでも偶然 50% 前後になるのが普通で、0% にはなりません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"texts":["text a","text b"]}' https://presend.pages.dev/api/text-similarity</pre>
+
+  <h2>クライアントサイドツール（埋め込み）</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    ファイル処理ツール（EXIF削除、PDF圧縮など）はブラウザ内で完結し、何もアップロードされないため、サーバーエンドポイントはありません。直接埋め込んでください：
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
+&lt;iframe 
+  src="https://presend.pages.dev/tools/exif-remover?embed=1" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+&gt;&lt;/iframe&gt;</pre>
+
+  <h2>利用可能なツール</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="/ja/tools/file-hash-checker"><div><h3>File Hash Checker</h3><p>SHA-256 / SHA-1 / SHA-512 — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/tools/url-cleaner"><div><h3>URL Cleaner</h3><p>トラッキングパラメーターを除去 — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/tools/ip-geolocation"><div><h3>IP Geolocation</h3><p>IP、所在地、通貨 — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>UUID Generator</h3><p>ランダムな UUID — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Base64 Encoder/Decoder</h3><p>テキストのエンコード／デコード — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>JWT Decoder</h3><p>JWT トークンをデコード — サーバー API あり</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Timestamp Converter</h3><p>Unix／ISO 日付の変換 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Color Converter</h3><p>Hex/RGB/HSL — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>User-Agent Parser</h3><p>ブラウザー／OS の判定 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Password Generator API</h3><p>エントロピー付きの安全なパスワード — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Email Validator</h3><p>構文 + MX レコードのチェック — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Favicon Fetcher</h3><p>任意のサイトのファビコンを取得 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>CSV/JSON Converter</h3><p>双方向 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Password Breach Check</h3><p>HIBP を利用 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Disposable Email Detector</h3><p>576 以上の既知ドメイン — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Security Headers Analyzer</h3><p>CSP・HSTS の評価 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>URL Reputation Check</h3><p>マルウェア／フィッシングの照会 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Attack Surface Discovery</h3><p>受動的なサブドメイン列挙 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Address Risk Check</h3><p>OFAC 制裁チェック（EVM、Bitcoin） — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>Cosmos Tx Decoder</h3><p>生の Cosmos SDK トランザクションをデコード — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/api"><div><h3>RPC Check</h3><p>CometBFT RPC エンドポイントを監査 — サーバー API</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/tools/exif-remover"><div><h3>EXIF Remover</h3><p>写真から GPS とメタデータを削除（ブラウザー内）</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/tools/pdf-compress"><div><h3>PDF Compress</h3><p>PDF のファイルサイズを縮小（ブラウザー内）</p></div><span class="go">ドキュメント →</span></a>
+    <a class="tool-card" href="/ja/tools/password-generator"><div><h3>Password Generator</h3><p>暗号学的に安全なパスワード（ブラウザー内）</p></div><span class="go">ドキュメント →</span></a>
+  </div>
+
+  <h3 id="GET-api-api-stats">GET /api/api-stats</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">エンドポイントごとの公開利用カウンターで、日単位で集計しています。Cookie は使わず、IP も保存しません。</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/api-stats"</pre>
+
+  <h2>npmパッケージ</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    上記すべてのエンドポイントをラップする依存関係のないJSクライアント。
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">npm install presend-api</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">const presend = require('presend-api');
+const { uuids } = await presend.generateUuid(3);</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    <a href="https://www.npmjs.com/package/presend-api">npm で見る</a>
+  </p>
+
+  <h2>埋め込みウィジェット</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    iframeなしで、当社APIによって直接動作するツールをサイトに追加できます。対応：url-cleaner、uuid、color。
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">&lt;div data-presend-tool="url-cleaner"&gt;&lt;/div&gt;
+&lt;script src="https://presend.pages.dev/widget.js" async&gt;&lt;/script&gt;</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+     <code>data-badge="false"</code> を追加すると「Powered by Presend」のクレジットリンクを非表示にできます。
+  </p>
+
+  <h2>OpenAPI仕様</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    すべてのサーバーサイドエンドポイントの機械可読な仕様： <a href="/openapi.json">openapi.json</a>
+  </p>
+
+  <h2>RapidAPI</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    RapidAPI にも掲載しています。カタログの一部だけが必要な場合に備えて、分野別に分けています:
+  </p>
+  <ul style="color:var(--color-muted); max-width:60ch;">
+    <li><a href="https://rapidapi.com/presendapp/api/presend-api">Presend API</a> -- 全カタログ（Cybersecurity）</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-blockchain-crypto-compliance-api">Presend Blockchain & Crypto Compliance API</a> -- OFAC チェック、Cosmos SDK トランザクションのデコード、RPC 監査（Finance）</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-email-phone-verification-api">Presend Email & Phone Verification API</a> -- メールアドレスと電話番号の検証（Email）</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-developer-tools-api">Presend Developer Tools API</a> -- UUID、Base64、タイムスタンプ、IP ジオロケーション、PDF・画像ツール（Tools）</li>
+  </ul>
+
+  <h2>ステータス</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    稼働状況をリアルタイムで表示します。4 つの地域（EU、米国、アジア、オーストラリア）から独立して監視し、3 分ごとに確認しています。
+  </p>
+  <p>
+    <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">presend.betteruptime.com</a>
+  </p>
+
+  <h2>Postman コレクション</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    48 のエンドポイントすべてを収録した、すぐにインポートできるコレクションです。上記の OpenAPI 仕様から生成しています。
+  </p>
+  <p>
+    <a href="https://god.gw.postman.com/run-collection/57808683-783f3f64-0f9f-433e-95f6-518520d14ccf?action=collection%2Ffork&collection-url=entityId%3D57808683-783f3f64-0f9f-433e-95f6-518520d14ccf%26entityType%3Dcollection%26workspaceId%3D8ffb507b-4140-4e42-8a44-fd6926d0b25b" target="_blank" rel="noopener">
+      <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="height:32px;">
+    </a>
+  </p>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    または元のファイルをダウンロード: <a href="/postman_collection.json">postman_collection.json</a>。
+  </p>
+
+  <h2>オープンソース</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    すべてのツールはオープンソースです。GitHubで貢献するか、ご自身のプロジェクト用にフォークしてください。
+    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+  </p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースツール。 <a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

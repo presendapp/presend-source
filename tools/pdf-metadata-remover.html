@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="PDF Metadata Remover — Presend">
+  <meta property="og:description" content="Strip hidden author name, creation dates and metadata from PDFs without uploading.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://presend.pages.dev/tools/pdf-metadata-remover">
+  <meta property="og:image" content="https://presend.pages.dev/api/og?tool=PDF+Metadata+Remover">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+<title>Remove PDF Metadata — No Upload | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Strip hidden author name, creation dates and metadata from PDFs without uploading. 100% private, runs entirely in your browser. Free.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="../style.min.css" rel="preload" as="style"/>
+    <link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/pdf-metadata-remover" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="PDF Metadata Remover — Presend">
+<meta name="twitter:description" content="Strip hidden author name, creation dates and metadata from PDFs without uploading.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PDF Metadata Remover",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Remove PDF metadata locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/pdf-metadata-remover",
+  "mainEntityOfPage": "https://presend.pages.dev/tools/pdf-metadata-remover"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"PDF Metadata Remover","item":"https://presend.pages.dev/tools/pdf-metadata-remover"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What metadata is hidden in PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDFs can store the author's name, title, subject, keywords, creator software, producer software, creation date, and modification date. Some also contain XMP metadata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The PDF is processed entirely in your browser using the pdf-lib library. Your file never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on encrypted or password-protected PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. If a PDF is encrypted, the tool cannot open it. You would need to decrypt it first using the original password."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the PDF look different after cleaning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Only the document information dictionary is modified. The visual content, fonts, images, and layout remain exactly the same."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about XMP metadata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool clears the standard document info dictionary. Some PDFs also contain an XMP metadata stream; while the tool attempts to minimize it, complete XMP removal is not guaranteed in every case."
+      }
+    }
+  ]
+}</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<link rel="manifest" href="/manifest.json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Remove Metadata from a PDF",
+  "description": "Strip hidden author name, software and creation dates from any PDF file — 100% private, browser-based.",
+  "totalTime": "PT20S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your PDF", "text": "Drag and drop your PDF into the tool. The file stays on your device — nothing is sent to our servers.", "url": "https://presend.pages.dev/tools/pdf-metadata-remover#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Review detected metadata", "text": "The tool shows you exactly what metadata is hidden inside your PDF: author, software, creation date, and more.", "url": "https://presend.pages.dev/tools/pdf-metadata-remover#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download the clean PDF", "text": "Click Download to get a new PDF with all metadata removed. Safe to share, email or publish.", "url": "https://presend.pages.dev/tools/pdf-metadata-remover#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/pdf-metadata-remover" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/pdf-metadata-remover" />
+<meta property="og:locale" content="en_US" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <!-- backlink --><p><a href="/">← Presend</a></p>
+    <h1>PDF Metadata Remover</h1>
+  <p class="lede">A PDF often carries your name, the software you used, and the exact date it was created — even if you never typed that in. This clears it before you share the file. The PDF is processed on your device only.</p>
+
+  <span class="trust-badge">Your files are never sent to our servers</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose a PDF or drop it here">
+      <p class="primary">Drop a PDF here, or click to choose one</p>
+      <p class="secondary">Nothing leaves your device.</p>
+      <input type="file" id="fileInput" accept="application/pdf">
+    </div>
+    <p class="error-msg" id="errorMsg"></p>
+
+    <div class="result" id="found" style="margin-top:1.5rem;">
+      <h2 style="font-family: var(--font-display); font-size:1.05rem; margin-bottom:0.5rem;">Metadata found in this file</h2>
+      <ul id="foundList" style="font-family: var(--font-mono); font-size:0.85rem; color: var(--color-muted); padding-left: 1.2rem; margin-top:0;"></ul>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-row">
+        <div>
+          <div class="filename" id="resultName"></div>
+          <div class="meta" id="resultMeta"></div>
+        </div>
+        <a class="btn" id="downloadLink" download>Download cleaned PDF</a>
+        <button class="btn ghost" id="shareBtn" type="button" style="margin-left:0.5rem;">🔗 Copy share link</button>
+      </div>
+      <button class="btn ghost" id="resetBtn" type="button">Clean another PDF</button>
+    </div>
+
+    <p style="font-size:0.82rem; color:var(--color-muted); margin-top:2rem; max-width:56ch;">
+      Note: this removes the standard document information (title, author, subject, keywords,
+      creator, producer, dates). Some PDFs also embed a separate technical metadata block (XMP);
+      this tool does not yet guarantee removing that in every case. We'd rather say this plainly
+      than overclaim.
+    </p>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What metadata is hidden in PDFs?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">PDFs can store the author&#x27;s name, title, subject, keywords, creator software, producer software, creation date, and modification date. Some also contain XMP metadata.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Is it safe to use?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. The PDF is processed entirely in your browser using the pdf-lib library. Your file never leaves your device.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Does it work on encrypted or password-protected PDFs?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. If a PDF is encrypted, the tool cannot open it. You would need to decrypt it first using the original password.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Will the PDF look different after cleaning?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">No. Only the document information dictionary is modified. The visual content, fonts, images, and layout remain exactly the same.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What about XMP metadata?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">This tool clears the standard document info dictionary. Some PDFs also contain an XMP metadata stream; while the tool attempts to minimize it, complete XMP removal is not guaranteed in every case.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/pdf-compress'>
+        <div><h3>PDF Compress</h3><p>Shrink a PDF's file size.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/office-metadata-remover'>
+        <div><h3>Office Metadata Remover</h3><p>Strip hidden author, company and edit history from Office files.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/file-hash-checker'>
+        <div><h3>File Hash Checker</h3><p>Calculate SHA-256, SHA-1 and SHA-512 checksums.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 id="speakable" style="font-family:var(--font-display);font-size:1.1rem;">Learn more</h2>
+  <p itemprop="speakable" style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/tools/landings/strip-metadata-pdf">Read our guide: How to Remove Metadata Before Sharing Photos and Documents</a>
+  </p>
+</section>
+
+</section>
+
+<!--seo-related-tools-->
+  <div id="feedback-widget" data-tool="pdf-metadata-remover"></div>
+</main>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">What is PDF metadata and why remove it?</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    PDF documents contain a hidden layer of metadata that most users never see. This includes the author's name, the software used to create the file (like Microsoft Word or Adobe Acrobat), the creation and modification dates, the company name, and sometimes even the computer name or printer details. When you share a PDF with a client, publish it online, or submit it as part of a job application, this metadata is exposed. For lawyers, journalists, and businesses, leaking internal software versions or author names can be a serious security risk. Even personal documents can reveal more than intended — like the fact that a resume was edited at 2 AM, or that a contract was created on a competitor's template. Our PDF Metadata Remover strips all this hidden information in seconds, creating a clean, anonymous PDF ready for sharing. The entire process happens in your browser: your document is never uploaded to any server, making it safe for sensitive contracts, legal filings, confidential reports, and personal records.
+  </p>
+</section>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. Runs locally. No account. Anonymous visit counts only. Uses <a href="https://github.com/Hopding/pdf-lib" target="_blank" rel="nofollow noopener">pdf-lib</a> (MIT license). · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script defer src="/vendor/pdf-lib.min.js"></script>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const found = document.getElementById('found');
+  const foundList = document.getElementById('foundList');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 50 * 1024 * 1024; // 50MB
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  async function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+    found.classList.remove('visible');
+
+    if (!file) return;
+    if (file.type !== 'application/pdf') {
+      showError('Please choose a PDF file.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 50MB. Try a smaller PDF.');
+      return;
+    }
+
+    let bytes;
+    try {
+      bytes = await file.arrayBuffer();
+    } catch (e) {
+      showError('This file could not be read.');
+      return;
+    }
+
+    let pdfDoc;
+    try {
+      pdfDoc = await PDFLib.PDFDocument.load(bytes, { updateMetadata: false });
+    } catch (e) {
+      showError('This PDF could not be opened — it may be encrypted or corrupted.');
+      return;
+    }
+
+    // Report what was found, in plain language, before clearing it.
+    const fields = [
+      ['Title', pdfDoc.getTitle && pdfDoc.getTitle()],
+      ['Author', pdfDoc.getAuthor && pdfDoc.getAuthor()],
+      ['Subject', pdfDoc.getSubject && pdfDoc.getSubject()],
+      ['Keywords', pdfDoc.getKeywords && pdfDoc.getKeywords()],
+      ['Creator (software used to write it)', pdfDoc.getCreator && pdfDoc.getCreator()],
+      ['Producer (software used to generate the PDF)', pdfDoc.getProducer && pdfDoc.getProducer()],
+      ['Created on', pdfDoc.getCreationDate && pdfDoc.getCreationDate()],
+      ['Modified on', pdfDoc.getModificationDate && pdfDoc.getModificationDate()],
+    ].filter(([, v]) => v);
+
+    foundList.innerHTML = '';
+    if (fields.length === 0) {
+      foundList.innerHTML = '<li>No standard metadata fields were found.</li>';
+    } else {
+      fields.forEach(([label, value]) => {
+        const li = document.createElement('li');
+        li.textContent = label + ': ' + value;
+        foundList.appendChild(li);
+      });
+    }
+    found.classList.add('visible');
+
+    // Clear it.
+    pdfDoc.setTitle('');
+    pdfDoc.setAuthor('');
+    pdfDoc.setSubject('');
+    pdfDoc.setKeywords([]);
+    pdfDoc.setCreator('');
+    pdfDoc.setProducer('');
+    try {
+      pdfDoc.setCreationDate(new Date(0));
+      pdfDoc.setModificationDate(new Date(0));
+    } catch (e) { /* not critical if this fails on a given PDF */ }
+
+    let outBytes;
+    try {
+      outBytes = await pdfDoc.save();
+    } catch (e) {
+      showError('This PDF could not be re-saved. It may use a feature this tool doesn\'t support yet.');
+      return;
+    }
+
+    const blob = new Blob([outBytes], { type: 'application/pdf' });
+    const cleanUrl = URL.createObjectURL(blob);
+    const base = file.name.replace(/\.pdf$/i, '');
+    const outName = base + '-clean.pdf';
+
+    downloadLink.href = cleanUrl;
+    downloadLink.download = outName;
+    resultName.textContent = outName;
+    resultMeta.textContent = humanSize(blob.size) + ' — metadata cleared';
+    result.classList.add('visible');
+
+    // Track successful cleaning (privacy-first, no IP, no cookies)
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'pdf-metadata-remover' })
+    }).catch(() => {});
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => handleFile(e.dataTransfer.files[0]));
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    found.classList.remove('visible');
+    clearError();
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Metadata Remover",
+  "url": "https://presend.pages.dev/tools/pdf-metadata-remover",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Remove hidden document metadata from a PDF entirely client-side, using pdf-lib."
+}
+</script>
+<script src="/js/feedback.js?v=2" async defer></script>
+
+<script src="/sw-register.js"></script>
+
+
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'pdf-metadata-remover' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+  }
+});
+</script>
+
+</body>
+</html>

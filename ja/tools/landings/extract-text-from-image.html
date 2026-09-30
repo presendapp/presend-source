@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画像とスクリーンショットからテキストを抽出する方法 — Presendガイド</title>
+<meta name="description" content="Tesseract.js OCRを使用して、任意の画像、スクリーンショット、またはスキャンした文書からテキストをコピーする方法を学びます。100以上の言語、ブラウザで動作、アップロード不要。">
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/landings/extract-text-from-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Extract Text from Images and Screenshots",
+  "description": "Complete guide to OCR using Tesseract.js running locally in your browser. Supports 100+ languages, paste from clipboard, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/extract-text-from-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>プレゼンする</a>
+  <a class='nav-link' href='/'>すべてのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/screenshot-to-text'>← スクリーンショットをテキストに変換</a>
+  <article>
+    <h1>画像やスクリーンショットからテキストを抽出する方法</h1>
+    <p class="lede">スクリーンショットからテキストをコピーしたり、文書をスキャンしたり、印刷されたページをデジタル化したりする必要がありますか? OCR テクノロジーにより、それが瞬時に行われます。Presend を使用すると、ブラウザ内ですべてが行われます。</p>
+
+    <h2>OCRとは何ですか?</h2>
+    <p>OCR (光学文字認識) は、テキストの画像を機械可読テキストに変換するテクノロジーです。これにより、次のことが可能になります。</p>
+    <ul>
+      <li>選択をブロックする Web サイトのスクリーンショットからテキストをコピーする</li>
+      <li>スキャンした PDF を検索する</li>
+      <li>印刷した文書を再入力せずにデジタル化</li>
+      <li>領収書、フォーム、または看板の写真からデータを抽出する</li>
+      <li>画像内のテキストを最初に抽出して翻訳します</li>
+    </ul>
+
+    <h2>クラウド OCR のプライバシー リスク</h2>
+    <p>ほとんどの OCR サービス (Google Vision、Azure Computer Vision、Amazon Textract) では、画像をクラウドにアップロードする必要があります。これは次の場合に問題になります。</p>
+    <ul>
+      <li><strong>医療記録</strong>— HIPAA/GDPR によって保護される患者データ</li>
+      <li><strong>法的文書</strong>— 弁護士と依頼者の特権、NDA</li>
+      <li><strong>財務諸表</strong>— 銀行口座情報、税務書類</li>
+      <li><strong>機密情報</strong>— 内部メモ、ソースコードのスクリーンショット</li>
+      <li><strong>私信</strong>— プライベートメッセージ、電子メール</li>
+    </ul>
+    <p>ファイルをすぐに削除すると主張するサービスであっても、依然としてインフラストラクチャ上でファイルを処理しており、監査証跡が作成され、漏洩の可能性があります。</p>
+
+    <h2>Tesseract.js の仕組み</h2>
+    <p><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a>は、Google の Tesseract OCR エンジンの純粋な JavaScript ポートであり、WebAssembly にコンパイルされています。完全にブラウザ内で実行されます。</p>
+    <ol>
+      <li>言語モデル (traineddata) は言語ごとに 1 回ダウンロードされます (英語の場合は最大 4MB)。</li>
+      <li>画像は CPU または GPU を使用してローカルで処理されます</li>
+      <li>認識されたテキストは Web ページに直接返されます。</li>
+      <li>外部サーバーには何も送信されません</li>
+    </ol>
+    <p>Tesseract は、Google ブックス、Google 翻訳のカメラ機能、および無数のドキュメント スキャン アプリを動かしているエンジンと同じです。サポートします<strong>100以上の言語</strong>アラビア語、中国語、日本語、デヴァナーガリー文字、キリル文字などの文字が含まれます。</p>
+
+    <h2>サポートされている入力方法</h2>
+    <ul>
+      <li><strong>ドラッグアンドドロップ</strong>— 任意の画像をツールにドロップします</li>
+      <li><strong>ファイルピッカー</strong>— クリックして画像を参照して選択します</li>
+      <li><strong>クリップボードから貼り付け</strong>— ページ上の任意の場所で Ctrl+V (または Cmd+V) を押して、スクリーンショットを直接貼り付けます。</li>
+    </ul>
+
+    <h2>精度のヒント</h2>
+    <ul>
+      <li><strong>解決策が重要</strong>— 画像の解像度が高いほど、より良い結果が得られます。 300 DPI はスキャンされたドキュメントに最適です。</li>
+      <li><strong>コントラストが鍵</strong>— 明るい背景に暗いテキストが最適です。色が反転したり、コントラストが低いと精度が低下します。</li>
+      <li><strong>スキューを最小限に抑える</strong>— 回転していないまっすぐなテキストが最も認識しやすい</li>
+      <li><strong>きれいな画像</strong>— 可能な場合は、ノイズ、しわ、影を除去します。</li>
+      <li><strong>正しい言語</strong>— ドロップダウンから適切な言語を選択します。混合言語テキストは機能しますが、精度が低下する可能性があります</li>
+    </ul>
+
+    <h2>ユースケース</h2>
+    <ul>
+      <li><strong>学生</strong>— 教科書の写真や講義スライドからテキストをコピーする</li>
+      <li><strong>開発者</strong>— スクリーンショットまたはエラーメッセージからコードを抽出する</li>
+      <li><strong>ジャーナリスト</strong>— 文書の画像からテキストを引用する</li>
+      <li><strong>研究者</strong>— 印刷された論文や記事をデジタル化する</li>
+      <li><strong>管理者</strong>— スキャンしたフォームを編集可能なテキストに変換します</li>
+      <li><strong>旅行者</strong>— 外国語の標識、メニュー、文書を読む</li>
+    </ul>
+
+    <h2>ステップバイステップのガイド</h2>
+    <ol>
+      <li><strong>ツールを開く</strong>— に移動<a href="/ja/tools/screenshot-to-text">スクリーンショットをテキストに変換</a></li>
+      <li><strong>言語を選択してください</strong>— 画像内のテキストの言語を選択します</li>
+      <li><strong>アップロードまたは貼り付け</strong>— 画像をドラッグするか、クリックして選択するか、Ctrl+V を押してクリップボードから貼り付けます</li>
+      <li><strong>認識されるまで待ちます</strong>— 画像サイズによっては処理に数秒かかります</li>
+      <li><strong>レビューと編集</strong>— 抽出されたテキストにエラーがないか確認します</li>
+      <li><strong>コピーまたはダウンロード</strong>— .txt ファイルとして保存するか、クリップボードにコピーします</li>
+    </ol>
+
+    <h2>制限事項</h2>
+    <ul>
+      <li><strong>手書き</strong>— Tesseract は印刷されたテキストで最もよく機能します。筆記体や乱雑な手書き文字は精度が低くなります。</li>
+      <li><strong>複雑なレイアウト</strong>— 複数列のテキスト、表、フォームは手動で再フォーマットする必要がある場合があります。</li>
+      <li><strong>装飾フォント</strong>— 様式化されたテキストや芸術的なテキストは認識されない場合があります。</li>
+      <li><strong>非常に小さなテキスト</strong>— 10px未満のテキストは欠落する可能性があります。</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ja/tools/screenshot-to-text">スクリーンショットをテキストに開く→</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,281 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Presend Blockchain & Crypto Compliance API",
+    "description": "Free Cosmos SDK / EVM blockchain tools: OFAC sanctions screening for crypto addresses, raw Cosmos SDK transaction decoding, and CometBFT RPC endpoint safety auditing. No signup, no API key.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://presend.pages.dev/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://presend.pages.dev/api",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/address-risk": {
+      "get": {
+        "summary": "Crypto address risk check (OFAC SDN)",
+        "description": "Checks a crypto address against every OFAC Specially Designated Nationals (SDN) digital currency address list (per-asset lists such as ETH, USDT, USDC, XBT, TRX). EVM (0x...) and Bitcoin (bc1..., 1..., 3...) addresses are fully covered: sanctioned is true or false, with the matching lists. Addresses of other chains are flagged when listed. Cosmos SDK (bech32) addresses return sanctioned: null when not listed, since OFAC has published no entries for Cosmos SDK chains. Free, no signup.",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+            },
+            "description": "Address to screen: EVM (0x + 40 hex chars) or Bitcoin (bc1..., 1..., 3...), both fully covered. Addresses of other chains are matched against their lists too; bech32 addresses of other chains (e.g. cosmos1...) return sanctioned: null (unchecked, not clean) when not listed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address risk check result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string"
+                    },
+                    "format": {
+                      "type": "string"
+                    },
+                    "sanctioned": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "matched_lists": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    },
+                    "lists_checked": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "list_size": {
+                      "type": "integer"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+                  "format": "evm",
+                  "sanctioned": false,
+                  "matched_lists": [],
+                  "lists_checked": ["ARB", "BCH", "BSC", "BSV", "BTG", "DASH", "ETC", "ETH", "LTC", "SOL", "TRX", "USDC", "USDT", "XBT", "XMR", "XRP", "XVG", "ZEC"],
+                  "list_size": 1053,
+                  "source": "OFAC Specially Designated Nationals (SDN) list, digital currency addresses (all per-asset lists), republished nightly by 0xB10C/ofac-sanctioned-digital-currency-addresses from the official sdn_advanced.xml.",
+                  "note": "Not on any OFAC SDN digital currency address list. This is one specific, US-government sanctions list -- not a full risk score, and a clean result here does not mean the address is otherwise trustworthy."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tx-decode": {
+      "get": {
+        "summary": "Cosmos SDK transaction decoder",
+        "description": "Decodes a raw, signed Cosmos SDK transaction (protobuf TxRaw bytes, base64-encoded) into readable JSON -- messages, fee, gas, signer info, and signatures. Hand-rolled protobuf reader, no external dependency. Message contents are decoded for common bank/staking/gov/authz types (including recursive MsgExec, up to a depth cap); other types are returned as their type URL plus raw hex. Free, no signup.",
+        "parameters": [
+          {
+            "name": "tx",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Base64-encoded Cosmos SDK TxRaw protobuf bytes, as returned by any chain's CometBFT RPC /block (result.block.data.txs[]) or /tx_search endpoints."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Decoded transaction",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tx_bytes_length": {
+                      "type": "integer"
+                    },
+                    "body": {
+                      "type": "object"
+                    },
+                    "auth_info": {
+                      "type": "object"
+                    },
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "tx_bytes_length": 329,
+                  "body": {
+                    "messages": [
+                      {
+                        "type": "/cosmos.bank.v1beta1.MsgSend",
+                        "decoded": true,
+                        "from_address": "cosmos1j2ryq6rjmat3f33lwmqzqgtnmen5xx5c8kt2cx",
+                        "to_address": "cosmos10ravwpzftfrapd60v94lmc9m5rw4lqzw42t3np",
+                        "amount": [
+                          {
+                            "denom": "uatom",
+                            "amount": "31669466"
+                          }
+                        ]
+                      }
+                    ],
+                    "memo": "283677",
+                    "timeout_height": "0"
+                  },
+                  "auth_info": {
+                    "signer_infos": [
+                      {
+                        "public_key": {
+                          "type": "/cosmos.crypto.secp256k1.PubKey",
+                          "key_hex": "0349cdc3ac24fa7d5cee997afe7593f3b3698d1efb8a0f56b14287e6ed8fb096f0"
+                        },
+                        "sequence": "3"
+                      }
+                    ],
+                    "fee": {
+                      "amount": [
+                        {
+                          "denom": "uatom",
+                          "amount": "534"
+                        }
+                      ],
+                      "gas_limit": "106619",
+                      "payer": "",
+                      "granter": ""
+                    }
+                  },
+                  "signatures": [
+                    "631ce1c45a2c8121d4c3a0aae76598ff8f0a8b0145f59b6cd037aff90685d2e7115fe85e316184af2f238a597bd002cc76f6ad052c36f51feba9315774c7402c"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rpc-check": {
+      "get": {
+        "summary": "CometBFT RPC health and safety audit",
+        "description": "Audits a public CometBFT RPC endpoint for a Cosmos SDK chain: node status, health, peer connectivity, and whether unsafe administrative RPC methods (dial_seeds, dial_peers, unsafe_flush_mempool) appear to be publicly exposed. Read-only -- never invokes any unsafe method itself; exposure is detected by inspecting the node's own passive route listing. Free, no signup.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://cosmos-rpc.publicnode.com"
+            },
+            "description": "Base URL of a CometBFT RPC endpoint to audit."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "RPC audit result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "reachable": {
+                      "type": "boolean"
+                    },
+                    "verdict": {
+                      "type": "string"
+                    },
+                    "tls": {
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "object"
+                    },
+                    "health": {
+                      "type": "object"
+                    },
+                    "net_info": {
+                      "type": "object"
+                    },
+                    "abci_info": {
+                      "type": "object"
+                    },
+                    "unsafe_methods": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example": {
+                  "url": "https://cosmos-rpc.publicnode.com",
+                  "reachable": true,
+                  "verdict": "Node reachable, no major issues found.",
+                  "tls": {
+                    "used": true,
+                    "note": null
+                  },
+                  "status": {
+                    "checked": true,
+                    "chain_id": "cosmoshub-4",
+                    "moniker": "Tendermint",
+                    "node_version": "0.38.22",
+                    "catching_up": false,
+                    "latest_block_height": "33024358",
+                    "latest_block_time": "2026-09-18T08:27:15.65595602Z"
+                  },
+                  "health": {
+                    "checked": true,
+                    "healthy": true,
+                    "error": null
+                  },
+                  "net_info": {
+                    "checked": true,
+                    "listening": true,
+                    "n_peers": "63"
+                  },
+                  "abci_info": {
+                    "checked": true,
+                    "app_version": "v28.1.0",
+                    "last_block_height": "33024358"
+                  },
+                  "unsafe_methods": {
+                    "checked": true,
+                    "exposed": false,
+                    "methods_found": [],
+                    "note": "No unsafe RPC methods found in this node's route listing."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

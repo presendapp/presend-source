@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画像からQRコードをスキャンする方法 — Presendガイド</title>
+<meta name="description" content="アプリをインストールせずに、任意の画像やスクリーンショットからQRコードをデコードする方法を学びます。ブラウザ内で完全に動作し、アップロードは不要です。">
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/landings/scan-qr-code-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Scan a QR Code from an Image",
+  "description": "Step-by-step guide to decoding QR codes from uploaded images or camera using Presend's free browser-based scanner.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/scan-qr-code-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>プレゼンする</a>
+  <a class='nav-link' href='/'>すべてのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/qr-code-scanner'>← QRコードスキャナー</a>
+  <article>
+    <h1>画像から QR コードをスキャンする方法</h1>
+    <p class="lede">メッセージ、電子メール、またはスクリーンショットで QR コードを受け取りましたか?別途スキャナーアプリをインストールする必要はありません。ブラウザで即座にデコードする方法は次のとおりです。</p>
+
+    <h2>なぜ画像から QR コードをスキャンするのでしょうか?</h2>
+    <p>ほとんどの人は、QR コードを現実世界でカメラでスキャンするものだと考えています。しかし、QR コードはスクリーンショット、PDF、電子メール、ソーシャル メディアの投稿、Web サイトなどのデジタル コンテキストで使用されることが増えています。コードを物理的にスキャンできない場合、またはコードがコンピュータ画面上にある場合は、画像ファイルからコードをデコードする方法が必要です。</p>
+
+    <h2>一般的なシナリオ</h2>
+    <ul>
+      <li><strong>スクリーンショット</strong>— 友人が WiFi パスワードを QR コードのスクリーンショットとして送信しました</li>
+      <li><strong>PDF</strong>— QRコードが埋め込まれたイベントチケットまたは搭乗券</li>
+      <li><strong>メール</strong>— 二要素認証のバックアップ コードまたは検証 QR コード</li>
+      <li><strong>ソーシャルメディア</strong>— Instagram ストーリーまたは QR コード付き LinkedIn 投稿</li>
+      <li><strong>ウェブサイト</strong>— QRコードとして表示されるダウンロードリンクまたはアプリストアのリダイレクト</li>
+    </ul>
+
+    <h2>Presend のスキャナーの仕組み</h2>
+    <p>プレゼンの用途<a href="https://github.com/cozmo/jsQR" target="_blank" rel="noopener">jsQR</a>、純粋な JavaScript QR コード デコード ライブラリ。プロセス全体はブラウザーで行われます。</p>
+    <ol>
+      <li>画像をアップロードするか、カメラへのアクセスを許可します</li>
+      <li>jsQR は画像のピクセル データを分析して QR コード パターンを特定します</li>
+      <li>デコードされたテキスト (URL、WiFi 認証情報など) が即座に表示されます。</li>
+    </ol>
+    <p><strong>画像がサーバーにアップロードされることはありません。</strong>これは、プライベート WiFi パスワード、認証トークン、または個人情報を含む機密性の高い QR コードにとって非常に重要です。</p>
+
+    <h2>ステップバイステップのガイド</h2>
+    <ol>
+      <li><strong>スキャナーを開きます</strong>— に移動<a href="/ja/tools/qr-code-scanner">QRコードスキャナー</a></li>
+      <li><strong>カメラをアップロードまたは使用する</strong>— 画像をドラッグ アンド ドロップするか、クリックしてファイルを選択するか、「カメラを使用」をクリックしてリアルタイムでスキャンします</li>
+      <li><strong>結果を取得する</strong>— デコードされたテキストが画像の下に即座に表示されます</li>
+      <li><strong>コピーするか開く</strong>— クリックしてテキストをコピーするか、URL を直接開きます</li>
+    </ol>
+
+    <h2>スキャンをより良くするためのヒント</h2>
+    <ul>
+      <li>高解像度の画像を使用します - ぼやけた画像や過度に圧縮された画像はデコードできない可能性があります</li>
+      <li>QRコードが切り取られたり部分的に隠れたりしていないことを確認してください</li>
+      <li>適切な照明はカメラ オプションを使用するときに役立ちます</li>
+      <li>1 つの方法が失敗した場合 (アップロードとカメラ)、もう 1 つの方法を試してください。</li>
+    </ul>
+
+    <h2>プライバシーの問題</h2>
+    <p>多くの QR スキャナー アプリは、分析や広告のためにスキャンしたコードをサーバーにアップロードします。マルウェアが含まれているものもあります。 Presend のスキャナーは完全にオープンです。コードはブラウザー内にあり、データがデバイスから流出することはありません。これにより、次のような機密コードを安全にスキャンできます。</p>
+    <ul>
+      <li>暗号通貨ウォレットのアドレス</li>
+      <li>プライベート WiFi ネットワーク</li>
+      <li>社内リンク</li>
+      <li>二要素認証設定コード</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ja/tools/qr-code-scanner">QRコードスキャナーを開く →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

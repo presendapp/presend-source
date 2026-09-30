@@ -1,0 +1,24 @@
+{
+  "name": "Presend dev environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" },
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" }
+  },
+  "postCreateCommand": "npm install -g wrangler && pip install -r requirements.txt --break-system-packages",
+  "forwardPorts": [8788],
+  "portsAttributes": {
+    "8788": {
+      "label": "Presend (site + API, local)",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "ms-python.python"
+      ]
+    }
+  }
+}

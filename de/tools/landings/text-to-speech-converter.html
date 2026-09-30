@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wie man Text kostenlos in Sprache umwandelt — Presend Guide</title>
+<meta name="description" content="Erfahren Sie, wie Sie Text mit der integrierten Sprachausgabe Ihres Browsers in natürlich klingende Sprache umwandeln. Kein Download, kein Konto, und Presend erhält Ihren Text nie.">
+<link rel="canonical" href="https://presend.pages.dev/de/tools/landings/text-to-speech-converter" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Convert Text to Speech for Free",
+  "description": "Schritt-für-Schritt-Anleitung zur Sprachausgabe mit der speechSynthesis-API Ihres Browsers. Presend erhält Ihren Text nie; mit den Stimmen Ihres Geräts bleibt er auf Ihrem Gerät.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/text-to-speech-converter"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Präsentieren</a>
+  <a class='nav-link' href='/'>Alle Werkzeuge</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/text-to-speech'>← Text-to-Speech</a>
+  <article>
+    <h1>So konvertieren Sie Text kostenlos in Sprache</h1>
+    <p class="lede">Sie möchten einen Aufsatz Korrektur lesen, unterwegs einen Artikel hören oder Voiceovers erstellen? Ihr Browser kann jeden Text vorlesen, ohne Abo und ohne Upload zu Presend. Mit den Stimmen Ihres Geräts verlässt der Text Ihr Gerät nie.</p>
+
+    <h2>Warum browserbasierte Text-to-Speech?</h2>
+    <p>Cloud-TTS-Dienste wie Amazon Polly, Google Cloud Text-to-Speech oder ElevenLabs liefern hervorragende Ergebnisse, erfordern jedoch:</p>
+    <ul>
+      <li>Hochladen Ihres Textes auf ihre Server</li>
+      <li>API-Schlüssel und Entwicklerkonten</li>
+      <li>Bezahlung pro Zeichen oder pro Minute</li>
+      <li>Akzeptieren von Bedingungen, die möglicherweise eine Schulung Ihrer Daten ermöglichen</li>
+    </ul>
+    <p>Für den privaten Gebrauch, Entwürfe oder sensible Inhalte ist die Sprachausgabe im Browser schnell, kostenlos und mit den Stimmen Ihres Geräts privat: Der Text bleibt auf Ihrem Gerät.</p>
+
+    <h2>So funktioniert SpeechSynthesis</h2>
+    <p>Der<a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis" target="_blank" rel="noopener">SpeechSynthesis-Schnittstelle der Web Speech API</a>ist in jedem modernen Browser integriert. Es nutzt die Stimmen Ihres Betriebssystems:</p>
+    <ul>
+      <li><strong>Windows</strong>– Microsoft David, Zira und andere Systemstimmen</li>
+      <li><strong>macOS</strong>— Hochwertige Siri-Stimmen (Alex, Samantha usw.)</li>
+      <li><strong>Linux</strong>– je nach Distribution espeak, Festival oder Piper</li>
+      <li><strong>Android/iOS</strong>– Gerätenative TTS-Engines mit regionalen Akzenten</li>
+    </ul>
+    <p>Mit diesen Systemstimmen wird der Text vollständig auf Ihrem Gerät verarbeitet. Manche Browser bieten zusätzlich Online-Stimmen an (Google-Stimmen in Chrome, Microsoft-Stimmen „Online (Natural)“ in Edge), die den Text an Google oder Microsoft senden. Das Tool von Presend markiert sie in der Stimmenliste als „online“ und warnt Sie, wenn eine davon ausgewählt ist.</p>
+
+    <h2>Anwendungsfälle</h2>
+    <ul>
+      <li><strong>Korrekturlesen</strong>— Wenn Sie Ihre Texte laut vorlesen hören, werden Ihnen Fehler auffallen, die Ihre Augen übersehen</li>
+      <li><strong>Zugänglichkeit</strong>— Hören Sie sich Artikel, E-Mails oder Dokumente an, wenn das Lesen schwierig ist</li>
+      <li><strong>Sprachenlernen</strong>— Hören Sie die Aussprache von Fremdtexten</li>
+      <li><strong>Inhaltserstellung</strong>— Schnelle Voiceover-Entwürfe für Videos oder Präsentationen</li>
+      <li><strong>Multitasking</strong>— Hören Sie zu, während Sie kochen, Sport treiben oder pendeln</li>
+    </ul>
+
+    <h2>Anpassen der Spracheinstellungen</h2>
+    <p>Mit dem Tool von Presend können Sie Folgendes steuern:</p>
+    <ul>
+      <li><strong>Stimme</strong>— Wählen Sie aus allen auf Ihrem System installierten Stimmen, gruppiert nach Sprache</li>
+      <li><strong>Geschwindigkeit</strong>— Von 0,5× (langsam) bis 2,0× (schnell). 1,0× ist das natürliche Gesprächstempo</li>
+      <li><strong>Tonhöhe</strong>— Höherer oder tieferer Ton. Nützlich zur Hervorhebung oder passenden Inhaltsstimmung</li>
+    </ul>
+
+    <h2>Schritt-für-Schritt-Anleitung</h2>
+    <ol>
+      <li><strong>Öffnen Sie das Tool</strong>– Gehe zu<a href="/de/tools/text-to-speech">Text-to-Speech</a></li>
+      <li><strong>Fügen Sie Ihren Text ein</strong>— Geben oder fügen Sie bis zu ein paar tausend Zeichen ein</li>
+      <li><strong>Wählen Sie eine Stimme</strong>— Wählen Sie eine Sprache und eine bestimmte Stimme</li>
+      <li><strong>Passen Sie Geschwindigkeit und Tonhöhe an</strong>– Feinabstimmung nach Ihren Wünschen</li>
+      <li><strong>Klicken Sie auf Sprechen</strong>— Hören Sie sofort zu</li>
+      <li><strong>Verwenden Sie Pause/Stop</strong>— Steuern Sie die Wiedergabe nach Bedarf</li>
+    </ol>
+
+    <h2>Aufzeichnen der Ausgabe</h2>
+    <p>Aufgrund des Sicherheits-Sandboxings können die meisten Browser synthetisches Audio nicht direkt erfassen. Um die TTS-Ausgabe als Audiodatei zu speichern, verwenden Sie den Bildschirmrekorder Ihres Betriebssystems mit Audioaufnahme:</p>
+    <ul>
+      <li><strong>Windows</strong>— Xbox Game Bar (Win+G) oder OBS Studio</li>
+      <li><strong>macOS</strong>— QuickTime Player (Datei > Neue Audioaufnahme) oder Befehl+Umschalt+5</li>
+      <li><strong>Linux</strong>— OBS Studio oder parec mit ffmpeg</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/de/tools/text-to-speech">Öffnen Sie Text-to-Speech →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – kostenlose browserbasierte Tools.<a href="/about">Um</a> · <a href="/privacy">Privatsphäre</a> <a href="/de/api">API</a></p>
+</footer>
+</body>
+</html>

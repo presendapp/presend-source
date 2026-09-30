@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品質を損なわずに動画を圧縮する方法 — Presendガイド</title>
+<meta name="description" content="ブラウザ内でFFmpeg.wasmを使用して、MP4およびMOVファイルのサイズを縮小する方法を学びます。アップロード不要、品質損失なし、完全にプライベート。">
+<link rel="canonical" href="https://presend.pages.dev/ja/tools/landings/compress-video-online" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compress a Video Without Losing Quality",
+  "description": "Complete guide to video compression using FFmpeg.wasm running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/compress-video-online"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>プレゼンする</a>
+  <a class='nav-link' href='/'>すべてのツール</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/video-compressor'>← ビデオコンプレッサー</a>
+  <article>
+    <h1>品質を落とさずにビデオを圧縮する方法</h1>
+    <p class="lede">動画ファイルは巨大です。 2 分間の 4K クリップは 500 MB を軽く超えることがあります。クラウド サービスにアップロードせずに、電子メール、ソーシャル メディア、またはストレージ用にファイルを縮小する方法を次に示します。</p>
+
+    <h2>ビデオ圧縮が重要な理由</h2>
+    <p>最近の携帯電話は、ほとんどの共有プラットフォームが必要としない解像度とビットレートで録画します。</p>
+    <ul>
+      <li><strong>電子メールの添付ファイル</strong>— ほとんどのプロバイダーは 25MB に制限しています</li>
+      <li><strong>ワッツアップ</strong>— ビデオを積極的に圧縮し、品質を損なうことがよくあります</li>
+      <li><strong>ソーシャルメディア</strong>— Instagram、Twitter、TikTok はとにかくすべてを再エンコードします</li>
+      <li><strong>クラウドストレージ</strong>— Google Drive と iCloud は非圧縮ビデオですぐにいっぱいになります</li>
+      <li><strong>ウェブサイトホスティング</strong>— 大きなビデオはページの読み込み時間を遅くし、SEO に悪影響を及ぼします</li>
+    </ul>
+
+    <h2>オンラインコンプレッサーの問題</h2>
+    <p>ほとんどの「無料ビデオ圧縮」Web サイトは次のように機能します。</p>
+    <ol>
+      <li>動画をサーバーにアップロードします</li>
+      <li>They process it (often watermarked or quality-limited on free tiers)</li>
+      <li>結果をダウンロードします</li>
+    </ol>
+    <p>これは、あなたの個人的なビデオ、専有映像、または機密コンテンツが見知らぬ人のサーバー上に存在することを意味します。一部のサービス:</p>
+    <ul>
+      <li>無料の出力にウォーターマークを追加する</li>
+      <li>ファイルのサイズまたは期間を制限する</li>
+      <li>メール登録が必要です</li>
+      <li>アップロードしたファイルのコピーを保管しておいてください</li>
+      <li>基本的なはずの「プレミアム」機能を販売する</li>
+    </ul>
+
+    <h2>FFmpeg.wasm の仕組み</h2>
+    <p><a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener">FFmpeg.wasm</a>は、YouTube、Netflix、およびほぼすべてのビデオ プラットフォームで使用されている業界標準のビデオ処理ツールである FFmpeg の WebAssembly ポートです。完全にブラウザ内で実行されます。</p>
+    <ul>
+      <li>~25MB の WASM バイナリが 1 回ダウンロードされ、キャッシュされます。</li>
+      <li>ビデオがブラウザのメモリにロードされます</li>
+      <li>FFmpeg はデスクトップ バージョンと同じアルゴリズムを使用して処理します。</li>
+      <li>結果はダウンロードとして提供され、サーバーに送信されることはありません</li>
+    </ul>
+
+    <h2>CRF（品質管理）を理解する</h2>
+    <p>Presend は、Constant Rate Factor (CRF) 設定で H.264 エンコーディングを使用します。</p>
+    <table style="width:100%; margin:1rem 0; border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--color-line);"><th style="text-align:left; padding:0.5rem;">CRF値</th><th style="text-align:left; padding:0.5rem;">品質</th><th style="text-align:left; padding:0.5rem;">最適な用途</th></tr>
+      <tr><td style="padding:0.5rem;">18～20</td><td style="padding:0.5rem;">視覚的にロスレス</td><td style="padding:0.5rem;">アーカイブ、プロによる編集</td></tr>
+      <tr><td style="padding:0.5rem;">21–23</td><td style="padding:0.5rem;">高品質</td><td style="padding:0.5rem;">一般的な使用、YouTube アップロード</td></tr>
+      <tr><td style="padding:0.5rem;">24–28</td><td style="padding:0.5rem;">高品質、小型</td><td style="padding:0.5rem;">ソーシャルメディア、電子メール、ウェブ</td></tr>
+      <tr><td style="padding:0.5rem;">29–35</td><td style="padding:0.5rem;">許容範囲内、非常に小さい</td><td style="padding:0.5rem;">プレビュー、ドラフト、モバイル共有</td></tr>
+    </table>
+    <p>CRF が低い = 品質が高く、ファイルが大きくなります。 CRF が高い = ファイルが小さくなり、圧縮アーティファクトが多くなります。デフォルトの 28 は、ほとんどの使用例にとってバランスの良い値です。</p>
+
+    <h2>ステップバイステップのガイド</h2>
+    <ol>
+      <li><strong>ツールを開く</strong>— に移動<a href="/ja/tools/video-compressor">ビデオコンプレッサー</a></li>
+      <li><strong>ビデオをアップロードする</strong>— MP4 または MOV ファイルをドラッグ アンド ドロップまたは選択します (最大 ~500MB)</li>
+      <li><strong>CRFを調整する</strong>— スライダーを使用して品質とファイル サイズのバランスを調整します</li>
+      <li><strong>「圧縮」をクリックします</strong>— FFmpeg.wasm が処理されるまで待ちます (最初のロードには約 10 秒かかります)</li>
+      <li><strong>ダウンロード</strong>— 表示されているサイズを縮小して圧縮ファイルを保存します。</li>
+    </ol>
+
+    <h2>最良の結果を得るためのヒント</h2>
+    <ul>
+      <li>CRF 28 から開始し、結果に基づいて調整します</li>
+      <li>ソーシャル メディアの場合、CRF 26 ～ 28 は通常、元のサイズの半分で優れた品質を提供します</li>
+      <li>電子メールの場合は、合計 25MB 未満を目指してください</li>
+      <li>このツールは元の解像度を維持し、ビットレートのみが低下します。</li>
+      <li>音声は 128kbps AAC に圧縮されており、ほとんどのコンテンツに対して透過的です</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/ja/tools/video-compressor">ビデオコンプレッサーを開く →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザベースのツール。<a href="/ja/about">について</a> · <a href="/ja/privacy">プライバシー</a> · <a href="/ja/api">API</a></p>
+</footer>
+</body>
+</html>

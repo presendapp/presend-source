@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+
+
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Color Contrast Checker — Presend">
+<meta property="og:description" content="Check if your colors meet WCAG 2.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/tools/color-contrast">
+<meta property="og:image" content="https://presend.pages.dev/api/og?tool=Color+Contrast+Checker">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>WCAG Color Contrast Checker — No Upload, Free | Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Check if your colors meet WCAG 2.1 accessibility standards without uploading anything. AA, AAA ratios for normal and large text. Runs in your browser. Free.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/tools/color-contrast" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Color Contrast Checker — Presend">
+<meta name="twitter:description" content="Check if your colors meet WCAG 2.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Color Contrast Checker",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": "Check WCAG color contrast ratios locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/tools/color-contrast"
+}
+</script>
+<link rel="stylesheet" href="/css/color-contrast.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"Color Contrast Checker","item":"https://presend.pages.dev/tools/color-contrast"}
+  ]
+}
+</script>
+<!--seo-breadcrumb-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<!--seo-faq-->
+<link rel="manifest" href="/manifest.json">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is a good color contrast ratio?","acceptedAnswer":{"@type":"Answer","text":"A contrast ratio of at least 4.5:1 is required for normal text under WCAG AA standards. Large text (18pt+) needs 3:1. For AAA compliance, normal text requires 7:1 and large text 4.5:1."}},
+    {"@type":"Question","name":"Why is color contrast important for accessibility?","acceptedAnswer":{"@type":"Answer","text":"Poor contrast makes text unreadable for people with low vision, color blindness, or those viewing screens in bright sunlight. Good contrast ensures your content is accessible to everyone."}},
+    {"@type":"Question","name":"What does WCAG stand for?","acceptedAnswer":{"@type":"Answer","text":"WCAG stands for Web Content Accessibility Guidelines. It is the international standard for web accessibility, including color contrast requirements."}},
+    {"@type":"Question","name":"Does this tool work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once loaded, the tool works entirely in your browser with no internet connection needed."}}
+]}
+</script>
+<!--seo-faq-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Check Color Contrast for Accessibility",
+  "description": "Verify that your text and background colors meet WCAG accessibility standards — entirely in your browser, no upload needed.",
+  "totalTime": "PT10S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Pick your colors", "text": "Enter your text color and background color using the color pickers or hex code inputs. The tool instantly calculates the contrast ratio between them.", "url": "https://presend.pages.dev/tools/color-contrast#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Review the results", "text": "The tool displays four scores: Normal text AA, Normal text AAA, Large text AA, and Large text AAA. Green means pass, red means fail.", "url": "https://presend.pages.dev/tools/color-contrast#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Adjust and retest", "text": "Tweak your colors until all required scores pass. Use the live preview box to see how your text looks in real time.", "url": "https://presend.pages.dev/tools/color-contrast#step3" }
+  ]
+}
+</script>
+<!--seo-howto-->
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/color-contrast" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/color-contrast" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/color-contrast" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/color-contrast" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/color-contrast" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/color-contrast" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/color-contrast" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/color-contrast" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/color-contrast" />
+<meta property="og:locale" content="en_US" />
+</head>
+<body class="tool-page">
+
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <h1>Color Contrast Checker</h1>
+  <p class="lede">Check if your text and background colors meet WCAG 2.1 accessibility standards for normal and large text. Essential for designers and developers.</p>
+
+  <span class="trust-badge">Your data is never sent to our servers</span>
+
+  <div style="margin-top: 2rem;">
+    <div class="color-row">
+      <div class="color-field">
+        <label for="fgColor">Text color</label>
+        <div class="color-input-wrap">
+          <input type="color" id="fgPicker" value="#1A1D1B" aria-label="Foreground color">
+          <input type="text" id="fgColor" value="#1A1D1B" maxlength="7">
+        </div>
+      </div>
+      <div class="color-field">
+        <label for="bgColor">Background color</label>
+        <div class="color-input-wrap">
+          <input type="color" id="bgPicker" value="#F7F5F0" aria-label="Background color">
+          <input type="text" id="bgColor" value="#F7F5F0" maxlength="7">
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-box" id="previewBox">
+      The quick brown fox jumps over the lazy dog.
+    </div>
+
+    <div class="score-grid" id="scoreGrid">
+      <div class="score-card" id="scoreNormalAA"><div class="score-value">—</div><div class="score-label">Normal text AA<br>(4.5:1)</div></div>
+      <div class="score-card" id="scoreNormalAAA"><div class="score-value">—</div><div class="score-label">Normal text AAA<br>(7:1)</div></div>
+      <div class="score-card" id="scoreLargeAA"><div class="score-value">—</div><div class="score-label">Large text AA<br>(3:1)</div></div>
+      <div class="score-card" id="scoreLargeAAA"><div class="score-value">—</div><div class="score-label">Large text AAA<br>(4.5:1)</div></div>
+    </div>
+
+    <p style="font-size:0.82rem; color:var(--color-muted); margin-top:1.5rem;">
+        <button class="btn ghost" id="shareBtn" type="button" style="margin-left:0.5rem;">🔗 Copy share link</button>
+      WCAG 2.1 defines large text as 18pt (24px) or 14pt (18.66px) bold. The ratio is calculated from the relative luminance of each color.
+    </p>
+  </div>
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Frequently asked questions</h2>
+  <div style="margin-top:1rem;">
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What is a good color contrast ratio?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">A contrast ratio of at least 4.5:1 is required for normal text under WCAG AA standards. Large text (18pt+) needs 3:1. For AAA compliance, normal text requires 7:1 and large text 4.5:1.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Why is color contrast important for accessibility?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Poor contrast makes text unreadable for people with low vision, color blindness, or those viewing screens in bright sunlight. Good contrast ensures your content is accessible to everyone.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">What does WCAG stand for?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">WCAG stands for Web Content Accessibility Guidelines. It is the international standard for web accessibility, including color contrast requirements.</p>
+    </details>
+    <details style="margin-bottom:0.75rem;">
+      <summary style="cursor:pointer;font-weight:600;">Does this tool work offline?</summary>
+      <p style="color:var(--color-muted);margin-top:0.5rem;line-height:1.6;">Yes. Once loaded, the tool works entirely in your browser with no internet connection needed.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Related tools</h2>
+  <div class="tool-grid" style="margin-top:1rem;">
+      <a class='tool-card' href='/tools/text-formatter'>
+        <div><h3>Social Media Text Formatter</h3><p>Convert text to bold, italic and Unicode styles.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/image-compressor'>
+        <div><h3>Image Compressor</h3><p>Shrink a photo's file size before you email or upload it.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/word-counter'>
+        <div><h3>Word Counter</h3><p>Count words, characters and sentences.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class='tool-card' href='/tools/cron-parser'>
+        <div><h3>Cron Expression Parser</h3><p>Explain a cron expression in plain English.</p></div>
+        <span class="go">Open →</span>
+      </a>
+  </div>
+</section>
+</section>
+
+<section class="wrap" style="margin-top:3rem;">
+  <h2 style="font-family:var(--font-display);font-size:1.1rem;">Learn more</h2>
+  <p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+    <a href="/tools/landings/wcag-color-contrast-checker">Read our detailed guide about this tool</a>
+  </p>
+</section>
+
+<!--seo-related-tools-->
+</main>
+
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. Runs locally. No account. Anonymous visit counts only. · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+
+<script>
+(function () {
+  const fgPicker = document.getElementById('fgPicker');
+  const fgColor = document.getElementById('fgColor');
+  const bgPicker = document.getElementById('bgPicker');
+  const bgColor = document.getElementById('bgColor');
+  const previewBox = document.getElementById('previewBox');
+  const scoreNormalAA = document.getElementById('scoreNormalAA');
+  const scoreNormalAAA = document.getElementById('scoreNormalAAA');
+  const scoreLargeAA = document.getElementById('scoreLargeAA');
+  const scoreLargeAAA = document.getElementById('scoreLargeAAA');
+
+  function hexToRgb(hex) {
+    const m = hex.match(/^#?([a-f0-9]{6})$/i);
+    if (!m) return null;
+    const v = parseInt(m[1], 16);
+    return { r: (v >> 16) & 255, g: (v >> 8) & 255, b: v & 255 };
+  }
+
+  function lum(c) {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  }
+
+  function relativeLuminance(rgb) {
+    return 0.2126 * lum(rgb.r) + 0.7152 * lum(rgb.g) + 0.0722 * lum(rgb.b);
+  }
+
+  function contrastRatio(fg, bg) {
+    const l1 = relativeLuminance(fg);
+    const l2 = relativeLuminance(bg);
+    const lighter = Math.max(l1, l2);
+    const darker = Math.min(l1, l2);
+    return (lighter + 0.05) / (darker + 0.05);
+  }
+
+  function update() {
+    let fg = fgColor.value.trim();
+    let bg = bgColor.value.trim();
+    if (!fg.startsWith('#')) fg = '#' + fg;
+    if (!bg.startsWith('#')) bg = '#' + bg;
+
+    const fgRgb = hexToRgb(fg);
+    const bgRgb = hexToRgb(bg);
+    if (!fgRgb || !bgRgb) return;
+
+    previewBox.style.color = fg;
+    previewBox.style.backgroundColor = bg;
+
+    const ratio = contrastRatio(fgRgb, bgRgb);
+    const ratioStr = ratio.toFixed(2) + ':1';
+
+    function setCard(card, threshold) {
+      const pass = ratio >= threshold;
+      card.querySelector('.score-value').textContent = ratioStr;
+      card.className = 'score-card ' + (pass ? 'pass' : 'fail');
+    }
+
+    setCard(scoreNormalAA, 4.5);
+    setCard(scoreNormalAAA, 7);
+    setCard(scoreLargeAA, 3);
+    setCard(scoreLargeAAA, 4.5);
+  }
+
+  fgPicker.addEventListener('input', () => { fgColor.value = fgPicker.value; update(); });
+  bgPicker.addEventListener('input', () => { bgColor.value = bgPicker.value; update(); });
+  fgColor.addEventListener('input', () => { if (fgColor.value.length === 6 || fgColor.value.length === 7) fgPicker.value = fgColor.value.startsWith('#') ? fgColor.value : '#' + fgColor.value; update(); });
+  bgColor.addEventListener('input', () => { if (bgColor.value.length === 6 || bgColor.value.length === 7) bgPicker.value = bgColor.value.startsWith('#') ? bgColor.value : '#' + bgColor.value; update(); });
+
+  update();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Color Contrast Checker",
+  "url": "https://presend.pages.dev/tools/color-contrast",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "description": "Check WCAG color contrast ratios entirely client-side."
+}
+</script>
+<script>
+// Privacy-first page view tracking
+fetch('/api/track', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ tool: 'color-contrast' })
+}).catch(() => {});
+</script>
+
+
+<script src="/sw-register.js"></script>
+
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'color-contrast' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+    setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+  }
+});
+</script>
+</body>
+</html>

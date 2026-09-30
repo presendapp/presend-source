@@ -1,0 +1,227 @@
+# Presend
+
+> Free, privacy-first browser-based tools to clean, compress, convert and check files before sharing them. 39 of the 48 tools run entirely client-side — no upload, no server, no account, no tracking. The other 9 (IP Geolocation, Link Preview, and 7 tools that call Presend's own free API for domain/package/repo checks) make a lightweight server-side lookup to do their job, clearly labeled as such.
+
+Presend is a collection of single-purpose utilities for common file tasks: removing hidden metadata, compressing images and PDFs, converting formats, checking file integrity, and generating passwords or QR codes. Every tool processes files locally in the browser using Web APIs (Canvas, Web Crypto, FileReader) — files never leave the user's device.
+
+## Why Presend is different
+
+- [Homepage](https://presend.pages.dev): Full tool list and privacy explanation
+
+Unlike most online file converters and editors, Presend never uploads your files to a server. All processing happens locally in your browser using JavaScript. This means:
+- **Zero data leaks**: Your sensitive documents, photos, and passwords never touch the internet
+- **No account needed**: Use every tool instantly without signing up
+- **No tracking**: No cookies, no analytics, no data collection
+- **Works offline**: Once loaded, tools work without an internet connection
+
+## MCP Server (for AI agents)
+
+- [MCP endpoint](https://presend.pages.dev/mcp): Streamable HTTP, no signup, 34 tools
+
+Presend also exposes an MCP (Model Context Protocol) server at
+https://presend.pages.dev/mcp -- Streamable HTTP transport, no
+authentication, no signup. It exposes 34 of our 41 API endpoints as
+callable tools for AI agents and assistants (all except 7 binary/file
+endpoints -- hash, clean-image, malware-check, file-type,
+image-similarity, merge-and-compress-pdf, qr-scan -- which don't fit
+an AI agent's text context well). Send a JSON-RPC 2.0 `initialize`
+request to discover the protocol version, then `tools/list` to see
+all 34 tools with full schemas, then `tools/call` to invoke.
+
+## Using Presend with LangChain (or any MCP-compatible framework)
+
+Same MCP endpoint as above. Presend's MCP server (https://presend.pages.dev/mcp) works out of the box
+with any MCP-compatible AI framework -- no submission or dedicated
+integration package needed, since MCP itself is the integration layer.
+
+Verified working example with LangChain (`pip install langchain-mcp-adapters`):
+
+```python
+import asyncio
+from langchain_mcp_adapters.client import MultiServerMCPClient
+
+async def main():
+    client = MultiServerMCPClient({
+        "presend": {
+            "url": "https://presend.pages.dev/mcp",
+            "transport": "streamable_http",
+        }
+    })
+    tools = await client.get_tools()  # 34 tools, ready to pass into any LangChain agent
+
+asyncio.run(main())
+```
+
+Verified working example with CrewAI (`pip install "crewai-tools[mcp]"`):
+
+```python
+from crewai_tools import MCPServerAdapter
+
+with MCPServerAdapter({
+    "url": "https://presend.pages.dev/mcp",
+    "transport": "streamable-http",
+}) as tools:
+    # 34 tools, ready to pass into any CrewAI Agent
+    agent = Agent(role="Researcher", goal="...", tools=tools)
+```
+
+Verified working example with LlamaIndex (`pip install llama-index-tools-mcp`):
+
+```python
+from llama_index.tools.mcp import BasicMCPClient, McpToolSpec
+
+client = BasicMCPClient("https://presend.pages.dev/mcp")
+tools = await McpToolSpec(client=client).to_tool_list_async()
+# 34 tools, ready to pass into any LlamaIndex FunctionAgent
+```
+
+Verified working example with OpenAI's Agents SDK (`pip install openai-agents`):
+
+```python
+from agents.mcp import MCPServerStreamableHttp
+
+async with MCPServerStreamableHttp(
+    params={"url": "https://presend.pages.dev/mcp"},
+    name="presend",
+) as server:
+    tools = await server.list_tools()  # 34 tools
+    result = await server.call_tool("whois_lookup", {"domain": "github.com"})
+```
+
+Verified working example with Google's Agent Development Kit (`pip install google-adk mcp`):
+
+```python
+from google.adk.tools.mcp_tool.mcp_toolset import McpToolset
+from google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPConnectionParams
+
+toolset = McpToolset(
+    connection_params=StreamableHTTPConnectionParams(
+        url="https://presend.pages.dev/mcp",
+    ),
+)
+tools = await toolset.get_tools()  # 34 tools, ready for any ADK Agent
+```
+
+No-code option: n8n's built-in "MCP Client Tool" node connects directly
+(Server Transport: HTTP Streamable, MCP Endpoint URL:
+https://presend.pages.dev/mcp, Authentication: None) -- no package install
+needed. This specific node config was not run end-to-end in an actual n8n
+instance, unlike the three code examples above; it's based on n8n's own
+documentation for the node, not independently verified against this URL.
+
+The same URL works with Claude Desktop, Cursor, ChatGPT, and any other
+MCP-compatible client -- no signup, no API key.
+
+## Embeddable security badge for READMEs
+
+Any GitHub project can embed a live, real-time badge showing a package's
+security status (checked via vulnerability-check and, for npm,
+maintainer-change-check):
+
+- [Badge endpoint](https://presend.pages.dev/api/badge): [![presend](https://img.shields.io/endpoint?url=https://presend.pages.dev/api/badge?ecosystem=npm%26package=YOUR-PACKAGE-NAME)](https://presend.pages.dev)
+
+The badge re-checks live on every render (subject to shields.io's own
+caching), not a static snapshot -- and doubles as free, ongoing
+distribution: every render of the badge is a real visit to the API from
+wherever it's displayed.
+
+## Tools by category
+
+### Clean & Protect (Privacy Tools)
+- [EXIF Remover](https://presend.pages.dev/tools/exif-remover): Remove GPS location, camera model, and timestamps from JPG/PNG photos without uploading
+- [PDF Metadata Remover](https://presend.pages.dev/tools/pdf-metadata-remover): Strip author name, software used, and creation dates from PDF files locally
+- [Office Metadata Remover](https://presend.pages.dev/tools/office-metadata-remover): Clean hidden author, company, and edit history from Word/Excel/PowerPoint files
+- [Video Metadata Remover](https://presend.pages.dev/tools/video-metadata-remover): Remove GPS and device data from MP4/MOV videos without uploading
+- [URL Cleaner](https://presend.pages.dev/tools/url-cleaner): Remove tracking parameters (UTM, fbclid, gclid) from links before sharing
+- [Audio Metadata Remover](https://presend.pages.dev/tools/audio-metadata-remover): Strip ID3 tags, artist, album art from MP3/M4A files
+
+### Convert & Compress (File Processing)
+- [Image Compressor](https://presend.pages.dev/tools/image-compressor): Shrink JPG/PNG/WebP file size with live quality preview, no upload
+- [PDF Compress](https://presend.pages.dev/tools/pdf-compress): Reduce PDF file size by optimizing structure locally in browser
+- [PDF Merger](https://presend.pages.dev/tools/pdf-merger): Combine multiple PDF files into one document without uploading
+- [Image Resizer](https://presend.pages.dev/tools/image-resizer): Resize photos to exact dimensions for Instagram, LinkedIn, or printing
+- [HEIC to JPG Converter](https://presend.pages.dev/tools/heic-converter): Convert iPhone HEIC photos to universal JPG format locally
+- [JSON to CSV Converter](https://presend.pages.dev/tools/json-csv-converter): Convert between JSON and CSV formats instantly in browser
+- [Image to Base64](https://presend.pages.dev/tools/image-to-base64): Encode images as Base64 data URIs for embedding in HTML/CSS
+- [Background Remover](https://presend.pages.dev/tools/background-remover): Remove photo backgrounds instantly using in-browser AI
+- [HTML to PDF Converter](https://presend.pages.dev/tools/html-to-pdf): Paste HTML/CSS and convert it to a PDF (invoices, reports, resumes)
+- [Document Preview Generator](https://presend.pages.dev/tools/document-preview): Generate a thumbnail preview for PDF/Word/Excel/PowerPoint files
+- [Text Extractor / OCR](https://presend.pages.dev/tools/screenshot-to-text): Extract text from screenshots and scanned images using Tesseract.js
+- [Video Compressor](https://presend.pages.dev/tools/video-compressor): Shrink MP4/MOV file size using FFmpeg.wasm, adjustable quality
+
+### Check & Verify (Security Tools)
+- [File Hash Checker](https://presend.pages.dev/tools/file-hash-checker): Calculate SHA-256, SHA-1, SHA-512 checksums to verify file integrity
+- [Password Strength Checker](https://presend.pages.dev/tools/password-strength): Analyze password entropy and estimated crack time without sending data
+- [Color Contrast Checker](https://presend.pages.dev/tools/color-contrast): Check WCAG 2.1 accessibility contrast ratios for web design
+- [Disposable Email Checker](https://presend.pages.dev/tools/disposable-email-checker): Detect throwaway/temporary email domains (Yopmail, Mailinator, etc.)
+- [Password Breach Checker](https://presend.pages.dev/tools/password-breach-checker): Check if a password appeared in a known breach via k-anonymity (only a partial hash is sent)
+- [Phone Number Validator](https://presend.pages.dev/tools/phone-validator): Validate and format a phone number as E.164, international, or national
+- [QR Code Scanner](https://presend.pages.dev/tools/qr-code-scanner): Decode a QR code from an image or camera, entirely client-side
+- [Text Moderator](https://presend.pages.dev/tools/text-moderator): Detect spam, toxic language, and suspicious links in text
+- [IP Geolocation Lookup](https://presend.pages.dev/tools/ip-geolocation): Find your public IP, city, country, timezone, and ISP (server-side lookup)
+- [Link Preview / OG Scraper](https://presend.pages.dev/tools/link-preview): Extract Open Graph metadata from a URL -- title, description, image (server-side proxy)
+- [WHOIS / Domain Age Lookup](https://presend.pages.dev/tools/whois-lookup): Registrar, registration date, age, and expiration via RDAP (server-side lookup)
+- [DNS Lookup](https://presend.pages.dev/tools/dns-lookup): A, AAAA, CNAME, MX, TXT, NS records for a domain in one call (server-side lookup)
+- [Package Vulnerability Checker](https://presend.pages.dev/tools/vulnerability-check): Check a package/version against OSV.dev for known CVEs -- npm, PyPI, Go, and more (server-side lookup)
+- [Package Typosquat Checker](https://presend.pages.dev/tools/typosquat-check): Flags package names that look like a typo of a well-known npm/PyPI package (server-side lookup)
+- [IP Reputation Check](https://presend.pages.dev/tools/ip-reputation): Check an IPv4 against Spamhaus DROP, known spam/hijacker-controlled netblocks (server-side lookup)
+- [Redirect Chain Tracer](https://presend.pages.dev/tools/redirect-trace): Follow a URL's full redirect chain, flagging cross-domain jumps (server-side lookup)
+- [GitHub Repo Health Check](https://presend.pages.dev/tools/repo-health-check): Stars, forks, license, and archived status for a GitHub repo (server-side lookup)
+
+### Generate & Format (Productivity Tools)
+- [Password Generator](https://presend.pages.dev/tools/password-generator): Generate cryptographically secure random passwords locally
+- [QR Code Generator](https://presend.pages.dev/tools/qr-code-generator): Create QR codes from URLs, text, or WiFi credentials without uploading
+- [Email List Cleaner](https://presend.pages.dev/tools/email-list-cleaner): Deduplicate and validate email address lists before campaigns
+- [Text Diff Checker](https://presend.pages.dev/tools/text-diff): Compare two texts side by side to spot changes
+- [Social Media Text Formatter](https://presend.pages.dev/tools/text-formatter): Convert text to bold/italic Unicode styles for bios and posts
+- [Thread Splitter](https://presend.pages.dev/tools/thread-splitter): Split long text into Twitter/X or LinkedIn thread format
+- [Word Counter](https://presend.pages.dev/tools/word-counter): Count words, characters, sentences and estimate reading time
+- [Speech to Text](https://presend.pages.dev/tools/speech-to-text): Transcribe voice to text in real-time using the browser's native speech engine
+- [Text to Speech](https://presend.pages.dev/tools/text-to-speech): Type or paste text and hear it spoken using the browser's native voice synthesis
+- [Cron Expression Parser](https://presend.pages.dev/tools/cron-parser): Explain a 5-field cron expression in plain English and compute the next run times
+
+## Workflows (Chained Tools)
+Client-side tools that chain two operations into one pass — no competitor we're aware of offers this for free browser-based tools.
+- [Clean & Compress Photo](https://presend.pages.dev/tools/clean-and-compress-photo): Strip EXIF/GPS metadata, then compress — in one pass, no upload
+- [Merge & Compress PDFs](https://presend.pages.dev/tools/merge-and-compress-pdf): Combine multiple PDFs into one document, then compress the result
+- [Convert & Compress HEIC](https://presend.pages.dev/tools/convert-and-compress-heic): Convert an iPhone HEIC photo to JPG, then compress it
+
+## Guides & Resources
+- [How to Remove Metadata Before Sharing](https://presend.pages.dev/guides/how-to-remove-metadata-before-sharing): Step-by-step guide to cleaning files before sharing
+- [How to Compress Images for Email](https://presend.pages.dev/guides/how-to-compress-images-email): Reduce image size without losing quality
+- [How to Convert HEIC to JPG](https://presend.pages.dev/guides/how-to-convert-heic-jpg): Convert iPhone photos for Windows and Android
+- [How to Verify Downloaded Files](https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe): Check file integrity with SHA-256 checksums
+- [How to Clean URLs for Sharing](https://presend.pages.dev/guides/how-to-clean-urls-for-sharing): Remove tracking parameters from links
+
+## About & Legal
+- [About Presend](https://presend.pages.dev/about): Who built this and why privacy matters
+- [Privacy Policy](https://presend.pages.dev/privacy): No data collection, no cookies, no server-side processing, GDPR compliant
+- [FAQ](https://presend.pages.dev/faq): Common questions about how the tools work
+- [Alternatives](https://presend.pages.dev/alternatives): Compare Presend with other online tools
+
+## API for Developers
+- [API overview](https://presend.pages.dev/api): 40 free, no-signup, no-API-key endpoints
+- [OpenAPI spec](https://presend.pages.dev/openapi.json): Full machine-readable docs
+
+Presend also offers 40 free, no-signup, no-API-key server-side endpoints at [presend.pages.dev/api](https://presend.pages.dev/api), running on Cloudflare's edge network. Full docs and an OpenAPI spec are available at [presend.pages.dev/openapi.json](https://presend.pages.dev/openapi.json).
+- **Chained endpoints** (the key differentiator — most free APIs only offer single-purpose calls): `POST /api/merge-and-compress-pdf` (merge 2+ PDFs and compress the result in one call), `POST /api/clean-image` (strip EXIF/GPS from JPEG/PNG via direct binary parsing — zero quality loss, no canvas re-encoding), `GET /api/email-verify` (syntax + MX + disposable-domain + role-account detection combined), `POST /api/password-check` (strength/entropy scoring + optional HIBP breach check combined, password sent in the body, never a URL), `GET /api/security-scan` (security-headers + url-reputation + subdomains combined into one score and verdict), `GET /api/email-security` (SPF strength + DMARC policy + best-effort DKIM lookup combined), `POST /api/image-similarity` (perceptual hash for 1-2 images -- send 2 to compare directly), `POST /api/qr-scan` (decode a QR code and, if it's a URL, check it against a malware/phishing database in one call), `POST /api/malware-check` (hash a file and check it against a known-malware database in one call), `GET /api/ai-crawler-check` (fetch robots.txt and report which known AI crawlers -- GPTBot, ClaudeBot, PerplexityBot, etc. -- are allowed or blocked), `GET /api/dns-lookup` (A, AAAA, CNAME, MX, TXT and NS records for a domain in one call instead of six separate lookups), `GET /api/whois-lookup` (domain registration data via RDAP -- registrar, creation/expiration dates, computed age in days, nameservers -- domain age is a real phishing/scam signal), `GET /api/vulnerability-check` (checks a package/version against OSV.dev -- npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, NuGet -- returns known CVEs and the fixed version to upgrade to), `GET /api/typosquat-check` (flags a package name within edit-distance 2 of a well-known npm/PyPI package -- the classic typosquatting pattern), `GET /api/ip-reputation` (checks an IPv4 against Spamhaus DROP -- known spam/hijacker-controlled netblocks -- free and no signup, unlike every dedicated IP reputation service we could find), `GET /api/redirect-trace` (follows a URL's full redirect chain hop-by-hop, up to 15 hops, flagging cross-domain jumps -- catches cloaking patterns a final-destination-only check misses), `GET /api/repo-health-check` (stars, forks, open issues, license, archived status and days since last push for a GitHub repo -- combine with typosquat-check and vulnerability-check for a fuller supply-chain trust picture)
+- Hashing: SHA-256/1/512 file hashing (`POST /api/hash`)
+- Security: password generation with entropy estimate, HIBP k-anonymity breach check, JWT decode, HTTP security header audit with letter grade
+- Validation: email syntax + MX record check, disposable email detection (576+ domains)
+- Cybersecurity: URL malware/phishing reputation check (URLhaus), file malware check (MalwareBazaar), passive subdomain discovery via Certificate Transparency logs, real file-type detection via binary signature (catches disguised/mislabeled files), JWT signature verification (HS/RS/PS/ES via Web Crypto -- not just decode)
+- Near-duplicate detection: perceptual image hashing (`POST /api/image-similarity`) and SimHash text similarity (`POST /api/text-similarity`) -- both survive re-compression/paraphrasing, unlike a cryptographic hash
+- Everyday utilities: UUID generation, Base64 encode/decode, timestamp conversion, color format conversion, User-Agent parsing, JSON↔CSV conversion, favicon fetch, URL tracking-parameter removal (single or batch up to 100), IP geolocation with Tor exit-node detection (official Tor Project list)
+- A zero-dependency npm client is available: `npm install presend-api` ([npmjs.com/package/presend-api](https://www.npmjs.com/package/presend-api)) — v1.10.0, wraps 39 of the 40 endpoints -- only maintainer-change-check (added most recently) isn't wrapped yet
+- [Code examples](https://github.com/presendapp/presend-examples): Working Python for LangChain, CrewAI, LlamaIndex, OpenAI Agents SDK, Google ADK, and plain REST
+- [MCP config guides](https://github.com/presendapp/presend-mcp-config): Copy-paste setup for Claude Desktop, Claude Code, Cursor, and Windsurf, no code required
+- No official SLA; fair-use rate limits typically 20-60 requests/minute per IP
+
+## Technical Details
+- [Browser extension source](https://github.com/presendapp/presend-extension): "Presend -- Clean Photos", EXIF/GPS stripping on any image
+- **Architecture**: Static HTML/CSS/JS for client-side tools; Cloudflare Pages Functions (edge, serverless) for the API layer
+- **Client-side tools processing**: 100% client-side using Web APIs (Canvas, Web Crypto, FileReader, Streams) — files never uploaded
+- **API endpoints**: Some endpoints call third-party services to provide their function (Have I Been Pwned via k-anonymity, URLhaus, Certificate Transparency logs via crt.sh, the Tor Project's public exit-node list) — no file content is ever sent to these, only the specific query needed (e.g. a URL to check, a partial password hash). IP geolocation (`/api/ip`) reads directly from Cloudflare's own edge network (no third-party call, no cost, no rate-limit risk).
+- **Browser extension**: "Presend — Clean Photos" lets you right-click any image on any website to strip EXIF/GPS metadata (with an optional compress step), entirely on-device. Source and releases: [github.com/presendapp/presend-extension](https://github.com/presendapp/presend-extension). Submitted to Firefox Add-ons and Opera Add-ons (pending review); direct download available now via GitHub releases.
+- **Analytics**: Cloudflare Web Analytics (aggregate, no cookies) plus best-effort anonymous internal counters for tool/endpoint usage — no per-user tracking, no IP storage
+- **Open Source**: Available on GitHub (link in footer)
+- **Languages**: English, French, Spanish, German, Portuguese, Japanese, Russian, Hindi

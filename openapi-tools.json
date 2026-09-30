@@ -1,0 +1,964 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Presend Developer Tools API",
+    "description": "Free everyday developer utilities: UUID, Base64, timestamp, color conversion, IP geolocation, PDF/image tools, and more. No signup, no API key.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://presend.pages.dev/api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://presend.pages.dev/api",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/url-clean": {
+      "get": {
+        "summary": "Clean a single URL",
+        "description": "Strips 60+ tracking parameters from a URL.",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "https://example.com/page?utm_source=newsletter"
+            },
+            "description": "URL to strip tracking parameters from (utm_*, fbclid, gclid, and similar)."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cleaned URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "original": {
+                      "type": "string"
+                    },
+                    "clean": {
+                      "type": "string"
+                    },
+                    "removed": {
+                      "type": "integer"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "example": {
+                  "original": "https://example.com/?utm_source=test",
+                  "clean": "https://example.com/",
+                  "removed": 1,
+                  "valid": true
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      },
+      "post": {
+        "summary": "Clean a batch of URLs",
+        "description": "Strips tracking parameters from up to 100 URLs at once.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "urls": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 100,
+                    "description": "Array of URLs to strip tracking parameters from in a single batch request."
+                  }
+                },
+                "required": [
+                  "urls"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cleaned URLs batch",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "total_tracking_params_removed": {
+                      "type": "integer"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "original": {
+                            "type": "string"
+                          },
+                          "clean": {
+                            "type": "string"
+                          },
+                          "removed": {
+                            "type": "integer"
+                          },
+                          "valid": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "count": 1,
+                  "total_tracking_params_removed": 2,
+                  "results": [
+                    {
+                      "original": "https://example.com/?utm_source=test&fbclid=abc",
+                      "clean": "https://example.com/",
+                      "removed": 2,
+                      "valid": true
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/uuid": {
+      "get": {
+        "summary": "Generate UUIDs",
+        "description": "Generates up to 100 random UUID v4 values.",
+        "parameters": [
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "maximum": 100,
+              "example": "3"
+            },
+            "description": "Number of UUIDs (v4) to generate. Defaults to 1 if omitted."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generated UUIDs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "uuids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "count": 2,
+                  "uuids": [
+                    "a87ef3ba-c3d9-45e9-8e39-d16bc9d30565",
+                    "97194a22-f868-421d-b716-fd34d04db07a"
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/base64": {
+      "get": {
+        "summary": "Encode or decode Base64",
+        "parameters": [
+          {
+            "name": "action",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "encode",
+                "decode"
+              ],
+              "example": "encode"
+            },
+            "description": "Either \"encode\" or \"decode\"."
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 10000,
+              "example": "Hello, world!"
+            },
+            "description": "Text to encode, or Base64 string to decode."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Encoded/decoded result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "action": {
+                      "type": "string"
+                    },
+                    "input": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "action": "encode",
+                  "input": "Hello",
+                  "result": "SGVsbG8="
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          }
+        }
+      }
+    },
+    "/ip": {
+      "get": {
+        "summary": "Get caller IP geolocation",
+        "description": "Returns the caller's IP with city, country, currency, language, EU flag, and Tor exit-node detection (official Tor Project public list). Geolocation is read directly from Cloudflare's edge \u2014 no third-party API call.",
+        "responses": {
+          "200": {
+            "description": "IP geolocation data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "region": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "country": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "continent": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "latitude": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "longitude": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "postal": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "timezone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "asn": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "org": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "currency": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "language": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "is_eu": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "tor": {
+                      "type": "object",
+                      "properties": {
+                        "checked": {
+                          "type": "boolean"
+                        },
+                        "is_tor": {
+                          "type": "boolean",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "ip": "31.165.126.104",
+                  "city": "Fribourg",
+                  "region": "Fribourg",
+                  "country": "CH",
+                  "continent": "EU",
+                  "latitude": "46.80237",
+                  "longitude": "7.15128",
+                  "postal": "1701",
+                  "timezone": "Europe/Zurich",
+                  "asn": 6730,
+                  "org": "sunrise Communications AG",
+                  "currency": "CHF",
+                  "language": "de",
+                  "is_eu": false,
+                  "tor": {
+                    "checked": true,
+                    "is_tor": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timestamp": {
+      "get": {
+        "summary": "Convert timestamps",
+        "description": "Current time, or convert between Unix timestamp and ISO date.",
+        "parameters": [
+          {
+            "name": "unix",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": "1700000000"
+            },
+            "description": "Unix timestamp (seconds since epoch) to convert to a human-readable date. Provide either unix or date, not both."
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "2023-11-14T22:13:20Z"
+            },
+            "description": "Date/time string to convert to a Unix timestamp. Provide either unix or date, not both."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted timestamp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "unix_seconds": {
+                      "type": "integer"
+                    },
+                    "unix_milliseconds": {
+                      "type": "integer"
+                    },
+                    "iso_8601": {
+                      "type": "string"
+                    },
+                    "utc_string": {
+                      "type": "string"
+                    },
+                    "day_of_week": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "unix_seconds": 1735689600,
+                  "unix_milliseconds": 1735689600000,
+                  "iso_8601": "2025-01-01T00:00:00.000Z",
+                  "utc_string": "Wed, 01 Jan 2025 00:00:00 GMT",
+                  "day_of_week": "Wednesday"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/color": {
+      "get": {
+        "summary": "Convert color formats",
+        "description": "Convert between hex, RGB and HSL.",
+        "parameters": [
+          {
+            "name": "hex",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "#ff0000"
+            },
+            "description": "Hex color code, e.g. #ff0000 or ff0000. Provide exactly one of hex, rgb, or hsl."
+          },
+          {
+            "name": "rgb",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "255,0,0"
+            },
+            "description": "RGB color, e.g. 255,0,0. Provide exactly one of hex, rgb, or hsl."
+          },
+          {
+            "name": "hsl",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "0,100%,50%"
+            },
+            "description": "HSL color, e.g. 0,100%,50%. Provide exactly one of hex, rgb, or hsl."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted color",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hex": {
+                      "type": "string"
+                    },
+                    "rgb": {
+                      "type": "string"
+                    },
+                    "rgb_values": {
+                      "type": "object",
+                      "properties": {
+                        "r": {
+                          "type": "integer"
+                        },
+                        "g": {
+                          "type": "integer"
+                        },
+                        "b": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "hsl": {
+                      "type": "string"
+                    },
+                    "hsl_values": {
+                      "type": "object",
+                      "properties": {
+                        "h": {
+                          "type": "integer"
+                        },
+                        "s": {
+                          "type": "integer"
+                        },
+                        "l": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "hex": "#1f3a5f",
+                  "rgb": "rgb(31, 58, 95)",
+                  "rgb_values": {
+                    "r": 31,
+                    "g": 58,
+                    "b": 95
+                  },
+                  "hsl": "hsl(215, 51%, 25%)",
+                  "hsl_values": {
+                    "h": 215,
+                    "s": 51,
+                    "l": 25
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user-agent": {
+      "get": {
+        "summary": "Parse a User-Agent string",
+        "parameters": [
+          {
+            "name": "ua",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            },
+            "description": "User-Agent string to parse. If omitted, the request's own User-Agent header is parsed instead."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parsed User-Agent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user_agent": {
+                      "type": "string"
+                    },
+                    "parsed": {
+                      "type": "object",
+                      "properties": {
+                        "browser": {
+                          "type": "string"
+                        },
+                        "browser_version": {
+                          "type": "string"
+                        },
+                        "os": {
+                          "type": "string"
+                        },
+                        "os_version": {
+                          "type": "string"
+                        },
+                        "device_type": {
+                          "type": "string"
+                        },
+                        "is_bot": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "user_agent": "Mozilla/5.0 (Windows NT 10.0) Chrome/120.0",
+                  "parsed": {
+                    "browser": "Chrome",
+                    "browser_version": "120.0",
+                    "os": "Windows",
+                    "os_version": "10.0",
+                    "device_type": "desktop",
+                    "is_bot": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favicon": {
+      "get": {
+        "summary": "Fetch a domain's favicon URL",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "example.com"
+            },
+            "description": "Domain to fetch the favicon URL for, e.g. example.com."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Favicon URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "domain": {
+                      "type": "string"
+                    },
+                    "favicon": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "domain": "github.com",
+                  "favicon": "https://github.githubassets.com/favicons/favicon.svg"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Disallowed domain"
+          }
+        }
+      }
+    },
+    "/csv-json": {
+      "get": {
+        "summary": "Convert between JSON and CSV (GET)",
+        "parameters": [
+          {
+            "name": "direction",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json-to-csv",
+                "csv-to-json"
+              ],
+              "example": "csv-to-json"
+            },
+            "description": "Either \"csv-to-json\" or \"json-to-csv\"."
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "name,age\nAlice,30"
+            },
+            "description": "The CSV or JSON text to convert, matching the chosen direction."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Converted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "usage": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "usage": "GET /api/csv-json?direction=json-to-csv|csv-to-json&data=<url-encoded text>  \u2014  or POST { \"direction\": \"...\", \"data\": \"...\" }"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Convert between JSON and CSV (POST)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "direction": {
+                    "type": "string",
+                    "enum": [
+                      "json-to-csv",
+                      "csv-to-json"
+                    ],
+                    "description": "Either \"csv-to-json\" or \"json-to-csv\"."
+                  },
+                  "data": {
+                    "type": "string",
+                    "description": "The CSV or JSON text to convert, matching the chosen direction."
+                  }
+                },
+                "required": [
+                  "direction",
+                  "data"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Converted data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    },
+                    "cols": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "result": "[\n  {\n    \"name\": \"Alice\",\n    \"age\": \"30\"\n  }\n]",
+                  "rows": 1,
+                  "cols": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/merge-and-compress-pdf": {
+      "post": {
+        "summary": "Merge and compress PDFs",
+        "description": "Merges 2+ PDF files into one document, then compresses the result and strips metadata (title, author, producer). Chains two operations in a single call \u2014 most free APIs require calling merge and compress separately and gluing the results together yourself.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "description": "2 or more PDF files, max 20 files / 30MB total."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merged and compressed PDF file",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clean-image": {
+      "post": {
+        "summary": "Strip image metadata (EXIF/GPS)",
+        "description": "Removes EXIF/GPS data from JPEG (APP1 segment) and text metadata from PNG (tEXt/zTXt/iTXt/eXIf/tIME chunks) via direct binary parsing. Pixel data is never re-encoded, so there is zero quality loss \u2014 unlike canvas-based approaches, which always recompress.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "image/jpeg": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cleaned image, same format as input",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image-similarity": {
+      "post": {
+        "summary": "Perceptual image hash / similarity comparison",
+        "description": "Computes a perceptual hash (dHash, 64-bit) for 1 or 2 JPEG/PNG images. Unlike a cryptographic hash, this survives re-compression, minor resizing, and small edits. Send 2 images to get a direct similarity comparison.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    },
+                    "description": "1 file (hash only) or 2 files (compare). JPEG/PNG, max 10MB each."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash (1 file) or comparison result (2 files)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "files": [
+                    {
+                      "filename": "similar_a.png",
+                      "width": 200,
+                      "height": 200,
+                      "hash": "00000003060c1020"
+                    },
+                    {
+                      "filename": "similar_a2.jpg",
+                      "width": 200,
+                      "height": 200,
+                      "hash": "00000003060c1020"
+                    }
+                  ],
+                  "hamming_distance": 0,
+                  "similarity_percent": 100,
+                  "verdict": "Near-identical (likely the same image, possibly re-compressed or lightly edited)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/text-similarity": {
+      "post": {
+        "summary": "Text similarity via SimHash (1 or 2 texts)",
+        "description": "Computes a 64-bit SimHash (over word shingles) for 1 or 2 texts. Unlike a cryptographic hash, this detects paraphrased or lightly-edited near-duplicate content. Send 2 texts to get a direct similarity comparison. Unrelated texts typically score ~50% by chance, not 0%.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "texts"
+                ],
+                "properties": {
+                  "texts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "1 text (hash only) or 2 texts (compare). Max 200,000 characters each."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Hash (1 text) or comparison result (2 texts)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "texts": [
+                    {
+                      "length": 62,
+                      "hash": "11cead9a82394f07"
+                    },
+                    {
+                      "length": 62,
+                      "hash": "11cead9a82394f07"
+                    }
+                  ],
+                  "hamming_distance": 0,
+                  "similarity_percent": 100,
+                  "verdict": "Near-identical (likely the same text, possibly with trivial edits)."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>छवियों और स्क्रीनशॉट से टेक्स्ट कैसे निकालें — Presend गाइड</title>
+<meta name="description" content="Tesseract.js OCR का उपयोग करके किसी भी छवि, स्क्रीनशॉट या स्कैन किए गए दस्तावेज़ से टेक्स्ट कॉपी करना सीखें। 100+ भाषाएँ, आपके ब्राउज़र में काम करता है, कोई अपलोड नहीं।">
+<link rel="canonical" href="https://presend.pages.dev/hi/tools/landings/extract-text-from-image" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Extract Text from Images and Screenshots",
+  "description": "Complete guide to OCR using Tesseract.js running locally in your browser. Supports 100+ languages, paste from clipboard, no server upload.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/extract-text-from-image"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>प्रस्तुत करें</a>
+  <a class='nav-link' href='/'>सभी उपकरण</a> <a class="nav-link" href="/hi/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/screenshot-to-text'>← टेक्स्ट का स्क्रीनशॉट</a>
+  <article>
+    <h1>छवियों और स्क्रीनशॉट से टेक्स्ट कैसे निकालें</h1>
+    <p class="lede">क्या आपको स्क्रीनशॉट से टेक्स्ट कॉपी करने, दस्तावेज़ को स्कैन करने या मुद्रित पृष्ठ को डिजिटाइज़ करने की आवश्यकता है? OCR तकनीक इसे तुरंत बनाती है - और Presend के साथ, यह पूरी तरह से आपके ब्राउज़र में होता है।</p>
+
+    <h2>ओसीआर क्या है?</h2>
+    <p>OCR (ऑप्टिकल कैरेक्टर रिकॉग्निशन) वह तकनीक है जो टेक्स्ट की छवियों को मशीन-पठनीय टेक्स्ट में परिवर्तित करती है। यह वही है जो आपको इसकी सुविधा देता है:</p>
+    <ul>
+      <li>किसी वेबसाइट के स्क्रीनशॉट से टेक्स्ट कॉपी करें जो चयन को अवरुद्ध करता है</li>
+      <li>स्कैन की गई पीडीएफ के माध्यम से खोजें</li>
+      <li>मुद्रित दस्तावेज़ों को दोबारा टाइप किए बिना डिजिटाइज़ करें</li>
+      <li>रसीदों, प्रपत्रों या संकेतों की तस्वीरों से डेटा निकालें</li>
+      <li>छवियों में पाठ को पहले निकालकर उसका अनुवाद करें</li>
+    </ul>
+
+    <h2>क्लाउड ओसीआर का गोपनीयता जोखिम</h2>
+    <p>अधिकांश OCR सेवाएँ - Google Vision, Azure कंप्यूटर विज़न, Amazon Texttract - को आपकी छवि को उनके क्लाउड पर अपलोड करने की आवश्यकता होती है। यह इनके लिए समस्याग्रस्त है:</p>
+    <ul>
+      <li><strong>मेडिकल रिकॉर्ड</strong>- रोगी डेटा HIPAA/GDPR द्वारा संरक्षित</li>
+      <li><strong>कानूनी दस्तावेजों</strong>- वकील-ग्राहक विशेषाधिकार, एनडीए</li>
+      <li><strong>वित्तीय विवरण</strong>- बैंक विवरण, कर दस्तावेज़</li>
+      <li><strong>मालिकाना जानकारी</strong>- आंतरिक मेमो, स्रोत कोड स्क्रीनशॉट</li>
+      <li><strong>व्यक्तिगत पत्राचार</strong>- निजी संदेश, ईमेल</li>
+    </ul>
+    <p>यहां तक कि जो सेवाएँ फ़ाइलों को तुरंत हटाने का दावा करती हैं, वे अभी भी उन्हें अपने बुनियादी ढांचे पर संसाधित करती हैं, ऑडिट ट्रेल्स और संभावित जोखिम पैदा करती हैं।</p>
+
+    <h2>Tesseract.js कैसे काम करता है</h2>
+    <p><a href="https://github.com/naptha/tesseract.js" target="_blank" rel="noopener">Tesseract.js</a>Google के Tesseract OCR इंजन का एक शुद्ध JavaScript पोर्ट है, जिसे WebAssembly में संकलित किया गया है। यह पूरी तरह से आपके ब्राउज़र में चलता है:</p>
+    <ol>
+      <li>भाषा मॉडल (प्रशिक्षितडेटा) प्रति भाषा एक बार डाउनलोड होता है (अंग्रेजी के लिए ~4एमबी)</li>
+      <li>छवि को आपके सीपीयू या जीपीयू का उपयोग करके स्थानीय रूप से संसाधित किया जाता है</li>
+      <li>मान्यता प्राप्त पाठ सीधे वेबपेज पर लौटा दिया जाता है</li>
+      <li>किसी बाहरी सर्वर पर कुछ भी प्रसारित नहीं होता है</li>
+    </ol>
+    <p>Tesseract वही इंजन है जो Google पुस्तकें, Google Translate के कैमरा फीचर और अनगिनत दस्तावेज़ स्कैनिंग ऐप्स को शक्ति प्रदान करता है। यह समर्थन करता है<strong>100+ भाषाएँ</strong>जिसमें अरबी, चीनी, जापानी, देवनागरी और सिरिलिक जैसी लिपियाँ शामिल हैं।</p>
+
+    <h2>समर्थित इनपुट विधियाँ</h2>
+    <ul>
+      <li><strong>खींचें और छोड़ें</strong>- किसी भी छवि को टूल पर छोड़ें</li>
+      <li><strong>फ़ाइल पिकर</strong>— ब्राउज़ करने और छवि चुनने के लिए क्लिक करें</li>
+      <li><strong>क्लिपबोर्ड से चिपकाएँ</strong>— सीधे स्क्रीनशॉट चिपकाने के लिए पेज पर कहीं भी Ctrl+V (या Cmd+V) दबाएँ</li>
+    </ul>
+
+    <h2>सटीकता युक्तियाँ</h2>
+    <ul>
+      <li><strong>संकल्प मायने रखता है</strong>— उच्च रिज़ॉल्यूशन वाली छवियां बेहतर परिणाम देती हैं। स्कैन किए गए दस्तावेज़ों के लिए 300 डीपीआई आदर्श है।</li>
+      <li><strong>कंट्रास्ट कुंजी है</strong>- हल्के बैकग्राउंड पर गहरा टेक्स्ट सबसे अच्छा काम करता है। उल्टे रंग या कम कंट्रास्ट सटीकता को कम करते हैं।</li>
+      <li><strong>तिरछापन कम से कम करें</strong>— सीधे, बिना घुमाए गए टेक्स्ट को पहचानना सबसे आसान है</li>
+      <li><strong>साफ़ छवियाँ</strong>- जब संभव हो तो शोर, सिलवटों और छाया को हटा दें</li>
+      <li><strong>सही भाषा</strong>- ड्रॉपडाउन से सही भाषा चुनें। मिश्रित भाषा का पाठ काम करता है लेकिन उसकी सटीकता कम हो सकती है</li>
+    </ul>
+
+    <h2>मामलों का प्रयोग करें</h2>
+    <ul>
+      <li><strong>छात्र</strong>— पाठ्यपुस्तक फ़ोटो या व्याख्यान स्लाइड से पाठ कॉपी करें</li>
+      <li><strong>डेवलपर्स</strong>- स्क्रीनशॉट या त्रुटि संदेशों से कोड निकालें</li>
+      <li><strong>पत्रकारों</strong>- दस्तावेज़ों की छवियों से उद्धरण पाठ</li>
+      <li><strong>शोधकर्ता</strong>- मुद्रित कागजात और लेखों को डिजिटाइज़ करें</li>
+      <li><strong>व्यवस्थापकों</strong>- स्कैन किए गए फॉर्म को संपादन योग्य टेक्स्ट में बदलें</li>
+      <li><strong>यात्री</strong>- विदेशी भाषाओं में संकेत, मेनू और दस्तावेज़ पढ़ें</li>
+    </ul>
+
+    <h2>चरण-दर-चरण मार्गदर्शिका</h2>
+    <ol>
+      <li><strong>टूल खोलें</strong>- जाओ<a href="/hi/tools/screenshot-to-text">टेक्स्ट का स्क्रीनशॉट</a></li>
+      <li><strong>भाषा चुने</strong>— अपनी छवि में टेक्स्ट की भाषा चुनें</li>
+      <li><strong>अपलोड या पेस्ट करें</strong>— एक छवि खींचें, चयन करने के लिए क्लिक करें, या क्लिपबोर्ड से चिपकाने के लिए Ctrl+V दबाएँ</li>
+      <li><strong>मान्यता की प्रतीक्षा करें</strong>— छवि आकार के आधार पर प्रसंस्करण में कुछ सेकंड लगते हैं</li>
+      <li><strong>समीक्षा करें और संपादित करें</strong>- किसी भी त्रुटि के लिए निकाले गए पाठ की जाँच करें</li>
+      <li><strong>कॉपी करें या डाउनलोड करें</strong>- .txt फ़ाइल के रूप में सहेजें या क्लिपबोर्ड पर कॉपी करें</li>
+    </ol>
+
+    <h2>सीमाएँ</h2>
+    <ul>
+      <li><strong>लिखावट</strong>— टेसेरैक्ट मुद्रित पाठ पर सबसे अच्छा काम करता है। घुमावदार या अव्यवस्थित लिखावट की सटीकता कम होती है।</li>
+      <li><strong>जटिल लेआउट</strong>- बहु-स्तंभ पाठ, तालिकाओं और प्रपत्रों को मैन्युअल पुन: स्वरूपण की आवश्यकता हो सकती है।</li>
+      <li><strong>सजावटी फ़ॉन्ट</strong>— शैलीबद्ध या कलात्मक पाठ को पहचाना नहीं जा सकता।</li>
+      <li><strong>बहुत छोटा पाठ</strong>— 10px से कम का टेक्स्ट छूट सकता है।</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/hi/tools/screenshot-to-text">स्क्रीनशॉट को टेक्स्ट → पर खोलें</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend - निःशुल्क ब्राउज़र-आधारित उपकरण। <a href="/about">के बारे में</a> · <a href="/privacy">गोपनीयता</a> <a href="/hi/api">API</a></p>
+</footer>
+</body>
+</html>

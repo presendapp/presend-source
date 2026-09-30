@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment supprimer les balises ID3 et les métadonnées de MP3/M4A — Guide Presend</title>
+<meta name="description" content="Apprenez à supprimer les métadonnées cachées, les noms d'artistes, les pochettes d'album et les tags ID3 des fichiers audio sans ré-encodage. 100 % privé, basé sur le navigateur.">
+<link rel="canonical" href="https://presend.pages.dev/fr/tools/landings/remove-audio-metadata" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Remove ID3 Tags and Metadata from MP3/M4A",
+  "description": "Complete guide to stripping hidden metadata from audio files using Presend's free browser-based tool.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/remove-audio-metadata"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Présenter</a>
+  <a class='nav-link' href='/'>Tous les outils</a> <a class="nav-link" href="/fr/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/audio-metadata-remover'>← Suppresseur de métadonnées audio</a>
+  <article>
+    <h1>Comment supprimer les balises ID3 et les métadonnées de MP3/M4A</h1>
+    <p class="lede">Les fichiers audio contiennent bien plus que du son. À l’intérieur se trouvent des balises ID3, des pochettes d’album et parfois des coordonnées GPS ou des empreintes digitales logicielles. Voici comment tout supprimer, sans réencodage.</p>
+
+    <h2>Quelles métadonnées se cachent dans les fichiers audio ?</h2>
+    <p>Lorsque vous exportez une chanson depuis une DAW, extrayez un CD ou téléchargez un podcast, le fichier résultant contient souvent des métadonnées intégrées :</p>
+    <ul>
+      <li><strong>Balises ID3v2</strong>— Titre, artiste, album, genre, numéro de piste, année, paroles</li>
+      <li><strong>Balises ID3v1</strong>- Pied de page hérité de 128 octets avec informations de base</li>
+      <li><strong>Pochette d'album</strong>— Images JPEG ou PNG intégrées (peuvent être volumineuses)</li>
+      <li><strong>Métadonnées iTunes</strong>— Date d'achat, nom du compte, identifiant Apple</li>
+      <li><strong>Empreintes logicielles</strong>— Quel DAW ou encodeur a créé le fichier</li>
+      <li><strong>Champs de commentaires</strong>— Contiennent souvent des notes, des URL ou des messages personnels</li>
+    </ul>
+
+    <h2>Pourquoi supprimer les métadonnées audio ?</h2>
+    <ul>
+      <li><strong>Confidentialité</strong>— Votre nom, vos licences de logiciels ou votre historique d'achats peuvent être intégrés</li>
+      <li><strong>Taille du fichier</strong>— Les pochettes d'album et les gros blocs de commentaires peuvent ajouter des mégaoctets</li>
+      <li><strong>Partage professionnel</strong>— Envoyez des démos propres sans informations personnelles jointes</li>
+      <li><strong>Diffusion de podcasts</strong>— Certaines plateformes rejettent les fichiers contenant certaines métadonnées</li>
+      <li><strong>Propreté médico-légale</strong>— S'assurer qu'il ne reste aucune trace d'identification</li>
+    </ul>
+
+    <h2>Comment ça marche (pas de réencodage)</h2>
+    <p>L'outil Audio Metadata Remover de Presend fonctionne au niveau des octets :</p>
+    <ol>
+      <li><strong>Fichiers MP3</strong>— Détecte et supprime les en-têtes ID3v2 (au début) et les pieds de page ID3v1 (à la fin), en préservant les images audio MPEG brutes entre les deux.</li>
+      <li><strong>Fichiers M4A</strong>— Analyse la structure du conteneur MP4, identifie les atomes de métadonnées (ilst, méta, udta) et reconstruit le fichier sans eux</li>
+    </ol>
+    <p>Parce que nous supprimons uniquement les conteneurs de métadonnées et ne touchons pas aux données audio,<strong>il n'y a aucune perte de qualité</strong>. Le son est exactement le même, il est juste plus propre.</p>
+
+    <h2>Guide étape par étape</h2>
+    <ol>
+      <li><strong>Ouvrez l'outil</strong>— Aller à<a href="/fr/tools/audio-metadata-remover">Suppresseur de métadonnées audio</a></li>
+      <li><strong>Téléchargez votre fichier</strong>— Glissez-déposez ou cliquez pour sélectionner un MP3 ou un M4A</li>
+      <li><strong>Examiner les métadonnées trouvées</strong>— L'outil montre ce qu'il a découvert (artiste, titre, taille de la pochette de l'album, etc.)</li>
+      <li><strong>Téléchargez le fichier propre</strong>— Même qualité audio, zéro métadonnées</li>
+    </ol>
+
+    <h2>Et les autres formats ?</h2>
+    <p>Actuellement pris en charge :<strong>MP3</strong>(ID3v1 et ID3v2) et<strong>M4A</strong>(format iTunes/Apple). La prise en charge de FLAC, OGG et WMA est prévue. Pour les fichiers WAV, les métadonnées sont rares mais peuvent être supprimées à l'aide de nos outils de fichiers généraux.</p>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/fr/tools/audio-metadata-remover">Ouvrir le dissolvant de métadonnées audio →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – outils gratuits basés sur un navigateur.<a href="/about">À propos</a> · <a href="/privacy">Confidentialité</a> <a href="/fr/api">API</a></p>
+</footer>
+</body>
+</html>

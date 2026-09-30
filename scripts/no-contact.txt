@@ -1,0 +1,25 @@
+# Depots a ne JAMAIS recontacter (refus explicite ou silencieux). Genere depuis l'audit du 26 sept. 2026.
+# Format : repo  raison. Ajouter une ligne a chaque nouveau refus. Utilise pour filtrer les candidats de demarchage.
+anondotli/awesome-privacy-tools  #26 mergée puis entrées retirées et ré-ajout annulé (revert) le 2026-08-29 ; #49 fermée par nous le 2026-09-26
+brandonhimpfen/awesome-github-actions  #38 fermé par brandonhimpfen le 2026-09-13 : Thanks for the contribution. I'm going to pass on this PR. While Presend Dependency Securi
+jivoi/awesome-osint  #1178 fermé par spmedia le 2026-09-19 sans commentaire
+jivoi/awesome-osint  #1179 fermé par spmedia le 2026-09-19 sans commentaire
+leebaird/discover  #231 fermé par leebaird le 2026-09-20 sans commentaire
+lissy93/awesome-privacy  #730 fermé par lissy93 le 2026-08-02 : Thanks @presendapp, But closing for now, as requirements not met. Please be sure to read/f
+lissy93/awesome-privacy  #778 fermé par lissy93 le 2026-08-29 : You already submitted this in #730 🙄
+lissy93/web-check  #345 fermé par lissy93 le 2026-09-23 sans commentaire
+ninoseki/mihari  #1186 fermé par ninoseki le 2026-09-23 sans commentaire
+oomol-lab/open-connector  #576 fermé par hyrious le 2026-09-22 sans commentaire
+rustfoundation/typomania  #36 fermé par walterhpearce le 2026-09-24 sans commentaire
+unjs/ipx  #336 fermé par pi0x le 2026-09-25 : Thanks for the PR and the detailed write-up! The TOCTOU / DNS-rebinding gap is real (we re
+lissy93/*  proprietaire entier : awesome-privacy refusee puis re-soumise (reponse agacee), web-check refusee
+# --- Evalues, NE PAS PROPOSER Presend (pas un refus : redondant ou incompatible) ---
+sheeki03/tirith  evalue 26 sept. : lit deja les metadonnees d'identite npm, base de menaces OpenSSF/DataDog, tout en local
+lirantal/npq  evalue 26 sept. : ne pas y proposer Presend (author/typosquatting natifs). Contribution faite : issue #450 (mesure du bruit de son marshall author, sans Presend)
+google/osv-scanner  grande organisation, pas de demarchage non sollicite
+google/osv.dev  grande organisation
+google/deps.dev  grande organisation
+google/osv-scalibr  grande organisation
+ossf/scorecard  grande organisation
+actions/dependency-review-action  grande organisation
+mongodb/mongo  hors sujet

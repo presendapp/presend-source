@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como converter texto em fala gratuitamente — Guia Presend</title>
+<meta name="description" content="Aprenda a transformar texto escrito em fala natural com o mecanismo de voz integrado do seu navegador. Sem download, sem conta, e o Presend nunca recebe seu texto.">
+<link rel="canonical" href="https://presend.pages.dev/pt/tools/landings/text-to-speech-converter" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Convert Text to Speech for Free",
+  "description": "Guia passo a passo de conversão de texto em fala com a API speechSynthesis do seu navegador. O Presend nunca recebe seu texto; com as vozes do seu dispositivo, ele fica no seu dispositivo.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/text-to-speech-converter"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Apresentar</a>
+  <a class='nav-link' href='/'>Todas as ferramentas</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/text-to-speech'>← Conversão de texto para fala</a>
+  <article>
+    <h1>Como converter texto em fala gratuitamente</h1>
+    <p class="lede">Precisa revisar um texto, ouvir um artigo no trajeto ou criar narrações? Seu navegador pode ler qualquer texto em voz alta, sem assinatura e sem envio ao Presend. Com as vozes do seu dispositivo, o texto nunca sai do seu dispositivo.</p>
+
+    <h2>Por que conversão de texto em fala baseada em navegador?</h2>
+    <p>Serviços Cloud TTS como Amazon Polly, Google Cloud Text-to-Speech ou ElevenLabs produzem resultados excelentes, mas exigem:</p>
+    <ul>
+      <li>Enviando seu texto para seus servidores</li>
+      <li>Chaves de API e contas de desenvolvedor</li>
+      <li>Pagando por personagem ou por minuto</li>
+      <li>Aceitar termos que possam permitir treinamento em seus dados</li>
+    </ul>
+    <p>Para uso pessoal, rascunhos ou conteúdo sensível, a conversão de texto em fala do navegador é rápida, gratuita e, com as vozes do seu dispositivo, privada: o texto fica no seu dispositivo.</p>
+
+    <h2>Como funciona a síntese de fala</h2>
+    <p>O<a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis" target="_blank" rel="noopener">Interface SpeechSynthesis da Web Speech API</a>está integrado em todos os navegadores modernos. Ele usa as vozes do seu sistema operacional:</p>
+    <ul>
+      <li><strong>Windows</strong>— Microsoft David, Zira e outras vozes do sistema</li>
+      <li><strong>macOS</strong>— Vozes Siri de alta qualidade (Alex, Samantha, etc.)</li>
+      <li><strong>Linux</strong>– espeak, Festival ou Piper dependendo da sua distro</li>
+      <li><strong>Android/iOS</strong>— Mecanismos TTS nativos do dispositivo com detalhes regionais</li>
+    </ul>
+    <p>Com essas vozes do sistema, o texto é processado inteiramente no seu dispositivo. Alguns navegadores também oferecem vozes online (vozes do Google no Chrome, vozes “Online (Natural)” da Microsoft no Edge) que enviam o texto ao Google ou à Microsoft. A ferramenta do Presend as marca como “online” na lista de vozes e avisa quando uma delas está selecionada.</p>
+
+    <h2>Casos de uso</h2>
+    <ul>
+      <li><strong>Revisão</strong>- Ouvir sua escrita lida em voz alta detecta erros que seus olhos não percebem</li>
+      <li><strong>Acessibilidade</strong>— Ouça artigos, e-mails ou documentos se a leitura for difícil</li>
+      <li><strong>Aprendizagem de línguas</strong>— Ouça a pronúncia de texto estrangeiro</li>
+      <li><strong>Criação de conteúdo</strong>— Rascunhos rápidos de narração para vídeos ou apresentações</li>
+      <li><strong>Multitarefa</strong>- Ouça enquanto cozinha, faz exercícios ou viaja</li>
+    </ul>
+
+    <h2>Ajustando as configurações de voz</h2>
+    <p>A ferramenta do Presend permite controlar:</p>
+    <ul>
+      <li><strong>Voz</strong>— Selecione entre todas as vozes instaladas em seu sistema, agrupadas por idioma</li>
+      <li><strong>Velocidade</strong>— De 0,5× (lento) a 2,0× (rápido). 1,0× é o ritmo natural da conversa</li>
+      <li><strong>Tom</strong>— Tom mais alto ou mais baixo. Útil para dar ênfase ou combinar o humor do conteúdo</li>
+    </ul>
+
+    <h2>Guia passo a passo</h2>
+    <ol>
+      <li><strong>Abra a ferramenta</strong>- Vá para<a href="/pt/tools/text-to-speech">Conversão de texto para fala</a></li>
+      <li><strong>Cole seu texto</strong>— Digite ou cole até alguns milhares de caracteres</li>
+      <li><strong>Escolha uma voz</strong>— Escolha um idioma e uma voz específica</li>
+      <li><strong>Ajuste a velocidade e o tom</strong>- Ajuste de acordo com sua preferência</li>
+      <li><strong>Clique em Falar</strong>- Ouça instantaneamente</li>
+      <li><strong>Usar Pausa/Parada</strong>— Controle a reprodução conforme necessário</li>
+    </ol>
+
+    <h2>Gravando a saída</h2>
+    <p>A maioria dos navegadores não consegue capturar áudio sintetizado diretamente devido ao sandbox de segurança. Para salvar a saída TTS como um arquivo de áudio, use o gravador de tela do seu sistema operacional com captura de áudio:</p>
+    <ul>
+      <li><strong>Windows</strong>– Barra de jogos Xbox (Win+G) ou OBS Studio</li>
+      <li><strong>macOS</strong>— QuickTime Player (Arquivo > Nova Gravação de Áudio) ou Cmd+Shift+5</li>
+      <li><strong>Linux</strong>— OBS Studio ou parec com ffmpeg</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/pt/tools/text-to-speech">Abra a conversão de texto em fala →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — ferramentas gratuitas baseadas em navegador.<a href="/about">Sobre</a> · <a href="/privacy">Privacidade</a> <a href="/pt/api">API</a></p>
+</footer>
+</body>
+</html>

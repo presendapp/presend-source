@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embed Presend Tools — Free Privacy Widgets for Your Website</title>
+  <meta name="description" content="Embed free privacy tools on your website: EXIF remover, PDF compressor, image resizer, and more. No ads, 100% browser-based.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://presend.pages.dev/embed" />
+  <meta property="og:title" content="Embed Presend Tools — Free Privacy Widgets">
+  <meta property="og:description" content="Add free privacy tools to your site. Your visitors get utility, you get a backlink.">
+  <meta property="og:image" content="https://presend.pages.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/style.min.css">
+  <style>
+    .embed-container{max-width:800px;margin:0 auto;padding:2rem}
+    .embed-section{margin:2.5rem 0}
+    .code-block{background:#1a1a2e;border-radius:8px;padding:1rem;position:relative;margin:1rem 0}
+    .code-block pre{color:#e0e0e0;font-family:monospace;font-size:0.85rem;white-space:pre-wrap;word-break:break-all;margin:0;padding-right:4rem}
+    .copy-btn{position:absolute;top:0.75rem;right:0.75rem;background:#0066cc;color:#fff;border:none;border-radius:4px;padding:0.4rem 0.8rem;font-size:0.8rem;cursor:pointer}
+    .copy-btn:hover{background:#0052a3}
+    .copy-btn.copied{background:#2d8a3e}
+    .tools-table{width:100%;border-collapse:collapse;margin:1rem 0}
+    .tools-table th{text-align:left;padding:0.75rem;border-bottom:2px solid #ddd;font-weight:600}
+    .tools-table td{padding:0.75rem;border-bottom:1px solid #eee}
+    .tools-table code{background:#f5f5f5;padding:0.2rem 0.4rem;border-radius:3px;font-size:0.85rem}
+    .tools-table a{color:#0066cc;text-decoration:none}
+    .tools-table a:hover{text-decoration:underline}
+    .why-list{list-style:none;padding:0;margin:1rem 0}
+    .why-list li{padding:0.5rem 0;padding-left:1.5rem;position:relative}
+    .why-list li::before{content:"✓";position:absolute;left:0;color:#2d8a3e;font-weight:700}
+    .preview-box{border:1px solid #ddd;border-radius:8px;padding:1rem;margin:1rem 0;background:#fafafa}
+  </style>
+</head>
+<body>
+  <div class="embed-container">
+    <h1>Embed Presend on Your Website</h1>
+    <p>Add free privacy tools to your site. Your visitors get utility, you get a backlink. Everyone wins.</p>
+
+    <section class="embed-section">
+      <h2>1. Badge — "Powered by Presend"</h2>
+      <p>Copy this HTML into your footer or sidebar. It links back to us and tells your visitors you care about privacy.</p>
+
+      <div class="preview-box">
+        <a href="https://presend.pages.dev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;text-decoration:none;color:#1F3A5F;font-family:system-ui,sans-serif;font-size:0.85rem;">
+          <span style="width:8px;height:8px;background:#0066cc;border-radius:50%;display:inline-block;"></span>
+          Privacy tools by <strong>Presend</strong>
+        </a>
+      </div>
+
+      <div class="code-block">
+        <pre id="badge-code">&lt;a href="https://presend.pages.dev" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;text-decoration:none;color:#1F3A5F;font-family:system-ui,sans-serif;font-size:0.85rem;"&gt;
+  &lt;span style="width:8px;height:8px;background:#0066cc;border-radius:50%;display:inline-block;"&gt;&lt;/span&gt;
+  Privacy tools by &lt;strong&gt;Presend&lt;/strong&gt;
+&lt;/a&gt;</pre>
+        <button class="copy-btn" onclick="copyCode('badge-code',this)">Copy</button>
+      </div>
+    </section>
+
+    <section class="embed-section">
+      <h2>2. Direct Links — Share a Tool</h2>
+      <p>Link directly to any tool from your content. These are the highest-converting entry points.</p>
+
+      <table class="tools-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Link</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EXIF Remover</td>
+            <td><code>https://presend.pages.dev/tools/exif-remover</code></td>
+            <td><button class="copy-btn" onclick="copyText('https://presend.pages.dev/tools/exif-remover',this)">Copy</button></td>
+          </tr>
+          <tr>
+            <td>PDF Metadata Remover</td>
+            <td><code>https://presend.pages.dev/tools/pdf-metadata-remover</code></td>
+            <td><button class="copy-btn" onclick="copyText('https://presend.pages.dev/tools/pdf-metadata-remover',this)">Copy</button></td>
+          </tr>
+          <tr>
+            <td>Image Compressor</td>
+            <td><code>https://presend.pages.dev/tools/image-compressor</code></td>
+            <td><button class="copy-btn" onclick="copyText('https://presend.pages.dev/tools/image-compressor',this)">Copy</button></td>
+          </tr>
+          <tr>
+            <td>PDF Merger</td>
+            <td><code>https://presend.pages.dev/tools/pdf-merger</code></td>
+            <td><button class="copy-btn" onclick="copyText('https://presend.pages.dev/tools/pdf-merger',this)">Copy</button></td>
+          </tr>
+          <tr>
+            <td>Image Resizer</td>
+            <td><code>https://presend.pages.dev/tools/image-resizer</code></td>
+            <td><button class="copy-btn" onclick="copyText('https://presend.pages.dev/tools/image-resizer',this)">Copy</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="embed-section">
+      <h2>3. Why link to Presend?</h2>
+      <ul class="why-list">
+        <li><strong>No ads</strong> — we do not serve ads. Anonymous visit counts only.</li>
+        <li><strong>100% browser-based</strong> — files never leave the visitor's device</li>
+        <li><strong>Free forever</strong> — no freemium traps, no watermarks, no limits</li>
+        <li><strong>Fast</strong> — Cloudflare CDN, loads in under 1 second globally</li>
+        <li><strong>SEO-friendly</strong> — every tool has schema markup, sitemap, and canonical URLs</li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    function copyCode(id,btn){
+      const el=document.getElementById(id);
+      const text=el.innerText;
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    }
+    function copyText(text,btn){
+      navigator.clipboard.writeText(text).then(function(){
+        btn.textContent='Copied';btn.classList.add('copied');
+        setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Presend",
+    "documentationUrl": "https://presend.pages.dev",
+    "logoUrl": "https://presend.pages.dev/assets/logo-square.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:presend.pages.dev:api:presend-rest-api",
+      "displayName": "Presend Security & Utility API",
+      "type": "application/openapi+json",
+      "url": "https://presend.pages.dev/openapi.json",
+      "description": "Free security, verification and developer-utility REST API -- 48 endpoints, no signup, no API key required.",
+      "capabilities": [
+        "whois-lookup",
+        "dns-lookup",
+        "vulnerability-check",
+        "typosquat-check",
+        "maintainer-change-check",
+        "ip-reputation",
+        "redirect-trace",
+        "repo-health-check",
+        "jwt-decode",
+        "jwt-verify",
+        "password-breach",
+        "address-risk",
+        "tx-decode"
+      ],
+      "representativeQueries": [
+        "check if this npm package has a suspicious maintainer change",
+        "look up WHOIS registration info for a domain",
+        "check a package for known vulnerabilities",
+        "verify a JWT token signature",
+        "check if a password has been in a data breach",
+        "decode a raw Cosmos SDK transaction"
+      ],
+      "version": "1.0.0"
+    },
+    {
+      "identifier": "urn:air:presend.pages.dev:mcp:presend-mcp-server",
+      "displayName": "Presend MCP Server",
+      "type": "application/mcp-server-card+json",
+      "url": "https://presend.pages.dev/mcp",
+      "description": "MCP (Model Context Protocol) server exposing 36 free security and utility tools for AI agents, no signup, no API key required.",
+      "capabilities": [
+        "whois_lookup",
+        "dns_lookup",
+        "vulnerability_check",
+        "typosquat_check",
+        "maintainer_change_check",
+        "ip_reputation",
+        "redirect_trace",
+        "repo_health_check",
+        "jwt_decode",
+        "jwt_verify",
+        "password_breach",
+        "address_risk",
+        "tx_decode"
+      ],
+      "representativeQueries": [
+        "use an MCP tool to check for supply-chain security risks in a package",
+        "connect an AI agent to a free security checking tool",
+        "find an MCP server for domain and package security checks",
+        "check if a crypto address is OFAC sanctioned"
+      ],
+      "version": "1.0.0"
+    }
+  ]
+}

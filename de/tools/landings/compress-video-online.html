@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wie man ein Video ohne Qualitätsverlust komprimiert — Presend Guide</title>
+<meta name="description" content="Lerne, wie du die Größe von MP4- und MOV-Dateien mit FFmpeg.wasm in deinem Browser reduzierst. Kein Upload, kein Qualitätsverlust, vollständig privat.">
+<link rel="canonical" href="https://presend.pages.dev/de/tools/landings/compress-video-online" />
+<link href="../../../style.min.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compress a Video Without Losing Quality",
+  "description": "Complete guide to video compression using FFmpeg.wasm running locally in your browser. No server upload needed.",
+  "author": {"@type":"Organization","name":"Presend"},
+  "publisher": {"@type":"Organization","name":"Presend","logo":{"@type":"ImageObject","url":"https://presend.pages.dev/og-image.png"}},
+  "datePublished": "2026-08-22",
+  "dateModified": "2026-08-22",
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://presend.pages.dev/tools/landings/compress-video-online"}
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span>Präsentieren</a>
+  <a class='nav-link' href='/'>Alle Werkzeuge</a> <a class="nav-link" href="/de/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/tools/video-compressor'>← Videokompressor</a>
+  <article>
+    <h1>So komprimieren Sie ein Video ohne Qualitätsverlust</h1>
+    <p class="lede">Videodateien sind riesig. Ein 2-minütiger 4K-Clip kann leicht 500 MB überschreiten. So können Sie sie für E-Mail, soziale Medien oder Speicherung verkleinern – ohne sie in einen Cloud-Dienst hochzuladen.</p>
+
+    <h2>Warum Videokomprimierung wichtig ist</h2>
+    <p>Moderne Telefone zeichnen mit Auflösungen und Bitraten auf, die die meisten Sharing-Plattformen nicht benötigen:</p>
+    <ul>
+      <li><strong>E-Mail-Anhänge</strong>— Die meisten Anbieter beschränken sich auf 25 MB</li>
+      <li><strong>WhatsApp</strong>– Komprimiert Ihr Video stark, was oft die Qualität beeinträchtigt</li>
+      <li><strong>Soziale Medien</strong>– Instagram, Twitter und TikTok kodieren sowieso alles neu</li>
+      <li><strong>Cloud-Speicher</strong>– Google Drive und iCloud sind schnell mit unkomprimierten Videos voll</li>
+      <li><strong>Website-Hosting</strong>– Große Videos verlangsamen die Seitenladezeiten und beeinträchtigen die Suchmaschinenoptimierung</li>
+    </ul>
+
+    <h2>Das Problem mit Online-Kompressoren</h2>
+    <p>Die meisten „kostenlosen Videokompressor“-Websites funktionieren so:</p>
+    <ol>
+      <li>Sie laden Ihr Video auf ihren Server hoch</li>
+      <li>Sie verarbeiten es (häufig mit einem Wasserzeichen versehen oder auf kostenlosen Ebenen mit einer Qualitätsbeschränkung versehen).</li>
+      <li>Sie laden das Ergebnis herunter</li>
+    </ol>
+    <p>Das bedeutet, dass Ihre persönlichen Videos, proprietären Aufnahmen oder sensiblen Inhalte auf dem Server eines Fremden liegen. Einige Dienstleistungen:</p>
+    <ul>
+      <li>Fügen Sie Wasserzeichen zu kostenlosen Ausgaben hinzu</li>
+      <li>Begrenzen Sie die Dateigröße oder -dauer</li>
+      <li>E-Mail-Registrierung erforderlich</li>
+      <li>Bewahren Sie Kopien Ihrer Uploads auf</li>
+      <li>Verkaufen Sie „Premium“-Funktionen, die einfach sein sollten</li>
+    </ul>
+
+    <h2>So funktioniert FFmpeg.wasm</h2>
+    <p><a href="https://ffmpegwasm.netlify.app/" target="_blank" rel="noopener">FFmpeg.wasm</a>ist eine WebAssembly-Portierung von FFmpeg, dem branchenüblichen Videoverarbeitungstool, das von YouTube, Netflix und praktisch jeder Videoplattform verwendet wird. Es läuft vollständig in Ihrem Browser:</p>
+    <ul>
+      <li>Die ~25 MB WASM-Binärdatei wird einmal heruntergeladen und zwischengespeichert</li>
+      <li>Ihr Video wird in den Browserspeicher geladen</li>
+      <li>FFmpeg verarbeitet es mit denselben Algorithmen wie die Desktop-Version</li>
+      <li>Das Ergebnis wird als Download angeboten – niemals an einen Server gesendet</li>
+    </ul>
+
+    <h2>CRF (Qualitätskontrolle) verstehen</h2>
+    <p>Presend verwendet H.264-Kodierung mit einer Constant Rate Factor (CRF)-Einstellung:</p>
+    <table style="width:100%; margin:1rem 0; border-collapse:collapse;">
+      <tr style="border-bottom:1px solid var(--color-line);"><th style="text-align:left; padding:0.5rem;">CRF-Wert</th><th style="text-align:left; padding:0.5rem;">Qualität</th><th style="text-align:left; padding:0.5rem;">Am besten für</th></tr>
+      <tr><td style="padding:0.5rem;">18–20</td><td style="padding:0.5rem;">Optisch verlustfrei</td><td style="padding:0.5rem;">Archivierung, professionelle Bearbeitung</td></tr>
+      <tr><td style="padding:0.5rem;">21–23</td><td style="padding:0.5rem;">Hohe Qualität</td><td style="padding:0.5rem;">Allgemeine Verwendung, YouTube-Uploads</td></tr>
+      <tr><td style="padding:0.5rem;">24–28</td><td style="padding:0.5rem;">Gute Qualität, kleiner</td><td style="padding:0.5rem;">Soziale Medien, E-Mail, Web</td></tr>
+      <tr><td style="padding:0.5rem;">29–35</td><td style="padding:0.5rem;">Akzeptabel, sehr klein</td><td style="padding:0.5rem;">Vorschau, Entwurf, mobile Freigabe</td></tr>
+    </table>
+    <p>Niedrigerer CRF = höhere Qualität, größere Datei. Höherer CRF = kleinere Datei, mehr Komprimierungsartefakte. Der Standardwert 28 ist für die meisten Anwendungsfälle ein gutes Gleichgewicht.</p>
+
+    <h2>Schritt-für-Schritt-Anleitung</h2>
+    <ol>
+      <li><strong>Öffnen Sie das Tool</strong>– Gehe zu<a href="/de/tools/video-compressor">Videokompressor</a></li>
+      <li><strong>Laden Sie Ihr Video hoch</strong>— Ziehen Sie eine MP4- oder MOV-Datei per Drag-and-Drop oder wählen Sie sie aus (bis zu ~500 MB)</li>
+      <li><strong>CRF anpassen</strong>— Verwenden Sie den Schieberegler, um Qualität und Dateigröße auszugleichen</li>
+      <li><strong>Klicken Sie auf Komprimieren</strong>— Warten Sie, bis FFmpeg.wasm verarbeitet wird (das erste Laden dauert etwa 10 Sekunden).</li>
+      <li><strong>Herunterladen</strong>— Speichern Sie die komprimierte Datei mit der angezeigten Größenverkleinerung</li>
+    </ol>
+
+    <h2>Tipps für beste Ergebnisse</h2>
+    <ul>
+      <li>Beginnen Sie mit CRF 28 und passen Sie es je nach Ergebnis an</li>
+      <li>Für soziale Medien bietet CRF 26–28 normalerweise eine hervorragende Qualität bei halber Originalgröße</li>
+      <li>Für E-Mails sollten Sie eine Gesamtgröße von weniger als 25 MB anstreben</li>
+      <li>Das Tool behält die ursprüngliche Auflösung bei – nur die Bitrate wird reduziert</li>
+      <li>Audio wird auf 128 Kbit/s AAC komprimiert, was für die meisten Inhalte transparent ist</li>
+    </ul>
+
+    <div style="margin-top:2rem; text-align:center;">
+      <a class="btn" href="/de/tools/video-compressor">Öffnen Sie Videokompressor →</a>
+    </div>
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend – kostenlose browserbasierte Tools.<a href="/about">Um</a> · <a href="/privacy">Privatsphäre</a> <a href="/de/api">API</a></p>
+</footer>
+</body>
+</html>

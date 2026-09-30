@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="ダウンロードしたファイルが安全かどうか確認する方法 — Presend">
+<meta property="og:description" content="ファイルが改ざん、破損、またはマルウェアに置き換えられていないことを確認するため、SHA-256チェックサムの確認方法を学びます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>ダウンロードしたファイルが安全かどうか確認する方法 — Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="ダウンロードしたファイルが改ざんされていないかSHA-256チェックサムで確認する方法を学びます。マルウェア対策に最適。すべてブラウザ内で完結し、サーバーに送信されません。">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="ダウンロードしたファイルが安全かどうか確認する方法 — Presend">
+<meta name="twitter:description" content="Learn how to check a file">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "ダウンロードしたファイルが安全かどうか確認する方法",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "ファイルを共有する前にクリーンアップ、圧縮、変換、確認ができる無料のブラウザベースツール。アップロードは一切行われません。"
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "ダウンロードしたファイルが安全かどうか確認する方法",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Understand what a checksum is",
+      "text": "A checksum is a unique fingerprint of a file's contents. If even one byte changes, the checksum changes completely.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Find the expected hash",
+      "text": "The software publisher usually lists the expected SHA-256 hash on their download page.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Calculate the hash locally",
+      "text": "Use the File Hash Checker to compute SHA-256, SHA-1 and SHA-512 entirely in your browser.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Compare and decide",
+      "text": "If the calculated hash matches the expected hash exactly, the file is safe. If not, delete it and re-download from the official source.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="ja_JP" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ホーム",
+      "item": "https://presend.pages.dev/ja/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "ガイド",
+      "item": "https://presend.pages.dev/ja/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ダウンロードしたファイルが安全かどうか確認する方法",
+      "item": "https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/ja/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/ja/'>All tools</a> <a class="nav-link" href="/ja/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/ja/'>← Back</a>
+  <article>
+    <h1>ダウンロードしたファイルが安全かどうか確認する方法</h1>
+    <p class="lede">インターネットからソフトウェア、文書、または任意のファイルをダウンロードしたとき、それが本物であるかどうかをどうやって知るのでしょうか？最も信頼できる方法の一つは、暗号学的ハッシュ値を検証することです。</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">チェックサムとは何ですか？</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">チェックサムは、ファイルの内容から生成された一意の文字列です。たとえ1バイトでも変更されれば — 破損や悪意のある改ざんによって — チェックサムは完全に変わります。SHA-256はこの検証の業界標準です。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">SHA-256を確認する方法</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">ファイルの公開者は通常、期待されるSHA-256ハッシュを提供します。ダウンロードしたファイルのハッシュを計算し、両者を比較します。完全に一致すれば、ファイルは無傷です。当サイトの<a href='/ja/tools/file-hash-checker'>ファイルハッシュチェッカー</a>を使用すれば、ブラウザ内で即座にSHA-256、SHA-1、SHA-512を計算できます。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">注意すべき警告サイン</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">チェックサムが一致しない場合は、ファイルを開かないでください。削除し、公式ソースから再度ダウンロードしてください。実行ファイル、不明な送信者からのPDF、ピアツーピアネットワークのファイルには特に注意してください。</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">なぜブラウザで行うのですか？</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">当サイトのツールは完全にあなたの端末上で動作します。ファイルはサーバーにアップロードされることはありません。これは機密性や秘密性の高いダウンロードを扱う際に重要です。</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — 無料のブラウザ内蔵ツール。ローカルで動作します。アカウント不要。匿名のアクセス数カウントのみ。 <a href="/ja/api">API</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "チェックサムとは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "チェックサムは、ファイルの内容から生成される一意の指紋です。1バイトでも変更されると、ハッシュは完全に変わります — これにより、ファイルの整合性を確認するのに最適です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "SHA-256を確認する方法",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ファイルと期待されるハッシュをツールに貼り付けてください。ツールはファイルのSHA-256ハッシュを計算し、提供されたハッシュと即座に比較します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "注意すべき警告サイン",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ハッシュが一致しない場合、ファイルが破損しているか改ざんされている可能性があります。検証なしに信頼できないソースからの実行ファイルを実行しないでください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "なぜブラウザで行うのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "私たちのツールは完全にクライアントサイドで実行されます — ファイルがデバイスから離れることはありません。これは、データを保存する可能性のあるオンラインハッシュチェッカーにアップロードするよりも安全です。"
+      }
+    }
+  ]
+}
+</script>
+<!--refresh-v2-->
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Presend API для разработчиков — Бесплатно, с упором на приватность</title>
+<meta name="description" content="Бесплатный API для инструментов конфиденциальности: хеширование файлов, очистка URL, геолокация по IP. Серверные эндпоинты, ключ API не требуется.">
+<meta property="og:title" content="Presend API для разработчиков">
+<meta property="og:description" content="Бесплатный API для разработчиков: SHA-хеширование, удаление трекинг-параметров из URL, геолокация по IP, плюс встраиваемые клиентские инструменты.">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<link rel="canonical" href="https://presend.pages.dev/ru/api">
+<link href="../style.min.css" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebAPI",
+  "name": "Presend API",
+  "description": "Free API for file privacy and utility tools",
+  "url": "https://presend.pages.dev/api",
+  "provider": {
+    "@type": "Organization",
+    "name": "Presend"
+  }
+}
+</script>
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/api" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/api" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/api" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/api" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/api" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/api" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/api" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/api" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/api" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class="brand" href="/ru/"><span class="brand-mark">●</span> Presend</a>
+</header>
+<main class="wrap">
+  <h1>Presend API для разработчиков</h1>
+  <p class="lede">Бесплатные серверные эндпоинты для распространённых задач, плюс встраиваемые клиентские инструменты. Ключ API не требуется. Регистрация не требуется.</p>
+
+  <h2>Серверные эндпоинты</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Работают на edge-сети Cloudflare и возвращают JSON. Только добросовестное использование — без официального SLA, интенсивный или автоматизированный трафик может быть ограничен без предупреждения.
+  </p>
+
+  <p id="python-user-agent" style="color:var(--color-muted); max-width:60ch;">
+    <strong>Пользователям Python:</strong> запросы с User-Agent по умолчанию из <code>urllib</code> (<code>Python-urllib/3.x</code>) Cloudflare отклоняет с кодом <code>HTTP 403</code> и телом <code>error code: 1010</code>. Укажите любой явный User-Agent. <code>requests</code>, curl и Node отправляют допустимый.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">import json, urllib.request
+req = urllib.request.Request("https://presend.pages.dev/api/uuid", headers={"User-Agent": "my-app/1.0"})
+print(json.load(urllib.request.urlopen(req)))</pre>
+
+  <h3 id="POST-api-hash">POST /api/hash</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Возвращает SHA-256, SHA-1 и SHA-512 для любого файла до 20 МБ.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.pdf \
+  https://presend.pages.dev/api/hash
+
+# {"size_bytes":17,"hashes":{"sha256":"...","sha1":"...","sha512":"..."}}</pre>
+
+  <h3 id="POST-api-file-type">POST /api/file-type</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Определяет настоящий тип файла по его двоичной сигнатуре и сообщает о несоответствии заявленному Content-Type — ловит замаскированные файлы (например, исполняемый файл, переименованный в фотографию), которые проходят через наивные фильтры загрузки.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @suspicious.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/file-type</pre>
+  <h3 id="POST-api-malware-check">POST /api/malware-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Вычисляет хеш загруженного файла (SHA-256) и проверяет его по MalwareBazaar (abuse.ch) — бесплатной базе известных образцов вредоносного ПО: хеш и проверка за один вызов.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @file.exe https://presend.pages.dev/api/malware-check</pre>
+
+  <h3 id="GET-api-url-clean">GET /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Удаляет из URL более 60 параметров отслеживания (utm_*, fbclid, gclid...).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-clean?url=https://example.com/?utm_source=x"
+
+# {"clean":"https://example.com/","removed":1,"valid":true}</pre>
+
+  <h3 id="POST-api-url-clean">POST /api/url-clean</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">То же в пакетном режиме — до 100 URL за запрос.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"urls":["https://a.com?fbclid=x","https://b.com?gclid=y"]}' \
+  https://presend.pages.dev/api/url-clean</pre>
+
+  <h3 id="GET-api-ip">GET /api/ip</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Returns the caller's IP with geolocation, currency, language and EU/VPN flags.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl https://presend.pages.dev/api/ip</pre>
+
+  <h3 id="GET-api-uuid">GET /api/uuid</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Генерирует случайные UUID (v4), до 100 за запрос.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/uuid?count=5"</pre>
+
+  <h3 id="GET-api-base64">GET /api/base64</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Кодирует или декодирует текст в Base64.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/base64?action=encode&text=hello"</pre>
+
+  <h3 id="GET-api-jwt-decode">GET /api/jwt-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Декодирует заголовок и полезную нагрузку JWT (без проверки подписи; для неё используйте jwt-verify).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/jwt-decode?token=eyJhbGci..."</pre>
+
+  <h3 id="POST-api-jwt-verify">POST /api/jwt-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Действительно проверяет криптографическую подпись JWT (HS256/384/512, RS/PS256/384/512, ES256/384/512) через встроенный в Workers Web Crypto API, а также утверждения exp/nbf. Передайте «secret» для HMAC или «jwk»/«jwks_url» для асимметричных алгоритмов.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"token":"...","secret":"..."}' https://presend.pages.dev/api/jwt-verify</pre>
+
+  <h3 id="GET-api-timestamp">GET /api/timestamp</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Текущее время или преобразование между Unix-временем и датой ISO.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/timestamp?unix=1700000000"</pre>
+
+  <h3 id="GET-api-color">GET /api/color</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Преобразует цвета между форматами hex, RGB и HSL.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/color?hex=ff5733"</pre>
+
+  <h3 id="GET-api-user-agent">GET /api/user-agent</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Разбирает строку User-Agent на браузер, ОС и тип устройства.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/user-agent"</pre>
+
+  <h3 id="GET-api-password">GET /api/password</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Генерирует криптографически стойкий пароль с оценкой энтропии.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password?length=20&symbols=1"</pre>
+
+  <h3 id="GET-api-email-validate">GET /api/email-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет синтаксис email и наличие у домена MX-записи. Почтовый ящик не опрашивается, поэтому существование адреса подтвердить нельзя; чтобы дополнительно выявлять одноразовые домены и ролевые адреса, используйте email-verify.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-validate?email=foo@example.com"</pre>
+
+  <h3 id="GET-api-favicon">GET /api/favicon</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Получает URL фавиконки любого домена.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/favicon?domain=github.com"</pre>
+
+  <h3 id="GET-api-csv-json">GET/POST /api/csv-json</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Преобразует между JSON и CSV. Вложенные объекты превращаются в строки, а не разворачиваются.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" \
+  -d '{"direction":"json-to-csv","data":"[{\"a\":1}]"}' \
+  https://presend.pages.dev/api/csv-json</pre>
+
+  <h3 id="GET-api-password-breach">GET /api/password-breach</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет, встречается ли пароль в известных утечках данных (Have I Been Pwned). В HIBP отправляются только первые 5 символов его хеша SHA-1 (k-анонимность), и Presend его не записывает. Но это GET-запрос, поэтому пароль передаётся в URL, где его могут сохранить браузеры, прокси или журналы серверов: для настоящих паролей используйте POST /api/password-check.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/password-breach?password=..."</pre>
+  <h3 id="POST-api-password-check">POST /api/password-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Объединяет оценку надёжности/энтропии с опциональной проверкой утечки за один вызов — пароль передаётся в теле POST-запроса, никогда в URL. Та же гарантия k-анонимности, что и у password-breach.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"password":"..."}' https://presend.pages.dev/api/password-check</pre>
+
+  <h3 id="GET-api-email-disposable">GET /api/email-disposable</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Определяет одноразовые почтовые сервисы по списку из 576+ известных доменов.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-disposable?email=foo@mailinator.com"</pre>
+  <h3 id="GET-api-email-verify">GET /api/email-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Объединяет проверку синтаксиса, поиск MX-записи, обнаружение одноразовых доменов и обнаружение общих аккаунтов (info@, admin@...) в одном вызове .</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-verify?email=foo@example.com"</pre>
+  <h3 id="GET-api-phone-verify">GET /api/phone-verify</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет и форматирует номер телефона (E.164, международный, национальный) через libphonenumber-js. Если страна не указана для номера без префикса «+», автоматически используется страна, определённая по IP-адресу вызывающего.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/phone-verify?number=%2B14155552671"</pre>
+
+  <h3 id="GET-api-email-security">GET /api/email-security</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет защиту почты домена от подделки: надёжность SPF, политику DMARC и поиск DKIM по распространённым селекторам (без гарантии полноты).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/email-security?domain=example.com"</pre>
+
+  <h3 id="GET-api-security-scan">GET /api/security-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Объединяет security-headers, url-reputation и subdomains в один отчёт с общей оценкой и вердиктом — один вызов вместо трёх.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-scan?url=https://example.com"</pre>
+  <h3 id="POST-api-qr-scan">POST /api/qr-scan</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Декодирует QR-код из загруженного изображения и, если он ведёт на URL, проверяет его по URLhaus на признаки вредоносного ПО и фишинга — декодирование и проверка репутации за один вызов. Фишинг через QR-коды («квишинг») — один из самых быстро растущих видов фишинга.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "file=@qrcode.png" https://presend.pages.dev/api/qr-scan</pre>
+  <h3 id="GET-api-security-headers">GET /api/security-headers</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет заголовки безопасности HTTP (CSP, HSTS, X-Frame-Options...) и выставляет буквенную оценку.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/security-headers?url=https://example.com"</pre>
+
+  <h3 id="GET-api-url-reputation">GET /api/url-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет URL по URLhaus — публичной базе вредоносных и фишинговых ссылок.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/url-reputation?url=https://example.com"</pre>
+
+  <h3 id="GET-api-subdomains">GET /api/subdomains</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Пассивный поиск поддоменов по журналам Certificate Transparency (crt.sh) — для аудита вашей собственной поверхности атаки. Примечание: зависит от crt.sh, у которого бывают сбои, не зависящие от нас.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/subdomains?domain=example.com"</pre>
+
+  <h3 id="GET-api-ai-crawler-check">GET /api/ai-crawler-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Загружает robots.txt и показывает, каким известным ИИ-краулерам (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot и др.) доступ разрешён или запрещён. Бесплатно, без регистрации.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ai-crawler-check?domain=example.com"</pre>
+
+  <h3 id="GET-api-ip-reputation">GET /api/ip-reputation</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет адрес IPv4 или IPv6 по курируемому списку сетевых блоков, которые, как известно, захвачены или контролируются спамерами и киберпреступными группами. Это один конкретный список, а не полноценная оценка репутации. Копия обновляется не чаще одного раза в день; ответ содержит дату списка, указание источника и флаг <code>stale</code>, если источник был недоступен так долго, что копии больше 48 часов. Для проверки каждого запроса в вашем собственном middleware обычно лучше загружать список локально.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/ip-reputation?ip=1.2.3.4"</pre>
+  <h3 id="GET-api-dns-lookup">GET /api/dns-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Записи A, AAAA, CNAME, MX, TXT и NS за один вызов через DNS-over-HTTPS-резолвер Cloudflare или один тип с <code>type=</code>.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/dns-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-whois-lookup">GET /api/whois-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Регистратор, даты создания и окончания регистрации, возраст домена и серверы имён через RDAP — основанного на HTTPS преемника классического WHOIS.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/whois-lookup?domain=example.com"</pre>
+  <h3 id="GET-api-redirect-trace">GET /api/redirect-trace</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проходит всю цепочку перенаправлений URL (до 15 шагов) и фиксирует код ответа и адрес каждого шага, а не только конечный URL.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/redirect-trace?url=http://github.com"</pre>
+
+  <h2>Безопасность цепочки поставок</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Проверки рисков зависимостей. typosquat-check и maintainer-change-check — эвристики: сигналы для разбора, а не вердикты.
+  </p>
+  <h3 id="GET-api-typosquat-check">GET /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Отмечает имена пакетов, очень похожие на имена из курируемого списка известных пакетов npm и PyPI (1 правка для имён из 4–7 символов, 2 — от 8; имена из 3 символов и короче нечётко не сравниваются). Имена PyPI нормализуются (PEP 503); проверенные легитимные «двойники» помечаются <code>known_legitimate</code>.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/typosquat-check?ecosystem=npm&amp;package=lodahs"</pre>
+  <h3 id="POST-api-typosquat-check">POST /api/typosquat-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Пакетный режим: до 100 имён в одном запросе, который считается одним запросом для лимита. Некорректная запись возвращает ошибку для этой записи, не срывая весь пакет.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodahs","expres","react"]}' https://presend.pages.dev/api/typosquat-check</pre>
+  <h3 id="GET-api-maintainer-change-check">GET /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;"><strong>Только npm.</strong> Отмечает случаи, когда ранее не встречавшийся издатель-человек перенимает пакет после 180+ дней бездействия, в течение последних 365 дней: схема, стоявшая за компрометацией event-stream (2018). Передача пакета издателю, который уже сопровождает другой пакет со 100 000+ загрузок в неделю, и переход на trusted publishing в npm сообщаются отдельно и не поднимают флаг. Взлом существующей учётной записи сопровождающего или вредоносный выпуск от исходного сопровождающего <strong>не</strong> обнаруживаются, так как личность издателя не меняется.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/maintainer-change-check?ecosystem=npm&amp;package=lodash"</pre>
+  <h3 id="POST-api-maintainer-change-check">POST /api/maintainer-change-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Пакетный режим: до 20 пакетов npm в одном запросе, который считается одним запросом для лимита. Отсутствующий пакет или сбой реестра сообщаются для каждой записи, не срывая весь пакет.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodash","express"]}' https://presend.pages.dev/api/maintainer-change-check</pre>
+  <h3 id="GET-api-vulnerability-check">GET /api/vulnerability-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет версию пакета по OSV.dev: npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, NuGet. Чтобы найти идентификатор CVE или GHSA напрямую, используйте cve-lookup.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vulnerability-check?ecosystem=npm&amp;package=lodash&amp;version=4.17.15"</pre>
+  <h3 id="GET-api-repo-health-check">GET /api/repo-health-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Звёзды, форки, открытые issues, лицензия, статус архивации и дни с последнего push для репозитория GitHub через GitHub REST API.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/repo-health-check?repo=lodash/lodash"</pre>
+  <h3 id="GET-api-supply-chain-check">GET /api/supply-chain-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Объединяет maintainer-change-check (только npm), vulnerability-check, typosquat-check и repo-health-check (репозиторий по возможности определяется из метаданных реестра) в один вызов с общим вердиктом.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/supply-chain-check?ecosystem=npm&amp;package=lodash"</pre>
+
+  <h2>Блокчейн</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Бесплатные инструменты для экосистем Cosmos и EVM. Без регистрации и API-ключа.
+  </p>
+  <h3 id="GET-api-address-risk">GET /api/address-risk</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет криптоадрес по всем спискам адресов цифровых валют из списка SDN (Specially Designated Nationals) OFAC. Адреса EVM (0x...) и Bitcoin (bc1..., 1..., 3...) покрыты полностью; адреса других сетей отмечаются, если они есть в списках. Для адресов Cosmos SDK (bech32), которых нет в списках, возвращается <code>sanctioned: null</code>, поскольку OFAC не публиковал записей для сетей Cosmos SDK.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/address-risk?address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"</pre>
+  <h3 id="GET-api-tx-decode">GET /api/tx-decode</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Декодирует сырую подписанную транзакцию Cosmos SDK (байты protobuf TxRaw в base64) в читаемый JSON -- сообщения, комиссия, газ, данные подписанта, подписи. Без внешних зависимостей; декодирует распространённые типы сообщений bank/staking/gov/authz, включая вложенный MsgExec.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/tx-decode?tx=CpwBCpEBChwvY29zbW9zLmJhbmsudjFiZXRhMS5Nc2dTZW5kEnEK..."</pre>
+  <h3 id="GET-api-rpc-check">GET /api/rpc-check</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет публичную RPC-точку CometBFT сети Cosmos SDK: статус узла, состояние, связность с пирами и не открыты ли небезопасные административные методы (dial_seeds, dial_peers, unsafe_flush_mempool). Только чтение -- сам никогда не вызывает небезопасных методов.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/rpc-check?url=https://cosmos-rpc.publicnode.com"</pre>
+
+  <h2>Утилиты</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Небольшие узкоспециализированные инструменты, по возможности без внешних зависимостей.
+  </p>
+  <h3 id="GET-api-iban-validate">GET /api/iban-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет IBAN по контрольной сумме ISO 7064 mod-97 с проверкой длины для каждой страны. Чистый алгоритм -- без внешних источников данных.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/iban-validate?iban=DE89370400440532013000"</pre>
+  <h3 id="GET-api-vat-validate">GET /api/vat-validate</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Проверяет номер плательщика НДС в ЕС в реальном времени через официальный сервис VIES Европейской комиссии -- для действительного номера возвращает зарегистрированные название и адрес компании.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
+  <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Извлекает метаданные Open Graph, Twitter Card и базовые метаданные &lt;head&gt; из URL -- те же данные, по которым мессенджеры строят карточку предпросмотра ссылки.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Прямой поиск CVE/GHSA по идентификатору через OSV.dev. Дополняет vulnerability-check (которому нужны пакет, экосистема и версия), когда у вас уже есть идентификатор из отчёта сканера.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
+
+  <h2>Цепочки workflow</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Эти два эндпоинта объединяют несколько операций на стороне сервера в одном вызове . Обработка не сохраняет состояние: ничего не записывается на диск, ничего не логируется, файл удаляется сразу после отправки ответа.
+  </p>
+  <h3 id="POST-api-merge-and-compress-pdf">POST /api/merge-and-compress-pdf</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Объединяет 2 или более PDF-файлов в один документ, затем сжимает результат и удаляет метаданные (название, автор, производитель) — за один запрос вместо двух.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.pdf" -F "files=@b.pdf" https://presend.pages.dev/api/merge-and-compress-pdf -o merged.pdf</pre>
+  <h3 id="POST-api-clean-image">POST /api/clean-image</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Удаляет EXIF/GPS из JPEG и текстовые метаданные из PNG путём прямого бинарного разбора — пиксели никогда не перекодируются, поэтому нет потери качества (в отличие от подходов на основе canvas, которые всегда пересжимают).</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST --data-binary @photo.jpg -H "Content-Type: image/jpeg" https://presend.pages.dev/api/clean-image -o clean.jpg</pre>
+
+  <h3 id="POST-api-image-similarity">POST /api/image-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Перцептивный хеш (dHash) для 1 или 2 изображений JPEG/PNG. В отличие от криптографического хеша, он выдерживает повторное сжатие и мелкие правки — отправьте 2 изображения, чтобы сразу сравнить их с оценкой сходства и вердиктом.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -F "files=@a.jpg" -F "files=@b.png" https://presend.pages.dev/api/image-similarity</pre>
+  <h3 id="POST-api-text-similarity">POST /api/text-similarity</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">SimHash для 1 или 2 текстов — текстовый аналог image-similarity. В отличие от криптографического хеша, находит перефразированные или слегка изменённые почти-дубликаты. Несвязанные тексты обычно случайно дают около 50 %, а не 0 %.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"texts":["text a","text b"]}' https://presend.pages.dev/api/text-similarity</pre>
+
+  <h2>Клиентские инструменты (встраивание)</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Инструменты обработки файлов (удаление EXIF, сжатие PDF и т.д.) полностью работают в браузере — ничего не загружается, поэтому для них нет серверного эндпоинта. Встраивайте напрямую:
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
+&lt;iframe 
+  src="https://presend.pages.dev/tools/exif-remover?embed=1" 
+  width="100%" 
+  height="600" 
+  frameborder="0"
+&gt;&lt;/iframe&gt;</pre>
+
+  <h2>Доступные инструменты</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="/ru/tools/file-hash-checker"><div><h3>File Hash Checker</h3><p>SHA-256 / SHA-1 / SHA-512 — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/tools/url-cleaner"><div><h3>URL Cleaner</h3><p>Удаление параметров отслеживания — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/tools/ip-geolocation"><div><h3>IP Geolocation</h3><p>IP, местоположение, валюта — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>UUID Generator</h3><p>Случайные UUID — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Base64 Encoder/Decoder</h3><p>Кодирование/декодирование текста — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>JWT Decoder</h3><p>Декодирование JWT-токенов — доступен серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Timestamp Converter</h3><p>Преобразование дат Unix/ISO — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Color Converter</h3><p>Hex/RGB/HSL — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>User-Agent Parser</h3><p>Определение браузера/ОС — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Password Generator API</h3><p>Надёжные пароли с оценкой энтропии — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Email Validator</h3><p>Синтаксис + MX-запись — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Favicon Fetcher</h3><p>Фавиконка любого сайта — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>CSV/JSON Converter</h3><p>В обе стороны — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Password Breach Check</h3><p>На основе HIBP — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Disposable Email Detector</h3><p>576+ известных доменов — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Security Headers Analyzer</h3><p>Оценка CSP, HSTS — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>URL Reputation Check</h3><p>Поиск вредоносных и фишинговых ссылок — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Attack Surface Discovery</h3><p>Пассивный поиск поддоменов — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Address Risk Check</h3><p>Проверка санкций OFAC (EVM, Bitcoin) — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>Cosmos Tx Decoder</h3><p>Декодирование сырых транзакций Cosmos SDK — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/api"><div><h3>RPC Check</h3><p>Аудит RPC-точки CometBFT — серверный API</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/tools/exif-remover"><div><h3>EXIF Remover</h3><p>Удаление GPS и метаданных из фото (в браузере)</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/tools/pdf-compress"><div><h3>PDF Compress</h3><p>Уменьшение размера PDF (в браузере)</p></div><span class="go">Документация →</span></a>
+    <a class="tool-card" href="/ru/tools/password-generator"><div><h3>Password Generator</h3><p>Криптографически стойкие пароли (в браузере)</p></div><span class="go">Документация →</span></a>
+  </div>
+
+  <h3 id="GET-api-api-stats">GET /api/api-stats</h3>
+  <p style="color:var(--color-muted); max-width:60ch;">Публичные счётчики использования по эндпоинтам, агрегированные по дням. Без cookies, IP не сохраняются.</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/api-stats"</pre>
+
+  <h2>npm-пакет</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    JS-клиент без зависимостей, оборачивающий все эндпоинты выше.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">npm install presend-api</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">const presend = require('presend-api');
+const { uuids } = await presend.generateUuid(3);</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    <a href="https://www.npmjs.com/package/presend-api">Смотреть на npm</a>
+  </p>
+
+  <h2>Встраиваемый виджет</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Добавьте рабочий инструмент прямо на свой сайт — без iframe, работает напрямую через наш API. Поддерживает: url-cleaner, uuid, color.
+  </p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">&lt;div data-presend-tool="url-cleaner"&gt;&lt;/div&gt;
+&lt;script src="https://presend.pages.dev/widget.js" async&gt;&lt;/script&gt;</pre>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    Добавьте <code>data-badge="false"</code> чтобы скрыть ссылку «Powered by Presend».
+  </p>
+
+  <h2>Спецификация OpenAPI</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Машиночитаемая спецификация для всех серверных эндпоинтов: <a href="/openapi.json">openapi.json</a>
+  </p>
+
+  <h2>RapidAPI</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Также доступно на RapidAPI — отдельными карточками по направлениям, если вам нужна только часть каталога:
+  </p>
+  <ul style="color:var(--color-muted); max-width:60ch;">
+    <li><a href="https://rapidapi.com/presendapp/api/presend-api">Presend API</a> -- полный каталог (Cybersecurity)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-blockchain-crypto-compliance-api">Presend Blockchain & Crypto Compliance API</a> -- проверки OFAC, декодирование транзакций Cosmos SDK, аудит RPC (Finance)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-email-phone-verification-api">Presend Email & Phone Verification API</a> -- проверка email-адресов и телефонов (Email)</li>
+    <li><a href="https://rapidapi.com/presendapp/api/presend-developer-tools-api">Presend Developer Tools API</a> -- UUID, Base64, временные метки, IP-геолокация, инструменты для PDF и изображений (Tools)</li>
+  </ul>
+
+  <h2>Статус</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Доступность в реальном времени: независимый мониторинг из 4 регионов (ЕС, США, Азия, Австралия), проверка каждые 3 минуты.
+  </p>
+  <p>
+    <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">presend.betteruptime.com</a>
+  </p>
+
+  <h2>Коллекция Postman</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Готовая к импорту коллекция со всеми 48 эндпоинтами, сгенерированная из спецификации OpenAPI выше.
+  </p>
+  <p>
+    <a href="https://god.gw.postman.com/run-collection/57808683-783f3f64-0f9f-433e-95f6-518520d14ccf?action=collection%2Ffork&collection-url=entityId%3D57808683-783f3f64-0f9f-433e-95f6-518520d14ccf%26entityType%3Dcollection%26workspaceId%3D8ffb507b-4140-4e42-8a44-fd6926d0b25b" target="_blank" rel="noopener">
+      <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="height:32px;">
+    </a>
+  </p>
+  <p style="color:var(--color-muted); max-width:60ch; font-size:0.9rem;">
+    Или скачайте исходный файл: <a href="/postman_collection.json">postman_collection.json</a>.
+  </p>
+
+  <h2>Открытый исходный код</h2>
+  <p style="color:var(--color-muted); max-width:60ch;">
+    Все инструменты имеют открытый исходный код. Внесите вклад на GitHub или сделайте форк для своих проектов.
+    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+  </p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — бесплатные браузерные инструменты. <a href="/ru/about">О</a> · <a href="/ru/privacy">Конфиденциальность</a> · <a href="/ru/api">API</a></p>
+</footer>
+</body>
+</html>

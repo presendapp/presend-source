@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
+<link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
+<link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Removedor de EXIF — Presend" property="og:title"/>
+<meta content="Remova dados EXIF ocultos (localização GPS, modelo da câmera, carimbos de data/hora) de uma foto, totalmente no seu navegador." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://presend.pages.dev/pt/tools/exif-remover" property="og:url"/>
+<meta content="https://presend.pages.dev/api/og?tool=EXIF+Remover" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<title>Removedor EXIF — Ferramenta online gratuita | Presend</title>
+<meta content="index, follow" name="robots"/>
+<meta content="Remova dados EXIF ocultos (localização GPS, modelo da câmera, carimbos de data/hora) de uma foto, totalmente no seu navegador. Nada é enviado." name="description"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="../../style.min.css" rel="preload" as="style"/>
+<link href="../../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/pt/tools/exif-remover" />
+
+
+
+
+
+
+<meta content="summary_large_image" name="twitter:card"/><meta content="EXIF Remover — Presend" name="twitter:title" />
+<meta content="Remove hidden EXIF data (GPS location, camera model, timestamps) from a photo, entirely in your browser." name="twitter:description" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EXIF Remover",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Remove EXIF metadata locally in your browser. No upload, no server, 100% private.",
+  "url": "https://presend.pages.dev/pt/tools/exif-remover",
+  "mainEntityOfPage": "https://presend.pages.dev/pt/tools/exif-remover"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://presend.pages.dev/"},
+    {"@type":"ListItem","position":2,"name":"Tools","item":"https://presend.pages.dev/tools/"},
+    {"@type":"ListItem","position":3,"name":"EXIF Remover","item":"https://presend.pages.dev/pt/tools/exif-remover"}
+  ]
+}</script>
+<!--seo-breadcrumb--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EXIF data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EXIF (Exchangeable Image File Format) is metadata embedded in digital photos. It can include GPS coordinates, camera model, lens information, exposure settings, and the exact date and time the photo was taken."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can someone find my location from a photo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If your camera or phone has GPS enabled, the exact latitude and longitude where the photo was taken is often stored in the EXIF data. Social platforms usually strip this, but email and direct file sharing do not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool upload my photo to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your photo is processed entirely inside your browser using JavaScript. It is never sent to any server, cloud, or third party."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPG, PNG and WebP. The tool outputs a cleaned JPG (or PNG if the input was PNG) with all metadata removed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will removing EXIF reduce image quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The image is redrawn onto a canvas at its original resolution. Only the metadata is removed; the pixel data stays identical."
+      }
+    }
+  ]
+}</script>
+<!--seo-faq--><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Ferramentas gratuitas baseadas no navegador para limpar, comprimir, converter e verificar seus arquivos antes de compartilhá-los. Nada é enviado para servidores."
+}
+</script><!--seo-org--><link href="/manifest.json" rel="manifest"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Remove EXIF Data from a Photo",
+  "description": "Remove hidden GPS location, camera model and timestamps from any JPG or PNG photo — entirely in your browser, no upload needed.",
+  "totalTime": "PT30S",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Upload your photo", "text": "Drag and drop your JPG or PNG photo into the drop zone. Your file is processed locally and never uploaded to any server.", "url": "https://presend.pages.dev/pt/tools/exif-remover#step1" },
+    { "@type": "HowToStep", "position": 2, "name": "Choose output format", "text": "Select whether you want a JPG or PNG output. The tool will strip all embedded metadata automatically.", "url": "https://presend.pages.dev/pt/tools/exif-remover#step2" },
+    { "@type": "HowToStep", "position": 3, "name": "Download the clean photo", "text": "Click Download to save your photo with all EXIF data removed. No GPS coordinates, no camera info, no timestamps remain.", "url": "https://presend.pages.dev/pt/tools/exif-remover#step3" }
+  ]
+}</script>
+<!--seo-howto--><meta property="og:locale" content="pt_BR" />
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/tools/exif-remover" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/tools/exif-remover" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/tools/exif-remover" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/tools/exif-remover" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/tools/exif-remover" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/tools/exif-remover" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/tools/exif-remover" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/tools/exif-remover" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/tools/exif-remover" />
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+<a class="brand" href="/pt/"><span class="brand-mark">●</span>Presend</a>
+<a class="nav-link" href="/pt/">Todas as ferramentas</a> <a class="nav-link" href="/pt/api">API</a>
+</header>
+<main class="wrap">
+<a class="tool-back" href="/pt/">← Voltar</a>
+<h1>Removedor EXIF</h1>
+<p class="lede">As fotos contêm dados ocultos – coordenadas GPS, modelo da câmera, hora podem exatas em que foram tiradas. Isso remove tudo antes de você compartilhar uma foto. A imagem é processada apenas no seu dispositivo.</p>
+<span class="trust-badge">Seus arquivos nunca são enviados para nossos servidores</span>
+<div style="margin-top: 2rem;">
+<div aria-label="Choose a photo or drop it here" class="dropzone" id="dropzone" role="button" tabindex="0">
+<p class="primary">Deixe uma foto aqui ou clique para escolher uma</p>
+<p class="secondary">JPG, PNG ou WebP. Nada sai do seu dispositivo.</p>
+<input accept="image/jpeg,image/png,image/webp" id="fileInput" type="file"/>
+</div>
+<p class="error-msg" id="errorMsg"></p>
+<div class="result" id="result">
+<div class="result-row">
+<div>
+<div class="filename" id="resultName"></div>
+<div class="meta" id="resultMeta"></div>
+</div>
+<a class="btn" download="" id="downloadLink">Baixar foto limpa</a>
+<button class="btn ghost" id="shareBtn" style="margin-left:0.5rem;" type="button">🔗 Copiar link de compartilhamento</button>
+</div>
+<button class="btn ghost" id="resetBtn" type="button">Limpe outra foto</button>
+</div>
+</div>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">Ferramentas relacionadas</h2>
+<div class="tool-grid" style="margin-top:1rem;">
+<a class="tool-card" href="/pt/tools/image-compressor">
+<div><h3>Compressor de imagem</h3><p>Reduza o tamanho do arquivo de uma foto antes de enviá-la por e-mail ou carregá-la.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/pt/tools/video-metadata-remover">
+<div><h3>Removedor de metadados de vídeo</h3><p>Remova a localização GPS oculta e os dados do dispositivo dos vídeos.</p></div>
+<span class="go">Abrir →</span>
+</a>
+<a class="tool-card" href="/pt/tools/heic-converter">
+<div><h3>Conversor HEIC para JPG</h3><p>Converta fotos HEIC do iPhone em JPG.</p></div>
+<span class="go">Abrir →</span>
+</a>
+</div>
+</section>
+<section class="wrap" style="margin-top:3rem;">
+<h2 id="speakable" style="font-family:var(--font-display);font-size:1.1rem;">Saber mais</h2>
+<p itemprop="speakable" style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">
+<a href="/pt/tools/landings/strip-metadata-pdf">Leia nosso guia: Como remover metadados antes de compartilhar fotos e documentos</a>
+</p>
+<!--seo-related--><div data-tool="exif-remover" id="feedback-widget"></div>
+</main>
+<section class="wrap" style="margin-top:3rem;">
+<h2 style="font-family:var(--font-display);font-size:1.1rem;">O que são dados EXIF e por que removê-los?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;margin-top:0.75rem;">Cada foto que você tira com um smartphone ou câmera digital incorpora metadados ocultos chamados EXIF (Exchangeable Image File Format). Essa camada de dados invisível armazena suas coordenadas GPS exatas, o modelo da câmera e a lente usada, os dados e a hora em que a foto foi tirada e até o mesmo histórico do software de edição. Quando você compartilha uma foto nas redes sociais, envia-a por e-mail para um cliente ou carrega-a em um site, esses metadados viajam com a imagem – muitas vezes sem o seu conhecimento. A remoção de dados EXIF é essencial para a privacidade: uma única foto postada no Twitter ou Instagram pode revelar seu endereço residencial, local de trabalho ou rotinas diárias para qualquer pessoa que saiba ler metadados. Jornalistas, ativistas, agentes imobiliários e indivíduos preocupados com a privacidade usam removedores EXIF para higienizar imagens antes da publicação. Ao contrário das ferramentas online que enviam suas fotos para um servidor remoto, nosso Removedor EXIF processa tudo localmente em seu navegador. Seus arquivos nunca saem do seu dispositivo, garantindo total privacidade. Se você precisa remover a localização GPS de uma foto do iPhone, retirar informações da câmera antes de uma sessão profissional ou simplesmente limpar metadados antes de compartilhar fotos de família, esta ferramenta faz isso instantaneamente – sem conta, sem upload.</p>
+</section>
+<footer class="site-footer wrap">
+<p>Presend — ferramentas gratuitas baseadas no navegador.<a href="/pt/about">Sobre</a> · <a href="/pt/privacy">Privacidade</a> · <a href="/pt/api">API</a></p>
+</footer>
+<script>
+(function () {
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const resultName = document.getElementById('resultName');
+  const resultMeta = document.getElementById('resultMeta');
+  const downloadLink = document.getElementById('downloadLink');
+  const resetBtn = document.getElementById('resetBtn');
+
+  const MAX_SIZE = 25 * 1024 * 1024; // 25MB, generous for a photo
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.add('visible');
+  }
+  function clearError() {
+    errorMsg.textContent = '';
+    errorMsg.classList.remove('visible');
+  }
+
+  function humanSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function handleFile(file) {
+    clearError();
+    result.classList.remove('visible');
+
+    if (!file) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      showError('Please choose a JPG, PNG or WebP image.');
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      showError('This file is larger than 25MB. Try a smaller photo.');
+      return;
+    }
+
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+
+    img.onload = function () {
+      // Redrawing the image onto a canvas and re-exporting it strips ALL
+      // metadata (EXIF, GPS, XMP, thumbnails) because the canvas only ever
+      // holds raw pixel data — there is no metadata to carry over.
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      const outputType = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+      const quality = outputType === 'image/jpeg' ? 0.92 : undefined;
+
+      canvas.toBlob(function (blob) {
+        URL.revokeObjectURL(objectUrl);
+        if (!blob) {
+          showError('Something went wrong reading this image. Try a different file.');
+          return;
+        }
+        const cleanUrl = URL.createObjectURL(blob);
+        const base = file.name.replace(/\.[^.]+$/, '');
+        const ext = outputType === 'image/png' ? 'png' : 'jpg';
+        const outName = base + '-clean.' + ext;
+
+        downloadLink.href = cleanUrl;
+        downloadLink.download = outName;
+        resultName.textContent = outName;
+        resultMeta.textContent = humanSize(blob.size) + ' — metadata removed';
+        result.classList.add('visible');
+
+        // Track successful cleaning (privacy-first, no IP, no cookies)
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tool: 'exif-remover' })
+        }).catch(() => {});
+      }, outputType, quality);
+    };
+
+    img.onerror = function () {
+      URL.revokeObjectURL(objectUrl);
+      showError('This file could not be read as an image.');
+    };
+
+    img.src = objectUrl;
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+  });
+  fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
+
+  ['dragenter', 'dragover'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); })
+  );
+  ['dragleave', 'drop'].forEach(evt =>
+    dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); })
+  );
+  dropzone.addEventListener('drop', (e) => {
+    const file = e.dataTransfer.files[0];
+    handleFile(file);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    result.classList.remove('visible');
+    clearError();
+  });
+})();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "EXIF Remover",
+  "url": "https://presend.pages.dev/pt/tools/exif-remover",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Remove hidden EXIF metadata (GPS, camera model, timestamps) from a photo entirely client-side."
+}
+</script>
+<script async="" defer="" src="/js/feedback.js?v=2"></script><script src="/sw-register.js"></script>
+<script>
+document.getElementById('shareBtn').addEventListener('click', async function() {
+  const btn = this;
+  btn.textContent = 'Creating...';
+  try {
+    const res = await fetch('/api/share', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ tool: 'exif-remover' })
+    });
+    const data = await res.json();
+    if (data.success) {
+      await navigator.clipboard.writeText(data.shortUrl);
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => btn.textContent = '🔗 Copy share link', 3000);
+    } else {
+      btn.textContent = '❌ Error';
+    }
+  } catch (e) {
+    btn.textContent = '❌ Error';
+  }
+});
+</script>
+<!--refresh-v2-->
+</body>
+</html>

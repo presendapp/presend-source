@@ -1,0 +1,13 @@
+.color-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+.color-field { flex: 1; min-width: 200px; }
+.color-field label { display: block; font-weight: 500; margin-bottom: 0.4rem; }
+.color-input-wrap { display: flex; align-items: center; gap: 0.5rem; }
+.color-input-wrap input[type="color"] { width: 48px; height: 40px; border: none; padding: 0; cursor: pointer; background: none; }
+.color-input-wrap input[type="text"] { flex: 1; padding: 0.6rem; border: 1px solid var(--color-line); border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; }
+.preview-box { margin-top: 2rem; padding: 2rem; border-radius: var(--radius); text-align: center; font-size: 1.2rem; font-weight: 500; border: 1px solid var(--color-line); }
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.score-card { padding: 1rem; border-radius: var(--radius); border: 1px solid var(--color-line); text-align: center; }
+.score-card.pass { background: #d4edda; border-color: #c3e6cb; }
+.score-card.fail { background: #f8d7da; border-color: #f5c6cb; }
+.score-value { font-size: 1.6rem; font-weight: 600; font-family: var(--font-display); }
+.score-label { font-size: 0.8rem; color: var(--color-muted); margin-top: 0.3rem; }

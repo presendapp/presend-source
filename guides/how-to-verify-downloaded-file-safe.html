@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="How to Verify a Downloaded File Is Safe — Presend">
+<meta property="og:description" content="Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>How to Verify a Downloaded File Is Safe — Presend</title>
+<meta name="robots" content="index, follow">
+  <meta name="description" content="Learn how to check a file's integrity with SHA-256 checksums. Verify downloads are safe and untampered using our free browser-based tool.'s SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="../style.min.css" rel="preload" as="style"/>
+<link href="../style.min.css" rel="stylesheet" fetchpriority="high"/>
+<link rel="canonical" href="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe" />
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="How to Verify a Downloaded File Is Safe — Presend">
+<meta name="twitter:description" content="Learn how to check a file">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to Verify a Downloaded File Is Safe",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe",
+  "datePublished": "2026-08-06",
+  "dateModified": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "Presend",
+    "url": "https://presend.pages.dev/"
+  }
+}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Presend",
+  "url": "https://presend.pages.dev/",
+  "logo": "https://presend.pages.dev/og-image.png",
+  "description": "Free browser-based tools to clean, compress, convert and check your files before you share them. Nothing is ever uploaded."
+}
+</script>
+<!--seo-org-->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Verify a Downloaded File Is Safe",
+  "description": "Learn how to check a file's SHA-256 checksum to confirm it hasn't been tampered with, corrupted, or replaced by malware.",
+  "totalTime": "PT5M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Understand what a checksum is",
+      "text": "A checksum is a unique fingerprint of a file's contents. If even one byte changes, the checksum changes completely.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Find the expected hash",
+      "text": "The software publisher usually lists the expected SHA-256 hash on their download page.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Calculate the hash locally",
+      "text": "Use the File Hash Checker to compute SHA-256, SHA-1 and SHA-512 entirely in your browser.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step3"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Compare and decide",
+      "text": "If the calculated hash matches the expected hash exactly, the file is safe. If not, delete it and re-download from the official source.",
+      "url": "https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe#step4"
+    }
+  ]
+}</script>
+<!--seo-howto-->
+<link rel="manifest" href="/manifest.json">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="es" href="https://presend.pages.dev/es/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="pt" href="https://presend.pages.dev/pt/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ja" href="https://presend.pages.dev/ja/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/guides/how-to-verify-downloaded-file-safe" />
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://presend.pages.dev/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="tool-page">
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap">
+  <a class='tool-back' href='/'>← Back</a>
+  <article>
+    <h1>How to Verify a Downloaded File Is Safe</h1>
+    <p class="lede">When you download software, a document, or any file from the internet, how do you know it's the real thing? One of the most reliable ways is to verify its cryptographic checksum.</p>
+    <h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">What is a checksum?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">A checksum is a unique string of characters generated from a file's contents. If even a single byte changes — through corruption or malicious tampering — the checksum changes completely. SHA-256 is the industry standard for this verification.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">How to check SHA-256</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">The publisher of the file usually provides the expected SHA-256 hash. You calculate the hash of the file you downloaded and compare the two. If they match exactly, the file is intact. Use our <a href='/tools/file-hash-checker'>File Hash Checker</a> to calculate SHA-256, SHA-1 and SHA-512 instantly in your browser.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Red flags to watch for</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">If the checksum doesn't match, do not open the file. Delete it and download again from the official source. Be especially cautious with executables, PDFs from unknown senders, and files from peer-to-peer networks.</p>
+<h2 style="font-family:var(--font-display);font-size:1.1rem;margin-top:2.5rem;">Why do this in the browser?</h2>
+<p style="color:var(--color-muted);max-width:60ch;line-height:1.7;">Our tool runs entirely on your device. Your file is never uploaded to a server, which is critical when you're dealing with sensitive or confidential downloads.</p>
+
+  </article>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. Runs locally. No account. Anonymous visit counts only. · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a file hash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A file hash is a unique fingerprint generated from a file's contents. If even one byte changes, the hash changes completely — making it perfect for verifying file integrity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is SHA-256?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SHA-256 is a cryptographic hash function that produces a 64-character string. It's the industry standard for verifying file integrity because it's extremely secure and virtually impossible to fake."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I verify every download?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For critical software, updates, or files from unofficial sources — yes. Verifying the hash ensures the file hasn't been tampered with or corrupted during download."
+      }
+    }
+  ]
+}
+</script>
+</body>
+</html>
