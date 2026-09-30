@@ -18,16 +18,47 @@ print(' ', len(tools))
 "
 echo ""
 echo "=== Conversations suivies (scripts/watch.txt) ==="
-while read -r ref base note; do
-  [[ -z "$ref" || "$ref" == \#* ]] && continue
-  repo="${ref%#*}"; num="${ref#*#}"
-  info=$(gh api "repos/$repo/issues/$num" --jq '"\(.comments) \(.state)"' 2>/dev/null) || { echo "  ERREUR   $ref"; continue; }
-  count=${info%% *}; state=${info#* }
-  last="-"
-  [ "$count" -gt 0 ] && last=$(gh api "repos/$repo/issues/$num/comments?per_page=100&page=$(( (count + 99) / 100 ))" --jq '.[-1].user.login')
-  flag="        "; [ "$count" -gt "$base" ] && flag="NOUVEAU "
-  printf "  %s%-7s %3s/%-3s dernier: %-22s %s\n           %s\n" "$flag" "$state" "$count" "$base" "$last" "$ref" "$note"
-done < scripts/watch.txt
+# Compteur = commentaires d'issue (meme sens que dans watch.txt). NOUVEAU aussi si revue, commentaire de ligne,
+# fusion ou fermeture posterieurs au dernier commit de watch.txt (= fin de la session precedente). Lecon 34.
+python3 - <<'PYEOF'
+import json, os, subprocess
+from datetime import datetime
+def api(path):
+    r = subprocess.run(["gh", "api", path], capture_output=True, text=True)
+    return json.loads(r.stdout) if r.returncode == 0 else None
+def dt(x): return datetime.fromisoformat(x.replace("Z", "+00:00"))
+w = os.path.realpath("scripts/watch.txt"); root = os.path.dirname(os.path.dirname(w))
+since = os.environ.get("SESSION_CHECK_SINCE") or subprocess.run(["git", "-C", root, "log", "-1", "--format=%cI", "--", "scripts/watch.txt"], capture_output=True, text=True).stdout.strip()
+print(f"  (evenement recent = posterieur au dernier commit de watch.txt : {since or 'inconnu'})")
+for line in open("scripts/watch.txt", encoding="utf-8"):
+    parts = line.rstrip("\n").split(" ", 2)
+    if not parts[0] or parts[0].startswith("#"): continue
+    ref = parts[0]; base = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+    note = parts[2] if len(parts) > 2 else ""
+    repo, num = ref.rsplit("#", 1)
+    it = api(f"repos/{repo}/issues/{num}")
+    if it is None:
+        print(f"  ERREUR   {ref}"); continue
+    count, state = it["comments"], it["state"]
+    com = api(f"repos/{repo}/issues/{num}/comments?per_page=100") or []
+    last = com[-1]["user"]["login"] if com else "-"
+    times = [c["created_at"] for c in com if c["user"]["login"] != "presendapp"]
+    extra = ""
+    if it.get("pull_request"):
+        pr = api(f"repos/{repo}/pulls/{num}") or {}
+        if pr.get("merged_at"):
+            state = "merged"; times.append(pr["merged_at"])
+        revs = api(f"repos/{repo}/pulls/{num}/reviews?per_page=100") or []
+        lines = api(f"repos/{repo}/pulls/{num}/comments?per_page=100") or []
+        times += [r["submitted_at"] for r in revs if r.get("submitted_at") and r["user"]["login"] != "presendapp"]
+        times += [c["created_at"] for c in lines if c["user"]["login"] != "presendapp"]
+        if revs: extra = f" | revue: {revs[-1]['user']['login']}={revs[-1]['state']}"
+        extra += f" | revues {len(revs)}, lignes {len(lines)}"
+    if it.get("closed_at") and state == "closed": times.append(it["closed_at"])
+    recent = bool(since) and any(dt(x) > dt(since) for x in times)
+    flag = "NOUVEAU " if (count > base or recent) else "        "
+    print(f"  {flag}{state:<7} {count:>3}/{base:<3} dernier: {last:<22} {ref}{extra}\n           {note}")
+PYEOF
 echo ""
 echo "=== Cibles de demarchage GitHub (issues + PR de presendapp) ==="
 data=$(gh search issues --author=presendapp --include-prs --json repository,number,state,commentsCount,updatedAt,isPullRequest --limit 300) || { echo "  ERREUR: recherche GitHub"; exit 1; }
