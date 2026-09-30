@@ -230,7 +230,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Extrait les métadonnées Open Graph, Twitter Card et &lt;head&gt; de base d'une URL : les données utilisées pour afficher l'aperçu d'un lien dans une messagerie.</p>
-  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Recherche directe d'une CVE ou d'un GHSA par identifiant via OSV.dev. Complète vulnerability-check (qui demande paquet, écosystème et version) lorsque vous disposez déjà d'un identifiant tiré d'un rapport de scanner.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
@@ -357,7 +357,7 @@ const { uuids } = await presend.generateUuid(3);</pre>
   <h2>Open Source</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
     Tous les outils sont open source. Contribuez sur GitHub ou forkez pour vos propres projets.
-    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+    <a href="https://github.com/presendapp/presend-source">github.com/presendapp/presend-source</a>
   </p>
 </main>
 <footer class="site-footer wrap">

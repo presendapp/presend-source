@@ -9,7 +9,7 @@ https://presend.pages.dev is always the one in active support.
 Please report security issues privately using GitHub's private
 vulnerability reporting, rather than a public issue:
 
-https://github.com/presendapp/presend/security/advisories/new
+https://github.com/presendapp/presend-source/security/advisories/new
 
 We'll acknowledge reports within a few days and keep you updated as
 we investigate and fix the issue. Please include:

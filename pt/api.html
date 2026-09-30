@@ -236,7 +236,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Extrai metadados Open Graph, Twitter Card e básicos do &lt;head&gt; de uma URL -- os mesmos dados usados por apps de chat para exibir a prévia de um link.</p>
-  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Consulta direta de CVE/GHSA por identificador via OSV.dev. Complementa o vulnerability-check (que exige pacote, ecossistema e versão) quando você já tem um identificador de um relatório de scanner.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
@@ -364,7 +364,7 @@ const { uuids } = await presend.generateUuid(3);</pre>
   <h2>Código aberto</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
     Todas as ferramentas são de código aberto. Contribua no GitHub ou faça um fork para seus próprios projetos.
-    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+    <a href="https://github.com/presendapp/presend-source">github.com/presendapp/presend-source</a>
   </p>
 </main>
 <footer class="site-footer wrap">

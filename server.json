@@ -5,7 +5,7 @@
   "description": "Free MCP server of security & dev API tools -- supply-chain, CVE, DNS, WHOIS, OFAC, Cosmos SDK.",
   "version": "3.1.0",
   "repository": {
-    "url": "https://github.com/presendapp/presend",
+    "url": "https://github.com/presendapp/presend-source",
     "source": "github"
   },
   "remotes": [

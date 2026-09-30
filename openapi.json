@@ -10,7 +10,7 @@
     },
     "license": {
       "name": "MIT",
-      "url": "https://github.com/presendapp/presend/blob/main/LICENSE"
+      "url": "https://github.com/presendapp/presend-source/blob/main/LICENSE"
     }
   },
   "servers": [
@@ -263,7 +263,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "example": "https://github.com/presendapp/presend"
+              "example": "https://github.com/presendapp/presend-source"
             },
             "description": "URL to extract metadata from."
           }
@@ -285,23 +285,23 @@
                   }
                 },
                 "example": {
-                  "url": "https://github.com/presendapp/presend",
-                  "title": "GitHub - presendapp/presend",
-                  "description": "Free privacy-first browser tools + a security API",
+                  "url": "https://github.com/presendapp/presend-source",
+                  "title": "GitHub - presendapp/presend-source: Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. · GitHub",
+                  "description": "Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. - presendapp/presend-source",
                   "canonical_url": null,
                   "open_graph": {
-                    "title": "GitHub - presendapp/presend",
-                    "description": "Free privacy-first browser tools + a security API",
-                    "image": "https://repository-images.githubusercontent.com/1290162882/c4785be5-6cef-415e-b278-9744d2dbc57d",
+                    "title": "GitHub - presendapp/presend-source: Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository.",
+                    "description": "Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. - presendapp/presend-source",
+                    "image": "https://opengraph.githubassets.com/83fc187da551eedfc38d57a2024a31a5e9d3c1af43f5c23deec3c78f0e22e093/presendapp/presend-source",
                     "type": "object",
                     "site_name": "GitHub",
-                    "url": "https://github.com/presendapp/presend"
+                    "url": "https://github.com/presendapp/presend-source"
                   },
                   "twitter_card": {
                     "card": "summary_large_image",
-                    "title": "GitHub - presendapp/presend",
-                    "description": "Free privacy-first browser tools + a security API",
-                    "image": "https://repository-images.githubusercontent.com/1290162882/c4785be5-6cef-415e-b278-9744d2dbc57d"
+                    "title": "GitHub - presendapp/presend-source: Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository.",
+                    "description": "Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. - presendapp/presend-source",
+                    "image": "https://opengraph.githubassets.com/83fc187da551eedfc38d57a2024a31a5e9d3c1af43f5c23deec3c78f0e22e093/presendapp/presend-source"
                   }
                 }
               }

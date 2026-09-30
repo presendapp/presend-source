@@ -236,7 +236,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
   <p style="color:var(--color-muted); max-width:60ch;">किसी URL से Open Graph, Twitter Card और बुनियादी &lt;head&gt; मेटाडेटा निकालता है -- वही डेटा जिससे चैट ऐप्स लिंक प्रीव्यू कार्ड दिखाते हैं।</p>
-  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">OSV.dev के ज़रिए पहचानकर्ता से सीधी CVE/GHSA खोज। जब आपके पास किसी स्कैनर रिपोर्ट से पहले से पहचानकर्ता हो, तब यह vulnerability-check (जिसे पैकेज, इकोसिस्टम और संस्करण चाहिए) का पूरक है।</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
@@ -364,7 +364,7 @@ const { uuids } = await presend.generateUuid(3);</pre>
   <h2>ओपन सोर्स</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
     सभी टूल्स ओपन सोर्स हैं। GitHub पर योगदान करें या अपने प्रोजेक्ट्स के लिए फोर्क करें।
-    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+    <a href="https://github.com/presendapp/presend-source">github.com/presendapp/presend-source</a>
   </p>
 </main>
 <footer class="site-footer wrap">

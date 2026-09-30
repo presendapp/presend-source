@@ -6,7 +6,7 @@ Thanks for considering a contribution. Presend is a small, volunteer-maintained 
 
 Presend is split across several repos:
 
-- **[presend](https://github.com/presendapp/presend)** -- the main site, browser tools, and API (this repo)
+- **[presend](https://github.com/presendapp/presend-source)** -- the main site, browser tools, and API (this repo)
 - **[presend-api](https://github.com/presendapp/presend-api)** -- npm client for the API
 - **[presend-extension](https://github.com/presendapp/presend-extension)** -- browser extension
 - **[presend-check-action](https://github.com/presendapp/presend-check-action)** -- GitHub Action wrapping the security-check endpoints

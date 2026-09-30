@@ -236,7 +236,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
   <p style="color:var(--color-muted); max-width:60ch;">URL から Open Graph、Twitter Card、基本的な &lt;head&gt; のメタデータを抽出します -- チャットアプリがリンクプレビューのカードを表示するのと同じデータです。</p>
-  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend"</pre>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">OSV.dev で識別子から CVE/GHSA を直接検索します。スキャナーのレポートなどで既に識別子がある場合に、vulnerability-check（パッケージ・エコシステム・バージョンが必要）を補完します。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/cve-lookup?id=CVE-2021-44228"</pre>
@@ -364,7 +364,7 @@ const { uuids } = await presend.generateUuid(3);</pre>
   <h2>オープンソース</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
     すべてのツールはオープンソースです。GitHubで貢献するか、ご自身のプロジェクト用にフォークしてください。
-    <a href="https://github.com/presendapp/presend">github.com/presendapp/presend</a>
+    <a href="https://github.com/presendapp/presend-source">github.com/presendapp/presend-source</a>
   </p>
 </main>
 <footer class="site-footer wrap">
