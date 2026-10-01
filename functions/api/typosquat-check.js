@@ -184,6 +184,8 @@ const KNOWN_LEGIT = {
     'arnparse', 'pygam', 'pyautogen', 'grequests', 'crick', 'tombi', 'pqdm', 'scrypt', 'pytd',
     'stqdm', 'torchx', 'jose', 'streamlink', 'hyper', 'vyper', 'graphyte', 'pyts', 'solara',
     'pymantic', 'pylink', 'scipp', 'ipytest', 'toronado',
+    // 2026-10-01: entered the top 15,000 PyPI list; each repo checked (age, activity, claims the PyPI name).
+    'djongo', 'tmol', 'orgparse', 'webp',
   ],
 };
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measured false-positive rates of Presend's dependency checks</title>
+<meta name="description" content="How often Presend's typosquat and publisher-change checks flag popular, legitimate npm and PyPI packages, measured on the most-used packages, with the method to reproduce it and the known blind spots.">
+<meta property="og:title" content="Measured false-positive rates (Presend)">
+<meta property="og:description" content="Typosquat and publisher-change checks measured on the top 15,000 PyPI and about 17,000 high-impact npm packages. Method and blind spots included.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/measurements">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Measured false-positive rates (Presend)">
+<meta name="twitter:description" content="Typosquat and publisher-change checks measured on the top 15,000 PyPI and about 17,000 high-impact npm packages. Method and blind spots included.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/measurements">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .m pre { overflow-x: auto; padding: .8rem; border: 1px solid currentColor; border-radius: 8px; max-width: 66ch; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Measured false-positive rates</h1>
+  <p>A dependency check that flags popular, legitimate packages gets ignored. So we measure how often ours do, on the most-used packages, and publish the result, the method and the blind spots. Last run: 1 October 2026.</p>
+  <p>Want these checks on every pull request and for your AI coding agents? <a href="/teams">Presend for teams</a> is a waitlist while we test demand.</p>
+
+  <h2>Typosquat check (npm and PyPI)</h2>
+  <ul>
+    <li><strong>Top 15,000 PyPI packages:</strong> 11 flagged. Each was reviewed by hand and left flagged deliberately.</li>
+    <li><strong>17,338 high-impact npm packages</strong> (the npm-high-impact list): 1 flagged, reviewed and left flagged deliberately.</li>
+    <li><strong>Known typosquats in our test set:</strong> 27 of 27 detected.</li>
+  </ul>
+  <p>The popular-package lists move. On 1 October, four packages that had recently entered the top 15,000 PyPI (djongo, tmol, orgparse, webp) were flagged; we checked each repository and added them to the reviewed list the same day.</p>
+  <p><strong>Blind spot:</strong> only names close to a list of popular targets are checked. A name that an AI model invents and that resembles no real package (slopsquatting) is not caught by name similarity.</p>
+
+  <h2>Publisher-change check (npm only)</h2>
+  <ul>
+    <li><strong>200 most depended-upon npm packages, evaluated at 9 dates over the last two years:</strong> the raw rule (new publisher after a dormant period) flags 13 packages; after reclassifying handovers to publishers who already maintain another package with 100,000+ weekly downloads, 1 remains (source-map). Flagged today: 1 of 200.</li>
+    <li><strong>The event-stream compromise</strong>, replayed at 26 November 2018: detected (last checked 26 September 2026).</li>
+  </ul>
+  <p><strong>Blind spots:</strong> it cannot see a hijacked account that keeps the same publisher name (as with ua-parser-js) or a malicious release by the original maintainer (as with colors.js). An attacker who has already taken over a popular package would pass the established-publisher rule. When the npm search API rate-limits us, the publisher check is reported as unavailable and the event stays flagged.</p>
+
+  <h2>Vulnerability check</h2>
+  <p>Not a heuristic: it reports the OSV.dev advisories for the exact version you give. Without a version it reports advisories across all versions, which overstates the risk, so give the version you use.</p>
+
+  <h2>Reproduce it</h2>
+  <p>The code and test sets are in the public <a href="https://github.com/presendapp/presend-source" target="_blank" rel="noopener noreferrer">presend-source</a> repository (Node.js, no dependencies):</p>
+  <pre><code>node tests/typosquat/run.mjs                 # offline test set
+node tests/typosquat/top-pypi.mjs            # top 15,000 PyPI (network)
+node tests/typosquat/top-npm.mjs             # npm-high-impact (network)
+node tests/maintainer-change/top-npm.mjs 200 # about 3 minutes (network)</code></pre>
+  <p>Each script fails if a popular package is flagged without having been reviewed.</p>
+
+  <h2>Contributions to other tools</h2>
+  <ul>
+    <li><strong>NVIDIA SkillSpector</strong>, typosquat rule SC6 (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged 28 September 2026). Measured with the project's own code: 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, 13 of 27 known typosquats detected. After the fix (native, no dependency on Presend): 6 and 0, 27 of 27.</li>
+    <li><strong>twyn</strong> (<a href="https://github.com/elementsinteractive/twyn/pull/540" target="_blank" rel="noopener noreferrer">PR #540</a>, in review). Its trusted-package lists had not been refreshed since March (PyPI) and December (npm) because the weekly update workflow failed silently. With fresh lists, false positives on top PyPI packages went from 407 to 0; on npm they went from 218 to 284 (a different source list, not investigated).</li>
+  </ul>
+
+  <h2>Want the same measurement for your tool?</h2>
+  <p>If you maintain a dependency-security tool and want its false-positive and detection rates measured the same way, write to presendapp@gmail.com.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>

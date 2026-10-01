@@ -44,7 +44,7 @@
   <p><strong>Dependency checks for npm and PyPI whose false-positive rate is measured and published.</strong> Nothing is for sale yet: we are testing whether teams want this before building it. This page is a waitlist.</p>
 
   <h2>What the checks do today</h2>
-  <p>These checks already exist and are free through the <a href="/api">API</a> and the MCP server (per-minute rate limits apply). Measured on 26 September 2026; the code and test sets are <a href="https://github.com/presendapp/presend-source/tree/main/tests" target="_blank" rel="noopener noreferrer">public</a>.</p>
+  <p>These checks already exist and are free through the <a href="/api">API</a> and the MCP server (per-minute rate limits apply). Last measured on 1 October 2026: <a href="/measurements">full results, method and blind spots</a>; the code and test sets are <a href="https://github.com/presendapp/presend-source/tree/main/tests" target="_blank" rel="noopener noreferrer">public</a>.</p>
   <ul>
     <li><strong>Typosquats (npm and PyPI).</strong> On the top 15,000 PyPI packages, 11 are flagged, each one reviewed and left flagged deliberately. On about 17,000 high-impact npm packages, 1 is flagged. All 27 known typosquats in our test set are detected.</li>
     <li><strong>New publisher after a dormant period (npm only).</strong> The pattern behind the event-stream attack. Evaluated on the 200 most depended-upon npm packages at 9 dates over two years: 1 package flagged. It cannot see a hijacked account that keeps the same publisher name.</li>
