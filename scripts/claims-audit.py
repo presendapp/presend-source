@@ -64,7 +64,7 @@ if '--local' not in sys.argv:
             if it.get('a') == 'presendapp': texts.append((f"{repo}#{n} (corps)", it.get('b') or ''))
             for c in gh(['api', f'repos/{repo}/issues/{n}/comments?per_page=100']) or []:
                 if c['user']['login'] == 'presendapp': texts.append((f"{repo}#{n} (commentaire {c['html_url'].split('#')[-1]})", c['body'] or ''))
-    for r in gh(['repo', 'list', 'presendapp', '--limit', '100', '--json', 'name,isFork', '--jq', '[.[] | select(.isFork | not) | .name]']) or []:
+    for r in gh(['repo', 'list', 'presendapp', '--limit', '100', '--json', 'name,isFork,isPrivate', '--jq', '[.[] | select((.isFork or .isPrivate) | not) | .name]']) or []:
         rd = gh(['api', f'repos/presendapp/{r}/readme', '--jq', '{c: .content}'])
         if rd and rd.get('c'): texts.append((f"presendapp/{r} README", base64.b64decode(rd['c']).decode('utf-8', 'ignore')))
         else: print(f"(README illisible : presendapp/{r} -> {str(rd)[:80]})")
