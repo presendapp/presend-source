@@ -261,7 +261,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
 
   <h2>Ferramentas no cliente (incorporar)</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
-    Ferramentas de processamento de arquivos (remoção de EXIF, compressão de PDF, etc.) rodam inteiramente no navegador — nada é enviado, então não há endpoint de servidor para elas. Incorpore diretamente:
+    A maioria das ferramentas de processamento de arquivos (remoção de EXIF, compressão de PDF etc.) também roda inteiramente no navegador como widgets independentes — nada é enviado. Use-as em vez da API acima quando quiser uma interface pronta em vez de uma chamada ao servidor. Incorpore diretamente:
   </p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
 &lt;iframe 

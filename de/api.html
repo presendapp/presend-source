@@ -261,7 +261,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
 
   <h2>Clientseitige Tools (einbetten)</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
-    Dateiverarbeitungs-Tools (EXIF-Entfernung, PDF-Komprimierung usw.) laufen vollständig im Browser — nichts wird hochgeladen, daher gibt es dafür keinen Server-Endpoint. Direkt einbetten:
+    Die meisten Tools zur Dateiverarbeitung (EXIF-Entfernung, PDF-Komprimierung usw.) laufen auch vollständig im Browser als eigenständige Widgets — dabei wird nichts hochgeladen. Nutzen Sie sie statt der API oben, wenn Sie eine fertige Oberfläche statt eines Serveraufrufs möchten. Direkt einbetten:
   </p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
 &lt;iframe 

@@ -261,7 +261,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
 
   <h2>クライアントサイドツール（埋め込み）</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
-    ファイル処理ツール（EXIF削除、PDF圧縮など）はブラウザ内で完結し、何もアップロードされないため、サーバーエンドポイントはありません。直接埋め込んでください：
+    ほとんどのファイル処理ツール（EXIF削除、PDF圧縮など）は、独立したウィジェットとしてブラウザ内でも完結し、何もアップロードされません。サーバー呼び出しではなく、すぐに使えるUIが必要な場合は、上記のAPIの代わりにこちらを使ってください。直接埋め込んでください：
   </p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
 &lt;iframe 

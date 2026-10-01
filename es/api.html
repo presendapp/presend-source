@@ -261,7 +261,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
 
   <h2>Herramientas del lado del cliente (embed)</h2>
   <p style="color:var(--color-muted); max-width:60ch;">
-    Las herramientas de procesamiento de archivos (eliminar EXIF, comprimir PDF, etc.) se ejecutan completamente en el navegador — no se sube nada, por lo que no hay endpoint de servidor para estas. Intégralas directamente:
+    La mayoría de las herramientas de procesamiento de archivos (eliminar EXIF, comprimir PDF, etc.) también funcionan completamente en el navegador como widgets independientes: no se sube nada. Úsalas en lugar de la API anterior si quieres una interfaz lista para usar en vez de una llamada al servidor. Intégralas directamente:
   </p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">
 &lt;iframe 
