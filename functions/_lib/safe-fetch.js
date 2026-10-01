@@ -11,18 +11,22 @@
 // The hostname-string check and the actual connection are two separate
 // DNS lookups with a race window between them (TOCTOU).
 //
-// The fix: resolve the hostname ourselves via DNS-over-HTTPS, validate
-// the ACTUAL RESOLVED IP (not just the hostname string) against the
-// blocklist, then pin the real fetch() to that exact validated IP using
-// Cloudflare's `cf: { resolveOverride }` request option -- which
-// overrides DNS resolution for that specific fetch while still sending
-// the correct Host header. No second, uncontrolled DNS lookup happens
-// between validation and connection.
+// What this does: resolve the hostname ourselves via DNS-over-HTTPS and
+// validate every resolved IP (not just the hostname string) against the
+// blocklist, at every redirect hop (safeFetchFollowingRedirects).
 //
-// Verified against a live DNS-rebinding test domain
-// (7f000001.08080808.rbndr.us, alternates 127.0.0.1 / a public IP)
-// before this was ever wired into a real endpoint: correctly rejected
-// on every one of 5 consecutive resolutions.
+// What it does NOT do (corrected 2026-10-01): pin the connection. Until then
+// this file passed the validated IP as `cf.resolveOverride`, but Cloudflare
+// only honours that option when both the URL host and the override are
+// hostnames in our own zone (Workers docs, Request > cf.resolveOverride);
+// for third-party hosts it was ignored and fetch() did its own DNS lookup.
+// So a DNS-rebinding window between validation and connection remains. What
+// limits it in practice is Cloudflare refusing connections from Workers to
+// private/reserved addresses (observed 2026-10-01: 403 for 127.0.0.1 and
+// 169.254.169.254 behind a redirect, public targets reached).
+//
+// The rebinding test domain once used here (7f000001.08080808.rbndr.us) was
+// rejected by the validation step; it never tested pinning.
 
 const BLOCKED_PATTERNS = [
   /^localhost$/i, /^127\./, /^10\./, /^192\.168\./,
@@ -105,16 +109,13 @@ export async function safeFetch(url, options = {}) {
   if (!['http:', 'https:'].includes(parsed.protocol)) {
     throw new Error(`Blocked protocol: ${parsed.protocol}`);
   }
-  const validatedIp = await validateAndResolve(parsed.hostname);
-  return fetch(url, {
-    ...options,
-    cf: { ...(options.cf || {}), resolveOverride: validatedIp },
-  });
+  await validateAndResolve(parsed.hostname);
+  return fetch(url, options);
 }
 
 export { isBlocked as isBlockedHostname };
 
-// Suit une chaine de redirections en validant + epinglant chaque saut
+// Suit une chaine de redirections en validant chaque saut
 // manuellement, renvoie la reponse finale -- reutilisable par tout
 // endpoint qui veut juste "le resultat final, en toute securite" sans
 // reimplementer la boucle lui-meme.
@@ -125,12 +126,8 @@ export async function safeFetchFollowingRedirects(url, options = {}, maxHops = 1
     if (!['http:', 'https:'].includes(parsed.protocol)) {
       throw new Error(`Blocked protocol: ${parsed.protocol}`);
     }
-    const validatedIp = await validateAndResolve(parsed.hostname);
-    const res = await fetch(currentUrl, {
-      ...options,
-      redirect: 'manual',
-      cf: { ...(options.cf || {}), resolveOverride: validatedIp },
-    });
+    await validateAndResolve(parsed.hostname);
+    const res = await fetch(currentUrl, { ...options, redirect: 'manual' });
     const isRedirect = res.status >= 300 && res.status < 400;
     const location = res.headers.get('Location');
     if (!isRedirect || !location) {

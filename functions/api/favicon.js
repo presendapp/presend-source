@@ -1,6 +1,6 @@
 // GET /api/favicon?domain=example.com  -> { favicon: "https://example.com/favicon.ico" }
 //
-// SSRF: every redirect hop is resolved, validated, and pinned via
+// SSRF: every redirect hop is resolved and validated via
 // safe-fetch's safeFetchFollowingRedirects(). See functions/_lib/safe-fetch.js.
 
 import { validateAndResolve, safeFetchFollowingRedirects } from '../_lib/safe-fetch.js';

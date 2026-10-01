@@ -17,7 +17,7 @@
 // in it. No mutating or resource-affecting call is ever made against
 // the target node.
 //
-// SSRF: the RPC host is resolved, validated, and pinned via
+// SSRF: the RPC host is resolved and validated via
 // safe-fetch's safeFetchFollowingRedirects(), exactly like
 // security-scan and redirect-trace. See functions/_lib/safe-fetch.js.
 

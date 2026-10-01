@@ -13,10 +13,10 @@
 //
 // SSRF: every hop (initial URL and every redirect target) is resolved
 // and validated via safe-fetch's validateAndResolve() BEFORE being
-// fetched, and the actual connection is pinned to that validated IP
-// (cf.resolveOverride) -- checking only the hostname string would miss
-// DNS rebinding, where a hostname resolves to a public IP at check time
-// and a private one at connect time. See functions/_lib/safe-fetch.js.
+// fetched. The connection itself is not pinned (Cloudflare ignores
+// cf.resolveOverride outside our own zone), so a DNS-rebinding window
+// remains; Cloudflare refuses Workers connections to private/reserved
+// addresses. See functions/_lib/safe-fetch.js.
 
 import { validateAndResolve } from '../_lib/safe-fetch.js';
 
@@ -98,10 +98,8 @@ export async function onRequestGet(context) {
         break;
       }
       seen.add(urlStr);
-
-      let validatedIp;
       try {
-        validatedIp = await validateAndResolve(currentUrl.hostname);
+        await validateAndResolve(currentUrl.hostname);
       } catch (e) {
         error = `Disallowed hop: ${e.message}`;
         break;
@@ -112,7 +110,6 @@ export async function onRequestGet(context) {
         redirect: 'manual',
         signal: controller.signal,
         headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PresendBot/1.0; +https://presend.pages.dev)' },
-        cf: { resolveOverride: validatedIp },
       });
 
       const isRedirect = res.status >= 300 && res.status < 400;

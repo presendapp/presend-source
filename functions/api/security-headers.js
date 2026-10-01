@@ -1,7 +1,7 @@
 // GET /api/security-headers?url=https://example.com
 // Audite les en-têtes de sécurité HTTP et donne un score.
 //
-// SSRF: every redirect hop is resolved, validated, and pinned via
+// SSRF: every redirect hop is resolved and validated via
 // safe-fetch's safeFetchFollowingRedirects(). See functions/_lib/safe-fetch.js.
 
 import { validateAndResolve, safeFetchFollowingRedirects } from '../_lib/safe-fetch.js';

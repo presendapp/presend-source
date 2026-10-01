@@ -4,10 +4,10 @@
 // HTTP security headers, malware/phishing reputation (URLhaus), and
 // passive attack-surface visibility (subdomains via crt.sh).
 //
-// SSRF: every hop of the headers-check fetch is resolved, validated,
-// and pinned via safe-fetch's safeFetchFollowingRedirects() -- checking
-// only the hostname string (before or after fetching) would miss DNS
-// rebinding. See functions/_lib/safe-fetch.js.
+// SSRF: every hop of the headers-check fetch is resolved and validated
+// via safe-fetch's safeFetchFollowingRedirects() (each resolved IP, not
+// just the hostname string; no connection pinning, see
+// functions/_lib/safe-fetch.js).
 
 import { checkReputation } from '../_shared/url-reputation-check.js';
 import { validateAndResolve, safeFetchFollowingRedirects } from '../_lib/safe-fetch.js';
