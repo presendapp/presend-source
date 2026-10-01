@@ -330,9 +330,10 @@
       return;
     }
     const changed = previous.ip !== currentData.ip;
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     compareResult.innerHTML = `
       <p style="margin:0 0 0.5rem 0;"><strong>${changed ? '✅ IP changed' : '⚠️ Same IP as before'}</strong></p>
-      <p style="color:var(--color-muted); margin:0; font-size:0.9rem;">Previous: ${previous.ip} (${previous.city || 'unknown'}, ${previous.country || '?'})<br>Current: ${currentData.ip} (${currentData.city || 'unknown'}, ${currentData.country || '?'})</p>
+      <p style="color:var(--color-muted); margin:0; font-size:0.9rem;">Previous: ${esc(previous.ip)} (${esc(previous.city || 'unknown')}, ${esc(previous.country || '?')})<br>Current: ${esc(currentData.ip)} (${esc(currentData.city || 'unknown')}, ${esc(currentData.country || '?')})</p>
     `;
     compareResult.style.display = 'block';
   });

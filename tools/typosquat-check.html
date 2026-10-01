@@ -217,10 +217,12 @@
         summaryBox.innerHTML = '<strong style="color:var(--color-muted);">No close match found on the curated list.</strong>';
       }
 
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
       let html = '';
       for (const m of (data.similar_to || [])) {
         html += '<div style="padding:0.75rem 1rem;border:1px solid var(--color-line);border-radius:var(--radius);margin-top:0.5rem;display:flex;justify-content:space-between;">';
-        html += '<span style="font-family:var(--font-mono);">' + m.name + '</span>';
+        html += '<span style="font-family:var(--font-mono);">' + esc(m.name) + '</span>';
         html += '<span style="color:var(--color-muted);font-size:0.85rem;">edit distance ' + m.distance + '</span>';
         html += '</div>';
       }

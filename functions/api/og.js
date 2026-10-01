@@ -44,7 +44,7 @@ export async function onRequestGet(context) {
   <rect x="40" y="40" width="1120" height="550" rx="20" fill="#F7F5F0"/>
   <text x="600" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#1F3A5F" text-anchor="middle">${tool}</text>
   <text x="600" y="380" font-family="Arial, sans-serif" font-size="36" fill="#6c757d" text-anchor="middle">${subtitle}</text>
-  <text x="600" y="480" font-family="Arial, sans-serif" font-size="24" fill="#0066cc" text-anchor="middle">presend.pages.dev — 100% browser-based, zero upload</text>
+  <text x="600" y="480" font-family="Arial, sans-serif" font-size="24" fill="#0066cc" text-anchor="middle">presend.pages.dev</text>
 </svg>`;
 
   return new Response(svg, {
