@@ -9,6 +9,11 @@
 
 const RATE_LIMIT = 20; // par minute et par IP (moyenne, écriture échantillonnée)
 
+// Le nom d'outil finit dans une clé KV et sur la page publique /admin (via /api/stats) :
+// seuls les identifiants d'outil sont acceptés. Avant le 2026-10-01, toute chaîne de
+// 100 caractères l'était, et admin.html l'insérait sans échappement (XSS stockée, non exploitée).
+const TOOL_RE = /^[a-z0-9][a-z0-9-]{0,59}$/;
+
 function jsonResponse(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,
@@ -24,7 +29,7 @@ export async function onRequestPost(context) {
   let tool = 'unknown';
   try {
     const body = await request.json();
-    if (body && typeof body.tool === 'string' && body.tool.length <= 100) tool = body.tool;
+    if (body && typeof body.tool === 'string' && TOOL_RE.test(body.tool)) tool = body.tool;
   } catch (e) { /* corps absent ou invalide : compté comme "unknown" */ }
 
   if (!kv) return jsonResponse({ tool, message: 'Tracked anonymously' });

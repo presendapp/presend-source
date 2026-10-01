@@ -121,7 +121,7 @@ const TOOLS = [
   },
   {
     name: 'link_metadata',
-    description: "Fetches a web page and extracts its title, description, canonical URL, Open Graph and Twitter Card tags (the data behind link previews). To follow a URL's redirects hop by hop, use redirect_trace.",
+    description: "Fetches a web page and extracts its title, description, canonical URL, Open Graph and Twitter Card tags and favicon (the data behind link previews). Follows redirects and returns final_url; favicon_source says whether the icon is declared by the page or only the /favicon.ico guess. To see each redirect hop, use redirect_trace.",
     inputSchema: {"type": "object", "properties": {"url": {"type": "string", "description": "URL to extract title, description, and Open Graph / Twitter Card metadata from."}}, "required": ["url"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/link-metadata?${new URLSearchParams(args).toString()}` }),
   },

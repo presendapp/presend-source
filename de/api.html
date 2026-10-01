@@ -235,7 +235,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">Validiert eine EU-USt-IdNr. in Echtzeit über den offiziellen VIES-Dienst der Europäischen Kommission -- liefert bei Gültigkeit den registrierten Firmennamen und die Adresse.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">Extrahiert Open-Graph-, Twitter-Card- und grundlegende &lt;head&gt;-Metadaten aus einer URL -- dieselben Daten, mit denen Chat-Apps eine Linkvorschau darstellen.</p>
+  <p style="color:var(--color-muted); max-width:60ch;">Extrahiert Open-Graph-, Twitter-Card- und grundlegende &lt;head&gt;-Metadaten aus einer URL -- dieselben Daten, mit denen Chat-Apps eine Linkvorschau darstellen. Liefert außerdem das Favicon und, nach den Weiterleitungen (jede einzeln geprüft), die endgültige URL.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Direkte CVE/GHSA-Abfrage per Kennung über OSV.dev. Ergänzt vulnerability-check (das Paket, Ökosystem und Version benötigt), wenn Sie bereits eine Kennung aus einem Scanner-Bericht haben.</p>

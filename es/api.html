@@ -235,7 +235,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">Valida un número de IVA de la UE en tiempo real mediante el servicio oficial VIES de la Comisión Europea -- devuelve el nombre y la dirección registrados de la empresa si es válido.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">Extrae metadatos Open Graph, Twitter Card y básicos de &lt;head&gt; de una URL -- los mismos datos que usan las apps de chat para mostrar una vista previa del enlace.</p>
+  <p style="color:var(--color-muted); max-width:60ch;">Extrae metadatos Open Graph, Twitter Card y básicos de &lt;head&gt; de una URL -- los mismos datos que usan las apps de chat para mostrar una vista previa del enlace. También devuelve el favicon y, tras seguir las redirecciones (cada una verificada), la URL final.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Búsqueda directa de CVE/GHSA por identificador mediante OSV.dev. Complementa a vulnerability-check (que necesita paquete, ecosistema y versión) cuando ya tiene un identificador de un informe de escáner.</p>

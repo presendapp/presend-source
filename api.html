@@ -234,7 +234,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">Validates an EU VAT number in real time via the official European Commission VIES service -- returns the registered company name and address when valid.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">Extracts Open Graph, Twitter Card, and basic &lt;head&gt; metadata from a URL -- the same data used to render a link preview card in a chat app.</p>
+  <p style="color:var(--color-muted); max-width:60ch;">Extracts Open Graph, Twitter Card, and basic &lt;head&gt; metadata from a URL -- the same data used to render a link preview card in a chat app. Also returns the favicon and, after following redirects (each one checked), the final URL.</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">Direct CVE/GHSA lookup by identifier via OSV.dev. Complements vulnerability-check (which needs package+ecosystem+version) for when you already have an identifier from a scanner report.</p>

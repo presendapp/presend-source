@@ -255,7 +255,7 @@
     "/link-metadata": {
       "get": {
         "summary": "Extract Open Graph / Twitter Card metadata from a URL",
-        "description": "Extracts title, description, canonical URL, Open Graph tags, and Twitter Card tags from a page's <head> -- the same data used to render a link preview card in a chat app.",
+        "description": "Extracts title, description, canonical URL, Open Graph tags, Twitter Card tags and the favicon from a page's <head> -- the same data used to render a link preview card in a chat app. Redirects are followed, each hop validated against private and internal addresses; final_url is where they ended, and relative URLs in the page (og:image, for instance) resolve against it. favicon_source is \"declared\" when the page declares an icon, \"default\" when /favicon.ico is only a guess (not checked).",
         "parameters": [
           {
             "name": "url",
@@ -277,15 +277,19 @@
                   "type": "object",
                   "properties": {
                     "url": {"type": "string"},
+                    "final_url": {"type": "string", "description": "URL after redirects."},
                     "title": {"type": "string"},
                     "description": {"type": "string"},
                     "canonical_url": {"type": "string", "nullable": true},
                     "open_graph": {"type": "object"},
-                    "twitter_card": {"type": "object"}
+                    "twitter_card": {"type": "object"},
+                    "favicon": {"type": "string", "description": "Absolute favicon URL."},
+                    "favicon_source": {"type": "string", "enum": ["declared", "default"]}
                   }
                 },
                 "example": {
                   "url": "https://github.com/presendapp/presend-source",
+                  "final_url": "https://github.com/presendapp/presend-source",
                   "title": "GitHub - presendapp/presend-source: Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. · GitHub",
                   "description": "Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. - presendapp/presend-source",
                   "canonical_url": null,
@@ -302,7 +306,9 @@
                     "title": "GitHub - presendapp/presend-source: Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository.",
                     "description": "Source of presend.pages.dev: free browser-based privacy tools + security API (MIT). Snapshot of the current code; development happens in a private repository. - presendapp/presend-source",
                     "image": "https://opengraph.githubassets.com/83fc187da551eedfc38d57a2024a31a5e9d3c1af43f5c23deec3c78f0e22e093/presendapp/presend-source"
-                  }
+                  },
+                  "favicon": "https://github.githubassets.com/favicons/favicon.svg",
+                  "favicon_source": "declared"
                 }
               }
             }

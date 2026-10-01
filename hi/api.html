@@ -235,7 +235,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">यूरोपीय आयोग की आधिकारिक VIES सेवा से EU VAT नंबर को रीयल-टाइम में सत्यापित करता है -- मान्य होने पर पंजीकृत कंपनी का नाम और पता लौटाता है।</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">किसी URL से Open Graph, Twitter Card और बुनियादी &lt;head&gt; मेटाडेटा निकालता है -- वही डेटा जिससे चैट ऐप्स लिंक प्रीव्यू कार्ड दिखाते हैं।</p>
+  <p style="color:var(--color-muted); max-width:60ch;">किसी URL से Open Graph, Twitter Card और बुनियादी &lt;head&gt; मेटाडेटा निकालता है -- वही डेटा जिससे चैट ऐप्स लिंक प्रीव्यू कार्ड दिखाते हैं। यह favicon और रीडायरेक्ट (हर एक की जाँच के साथ) के बाद का अंतिम URL भी लौटाता है।</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">OSV.dev के ज़रिए पहचानकर्ता से सीधी CVE/GHSA खोज। जब आपके पास किसी स्कैनर रिपोर्ट से पहले से पहचानकर्ता हो, तब यह vulnerability-check (जिसे पैकेज, इकोसिस्टम और संस्करण चाहिए) का पूरक है।</p>

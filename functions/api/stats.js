@@ -38,6 +38,9 @@ export async function onRequestGet(context) {
       const parts = key.name.split(":");
       const tool = parts[1];
       const date = parts[2];
+      // Seules les clés de la forme écrite par track.js (outil validé, date ISO) sont publiées.
+      if (parts.length !== 3 || !/^[a-z0-9][a-z0-9-]{0,59}$/.test(tool) || !/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
+      if (!Number.isFinite(parseInt(value))) continue;
       
       if (!stats[tool]) stats[tool] = {};
       stats[tool][date] = parseInt(value);

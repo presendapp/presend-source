@@ -8,11 +8,11 @@
 <link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
 <link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Presend Admin — Tableau de bord d'analyse</title>
-  <meta property="og:title" content="Presend Admin — Tableau de bord d'analyse">
-  <meta property="og:description" content="Tableau de bord d'administration Presend"><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Presend Admin — Tableau de bord d">
-<meta name="twitter:description" content="Tableau de bord d">
+<title>Presend Stats — Pages vues par outil</title>
+  <meta property="og:title" content="Presend Stats — Pages vues par outil">
+  <meta property="og:description" content="Pages vues estimées par outil Presend, par jour."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presend Stats — Pages vues par outil">
+<meta name="twitter:description" content="Pages vues estimées par outil Presend, par jour.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://presend.pages.dev/fr/admin.html">
   <meta property="og:image" content="https://presend.pages.dev/og-image.png">
@@ -29,7 +29,7 @@
 <link rel="alternate" hreflang="ru" href="https://presend.pages.dev/ru/admin" />
 <link rel="alternate" hreflang="hi" href="https://presend.pages.dev/hi/admin" />
 <link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/" />
-<meta name="description" content="Tableau de bord d'administration des outils de confidentialité Presend. Consultez les analyses et métriques. Toutes les données restent locales.'administration des outils Presend." />
+<meta name="description" content="Statistiques publiques des outils Presend : pages vues estimées par outil et par jour. Les statistiques ne contiennent que des comptages." />
 <link rel="canonical" href="https://presend.pages.dev/fr/admin" />
 <script type="application/ld+json">
 {
@@ -45,7 +45,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Admin",
+      "name": "Stats",
       "item": "https://presend.pages.dev/fr/admin"
     }
   ]
@@ -54,11 +54,11 @@
 </head>
 <body>
 <div class="admin-container">
-<h1>📊 Présenter l'analyse</h1>
+<h1>📊 Presend Stats</h1>
 <p class="loading" id="status">Chargement des statistiques...</p>
 <div class="stat-card">
 <div class="stat-number" id="total">—</div>
-<div>Total des actions suivies</div>
+<div>Pages vues (estimation)</div>
 </div>
 <div class="stat-card">
 <h2>Par outil</h2>
@@ -67,6 +67,8 @@
 <p style="margin-top: 2rem; color: #6c757d; font-size: 0.9rem;">🔒 Les statistiques ne contiennent que des comptages : pas de cookies, pas d'adresses IP.</p>
 </div>
 <script>
+    // Les noms viennent de l'API : échappés avant insertion dans le HTML.
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     async function loadStats() {
       try {
         const res = await fetch('/api/stats');
@@ -84,10 +86,10 @@
         let html = '';
         for (const [tool, dates] of Object.entries(data.tools)) {
           const toolTotal = Object.values(dates).reduce((a, b) => a + b, 0);
-          html += `<div class="tool-row"><strong>${tool}</strong> <span>${toolTotal.toLocaleString()}</span></div>`;
+          html += `<div class="tool-row"><strong>${esc(tool)}</strong> <span>${toolTotal.toLocaleString()}</span></div>`;
           for (const [date, count] of Object.entries(dates)) {
             html += `<div class="tool-row" style="padding-left: 1rem; font-size: 0.9rem; color: #6c757d;">
-              ${date} — ${count.toLocaleString()}
+              ${esc(date)} — ${count.toLocaleString()}
             </div>`;
           }
         }

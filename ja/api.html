@@ -235,7 +235,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">欧州委員会の公式 VIES サービスで EU の VAT 番号をリアルタイムに検証します -- 有効な場合は登録済みの会社名と住所を返します。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vat-validate?country=IE&vat=6388047V"</pre>
   <h3 id="GET-api-link-metadata">GET /api/link-metadata</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">URL から Open Graph、Twitter Card、基本的な &lt;head&gt; のメタデータを抽出します -- チャットアプリがリンクプレビューのカードを表示するのと同じデータです。</p>
+  <p style="color:var(--color-muted); max-width:60ch;">URL から Open Graph、Twitter Card、基本的な &lt;head&gt; のメタデータを抽出します -- チャットアプリがリンクプレビューのカードを表示するのと同じデータです。ファビコンと、リダイレクト（それぞれ検証）をたどった後の最終 URL も返します。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/link-metadata?url=https://github.com/presendapp/presend-source"</pre>
   <h3 id="GET-api-cve-lookup">GET /api/cve-lookup</h3>
   <p style="color:var(--color-muted); max-width:60ch;">OSV.dev で識別子から CVE/GHSA を直接検索します。スキャナーのレポートなどで既に識別子がある場合に、vulnerability-check（パッケージ・エコシステム・バージョンが必要）を補完します。</p>

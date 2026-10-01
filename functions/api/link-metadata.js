@@ -3,16 +3,22 @@
 // Extracts Open Graph, Twitter Card, and basic <head> metadata from a URL --
 // the same data a chat app or Slack/Discord uses to render a link preview card.
 //
-// SSRF: same protection as redirect-trace -- the hostname is resolved and
-// validated via safe-fetch's validateAndResolve() BEFORE fetching, and the
-// connection is pinned to that validated IP (cf.resolveOverride). See
+// SSRF: every hop, redirects included, is resolved and validated by
+// safe-fetch's safeFetchFollowingRedirects() (manual redirects, one
+// validateAndResolve() per hop). Until 2026-10-01 only the first hostname
+// was validated and redirects were followed by fetch() unchecked. See
 // functions/_lib/safe-fetch.js.
+//
+// Also returns final_url (after redirects; relative URLs in the page
+// resolve against it) and favicon / favicon_source ("declared" when the
+// page has <link rel="icon">, "default" when /favicon.ico is only a guess).
+// Replaces the undocumented /api/scrape (merged 2026-10-01).
 //
 // Only reads up to MAX_BYTES of the response (stops early at </head> when
 // found), since metadata lives in <head> and there's no reason to download
 // a multi-MB page body just to read a handful of meta tags.
 
-import { validateAndResolve } from '../_lib/safe-fetch.js';
+import { validateAndResolve, safeFetchFollowingRedirects } from '../_lib/safe-fetch.js';
 
 async function checkRateLimit(env, clientIP, bucket, isTest = false) {
   if (!env.PRESEND_ANALYTICS) return true;
@@ -81,6 +87,17 @@ function extractTitle(html) {
   return m ? decodeEntities(m[1].trim()) : null;
 }
 
+function extractFavicon(html, baseUrl) {
+  const tag = html.match(/<link[^>]+rel=["'](?:shortcut\s+)?icon["'][^>]*>/i);
+  const href = tag ? tag[0].match(/href=["']([^"']+)["']/i) : null;
+  if (href) {
+    try {
+      return { favicon: new URL(decodeEntities(href[1].trim()), baseUrl).href, favicon_source: 'declared' };
+    } catch { /* unusable href: fall back to the default guess */ }
+  }
+  return { favicon: new URL('/favicon.ico', baseUrl).href, favicon_source: 'default' };
+}
+
 function extractCanonical(html) {
   const m = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i);
   return m ? m[1].trim() : null;
@@ -138,9 +155,8 @@ export async function onRequestGet(context) {
     });
   }
 
-  let validatedIp;
   try {
-    validatedIp = await validateAndResolve(targetUrl.hostname);
+    await validateAndResolve(targetUrl.hostname);
   } catch (e) {
     return new Response(JSON.stringify({ error: `Disallowed target: ${e.message}` }), {
       status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders() },
@@ -151,15 +167,15 @@ export async function onRequestGet(context) {
   const timeout = setTimeout(() => controller.abort(), 10000);
 
   let html;
+  let finalUrl = targetUrl.toString();
   try {
-    const res = await fetch(targetUrl.toString(), {
+    const res = await safeFetchFollowingRedirects(targetUrl.toString(), {
       method: 'GET',
-      redirect: 'follow',
       signal: controller.signal,
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PresendBot/1.0; +https://presend.pages.dev)' },
-      cf: { resolveOverride: validatedIp },
     });
     clearTimeout(timeout);
+    if (res.url) finalUrl = res.url;
 
     if (!res.ok) {
       return new Response(JSON.stringify({ error: `Target returned HTTP ${res.status}`, url: targetRaw }), {
@@ -181,6 +197,7 @@ export async function onRequestGet(context) {
 
   const result = {
     url: targetRaw,
+    final_url: finalUrl,
     title: extractTitle(html),
     description: extractMeta(html, 'name', 'description'),
     canonical_url: extractCanonical(html),
@@ -198,6 +215,7 @@ export async function onRequestGet(context) {
       description: extractMeta(html, 'name', 'twitter:description'),
       image: extractMeta(html, 'name', 'twitter:image'),
     },
+    ...extractFavicon(html, finalUrl),
   };
 
   return new Response(JSON.stringify(result), {

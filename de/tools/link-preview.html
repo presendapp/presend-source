@@ -205,7 +205,7 @@
     jsonOutput.classList.remove('visible');
 
     try {
-      const res = await fetch('/api/scrape?url=' + encodeURIComponent(url));
+      const res = await fetch('/api/link-metadata?url=' + encodeURIComponent(url));
       const data = await res.json();
 
       if (data.error) {
@@ -213,13 +213,18 @@
       }
 
       // Update preview card
-      previewTitle.textContent = data.title || 'Kein Titel gefunden';
-      previewDesc.textContent = data.description || 'Keine Beschreibung gefunden';
-      previewSite.textContent = data.siteName || new URL(data.url).hostname;
-      previewType.textContent = data.type || 'website';
+      const og = data.open_graph || {};
+      const tw = data.twitter_card || {};
+      const base = data.final_url || data.url;
+      let image = og.image || tw.image || null;
+      try { if (image) image = new URL(image, base).href; } catch (e) { image = null; }
+      previewTitle.textContent = og.title || data.title || 'Kein Titel gefunden';
+      previewDesc.textContent = og.description || data.description || 'Keine Beschreibung gefunden';
+      previewSite.textContent = og.site_name || new URL(base).hostname;
+      previewType.textContent = og.type || 'website';
 
-      if (data.image) {
-        previewImage.src = data.image;
+      if (image) {
+        previewImage.src = image;
         previewImage.style.display = 'block';
         previewImage.onerror = () => { previewImage.style.display = 'none'; };
       } else {

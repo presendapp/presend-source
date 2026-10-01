@@ -8,11 +8,11 @@
 <link crossorigin="" href="https://static.cloudflareinsights.com" rel="preconnect"/>
 <link href="https://static.cloudflareinsights.com" rel="dns-prefetch"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Presend एडमिन - एनालिटिक्स डैशबोर्ड</title>
-  <meta property="og:title" content="Presend एडमिन - एनालिटिक्स डैशबोर्ड">
-  <meta property="og:description" content="Presend एडमिन डैशबोर्ड"><meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Presend एडमिन - एनालिटिक्स डैशबोर्ड">
-<meta name="twitter:description" content="Presend एडमिन डैशबोर्ड">
+<title>Presend Stats — हर टूल के पेज व्यू</title>
+  <meta property="og:title" content="Presend Stats — हर टूल के पेज व्यू">
+  <meta property="og:description" content="हर Presend टूल के अनुमानित पेज व्यू, प्रतिदिन।"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presend Stats — हर टूल के पेज व्यू">
+<meta name="twitter:description" content="हर Presend टूल के अनुमानित पेज व्यू, प्रतिदिन।">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://presend.pages.dev/hi/admin.html">
   <meta property="og:image" content="https://presend.pages.dev/og-image.png">
@@ -29,7 +29,7 @@
 <link href="https://presend.pages.dev/ru/admin" hreflang="ru" rel="alternate"/>
 <link href="https://presend.pages.dev/hi/admin" hreflang="hi" rel="alternate"/>
 <link href="https://presend.pages.dev/" hreflang="x-default" rel="alternate"/>
-<meta name="description" content="Presend गोपनीयता टूल्स के लिए एडमिन डैशबोर्ड। एनालिटिक्स, उपयोग मेट्रिक्स और प्रदर्शन प्रबंधित करें। सभी डेटा स्थानीय रहता है।" />
+<meta name="description" content="Presend टूल्स के सार्वजनिक आँकड़े: हर टूल और हर दिन के अनुमानित पेज व्यू। आँकड़ों में केवल गिनतियाँ हैं।" />
 <link rel="canonical" href="https://presend.pages.dev/hi/admin" />
 <script type="application/ld+json">
 {
@@ -45,7 +45,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "एडमिन",
+      "name": "Stats",
       "item": "https://presend.pages.dev/hi/admin"
     }
   ]
@@ -54,11 +54,11 @@
 </head>
 <body>
 <div class="admin-container">
-<h1>📊 विश्लेषिकी प्रस्तुत करें</h1>
+<h1>📊 Presend Stats</h1>
 <p class="loading" id="status">आँकड़े लोड हो रहे हैं...</p>
 <div class="stat-card">
 <div class="stat-number" id="total">—</div>
-<div>कुल गतिविधियों पर नज़र रखी गई</div>
+<div>पेज व्यू (अनुमान)</div>
 </div>
 <div class="stat-card">
 <h2>टूल द्वारा</h2>
@@ -67,6 +67,8 @@
 <p style="margin-top: 2rem; color: #6c757d; font-size: 0.9rem;">🔒 आँकड़ों में केवल गिनती है: कोई कुकीज़ नहीं, कोई आईपी पते नहीं।</p>
 </div>
 <script>
+    // Les noms viennent de l'API : échappés avant insertion dans le HTML.
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     async function loadStats() {
       try {
         const res = await fetch('/api/stats');
@@ -84,10 +86,10 @@
         let html = '';
         for (const [tool, dates] of Object.entries(data.tools)) {
           const toolTotal = Object.values(dates).reduce((a, b) => a + b, 0);
-          html += `<div class="tool-row"><strong>${tool}</strong> <span>${toolTotal.toLocaleString()}</span></div>`;
+          html += `<div class="tool-row"><strong>${esc(tool)}</strong> <span>${toolTotal.toLocaleString()}</span></div>`;
           for (const [date, count] of Object.entries(dates)) {
             html += `<div class="tool-row" style="padding-left: 1rem; font-size: 0.9rem; color: #6c757d;">
-              ${date} — ${count.toLocaleString()}
+              ${esc(date)} — ${count.toLocaleString()}
             </div>`;
           }
         }
