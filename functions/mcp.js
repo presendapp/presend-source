@@ -313,9 +313,11 @@ async function handleRequest(body) {
     }
     try {
       const { method: httpMethod, url, body: reqBody } = tool.request(args);
-      const fetchOpts = { method: httpMethod };
+      // Identify MCP tool calls in api_usage (first word of the User-Agent only;
+      // no data about the MCP client is forwarded).
+      const fetchOpts = { method: httpMethod, headers: { 'User-Agent': 'presend-mcp' } };
       if (reqBody) {
-        fetchOpts.headers = { 'Content-Type': 'application/json' };
+        fetchOpts.headers['Content-Type'] = 'application/json';
         fetchOpts.body = reqBody;
       }
       const res = await fetch(url, fetchOpts);

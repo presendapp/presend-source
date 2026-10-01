@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presend for teams — dependency checks with a measured false-positive rate</title>
+<meta name="description" content="Waitlist for Presend for teams: typosquat, publisher-change and exact-version vulnerability checks for npm and PyPI, with false-positive rates measured and published. Not available yet.">
+<meta property="og:title" content="Presend for teams (waitlist)">
+<meta property="og:description" content="Dependency checks for npm and PyPI with a measured, published false-positive rate. We are testing demand before building it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/teams">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presend for teams (waitlist)">
+<meta name="twitter:description" content="Dependency checks for npm and PyPI with a measured, published false-positive rate. We are testing demand before building it.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/teams">
+<style>
+  .teams p, .teams li { color: var(--color-muted); max-width: 64ch; }
+  .teams h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .teams fieldset { border: 1px solid currentColor; border-radius: 8px; padding: .6rem 1rem; margin: 1rem 0; max-width: 40rem; opacity: .95; }
+  .teams legend { padding: 0 .3rem; }
+  .teams label.opt { display: inline-block; margin: .2rem 1.2rem .2rem 0; }
+  .teams input[type=email], .teams textarea { width: 100%; max-width: 40rem; padding: .5rem; font: inherit; box-sizing: border-box; }
+  .teams button { margin-top: 1rem; padding: .6rem 1.2rem; font: inherit; cursor: pointer; }
+  .teams .note { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap teams" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Presend for teams</h1>
+  <p><strong>Dependency checks for npm and PyPI whose false-positive rate is measured and published.</strong> Nothing is for sale yet: we are testing whether teams want this before building it. This page is a waitlist.</p>
+
+  <h2>What the checks do today</h2>
+  <p>These checks already exist and are free through the <a href="/api">API</a> and the MCP server (per-minute rate limits apply). Measured on 26 September 2026; the code and test sets are <a href="https://github.com/presendapp/presend-source/tree/main/tests" target="_blank" rel="noopener noreferrer">public</a>.</p>
+  <ul>
+    <li><strong>Typosquats (npm and PyPI).</strong> On the top 15,000 PyPI packages, 11 are flagged, each one reviewed and left flagged deliberately. On about 17,000 high-impact npm packages, 1 is flagged. All 27 known typosquats in our test set are detected.</li>
+    <li><strong>New publisher after a dormant period (npm only).</strong> The pattern behind the event-stream attack. Evaluated on the 200 most depended-upon npm packages at 9 dates over two years: 1 package flagged. It cannot see a hijacked account that keeps the same publisher name.</li>
+    <li><strong>Known vulnerabilities of the exact version you use</strong>, from OSV.dev, rather than of the package as a whole.</li>
+  </ul>
+
+  <h2>What they do not do</h2>
+  <p>There is no behavioural analysis of package code and no malware detection. Use these checks alongside a malware scanner such as Socket or Aikido, not instead of one.</p>
+
+  <h2>What teams would get (planned, not built)</h2>
+  <ul>
+    <li>A check on every pull request that adds or changes a dependency (GitHub).</li>
+    <li>The same check for AI coding agents before they install a package (MCP).</li>
+    <li>API keys with higher limits than the free tier.</li>
+    <li>The measurements re-run and published with every release of the checks.</li>
+  </ul>
+
+  <h2>The price we are testing</h2>
+  <p>$29 per month per organisation, flat, whatever the number of developers. What is free today stays free.</p>
+
+  <h2>Join the waitlist</h2>
+  <form id="waitlistForm">
+    <label for="wlEmail">Email</label><br>
+    <input id="wlEmail" type="email" name="email" required maxlength="254" autocomplete="email">
+    <fieldset>
+      <legend>Team size</legend>
+      <label class="opt"><input type="radio" name="team_size" value="1" required> Just me</label>
+      <label class="opt"><input type="radio" name="team_size" value="2-10"> 2–10</label>
+      <label class="opt"><input type="radio" name="team_size" value="11-50"> 11–50</label>
+      <label class="opt"><input type="radio" name="team_size" value="51+"> 51+</label>
+    </fieldset>
+    <fieldset>
+      <legend>Ecosystem</legend>
+      <label class="opt"><input type="radio" name="ecosystem" value="npm" required> npm</label>
+      <label class="opt"><input type="radio" name="ecosystem" value="pypi"> PyPI</label>
+      <label class="opt"><input type="radio" name="ecosystem" value="both"> Both</label>
+      <label class="opt"><input type="radio" name="ecosystem" value="other"> Other</label>
+    </fieldset>
+    <fieldset>
+      <legend>Would your team pay $29/month for this?</legend>
+      <label class="opt"><input type="radio" name="would_pay" value="yes" required> Yes</label>
+      <label class="opt"><input type="radio" name="would_pay" value="maybe"> Maybe</label>
+      <label class="opt"><input type="radio" name="would_pay" value="no"> No</label>
+    </fieldset>
+    <label for="wlNote">Anything else? (optional)</label><br>
+    <textarea id="wlNote" name="note" maxlength="1000" rows="3"></textarea>
+    <p class="note">We store only what you type here, without your IP address. We use it only to write to you when there is something to try, we never share it, and if we do not build this we delete the whole list by 1 December 2026. To be removed earlier, write to presendapp@gmail.com. The anti-spam check is Cloudflare Turnstile, loaded when you start filling in the form (see <a href="/privacy">Privacy</a>).</p>
+    <div id="waitlistTurnstile"></div>
+    <button type="submit">Join the waitlist</button>
+  </form>
+  <p id="waitlistStatus" aria-live="polite"></p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/js/waitlist.js?v=1"></script>
+<script src="/sw-register.js"></script>
+</body>
+</html>
