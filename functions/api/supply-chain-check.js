@@ -1,3 +1,8 @@
+import { onRequestGet as maintainerGet } from './maintainer-change-check.js';
+import { onRequestGet as vulnerabilityGet } from './vulnerability-check.js';
+import { onRequestGet as typosquatGet } from './typosquat-check.js';
+import { onRequestGet as repoHealthGet } from './repo-health-check.js';
+import { callInternal } from '../_shared/internal-call.js';
 // GET /api/supply-chain-check?ecosystem=npm&package=lodash
 //
 // Combines maintainer-change-check, vulnerability-check, typosquat-check,
@@ -67,6 +72,10 @@ export async function onRequestGet(context) {
   }
 
   const results = {};
+  // Sub-checks run in-process as the original caller (own rate-limit bucket, no double counting).
+  const sub = (handler, url) => callInternal(handler, { url, clientIP: context.request.headers.get('CF-Connecting-IP') || 'unknown', userAgent: context.request.headers.get('User-Agent') || '', env: context.env, waitUntil: (pr) => context.waitUntil(pr) });
+  // A failed sub-check (429, 5xx...) is reported as unavailable, never read as 'no signal'.
+  const asResult = async (r) => (r.ok ? r.json() : { unavailable: true, status: r.status });
   let repoPath = null;
 
   try {
@@ -80,30 +89,30 @@ export async function onRequestGet(context) {
             if (data) {
               repoPath = extractGithubRepo(data.repository);
             }
-            return fetch(`${origin}/api/maintainer-change-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`);
+            return sub(maintainerGet, `${origin}/api/maintainer-change-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`);
           })
-          .then((r) => r.json())
+          .then(asResult)
           .then((data) => { results.maintainer_change = data; })
       );
     }
 
     tasks.push(
-      fetch(`${origin}/api/vulnerability-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`)
-        .then((r) => r.json())
+      sub(vulnerabilityGet, `${origin}/api/vulnerability-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`)
+        .then(asResult)
         .then((data) => { results.vulnerability = data; })
     );
 
     tasks.push(
-      fetch(`${origin}/api/typosquat-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`)
-        .then((r) => r.json())
+      sub(typosquatGet, `${origin}/api/typosquat-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`)
+        .then(asResult)
         .then((data) => { results.typosquat = data; })
     );
 
     await Promise.all(tasks);
 
     if (repoPath) {
-      const repoRes = await fetch(`${origin}/api/repo-health-check?repo=${encodeURIComponent(repoPath)}`);
-      results.repo_health = await repoRes.json();
+      const repoRes = await sub(repoHealthGet, `${origin}/api/repo-health-check?repo=${encodeURIComponent(repoPath)}`);
+      results.repo_health = await asResult(repoRes);
     }
 
     const flags = [];
@@ -111,18 +120,20 @@ export async function onRequestGet(context) {
     if ((results.vulnerability?.vulnerabilities || []).length > 0) flags.push('known_vulnerabilities');
     if (results.typosquat?.suspicious) flags.push('possible_typosquat');
     if (results.repo_health?.archived) flags.push('repo_archived');
+    const unavailable = Object.keys(results).filter((k) => results[k]?.unavailable);
 
     return new Response(JSON.stringify({
       package: pkg,
       ecosystem,
       github_repo_resolved: repoPath,
-      overall_risk: flags.length === 0 ? 'no_signals_found' : 'review_recommended',
+      overall_risk: flags.length > 0 ? 'review_recommended' : (unavailable.length > 0 ? 'incomplete' : 'no_signals_found'),
+      unavailable_checks: unavailable,
       flags,
       checks: results,
       note: ecosystem !== 'npm'
         ? 'maintainer-change-check is npm-only, not included for this ecosystem.'
         : (repoPath ? null : 'No GitHub repo could be resolved from registry metadata -- repo_health not included.'),
-    }, null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=1800', ...corsHeaders() } });
+    }, null, 2), { headers: { 'Content-Type': 'application/json', 'Cache-Control': unavailable.length > 0 ? 'no-store' : 'public, max-age=1800', ...corsHeaders() } });
   } catch (e) {
     return new Response(JSON.stringify({ error: 'Could not complete supply-chain check.', detail: e.message }), {
       status: 502, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

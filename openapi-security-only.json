@@ -2670,7 +2670,7 @@
     "/supply-chain-check": {
       "get": {
         "summary": "Combined supply-chain risk check",
-        "description": "Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check, and repo-health-check (auto-resolved from registry metadata when possible) into a single call with one overall verdict.",
+        "description": "Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check, and repo-health-check (auto-resolved from registry metadata when possible) into a single call with one overall verdict. overall_risk is review_recommended when any check raises a flag; if a check could not run (rate limit, upstream error), it is listed in unavailable_checks and the verdict is incomplete, never no_signals_found.",
         "parameters": [
           {
             "name": "ecosystem",
@@ -2711,9 +2711,7 @@
                       "type": "string",
                       "nullable": true
                     },
-                    "overall_risk": {
-                      "type": "string"
-                    },
+                    "overall_risk": {"type": "string", "enum": ["no_signals_found", "review_recommended", "incomplete"]}, "unavailable_checks": {"type": "array", "items": {"type": "string"}, "description": "Checks that could not run (rate limit, upstream error)."},
                     "flags": {
                       "type": "array",
                       "items": {

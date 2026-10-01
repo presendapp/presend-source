@@ -1,3 +1,44 @@
+import * as ep_address_risk from './api/address-risk.js';
+import * as ep_ai_crawler_check from './api/ai-crawler-check.js';
+import * as ep_base64 from './api/base64.js';
+import * as ep_color from './api/color.js';
+import * as ep_csv_json from './api/csv-json.js';
+import * as ep_cve_lookup from './api/cve-lookup.js';
+import * as ep_dns_lookup from './api/dns-lookup.js';
+import * as ep_email_disposable from './api/email-disposable.js';
+import * as ep_email_security from './api/email-security.js';
+import * as ep_email_validate from './api/email-validate.js';
+import * as ep_email_verify from './api/email-verify.js';
+import * as ep_favicon from './api/favicon.js';
+import * as ep_iban_validate from './api/iban-validate.js';
+import * as ep_ip_reputation from './api/ip-reputation.js';
+import * as ep_jwt_decode from './api/jwt-decode.js';
+import * as ep_jwt_verify from './api/jwt-verify.js';
+import * as ep_link_metadata from './api/link-metadata.js';
+import * as ep_maintainer_change_check from './api/maintainer-change-check.js';
+import * as ep_password from './api/password.js';
+import * as ep_password_breach from './api/password-breach.js';
+import * as ep_password_check from './api/password-check.js';
+import * as ep_phone_verify from './api/phone-verify.js';
+import * as ep_redirect_trace from './api/redirect-trace.js';
+import * as ep_repo_health_check from './api/repo-health-check.js';
+import * as ep_rpc_check from './api/rpc-check.js';
+import * as ep_security_headers from './api/security-headers.js';
+import * as ep_security_scan from './api/security-scan.js';
+import * as ep_subdomains from './api/subdomains.js';
+import * as ep_supply_chain_check from './api/supply-chain-check.js';
+import * as ep_text_similarity from './api/text-similarity.js';
+import * as ep_timestamp from './api/timestamp.js';
+import * as ep_tx_decode from './api/tx-decode.js';
+import * as ep_typosquat_check from './api/typosquat-check.js';
+import * as ep_url_clean from './api/url-clean.js';
+import * as ep_url_reputation from './api/url-reputation.js';
+import * as ep_user_agent from './api/user-agent.js';
+import * as ep_uuid from './api/uuid.js';
+import * as ep_vat_validate from './api/vat-validate.js';
+import * as ep_vulnerability_check from './api/vulnerability-check.js';
+import * as ep_whois_lookup from './api/whois-lookup.js';
+import { callInternal } from './_shared/internal-call.js';
 // GET /mcp -> info; POST /mcp -> JSON-RPC 2.0 (protocole MCP, transport Streamable HTTP sans état)
 // Expose 41 des 48 endpoints comme "tools" MCP -- tous sauf les 7 endpoints
 // binaires/fichiers (hash, clean-image, malware-check, file-type, image-similarity,
@@ -21,6 +62,63 @@ const PROTOCOL_VERSION = '2025-06-18';
 // Verified 2026-09-26: no fetch()/validateAndResolve()/connect() in their endpoint files or imports.
 const CLOSED_WORLD = new Set(['base64', 'color', 'csv_json', 'email_disposable', 'iban_validate', 'jwt_decode', 'password', 'phone_verify', 'text_similarity', 'timestamp', 'tx_decode', 'typosquat_check', 'url_clean', 'user_agent', 'uuid']);
 const API_BASE = 'https://presend.pages.dev/api';
+
+// Endpoint modules called in-process by tools/call (see callInternal).
+const HANDLERS = {
+  'address-risk': ep_address_risk,
+  'ai-crawler-check': ep_ai_crawler_check,
+  'base64': ep_base64,
+  'color': ep_color,
+  'csv-json': ep_csv_json,
+  'cve-lookup': ep_cve_lookup,
+  'dns-lookup': ep_dns_lookup,
+  'email-disposable': ep_email_disposable,
+  'email-security': ep_email_security,
+  'email-validate': ep_email_validate,
+  'email-verify': ep_email_verify,
+  'favicon': ep_favicon,
+  'iban-validate': ep_iban_validate,
+  'ip-reputation': ep_ip_reputation,
+  'jwt-decode': ep_jwt_decode,
+  'jwt-verify': ep_jwt_verify,
+  'link-metadata': ep_link_metadata,
+  'maintainer-change-check': ep_maintainer_change_check,
+  'password': ep_password,
+  'password-breach': ep_password_breach,
+  'password-check': ep_password_check,
+  'phone-verify': ep_phone_verify,
+  'redirect-trace': ep_redirect_trace,
+  'repo-health-check': ep_repo_health_check,
+  'rpc-check': ep_rpc_check,
+  'security-headers': ep_security_headers,
+  'security-scan': ep_security_scan,
+  'subdomains': ep_subdomains,
+  'supply-chain-check': ep_supply_chain_check,
+  'text-similarity': ep_text_similarity,
+  'timestamp': ep_timestamp,
+  'tx-decode': ep_tx_decode,
+  'typosquat-check': ep_typosquat_check,
+  'url-clean': ep_url_clean,
+  'url-reputation': ep_url_reputation,
+  'user-agent': ep_user_agent,
+  'uuid': ep_uuid,
+  'vat-validate': ep_vat_validate,
+  'vulnerability-check': ep_vulnerability_check,
+  'whois-lookup': ep_whois_lookup,
+};
+
+const USAGE_UPSERT = 'INSERT INTO api_usage (day, endpoint, ua_family, calls) VALUES (?, ?, ?, 1) ' +
+  'ON CONFLICT (day, endpoint, ua_family) DO UPDATE SET calls = calls + 1';
+// The api/_middleware.js counter does not see in-process calls: record MCP usage here (same table).
+function recordUsage(ctx, endpoint, status) {
+  try {
+    if (!ctx || !ctx.env || !ctx.env.DB || status === 404) return;
+    const day = new Date().toISOString().slice(0, 10);
+    ctx.waitUntil(ctx.env.DB.prepare(USAGE_UPSERT).bind(day, endpoint, 'presend-mcp').run().catch(() => {}));
+  } catch (e) {
+    // Counting must never affect the response.
+  }
+}
 
 const TOOLS = [
   {
@@ -198,7 +296,7 @@ const TOOLS = [
   },
   {
     name: 'supply_chain_check',
-    description: "One-call risk check for a package: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. Use before adding a dependency; use the individual tools to investigate one signal.",
+    description: "One-call risk check for a package: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. Use before adding a dependency; use the individual tools to investigate one signal. If a check could not run (rate limit, upstream error), it is listed in unavailable_checks and overall_risk is 'incomplete', never 'no_signals_found'.",
     inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Package ecosystem, e.g. npm. maintainer-change-check only runs for npm."}, "package": {"type": "string", "description": "Package name to check."}}, "required": ["ecosystem", "package"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/supply-chain-check?${new URLSearchParams(args).toString()}` }),
   },
@@ -277,7 +375,7 @@ function jsonRpcError(id, code, message) {
   return { jsonrpc: '2.0', id, error: { code, message } };
 }
 
-async function handleRequest(body) {
+async function handleRequest(body, ctx) {
   const { id, method, params } = body;
 
   if (method === 'initialize') {
@@ -313,14 +411,21 @@ async function handleRequest(body) {
     }
     try {
       const { method: httpMethod, url, body: reqBody } = tool.request(args);
-      // Identify MCP tool calls in api_usage (first word of the User-Agent only;
-      // no data about the MCP client is forwarded).
-      const fetchOpts = { method: httpMethod, headers: { 'User-Agent': 'presend-mcp' } };
-      if (reqBody) {
-        fetchOpts.headers['Content-Type'] = 'application/json';
-        fetchOpts.body = reqBody;
+      const endpoint = new URL(url).pathname.replace(/^\/api\//, '');
+      const mod = HANDLERS[endpoint];
+      const handler = mod && (httpMethod === 'POST' ? mod.onRequestPost : mod.onRequestGet);
+      if (!handler) {
+        return jsonRpcResult(id, { content: [{ type: 'text', text: `Error: no handler for ${endpoint}` }], isError: true });
       }
-      const res = await fetch(url, fetchOpts);
+      // In-process call as the MCP caller: its own rate-limit bucket instead of our Worker's
+      // shared egress IP. Only 'presend-mcp' is recorded as client type, nothing about the client.
+      const res = await callInternal(handler, {
+        url, method: httpMethod, body: reqBody || null,
+        clientIP: (ctx && ctx.request.headers.get('CF-Connecting-IP')) || 'unknown',
+        userAgent: 'presend-mcp', env: ctx && ctx.env,
+        waitUntil: ctx ? (pr) => ctx.waitUntil(pr) : undefined,
+      });
+      recordUsage(ctx, endpoint, res.status);
       const data = await res.json();
       return jsonRpcResult(id, {
         content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
@@ -363,7 +468,7 @@ export async function onRequestPost(context) {
     });
   }
 
-  const result = await handleRequest(body);
+  const result = await handleRequest(body, context);
   if (result === null) {
     return new Response(null, { status: 202, headers: corsHeaders() });
   }
