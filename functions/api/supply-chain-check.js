@@ -63,6 +63,7 @@ export async function onRequestGet(context) {
   const { searchParams, origin } = new URL(request.url);
   const ecosystem = (searchParams.get('ecosystem') || '').toLowerCase();
   const pkg = (searchParams.get('package') || '').trim();
+  const versionParam = (searchParams.get('version') || '').trim();
 
   if (!ecosystem || !pkg) {
     return new Response(JSON.stringify({
@@ -80,6 +81,20 @@ export async function onRequestGet(context) {
 
   try {
     const tasks = [];
+    // Version checked for vulnerabilities: the one requested, else the latest published one
+    // (without a version, vulnerability-check reports advisories across ALL versions).
+    let resolveVersion;
+    const versionP = new Promise((res) => { resolveVersion = res; });
+    if (versionParam) {
+      resolveVersion(versionParam);
+    } else if (ecosystem === 'pypi') {
+      fetch(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => resolveVersion((d && d.info && d.info.version) || null))
+        .catch(() => resolveVersion(null));
+    } else if (ecosystem !== 'npm') {
+      resolveVersion(null);
+    }
 
     if (ecosystem === 'npm') {
       tasks.push(
@@ -89,6 +104,7 @@ export async function onRequestGet(context) {
             if (data) {
               repoPath = extractGithubRepo(data.repository);
             }
+            if (!versionParam) resolveVersion((data && data['dist-tags'] && data['dist-tags'].latest) || null);
             return sub(maintainerGet, `${origin}/api/maintainer-change-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`);
           })
           .then(asResult)
@@ -97,7 +113,7 @@ export async function onRequestGet(context) {
     }
 
     tasks.push(
-      sub(vulnerabilityGet, `${origin}/api/vulnerability-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}`)
+      versionP.then((v) => sub(vulnerabilityGet, `${origin}/api/vulnerability-check?ecosystem=${ecosystem}&package=${encodeURIComponent(pkg)}${v ? `&version=${encodeURIComponent(v)}` : ''}`))
         .then(asResult)
         .then((data) => { results.vulnerability = data; })
     );
@@ -121,6 +137,7 @@ export async function onRequestGet(context) {
     if (results.typosquat?.suspicious) flags.push('possible_typosquat');
     if (results.repo_health?.archived) flags.push('repo_archived');
     const unavailable = Object.keys(results).filter((k) => results[k]?.unavailable);
+    const versionChecked = await versionP;
 
     return new Response(JSON.stringify({
       package: pkg,
@@ -128,6 +145,9 @@ export async function onRequestGet(context) {
       github_repo_resolved: repoPath,
       overall_risk: flags.length > 0 ? 'review_recommended' : (unavailable.length > 0 ? 'incomplete' : 'no_signals_found'),
       unavailable_checks: unavailable,
+      version_checked: versionChecked,
+      version_source: versionParam ? 'requested' : (versionChecked ? 'latest' : null),
+      version_note: versionChecked ? null : 'The version to check could not be determined: vulnerability results cover all versions of the package.',
       flags,
       checks: results,
       note: ecosystem !== 'npm'

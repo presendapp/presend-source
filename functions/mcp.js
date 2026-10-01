@@ -296,8 +296,8 @@ const TOOLS = [
   },
   {
     name: 'supply_chain_check',
-    description: "One-call risk check for a package: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. Use before adding a dependency; use the individual tools to investigate one signal. If a check could not run (rate limit, upstream error), it is listed in unavailable_checks and overall_risk is 'incomplete', never 'no_signals_found'.",
-    inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Package ecosystem, e.g. npm. maintainer-change-check only runs for npm."}, "package": {"type": "string", "description": "Package name to check."}}, "required": ["ecosystem", "package"]},
+    description: "One-call risk check for a package: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. Use before adding a dependency; use the individual tools to investigate one signal. Vulnerabilities are checked for the given version, or the latest published one (version_checked, version_source). If a check could not run (rate limit, upstream error), it is listed in unavailable_checks and overall_risk is 'incomplete', never 'no_signals_found'.",
+    inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Package ecosystem, e.g. npm. maintainer-change-check only runs for npm."}, "package": {"type": "string", "description": "Package name to check."}, "version": {"type": "string", "description": "Exact version to check for known vulnerabilities. Optional: defaults to the latest published version (npm and PyPI)."}}, "required": ["ecosystem", "package"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/supply-chain-check?${new URLSearchParams(args).toString()}` }),
   },
   {

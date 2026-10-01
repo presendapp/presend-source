@@ -2670,7 +2670,7 @@
     "/supply-chain-check": {
       "get": {
         "summary": "Combined supply-chain risk check",
-        "description": "Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check, and repo-health-check (auto-resolved from registry metadata when possible) into a single call with one overall verdict. overall_risk is review_recommended when any check raises a flag; if a check could not run (rate limit, upstream error), it is listed in unavailable_checks and the verdict is incomplete, never no_signals_found.",
+        "description": "Combines maintainer-change-check (npm only), vulnerability-check, typosquat-check, and repo-health-check (auto-resolved from registry metadata when possible) into a single call with one overall verdict. overall_risk is review_recommended when any check raises a flag; if a check could not run (rate limit, upstream error), it is listed in unavailable_checks and the verdict is incomplete, never no_signals_found. Vulnerabilities are checked for the given version, or the latest published one.",
         "parameters": [
           {
             "name": "ecosystem",
@@ -2691,6 +2691,16 @@
               "example": "lodash"
             },
             "description": "Package name to check."
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "4.17.21"
+            },
+            "description": "Exact version to check for known vulnerabilities. Optional: defaults to the latest published version (npm and PyPI); the version actually checked is returned in version_checked."
           }
         ],
         "responses": {
@@ -2711,7 +2721,7 @@
                       "type": "string",
                       "nullable": true
                     },
-                    "overall_risk": {"type": "string", "enum": ["no_signals_found", "review_recommended", "incomplete"]}, "unavailable_checks": {"type": "array", "items": {"type": "string"}, "description": "Checks that could not run (rate limit, upstream error)."},
+                    "overall_risk": {"type": "string", "enum": ["no_signals_found", "review_recommended", "incomplete"]}, "unavailable_checks": {"type": "array", "items": {"type": "string"}, "description": "Checks that could not run (rate limit, upstream error)."}, "version_checked": {"type": "string", "nullable": true, "description": "Version checked for vulnerabilities."}, "version_source": {"type": "string", "nullable": true, "enum": ["requested", "latest", null]}, "version_note": {"type": "string", "nullable": true, "description": "Set when no version could be determined: vulnerability results then cover all versions."},
                     "flags": {
                       "type": "array",
                       "items": {
