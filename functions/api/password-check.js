@@ -1,3 +1,5 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // POST /api/password-check
 // Body: {"password": "...", "check_breach": true}
 // Combines strength/entropy scoring (same formula as tools/password-strength.html)
@@ -7,36 +9,6 @@
 // Uses POST with a JSON body rather than a query string, unlike the existing
 // GET /api/password-breach — passwords should never travel in a URL, since
 // query strings are commonly logged by proxies, CDNs, and browser history.
-
-async function checkRateLimit(env, clientIP, bucket, isTest = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 20) return false;
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-
-  try {
-    if (!isTest && Math.random() < 0.1) {
-      const today = new Date().toISOString().split('T')[0];
-      const visitKey = `api-visits:${bucket}:${today}`;
-      const visits = await env.PRESEND_ANALYTICS.get(visitKey);
-      await env.PRESEND_ANALYTICS.put(visitKey, ((visits ? parseInt(visits) : 0) + 10).toString());
-    }
-  } catch (e) { /* tracking best-effort */ }
-
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', ...extra };
@@ -146,7 +118,7 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'passwordcheck', request.headers.get('X-Presend-Test') === '1');
+  const allowed = await checkRateLimit(env, clientIP, 'passwordcheck', { limit: 20, isTest: request.headers.get('X-Presend-Test') === '1', trackVisits: true });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 20 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

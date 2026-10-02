@@ -1,3 +1,5 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // GET /api/dns-lookup?domain=example.com[&type=MX]
 //
 // Looks up common DNS record types for a domain via Cloudflare's
@@ -5,26 +7,6 @@
 // With no &type, returns A, AAAA, CNAME, MX, TXT and NS all at once --
 // one call instead of six, same chaining philosophy as merge-and-compress-pdf
 // and security-scan.
-
-async function checkRateLimit(env, clientIP, bucket) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 10) return false;
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', ...extra };
@@ -83,7 +65,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'dns-lookup');
+  const allowed = await checkRateLimit(env, clientIP, 'dns-lookup', { limit: 10 });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 10 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

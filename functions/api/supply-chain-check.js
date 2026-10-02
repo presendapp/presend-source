@@ -3,6 +3,7 @@ import { onRequestGet as vulnerabilityGet } from './vulnerability-check.js';
 import { onRequestGet as typosquatGet } from './typosquat-check.js';
 import { onRequestGet as repoHealthGet } from './repo-health-check.js';
 import { callInternal } from '../_shared/internal-call.js';
+import { checkRateLimit } from '../_shared/rate-limit.js';
 // GET /api/supply-chain-check?ecosystem=npm&package=lodash
 //
 // Combines maintainer-change-check, vulnerability-check, typosquat-check,
@@ -14,27 +15,6 @@ import { callInternal } from '../_shared/internal-call.js';
 // maintainer-change-check is npm-only, so on PyPI this only combines
 // vulnerability-check + typosquat-check + repo-health-check (when
 // resolvable) -- disclosed in the response itself, not hidden.
-
-async function checkRateLimit(env, clientIP, bucket, exact = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 10) return false;
-    // Exact count for this costly endpoint (5 outbound requests per call): sampling (+5 one time in 5)
-    // could block a caller after 3 or 4 calls (lesson 10). Costs one KV write per call.
-    if (exact) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 1).toString(), { expirationTtl: 120 });
-    } else if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    return true;
-  }
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', ...extra };
@@ -57,7 +37,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'supplychaincheck', true);
+  const allowed = await checkRateLimit(env, clientIP, 'supplychaincheck', { limit: 10, exact: true });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 10 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

@@ -1,39 +1,11 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // POST /api/file-type
 // Detects a file's REAL type from its binary signature ("magic bytes"),
 // regardless of filename or claimed Content-Type. Flags a mismatch if the
 // declared Content-Type doesn't match what the bytes actually are -- a
 // common technique for disguising malicious files as harmless ones
 // (e.g. an .exe renamed to photo.jpg) to slip past naive upload filters.
-
-async function checkRateLimit(env, clientIP, bucket, isTest = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 30) return false;
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-
-  try {
-    if (!isTest && Math.random() < 0.1) {
-      const today = new Date().toISOString().split('T')[0];
-      const visitKey = `api-visits:${bucket}:${today}`;
-      const visits = await env.PRESEND_ANALYTICS.get(visitKey);
-      await env.PRESEND_ANALYTICS.put(visitKey, ((visits ? parseInt(visits) : 0) + 10).toString());
-    }
-  } catch (e) { /* tracking best-effort */ }
-
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return {
@@ -111,7 +83,7 @@ export async function onRequestPost(context) {
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
   const isTest = request.headers.get('X-Presend-Test') === '1';
 
-  const allowed = await checkRateLimit(env, clientIP, 'filetype', isTest);
+  const allowed = await checkRateLimit(env, clientIP, 'filetype', { limit: 30, isTest: isTest, trackVisits: true });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 30 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

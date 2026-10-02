@@ -1,3 +1,5 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // GET /api/subdomains?domain=example.com
 // Découverte PASSIVE de sous-domaines via Certificate Transparency (crt.sh).
 // Aucun scan actif. Usage prévu : audit de sa propre surface d'attaque.
@@ -8,23 +10,6 @@
 // avec un délai plus court par tentative (7s x2 au lieu de 12s x1) améliore
 // le taux de succès réel sans dépasser les limites de temps raisonnables
 // côté plateforme.
-
-async function checkRateLimit(env, clientIP, bucket) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 10) return false;
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    return true;
-  }
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', ...extra };
@@ -76,7 +61,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'subdomains');
+  const allowed = await checkRateLimit(env, clientIP, 'subdomains', { limit: 10 });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 10 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

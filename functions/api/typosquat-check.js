@@ -1,3 +1,5 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // GET  /api/typosquat-check?ecosystem=npm&package=lodas
 // POST /api/typosquat-check  { "ecosystem": "npm", "packages": ["lodas", ...] }  (batch, max MAX_BATCH)
 //
@@ -25,27 +27,6 @@
 // exact=true : écriture à chaque appel (+1). Utilisé pour les POST batch : peu
 // fréquents, et l'échantillonnage (+5 une fois sur 5) donnait ~18 % de 429
 // fantômes au 5e appel sous une limite de 10/min.
-async function checkRateLimit(env, clientIP, bucket, exact = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 10) return false;
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (exact) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 1).toString(), { expirationTtl: 120 });
-    } else if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-  return true;
-}
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', ...extra };
@@ -237,7 +218,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'typosquat-check');
+  const allowed = await checkRateLimit(env, clientIP, 'typosquat-check', { limit: 10 });
   if (!allowed) return jsonResponse({ error: 'Rate limit exceeded. Max 10 requests per minute.' }, 429);
 
   const { searchParams } = new URL(request.url);
@@ -263,7 +244,7 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'typosquat-check-batch', true);
+  const allowed = await checkRateLimit(env, clientIP, 'typosquat-check-batch', { limit: 10, exact: true });
   if (!allowed) return jsonResponse({ error: 'Rate limit exceeded. Max 10 requests per minute.' }, 429);
 
   let body;

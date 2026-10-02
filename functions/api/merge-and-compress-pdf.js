@@ -3,37 +3,8 @@
 // Usage: curl -X POST -F "files=@a.pdf" -F "files=@b.pdf" https://presend.pages.dev/api/merge-and-compress-pdf -o merged.pdf
 
 import * as PDFLibNS from '../../vendor/pdf-lib.min.js';
+import { checkRateLimit } from '../_shared/rate-limit.js';
 const PDFDocument = PDFLibNS.PDFDocument || (PDFLibNS.default && PDFLibNS.default.PDFDocument);
-
-async function checkRateLimit(env, clientIP, bucket, isTest = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 10) return false; // plus coûteux en CPU que hash.js, quota plus bas
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-
-  try {
-    if (!isTest && Math.random() < 0.1) {
-      const today = new Date().toISOString().split('T')[0];
-      const visitKey = `api-visits:${bucket}:${today}`;
-      const visits = await env.PRESEND_ANALYTICS.get(visitKey);
-      await env.PRESEND_ANALYTICS.put(visitKey, ((visits ? parseInt(visits) : 0) + 10).toString());
-    }
-  } catch (e) { /* tracking best-effort */ }
-
-  return true;
-}
 
 const MAX_TOTAL_SIZE = 30 * 1024 * 1024; // 30MB total across all files
 const MAX_FILES = 20;
@@ -66,7 +37,7 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'merge-and-compress-pdf', request.headers.get('X-Presend-Test') === '1');
+  const allowed = await checkRateLimit(env, clientIP, 'merge-and-compress-pdf', { limit: 10, isTest: request.headers.get('X-Presend-Test') === '1', trackVisits: true });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 10 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

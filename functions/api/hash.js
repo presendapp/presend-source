@@ -1,38 +1,7 @@
+import { checkRateLimit } from '../_shared/rate-limit.js';
+
 // POST un fichier en binaire brut, reçois les hash SHA-256/SHA-1/SHA-512.
 // Usage: curl -X POST --data-binary @fichier.pdf https://presend.pages.dev/api/hash
-
-
-async function checkRateLimit(env, clientIP, bucket, isTest = false) {
-  if (!env.PRESEND_ANALYTICS) return true;
-  try {
-    const now = Math.floor(Date.now() / 60000);
-    const rateKey = `rate:${bucket}:${clientIP}:${now}`;
-    let count = await env.PRESEND_ANALYTICS.get(rateKey);
-    count = count ? parseInt(count) : 0;
-    if (count >= 30) return false;
-    // Écriture échantillonnée (1 sur 5) pour économiser le quota KV --
-    // légèrement moins précis en rafale, mais protège toujours contre un abus soutenu.
-    if (Math.random() < 1 / 5) {
-      await env.PRESEND_ANALYTICS.put(rateKey, (count + 5).toString(), { expirationTtl: 120 });
-    }
-  } catch (e) {
-    // KV en panne ou quota dépassé -- ne doit jamais faire planter la requête.
-    return true;
-  }
-
-  // Tracking d'usage échantillonné (1 requête sur 10, multiplié par 10) pour économiser
-  // le quota d'écritures KV — best-effort, ne bloque jamais la requête si ça échoue.
-  try {
-    if (!isTest && Math.random() < 0.1) {
-      const today = new Date().toISOString().split('T')[0];
-      const visitKey = `api-visits:${bucket}:${today}`;
-      const visits = await env.PRESEND_ANALYTICS.get(visitKey);
-      await env.PRESEND_ANALYTICS.put(visitKey, ((visits ? parseInt(visits) : 0) + 10).toString());
-    }
-  } catch (e) { /* tracking best-effort */ }
-
-  return true;
-}
 
 const MAX_SIZE = 20 * 1024 * 1024; // 20MB — limite CPU/mémoire raisonnable pour Workers gratuit
 const ALGOS = ['SHA-256', 'SHA-1', 'SHA-512'];
@@ -69,7 +38,7 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'hash', request.headers.get('X-Presend-Test') === '1');
+  const allowed = await checkRateLimit(env, clientIP, 'hash', { limit: 30, isTest: request.headers.get('X-Presend-Test') === '1', trackVisits: true });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 30 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },
