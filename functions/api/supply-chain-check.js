@@ -16,6 +16,9 @@ import { checkRateLimit } from '../_shared/rate-limit.js';
 // vulnerability-check + typosquat-check + repo-health-check (when
 // resolvable) -- disclosed in the response itself, not hidden.
 
+import { firstPublished, ageInDays } from '../_shared/package-age.js';
+const NEW_PACKAGE_DAYS = 30;
+
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', ...extra };
 }
@@ -65,6 +68,7 @@ export async function onRequestGet(context) {
   // npm / PyPI only: found | not_found (404) | unavailable (registry error). A package that does not exist
   // must never get 'no_signals_found': it may be a name invented by an AI model (slopsquatting).
   let registryStatus = null;
+  let registryData = null;
   const setRegistry = (r) => { registryStatus = r.ok ? 'found' : (r.status === 404 ? 'not_found' : 'unavailable'); return r.ok ? r.json() : null; };
 
   try {
@@ -84,7 +88,7 @@ export async function onRequestGet(context) {
         fetch(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`)
           .then(setRegistry)
           .catch(() => { registryStatus = 'unavailable'; return null; })
-          .then((d) => { if (!versionParam) resolveVersion((d && d.info && d.info.version) || null); })
+          .then((d) => { registryData = d; if (!versionParam) resolveVersion((d && d.info && d.info.version) || null); })
       );
     }
 
@@ -94,6 +98,7 @@ export async function onRequestGet(context) {
           .then(setRegistry)
           .catch(() => { registryStatus = 'unavailable'; return null; })
           .then((data) => {
+            registryData = data;
             if (data) {
               repoPath = extractGithubRepo(data.repository);
             }
@@ -129,6 +134,14 @@ export async function onRequestGet(context) {
     if ((results.vulnerability?.vulnerabilities || []).length > 0) flags.push('known_vulnerabilities');
     if (results.typosquat?.suspicious) flags.push('possible_typosquat');
     if (results.repo_health?.archived) flags.push('repo_archived');
+    // New package: first publication date read from the registry document already downloaded (no extra request).
+    // Measured on 2 Oct 2026 (tests/package-age/measure.mjs): under 30 days = 20 of the top 15,000 PyPI packages,
+    // 0 of the 17,338 npm-high-impact packages (a list biased towards older packages).
+    const firstPub = registryStatus === 'found' ? firstPublished(ecosystem, registryData) : null;
+    const ageDays = ageInDays(firstPub);
+    const isNew = ageDays !== null && ageDays < NEW_PACKAGE_DAYS;
+    const ageText = ageDays === 0 ? 'less than a day' : `${ageDays} day${ageDays === 1 ? '' : 's'}`;
+    if (isNew) flags.push('new_package');
     const unavailable = Object.keys(results).filter((k) => results[k]?.unavailable);
     if (registryStatus === 'unavailable') unavailable.push('registry');
     const versionChecked = await versionP;
@@ -143,6 +156,15 @@ export async function onRequestGet(context) {
       registry_note: registryStatus === 'not_found'
         ? `No package named "${pkg}" exists on ${ecosystem === 'npm' ? 'npm' : 'PyPI'}. If the name came from an AI model or a suggestion, it may be invented: anyone can register it later and publish code under it (slopsquatting). Check the name against the project's own documentation before installing.`
         : null,
+      first_published: firstPub,
+      package_age_days: ageDays,
+      new_package: firstPub ? isNew : null,
+      new_package_threshold_days: NEW_PACKAGE_DAYS,
+      // npm: creation date kept by the registry. PyPI: oldest file STILL on PyPI (deleted releases make a project look younger).
+      age_basis: firstPub ? (ecosystem === 'npm' ? 'registry_created_date' : 'oldest_file_on_pypi') : null,
+      age_note: !isNew ? null : (ecosystem === 'npm'
+        ? `"${pkg}" was first published on npm ${ageText} ago. New packages are where invented (slopsquatted) and look-alike names get registered: check the name against the project's own documentation before installing. Being new does not make a package malicious.`
+        : `The oldest release of "${pkg}" still on PyPI was uploaded ${ageText} ago: either the project is new, or its earlier releases were deleted. New packages are where invented (slopsquatted) and look-alike names get registered: check the name against the project's own documentation before installing. Being new does not make a package malicious.`),
       unavailable_checks: unavailable,
       version_checked: versionChecked,
       version_source: versionParam ? 'requested' : (versionChecked ? 'latest' : null),
