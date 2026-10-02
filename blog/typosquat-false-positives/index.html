@@ -36,7 +36,7 @@
 </header>
 <main class="wrap art" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">How many false alarms does a typosquat detector raise? We measured ours</h1>
-  <p><em>1 October 2026. Disclosure: this is about the typosquat check in Presend's free API, written by the people who build it.</em></p>
+  <p><em>1 October 2026. Disclosure: this is about the typosquat check in Presend's free API, written by its developer.</em></p>
 
   <p>A typosquat detector compares a package name with popular names and flags the ones that are suspiciously close: <code>reqeusts</code> next to <code>requests</code>. The hard part is not catching <code>reqeusts</code>. It is not flagging <code>ms</code>, <code>qs</code> or <code>typing_extensions</code>, because a check that cries wolf on the packages everybody uses gets switched off, and then it catches nothing.</p>
   <p>So we stopped testing our check only on typosquats and started measuring it on the packages people actually install: the top 15,000 PyPI packages and the 17,338 packages of the npm-high-impact list.</p>
