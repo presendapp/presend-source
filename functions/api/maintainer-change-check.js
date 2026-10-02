@@ -1,4 +1,5 @@
 import { checkRateLimit } from '../_shared/rate-limit.js';
+import { firstPublished, ageInDays, NEW_PACKAGE_DAYS } from '../_shared/package-age.js';
 
 // GET  /api/maintainer-change-check?ecosystem=npm&package=lodash
 // POST /api/maintainer-change-check  { "ecosystem": "npm", "packages": ["lodash", ...] }  (batch, max MAX_BATCH)
@@ -185,7 +186,11 @@ async function checkPackage(pkg) {
     if (!res.ok) return { status: 502, body: { package: pkg, error: `npm registry error (HTTP ${res.status})` } };
     const data = await res.json();
     const analysis = await classifyEstablishedPublishers(analyzeNpm(data), pkg);
-    return { status: 200, body: { package: pkg, ecosystem: 'npm', found: true, ...analysis } };
+    // Package age from the same registry document (no extra request): created less than NEW_PACKAGE_DAYS ago = new_package.
+    const firstPub = firstPublished('npm', data);
+    const ageDays = ageInDays(firstPub);
+    return { status: 200, body: { package: pkg, ecosystem: 'npm', found: true, ...analysis,
+      first_published: firstPub, package_age_days: ageDays, new_package: ageDays === null ? null : ageDays < NEW_PACKAGE_DAYS } };
   } catch (e) {
     if (e.name === 'AbortError') return { status: 504, body: { package: pkg, error: 'npm registry request timed out. Try again shortly.' } };
     return { status: 502, body: { package: pkg, error: 'Could not complete maintainer change check.', detail: e.message } };

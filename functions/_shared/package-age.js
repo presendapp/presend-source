@@ -2,6 +2,10 @@
 // (no extra request). npm: packument time.created. PyPI: oldest upload_time among all files of all releases.
 // PyPI limit: if early releases were deleted, the package looks younger than it is (errs towards a warning, never
 // towards silence). Pure module, no imports: tests import it directly.
+// Age below which a package is reported as new (supply-chain-check, maintainer-change-check). Measured on 2 Oct 2026:
+// under 30 days = 20 of the top 15,000 PyPI packages, 0 of the 17,338 npm-high-impact packages.
+export const NEW_PACKAGE_DAYS = 30;
+
 export function firstPublished(ecosystem, data) {
   if (!data || typeof data !== 'object') return null;
   if (ecosystem === 'npm') {

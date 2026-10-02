@@ -16,8 +16,7 @@ import { checkRateLimit } from '../_shared/rate-limit.js';
 // vulnerability-check + typosquat-check + repo-health-check (when
 // resolvable) -- disclosed in the response itself, not hidden.
 
-import { firstPublished, ageInDays } from '../_shared/package-age.js';
-const NEW_PACKAGE_DAYS = 30;
+import { firstPublished, ageInDays, NEW_PACKAGE_DAYS } from '../_shared/package-age.js';
 
 function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, OPTIONS', ...extra };

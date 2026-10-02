@@ -2605,6 +2605,9 @@
                     "found": {
                       "type": "boolean"
                     },
+                    "first_published": {"type": "string", "format": "date-time", "nullable": true, "description": "Creation date recorded by the npm registry (time.created), read from the registry document already fetched. Absent when found is false."},
+                    "package_age_days": {"type": "integer", "nullable": true, "description": "Whole days since first_published."},
+                    "new_package": {"type": "boolean", "nullable": true, "description": "true when the package was first published less than 30 days ago (a squatted or invented name is usually recent). Does not change suspicious."},
                     "current_maintainers": {
                       "type": "array",
                       "items": {
