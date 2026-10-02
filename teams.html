@@ -58,7 +58,7 @@
     <li><strong>Typosquats (npm and PyPI).</strong> On the top 15,000 PyPI packages, 11 are flagged, each one reviewed and left flagged deliberately. On about 17,000 high-impact npm packages, 1 is flagged. All 27 known typosquats in our test set are detected.</li>
     <li><strong>New publisher after a dormant period (npm only).</strong> The pattern behind the event-stream attack. Evaluated on the 200 most depended-upon npm packages at 9 dates over two years: 1 package flagged. It cannot see a hijacked account that keeps the same publisher name.</li>
     <li><strong>Known vulnerabilities of the exact version you use</strong>, from OSV.dev, rather than of the package as a whole.</li>
-    <li><strong>Names that do not exist</strong> (npm and PyPI), for instance invented by an AI model: the supply-chain check reports them as such instead of as clean. A name that someone has already registered is not caught this way.</li>
+    <li><strong>Names that do not exist</strong> (npm and PyPI), for instance invented by an AI model: the supply-chain check reports them as such instead of as clean. A name that someone has already registered passes this check; if it was first published less than 30 days ago, it is reported as a new package instead. One registered earlier is not caught.</li>
   </ul>
   <p>The same measurement, applied to NVIDIA's open-source SkillSpector, led to a fix we contributed (<a href="https://github.com/NVIDIA/SkillSpector/pull/647">PR #647</a>, merged).</p>
 
