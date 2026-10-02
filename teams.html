@@ -50,7 +50,7 @@
   with:
     ecosystem: npm   # or pypi</pre>
   <p>It checks typosquats, publisher changes (npm) and known vulnerabilities of the installed version. It sends package names and versions, never your code, and fails the job when it finds an issue (<code>fail-on-issue: false</code> to only report). <a href="https://github.com/presendapp/presend-check-action">Details</a>.</p>
-  <p>For AI agents: the MCP server at <code>https://presend.pages.dev/mcp</code> (Streamable HTTP, no key).</p>
+  <p>For AI agents: the MCP server at <code>https://presend.pages.dev/mcp</code> (Streamable HTTP, no key). In Claude Code, a <a href="https://github.com/presendapp/presend-mcp-config/blob/main/claude-code.md#check-packages-before-claude-code-installs-them">pre-install hook</a> runs the check on every <code>npm install</code> or <code>pip install</code> the agent attempts, whatever the agent decides: names that do not exist are blocked, new or suspicious ones need your confirmation.</p>
 
   <h2>What the checks do today</h2>
   <p>These checks already exist and are free through the <a href="/api">API</a> and the MCP server (per-minute rate limits apply). Last measured on 1 October 2026: <a href="/measurements">full results, method and blind spots</a>; the code and test sets are <a href="https://github.com/presendapp/presend-source/tree/main/tests" target="_blank" rel="noopener noreferrer">public</a>.</p>

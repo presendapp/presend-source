@@ -6,7 +6,7 @@
     <atom:link href="https://presend.pages.dev/rss.xml" rel="self" type="application/rss+xml" />
     <description>Guides and comparisons for Presend's free privacy tools and API</description>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Oct 2026 15:46:03 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 15:07:30 +0000</lastBuildDate>
     <item>
       <title>EXIF Remover vs Alternatives — Which One Is Best? — Presend Blog</title>
       <link>https://presend.pages.dev/blog/exif-remover-comparison/</link>
@@ -150,6 +150,12 @@
       <link>https://presend.pages.dev/blog/qr-code-generator-guide/</link>
       <guid isPermaLink="true">https://presend.pages.dev/blog/qr-code-generator-guide/</guid>
       <description>How to Use the QR Code Generator — Complete Guide. Free, private, browser-based tool. No signup required.</description>
+    </item>
+    <item>
+      <title>How many false alarms does a typosquat detector raise? We measured ours</title>
+      <link>https://presend.pages.dev/blog/typosquat-false-positives/</link>
+      <guid isPermaLink="true">https://presend.pages.dev/blog/typosquat-false-positives/</guid>
+      <description>We measured our own typosquat check on the top 15,000 PyPI packages and 17,338 high-impact npm packages: what made it noisy, what fixed it, how the numbers drift, and what name similarity cannot catch.</description>
     </item>
     <item>
       <title>URL Cleaner vs Alternatives — Which One Is Best? — Presend Blog</title>
