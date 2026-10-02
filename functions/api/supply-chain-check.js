@@ -62,6 +62,10 @@ export async function onRequestGet(context) {
   // A failed sub-check (429, 5xx...) is reported as unavailable, never read as 'no signal'.
   const asResult = async (r) => (r.ok ? r.json() : { unavailable: true, status: r.status });
   let repoPath = null;
+  // npm / PyPI only: found | not_found (404) | unavailable (registry error). A package that does not exist
+  // must never get 'no_signals_found': it may be a name invented by an AI model (slopsquatting).
+  let registryStatus = null;
+  const setRegistry = (r) => { registryStatus = r.ok ? 'found' : (r.status === 404 ? 'not_found' : 'unavailable'); return r.ok ? r.json() : null; };
 
   try {
     const tasks = [];
@@ -71,19 +75,24 @@ export async function onRequestGet(context) {
     const versionP = new Promise((res) => { resolveVersion = res; });
     if (versionParam) {
       resolveVersion(versionParam);
-    } else if (ecosystem === 'pypi') {
-      fetch(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`)
-        .then((r) => (r.ok ? r.json() : null))
-        .then((d) => resolveVersion((d && d.info && d.info.version) || null))
-        .catch(() => resolveVersion(null));
-    } else if (ecosystem !== 'npm') {
+    } else if (ecosystem !== 'npm' && ecosystem !== 'pypi') {
       resolveVersion(null);
+    }
+    if (ecosystem === 'pypi') {
+      // Always read the PyPI project page: existence check, and latest version when none was requested.
+      tasks.push(
+        fetch(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`)
+          .then(setRegistry)
+          .catch(() => { registryStatus = 'unavailable'; return null; })
+          .then((d) => { if (!versionParam) resolveVersion((d && d.info && d.info.version) || null); })
+      );
     }
 
     if (ecosystem === 'npm') {
       tasks.push(
         fetch(`https://registry.npmjs.org/${encodeURIComponent(pkg)}`)
-          .then((r) => (r.ok ? r.json() : null))
+          .then(setRegistry)
+          .catch(() => { registryStatus = 'unavailable'; return null; })
           .then((data) => {
             if (data) {
               repoPath = extractGithubRepo(data.repository);
@@ -121,13 +130,19 @@ export async function onRequestGet(context) {
     if (results.typosquat?.suspicious) flags.push('possible_typosquat');
     if (results.repo_health?.archived) flags.push('repo_archived');
     const unavailable = Object.keys(results).filter((k) => results[k]?.unavailable);
+    if (registryStatus === 'unavailable') unavailable.push('registry');
     const versionChecked = await versionP;
 
     return new Response(JSON.stringify({
       package: pkg,
       ecosystem,
       github_repo_resolved: repoPath,
-      overall_risk: flags.length > 0 ? 'review_recommended' : (unavailable.length > 0 ? 'incomplete' : 'no_signals_found'),
+      overall_risk: registryStatus === 'not_found' ? 'package_not_found'
+        : (flags.length > 0 ? 'review_recommended' : (unavailable.length > 0 ? 'incomplete' : 'no_signals_found')),
+      registry_status: registryStatus,
+      registry_note: registryStatus === 'not_found'
+        ? `No package named "${pkg}" exists on ${ecosystem === 'npm' ? 'npm' : 'PyPI'}. If the name came from an AI model or a suggestion, it may be invented: anyone can register it later and publish code under it (slopsquatting). Check the name against the project's own documentation before installing.`
+        : null,
       unavailable_checks: unavailable,
       version_checked: versionChecked,
       version_source: versionParam ? 'requested' : (versionChecked ? 'latest' : null),
