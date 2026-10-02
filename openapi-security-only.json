@@ -494,7 +494,7 @@
     "/password-check": {
       "post": {
         "summary": "Combined password strength + breach check",
-        "description": "Chains entropy/strength scoring with an optional HIBP breach check in a single call. Password is sent in the JSON body, never in a URL.",
+        "description": "Chains entropy/strength scoring with an optional HIBP breach check in a single call. Password is sent in the JSON body, never in a URL. Entropy is an upper bound (random choice assumed; a passphrase is estimated per word); a password found in breaches is always rated very_weak.",
         "requestBody": {
           "required": true,
           "content": {
@@ -546,6 +546,19 @@
                     "estimated_crack_time": {
                       "type": "string"
                     },
+                    "estimate_basis": {
+                      "type": "string",
+                      "enum": ["random_characters", "passphrase_words"],
+                      "description": "What the entropy estimate assumes: random characters, or random words for a passphrase (3+ words of letters)."
+                    },
+                    "strength_reason": {
+                      "type": "string",
+                      "enum": ["entropy_estimate", "found_in_breaches"],
+                      "description": "found_in_breaches: the password appears in Have I Been Pwned data, so strength is very_weak and crack time instant whatever the entropy."
+                    },
+                    "entropy_note": {
+                      "type": "string"
+                    },
                     "checks": {
                       "type": "object"
                     },
@@ -558,8 +571,11 @@
                 "example": {
                   "length": 11,
                   "entropy_bits": 57,
-                  "strength": "fair",
-                  "estimated_crack_time": "2 days",
+                  "strength": "very_weak",
+                  "estimated_crack_time": "instant",
+                  "estimate_basis": "random_characters",
+                  "strength_reason": "found_in_breaches",
+                  "entropy_note": "Upper bound: assumes the characters (or, for a passphrase, the words) were chosen at random. Dictionary words, names, dates and keyboard patterns are far weaker than this estimate.",
                   "checks": {
                     "length_ok": false,
                     "has_lowercase": true,

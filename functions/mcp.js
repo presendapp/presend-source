@@ -249,7 +249,7 @@ const TOOLS = [
   },
   {
     name: 'password_check',
-    description: "Scores a password's strength (length, character variety, entropy, common patterns) and, with check_breach=true, also looks it up in Have I Been Pwned breach data via k-anonymity (only a hash prefix is sent). Use it to evaluate a password someone is choosing; use password_breach when you only need the breach count, and password to generate a new one. The password travels in a POST body, never in a URL.",
+    description: "Scores a password's strength (length, character variety, entropy as an upper bound, repeated patterns; passphrases are estimated per word) and, with check_breach=true, also looks it up in Have I Been Pwned breach data via k-anonymity (only a hash prefix is sent); a password found in breaches is always rated very_weak. Use it to evaluate a password someone is choosing; use password_breach when you only need the breach count, and password to generate a new one. The password travels in a POST body, never in a URL.",
     inputSchema: {"type": "object", "properties": {"password": {"type": "string", "description": "Password to evaluate for strength (length, character variety, common patterns)."}, "check_breach": {"type": "boolean", "description": "Whether to also check the password against known data-breach corpora via k-anonymity. true or false."}}, "required": ["password"]},
     request: (args) => ({ method: 'POST', url: `${API_BASE}/password-check`, body: JSON.stringify(args) }),
   },

@@ -14,7 +14,14 @@ function corsHeaders(extra = {}) {
   return { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', ...extra };
 }
 
-// --- Strength analysis: identical formula to tools/password-strength.html ---
+// --- Strength analysis: keep in sync with tools/password-strength.html ---
+// Character-set entropy is an UPPER BOUND: it assumes every character was chosen at random.
+// Since 2 Oct. 2026, a passphrase (3+ words of letters) is estimated per word, as if each word
+// were drawn at random from a 7,776-word (Diceware-sized) list, never above the character estimate.
+const DICEWARE_BITS_PER_WORD = Math.log2(7776);
+const PASSPHRASE_RE = /^[A-Za-z]+(?:[ ._-][A-Za-z]+){2,}$/;
+const ENTROPY_NOTE = 'Upper bound: assumes the characters (or, for a passphrase, the words) were chosen at random. Dictionary words, names, dates and keyboard patterns are far weaker than this estimate.';
+
 function analyzeStrength(pwd) {
   const len = pwd.length;
   let pool = 0;
@@ -24,19 +31,24 @@ function analyzeStrength(pwd) {
   if (/[^a-zA-Z0-9]/.test(pwd)) pool += 32;
   if (pool === 0) pool = 1;
 
-  const entropy = len * Math.log2(pool);
-  const combinations = Math.pow(pool, len);
+  let entropy = len * Math.log2(pool);
+  let basis = 'random_characters';
+  if (PASSPHRASE_RE.test(pwd)) {
+    const wordBits = pwd.split(/[ ._-]/).length * DICEWARE_BITS_PER_WORD;
+    if (wordBits < entropy) { entropy = wordBits; basis = 'passphrase_words'; }
+  }
   const guessesPerSec = 1e12;
-  const seconds = combinations / guessesPerSec;
+  const seconds = Math.pow(2, entropy) / guessesPerSec;
 
+  const n = (v, unit) => { const r = Math.round(v); return r + ' ' + unit + (r === 1 ? '' : 's'); };
   let crackTime;
   if (seconds < 1) crackTime = 'instant';
-  else if (seconds < 60) crackTime = Math.round(seconds) + ' seconds';
-  else if (seconds < 3600) crackTime = Math.round(seconds / 60) + ' minutes';
-  else if (seconds < 86400) crackTime = Math.round(seconds / 3600) + ' hours';
-  else if (seconds < 31536000) crackTime = Math.round(seconds / 86400) + ' days';
-  else if (seconds < 3153600000) crackTime = Math.round(seconds / 31536000) + ' years';
-  else if (seconds < 315360000000) crackTime = Math.round(seconds / 3153600000) + ' centuries';
+  else if (seconds < 60) crackTime = n(seconds, 'second');
+  else if (seconds < 3600) crackTime = n(seconds / 60, 'minute');
+  else if (seconds < 86400) crackTime = n(seconds / 3600, 'hour');
+  else if (seconds < 31536000) crackTime = n(seconds / 86400, 'day');
+  else if (seconds < 3153600000) crackTime = n(seconds / 31536000, 'year');
+  else if (seconds < 315360000000) crackTime = n(seconds / 3153600000, 'centurie');
   else crackTime = 'millennia';
 
   let strength;
@@ -60,6 +72,9 @@ function analyzeStrength(pwd) {
     entropy_bits: Math.round(entropy),
     strength,
     estimated_crack_time: crackTime,
+    estimate_basis: basis,
+    strength_reason: 'entropy_estimate',
+    entropy_note: ENTROPY_NOTE,
     checks,
   };
 }
@@ -152,6 +167,12 @@ export async function onRequestPost(context) {
   let breachResult = null;
   if (checkBreachFlag) {
     breachResult = await checkBreach(password);
+  }
+  // A password found in breach corpora is among the first guesses of any attack, whatever its entropy.
+  if (breachResult && breachResult.breached === true) {
+    strengthResult.strength = 'very_weak';
+    strengthResult.estimated_crack_time = 'instant';
+    strengthResult.strength_reason = 'found_in_breaches';
   }
 
   return new Response(JSON.stringify({
