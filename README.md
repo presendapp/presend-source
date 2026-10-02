@@ -13,26 +13,26 @@
 [![PWA](https://img.shields.io/badge/PWA-Enabled-orange?style=flat-square)](https://presend.pages.dev)
 [![Privacy](https://img.shields.io/badge/Privacy-First-ff6b6b?style=flat-square)](https://presend.pages.dev/privacy)
 
-**Presend is three things: 48 free browser-based file tools (nothing ever uploaded), a free 48-endpoint security/utility API (no signup, no key), and an MCP server exposing 41 of those endpoints to AI agents.**
+**Presend checks npm and PyPI packages before they are installed: typosquats, known vulnerabilities of the version you use, publisher changes (npm), and names that do not exist or were first published in the last 30 days. It is available as a free API, an MCP server for AI agents and a GitHub Action. The site also has free browser tools; the file tools process files locally.**
 
-[Open Presend](https://presend.pages.dev) · [API docs](https://presend.pages.dev/api) · [OpenAPI spec](https://presend.pages.dev/openapi.json) · [MCP server](https://presend.pages.dev/mcp)
+[Open Presend](https://presend.pages.dev) · [API docs](https://presend.pages.dev/api) · [OpenAPI spec](https://presend.pages.dev/openapi.json) · [MCP server](https://presend.pages.dev/mcp) · [Measurements](https://presend.pages.dev/measurements) · [For teams](https://presend.pages.dev/teams)
 
 ## Why Presend?
 
-Unlike most online tools, **Presend processes files entirely locally in your browser** -- your files never leave your device. And unlike most free API directories, the API layer has no signup wall or aggressive rate limits gating basic use.
-
-- **100% Private (browser tools)** -- Web Crypto API, Canvas API, FileReader -- all client-side
-- **Real supply-chain security (API)** -- `maintainer-change-check` flags a package recently taken over by a previously unseen publisher after a long dormancy (the event-stream pattern; it does not detect hijacked existing accounts)
-- **Instant** -- Cloudflare CDN, loads in under 1 second globally
-- **PWA** -- Install on mobile/desktop, works offline
-- **Free Forever** -- No freemium, no watermarks, no limits
+- **Before an agent installs a package** -- the MCP tool `supply_chain_check` reports `package_not_found` for a name that does not exist on npm or PyPI (it may be invented by a model) and `new_package` for one first published less than 30 days ago.
+- **Measured false alarms** -- the typosquat check is measured on the most downloaded PyPI packages and the npm-high-impact list, with the scripts to reproduce it: see the [measurements page](https://presend.pages.dev/measurements).
+- **Real supply-chain signal (API)** -- `maintainer-change-check` flags a package recently taken over by a previously unseen publisher after a long dormancy (the event-stream pattern; it does not detect hijacked existing accounts).
+- **What it is not** -- not a malware scanner: it reports signals worth a look before installing, it does not analyse package code.
+- **No account** -- the API and the MCP server are free, with no signup and no key; per-minute rate limits apply. A paid offer for teams is being tested: [Presend for teams](https://presend.pages.dev/teams).
+- **Browser file tools** -- the file tools (EXIF, PDF, images, office files) run locally with Web Crypto, Canvas and FileReader. A few other tools rely on a network service (speech recognition, password breach lookup, link preview...); [the privacy page](https://presend.pages.dev/privacy) lists each one.
+- **PWA** -- install on mobile or desktop.
 
 ## API & MCP Server
 
-- **[REST API](https://presend.pages.dev/api)** -- 40 free endpoints: security & verification (WHOIS/DNS, package vulnerability & typosquat checks, malware scanning, JWT decode/verify, GitHub repo health, maintainer-change detection), file & image processing, and everyday utilities. Full [OpenAPI 3.0 spec](https://presend.pages.dev/openapi.json).
-- **[MCP server](https://presend.pages.dev/mcp)** -- 33 tools over Streamable HTTP, no signup, no key. Verified working with LangChain, CrewAI, LlamaIndex, OpenAI's Agents SDK, and Google's ADK.
-- **[npm client](https://www.npmjs.com/package/presend-api)** -- `npm install presend-api`, zero-dependency, wraps 42 methods.
-- **[GitHub Action](https://github.com/marketplace/actions/presend-dependency-security-check)** -- drop-in dependency security scanning (npm + PyPI) for any CI pipeline.
+- **[REST API](https://presend.pages.dev/api)** -- free endpoints: supply-chain checks (typosquat, vulnerabilities of a given version, maintainer change, repository health, and a combined supply-chain check), DNS and WHOIS lookups, email checks, JWT decode and verify, file and image processing, and everyday utilities. Full [OpenAPI 3.0 spec](https://presend.pages.dev/openapi.json).
+- **[MCP server](https://presend.pages.dev/mcp)** -- the same checks as tools over Streamable HTTP, no signup, no key; listed in the official MCP registry as `io.github.presendapp/presend-mcp`.
+- **[npm client](https://www.npmjs.com/package/presend-api)** -- `npm install presend-api`, zero-dependency.
+- **[GitHub Action](https://github.com/marketplace/actions/presend-dependency-security-check)** -- checks the dependencies of `package.json` or `requirements.txt` in CI (npm and PyPI).
 - **[Code examples](https://github.com/presendapp/presend-examples)** -- working Python for LangChain, CrewAI, LlamaIndex, OpenAI Agents SDK, Google ADK, and plain REST.
 - **[MCP config guides](https://github.com/presendapp/presend-mcp-config)** -- copy-paste setup for Claude Desktop, Claude Code, Cursor, and Windsurf, no code required.
 - **[Browser extension](https://github.com/presendapp/presend-extension)** -- "Presend — Clean Photos", strips EXIF/GPS on right-click.
@@ -71,8 +71,8 @@ Unlike most online tools, **Presend processes files entirely locally in your bro
 
 Presend is built for search engines and AI assistants:
 
-- **Schema.org**: HowTo, FAQPage, SoftwareApplication, BreadcrumbList, Organization on every page
-- **Dynamic Sitemap**: 842 URLs auto-updated (40 tools + blog/guide pages, across 8 languages)
+- **Schema.org**: structured data on the pages (Organization, FAQPage, BreadcrumbList...)
+- **Sitemap**: a static `sitemap.xml` covering the tools, blog and guides in 8 languages
 - **Dynamic OG Images**: API generates social preview images per tool
 - **Core Web Vitals**: Preconnect, DNS-prefetch, CSS preload, zero render-blocking JS
 - **PWA**: Service worker + manifest for offline use and installability
