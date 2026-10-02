@@ -2,7 +2,7 @@
 // Usage : node tests/typosquat/run.mjs   -- code de sortie 1 si faux positif ou typosquat rate.
 import { readFileSync, writeFileSync } from 'node:fs';
 const root = new URL('../../', import.meta.url);
-const src = readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8');
+const src = readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8').replace(/from '\.\.\//g, "from '" + new URL('functions/', root).href);
 const tmp = `/tmp/typosquat-under-test-${process.pid}.mjs`;
 writeFileSync(tmp, src + '\nexport { analyzeName, POPULAR };\n');
 const { analyzeName, POPULAR } = await import(tmp);

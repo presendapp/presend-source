@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 const root = new URL('../../', import.meta.url);
 const tmp = `/tmp/typosquat-top-${process.pid}.mjs`;
-writeFileSync(tmp, readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8') + '\nexport { analyzeName };\n');
+writeFileSync(tmp, readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8').replace(/from '\.\.\//g, "from '" + new URL('functions/', root).href) + '\nexport { analyzeName };\n');
 const { analyzeName } = await import(tmp);
 const reviewed = new Set(JSON.parse(readFileSync(new URL('tests/typosquat/fixtures.json', root), 'utf8')).reviewed_flagged_PyPI);
 const res = await fetch('https://hugovk.dev/top-pypi-packages/top-pypi-packages-30-days.min.json');

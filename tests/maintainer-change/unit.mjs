@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 const root = new URL('../../', import.meta.url);
 const tmp = `/tmp/mcc-unit-${process.pid}.mjs`;
-writeFileSync(tmp, readFileSync(new URL('functions/api/maintainer-change-check.js', root), 'utf8') + '\nexport { analyzeNpm };\n');
+writeFileSync(tmp, readFileSync(new URL('functions/api/maintainer-change-check.js', root), 'utf8').replace(/from '\.\.\//g, "from '" + new URL('functions/', root).href) + '\nexport { analyzeNpm };\n');
 const { analyzeNpm } = await import(tmp);
 const DAY = 86400000, now = Date.parse('2026-09-26');
 function doc(newPublisher, { trusted = false, version = '2.0.0' } = {}) {

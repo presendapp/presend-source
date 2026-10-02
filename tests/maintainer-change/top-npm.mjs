@@ -8,7 +8,7 @@ import { execSync } from 'node:child_process';
 const N = Number(process.argv[2] || 200);
 const root = new URL('../../', import.meta.url);
 const tmp = `/tmp/mcc-under-test-${process.pid}.mjs`;
-writeFileSync(tmp, readFileSync(new URL('functions/api/maintainer-change-check.js', root), 'utf8') + '\nexport { analyzeNpm, classifyEstablishedPublishers };\n');
+writeFileSync(tmp, readFileSync(new URL('functions/api/maintainer-change-check.js', root), 'utf8').replace(/from '\.\.\//g, "from '" + new URL('functions/', root).href) + '\nexport { analyzeNpm, classifyEstablishedPublishers };\n');
 const { analyzeNpm, classifyEstablishedPublishers } = await import(tmp);
 const lib = '/tmp/nhi/node_modules/npm-high-impact/index.js';
 if (!existsSync(lib)) execSync('mkdir -p /tmp/nhi && npm i -s --prefix /tmp/nhi npm-high-impact', { stdio: 'inherit' });

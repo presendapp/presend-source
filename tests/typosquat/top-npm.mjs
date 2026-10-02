@@ -9,7 +9,7 @@ if (!existsSync(lib)) execSync('mkdir -p /tmp/nhi && npm i -s --prefix /tmp/nhi 
 const m = await import(lib);
 const names = m.npmHighImpact ?? m.default;
 const tmp = `/tmp/typosquat-topnpm-${process.pid}.mjs`;
-writeFileSync(tmp, readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8') + '\nexport { analyzeName };\n');
+writeFileSync(tmp, readFileSync(new URL('functions/api/typosquat-check.js', root), 'utf8').replace(/from '\.\.\//g, "from '" + new URL('functions/', root).href) + '\nexport { analyzeName };\n');
 const { analyzeName } = await import(tmp);
 const reviewed = new Set(JSON.parse(readFileSync(new URL('tests/typosquat/fixtures.json', root), 'utf8')).reviewed_flagged_npm);
 const flagged = names.map((n, i) => ({ rank: i + 1, r: analyzeName(n.toLowerCase(), 'npm') })).filter((x) => x.r.suspicious);
