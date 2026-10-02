@@ -6,7 +6,7 @@ const BASE = process.env.PRESEND_TEST_BASE || 'http://localhost:8788';
 const FIXTURES = '/tmp/test-fixtures';
 
 // Marque chaque requête de cette suite avec un en-tête distinctif, pour que
-// les endpoints excluent ce trafic de test des compteurs publics /api/api-stats
+// les endpoints excluent ce trafic de test de la mesure d'usage
 // et /api/stats (voir checkRateLimit(..., isTest) dans functions/api/*.js).
 // Le rate limiting reste actif normalement -- seul le compteur de visites
 // affiché publiquement est exclu.
@@ -317,7 +317,7 @@ async function testMergePdf() {
 
 // --- Rate-limit-only sanity: OPTIONS preflight on a sample of endpoints ---
 async function testOptions() {
-  const endpoints = ['/api/hash', '/api/ip', '/api/og', '/api/stats', '/api/api-stats'];
+  const endpoints = ['/api/hash', '/api/ip', '/api/og', '/api/stats'];
   for (const ep of endpoints) {
     const res = await fetch(BASE + ep, { method: 'OPTIONS' });
     check(`OPTIONS ${ep}`, res.status === 200, `status=${res.status}`);

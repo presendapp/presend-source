@@ -25,7 +25,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'passwordbreach', { limit: 20, isTest: request.headers.get('X-Presend-Test') === '1', trackVisits: true });
+  const allowed = await checkRateLimit(env, clientIP, 'passwordbreach', { limit: 20 });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 20 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

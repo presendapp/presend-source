@@ -1,14 +1,15 @@
 // Limites de debit par appelant, compteur par minute dans KV (PRESEND_ANALYTICS).
 // Module unique depuis le 2 oct. 2026 : remplace 53 copies locales de checkRateLimit,
-// a comportement identique (verifie par tests/rate-limit/equivalence.mjs) :
+// a comportement identique au commit e98e326c (verifie par tests/rate-limit/equivalence.mjs) :
 //   - seuil par endpoint (options.limit, OBLIGATOIRE : pas de valeur par defaut silencieuse) ;
 //   - ecriture echantillonnee 1 fois sur 5 avec +5, ou exacte (+1 a chaque appel) si options.exact ;
-//   - comptage optionnel api-visits:<bucket>:<jour> (1 sur 10, +10), saute si options.isTest.
+// Depuis le commit suivant : plus de comptage api-visits (lu seulement par api-stats, supprime ;
+// la mesure d'usage est dans D1 api_usage), donc plus d'options trackVisits ni isTest.
 // Une panne de KV ne bloque jamais la requete. KV est finalement coherent : en prod ces limites
 // sont approximatives (lecon 66), ne jamais promettre publiquement une limite precise.
 
 export async function checkRateLimit(env, clientIP, bucket, options) {
-  const { limit, exact = false, trackVisits = false, isTest = false } = options || {};
+  const { limit, exact = false } = options || {};
   if (!Number.isInteger(limit) || limit <= 0) {
     throw new TypeError("checkRateLimit(" + bucket + "): limit manquante ou invalide");
   }
@@ -27,17 +28,6 @@ export async function checkRateLimit(env, clientIP, bucket, options) {
   } catch (e) {
     // KV en panne ou quota depasse : ne doit jamais faire echouer la requete.
     return true;
-  }
-
-  if (trackVisits) {
-    try {
-      if (!isTest && Math.random() < 0.1) {
-        const today = new Date().toISOString().split('T')[0];
-        const visitKey = `api-visits:${bucket}:${today}`;
-        const visits = await env.PRESEND_ANALYTICS.get(visitKey);
-        await env.PRESEND_ANALYTICS.put(visitKey, ((visits ? parseInt(visits) : 0) + 10).toString());
-      }
-    } catch (e) { /* comptage best-effort */ }
   }
 
   return true;

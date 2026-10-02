@@ -19,7 +19,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'emaildisposable', { limit: 60, isTest: request.headers.get('X-Presend-Test') === '1', trackVisits: true });
+  const allowed = await checkRateLimit(env, clientIP, 'emaildisposable', { limit: 60 });
   if (!allowed) {
     return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 60 requests per minute.' }), {
       status: 429, headers: { 'Content-Type': 'application/json', ...corsHeaders() },

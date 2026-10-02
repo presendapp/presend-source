@@ -3,6 +3,8 @@
 // au nouveau module + nouvel appel : memes resultats ET meme journal KV (get/put), operation par operation,
 // avec la meme suite pseudo-aleatoire et une horloge figee. Hors ligne.
 // Usage : node tests/rate-limit/equivalence.mjs <ref-git-avant-refactor>   (defaut : HEAD)
+// Preuve du commit e98e326c. Ne s'applique plus apres la suppression volontaire du comptage api-visits
+// (commit suivant, 2 oct.) : pour la rejouer, se placer sur e98e326c et lancer avec la reference e98e326c^.
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 

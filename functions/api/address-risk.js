@@ -81,7 +81,7 @@ export async function onRequestGet(context) {
   const { request, env } = context;
   const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
 
-  const allowed = await checkRateLimit(env, clientIP, 'address-risk', { limit: 10, trackVisits: true });
+  const allowed = await checkRateLimit(env, clientIP, 'address-risk', { limit: 10 });
   if (!allowed) return json({ error: 'Rate limit exceeded. Max 10 requests per minute.' }, 429);
 
   const { searchParams } = new URL(request.url);
