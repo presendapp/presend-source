@@ -41,7 +41,16 @@
 </header>
 <main class="wrap teams" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">Presend for teams</h1>
-  <p><strong>Dependency checks for npm and PyPI whose false-positive rate is measured and published.</strong> Nothing is for sale yet: we are testing whether teams want this before building it. This page is a waitlist.</p>
+  <p><strong>Typosquat and publisher-change checks for npm and PyPI dependencies, in your pull requests and before your AI agent installs a package, with a false-positive rate we measure and publish, so the checks stay switched on.</strong></p>
+  <p>Nothing is for sale yet: this page tests whether teams want more. The checks themselves are free today.</p>
+
+  <h2>Use it today, free</h2>
+  <p>In a GitHub workflow, after <code>actions/checkout</code>:</p>
+  <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">- uses: presendapp/presend-check-action@v1
+  with:
+    ecosystem: npm   # or pypi</pre>
+  <p>It checks typosquats, publisher changes (npm) and known vulnerabilities of the installed version. It sends package names and versions, never your code, and fails the job when it finds an issue (<code>fail-on-issue: false</code> to only report). <a href="https://github.com/presendapp/presend-check-action">Details</a>.</p>
+  <p>For AI agents: the MCP server at <code>https://presend.pages.dev/mcp</code> (Streamable HTTP, no key).</p>
 
   <h2>What the checks do today</h2>
   <p>These checks already exist and are free through the <a href="/api">API</a> and the MCP server (per-minute rate limits apply). Last measured on 1 October 2026: <a href="/measurements">full results, method and blind spots</a>; the code and test sets are <a href="https://github.com/presendapp/presend-source/tree/main/tests" target="_blank" rel="noopener noreferrer">public</a>.</p>
@@ -50,13 +59,14 @@
     <li><strong>New publisher after a dormant period (npm only).</strong> The pattern behind the event-stream attack. Evaluated on the 200 most depended-upon npm packages at 9 dates over two years: 1 package flagged. It cannot see a hijacked account that keeps the same publisher name.</li>
     <li><strong>Known vulnerabilities of the exact version you use</strong>, from OSV.dev, rather than of the package as a whole.</li>
   </ul>
+  <p>The same measurement, applied to NVIDIA's open-source SkillSpector, led to a fix we contributed (<a href="https://github.com/NVIDIA/SkillSpector/pull/647">PR #647</a>, merged).</p>
 
   <h2>What they do not do</h2>
   <p>There is no behavioural analysis of package code and no malware detection. Use these checks alongside a malware scanner such as Socket or Aikido, not instead of one.</p>
 
   <h2>What teams would get (planned, not built)</h2>
   <ul>
-    <li>A check on every pull request that adds or changes a dependency (GitHub).</li>
+    <li>A comment on every pull request that adds or changes a dependency (GitHub app).</li>
     <li>The same check for AI coding agents before they install a package (MCP).</li>
     <li>API keys with higher limits than the free tier.</li>
     <li>The measurements re-run and published with every release of the checks.</li>
