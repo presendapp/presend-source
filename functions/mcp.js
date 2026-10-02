@@ -107,14 +107,20 @@ const HANDLERS = {
   'whois-lookup': ep_whois_lookup,
 };
 
+import { uaFamily } from './_shared/usage.js';
+
 const USAGE_UPSERT = 'INSERT INTO api_usage (day, endpoint, ua_family, calls) VALUES (?, ?, ?, 1) ' +
   'ON CONFLICT (day, endpoint, ua_family) DO UPDATE SET calls = calls + 1';
 // The api/_middleware.js counter does not see in-process calls: record MCP usage here (same table).
+// Client type = 'mcp:' + first word of the agent's own User-Agent (same rule as the API, see /privacy);
+// no IP address. Calls marked X-Presend-Test are not counted, as in the middleware.
 function recordUsage(ctx, endpoint, status) {
   try {
     if (!ctx || !ctx.env || !ctx.env.DB || status === 404) return;
+    if (ctx.request && ctx.request.headers.get('X-Presend-Test') === '1') return;
+    const family = 'mcp:' + uaFamily(ctx.request ? ctx.request.headers.get('User-Agent') : '');
     const day = new Date().toISOString().slice(0, 10);
-    ctx.waitUntil(ctx.env.DB.prepare(USAGE_UPSERT).bind(day, endpoint, 'presend-mcp').run().catch(() => {}));
+    ctx.waitUntil(ctx.env.DB.prepare(USAGE_UPSERT).bind(day, endpoint, family).run().catch(() => {}));
   } catch (e) {
     // Counting must never affect the response.
   }
@@ -418,7 +424,7 @@ async function handleRequest(body, ctx) {
         return jsonRpcResult(id, { content: [{ type: 'text', text: `Error: no handler for ${endpoint}` }], isError: true });
       }
       // In-process call as the MCP caller: its own rate-limit bucket instead of our Worker's
-      // shared egress IP. Only 'presend-mcp' is recorded as client type, nothing about the client.
+      // shared egress IP. Usage is recorded by recordUsage (client type only, no IP).
       const res = await callInternal(handler, {
         url, method: httpMethod, body: reqBody || null,
         clientIP: (ctx && ctx.request.headers.get('CF-Connecting-IP')) || 'unknown',
