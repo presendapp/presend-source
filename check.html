@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check your package.json or requirements.txt — Presend</title>
+<meta name="description" content="Paste a package.json or a requirements.txt: typosquats, and for npm names that do not exist, packages first published less than 30 days ago and publisher changes. Only package names are sent. Free, no account.">
+<meta property="og:title" content="Check your dependencies before you install them">
+<meta property="og:description" content="Paste a package.json or a requirements.txt: typosquats, invented names, brand-new packages and publisher changes. Only package names are sent.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/check">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Check your dependencies before you install them">
+<meta name="twitter:description" content="Paste a package.json or a requirements.txt: typosquats, invented names, brand-new packages and publisher changes. Only package names are sent.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/check">
+<style>
+  .chk p, .chk li { color: var(--color-muted); max-width: 64ch; }
+  .chk h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .chk textarea { width: 100%; max-width: 48rem; min-height: 12rem; padding: .6rem; font: .9rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; box-sizing: border-box; }
+  .chk button { margin-top: .8rem; padding: .6rem 1.2rem; font: inherit; cursor: pointer; }
+  .chk .wrapx { overflow-x: auto; max-width: 100%; }
+  .chk table { border-collapse: collapse; margin-top: 1rem; width: 100%; max-width: 56rem; }
+  .chk th, .chk td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid currentColor; vertical-align: top; }
+  .chk .tag { font-size: .8rem; padding: .1rem .4rem; border-radius: 4px; border: 1px solid currentColor; white-space: nowrap; }
+  .chk .note { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a>
+</header>
+<main class="wrap chk" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Check your dependencies</h1>
+  <p><strong>Paste a <code>package.json</code> or a <code>requirements.txt</code>.</strong> Presend reports names close to popular packages (typosquats) and, for npm, names that do not exist, packages first published less than 30 days ago and recent publisher changes after a long dormancy.</p>
+  <p class="note">Your file is not uploaded: this page reads it in your browser and sends only the package names to Presend's API. Up to 100 dependencies per check; per-minute rate limits apply.</p>
+  <label for="manifest">package.json or requirements.txt</label><br>
+  <textarea id="manifest" spellcheck="false" placeholder='{"dependencies": {"expres": "^4.18.0", "lodash": "^4.17.21"}}'></textarea><br>
+  <button type="button" id="runCheck">Check</button>
+  <p id="checkStatus" aria-live="polite"></p>
+  <div class="wrapx"><table id="checkResults" hidden><thead><tr><th>Package</th><th>Result</th><th>Details</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>What this page does not check</h2>
+  <ul>
+    <li><strong>Known vulnerabilities</strong> of the versions you use: the <a href="https://github.com/presendapp/presend-check-action">GitHub Action</a> checks them with OSV.dev, for the version in your <code>package-lock.json</code>; or search <a href="https://osv.dev">osv.dev</a>.</li>
+    <li><strong>Names that do not exist, new packages and publisher changes on PyPI</strong>: npm only on this page for now. The <a href="/api#GET-api-supply-chain-check">supply-chain check</a> reports existence and age for one PyPI package at a time.</li>
+    <li><strong>Malware.</strong> These are signals worth a look before installing, not an analysis of the package code.</li>
+  </ul>
+
+  <h2>Every time, automatically</h2>
+  <p>The same checks run in CI with the <a href="https://github.com/presendapp/presend-check-action">GitHub Action</a>, and before an AI agent installs a package with the <a href="https://github.com/presendapp/presend-mcp-config/blob/main/claude-code.md#check-packages-before-claude-code-installs-them">Claude Code and Cursor hook</a> or the MCP server at <code>https://presend.pages.dev/mcp</code>. How often they raise false alarms is measured on the most downloaded packages: <a href="/measurements">measurements</a>.</p>
+  <p>Want these checks on every pull request for your team? <a href="/teams">Join the waitlist</a>.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/js/check-deps.js?v=1"></script>
+<script src="/sw-register.js"></script>
+</body>
+</html>
