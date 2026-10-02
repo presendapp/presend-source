@@ -388,7 +388,7 @@ async function handleRequest(body, ctx) {
     return jsonRpcResult(id, {
       protocolVersion: PROTOCOL_VERSION,
       capabilities: { tools: {} },
-      serverInfo: { name: 'presend-mcp', version: '3.1.1' },
+      serverInfo: { name: 'presend-mcp', version: '3.1.2' },
     });
   }
 
