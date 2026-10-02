@@ -49,7 +49,7 @@
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">- uses: presendapp/presend-check-action@v1
   with:
     ecosystem: npm   # or pypi</pre>
-  <p>It checks typosquats, publisher changes (npm) and known vulnerabilities of the installed version. It sends package names and versions, never your code, and fails the job when it finds an issue (<code>fail-on-issue: false</code> to only report). <a href="https://github.com/presendapp/presend-check-action">Details</a>.</p>
+  <p>It checks typosquats, publisher changes, names that do not exist and packages first published less than 30 days ago (those three on npm), and known vulnerabilities of the installed version. It sends package names and versions, never your code, and fails the job when it finds an issue (<code>fail-on-issue: false</code> to only report). <a href="https://github.com/presendapp/presend-check-action">Details</a>.</p>
   <p>For AI agents: the MCP server at <code>https://presend.pages.dev/mcp</code> (Streamable HTTP, no key). In Claude Code and Cursor, a <a href="https://github.com/presendapp/presend-mcp-config/blob/main/claude-code.md#check-packages-before-claude-code-installs-them">pre-install hook</a> runs the check on every <code>npm install</code> or <code>pip install</code> the agent attempts, whatever the agent decides: names that do not exist are blocked, new or suspicious ones are flagged.</p>
 
   <h2>What the checks do today</h2>
