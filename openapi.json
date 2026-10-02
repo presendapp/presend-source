@@ -4196,7 +4196,7 @@
     "/maintainer-change-check": {
       "post": {
         "summary": "Batch npm maintainer change check",
-        "description": "Checks up to 20 npm packages in one request, counted as a single request for rate limiting. Same analysis as GET; a missing package yields found=false and a registry failure or invalid entry yields an error field, without failing the batch.",
+        "description": "Checks up to 20 packages (npm, or pypi for existence and age only) in one request, counted as a single request for rate limiting. Same analysis as GET; a missing package yields found=false and a registry failure or invalid entry yields an error field, without failing the batch.",
         "requestBody": {
           "required": true,
           "content": {
@@ -4211,7 +4211,7 @@
                   "ecosystem": {
                     "type": "string",
                     "enum": [
-                      "npm"
+                      "npm", "pypi"
                     ],
                     "example": "npm"
                   },
@@ -4278,7 +4278,7 @@
       },
       "get": {
         "summary": "Detect a suspicious npm package maintainer change",
-        "description": "Flags a previously unseen human publisher taking over an npm package after 180+ days of inactivity, within the last 365 days -- the pattern behind the event-stream compromise (2018). Older handoffs are counted but not flagged; transitions to npm trusted publishing (verified OIDC identity, not just a bot-like account name) and pre-release versions are reported separately without raising the flag. Does NOT detect a hijacked existing maintainer account (ua-parser-js, 2021) or a malicious release by an existing maintainer (colors.js, 2022). A batch POST variant is available. npm only for now.",
+        "description": "Flags a previously unseen human publisher taking over an npm package after 180+ days of inactivity, within the last 365 days -- the pattern behind the event-stream compromise (2018). Older handoffs are counted but not flagged; transitions to npm trusted publishing (verified OIDC identity, not just a bot-like account name) and pre-release versions are reported separately without raising the flag. Does NOT detect a hijacked existing maintainer account (ua-parser-js, 2021) or a malicious release by an existing maintainer (colors.js, 2022). A batch POST variant is available. npm only for now. For PyPI (ecosystem=pypi), only existence and age are reported: found, first_published, package_age_days, new_package (oldest file still on PyPI, age_basis oldest_file_on_pypi), with maintainer_analysis npm_only and suspicious null, because PyPI does not expose who published each release.",
         "parameters": [
           {
             "name": "ecosystem",
@@ -4288,7 +4288,7 @@
               "type": "string",
               "example": "npm"
             },
-            "description": "Currently only \"npm\" is supported."
+            "description": "npm (full analysis) or pypi (existence and age only; no publisher-change analysis)."
           },
           {
             "name": "package",
@@ -4315,6 +4315,8 @@
                     "first_published": {"type": "string", "format": "date-time", "nullable": true, "description": "Creation date recorded by the npm registry (time.created), read from the registry document already fetched. Absent when found is false."},
                     "package_age_days": {"type": "integer", "nullable": true, "description": "Whole days since first_published."},
                     "new_package": {"type": "boolean", "nullable": true, "description": "true when the package was first published less than 30 days ago (a squatted or invented name is usually recent). Does not change suspicious."},
+                    "maintainer_analysis": {"type": "string", "nullable": true, "description": "npm_only on PyPI results: the publisher-change analysis is not available for PyPI. Absent for npm."},
+                    "age_basis": {"type": "string", "nullable": true, "description": "oldest_file_on_pypi on PyPI results (deleted releases make a project look younger). Absent for npm, where first_published is the registry's creation date."},
                     "current_maintainers": {"type": "array", "items": {"type": "string"}},
                     "total_distinct_publishers": {"type": "integer"},
                     "latest_version": {
@@ -4325,7 +4327,7 @@
                         "published": {"type": "string"}
                       }
                     },
-                    "suspicious": {"type": "boolean"},
+                    "suspicious": {"nullable": true, "type": "boolean"},
                     "flagged_events": {
                       "type": "array",
                       "items": {

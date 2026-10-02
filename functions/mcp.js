@@ -231,8 +231,8 @@ const TOOLS = [
   },
   {
     name: 'maintainer_change_check',
-    description: "npm only. Flags a previously unseen human publisher taking over a package after 180+ days of inactivity, within the last 365 days (the event-stream attack pattern). npm trusted publishing (verified OIDC identity, not just a bot-like account name), pre-release, and handovers to a publisher who already maintains another widely used package (100k+ weekly downloads) are reported but not flagged. Does not detect hijacked existing accounts; a heuristic for review, not proof.",
-    inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Currently only 'npm' is supported."}, "package": {"type": "string", "description": "Package name, e.g. lodash"}}, "required": ["ecosystem", "package"]},
+    description: "Publisher-change analysis is npm only. Also reports whether the package exists (found) and its age (first_published, package_age_days, new_package if first published less than 30 days ago), for npm and for PyPI; on PyPI only existence and age are available. Flags a previously unseen human publisher taking over a package after 180+ days of inactivity, within the last 365 days (the event-stream attack pattern). npm trusted publishing (verified OIDC identity, not just a bot-like account name), pre-release, and handovers to a publisher who already maintains another widely used package (100k+ weekly downloads) are reported but not flagged. Does not detect hijacked existing accounts; a heuristic for review, not proof.",
+    inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "npm (full analysis) or pypi (existence and age only)."}, "package": {"type": "string", "description": "Package name, e.g. lodash"}}, "required": ["ecosystem", "package"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/maintainer-change-check?${new URLSearchParams(args).toString()}` }),
   },
   {

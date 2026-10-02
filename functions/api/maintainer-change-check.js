@@ -199,6 +199,31 @@ async function checkPackage(pkg) {
   }
 }
 
+// PyPI: existence and age only. PyPI does not expose who published each release, so the publisher-change
+// analysis is impossible there (not merely missing): the result says so (maintainer_analysis, suspicious: null).
+async function checkPypiPackage(pkg) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    const res = await fetch(`https://pypi.org/pypi/${encodeURIComponent(pkg)}/json`, { signal: controller.signal });
+    if (res.status === 404) return { status: 200, body: { package: pkg, ecosystem: 'pypi', found: false, note: 'Package not found on PyPI.' } };
+    if (!res.ok) return { status: 502, body: { package: pkg, ecosystem: 'pypi', error: `PyPI error (HTTP ${res.status})` } };
+    const data = await res.json();
+    const firstPub = firstPublished('pypi', data);
+    const ageDays = ageInDays(firstPub);
+    return { status: 200, body: { package: pkg, ecosystem: 'pypi', found: true,
+      maintainer_analysis: 'npm_only', suspicious: null,
+      first_published: firstPub, package_age_days: ageDays, new_package: ageDays === null ? null : ageDays < NEW_PACKAGE_DAYS,
+      age_basis: 'oldest_file_on_pypi',
+      note: 'PyPI: existence and age only. The publisher-change analysis is npm-only (PyPI does not expose who published each release). The age is that of the oldest file still on PyPI: deleted releases make a project look younger.' } };
+  } catch (e) {
+    if (e.name === 'AbortError') return { status: 504, body: { package: pkg, ecosystem: 'pypi', error: 'PyPI request timed out. Try again shortly.' } };
+    return { status: 502, body: { package: pkg, ecosystem: 'pypi', error: 'Could not complete the PyPI lookup.', detail: e.message } };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 async function mapPool(items, limit, fn) {
   const out = new Array(items.length);
   let next = 0;
@@ -232,12 +257,13 @@ export async function onRequestGet(context) {
       usage: 'GET /api/maintainer-change-check?ecosystem=npm&package=lodash',
       batch_usage: `POST /api/maintainer-change-check with {"ecosystem":"npm","packages":["lodash","express"]} (max ${MAX_BATCH} packages, counts as one request)`,
       note: `Flags a previously unseen human publisher taking over a package after ${DORMANCY_THRESHOLD_DAYS}+ days of inactivity, within the last ${RECENT_WINDOW_DAYS} days (the event-stream pattern). Does not detect a hijacked existing account or a malicious release by an existing maintainer. Currently npm only.`,
-      supported_ecosystems: ['npm'],
+      supported_ecosystems: ['npm', 'pypi'],
+      pypi_note: 'PyPI: existence and age only (first_published, package_age_days, new_package); no publisher-change analysis.',
     }, 200, {}, true);
   }
-  if (ecosystem !== 'npm') return jsonResponse({ error: `Ecosystem "${ecosystem}" is not yet supported. Currently supported: npm.` }, 400);
+  if (ecosystem !== 'npm' && ecosystem !== 'pypi') return jsonResponse({ error: `Ecosystem "${ecosystem}" is not supported. Supported: npm (full analysis), pypi (existence and age only).` }, 400);
 
-  const { status, body } = await checkPackage(pkg);
+  const { status, body } = ecosystem === 'pypi' ? await checkPypiPackage(pkg) : await checkPackage(pkg);
   return jsonResponse(body, status, status === 200 ? { 'Cache-Control': 'public, max-age=3600' } : {}, true);
 }
 
@@ -257,7 +283,7 @@ export async function onRequestPost(context) {
 
   const usage = `Send {"ecosystem":"npm","packages":["name", ...]} (max ${MAX_BATCH} packages).`;
   const ecosystem = typeof body?.ecosystem === 'string' ? body.ecosystem.trim().toLowerCase() : '';
-  if (ecosystem !== 'npm') return jsonResponse({ error: 'Missing or unsupported ecosystem. Currently supported: npm.', usage }, 400);
+  if (ecosystem !== 'npm' && ecosystem !== 'pypi') return jsonResponse({ error: 'Missing or unsupported ecosystem. Supported: npm (full analysis), pypi (existence and age only).', usage }, 400);
   const packages = Array.isArray(body?.packages) ? body.packages : null;
   if (!packages || packages.length === 0) return jsonResponse({ error: 'Missing or empty "packages" array.', usage }, 400);
   if (packages.length > MAX_BATCH) return jsonResponse({ error: `Too many packages: ${packages.length} (max ${MAX_BATCH} per request).`, usage }, 400);
@@ -266,11 +292,11 @@ export async function onRequestPost(context) {
     const pkg = typeof raw === 'string' ? raw.trim() : '';
     // 214 = longueur max d'un nom de paquet npm.
     if (!pkg || pkg.length > 214) return { package: raw, error: 'Invalid package name.' };
-    return (await checkPackage(pkg)).body;
+    return (ecosystem === 'pypi' ? await checkPypiPackage(pkg) : await checkPackage(pkg)).body;
   });
 
   return jsonResponse({
-    ecosystem: 'npm',
+    ecosystem,
     count: results.length,
     suspicious_count: results.filter((r) => r.suspicious).length,
     error_count: results.filter((r) => r.error).length,
