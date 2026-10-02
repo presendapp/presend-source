@@ -6,7 +6,7 @@
 <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Check your package.json or requirements.txt — Presend</title>
-<meta name="description" content="Paste a package.json or a requirements.txt: typosquats, and for npm names that do not exist, packages first published less than 30 days ago and publisher changes. Only package names are sent. Free, no account.">
+<meta name="description" content="Paste a package.json or a requirements.txt: typosquats, names that do not exist, packages first published less than 30 days ago, and publisher changes (npm). Only package names are sent. Free, no account.">
 <meta property="og:title" content="Check your dependencies before you install them">
 <meta property="og:description" content="Paste a package.json or a requirements.txt: typosquats, invented names, brand-new packages and publisher changes. Only package names are sent.">
 <meta property="og:type" content="website">
@@ -42,7 +42,7 @@
 </header>
 <main class="wrap chk" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">Check your dependencies</h1>
-  <p><strong>Paste a <code>package.json</code> or a <code>requirements.txt</code>.</strong> Presend reports names close to popular packages (typosquats) and, for npm, names that do not exist, packages first published less than 30 days ago and recent publisher changes after a long dormancy.</p>
+  <p><strong>Paste a <code>package.json</code> or a <code>requirements.txt</code>.</strong> Presend reports names close to popular packages (typosquats), names that do not exist, packages first published less than 30 days ago, and, for npm, recent publisher changes after a long dormancy.</p>
   <p class="note">Your file is not uploaded: this page reads it in your browser and sends only the package names to Presend's API. Up to 100 dependencies per check; per-minute rate limits apply.</p>
   <label for="manifest">package.json or requirements.txt</label><br>
   <textarea id="manifest" spellcheck="false" placeholder='{"dependencies": {"expres": "^4.18.0", "lodash": "^4.17.21"}}'></textarea><br>
@@ -53,7 +53,7 @@
   <h2>What this page does not check</h2>
   <ul>
     <li><strong>Known vulnerabilities</strong> of the versions you use: the <a href="https://github.com/presendapp/presend-check-action">GitHub Action</a> checks them with OSV.dev, for the version in your <code>package-lock.json</code>; or search <a href="https://osv.dev">osv.dev</a>.</li>
-    <li><strong>Names that do not exist, new packages and publisher changes on PyPI</strong>: npm only on this page for now. The <a href="/api#GET-api-supply-chain-check">supply-chain check</a> reports existence and age for one PyPI package at a time.</li>
+    <li><strong>Publisher changes on PyPI</strong>: PyPI does not expose who published each release, so this check is npm only. On PyPI, the age shown is that of the oldest release still published; deleted releases make a project look younger.</li>
     <li><strong>Malware.</strong> These are signals worth a look before installing, not an analysis of the package code.</li>
   </ul>
 
@@ -64,7 +64,7 @@
 <footer class="site-footer wrap">
   <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
 </footer>
-<script src="/js/check-deps.js?v=1"></script>
+<script src="/js/check-deps.js?v=2"></script>
 <script src="/sw-register.js"></script>
 </body>
 </html>

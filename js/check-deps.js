@@ -1,5 +1,5 @@
 // /check : reads a package.json or requirements.txt in the browser and sends only package names to Presend's API
-// (typosquat-check, and for npm maintainer-change-check: existence, age, publisher change). Everything coming from the
+// (typosquat-check; maintainer-change-check: existence and age for npm and PyPI, publisher change for npm only). Everything coming from the
 // pasted text or the API is rendered with textContent, never innerHTML.
 (function () {
   'use strict';
@@ -61,15 +61,16 @@
           });
         } catch (e) { g1.forEach(function (n) { rows[n].unchecked.push('typosquat (' + e.message + ')'); }); }
       }
-      if (p.ecosystem === 'npm') {
+      // Existence and age for npm and PyPI; publisher change for npm only (suspicious is null on PyPI).
+      {
         for (var g2 of chunks(names, 20)) {
           try {
-            (await post('maintainer-change-check', 'npm', g2)).forEach(function (x, i) {
+            (await post('maintainer-change-check', p.ecosystem, g2)).forEach(function (x, i) {
               var r = rows[g2[i]];
               if (x.error) { r.unchecked.push('registry'); return; }
-              if (x.found === false) { r.issues.push(['Does not exist on npm', 'the name may be invented; check it against the project documentation']); return; }
+              if (x.found === false) { r.issues.push(['Does not exist on ' + (p.ecosystem === 'npm' ? 'npm' : 'PyPI'), 'the name may be invented; check it against the project documentation']); return; }
               if (x.suspicious) r.issues.push(['Publisher change', 'new publisher after a long dormancy (the event-stream pattern)']);
-              if (x.new_package === true) r.warnings.push(['New package', 'first published ' + (x.package_age_days === 0 ? 'less than a day' : x.package_age_days + ' day(s)') + ' ago (' + String(x.first_published).slice(0, 10) + ')']);
+              if (x.new_package === true) { var ago = (x.package_age_days === 0 ? 'less than a day' : x.package_age_days + ' day(s)') + ' ago (' + String(x.first_published).slice(0, 10) + ')'; r.warnings.push(['New package', p.ecosystem === 'npm' ? 'first published ' + ago : 'oldest release still on PyPI uploaded ' + ago + ': a new project, or its earlier releases were deleted']); }
             });
           } catch (e) { g2.forEach(function (n) { rows[n].unchecked.push('registry (' + e.message + ')'); }); }
         }
