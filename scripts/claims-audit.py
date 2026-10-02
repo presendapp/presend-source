@@ -12,7 +12,7 @@ PATTERNS = {  # nom -> (motif, motif de contexte qui rend l'occurrence correcte)
     "ua-parser/colors presentes comme detectes": (r"ua-parser-js|colors\.js", r"cannot|can't|not detect|does not|doesn't|invisible|Corrected|Correction|\*\*not\*\*"),
     "exclusivite ('nothing else free')": (r"nothing else (free|does)|unlike every|only free (tool|api)", r"we know of"),
     "Spamhaus en contexte promotionnel": (r"spamhaus", r"terms|attribution|credit|licens|promotional copy|section 3\.2|fetch|download|drop_v4|spamhaus_drop|DROP Terms|\"source\"|maintained by The Spamhaus Project|What is Spamhaus|not on Spamhaus DROP|wraps Spamhaus DROP|passive DNS|fn_spamhaus_query"),
-    "maintainer-change associe a PyPI": (r"npm/PyPI[^.\n]{0,40}maintainer|maintainer[^.\n]{0,60}(npm/PyPI|PyPI|crates)", r"npm-only|npm only|currently np|clarified|npm maintainer-change|npm dependencies with"),
+    "maintainer-change associe a PyPI": (r"npm/PyPI[^.\n]{0,40}maintainer|maintainer[^.\n]{0,60}(npm/PyPI|PyPI|crates)", r"npm-only|npm only|npm_only|existence and age only|currently np|clarified|npm maintainer-change|npm dependencies with"),
     # 26 sept. : affirmations retirees des pages API (8 langues)
     "promesse de delivrabilite (MX seulement)": (r"(verif\w*|check\w*|confirm\w*|test\w*|guarantee\w*)\s+(the\s+|real\s+)?deliverability|deliverability check", r"does not|doesn't|cannot|can't|not a |no mailbox|not probe"),
     "concurrents 'separement et payants'": (r"separately and (paid|for a fee)|only separately[^.]{0,30}paid|s[ée]par[ée]ment et payant|separat und kostenpflichtig|por separado y de pago|separadamente e pagas|по отдельности и платно|個別の有料|अलग-अलग और भुगतान", NEVER),
@@ -77,3 +77,5 @@ for name, (pat, ok) in PATTERNS.items():
             if re.search(ok, ctx, re.I): continue
             hits += 1; print(f"[{name}] {where}\n    ...{' '.join(ctx[150:].split())[:260]}...\n")
 print(f"{len(texts)} textes examines ({n_local} fichiers du site, {len(seen)} conversations), {hits} occurrence(s) a verifier.")
+# 2 oct. : sans code de sortie, ce script ne pouvait arreter aucune chaine && (lecon 48). Occurrence trouvee = echec.
+sys.exit(1 if hits else 0)
