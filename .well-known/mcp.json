@@ -1,9 +1,10 @@
 {
   "name": "Presend",
-  "description": "Free MCP server: 37 security & dev API tools -- WHOIS, DNS, CVE, IP reputation, Cosmos SDK.",
+  "description": "Free MCP server for checking npm and PyPI packages before an AI agent installs them: typosquats, names that do not exist, new packages, publisher changes (npm), known vulnerabilities of the version. 40 tools; a focused 5-tool server is at https://presend.pages.dev/mcp-deps.",
   "homepage": "https://presend.pages.dev",
   "endpoint": "https://presend.pages.dev/mcp",
   "transport": "streamable-http",
   "protocolVersion": "2025-06-18",
-  "registry": "io.github.presendapp/presend-mcp"
+  "registry": "io.github.presendapp/presend-mcp",
+  "focused_endpoint": "https://presend.pages.dev/mcp-deps"
 }
