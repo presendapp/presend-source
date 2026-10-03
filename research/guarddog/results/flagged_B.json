@@ -1,0 +1,1277 @@
+{
+ "a2a": [
+  "aia",
+  "ara"
+ ],
+ "ai": [
+  "aia",
+  "av",
+  "dspy-ai",
+  "jupyter-ai",
+  "pydantic-ai",
+  "pyproject-api",
+  "pyro-api"
+ ],
+ "aim": [
+  "aia",
+  "dspy-ai",
+  "jupyter-ai",
+  "pydantic-ai"
+ ],
+ "aiocoap": [
+  "aiocop"
+ ],
+ "alchemy-mock": [
+  "mock-alchemy"
+ ],
+ "aliyun-python-sdk-cs": [
+  "aliyun-python-sdk-ecs"
+ ],
+ "amazon-sns-extended-client": [
+  "amazon-sqs-extended-client"
+ ],
+ "amqtt": [
+  "gmqtt"
+ ],
+ "anls": [
+  "anys"
+ ],
+ "antropy": [
+  "astropy",
+  "pytest-astropy"
+ ],
+ "api-client": [
+  "apiclient"
+ ],
+ "aqt": [
+  "aqtp",
+  "art",
+  "pytest-qt"
+ ],
+ "arc4": [
+  "arch"
+ ],
+ "arcp": [
+  "arch"
+ ],
+ "aresponses": [
+  "pytest-responses",
+  "responses"
+ ],
+ "async": [
+  "asynch",
+  "miniopy-async",
+  "pyats-async",
+  "qasync"
+ ],
+ "awkward0": [
+  "awkward"
+ ],
+ "bagit": [
+  "dagit"
+ ],
+ "based58": [
+  "base58"
+ ],
+ "bases": [
+  "cvxpy-base",
+  "pytest-cases"
+ ],
+ "bash": [
+  "cvxpy-base",
+  "dash",
+  "jupyter-dash"
+ ],
+ "bech32m": [
+  "bech32"
+ ],
+ "bio": [
+  "pyadi-iio",
+  "pyexcel-io",
+  "pyroscope-io"
+ ],
+ "bitcoinlib": [
+  "python-bitcoinlib"
+ ],
+ "blingfire2": [
+  "blingfire"
+ ],
+ "blob": [
+  "lob"
+ ],
+ "bump": [
+  "bump-pydantic"
+ ],
+ "bx-python": [
+  "python-box"
+ ],
+ "ca9": [
+  "python-can"
+ ],
+ "cbitstruct": [
+  "bitstruct"
+ ],
+ "cdflib": [
+  "rdflib"
+ ],
+ "censys": [
+  "census"
+ ],
+ "cent": [
+  "cint"
+ ],
+ "cfonts": [
+  "pymupdf-fonts"
+ ],
+ "cg": [
+  "cog",
+  "pygame-ce",
+  "pykube-ng"
+ ],
+ "cgal": [
+  "coal"
+ ],
+ "clai": [
+  "pydantic-cli",
+  "pyodide-cli"
+ ],
+ "claripy": [
+  "pytest-clarity"
+ ],
+ "cmeel-tinyxml": [
+  "cmeel-tinyxml2"
+ ],
+ "cobs": [
+  "cons"
+ ],
+ "collection": [
+  "pydantic-collections"
+ ],
+ "combo": [
+  "kombo"
+ ],
+ "conductor-py": [
+  "conductor-python"
+ ],
+ "configparser2": [
+  "configparser"
+ ],
+ "copier-templates-extensions": [
+  "copier-template-extensions"
+ ],
+ "cot": [
+  "cog",
+  "pot",
+  "pytest-cov"
+ ],
+ "crispy-bootstrap3": [
+  "crispy-bootstrap4",
+  "crispy-bootstrap5"
+ ],
+ "cronitor": [
+  "croniter"
+ ],
+ "cua-core": [
+  "cuda-core"
+ ],
+ "cuallee": [
+  "callee"
+ ],
+ "cuequivariance-ops-cu12": [
+  "cuequivariance-ops-cu13"
+ ],
+ "cydifflib": [
+  "cdifflib"
+ ],
+ "datazets": [
+  "datasets"
+ ],
+ "dbf": [
+  "dbt",
+  "drf-pydantic",
+  "python-dxf"
+ ],
+ "dbx": [
+  "dbt"
+ ],
+ "deep-merge": [
+  "deepmerge"
+ ],
+ "dhash": [
+  "dash",
+  "jupyter-dash"
+ ],
+ "dicttoxml2": [
+  "dicttoxml"
+ ],
+ "dipy": [
+  "dmpython",
+  "dspy",
+  "ipy",
+  "ipython"
+ ],
+ "django-admin-sortable": [
+  "django-admin-sortable2"
+ ],
+ "django-filer": [
+  "django-filter"
+ ],
+ "django-q": [
+  "django-q2",
+  "django-rq"
+ ],
+ "django-soft-delete": [
+  "django-softdelete"
+ ],
+ "djongo": [
+  "django",
+  "pylint-django",
+  "pytest-django"
+ ],
+ "dlint": [
+  "clint",
+  "djlint",
+  "python-flint"
+ ],
+ "dnutils": [
+  "dbutils"
+ ],
+ "dparse2": [
+  "dparse"
+ ],
+ "drms": [
+  "numpy-rms"
+ ],
+ "dscribe": [
+  "pytest-describe"
+ ],
+ "durations": [
+  "pytest-durations"
+ ],
+ "dxpy": [
+  "dmpython",
+  "dspy",
+  "mdxpy",
+  "wxpython"
+ ],
+ "edt": [
+  "ddt"
+ ],
+ "eel": [
+  "cel-python",
+  "eql"
+ ],
+ "elasticsearch5": [
+  "elasticsearch",
+  "elasticsearch7",
+  "elasticsearch8"
+ ],
+ "elasticsearch6": [
+  "elasticsearch",
+  "elasticsearch7",
+  "elasticsearch8"
+ ],
+ "elasticsearch8-dsl": [
+  "elasticsearch-dsl"
+ ],
+ "email": [
+  "emails"
+ ],
+ "entrypoint": [
+  "entrypoint2",
+  "entrypoints"
+ ],
+ "evtx": [
+  "nvtx"
+ ],
+ "fabric2": [
+  "fabric"
+ ],
+ "fabric3": [
+  "fabric"
+ ],
+ "faiss-gpu": [
+  "faiss-cpu"
+ ],
+ "fastapi-filters": [
+  "fastapi-filter"
+ ],
+ "fbuild": [
+  "build",
+  "vbuild"
+ ],
+ "fckitlib": [
+  "eckitlib"
+ ],
+ "fdb": [
+  "wfdb",
+  "ydb"
+ ],
+ "fdt": [
+  "ddt",
+  "pyproject-fmt",
+  "pyyaml-ft"
+ ],
+ "fev": [
+  "feu"
+ ],
+ "fints": [
+  "pymupdf-fonts"
+ ],
+ "flex": [
+  "flax",
+  "flet",
+  "flox"
+ ],
+ "flipt": [
+  "flit",
+  "python-flint"
+ ],
+ "flup": [
+  "flupy"
+ ],
+ "flynt": [
+  "python-flint"
+ ],
+ "fnc": [
+  "fno"
+ ],
+ "formulae": [
+  "formulas"
+ ],
+ "fparser": [
+  "pycep-parser"
+ ],
+ "genpy": [
+  "geopy",
+  "zenpy"
+ ],
+ "getname": [
+  "petname"
+ ],
+ "glog": [
+  "glom",
+  "pyats-log"
+ ],
+ "graphqlclient": [
+  "graphql-client",
+  "python-graphql-client"
+ ],
+ "hap-python": [
+  "hip-python",
+  "tap-py"
+ ],
+ "hashring": [
+  "uhashring"
+ ],
+ "hf": [
+  "h2",
+  "h3"
+ ],
+ "hid": [
+  "hip-python",
+  "id"
+ ],
+ "html2docx": [
+  "htmldocx"
+ ],
+ "html4docx": [
+  "htmldocx"
+ ],
+ "http-sfv": [
+  "http-sf"
+ ],
+ "httpx2-pytest": [
+  "pytest-httpx",
+  "pytest-httpx2"
+ ],
+ "huggingface": [
+  "pyspark-huggingface"
+ ],
+ "ical": [
+  "isal"
+ ],
+ "intel-cmplr-lic-rt": [
+  "intel-cmplr-lib-rt"
+ ],
+ "ipysigma": [
+  "pysigma"
+ ],
+ "ipytest": [
+  "pylint-pytest",
+  "pytest",
+  "pytest-astropy",
+  "pytest-mypy",
+  "pytest-pylint",
+  "pytest-pyodide",
+  "pytest-pytestrail",
+  "pytest-pythonpath"
+ ],
+ "irc": [
+  "crc"
+ ],
+ "iso-639": [
+  "python-iso639"
+ ],
+ "itk": [
+  "tk",
+  "vtk"
+ ],
+ "ixnetwork": [
+  "ixnetwork-restpy"
+ ],
+ "jason": [
+  "json-numpy",
+  "pypi-json",
+  "pytest-json"
+ ],
+ "jaxlie": [
+  "jaxlib"
+ ],
+ "jinjasql2": [
+  "jinjasql"
+ ],
+ "jraph": [
+  "pydantic-graph"
+ ],
+ "jsql": [
+  "ipython-sql"
+ ],
+ "kappa": [
+  "zappa"
+ ],
+ "kas": [
+  "python-kasa"
+ ],
+ "kcli": [
+  "pydantic-cli",
+  "pyodide-cli"
+ ],
+ "kink": [
+  "mink",
+  "tink"
+ ],
+ "kolo": [
+  "rolo"
+ ],
+ "ksuid": [
+  "pksuid"
+ ],
+ "lazy-import": [
+  "lazy-imports"
+ ],
+ "ldpc": [
+  "ldp"
+ ],
+ "lib": [
+  "dlib",
+  "lit",
+  "lob",
+  "python-xlib",
+  "python3-xlib"
+ ],
+ "librmm-cu13": [
+  "librmm-cu12"
+ ],
+ "lightly": [
+  "pyagrum-nightly"
+ ],
+ "llmx": [
+  "llm"
+ ],
+ "lmz": [
+  "lml"
+ ],
+ "mailer": [
+  "tailer"
+ ],
+ "mailgun2": [
+  "mailgun"
+ ],
+ "markdown-table": [
+  "py-markdown-table"
+ ],
+ "marqo": [
+  "marko"
+ ],
+ "mcap-ros1-support": [
+  "mcap-ros2-support"
+ ],
+ "meld3": [
+  "mpld3"
+ ],
+ "memcache": [
+  "python-memcached"
+ ],
+ "mfusepy": [
+  "fusepy"
+ ],
+ "mnn": [
+  "mne"
+ ],
+ "money": [
+  "monty",
+  "py-money",
+  "pydantic-monty"
+ ],
+ "mssql": [
+  "mssql-python",
+  "mysql-python",
+  "pytest-mysql"
+ ],
+ "mypy-boto3-drs": [
+  "mypy-boto3-dms",
+  "mypy-boto3-ds",
+  "mypy-boto3-rds"
+ ],
+ "mypy-boto3-ds-data": [
+  "mypy-boto3-rds-data"
+ ],
+ "mypy-boto3-evs": [
+  "mypy-boto3-ebs",
+  "mypy-boto3-ecs",
+  "mypy-boto3-efs",
+  "mypy-boto3-eks",
+  "mypy-boto3-es",
+  "mypy-boto3-ivs"
+ ],
+ "mypy-boto3-m2": [
+  "mypy-boto3-mq"
+ ],
+ "mypy-boto3-oam": [
+  "mypy-boto3-iam",
+  "mypy-boto3-ram"
+ ],
+ "mypy-boto3-pcs": [
+  "mypy-boto3-ecs"
+ ],
+ "mypy-boto3-qconnect": [
+  "mypy-boto3-connect"
+ ],
+ "mypy-boto3-rum": [
+  "mypy-boto3-ram"
+ ],
+ "mysql": [
+  "mssql-python",
+  "mysql-python",
+  "pytest-mysql"
+ ],
+ "n2g": [
+  "pykube-ng"
+ ],
+ "named": [
+  "naked",
+  "names",
+  "namex"
+ ],
+ "netius": [
+  "nebius"
+ ],
+ "nitypes": [
+  "itypes"
+ ],
+ "notify2": [
+  "notify-py"
+ ],
+ "od": [
+  "id",
+  "pytest-md"
+ ],
+ "ogb": [
+  "kgb"
+ ],
+ "ompl": [
+  "pytest-mpl"
+ ],
+ "ompython": [
+  "dmpython",
+  "empy",
+  "fmpy",
+  "oqpy"
+ ],
+ "openapi3": [
+  "openapi-pydantic"
+ ],
+ "openml": [
+  "openmm"
+ ],
+ "orderings": [
+  "pytest-ordering"
+ ],
+ "orgparse": [
+  "argparse",
+  "pydantic-argparse"
+ ],
+ "ovs": [
+  "ops",
+  "ovh"
+ ],
+ "p4p": [
+  "p4python",
+  "pip"
+ ],
+ "paid-python": [
+  "plaid-python"
+ ],
+ "pan-python": [
+  "python-can",
+  "python-pam"
+ ],
+ "pandas-td": [
+  "pandas-ta"
+ ],
+ "para": [
+  "ara",
+  "param",
+  "yara-python"
+ ],
+ "paver": [
+  "parver"
+ ],
+ "pbspark": [
+  "pyspark"
+ ],
+ "pgdb": [
+  "pudb"
+ ],
+ "pgpq": [
+  "pgpy"
+ ],
+ "phono3py": [
+  "phonopy"
+ ],
+ "pid": [
+  "id",
+  "pin",
+  "pip",
+  "piq",
+  "pmd-pytcp"
+ ],
+ "pinject": [
+  "inject"
+ ],
+ "pipe": [
+  "pip",
+  "pipx"
+ ],
+ "piqp": [
+  "pip",
+  "piq"
+ ],
+ "pkginfo2": [
+  "pkginfo"
+ ],
+ "pm4py": [
+  "p4python"
+ ],
+ "pnnx": [
+  "onnx"
+ ],
+ "pptree": [
+  "optree"
+ ],
+ "pqcrypto": [
+  "pycrypto"
+ ],
+ "prices": [
+  "proces"
+ ],
+ "prompt": [
+  "prompty"
+ ],
+ "property-cached": [
+  "cached-property"
+ ],
+ "protobug": [
+  "mypy-protobuf",
+  "protobuf",
+  "protobuf-py"
+ ],
+ "pur": [
+  "pbr",
+  "purl"
+ ],
+ "py-ulid": [
+  "python-ulid",
+  "ulid-py"
+ ],
+ "py3nvml": [
+  "pynvml"
+ ],
+ "pyads": [
+  "pyaes",
+  "pyais",
+  "pyats",
+  "pyats-easypy"
+ ],
+ "pyan3": [
+  "pyang"
+ ],
+ "pyap2": [
+  "pyap"
+ ],
+ "pyatv": [
+  "pyats",
+  "pyats-easypy"
+ ],
+ "pydantic-geojson": [
+  "geojson-pydantic"
+ ],
+ "pydantic-to-typescript2": [
+  "pydantic-to-typescript"
+ ],
+ "pydlt": [
+  "pydot"
+ ],
+ "pygad": [
+  "pygal",
+  "pygam",
+  "pyrad"
+ ],
+ "pygaul": [
+  "pygal"
+ ],
+ "pygdal": [
+  "pygal"
+ ],
+ "pygerduty": [
+  "pagerduty"
+ ],
+ "pygrok": [
+  "pyngrok"
+ ],
+ "pyjdbc": [
+  "pyodbc"
+ ],
+ "pyjpt": [
+  "pyjwt"
+ ],
+ "pyjson": [
+  "pyjson5"
+ ],
+ "pykd": [
+  "pyld",
+  "pyod",
+  "pypd",
+  "pytd"
+ ],
+ "pylast": [
+  "pglast"
+ ],
+ "pylic": [
+  "pyric"
+ ],
+ "pylink": [
+  "pyink",
+  "pylint",
+  "pylint-pydantic",
+  "pylint-pytest",
+  "pytest-pylint"
+ ],
+ "pylxd": [
+  "pyld"
+ ],
+ "pymantic": [
+  "pydantic",
+  "pydantic-numpy",
+  "pylint-pydantic"
+ ],
+ "pymbar": [
+  "pyzbar"
+ ],
+ "pymem": [
+  "cymem"
+ ],
+ "pymorphy2": [
+  "pymorphy3"
+ ],
+ "pyocr": [
+  "pyocd",
+  "pyorc"
+ ],
+ "pyop": [
+  "pyap",
+  "pyod",
+  "pyotp"
+ ],
+ "pypdf3": [
+  "pypdf",
+  "pypdf2"
+ ],
+ "pypdf4": [
+  "pypdf",
+  "pypdf2"
+ ],
+ "pyrevm": [
+  "py-evm"
+ ],
+ "pyrig": [
+  "pyric"
+ ],
+ "pyrit": [
+  "pybit",
+  "pyric"
+ ],
+ "pyrsmi": [
+  "pysmi"
+ ],
+ "pysal": [
+  "pygal",
+  "pysam"
+ ],
+ "pyscn": [
+  "pyscf",
+  "pysnc"
+ ],
+ "pyside2": [
+  "pyside6"
+ ],
+ "pysmbc": [
+  "pysmb"
+ ],
+ "pyspf": [
+  "pyscf"
+ ],
+ "pytdx": [
+  "pytd",
+  "pytdc"
+ ],
+ "pytest-pspec": [
+  "pytest-spec"
+ ],
+ "pythena": [
+  "pyathena"
+ ],
+ "python-cas": [
+  "python-can"
+ ],
+ "python-consul2": [
+  "py-consul",
+  "python-consul"
+ ],
+ "python-flirt": [
+  "python-flint"
+ ],
+ "python3-ldap": [
+  "python-ldap"
+ ],
+ "python3-nmap": [
+  "python-nmap"
+ ],
+ "pythondns": [
+  "pydes"
+ ],
+ "pythonparser": [
+  "pycparser"
+ ],
+ "pytrie": [
+  "pygtrie"
+ ],
+ "pyts": [
+  "pyats",
+  "pyats-easypy",
+  "pytd",
+  "pyte",
+  "pytz"
+ ],
+ "pyvcd": [
+  "pyocd"
+ ],
+ "pyvi": [
+  "pypi",
+  "pyvim",
+  "pyvis",
+  "pyvo"
+ ],
+ "pywav": [
+  "pywa"
+ ],
+ "pyxlsx": [
+  "pyxlsb"
+ ],
+ "pyyml": [
+  "pyaml",
+  "pykml",
+  "pyyaml"
+ ],
+ "quarto": [
+  "quart"
+ ],
+ "ranx": [
+  "rax"
+ ],
+ "rasterix": [
+  "rasterio"
+ ],
+ "rdp": [
+  "cdp",
+  "ldp",
+  "rlp",
+  "rtp"
+ ],
+ "rdt": [
+  "ddt"
+ ],
+ "redlock": [
+  "redlock-py"
+ ],
+ "rel": [
+  "cel-python",
+  "pylibjpeg-rle"
+ ],
+ "remotezip": [
+  "remotezip2"
+ ],
+ "reno": [
+  "deno",
+  "redo"
+ ],
+ "retworkx": [
+  "networkx"
+ ],
+ "rison": [
+  "prison"
+ ],
+ "rlax": [
+  "flax",
+  "rax"
+ ],
+ "rmm-cu13": [
+  "rmm-cu12"
+ ],
+ "rook": [
+  "jupyter-book",
+  "pook"
+ ],
+ "rox": [
+  "nox",
+  "pox",
+  "python-box",
+  "rax",
+  "rx",
+  "sox",
+  "tox"
+ ],
+ "rpdb": [
+  "ipdb",
+  "rpds-py"
+ ],
+ "rqx": [
+  "rax",
+  "rq",
+  "rx"
+ ],
+ "rstream": [
+  "stream-python"
+ ],
+ "rwslib": [
+  "owslib"
+ ],
+ "sagemaker-feature-store-pyspark-3-1": [
+  "sagemaker-feature-store-pyspark-3-3"
+ ],
+ "sail": [
+  "python3-saml",
+  "sasl"
+ ],
+ "sam3": [
+  "python3-saml"
+ ],
+ "satpy": [
+  "saspy"
+ ],
+ "saxoncee": [
+  "saxonche"
+ ],
+ "scipp": [
+  "scipy"
+ ],
+ "sconf": [
+  "scons"
+ ],
+ "sdv": [
+  "pyannoteai-sdk"
+ ],
+ "sep": [
+  "esp-pylib",
+  "pyqt5-sip",
+  "pyqt6-sip",
+  "scp",
+  "smp"
+ ],
+ "shared": [
+  "pytest-shard"
+ ],
+ "shiboken2": [
+  "shiboken6"
+ ],
+ "shutils": [
+  "pytest-shutil"
+ ],
+ "silx": [
+  "six"
+ ],
+ "sinter": [
+  "singer-python"
+ ],
+ "sip": [
+  "hip-python",
+  "mip",
+  "pip",
+  "pyqt5-sip",
+  "pyqt6-sip",
+  "scp",
+  "six",
+  "smp"
+ ],
+ "siphash": [
+  "simhash",
+  "siphashc"
+ ],
+ "slack": [
+  "black"
+ ],
+ "smbus": [
+  "sdbus",
+  "smbus2"
+ ],
+ "smooch": [
+  "smooth-py"
+ ],
+ "solara": [
+  "solana"
+ ],
+ "sops": [
+  "ops",
+  "skops",
+  "sopsy"
+ ],
+ "sos": [
+  "scs",
+  "sox",
+  "tos"
+ ],
+ "spark": [
+  "pytest-spark"
+ ],
+ "sphinx-tags": [
+  "sphinx-tabs"
+ ],
+ "spint": [
+  "pint",
+  "spin"
+ ],
+ "split": [
+  "pytest-split"
+ ],
+ "splot": [
+  "pytest-split"
+ ],
+ "srp": [
+  "pyqt5-sip",
+  "pyqt6-sip",
+  "scp",
+  "smp",
+  "srt"
+ ],
+ "status": [
+  "python-status"
+ ],
+ "stix": [
+  "six",
+  "stim",
+  "stix2",
+  "svix"
+ ],
+ "storage": [
+  "storage3"
+ ],
+ "streaq": [
+  "stream-python"
+ ],
+ "stubs": [
+  "openpyxl-stubs",
+  "pyarrow-stubs",
+  "pymupdf-stubs",
+  "scipy-stubs"
+ ],
+ "suntime": [
+  "suntimes"
+ ],
+ "surer": [
+  "sure"
+ ],
+ "svql": [
+  "ipython-sql"
+ ],
+ "tabula": [
+  "tabula-py"
+ ],
+ "tavily": [
+  "tavily-python"
+ ],
+ "tbump": [
+  "bump-pydantic"
+ ],
+ "tccli": [
+  "trcli"
+ ],
+ "tdqm": [
+  "tqdm"
+ ],
+ "terminaltables3": [
+  "terminaltables"
+ ],
+ "testinfra": [
+  "pytest-testinfra"
+ ],
+ "tfparse": [
+  "rtfparse",
+  "tbparse",
+  "tlparse"
+ ],
+ "theano": [
+  "theano-pymc"
+ ],
+ "tinyhtml": [
+  "tinyhtml5"
+ ],
+ "tmol": [
+  "toml",
+  "tool"
+ ],
+ "tools": [
+  "tool",
+  "toolz",
+  "toons"
+ ],
+ "tooz": [
+  "python-toon",
+  "tool",
+  "toolz"
+ ],
+ "torchcde": [
+  "torchsde"
+ ],
+ "torchio": [
+  "torchao"
+ ],
+ "tree": [
+  "py-trees",
+  "rtree",
+  "treq",
+  "trie"
+ ],
+ "treys": [
+  "py-trees"
+ ],
+ "ttach": [
+  "tach"
+ ],
+ "tts": [
+  "gtts",
+  "python-tds",
+  "tos",
+  "ttp"
+ ],
+ "types-boto3-ecr": [
+  "types-boto3-ec2",
+  "types-boto3-ecs"
+ ],
+ "udatetime": [
+  "datetime",
+  "jdatetime"
+ ],
+ "ulid": [
+  "python-ulid",
+  "ulid-py",
+  "uuid"
+ ],
+ "unidiff2": [
+  "unidiff"
+ ],
+ "unipath": [
+  "uipath"
+ ],
+ "uproot3": [
+  "uproot"
+ ],
+ "urlman": [
+  "uroman"
+ ],
+ "vina": [
+  "jina",
+  "vine"
+ ],
+ "vmodal": [
+  "modal"
+ ],
+ "vollib": [
+  "py-vollib"
+ ],
+ "vsa": [
+  "rsa"
+ ],
+ "vyper-config": [
+  "typer-config"
+ ],
+ "wave": [
+  "weave"
+ ],
+ "webp": [
+  "web3"
+ ],
+ "websocket": [
+  "pycrdt-websocket",
+  "websockets",
+  "ypy-websocket"
+ ],
+ "whois": [
+  "python-whois"
+ ],
+ "workdays": [
+  "workadays"
+ ],
+ "xee": [
+  "zigpy-xbee"
+ ],
+ "xlib": [
+  "dlib",
+  "python-xlib",
+  "python3-xlib"
+ ],
+ "xproj": [
+  "xprof"
+ ],
+ "xy": [
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "pyxb-x",
+  "ty",
+  "y-py"
+ ],
+ "yargy": [
+  "yarg"
+ ],
+ "ydiff": [
+  "pdiff",
+  "rdiff"
+ ],
+ "ymodem": [
+  "xmodem"
+ ],
+ "zai-sdk": [
+  "xai-sdk"
+ ],
+ "zccache": [
+  "sccache"
+ ],
+ "zipfile38": [
+  "zipfile36"
+ ],
+ "zope": [
+  "rope"
+ ]
+}

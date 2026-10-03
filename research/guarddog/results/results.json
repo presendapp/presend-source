@@ -1,0 +1,104 @@
+{
+ "date": "2026-10-03",
+ "guarddog_commit": "1f4a66c",
+ "bundled_list_sizes": {
+  "npm": 8000,
+  "pypi": 15000
+ },
+ "A": {
+  "checked": 12111,
+  "flagged": 263,
+  "by_list_size": {
+   "1000": 88,
+   "2000": 152,
+   "4000": 217,
+   "8000": 263
+  }
+ },
+ "B": {
+  "checked": 5000,
+  "flagged": 351,
+  "by_list_size": {
+   "1000": 65,
+   "2500": 147,
+   "5000": 234,
+   "10000": 351
+  }
+ },
+ "C": {
+  "checked": 15000,
+  "flagged": 1002,
+  "clickhouse_month": "2026-09-01"
+ },
+ "known_typosquats": {
+  "npm": {
+   "1000": {
+    "detected": 10,
+    "of": 15,
+    "missed": [
+     "moongose",
+     "bootsrap",
+     "electorn",
+     "discordjs",
+     "ethres"
+    ]
+   },
+   "2000": {
+    "detected": 12,
+    "of": 15,
+    "missed": [
+     "moongose",
+     "electorn",
+     "discordjs"
+    ]
+   },
+   "4000": {
+    "detected": 14,
+    "of": 15,
+    "missed": [
+     "moongose"
+    ]
+   },
+   "8000": {
+    "detected": 14,
+    "of": 15,
+    "missed": [
+     "moongose"
+    ]
+   }
+  },
+  "pypi": {
+   "1000": {
+    "detected": 11,
+    "of": 12,
+    "missed": [
+     "discordpy"
+    ]
+   },
+   "2500": {
+    "detected": 12,
+    "of": 12,
+    "missed": []
+   },
+   "5000": {
+    "detected": 12,
+    "of": 12,
+    "missed": []
+   },
+   "10000": {
+    "detected": 11,
+    "of": 12,
+    "missed": [
+     "beautifulsoup"
+    ]
+   },
+   "15000": {
+    "detected": 11,
+    "of": 12,
+    "missed": [
+     "beautifulsoup"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,9355 @@
+{
+ "0": [
+  "aiohappyeyeballs",
+  "alexapy",
+  "allpairspy",
+  "amplpy",
+  "anchorpy",
+  "antropy",
+  "antspyx",
+  "apysc",
+  "arcadepy",
+  "arpy",
+  "asciichartpy",
+  "assertpy",
+  "astrapy",
+  "astropy",
+  "awsiotpythonsdk",
+  "bagpy",
+  "bapy",
+  "basedpyright",
+  "beaupy",
+  "binapy",
+  "bincopy",
+  "biopython",
+  "boilerpy3",
+  "boschshcpy",
+  "bpy",
+  "bpylist2",
+  "bpython",
+  "bpyutils",
+  "brotlipy",
+  "cartopy",
+  "cedarpy",
+  "cellpylib",
+  "certipy",
+  "chalkpy",
+  "cherrypy",
+  "claripy",
+  "cmdstanpy",
+  "complexipy",
+  "contourpy",
+  "copybook",
+  "cosmpy",
+  "cppy",
+  "cvxpy",
+  "daal4py",
+  "dafnyruntimepython",
+  "datacompy",
+  "datadogpy",
+  "dearpygui",
+  "debugpy",
+  "decompyle3",
+  "dendropy",
+  "depyf",
+  "digitalpy",
+  "dipy",
+  "distinctipy",
+  "dkimpy",
+  "dmpython",
+  "dnspython",
+  "docx2python",
+  "dracopy",
+  "driftpy",
+  "dspy",
+  "dtlpymetrics",
+  "dukpy",
+  "durationpy",
+  "eciespy",
+  "ecpy",
+  "editdistpy",
+  "eigenpy",
+  "empy",
+  "ffmpy",
+  "fhirpathpy",
+  "fhirpy",
+  "filterpy",
+  "findpython",
+  "flupy",
+  "fmpy",
+  "fpylll",
+  "fpyutils",
+  "fusepy",
+  "geoh5py",
+  "geopy",
+  "githubpy",
+  "gitpython",
+  "gmpy2",
+  "gpxpy",
+  "gpy",
+  "gpytorch",
+  "gpytranslate",
+  "graypy",
+  "gremlinpython",
+  "gseapy",
+  "guardpycfn",
+  "guppy3",
+  "gurobipy",
+  "h5py",
+  "happybase",
+  "hdijupyterutils",
+  "hdrpy",
+  "healpy",
+  "highspy",
+  "hiyapyco",
+  "hl7apy",
+  "hpnapy",
+  "htpy",
+  "hyperpyyaml",
+  "hyperspy",
+  "icsneopy",
+  "impyla",
+  "inquirerpy",
+  "ipy",
+  "ipycanvas",
+  "ipycytoscape",
+  "ipydagred3",
+  "ipydatawidgets",
+  "ipyevents",
+  "ipyfilechooser",
+  "ipykernel",
+  "ipylab",
+  "ipyleaflet",
+  "ipympl",
+  "ipynb",
+  "ipynbname",
+  "ipyparallel",
+  "ipypb",
+  "ipysigma",
+  "ipytest",
+  "ipython",
+  "ipytree",
+  "ipyvue",
+  "ipyvuetify",
+  "ipywebrtc",
+  "ipywidgets",
+  "islpy",
+  "jdk4py",
+  "jenkspy",
+  "josepy",
+  "jpype1",
+  "js2py",
+  "jupysql",
+  "jupyter",
+  "jupyterhub",
+  "jupyterlab",
+  "jupytext",
+  "kdepy",
+  "kiwipiepy",
+  "konlpy",
+  "kylinpy",
+  "laspy",
+  "latex2sympy2",
+  "lesscpy",
+  "libpysal",
+  "libretranslatepy",
+  "linopy",
+  "liquidpy",
+  "lucopy",
+  "marketorestpython",
+  "markuppy",
+  "matscipy",
+  "mdxpy",
+  "mediapy",
+  "mergepythonclient",
+  "metpy",
+  "mf2py",
+  "mfusepy",
+  "missingpy",
+  "mockredispy",
+  "momepy",
+  "moviepy",
+  "moyopy",
+  "mpi4py",
+  "mulpyplexer",
+  "multipyvu",
+  "mypy",
+  "mypyllant",
+  "nipype",
+  "norenrestapipy",
+  "numpy",
+  "numpydantic",
+  "numpydoc",
+  "numpyencoder",
+  "numpyro",
+  "obspy",
+  "odfpy",
+  "openfermionpyscf",
+  "openpyxl",
+  "openseespy",
+  "openseespylinux",
+  "oqpy",
+  "overpy",
+  "oxapy",
+  "p4python",
+  "pampy",
+  "pdpyras",
+  "peppy",
+  "perturbopy",
+  "pgcopy",
+  "pgmpy",
+  "pgpy",
+  "pgpy13",
+  "phono3py",
+  "phonopy",
+  "pipablepytorch3d",
+  "plpygis",
+  "pm4py",
+  "preppy",
+  "primepy",
+  "prtpy",
+  "psmpy",
+  "ptpython",
+  "pubchempy",
+  "py",
+  "py2app",
+  "py2neo",
+  "py2opsin",
+  "py3createtorrent",
+  "py3dbp",
+  "py3dmol",
+  "py3dns",
+  "py3langid",
+  "py3nvml",
+  "py3rijndael",
+  "py3rosmsgs",
+  "py4j",
+  "py4vasp",
+  "py7zr",
+  "pyaaf2",
+  "pyacoustid",
+  "pyactiveresource",
+  "pyadomd",
+  "pyaes",
+  "pyaescrypt",
+  "pyahocorasick",
+  "pyairtable",
+  "pyais",
+  "pyalex",
+  "pyamg",
+  "pyaml",
+  "pyandoc",
+  "pyang",
+  "pyangbind",
+  "pyannotate",
+  "pyap",
+  "pyap2",
+  "pyapacheatlas",
+  "pyarabic",
+  "pyarango",
+  "pyarmor",
+  "pyarrow",
+  "pyartifactory",
+  "pyas2lib",
+  "pyaskalono",
+  "pyasn",
+  "pyasn1",
+  "pyasynchat",
+  "pyasyncore",
+  "pyathena",
+  "pyathenajdbc",
+  "pyatlan",
+  "pyats",
+  "pyattest",
+  "pyatv",
+  "pyaudio",
+  "pyautogen",
+  "pyautogui",
+  "pyautoit",
+  "pyavm",
+  "pyawscron",
+  "pyaxmlparser",
+  "pybacklogpy",
+  "pybamm",
+  "pybammsolvers",
+  "pybars3",
+  "pybars4",
+  "pybase62",
+  "pybase64",
+  "pybaseball",
+  "pybaselines",
+  "pybatchexecute",
+  "pybatfish",
+  "pybboxes",
+  "pybcj",
+  "pybedtools",
+  "pybids",
+  "pybigquery",
+  "pybigtools",
+  "pybigwig",
+  "pybind11",
+  "pybindgen",
+  "pybiomart",
+  "pybit",
+  "pybktree",
+  "pyboxen",
+  "pybreaker",
+  "pybtex",
+  "pybuildkite",
+  "pybullet",
+  "pybytebuffer",
+  "pycadf",
+  "pycairo",
+  "pycalverter",
+  "pycampbellcr1000",
+  "pycapnp",
+  "pycares",
+  "pycaret",
+  "pycarlo",
+  "pycasbin",
+  "pycausalimpact",
+  "pycaw",
+  "pyccolo",
+  "pycdlib",
+  "pycel",
+  "pycg",
+  "pychrome",
+  "pychromecast",
+  "pycifrw",
+  "pyclamd",
+  "pyclang",
+  "pycld2",
+  "pycld3",
+  "pyclean",
+  "pyclibrary",
+  "pyclipper",
+  "pycln",
+  "pyclothoids",
+  "pycnite",
+  "pycobertura",
+  "pycocoevalcap",
+  "pycocotools",
+  "pycodestyle",
+  "pycognito",
+  "pycoin",
+  "pycoingecko",
+  "pycollada",
+  "pycolmap",
+  "pycomposefile",
+  "pyconfigurator",
+  "pyconify",
+  "pycosat",
+  "pycountry",
+  "pycowsay",
+  "pycparser",
+  "pycpfcnpj",
+  "pycrashreport",
+  "pycrdt",
+  "pycron",
+  "pycronofy",
+  "pycrypto",
+  "pycryptodome",
+  "pycryptodomex",
+  "pycstruct",
+  "pycsvschema",
+  "pyct",
+  "pyctcdecode",
+  "pycti",
+  "pycuda",
+  "pycups",
+  "pycurl",
+  "pydantic",
+  "pydap",
+  "pydash",
+  "pydbml",
+  "pyddq",
+  "pydeck",
+  "pydeequ",
+  "pydemumble",
+  "pydeprecate",
+  "pydeps",
+  "pydes",
+  "pydeseq2",
+  "pydevd",
+  "pydevicetree",
+  "pydgraph",
+  "pydicom",
+  "pydifact",
+  "pydirectinput",
+  "pydispatcher",
+  "pydivert",
+  "pydlt",
+  "pydo",
+  "pydocket",
+  "pydoclint",
+  "pydocstringformatter",
+  "pydocstyle",
+  "pydoctor",
+  "pydocumentdb",
+  "pydoe",
+  "pydomo",
+  "pydoris",
+  "pydot",
+  "pydotplus",
+  "pydriller",
+  "pydrive",
+  "pydrive2",
+  "pydruid",
+  "pydssp",
+  "pydub",
+  "pydyf",
+  "pydynamodb",
+  "pyeapi",
+  "pyeasee",
+  "pyecharts",
+  "pyedb",
+  "pyedflib",
+  "pyee",
+  "pyelftools",
+  "pyemvue",
+  "pyenchant",
+  "pyensembl",
+  "pyepics",
+  "pyerfa",
+  "pyescrypt",
+  "pyeventsystem",
+  "pyevtk",
+  "pyexasol",
+  "pyexcel",
+  "pyexcelerate",
+  "pyexecjs",
+  "pyexiftool",
+  "pyexiv2",
+  "pyextremes",
+  "pyfacer",
+  "pyfaidx",
+  "pyfakefs",
+  "pyfarmhash",
+  "pyfcm",
+  "pyfftw",
+  "pyffx",
+  "pyfiglet",
+  "pyfinite",
+  "pyfixest",
+  "pyflakes",
+  "pyflux",
+  "pyfmodex",
+  "pyformance",
+  "pyformlang",
+  "pyftdi",
+  "pyftpdlib",
+  "pyfunctional",
+  "pyfzf",
+  "pygad",
+  "pygal",
+  "pygaljs",
+  "pygam",
+  "pygame",
+  "pygdal",
+  "pygdbmi",
+  "pygelf",
+  "pygeocodio",
+  "pygeodesy",
+  "pygeohash",
+  "pygeoif",
+  "pygeos",
+  "pygeotile",
+  "pygerduty",
+  "pygerrit2",
+  "pygetwindow",
+  "pygfx",
+  "pyghidra",
+  "pyghmi",
+  "pygit2",
+  "pygitguardian",
+  "pygithub",
+  "pyglet",
+  "pyglm",
+  "pyglove",
+  "pygls",
+  "pygltflib",
+  "pygmars",
+  "pygments",
+  "pygnmi",
+  "pygnuutils",
+  "pygobject",
+  "pygogo",
+  "pygount",
+  "pygraphviz",
+  "pygresql",
+  "pygrib",
+  "pygrinder",
+  "pygrok",
+  "pygsheets",
+  "pygtail",
+  "pygtrie",
+  "pygwalker",
+  "pyhamcrest",
+  "pyhanko",
+  "pyhcl",
+  "pyhdb",
+  "pyhdfe",
+  "pyheck",
+  "pyheif",
+  "pyhelm3",
+  "pyhive",
+  "pyhmmer",
+  "pyhocon",
+  "pyhpke",
+  "pyhs2",
+  "pyhumps",
+  "pyhwp",
+  "pyhwpx",
+  "pyiceberg",
+  "pyicloud",
+  "pyicu",
+  "pyicumessageformat",
+  "pyimg4",
+  "pyinfra",
+  "pyink",
+  "pyinotify",
+  "pyinstaller",
+  "pyinstrument",
+  "pyinvoke",
+  "pyion2json",
+  "pyiotools",
+  "pyiqa",
+  "pyisemail",
+  "pyiso8583",
+  "pyjanitor",
+  "pyjarowinkler",
+  "pyjavaproperties3",
+  "pyjdbc",
+  "pyjks",
+  "pyjls",
+  "pyjnius",
+  "pyjokes",
+  "pyjpegls",
+  "pyjq",
+  "pyjsg",
+  "pyjslint",
+  "pyjson",
+  "pyjson5",
+  "pyjsonpatch",
+  "pyjsparser",
+  "pyjwkest",
+  "pyjwt",
+  "pykafka",
+  "pykakasi",
+  "pykalman",
+  "pykaos",
+  "pykcs11",
+  "pykd",
+  "pykdebugparser",
+  "pykdtree",
+  "pykeepass",
+  "pykerberos",
+  "pykka",
+  "pykmip",
+  "pykml",
+  "pykrige",
+  "pykrx",
+  "pykwalify",
+  "pylama",
+  "pylance",
+  "pylast",
+  "pylate",
+  "pylatex",
+  "pylatexenc",
+  "pylbfgs",
+  "pylcs",
+  "pyld",
+  "pyldavis",
+  "pyleak",
+  "pylerc",
+  "pyleri",
+  "pylertalertmanager",
+  "pylev",
+  "pylibdmtx",
+  "pylibfdt",
+  "pylibftdi",
+  "pylibiio",
+  "pylibjpeg",
+  "pyliblzfse",
+  "pylibmagic",
+  "pylibmc",
+  "pylibsrtp",
+  "pylibyear",
+  "pylightxl",
+  "pylinalg",
+  "pylink",
+  "pylint",
+  "pylmcf",
+  "pylogbeat",
+  "pylogix",
+  "pyloudnorm",
+  "pylru",
+  "pylspci",
+  "pylsqpack",
+  "pylti1p3",
+  "pyluach",
+  "pylxd",
+  "pylzss",
+  "pymacaroons",
+  "pymammotion",
+  "pymannkendall",
+  "pymantic",
+  "pymap3d",
+  "pymarc",
+  "pymarkdownlnt",
+  "pymatching",
+  "pymatgen",
+  "pymatreader",
+  "pymatting",
+  "pymavlink",
+  "pymaybe",
+  "pymbolic",
+  "pymc",
+  "pymc3",
+  "pymcubes",
+  "pymediainfo",
+  "pymeeus",
+  "pymem",
+  "pymemcache",
+  "pymemoryeditor",
+  "pymeshfix",
+  "pymeshlab",
+  "pymeta3",
+  "pymetis",
+  "pymgclient",
+  "pymiele",
+  "pymilvus",
+  "pyminizip",
+  "pymiscutils",
+  "pymisp",
+  "pymitter",
+  "pymobiledetect",
+  "pymobiledevice3",
+  "pymochow",
+  "pymodbus",
+  "pymodbustcp",
+  "pymonctl",
+  "pymonetdb",
+  "pymongo",
+  "pymongoarrow",
+  "pymongocrypt",
+  "pymonocypher",
+  "pymoo",
+  "pymorphy2",
+  "pymorphy3",
+  "pymp3",
+  "pymp4",
+  "pympler",
+  "pymqi",
+  "pymsalruntime",
+  "pymsgbox",
+  "pymssql",
+  "pymsteams",
+  "pymunk",
+  "pymupdf",
+  "pymupdf4llm",
+  "pymupdfb",
+  "pymupdfpro",
+  "pymyenergi",
+  "pymysql",
+  "pymysqllock",
+  "pymzml",
+  "pynacl",
+  "pynamodb",
+  "pynautobot",
+  "pynetbox",
+  "pynetdicom",
+  "pyngrok",
+  "pynini",
+  "pynliner",
+  "pynmea2",
+  "pynmeagps",
+  "pynndescent",
+  "pynng",
+  "pynose",
+  "pynpm",
+  "pynput",
+  "pynrrd",
+  "pyntcloud",
+  "pynvim",
+  "pynvml",
+  "pynvvideocodec",
+  "pynwb",
+  "pyobjc",
+  "pyobvector",
+  "pyocd",
+  "pyocse",
+  "pyod",
+  "pyodata",
+  "pyodbc",
+  "pyodps",
+  "pyogrio",
+  "pyomo",
+  "pyone",
+  "pyop",
+  "pyopencl",
+  "pyopengl",
+  "pyopenjtalk",
+  "pyopenms",
+  "pyopenssl",
+  "pyorbital",
+  "pyorc",
+  "pyotp",
+  "pyowm",
+  "pyoxigraph",
+  "pyoxipng",
+  "pypac",
+  "pypandoc",
+  "pyparsing",
+  "pypartmc",
+  "pypcap",
+  "pypcd4",
+  "pypcode",
+  "pypd",
+  "pypdf",
+  "pypdf2",
+  "pypdf3",
+  "pypdf4",
+  "pypdfform",
+  "pypdfium2",
+  "pypdftk",
+  "pypeg2",
+  "pypeln",
+  "pypemicro",
+  "pyperclip",
+  "pyperf",
+  "pyperformance",
+  "pyperplan",
+  "pypgconfig",
+  "pypgstac",
+  "pyphen",
+  "pyphonetics",
+  "pypi",
+  "pypika",
+  "pypinyin",
+  "pypiserver",
+  "pypistats",
+  "pypiwin32",
+  "pyplayready",
+  "pypng",
+  "pypolyline",
+  "pyportfolioopt",
+  "pypots",
+  "pypowerstore",
+  "pyppeteer",
+  "pyppmd",
+  "pyprctl",
+  "pyprep",
+  "pypresence",
+  "pyprind",
+  "pyprobables",
+  "pyprof2calltree",
+  "pyproj",
+  "pyproject2conda",
+  "pyprojroot",
+  "pypsexec",
+  "pypsrp",
+  "pypubsub",
+  "pypugjs",
+  "pypydispatcher",
+  "pypylon",
+  "pypyodbc",
+  "pypyp",
+  "pyqir",
+  "pyqlib",
+  "pyqrcode",
+  "pyqt5",
+  "pyqt6",
+  "pyqtgraph",
+  "pyqtwebengine",
+  "pyquaternion",
+  "pyquery",
+  "pyquil",
+  "pyqwest",
+  "pyrabbit",
+  "pyrabbit2",
+  "pyrad",
+  "pyrage",
+  "pyramid",
+  "pyranges",
+  "pyrasite",
+  "pyrdfa3",
+  "pyre2",
+  "pyreaddbc",
+  "pyreadline",
+  "pyreadline3",
+  "pyreadr",
+  "pyreadstat",
+  "pyrealsense2",
+  "pyrebase4",
+  "pyrect",
+  "pyrefly",
+  "pyrender",
+  "pyrepl",
+  "pyreqwest",
+  "pyresample",
+  "pyrevm",
+  "pyrfc",
+  "pyrfc3339",
+  "pyrfc6266",
+  "pyric",
+  "pyriemann",
+  "pyright",
+  "pyrit",
+  "pyrnnoise",
+  "pyro4",
+  "pyro5",
+  "pyroaring",
+  "pyrofork",
+  "pyrogram",
+  "pyroma",
+  "pyromark",
+  "pyroot",
+  "pyroots",
+  "pyrootutils",
+  "pyrotgfork",
+  "pyroute2",
+  "pyrr",
+  "pyrsistent",
+  "pyrsmi",
+  "pyrtcm",
+  "pyrtf3",
+  "pyrubberband",
+  "pysage3",
+  "pysam",
+  "pysaml2",
+  "pysbd",
+  "pyscaffold",
+  "pyscf",
+  "pyscipopt",
+  "pyscreenshot",
+  "pyscreeze",
+  "pyscss",
+  "pysdl2",
+  "pyseccomp",
+  "pysen",
+  "pysequoia",
+  "pyserde",
+  "pyserial",
+  "pyserini",
+  "pyseto",
+  "pysftp",
+  "pysha3",
+  "pyshacl",
+  "pyshark",
+  "pysher",
+  "pyshex",
+  "pyshexc",
+  "pyshortcuts",
+  "pyshorteners",
+  "pyshp",
+  "pyside2",
+  "pyside6",
+  "pysigma",
+  "pysignalr",
+  "pysimdjson",
+  "pysimplegui",
+  "pysingleton",
+  "pyslack",
+  "pyslang",
+  "pysmartdl",
+  "pysmb",
+  "pysmbclient",
+  "pysmi",
+  "pysnc",
+  "pysnmp",
+  "pysnmpcrypto",
+  "pysnooper",
+  "pysnow",
+  "pysnowflake",
+  "pysnyk",
+  "pysocks",
+  "pysodium",
+  "pysoem",
+  "pysolarmanv5",
+  "pysolr",
+  "pysonar",
+  "pyspark",
+  "pysparkling",
+  "pyspellchecker",
+  "pyspelling",
+  "pyspnego",
+  "pysqlite3",
+  "pysqlsync",
+  "pysrt",
+  "pystac",
+  "pystache",
+  "pystack",
+  "pystan",
+  "pystardog",
+  "pystaticconfiguration",
+  "pystemmer",
+  "pystoi",
+  "pyston",
+  "pystow",
+  "pystray",
+  "pystrich",
+  "pystyle",
+  "pysubs2",
+  "pysubtypes",
+  "pyswarms",
+  "pyswisseph",
+  "pytabkit",
+  "pytablereader",
+  "pytablewriter",
+  "pytailwindcss",
+  "pytango",
+  "pytapo",
+  "pytd",
+  "pytdc",
+  "pyte",
+  "pytelegrambotapi",
+  "pytenable",
+  "pytensor",
+  "pyteomics",
+  "pytesseract",
+  "pytest",
+  "pytestarch",
+  "pytestify",
+  "pytextrank",
+  "pytgcalls",
+  "pythainlp",
+  "pythena",
+  "pythondialog",
+  "pythonnet",
+  "pythonping",
+  "pythran",
+  "pythreejs",
+  "pytimeparse",
+  "pytimeparse2",
+  "pytkdocs",
+  "pytket",
+  "pytokens",
+  "pytoml",
+  "pytoniq",
+  "pytoolconfig",
+  "pytools",
+  "pytorch",
+  "pytorchcv",
+  "pytoshop",
+  "pytransform3d",
+  "pytrends",
+  "pytricia",
+  "pytrie",
+  "pytrilogy",
+  "pyts",
+  "pyttsx3",
+  "pytube",
+  "pytubefix",
+  "pyturbojpeg",
+  "pytweening",
+  "pytype",
+  "pytz",
+  "pytzdata",
+  "pyu2f",
+  "pyubx2",
+  "pyuca",
+  "pyucis",
+  "pyudev",
+  "pyudorandom",
+  "pyulog",
+  "pyunormalize",
+  "pyunpack",
+  "pyupbit",
+  "pyupgrade",
+  "pyuri",
+  "pyusb",
+  "pyuspto",
+  "pyuvm",
+  "pyuwsgi",
+  "pyvalid",
+  "pyvcd",
+  "pyvcg",
+  "pyventus",
+  "pyvers",
+  "pyverse2d",
+  "pyvertica",
+  "pyvespa",
+  "pyvex",
+  "pyvi",
+  "pyvim",
+  "pyvips",
+  "pyvirtualdisplay",
+  "pyvis",
+  "pyvisa",
+  "pyvista",
+  "pyvistaqt",
+  "pyvmomi",
+  "pyvo",
+  "pyvrl",
+  "pywa",
+  "pywatchman",
+  "pywavelets",
+  "pywebpush",
+  "pywebview",
+  "pywhatkit",
+  "pywhispercpp",
+  "pywidevine",
+  "pywikibot",
+  "pywin32",
+  "pywinauto",
+  "pywinbox",
+  "pywinctl",
+  "pywinpty",
+  "pywinrm",
+  "pyworld",
+  "pyworxcloud",
+  "pywxdump",
+  "pyx",
+  "pyx12",
+  "pyxb",
+  "pyxb-x",
+  "pyxccd",
+  "pyxcp",
+  "pyxdameraulevenshtein",
+  "pyxdg",
+  "pyxdia",
+  "pyxero",
+  "pyxirr",
+  "pyxlsb",
+  "pyxlsx",
+  "pyxnat",
+  "pyxtal",
+  "pyyaml",
+  "pyyml",
+  "pyzabbix",
+  "pyzbar",
+  "pyzipcode",
+  "pyzipper",
+  "pyzk",
+  "pyzmq",
+  "pyzotero",
+  "pyzstd",
+  "pyzxing",
+  "q",
+  "qtpy",
+  "rawpy",
+  "readabilipy",
+  "repartipy",
+  "resampy",
+  "restrictedpython",
+  "ripgrepy",
+  "rlpycairo",
+  "robotspy",
+  "rookiepy",
+  "rpy2",
+  "rpyc",
+  "s3pypi",
+  "saspy",
+  "scanpy",
+  "scapy",
+  "scipy",
+  "scrapy",
+  "serpyco",
+  "shadowcopy",
+  "sharepy",
+  "simplepyble",
+  "simpy",
+  "sodapy",
+  "sparsediffpy",
+  "spiceypy",
+  "spotifywebapipython",
+  "spotipy",
+  "spyder",
+  "spyne",
+  "spython",
+  "sqlescapy",
+  "stpyv8",
+  "strsimpy",
+  "stumpy",
+  "sudachipy",
+  "sunpy",
+  "syllapy",
+  "sympy",
+  "symspellpy",
+  "syrupy",
+  "tapipy",
+  "taskipy",
+  "tcolorpy",
+  "teslajsonpy",
+  "tftpy",
+  "thriftpy2",
+  "tm1py",
+  "traveltimepy",
+  "tronpy",
+  "tsv2py",
+  "tuspy",
+  "tuspyserver",
+  "tweepy",
+  "typedpy",
+  "typepy",
+  "tzfpy",
+  "uncompyle6",
+  "unitypy",
+  "urlpy",
+  "vcrpy",
+  "verticapy",
+  "vispy",
+  "wakepy",
+  "waybackpy",
+  "webexpythonsdk",
+  "wechatpy",
+  "wimpy",
+  "ws4py",
+  "wxpython",
+  "wyzeapy",
+  "y-py",
+  "yourdfpy",
+  "zenpy",
+  "zeroentropy",
+  "zigpy"
+ ],
+ "3lc": [
+  "python-vlc",
+  "wlc"
+ ],
+ "a": [
+  "aiohappyeyeballs",
+  "alexapy",
+  "allpairspy",
+  "amplpy",
+  "anchorpy",
+  "antropy",
+  "antspyx",
+  "apysc",
+  "arcadepy",
+  "arpy",
+  "asciichartpy",
+  "assertpy",
+  "astrapy",
+  "astropy",
+  "av",
+  "awsiotpythonsdk",
+  "bagpy",
+  "bapy",
+  "basedpyright",
+  "beaupy",
+  "binapy",
+  "bincopy",
+  "biopython",
+  "boilerpy3",
+  "boschshcpy",
+  "bpy",
+  "bpylist2",
+  "bpython",
+  "bpyutils",
+  "brotlipy",
+  "cartopy",
+  "cedarpy",
+  "cellpylib",
+  "certipy",
+  "chalkpy",
+  "cherrypy",
+  "claripy",
+  "cmdstanpy",
+  "complexipy",
+  "contourpy",
+  "copybook",
+  "cosmpy",
+  "cppy",
+  "cvxpy",
+  "daal4py",
+  "dafnyruntimepython",
+  "datacompy",
+  "datadogpy",
+  "dearpygui",
+  "debugpy",
+  "decompyle3",
+  "dendropy",
+  "depyf",
+  "digitalpy",
+  "dipy",
+  "distinctipy",
+  "dkimpy",
+  "dmpython",
+  "dnspython",
+  "docx2python",
+  "dracopy",
+  "driftpy",
+  "dspy",
+  "dspy-ai",
+  "dtlpymetrics",
+  "dukpy",
+  "durationpy",
+  "eciespy",
+  "ecpy",
+  "editdistpy",
+  "eigenpy",
+  "empy",
+  "ffmpy",
+  "fhirpathpy",
+  "fhirpy",
+  "filterpy",
+  "findpython",
+  "flupy",
+  "fmpy",
+  "fpylll",
+  "fpyutils",
+  "fusepy",
+  "geoh5py",
+  "geopy",
+  "githubpy",
+  "gitpython",
+  "gmpy2",
+  "gpxpy",
+  "gpy",
+  "gpytorch",
+  "gpytranslate",
+  "graypy",
+  "gremlinpython",
+  "gseapy",
+  "guardpycfn",
+  "guppy3",
+  "gurobipy",
+  "h5py",
+  "happybase",
+  "hdijupyterutils",
+  "hdrpy",
+  "healpy",
+  "highspy",
+  "hiyapyco",
+  "hl7apy",
+  "hpnapy",
+  "htpy",
+  "hyperpyyaml",
+  "hyperspy",
+  "icsneopy",
+  "impyla",
+  "inquirerpy",
+  "ipy",
+  "ipycanvas",
+  "ipycytoscape",
+  "ipydagred3",
+  "ipydatawidgets",
+  "ipyevents",
+  "ipyfilechooser",
+  "ipykernel",
+  "ipylab",
+  "ipyleaflet",
+  "ipympl",
+  "ipynb",
+  "ipynbname",
+  "ipyparallel",
+  "ipypb",
+  "ipysigma",
+  "ipytest",
+  "ipython",
+  "ipytree",
+  "ipyvue",
+  "ipyvuetify",
+  "ipywebrtc",
+  "ipywidgets",
+  "islpy",
+  "jdk4py",
+  "jenkspy",
+  "josepy",
+  "jpype1",
+  "js2py",
+  "jupysql",
+  "jupyter",
+  "jupyter-ai",
+  "jupyterhub",
+  "jupyterlab",
+  "jupytext",
+  "kdepy",
+  "kiwipiepy",
+  "konlpy",
+  "kylinpy",
+  "laspy",
+  "latex2sympy2",
+  "lesscpy",
+  "libpysal",
+  "libretranslatepy",
+  "linopy",
+  "liquidpy",
+  "lucopy",
+  "marketorestpython",
+  "markuppy",
+  "matscipy",
+  "mdxpy",
+  "mediapy",
+  "mergepythonclient",
+  "metpy",
+  "mf2py",
+  "mfusepy",
+  "missingpy",
+  "mockredispy",
+  "momepy",
+  "moviepy",
+  "moyopy",
+  "mpi4py",
+  "mulpyplexer",
+  "multipyvu",
+  "mypy",
+  "mypyllant",
+  "nipype",
+  "norenrestapipy",
+  "numpy",
+  "numpydantic",
+  "numpydoc",
+  "numpyencoder",
+  "numpyro",
+  "obspy",
+  "odfpy",
+  "openfermionpyscf",
+  "openpyxl",
+  "openseespy",
+  "openseespylinux",
+  "oqpy",
+  "overpy",
+  "oxapy",
+  "p4python",
+  "pampy",
+  "pdpyras",
+  "peppy",
+  "perturbopy",
+  "pgcopy",
+  "pgmpy",
+  "pgpy",
+  "pgpy13",
+  "phono3py",
+  "phonopy",
+  "pipablepytorch3d",
+  "plpygis",
+  "pm4py",
+  "preppy",
+  "primepy",
+  "prtpy",
+  "psmpy",
+  "ptpython",
+  "pubchempy",
+  "py",
+  "py2app",
+  "py2neo",
+  "py2opsin",
+  "py3createtorrent",
+  "py3dbp",
+  "py3dmol",
+  "py3dns",
+  "py3langid",
+  "py3nvml",
+  "py3rijndael",
+  "py3rosmsgs",
+  "py4j",
+  "py4vasp",
+  "py7zr",
+  "pyaaf2",
+  "pyacoustid",
+  "pyactiveresource",
+  "pyadomd",
+  "pyaes",
+  "pyaescrypt",
+  "pyahocorasick",
+  "pyairtable",
+  "pyais",
+  "pyalex",
+  "pyamg",
+  "pyaml",
+  "pyandoc",
+  "pyang",
+  "pyangbind",
+  "pyannotate",
+  "pyap",
+  "pyap2",
+  "pyapacheatlas",
+  "pyarabic",
+  "pyarango",
+  "pyarmor",
+  "pyarrow",
+  "pyartifactory",
+  "pyas2lib",
+  "pyaskalono",
+  "pyasn",
+  "pyasn1",
+  "pyasynchat",
+  "pyasyncore",
+  "pyathena",
+  "pyathenajdbc",
+  "pyatlan",
+  "pyats",
+  "pyattest",
+  "pyatv",
+  "pyaudio",
+  "pyautogen",
+  "pyautogui",
+  "pyautoit",
+  "pyavm",
+  "pyawscron",
+  "pyaxmlparser",
+  "pybacklogpy",
+  "pybamm",
+  "pybammsolvers",
+  "pybars3",
+  "pybars4",
+  "pybase62",
+  "pybase64",
+  "pybaseball",
+  "pybaselines",
+  "pybatchexecute",
+  "pybatfish",
+  "pybboxes",
+  "pybcj",
+  "pybedtools",
+  "pybids",
+  "pybigquery",
+  "pybigtools",
+  "pybigwig",
+  "pybind11",
+  "pybindgen",
+  "pybiomart",
+  "pybit",
+  "pybktree",
+  "pyboxen",
+  "pybreaker",
+  "pybtex",
+  "pybuildkite",
+  "pybullet",
+  "pybytebuffer",
+  "pycadf",
+  "pycairo",
+  "pycalverter",
+  "pycampbellcr1000",
+  "pycapnp",
+  "pycares",
+  "pycaret",
+  "pycarlo",
+  "pycasbin",
+  "pycausalimpact",
+  "pycaw",
+  "pyccolo",
+  "pycdlib",
+  "pycel",
+  "pycg",
+  "pychrome",
+  "pychromecast",
+  "pycifrw",
+  "pyclamd",
+  "pyclang",
+  "pycld2",
+  "pycld3",
+  "pyclean",
+  "pyclibrary",
+  "pyclipper",
+  "pycln",
+  "pyclothoids",
+  "pycnite",
+  "pycobertura",
+  "pycocoevalcap",
+  "pycocotools",
+  "pycodestyle",
+  "pycognito",
+  "pycoin",
+  "pycoingecko",
+  "pycollada",
+  "pycolmap",
+  "pycomposefile",
+  "pyconfigurator",
+  "pyconify",
+  "pycosat",
+  "pycountry",
+  "pycowsay",
+  "pycparser",
+  "pycpfcnpj",
+  "pycrashreport",
+  "pycrdt",
+  "pycron",
+  "pycronofy",
+  "pycrypto",
+  "pycryptodome",
+  "pycryptodomex",
+  "pycstruct",
+  "pycsvschema",
+  "pyct",
+  "pyctcdecode",
+  "pycti",
+  "pycuda",
+  "pycups",
+  "pycurl",
+  "pydantic",
+  "pydantic-ai",
+  "pydap",
+  "pydash",
+  "pydbml",
+  "pyddq",
+  "pydeck",
+  "pydeequ",
+  "pydemumble",
+  "pydeprecate",
+  "pydeps",
+  "pydes",
+  "pydeseq2",
+  "pydevd",
+  "pydevicetree",
+  "pydgraph",
+  "pydicom",
+  "pydifact",
+  "pydirectinput",
+  "pydispatcher",
+  "pydivert",
+  "pydlt",
+  "pydo",
+  "pydocket",
+  "pydoclint",
+  "pydocstringformatter",
+  "pydocstyle",
+  "pydoctor",
+  "pydocumentdb",
+  "pydoe",
+  "pydomo",
+  "pydoris",
+  "pydot",
+  "pydotplus",
+  "pydriller",
+  "pydrive",
+  "pydrive2",
+  "pydruid",
+  "pydssp",
+  "pydub",
+  "pydyf",
+  "pydynamodb",
+  "pyeapi",
+  "pyeasee",
+  "pyecharts",
+  "pyedb",
+  "pyedflib",
+  "pyee",
+  "pyelftools",
+  "pyemvue",
+  "pyenchant",
+  "pyensembl",
+  "pyepics",
+  "pyerfa",
+  "pyescrypt",
+  "pyeventsystem",
+  "pyevtk",
+  "pyexasol",
+  "pyexcel",
+  "pyexcelerate",
+  "pyexecjs",
+  "pyexiftool",
+  "pyexiv2",
+  "pyextremes",
+  "pyfacer",
+  "pyfaidx",
+  "pyfakefs",
+  "pyfarmhash",
+  "pyfcm",
+  "pyfftw",
+  "pyffx",
+  "pyfiglet",
+  "pyfinite",
+  "pyfixest",
+  "pyflakes",
+  "pyflux",
+  "pyfmodex",
+  "pyformance",
+  "pyformlang",
+  "pyftdi",
+  "pyftpdlib",
+  "pyfunctional",
+  "pyfzf",
+  "pygad",
+  "pygal",
+  "pygaljs",
+  "pygam",
+  "pygame",
+  "pygdal",
+  "pygdbmi",
+  "pygelf",
+  "pygeocodio",
+  "pygeodesy",
+  "pygeohash",
+  "pygeoif",
+  "pygeos",
+  "pygeotile",
+  "pygerduty",
+  "pygerrit2",
+  "pygetwindow",
+  "pygfx",
+  "pyghidra",
+  "pyghmi",
+  "pygit2",
+  "pygitguardian",
+  "pygithub",
+  "pyglet",
+  "pyglm",
+  "pyglove",
+  "pygls",
+  "pygltflib",
+  "pygmars",
+  "pygments",
+  "pygnmi",
+  "pygnuutils",
+  "pygobject",
+  "pygogo",
+  "pygount",
+  "pygraphviz",
+  "pygresql",
+  "pygrib",
+  "pygrinder",
+  "pygrok",
+  "pygsheets",
+  "pygtail",
+  "pygtrie",
+  "pygwalker",
+  "pyhamcrest",
+  "pyhanko",
+  "pyhcl",
+  "pyhdb",
+  "pyhdfe",
+  "pyheck",
+  "pyheif",
+  "pyhelm3",
+  "pyhive",
+  "pyhmmer",
+  "pyhocon",
+  "pyhpke",
+  "pyhs2",
+  "pyhumps",
+  "pyhwp",
+  "pyhwpx",
+  "pyiceberg",
+  "pyicloud",
+  "pyicu",
+  "pyicumessageformat",
+  "pyimg4",
+  "pyinfra",
+  "pyink",
+  "pyinotify",
+  "pyinstaller",
+  "pyinstrument",
+  "pyinvoke",
+  "pyion2json",
+  "pyiotools",
+  "pyiqa",
+  "pyisemail",
+  "pyiso8583",
+  "pyjanitor",
+  "pyjarowinkler",
+  "pyjavaproperties3",
+  "pyjdbc",
+  "pyjks",
+  "pyjls",
+  "pyjnius",
+  "pyjokes",
+  "pyjpegls",
+  "pyjq",
+  "pyjsg",
+  "pyjslint",
+  "pyjson",
+  "pyjson5",
+  "pyjsonpatch",
+  "pyjsparser",
+  "pyjwkest",
+  "pyjwt",
+  "pykafka",
+  "pykakasi",
+  "pykalman",
+  "pykaos",
+  "pykcs11",
+  "pykd",
+  "pykdebugparser",
+  "pykdtree",
+  "pykeepass",
+  "pykerberos",
+  "pykka",
+  "pykmip",
+  "pykml",
+  "pykrige",
+  "pykrx",
+  "pykwalify",
+  "pylama",
+  "pylance",
+  "pylast",
+  "pylate",
+  "pylatex",
+  "pylatexenc",
+  "pylbfgs",
+  "pylcs",
+  "pyld",
+  "pyldavis",
+  "pyleak",
+  "pylerc",
+  "pyleri",
+  "pylertalertmanager",
+  "pylev",
+  "pylibdmtx",
+  "pylibfdt",
+  "pylibftdi",
+  "pylibiio",
+  "pylibjpeg",
+  "pyliblzfse",
+  "pylibmagic",
+  "pylibmc",
+  "pylibsrtp",
+  "pylibyear",
+  "pylightxl",
+  "pylinalg",
+  "pylink",
+  "pylint",
+  "pylmcf",
+  "pylogbeat",
+  "pylogix",
+  "pyloudnorm",
+  "pylru",
+  "pylspci",
+  "pylsqpack",
+  "pylti1p3",
+  "pyluach",
+  "pylxd",
+  "pylzss",
+  "pymacaroons",
+  "pymammotion",
+  "pymannkendall",
+  "pymantic",
+  "pymap3d",
+  "pymarc",
+  "pymarkdownlnt",
+  "pymatching",
+  "pymatgen",
+  "pymatreader",
+  "pymatting",
+  "pymavlink",
+  "pymaybe",
+  "pymbolic",
+  "pymc",
+  "pymc3",
+  "pymcubes",
+  "pymediainfo",
+  "pymeeus",
+  "pymem",
+  "pymemcache",
+  "pymemoryeditor",
+  "pymeshfix",
+  "pymeshlab",
+  "pymeta3",
+  "pymetis",
+  "pymgclient",
+  "pymiele",
+  "pymilvus",
+  "pyminizip",
+  "pymiscutils",
+  "pymisp",
+  "pymitter",
+  "pymobiledetect",
+  "pymobiledevice3",
+  "pymochow",
+  "pymodbus",
+  "pymodbustcp",
+  "pymonctl",
+  "pymonetdb",
+  "pymongo",
+  "pymongoarrow",
+  "pymongocrypt",
+  "pymonocypher",
+  "pymoo",
+  "pymorphy2",
+  "pymorphy3",
+  "pymp3",
+  "pymp4",
+  "pympler",
+  "pymqi",
+  "pymsalruntime",
+  "pymsgbox",
+  "pymssql",
+  "pymsteams",
+  "pymunk",
+  "pymupdf",
+  "pymupdf4llm",
+  "pymupdfb",
+  "pymupdfpro",
+  "pymyenergi",
+  "pymysql",
+  "pymysqllock",
+  "pymzml",
+  "pynacl",
+  "pynamodb",
+  "pynautobot",
+  "pynetbox",
+  "pynetdicom",
+  "pyngrok",
+  "pynini",
+  "pynliner",
+  "pynmea2",
+  "pynmeagps",
+  "pynndescent",
+  "pynng",
+  "pynose",
+  "pynpm",
+  "pynput",
+  "pynrrd",
+  "pyntcloud",
+  "pynvim",
+  "pynvml",
+  "pynvvideocodec",
+  "pynwb",
+  "pyobjc",
+  "pyobvector",
+  "pyocd",
+  "pyocse",
+  "pyod",
+  "pyodata",
+  "pyodbc",
+  "pyodps",
+  "pyogrio",
+  "pyomo",
+  "pyone",
+  "pyop",
+  "pyopencl",
+  "pyopengl",
+  "pyopenjtalk",
+  "pyopenms",
+  "pyopenssl",
+  "pyorbital",
+  "pyorc",
+  "pyotp",
+  "pyowm",
+  "pyoxigraph",
+  "pyoxipng",
+  "pypac",
+  "pypandoc",
+  "pyparsing",
+  "pypartmc",
+  "pypcap",
+  "pypcd4",
+  "pypcode",
+  "pypd",
+  "pypdf",
+  "pypdf2",
+  "pypdf3",
+  "pypdf4",
+  "pypdfform",
+  "pypdfium2",
+  "pypdftk",
+  "pypeg2",
+  "pypeln",
+  "pypemicro",
+  "pyperclip",
+  "pyperf",
+  "pyperformance",
+  "pyperplan",
+  "pypgconfig",
+  "pypgstac",
+  "pyphen",
+  "pyphonetics",
+  "pypi",
+  "pypika",
+  "pypinyin",
+  "pypiserver",
+  "pypistats",
+  "pypiwin32",
+  "pyplayready",
+  "pypng",
+  "pypolyline",
+  "pyportfolioopt",
+  "pypots",
+  "pypowerstore",
+  "pyppeteer",
+  "pyppmd",
+  "pyprctl",
+  "pyprep",
+  "pypresence",
+  "pyprind",
+  "pyprobables",
+  "pyprof2calltree",
+  "pyproj",
+  "pyproject2conda",
+  "pyprojroot",
+  "pypsexec",
+  "pypsrp",
+  "pypubsub",
+  "pypugjs",
+  "pypydispatcher",
+  "pypylon",
+  "pypyodbc",
+  "pypyp",
+  "pyqir",
+  "pyqlib",
+  "pyqrcode",
+  "pyqt5",
+  "pyqt6",
+  "pyqtgraph",
+  "pyqtwebengine",
+  "pyquaternion",
+  "pyquery",
+  "pyquil",
+  "pyqwest",
+  "pyrabbit",
+  "pyrabbit2",
+  "pyrad",
+  "pyrage",
+  "pyramid",
+  "pyranges",
+  "pyrasite",
+  "pyrdfa3",
+  "pyre2",
+  "pyreaddbc",
+  "pyreadline",
+  "pyreadline3",
+  "pyreadr",
+  "pyreadstat",
+  "pyrealsense2",
+  "pyrebase4",
+  "pyrect",
+  "pyrefly",
+  "pyrender",
+  "pyrepl",
+  "pyreqwest",
+  "pyresample",
+  "pyrevm",
+  "pyrfc",
+  "pyrfc3339",
+  "pyrfc6266",
+  "pyric",
+  "pyriemann",
+  "pyright",
+  "pyrit",
+  "pyrnnoise",
+  "pyro4",
+  "pyro5",
+  "pyroaring",
+  "pyrofork",
+  "pyrogram",
+  "pyroma",
+  "pyromark",
+  "pyroot",
+  "pyroots",
+  "pyrootutils",
+  "pyrotgfork",
+  "pyroute2",
+  "pyrr",
+  "pyrsistent",
+  "pyrsmi",
+  "pyrtcm",
+  "pyrtf3",
+  "pyrubberband",
+  "pysage3",
+  "pysam",
+  "pysaml2",
+  "pysbd",
+  "pyscaffold",
+  "pyscf",
+  "pyscipopt",
+  "pyscreenshot",
+  "pyscreeze",
+  "pyscss",
+  "pysdl2",
+  "pyseccomp",
+  "pysen",
+  "pysequoia",
+  "pyserde",
+  "pyserial",
+  "pyserini",
+  "pyseto",
+  "pysftp",
+  "pysha3",
+  "pyshacl",
+  "pyshark",
+  "pysher",
+  "pyshex",
+  "pyshexc",
+  "pyshortcuts",
+  "pyshorteners",
+  "pyshp",
+  "pyside2",
+  "pyside6",
+  "pysigma",
+  "pysignalr",
+  "pysimdjson",
+  "pysimplegui",
+  "pysingleton",
+  "pyslack",
+  "pyslang",
+  "pysmartdl",
+  "pysmb",
+  "pysmbclient",
+  "pysmi",
+  "pysnc",
+  "pysnmp",
+  "pysnmpcrypto",
+  "pysnooper",
+  "pysnow",
+  "pysnowflake",
+  "pysnyk",
+  "pysocks",
+  "pysodium",
+  "pysoem",
+  "pysolarmanv5",
+  "pysolr",
+  "pysonar",
+  "pyspark",
+  "pysparkling",
+  "pyspellchecker",
+  "pyspelling",
+  "pyspnego",
+  "pysqlite3",
+  "pysqlsync",
+  "pysrt",
+  "pystac",
+  "pystache",
+  "pystack",
+  "pystan",
+  "pystardog",
+  "pystaticconfiguration",
+  "pystemmer",
+  "pystoi",
+  "pyston",
+  "pystow",
+  "pystray",
+  "pystrich",
+  "pystyle",
+  "pysubs2",
+  "pysubtypes",
+  "pyswarms",
+  "pyswisseph",
+  "pytabkit",
+  "pytablereader",
+  "pytablewriter",
+  "pytailwindcss",
+  "pytango",
+  "pytapo",
+  "pytd",
+  "pytdc",
+  "pyte",
+  "pytelegrambotapi",
+  "pytenable",
+  "pytensor",
+  "pyteomics",
+  "pytesseract",
+  "pytest",
+  "pytestarch",
+  "pytestify",
+  "pytextrank",
+  "pytgcalls",
+  "pythainlp",
+  "pythena",
+  "pythondialog",
+  "pythonnet",
+  "pythonping",
+  "pythran",
+  "pythreejs",
+  "pytimeparse",
+  "pytimeparse2",
+  "pytkdocs",
+  "pytket",
+  "pytokens",
+  "pytoml",
+  "pytoniq",
+  "pytoolconfig",
+  "pytools",
+  "pytorch",
+  "pytorchcv",
+  "pytoshop",
+  "pytransform3d",
+  "pytrends",
+  "pytricia",
+  "pytrie",
+  "pytrilogy",
+  "pyts",
+  "pyttsx3",
+  "pytube",
+  "pytubefix",
+  "pyturbojpeg",
+  "pytweening",
+  "pytype",
+  "pytz",
+  "pytzdata",
+  "pyu2f",
+  "pyubx2",
+  "pyuca",
+  "pyucis",
+  "pyudev",
+  "pyudorandom",
+  "pyulog",
+  "pyunormalize",
+  "pyunpack",
+  "pyupbit",
+  "pyupgrade",
+  "pyuri",
+  "pyusb",
+  "pyuspto",
+  "pyuvm",
+  "pyuwsgi",
+  "pyvalid",
+  "pyvcd",
+  "pyvcg",
+  "pyventus",
+  "pyvers",
+  "pyverse2d",
+  "pyvertica",
+  "pyvespa",
+  "pyvex",
+  "pyvi",
+  "pyvim",
+  "pyvips",
+  "pyvirtualdisplay",
+  "pyvis",
+  "pyvisa",
+  "pyvista",
+  "pyvistaqt",
+  "pyvmomi",
+  "pyvo",
+  "pyvrl",
+  "pywa",
+  "pywatchman",
+  "pywavelets",
+  "pywebpush",
+  "pywebview",
+  "pywhatkit",
+  "pywhispercpp",
+  "pywidevine",
+  "pywikibot",
+  "pywin32",
+  "pywinauto",
+  "pywinbox",
+  "pywinctl",
+  "pywinpty",
+  "pywinrm",
+  "pyworld",
+  "pyworxcloud",
+  "pywxdump",
+  "pyx",
+  "pyx12",
+  "pyxb",
+  "pyxb-x",
+  "pyxccd",
+  "pyxcp",
+  "pyxdameraulevenshtein",
+  "pyxdg",
+  "pyxdia",
+  "pyxero",
+  "pyxirr",
+  "pyxlsb",
+  "pyxlsx",
+  "pyxnat",
+  "pyxtal",
+  "pyyaml",
+  "pyyml",
+  "pyzabbix",
+  "pyzbar",
+  "pyzipcode",
+  "pyzipper",
+  "pyzk",
+  "pyzmq",
+  "pyzotero",
+  "pyzstd",
+  "pyzxing",
+  "q",
+  "qtpy",
+  "rawpy",
+  "readabilipy",
+  "repartipy",
+  "resampy",
+  "restrictedpython",
+  "ripgrepy",
+  "rlpycairo",
+  "robotspy",
+  "rookiepy",
+  "rpy2",
+  "rpyc",
+  "s3pypi",
+  "saspy",
+  "scanpy",
+  "scapy",
+  "scipy",
+  "scrapy",
+  "serpyco",
+  "shadowcopy",
+  "sharepy",
+  "simplepyble",
+  "simpy",
+  "sodapy",
+  "sparsediffpy",
+  "spiceypy",
+  "spotifywebapipython",
+  "spotipy",
+  "spyder",
+  "spyne",
+  "spython",
+  "sqlescapy",
+  "stpyv8",
+  "strsimpy",
+  "stumpy",
+  "sudachipy",
+  "sunpy",
+  "syllapy",
+  "sympy",
+  "symspellpy",
+  "syrupy",
+  "ta",
+  "tapipy",
+  "taskipy",
+  "tcolorpy",
+  "teslajsonpy",
+  "tftpy",
+  "thriftpy2",
+  "tm1py",
+  "traveltimepy",
+  "tronpy",
+  "tsv2py",
+  "tuspy",
+  "tuspyserver",
+  "tweepy",
+  "typedpy",
+  "typepy",
+  "tzfpy",
+  "uncompyle6",
+  "unitypy",
+  "urlpy",
+  "vcrpy",
+  "verticapy",
+  "vispy",
+  "wakepy",
+  "waybackpy",
+  "webexpythonsdk",
+  "wechatpy",
+  "wimpy",
+  "ws4py",
+  "wxpython",
+  "wyzeapy",
+  "y-py",
+  "yourdfpy",
+  "zenpy",
+  "zeroentropy",
+  "zigpy"
+ ],
+ "aadict": [
+  "addict"
+ ],
+ "absql": [
+  "absl-py"
+ ],
+ "abstracts": [
+  "abstract-hugpy"
+ ],
+ "acb": [
+  "python-bcb"
+ ],
+ "ach": [
+  "arch",
+  "tach"
+ ],
+ "adax": [
+  "adal"
+ ],
+ "adcp": [
+  "arcp"
+ ],
+ "adepy": [
+  "kdepy"
+ ],
+ "agk": [
+  "ag2"
+ ],
+ "ago": [
+  "ag2",
+  "agno",
+  "pytest-aio"
+ ],
+ "ai-coustics-livekit-plugin": [
+  "livekit-plugins-ai-coustics"
+ ],
+ "ai-dynamo": [
+  "aiodynamo"
+ ],
+ "aioemonitor": [
+  "aiomonitor"
+ ],
+ "aiortm": [
+  "aiortc"
+ ],
+ "aiosmpplib": [
+  "aiosmtplib"
+ ],
+ "aiosocks2": [
+  "aiosocks"
+ ],
+ "aiozmq": [
+  "aiormq"
+ ],
+ "albumentationsx": [
+  "albumentations"
+ ],
+ "alibabacloud-dyvmsapi20170525": [
+  "alibabacloud-dysmsapi20170525"
+ ],
+ "aliyun-python-sdk-cms": [
+  "aliyun-python-sdk-cs",
+  "aliyun-python-sdk-kms"
+ ],
+ "aliyun-python-sdk-ess": [
+  "aliyun-python-sdk-ecs"
+ ],
+ "aliyun-python-sdk-ocs": [
+  "aliyun-python-sdk-cs",
+  "aliyun-python-sdk-ecs"
+ ],
+ "aliyun-python-sdk-sas": [
+  "aliyun-python-sdk-sts"
+ ],
+ "alpaqa": [
+  "alpaca-py"
+ ],
+ "amply": [
+  "amplpy"
+ ],
+ "amr": [
+  "arm-pyart",
+  "gmr",
+  "python-cmr"
+ ],
+ "an": [
+  "arn",
+  "av",
+  "dspy-ai",
+  "jupyter-ai",
+  "pan-python",
+  "pydantic-ai",
+  "python-can",
+  "wn"
+ ],
+ "andi": [
+  "anki",
+  "ansi"
+ ],
+ "anosql": [
+  "aiosql"
+ ],
+ "ansiconv": [
+  "ansicon"
+ ],
+ "antlr4-python2-runtime": [
+  "antlr4-python3-runtime"
+ ],
+ "ap-client": [
+  "apiclient"
+ ],
+ "apio": [
+  "pyproject-api",
+  "pyro-api",
+  "pytest-aio"
+ ],
+ "apkutils": [
+  "apkutils2"
+ ],
+ "aplus": [
+  "pytest-plus"
+ ],
+ "app": [
+  "pyproject-api",
+  "pyro-api",
+  "pytest-cpp"
+ ],
+ "apptools": [
+  "apitools"
+ ],
+ "ar": [
+  "ara",
+  "arm-pyart",
+  "arn",
+  "arq",
+  "art",
+  "av",
+  "dspy-ai",
+  "jupyter-ai",
+  "pydantic-ai",
+  "xar"
+ ],
+ "arcae": [
+  "arcade"
+ ],
+ "archi": [
+  "arch"
+ ],
+ "area": [
+  "ara"
+ ],
+ "aredis": [
+  "py-redis",
+  "pytest-redis",
+  "redis"
+ ],
+ "argsy": [
+  "args"
+ ],
+ "arq2": [
+  "arq"
+ ],
+ "asconnect": [
+  "rsconnect-python"
+ ],
+ "astar": [
+  "astor",
+  "fastar"
+ ],
+ "asteroid": [
+  "astroid"
+ ],
+ "astyle": [
+  "style"
+ ],
+ "async-notify": [
+  "asyncinotify"
+ ],
+ "atomicwriter": [
+  "atomicwrites"
+ ],
+ "attrdict3": [
+  "attrdict"
+ ],
+ "attridict": [
+  "attrdict"
+ ],
+ "aubio": [
+  "pyannote-audio"
+ ],
+ "autest": [
+  "pyats-aetest"
+ ],
+ "auth0-fastapi": [
+  "fastapi-auth0"
+ ],
+ "authress": [
+  "authres"
+ ],
+ "authx": [
+  "auth",
+  "auth0-python",
+  "authy"
+ ],
+ "autoflake8": [
+  "autoflake"
+ ],
+ "avro-py": [
+  "avro-python3"
+ ],
+ "awkward1": [
+  "awkward",
+  "awkward0"
+ ],
+ "awslabs-ecs-mcp-server": [
+  "awslabs-eks-mcp-server"
+ ],
+ "b": [
+  "aiohappyeyeballs",
+  "alexapy",
+  "allpairspy",
+  "amplpy",
+  "anchorpy",
+  "antropy",
+  "antspyx",
+  "apysc",
+  "arcadepy",
+  "arpy",
+  "asciichartpy",
+  "assertpy",
+  "astrapy",
+  "astropy",
+  "awsiotpythonsdk",
+  "b2",
+  "bagpy",
+  "bapy",
+  "basedpyright",
+  "beaupy",
+  "binapy",
+  "bincopy",
+  "biopython",
+  "boilerpy3",
+  "boschshcpy",
+  "bpy",
+  "bpylist2",
+  "bpython",
+  "bpyutils",
+  "brotlipy",
+  "bx-python",
+  "cartopy",
+  "cedarpy",
+  "cellpylib",
+  "certipy",
+  "chalkpy",
+  "cherrypy",
+  "claripy",
+  "cmdstanpy",
+  "complexipy",
+  "contourpy",
+  "copybook",
+  "cosmpy",
+  "cppy",
+  "cvxpy",
+  "daal4py",
+  "dafnyruntimepython",
+  "datacompy",
+  "datadogpy",
+  "dearpygui",
+  "debugpy",
+  "decompyle3",
+  "dendropy",
+  "depyf",
+  "digitalpy",
+  "dipy",
+  "distinctipy",
+  "dkimpy",
+  "dmpython",
+  "dnspython",
+  "docx2python",
+  "dracopy",
+  "driftpy",
+  "dspy",
+  "dtlpymetrics",
+  "dukpy",
+  "durationpy",
+  "eciespy",
+  "ecpy",
+  "editdistpy",
+  "eigenpy",
+  "empy",
+  "ffmpy",
+  "fhirpathpy",
+  "fhirpy",
+  "filterpy",
+  "findpython",
+  "flupy",
+  "fmpy",
+  "fpylll",
+  "fpyutils",
+  "fusepy",
+  "geoh5py",
+  "geopy",
+  "githubpy",
+  "gitpython",
+  "gmpy2",
+  "gpxpy",
+  "gpy",
+  "gpytorch",
+  "gpytranslate",
+  "graypy",
+  "gremlinpython",
+  "gseapy",
+  "guardpycfn",
+  "guppy3",
+  "gurobipy",
+  "h5py",
+  "happybase",
+  "hdijupyterutils",
+  "hdrpy",
+  "healpy",
+  "highspy",
+  "hiyapyco",
+  "hl7apy",
+  "hpnapy",
+  "htpy",
+  "hyperpyyaml",
+  "hyperspy",
+  "icsneopy",
+  "impyla",
+  "inquirerpy",
+  "ipy",
+  "ipycanvas",
+  "ipycytoscape",
+  "ipydagred3",
+  "ipydatawidgets",
+  "ipyevents",
+  "ipyfilechooser",
+  "ipykernel",
+  "ipylab",
+  "ipyleaflet",
+  "ipympl",
+  "ipynb",
+  "ipynbname",
+  "ipyparallel",
+  "ipypb",
+  "ipysigma",
+  "ipytest",
+  "ipython",
+  "ipytree",
+  "ipyvue",
+  "ipyvuetify",
+  "ipywebrtc",
+  "ipywidgets",
+  "islpy",
+  "jdk4py",
+  "jenkspy",
+  "josepy",
+  "jpype1",
+  "js2py",
+  "jupysql",
+  "jupyter",
+  "jupyterhub",
+  "jupyterlab",
+  "jupytext",
+  "kdepy",
+  "kiwipiepy",
+  "konlpy",
+  "kylinpy",
+  "laspy",
+  "latex2sympy2",
+  "lesscpy",
+  "libpysal",
+  "libretranslatepy",
+  "linopy",
+  "liquidpy",
+  "lucopy",
+  "marketorestpython",
+  "markuppy",
+  "matscipy",
+  "mdxpy",
+  "mediapy",
+  "mergepythonclient",
+  "metpy",
+  "mf2py",
+  "mfusepy",
+  "missingpy",
+  "mockredispy",
+  "momepy",
+  "moviepy",
+  "moyopy",
+  "mpi4py",
+  "mulpyplexer",
+  "multipyvu",
+  "mypy",
+  "mypyllant",
+  "nipype",
+  "norenrestapipy",
+  "numpy",
+  "numpydantic",
+  "numpydoc",
+  "numpyencoder",
+  "numpyro",
+  "obspy",
+  "odfpy",
+  "openfermionpyscf",
+  "openpyxl",
+  "openseespy",
+  "openseespylinux",
+  "oqpy",
+  "overpy",
+  "oxapy",
+  "p4python",
+  "pampy",
+  "pdpyras",
+  "peppy",
+  "perturbopy",
+  "pgcopy",
+  "pgmpy",
+  "pgpy",
+  "pgpy13",
+  "phono3py",
+  "phonopy",
+  "pipablepytorch3d",
+  "plpygis",
+  "pm4py",
+  "preppy",
+  "primepy",
+  "prtpy",
+  "psmpy",
+  "ptpython",
+  "pubchempy",
+  "py",
+  "py2app",
+  "py2neo",
+  "py2opsin",
+  "py3createtorrent",
+  "py3dbp",
+  "py3dmol",
+  "py3dns",
+  "py3langid",
+  "py3nvml",
+  "py3rijndael",
+  "py3rosmsgs",
+  "py4j",
+  "py4vasp",
+  "py7zr",
+  "pyaaf2",
+  "pyacoustid",
+  "pyactiveresource",
+  "pyadomd",
+  "pyaes",
+  "pyaescrypt",
+  "pyahocorasick",
+  "pyairtable",
+  "pyais",
+  "pyalex",
+  "pyamg",
+  "pyaml",
+  "pyandoc",
+  "pyang",
+  "pyangbind",
+  "pyannotate",
+  "pyap",
+  "pyap2",
+  "pyapacheatlas",
+  "pyarabic",
+  "pyarango",
+  "pyarmor",
+  "pyarrow",
+  "pyartifactory",
+  "pyas2lib",
+  "pyaskalono",
+  "pyasn",
+  "pyasn1",
+  "pyasynchat",
+  "pyasyncore",
+  "pyathena",
+  "pyathenajdbc",
+  "pyatlan",
+  "pyats",
+  "pyattest",
+  "pyatv",
+  "pyaudio",
+  "pyautogen",
+  "pyautogui",
+  "pyautoit",
+  "pyavm",
+  "pyawscron",
+  "pyaxmlparser",
+  "pybacklogpy",
+  "pybamm",
+  "pybammsolvers",
+  "pybars3",
+  "pybars4",
+  "pybase62",
+  "pybase64",
+  "pybaseball",
+  "pybaselines",
+  "pybatchexecute",
+  "pybatfish",
+  "pybboxes",
+  "pybcj",
+  "pybedtools",
+  "pybids",
+  "pybigquery",
+  "pybigtools",
+  "pybigwig",
+  "pybind11",
+  "pybindgen",
+  "pybiomart",
+  "pybit",
+  "pybktree",
+  "pyboxen",
+  "pybreaker",
+  "pybtex",
+  "pybuildkite",
+  "pybullet",
+  "pybytebuffer",
+  "pycadf",
+  "pycairo",
+  "pycalverter",
+  "pycampbellcr1000",
+  "pycapnp",
+  "pycares",
+  "pycaret",
+  "pycarlo",
+  "pycasbin",
+  "pycausalimpact",
+  "pycaw",
+  "pyccolo",
+  "pycdlib",
+  "pycel",
+  "pycg",
+  "pychrome",
+  "pychromecast",
+  "pycifrw",
+  "pyclamd",
+  "pyclang",
+  "pycld2",
+  "pycld3",
+  "pyclean",
+  "pyclibrary",
+  "pyclipper",
+  "pycln",
+  "pyclothoids",
+  "pycnite",
+  "pycobertura",
+  "pycocoevalcap",
+  "pycocotools",
+  "pycodestyle",
+  "pycognito",
+  "pycoin",
+  "pycoingecko",
+  "pycollada",
+  "pycolmap",
+  "pycomposefile",
+  "pyconfigurator",
+  "pyconify",
+  "pycosat",
+  "pycountry",
+  "pycowsay",
+  "pycparser",
+  "pycpfcnpj",
+  "pycrashreport",
+  "pycrdt",
+  "pycron",
+  "pycronofy",
+  "pycrypto",
+  "pycryptodome",
+  "pycryptodomex",
+  "pycstruct",
+  "pycsvschema",
+  "pyct",
+  "pyctcdecode",
+  "pycti",
+  "pycuda",
+  "pycups",
+  "pycurl",
+  "pydantic",
+  "pydap",
+  "pydash",
+  "pydbml",
+  "pyddq",
+  "pydeck",
+  "pydeequ",
+  "pydemumble",
+  "pydeprecate",
+  "pydeps",
+  "pydes",
+  "pydeseq2",
+  "pydevd",
+  "pydevicetree",
+  "pydgraph",
+  "pydicom",
+  "pydifact",
+  "pydirectinput",
+  "pydispatcher",
+  "pydivert",
+  "pydlt",
+  "pydo",
+  "pydocket",
+  "pydoclint",
+  "pydocstringformatter",
+  "pydocstyle",
+  "pydoctor",
+  "pydocumentdb",
+  "pydoe",
+  "pydomo",
+  "pydoris",
+  "pydot",
+  "pydotplus",
+  "pydriller",
+  "pydrive",
+  "pydrive2",
+  "pydruid",
+  "pydssp",
+  "pydub",
+  "pydyf",
+  "pydynamodb",
+  "pyeapi",
+  "pyeasee",
+  "pyecharts",
+  "pyedb",
+  "pyedflib",
+  "pyee",
+  "pyelftools",
+  "pyemvue",
+  "pyenchant",
+  "pyensembl",
+  "pyepics",
+  "pyerfa",
+  "pyescrypt",
+  "pyeventsystem",
+  "pyevtk",
+  "pyexasol",
+  "pyexcel",
+  "pyexcelerate",
+  "pyexecjs",
+  "pyexiftool",
+  "pyexiv2",
+  "pyextremes",
+  "pyfacer",
+  "pyfaidx",
+  "pyfakefs",
+  "pyfarmhash",
+  "pyfcm",
+  "pyfftw",
+  "pyffx",
+  "pyfiglet",
+  "pyfinite",
+  "pyfixest",
+  "pyflakes",
+  "pyflux",
+  "pyfmodex",
+  "pyformance",
+  "pyformlang",
+  "pyftdi",
+  "pyftpdlib",
+  "pyfunctional",
+  "pyfzf",
+  "pygad",
+  "pygal",
+  "pygaljs",
+  "pygam",
+  "pygame",
+  "pygdal",
+  "pygdbmi",
+  "pygelf",
+  "pygeocodio",
+  "pygeodesy",
+  "pygeohash",
+  "pygeoif",
+  "pygeos",
+  "pygeotile",
+  "pygerduty",
+  "pygerrit2",
+  "pygetwindow",
+  "pygfx",
+  "pyghidra",
+  "pyghmi",
+  "pygit2",
+  "pygitguardian",
+  "pygithub",
+  "pyglet",
+  "pyglm",
+  "pyglove",
+  "pygls",
+  "pygltflib",
+  "pygmars",
+  "pygments",
+  "pygnmi",
+  "pygnuutils",
+  "pygobject",
+  "pygogo",
+  "pygount",
+  "pygraphviz",
+  "pygresql",
+  "pygrib",
+  "pygrinder",
+  "pygrok",
+  "pygsheets",
+  "pygtail",
+  "pygtrie",
+  "pygwalker",
+  "pyhamcrest",
+  "pyhanko",
+  "pyhcl",
+  "pyhdb",
+  "pyhdfe",
+  "pyheck",
+  "pyheif",
+  "pyhelm3",
+  "pyhive",
+  "pyhmmer",
+  "pyhocon",
+  "pyhpke",
+  "pyhs2",
+  "pyhumps",
+  "pyhwp",
+  "pyhwpx",
+  "pyiceberg",
+  "pyicloud",
+  "pyicu",
+  "pyicumessageformat",
+  "pyimg4",
+  "pyinfra",
+  "pyink",
+  "pyinotify",
+  "pyinstaller",
+  "pyinstrument",
+  "pyinvoke",
+  "pyion2json",
+  "pyiotools",
+  "pyiqa",
+  "pyisemail",
+  "pyiso8583",
+  "pyjanitor",
+  "pyjarowinkler",
+  "pyjavaproperties3",
+  "pyjdbc",
+  "pyjks",
+  "pyjls",
+  "pyjnius",
+  "pyjokes",
+  "pyjpegls",
+  "pyjq",
+  "pyjsg",
+  "pyjslint",
+  "pyjson",
+  "pyjson5",
+  "pyjsonpatch",
+  "pyjsparser",
+  "pyjwkest",
+  "pyjwt",
+  "pykafka",
+  "pykakasi",
+  "pykalman",
+  "pykaos",
+  "pykcs11",
+  "pykd",
+  "pykdebugparser",
+  "pykdtree",
+  "pykeepass",
+  "pykerberos",
+  "pykka",
+  "pykmip",
+  "pykml",
+  "pykrige",
+  "pykrx",
+  "pykwalify",
+  "pylama",
+  "pylance",
+  "pylast",
+  "pylate",
+  "pylatex",
+  "pylatexenc",
+  "pylbfgs",
+  "pylcs",
+  "pyld",
+  "pyldavis",
+  "pyleak",
+  "pylerc",
+  "pyleri",
+  "pylertalertmanager",
+  "pylev",
+  "pylibdmtx",
+  "pylibfdt",
+  "pylibftdi",
+  "pylibiio",
+  "pylibjpeg",
+  "pyliblzfse",
+  "pylibmagic",
+  "pylibmc",
+  "pylibsrtp",
+  "pylibyear",
+  "pylightxl",
+  "pylinalg",
+  "pylink",
+  "pylint",
+  "pylmcf",
+  "pylogbeat",
+  "pylogix",
+  "pyloudnorm",
+  "pylru",
+  "pylspci",
+  "pylsqpack",
+  "pylti1p3",
+  "pyluach",
+  "pylxd",
+  "pylzss",
+  "pymacaroons",
+  "pymammotion",
+  "pymannkendall",
+  "pymantic",
+  "pymap3d",
+  "pymarc",
+  "pymarkdownlnt",
+  "pymatching",
+  "pymatgen",
+  "pymatreader",
+  "pymatting",
+  "pymavlink",
+  "pymaybe",
+  "pymbolic",
+  "pymc",
+  "pymc3",
+  "pymcubes",
+  "pymediainfo",
+  "pymeeus",
+  "pymem",
+  "pymemcache",
+  "pymemoryeditor",
+  "pymeshfix",
+  "pymeshlab",
+  "pymeta3",
+  "pymetis",
+  "pymgclient",
+  "pymiele",
+  "pymilvus",
+  "pyminizip",
+  "pymiscutils",
+  "pymisp",
+  "pymitter",
+  "pymobiledetect",
+  "pymobiledevice3",
+  "pymochow",
+  "pymodbus",
+  "pymodbustcp",
+  "pymonctl",
+  "pymonetdb",
+  "pymongo",
+  "pymongoarrow",
+  "pymongocrypt",
+  "pymonocypher",
+  "pymoo",
+  "pymorphy2",
+  "pymorphy3",
+  "pymp3",
+  "pymp4",
+  "pympler",
+  "pymqi",
+  "pymsalruntime",
+  "pymsgbox",
+  "pymssql",
+  "pymsteams",
+  "pymunk",
+  "pymupdf",
+  "pymupdf4llm",
+  "pymupdfb",
+  "pymupdfpro",
+  "pymyenergi",
+  "pymysql",
+  "pymysqllock",
+  "pymzml",
+  "pynacl",
+  "pynamodb",
+  "pynautobot",
+  "pynetbox",
+  "pynetdicom",
+  "pyngrok",
+  "pynini",
+  "pynliner",
+  "pynmea2",
+  "pynmeagps",
+  "pynndescent",
+  "pynng",
+  "pynose",
+  "pynpm",
+  "pynput",
+  "pynrrd",
+  "pyntcloud",
+  "pynvim",
+  "pynvml",
+  "pynvvideocodec",
+  "pynwb",
+  "pyobjc",
+  "pyobvector",
+  "pyocd",
+  "pyocse",
+  "pyod",
+  "pyodata",
+  "pyodbc",
+  "pyodps",
+  "pyogrio",
+  "pyomo",
+  "pyone",
+  "pyop",
+  "pyopencl",
+  "pyopengl",
+  "pyopenjtalk",
+  "pyopenms",
+  "pyopenssl",
+  "pyorbital",
+  "pyorc",
+  "pyotp",
+  "pyowm",
+  "pyoxigraph",
+  "pyoxipng",
+  "pypac",
+  "pypandoc",
+  "pyparsing",
+  "pypartmc",
+  "pypcap",
+  "pypcd4",
+  "pypcode",
+  "pypd",
+  "pypdf",
+  "pypdf2",
+  "pypdf3",
+  "pypdf4",
+  "pypdfform",
+  "pypdfium2",
+  "pypdftk",
+  "pypeg2",
+  "pypeln",
+  "pypemicro",
+  "pyperclip",
+  "pyperf",
+  "pyperformance",
+  "pyperplan",
+  "pypgconfig",
+  "pypgstac",
+  "pyphen",
+  "pyphonetics",
+  "pypi",
+  "pypika",
+  "pypinyin",
+  "pypiserver",
+  "pypistats",
+  "pypiwin32",
+  "pyplayready",
+  "pypng",
+  "pypolyline",
+  "pyportfolioopt",
+  "pypots",
+  "pypowerstore",
+  "pyppeteer",
+  "pyppmd",
+  "pyprctl",
+  "pyprep",
+  "pypresence",
+  "pyprind",
+  "pyprobables",
+  "pyprof2calltree",
+  "pyproj",
+  "pyproject2conda",
+  "pyprojroot",
+  "pypsexec",
+  "pypsrp",
+  "pypubsub",
+  "pypugjs",
+  "pypydispatcher",
+  "pypylon",
+  "pypyodbc",
+  "pypyp",
+  "pyqir",
+  "pyqlib",
+  "pyqrcode",
+  "pyqt5",
+  "pyqt6",
+  "pyqtgraph",
+  "pyqtwebengine",
+  "pyquaternion",
+  "pyquery",
+  "pyquil",
+  "pyqwest",
+  "pyrabbit",
+  "pyrabbit2",
+  "pyrad",
+  "pyrage",
+  "pyramid",
+  "pyranges",
+  "pyrasite",
+  "pyrdfa3",
+  "pyre2",
+  "pyreaddbc",
+  "pyreadline",
+  "pyreadline3",
+  "pyreadr",
+  "pyreadstat",
+  "pyrealsense2",
+  "pyrebase4",
+  "pyrect",
+  "pyrefly",
+  "pyrender",
+  "pyrepl",
+  "pyreqwest",
+  "pyresample",
+  "pyrevm",
+  "pyrfc",
+  "pyrfc3339",
+  "pyrfc6266",
+  "pyric",
+  "pyriemann",
+  "pyright",
+  "pyrit",
+  "pyrnnoise",
+  "pyro4",
+  "pyro5",
+  "pyroaring",
+  "pyrofork",
+  "pyrogram",
+  "pyroma",
+  "pyromark",
+  "pyroot",
+  "pyroots",
+  "pyrootutils",
+  "pyrotgfork",
+  "pyroute2",
+  "pyrr",
+  "pyrsistent",
+  "pyrsmi",
+  "pyrtcm",
+  "pyrtf3",
+  "pyrubberband",
+  "pysage3",
+  "pysam",
+  "pysaml2",
+  "pysbd",
+  "pyscaffold",
+  "pyscf",
+  "pyscipopt",
+  "pyscreenshot",
+  "pyscreeze",
+  "pyscss",
+  "pysdl2",
+  "pyseccomp",
+  "pysen",
+  "pysequoia",
+  "pyserde",
+  "pyserial",
+  "pyserini",
+  "pyseto",
+  "pysftp",
+  "pysha3",
+  "pyshacl",
+  "pyshark",
+  "pysher",
+  "pyshex",
+  "pyshexc",
+  "pyshortcuts",
+  "pyshorteners",
+  "pyshp",
+  "pyside2",
+  "pyside6",
+  "pysigma",
+  "pysignalr",
+  "pysimdjson",
+  "pysimplegui",
+  "pysingleton",
+  "pyslack",
+  "pyslang",
+  "pysmartdl",
+  "pysmb",
+  "pysmbclient",
+  "pysmi",
+  "pysnc",
+  "pysnmp",
+  "pysnmpcrypto",
+  "pysnooper",
+  "pysnow",
+  "pysnowflake",
+  "pysnyk",
+  "pysocks",
+  "pysodium",
+  "pysoem",
+  "pysolarmanv5",
+  "pysolr",
+  "pysonar",
+  "pyspark",
+  "pysparkling",
+  "pyspellchecker",
+  "pyspelling",
+  "pyspnego",
+  "pysqlite3",
+  "pysqlsync",
+  "pysrt",
+  "pystac",
+  "pystache",
+  "pystack",
+  "pystan",
+  "pystardog",
+  "pystaticconfiguration",
+  "pystemmer",
+  "pystoi",
+  "pyston",
+  "pystow",
+  "pystray",
+  "pystrich",
+  "pystyle",
+  "pysubs2",
+  "pysubtypes",
+  "pyswarms",
+  "pyswisseph",
+  "pytabkit",
+  "pytablereader",
+  "pytablewriter",
+  "pytailwindcss",
+  "pytango",
+  "pytapo",
+  "pytd",
+  "pytdc",
+  "pyte",
+  "pytelegrambotapi",
+  "pytenable",
+  "pytensor",
+  "pyteomics",
+  "pytesseract",
+  "pytest",
+  "pytestarch",
+  "pytestify",
+  "pytextrank",
+  "pytgcalls",
+  "pythainlp",
+  "pythena",
+  "pythondialog",
+  "pythonnet",
+  "pythonping",
+  "pythran",
+  "pythreejs",
+  "pytimeparse",
+  "pytimeparse2",
+  "pytkdocs",
+  "pytket",
+  "pytokens",
+  "pytoml",
+  "pytoniq",
+  "pytoolconfig",
+  "pytools",
+  "pytorch",
+  "pytorchcv",
+  "pytoshop",
+  "pytransform3d",
+  "pytrends",
+  "pytricia",
+  "pytrie",
+  "pytrilogy",
+  "pyts",
+  "pyttsx3",
+  "pytube",
+  "pytubefix",
+  "pyturbojpeg",
+  "pytweening",
+  "pytype",
+  "pytz",
+  "pytzdata",
+  "pyu2f",
+  "pyubx2",
+  "pyuca",
+  "pyucis",
+  "pyudev",
+  "pyudorandom",
+  "pyulog",
+  "pyunormalize",
+  "pyunpack",
+  "pyupbit",
+  "pyupgrade",
+  "pyuri",
+  "pyusb",
+  "pyuspto",
+  "pyuvm",
+  "pyuwsgi",
+  "pyvalid",
+  "pyvcd",
+  "pyvcg",
+  "pyventus",
+  "pyvers",
+  "pyverse2d",
+  "pyvertica",
+  "pyvespa",
+  "pyvex",
+  "pyvi",
+  "pyvim",
+  "pyvips",
+  "pyvirtualdisplay",
+  "pyvis",
+  "pyvisa",
+  "pyvista",
+  "pyvistaqt",
+  "pyvmomi",
+  "pyvo",
+  "pyvrl",
+  "pywa",
+  "pywatchman",
+  "pywavelets",
+  "pywebpush",
+  "pywebview",
+  "pywhatkit",
+  "pywhispercpp",
+  "pywidevine",
+  "pywikibot",
+  "pywin32",
+  "pywinauto",
+  "pywinbox",
+  "pywinctl",
+  "pywinpty",
+  "pywinrm",
+  "pyworld",
+  "pyworxcloud",
+  "pywxdump",
+  "pyx",
+  "pyx12",
+  "pyxb",
+  "pyxb-x",
+  "pyxccd",
+  "pyxcp",
+  "pyxdameraulevenshtein",
+  "pyxdg",
+  "pyxdia",
+  "pyxero",
+  "pyxirr",
+  "pyxlsb",
+  "pyxlsx",
+  "pyxnat",
+  "pyxtal",
+  "pyyaml",
+  "pyyml",
+  "pyzabbix",
+  "pyzbar",
+  "pyzipcode",
+  "pyzipper",
+  "pyzk",
+  "pyzmq",
+  "pyzotero",
+  "pyzstd",
+  "pyzxing",
+  "q",
+  "qtpy",
+  "rawpy",
+  "readabilipy",
+  "repartipy",
+  "resampy",
+  "restrictedpython",
+  "ripgrepy",
+  "rlpycairo",
+  "robotspy",
+  "rookiepy",
+  "rpy2",
+  "rpyc",
+  "s3pypi",
+  "saspy",
+  "scanpy",
+  "scapy",
+  "scipy",
+  "scrapy",
+  "serpyco",
+  "shadowcopy",
+  "sharepy",
+  "simplepyble",
+  "simpy",
+  "sodapy",
+  "sparsediffpy",
+  "spiceypy",
+  "spotifywebapipython",
+  "spotipy",
+  "spyder",
+  "spyne",
+  "spython",
+  "sqlescapy",
+  "stpyv8",
+  "strsimpy",
+  "stumpy",
+  "sudachipy",
+  "sunpy",
+  "syllapy",
+  "sympy",
+  "symspellpy",
+  "syrupy",
+  "tapipy",
+  "taskipy",
+  "tcolorpy",
+  "teslajsonpy",
+  "tftpy",
+  "thriftpy2",
+  "tm1py",
+  "traveltimepy",
+  "tronpy",
+  "tsv2py",
+  "tuspy",
+  "tuspyserver",
+  "tweepy",
+  "typedpy",
+  "typepy",
+  "tzfpy",
+  "uncompyle6",
+  "unitypy",
+  "urlpy",
+  "vcrpy",
+  "verticapy",
+  "vispy",
+  "wakepy",
+  "waybackpy",
+  "webexpythonsdk",
+  "wechatpy",
+  "wimpy",
+  "ws4py",
+  "wxpython",
+  "wyzeapy",
+  "y-py",
+  "yourdfpy",
+  "zenpy",
+  "zeroentropy",
+  "zigpy"
+ ],
+ "baram": [
+  "param"
+ ],
+ "barcode": [
+  "python-barcode",
+  "varcode"
+ ],
+ "bcml": [
+  "baml-py"
+ ],
+ "beet": [
+  "beets"
+ ],
+ "bencodepy": [
+  "bencode-py"
+ ],
+ "benedict": [
+  "python-benedict"
+ ],
+ "binance": [
+  "python-binance"
+ ],
+ "biocutils": [
+  "bioutils"
+ ],
+ "bios": [
+  "bio",
+  "bio-grumpy",
+  "bioc"
+ ],
+ "bit": [
+  "bio",
+  "bio-grumpy",
+  "bzt",
+  "git-python",
+  "jupyterlab-git",
+  "lit",
+  "vit-pytorch"
+ ],
+ "blame": [
+  "blaze"
+ ],
+ "blinter": [
+  "blinker"
+ ],
+ "blp": [
+  "rlp"
+ ],
+ "blurhash-py": [
+  "blurhash-python"
+ ],
+ "bmt": [
+  "bzt",
+  "pyproject-fmt"
+ ],
+ "bod": [
+  "od",
+  "pytest-bdd",
+  "python-box"
+ ],
+ "bodo": [
+  "boto",
+  "odo"
+ ],
+ "bonnet": [
+  "bunnet"
+ ],
+ "bota": [
+  "boto"
+ ],
+ "botok": [
+  "boto",
+  "boto3",
+  "jupyter-book",
+  "mypy-boto3"
+ ],
+ "bpx": [
+  "bpy",
+  "bpython",
+  "bx-python",
+  "npx",
+  "python-box"
+ ],
+ "brizz": [
+  "grizz"
+ ],
+ "bse": [
+  "ase",
+  "bs4",
+  "cvxpy-base",
+  "sbe"
+ ],
+ "bt": [
+  "b2",
+  "bx-python",
+  "bzt",
+  "dbt",
+  "dt",
+  "pytest-qt",
+  "pyyaml-ft",
+  "vt-py"
+ ],
+ "bub": [
+  "dub",
+  "python-bcb"
+ ],
+ "bumps": [
+  "bump",
+  "bump-pydantic",
+  "humps"
+ ],
+ "bunch": [
+  "munch"
+ ],
+ "by": [
+  "b2",
+  "bpy",
+  "bpython",
+  "bx-python",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "ry",
+  "ty",
+  "y-py"
+ ],
+ "calleee": [
+  "callee"
+ ],
+ "cappa": [
+  "kappa",
+  "zappa"
+ ],
+ "cartapy": [
+  "cartopy"
+ ],
+ "carto": [
+  "cart"
+ ],
+ "case": [
+  "ase",
+  "cose",
+  "cvxpy-base",
+  "pytest-cases",
+  "python-cas",
+  "qase-pytest"
+ ],
+ "catsu": [
+  "tatsu"
+ ],
+ "catt": [
+  "cart"
+ ],
+ "cbapi": [
+  "dbapi",
+  "ibapi"
+ ],
+ "cborx": [
+  "cbor",
+  "cbor2"
+ ],
+ "ccf": [
+  "ccy",
+  "pytorch-crf"
+ ],
+ "cci-cli": [
+  "oci-cli"
+ ],
+ "ccrypt": [
+  "bcrypt",
+  "py-bcrypt",
+  "scrypt"
+ ],
+ "cdktn": [
+  "cdktf"
+ ],
+ "cdo": [
+  "odo"
+ ],
+ "celpy": [
+  "cel-python"
+ ],
+ "cfunits": [
+  "cf-units"
+ ],
+ "cget": [
+  "wget"
+ ],
+ "chai": [
+  "hai"
+ ],
+ "chest": [
+  "chess",
+  "python-chess"
+ ],
+ "chik-rs": [
+  "chia-rs"
+ ],
+ "chython": [
+  "cython"
+ ],
+ "ciel": [
+  "cel-python"
+ ],
+ "ciscoconfparse2": [
+  "ciscoconfparse"
+ ],
+ "cleantext": [
+  "clean-text"
+ ],
+ "clickzetta-connector": [
+  "clickzetta-connector-python"
+ ],
+ "clip": [
+  "pydantic-cli",
+  "pyodide-cli"
+ ],
+ "clr": [
+  "cle",
+  "clu",
+  "pydantic-cli",
+  "pyodide-cli",
+  "python-cmr"
+ ],
+ "clud": [
+  "clu"
+ ],
+ "clyent": [
+  "jupyter-client",
+  "pyapns-client",
+  "pyspark-client",
+  "pystac-client"
+ ],
+ "codebind": [
+  "codefind"
+ ],
+ "collektions": [
+  "pydantic-collections"
+ ],
+ "colormap": [
+  "colourmap"
+ ],
+ "colormath2": [
+  "colormath"
+ ],
+ "commonx": [
+  "common"
+ ],
+ "compas": [
+  "pydantic-compat"
+ ],
+ "configs": [
+  "config"
+ ],
+ "conjur-client": [
+  "conjure-python-client"
+ ],
+ "core-universal4": [
+  "core-universal"
+ ],
+ "cors": [
+  "anchorpy-core",
+  "cherrypy-cors",
+  "cobs",
+  "cons",
+  "ipyflow-core",
+  "jupyter-core",
+  "jupyterlite-core",
+  "py-cord",
+  "pyannote-core",
+  "pydantic-core",
+  "pyiceberg-core",
+  "pymatgen-core",
+  "pyobjc-core",
+  "pytoniq-core"
+ ],
+ "corsa-sdk": [
+  "corva-sdk"
+ ],
+ "cpex": [
+  "chex",
+  "cpe",
+  "cplex",
+  "pex"
+ ],
+ "cppyy": [
+  "cppy"
+ ],
+ "cprint": [
+  "pytest-print"
+ ],
+ "cpyparsing": [
+  "pyparsing"
+ ],
+ "cql": [
+  "cel-python",
+  "eql",
+  "gql",
+  "ipython-sql",
+  "python-sql"
+ ],
+ "crc8": [
+  "crc"
+ ],
+ "crython": [
+  "cython"
+ ],
+ "cs": [
+  "cg",
+  "chalkpy-rs",
+  "fs",
+  "ics",
+  "jcs",
+  "pyfaup-rs",
+  "pygame-ce",
+  "pysentry-rs",
+  "pytest-csv",
+  "python-cas",
+  "python-csv",
+  "scs",
+  "serpyco-rs",
+  "us"
+ ],
+ "csonpath": [
+  "jsonpath",
+  "jsonpath-python",
+  "python-jsonpath"
+ ],
+ "csp": [
+  "jupyter-lsp",
+  "jupyterlab-lsp",
+  "pytest-cpp",
+  "pytest-csv",
+  "python-csv",
+  "scp"
+ ],
+ "csrf": [
+  "csrd",
+  "pytorch-crf"
+ ],
+ "csvx": [
+  "csvw",
+  "pytest-csv",
+  "python-csv"
+ ],
+ "ctboost": [
+  "catboost"
+ ],
+ "ctoon": [
+  "python-toon"
+ ],
+ "cudaq": [
+  "cuda-python"
+ ],
+ "cudensitymat-cu12": [
+  "cudensitymat-cu13"
+ ],
+ "cudf-cu13": [
+  "cudf-cu12"
+ ],
+ "cumm": [
+  "comm"
+ ],
+ "cup": [
+  "pytest-cpp",
+  "up-pyperplan"
+ ],
+ "cupy": [
+  "cppy"
+ ],
+ "custatevec-cu12": [
+  "custatevec-cu13"
+ ],
+ "cutensor-cu12": [
+  "cutensor-cu13"
+ ],
+ "cutensornet-cu12": [
+  "cutensornet-cu13"
+ ],
+ "cw": [
+  "cg",
+  "pygame-ce"
+ ],
+ "cwt": [
+  "cot",
+  "jwt",
+  "python-jwt"
+ ],
+ "cxxtea": [
+  "xxtea"
+ ],
+ "dace": [
+  "face",
+  "pytest-race"
+ ],
+ "dacite2": [
+  "dacite"
+ ],
+ "daemon": [
+  "python-daemon",
+  "zdaemon"
+ ],
+ "dags": [
+  "ddgs"
+ ],
+ "dagster-mcp": [
+  "dagster-gcp"
+ ],
+ "dalf": [
+  "daff"
+ ],
+ "dargs": [
+  "args",
+  "darts"
+ ],
+ "data": [
+  "rdata"
+ ],
+ "data-diff": [
+  "datadiff"
+ ],
+ "datafog": [
+  "datadog"
+ ],
+ "dawg": [
+  "dawg-python",
+  "dawg2-python"
+ ],
+ "dawg2": [
+  "dawg-python",
+  "dawg2-python"
+ ],
+ "dazl": [
+  "daal"
+ ],
+ "db": [
+  "dbt",
+  "dbx",
+  "dt",
+  "dub",
+  "fdb",
+  "ydb"
+ ],
+ "dbc": [
+  "dbt",
+  "dbx",
+  "dvc"
+ ],
+ "dbtc": [
+  "dbt"
+ ],
+ "dcl": [
+  "dgl",
+  "dol",
+  "pyats-tcl",
+  "python-fcl"
+ ],
+ "dconstruct": [
+  "construct"
+ ],
+ "dd": [
+  "dda",
+  "ddt",
+  "dt",
+  "id",
+  "od",
+  "pytest-bdd",
+  "pytest-md"
+ ],
+ "dead": [
+  "deap"
+ ],
+ "deadline": [
+  "readline"
+ ],
+ "decoupler": [
+  "python-decouple"
+ ],
+ "delicate": [
+  "delocate"
+ ],
+ "demjson": [
+  "demjson3"
+ ],
+ "dependency-injector2": [
+  "dependency-injector"
+ ],
+ "dessert": [
+  "desert"
+ ],
+ "dg": [
+  "cg",
+  "dgl",
+  "dt",
+  "pydot-ng",
+  "pykube-ng",
+  "xdg"
+ ],
+ "di": [
+  "dspy-ai",
+  "dt",
+  "id",
+  "jupyter-ai",
+  "pydantic-ai"
+ ],
+ "diagram": [
+  "diagrams"
+ ],
+ "dic": [
+  "dvc",
+  "oic",
+  "pypinyin-dict"
+ ],
+ "discordwebhook": [
+  "discord-webhook"
+ ],
+ "django-bootstrap4-form": [
+  "django-bootstrap-form"
+ ],
+ "django-datatable-view": [
+  "django-datatables-view"
+ ],
+ "django-enumfield": [
+  "django-enumfields"
+ ],
+ "django-enumfields2": [
+  "django-enumfields"
+ ],
+ "django-forms-bootstrap": [
+  "django-bootstrap-form"
+ ],
+ "django-mail-templated": [
+  "django-templated-email",
+  "django-templated-mail"
+ ],
+ "django-markdown2": [
+  "django-markdownx"
+ ],
+ "django-pytest": [
+  "pytest-django"
+ ],
+ "django-sms": [
+  "django-cms",
+  "django-ses"
+ ],
+ "djangosaml2idp": [
+  "djangosaml2idp2"
+ ],
+ "dnalib": [
+  "dnslib"
+ ],
+ "dnspython3": [
+  "dnspython"
+ ],
+ "doc2txt": [
+  "docx2txt"
+ ],
+ "docc": [
+  "doc8",
+  "docx",
+  "python-docx"
+ ],
+ "docopts": [
+  "docopt"
+ ],
+ "doct": [
+  "doc8",
+  "docx",
+  "doit",
+  "pypinyin-dict",
+  "python-doctr",
+  "python-docx"
+ ],
+ "doctr": [
+  "python-doctr"
+ ],
+ "docx2txt2": [
+  "docx2txt"
+ ],
+ "dool": [
+  "dol",
+  "pymysql-pool"
+ ],
+ "drfp": [
+  "drf-pydantic"
+ ],
+ "drift-python": [
+  "driftpy"
+ ],
+ "dvt-core": [
+  "dbt-core"
+ ],
+ "dython": [
+  "cython",
+  "py",
+  "pydoll-python",
+  "python-jobspy",
+  "python-snappy"
+ ],
+ "e": [
+  "aiohappyeyeballs",
+  "alexapy",
+  "allpairspy",
+  "amplpy",
+  "anchorpy",
+  "antropy",
+  "antspyx",
+  "apysc",
+  "arcadepy",
+  "arpy",
+  "asciichartpy",
+  "assertpy",
+  "astrapy",
+  "astropy",
+  "awsiotpythonsdk",
+  "bagpy",
+  "bapy",
+  "basedpyright",
+  "beaupy",
+  "binapy",
+  "bincopy",
+  "biopython",
+  "boilerpy3",
+  "boschshcpy",
+  "bpy",
+  "bpylist2",
+  "bpython",
+  "bpyutils",
+  "brotlipy",
+  "cartopy",
+  "cedarpy",
+  "cellpylib",
+  "certipy",
+  "chalkpy",
+  "cherrypy",
+  "claripy",
+  "cmdstanpy",
+  "complexipy",
+  "contourpy",
+  "copybook",
+  "cosmpy",
+  "cppy",
+  "cvxpy",
+  "daal4py",
+  "dafnyruntimepython",
+  "datacompy",
+  "datadogpy",
+  "dearpygui",
+  "debugpy",
+  "decompyle3",
+  "dendropy",
+  "depyf",
+  "digitalpy",
+  "dipy",
+  "distinctipy",
+  "dkimpy",
+  "dmpython",
+  "dnspython",
+  "docx2python",
+  "dracopy",
+  "driftpy",
+  "dspy",
+  "dtlpymetrics",
+  "dukpy",
+  "durationpy",
+  "eciespy",
+  "ecpy",
+  "editdistpy",
+  "eigenpy",
+  "empy",
+  "ffmpy",
+  "fhirpathpy",
+  "fhirpy",
+  "filterpy",
+  "findpython",
+  "flupy",
+  "fmpy",
+  "fpylll",
+  "fpyutils",
+  "fusepy",
+  "geoh5py",
+  "geopy",
+  "githubpy",
+  "gitpython",
+  "gmpy2",
+  "gpxpy",
+  "gpy",
+  "gpytorch",
+  "gpytranslate",
+  "graypy",
+  "gremlinpython",
+  "gseapy",
+  "guardpycfn",
+  "guppy3",
+  "gurobipy",
+  "h5py",
+  "happybase",
+  "hdijupyterutils",
+  "hdrpy",
+  "healpy",
+  "highspy",
+  "hiyapyco",
+  "hl7apy",
+  "hpnapy",
+  "htpy",
+  "hyperpyyaml",
+  "hyperspy",
+  "icsneopy",
+  "impyla",
+  "inquirerpy",
+  "ipy",
+  "ipycanvas",
+  "ipycytoscape",
+  "ipydagred3",
+  "ipydatawidgets",
+  "ipyevents",
+  "ipyfilechooser",
+  "ipykernel",
+  "ipylab",
+  "ipyleaflet",
+  "ipympl",
+  "ipynb",
+  "ipynbname",
+  "ipyparallel",
+  "ipypb",
+  "ipysigma",
+  "ipytest",
+  "ipython",
+  "ipytree",
+  "ipyvue",
+  "ipyvuetify",
+  "ipywebrtc",
+  "ipywidgets",
+  "islpy",
+  "jdk4py",
+  "jenkspy",
+  "josepy",
+  "jpype1",
+  "js2py",
+  "jupysql",
+  "jupyter",
+  "jupyterhub",
+  "jupyterlab",
+  "jupytext",
+  "kdepy",
+  "kiwipiepy",
+  "konlpy",
+  "kylinpy",
+  "laspy",
+  "latex2sympy2",
+  "lesscpy",
+  "libpysal",
+  "libretranslatepy",
+  "linopy",
+  "liquidpy",
+  "lucopy",
+  "marketorestpython",
+  "markuppy",
+  "matscipy",
+  "mdxpy",
+  "mediapy",
+  "mergepythonclient",
+  "metpy",
+  "mf2py",
+  "mfusepy",
+  "missingpy",
+  "mockredispy",
+  "momepy",
+  "moviepy",
+  "moyopy",
+  "mpi4py",
+  "mulpyplexer",
+  "multipyvu",
+  "mypy",
+  "mypyllant",
+  "nipype",
+  "norenrestapipy",
+  "numpy",
+  "numpydantic",
+  "numpydoc",
+  "numpyencoder",
+  "numpyro",
+  "obspy",
+  "odfpy",
+  "openfermionpyscf",
+  "openpyxl",
+  "openseespy",
+  "openseespylinux",
+  "oqpy",
+  "overpy",
+  "oxapy",
+  "p4python",
+  "pampy",
+  "pdpyras",
+  "peppy",
+  "perturbopy",
+  "pgcopy",
+  "pgmpy",
+  "pgpy",
+  "pgpy13",
+  "phono3py",
+  "phonopy",
+  "pipablepytorch3d",
+  "plpygis",
+  "pm4py",
+  "preppy",
+  "primepy",
+  "prtpy",
+  "psmpy",
+  "ptpython",
+  "pubchempy",
+  "py",
+  "py2app",
+  "py2neo",
+  "py2opsin",
+  "py3createtorrent",
+  "py3dbp",
+  "py3dmol",
+  "py3dns",
+  "py3langid",
+  "py3nvml",
+  "py3rijndael",
+  "py3rosmsgs",
+  "py4j",
+  "py4vasp",
+  "py7zr",
+  "pyaaf2",
+  "pyacoustid",
+  "pyactiveresource",
+  "pyadomd",
+  "pyaes",
+  "pyaescrypt",
+  "pyahocorasick",
+  "pyairtable",
+  "pyais",
+  "pyalex",
+  "pyamg",
+  "pyaml",
+  "pyandoc",
+  "pyang",
+  "pyangbind",
+  "pyannotate",
+  "pyap",
+  "pyap2",
+  "pyapacheatlas",
+  "pyarabic",
+  "pyarango",
+  "pyarmor",
+  "pyarrow",
+  "pyartifactory",
+  "pyas2lib",
+  "pyaskalono",
+  "pyasn",
+  "pyasn1",
+  "pyasynchat",
+  "pyasyncore",
+  "pyathena",
+  "pyathenajdbc",
+  "pyatlan",
+  "pyats",
+  "pyattest",
+  "pyatv",
+  "pyaudio",
+  "pyautogen",
+  "pyautogui",
+  "pyautoit",
+  "pyavm",
+  "pyawscron",
+  "pyaxmlparser",
+  "pybacklogpy",
+  "pybamm",
+  "pybammsolvers",
+  "pybars3",
+  "pybars4",
+  "pybase62",
+  "pybase64",
+  "pybaseball",
+  "pybaselines",
+  "pybatchexecute",
+  "pybatfish",
+  "pybboxes",
+  "pybcj",
+  "pybedtools",
+  "pybids",
+  "pybigquery",
+  "pybigtools",
+  "pybigwig",
+  "pybind11",
+  "pybindgen",
+  "pybiomart",
+  "pybit",
+  "pybktree",
+  "pyboxen",
+  "pybreaker",
+  "pybtex",
+  "pybuildkite",
+  "pybullet",
+  "pybytebuffer",
+  "pycadf",
+  "pycairo",
+  "pycalverter",
+  "pycampbellcr1000",
+  "pycapnp",
+  "pycares",
+  "pycaret",
+  "pycarlo",
+  "pycasbin",
+  "pycausalimpact",
+  "pycaw",
+  "pyccolo",
+  "pycdlib",
+  "pycel",
+  "pycg",
+  "pychrome",
+  "pychromecast",
+  "pycifrw",
+  "pyclamd",
+  "pyclang",
+  "pycld2",
+  "pycld3",
+  "pyclean",
+  "pyclibrary",
+  "pyclipper",
+  "pycln",
+  "pyclothoids",
+  "pycnite",
+  "pycobertura",
+  "pycocoevalcap",
+  "pycocotools",
+  "pycodestyle",
+  "pycognito",
+  "pycoin",
+  "pycoingecko",
+  "pycollada",
+  "pycolmap",
+  "pycomposefile",
+  "pyconfigurator",
+  "pyconify",
+  "pycosat",
+  "pycountry",
+  "pycowsay",
+  "pycparser",
+  "pycpfcnpj",
+  "pycrashreport",
+  "pycrdt",
+  "pycron",
+  "pycronofy",
+  "pycrypto",
+  "pycryptodome",
+  "pycryptodomex",
+  "pycstruct",
+  "pycsvschema",
+  "pyct",
+  "pyctcdecode",
+  "pycti",
+  "pycuda",
+  "pycups",
+  "pycurl",
+  "pydantic",
+  "pydap",
+  "pydash",
+  "pydbml",
+  "pyddq",
+  "pydeck",
+  "pydeequ",
+  "pydemumble",
+  "pydeprecate",
+  "pydeps",
+  "pydes",
+  "pydeseq2",
+  "pydevd",
+  "pydevicetree",
+  "pydgraph",
+  "pydicom",
+  "pydifact",
+  "pydirectinput",
+  "pydispatcher",
+  "pydivert",
+  "pydlt",
+  "pydo",
+  "pydocket",
+  "pydoclint",
+  "pydocstringformatter",
+  "pydocstyle",
+  "pydoctor",
+  "pydocumentdb",
+  "pydoe",
+  "pydomo",
+  "pydoris",
+  "pydot",
+  "pydotplus",
+  "pydriller",
+  "pydrive",
+  "pydrive2",
+  "pydruid",
+  "pydssp",
+  "pydub",
+  "pydyf",
+  "pydynamodb",
+  "pyeapi",
+  "pyeasee",
+  "pyecharts",
+  "pyedb",
+  "pyedflib",
+  "pyee",
+  "pyelftools",
+  "pyemvue",
+  "pyenchant",
+  "pyensembl",
+  "pyepics",
+  "pyerfa",
+  "pyescrypt",
+  "pyeventsystem",
+  "pyevtk",
+  "pyexasol",
+  "pyexcel",
+  "pyexcelerate",
+  "pyexecjs",
+  "pyexiftool",
+  "pyexiv2",
+  "pyextremes",
+  "pyfacer",
+  "pyfaidx",
+  "pyfakefs",
+  "pyfarmhash",
+  "pyfcm",
+  "pyfftw",
+  "pyffx",
+  "pyfiglet",
+  "pyfinite",
+  "pyfixest",
+  "pyflakes",
+  "pyflux",
+  "pyfmodex",
+  "pyformance",
+  "pyformlang",
+  "pyftdi",
+  "pyftpdlib",
+  "pyfunctional",
+  "pyfzf",
+  "pygad",
+  "pygal",
+  "pygaljs",
+  "pygam",
+  "pygame",
+  "pygame-ce",
+  "pygdal",
+  "pygdbmi",
+  "pygelf",
+  "pygeocodio",
+  "pygeodesy",
+  "pygeohash",
+  "pygeoif",
+  "pygeos",
+  "pygeotile",
+  "pygerduty",
+  "pygerrit2",
+  "pygetwindow",
+  "pygfx",
+  "pyghidra",
+  "pyghmi",
+  "pygit2",
+  "pygitguardian",
+  "pygithub",
+  "pyglet",
+  "pyglm",
+  "pyglove",
+  "pygls",
+  "pygltflib",
+  "pygmars",
+  "pygments",
+  "pygnmi",
+  "pygnuutils",
+  "pygobject",
+  "pygogo",
+  "pygount",
+  "pygraphviz",
+  "pygresql",
+  "pygrib",
+  "pygrinder",
+  "pygrok",
+  "pygsheets",
+  "pygtail",
+  "pygtrie",
+  "pygwalker",
+  "pyhamcrest",
+  "pyhanko",
+  "pyhcl",
+  "pyhdb",
+  "pyhdfe",
+  "pyheck",
+  "pyheif",
+  "pyhelm3",
+  "pyhive",
+  "pyhmmer",
+  "pyhocon",
+  "pyhpke",
+  "pyhs2",
+  "pyhumps",
+  "pyhwp",
+  "pyhwpx",
+  "pyiceberg",
+  "pyicloud",
+  "pyicu",
+  "pyicumessageformat",
+  "pyimg4",
+  "pyinfra",
+  "pyink",
+  "pyinotify",
+  "pyinstaller",
+  "pyinstrument",
+  "pyinvoke",
+  "pyion2json",
+  "pyiotools",
+  "pyiqa",
+  "pyisemail",
+  "pyiso8583",
+  "pyjanitor",
+  "pyjarowinkler",
+  "pyjavaproperties3",
+  "pyjdbc",
+  "pyjks",
+  "pyjls",
+  "pyjnius",
+  "pyjokes",
+  "pyjpegls",
+  "pyjq",
+  "pyjsg",
+  "pyjslint",
+  "pyjson",
+  "pyjson5",
+  "pyjsonpatch",
+  "pyjsparser",
+  "pyjwkest",
+  "pyjwt",
+  "pykafka",
+  "pykakasi",
+  "pykalman",
+  "pykaos",
+  "pykcs11",
+  "pykd",
+  "pykdebugparser",
+  "pykdtree",
+  "pykeepass",
+  "pykerberos",
+  "pykka",
+  "pykmip",
+  "pykml",
+  "pykrige",
+  "pykrx",
+  "pykwalify",
+  "pylama",
+  "pylance",
+  "pylast",
+  "pylate",
+  "pylatex",
+  "pylatexenc",
+  "pylbfgs",
+  "pylcs",
+  "pyld",
+  "pyldavis",
+  "pyleak",
+  "pylerc",
+  "pyleri",
+  "pylertalertmanager",
+  "pylev",
+  "pylibdmtx",
+  "pylibfdt",
+  "pylibftdi",
+  "pylibiio",
+  "pylibjpeg",
+  "pyliblzfse",
+  "pylibmagic",
+  "pylibmc",
+  "pylibsrtp",
+  "pylibyear",
+  "pylightxl",
+  "pylinalg",
+  "pylink",
+  "pylint",
+  "pylmcf",
+  "pylogbeat",
+  "pylogix",
+  "pyloudnorm",
+  "pylru",
+  "pylspci",
+  "pylsqpack",
+  "pylti1p3",
+  "pyluach",
+  "pylxd",
+  "pylzss",
+  "pymacaroons",
+  "pymammotion",
+  "pymannkendall",
+  "pymantic",
+  "pymap3d",
+  "pymarc",
+  "pymarkdownlnt",
+  "pymatching",
+  "pymatgen",
+  "pymatreader",
+  "pymatting",
+  "pymavlink",
+  "pymaybe",
+  "pymbolic",
+  "pymc",
+  "pymc3",
+  "pymcubes",
+  "pymediainfo",
+  "pymeeus",
+  "pymem",
+  "pymemcache",
+  "pymemoryeditor",
+  "pymeshfix",
+  "pymeshlab",
+  "pymeta3",
+  "pymetis",
+  "pymgclient",
+  "pymiele",
+  "pymilvus",
+  "pyminizip",
+  "pymiscutils",
+  "pymisp",
+  "pymitter",
+  "pymobiledetect",
+  "pymobiledevice3",
+  "pymochow",
+  "pymodbus",
+  "pymodbustcp",
+  "pymonctl",
+  "pymonetdb",
+  "pymongo",
+  "pymongoarrow",
+  "pymongocrypt",
+  "pymonocypher",
+  "pymoo",
+  "pymorphy2",
+  "pymorphy3",
+  "pymp3",
+  "pymp4",
+  "pympler",
+  "pymqi",
+  "pymsalruntime",
+  "pymsgbox",
+  "pymssql",
+  "pymsteams",
+  "pymunk",
+  "pymupdf",
+  "pymupdf4llm",
+  "pymupdfb",
+  "pymupdfpro",
+  "pymyenergi",
+  "pymysql",
+  "pymysqllock",
+  "pymzml",
+  "pynacl",
+  "pynamodb",
+  "pynautobot",
+  "pynetbox",
+  "pynetdicom",
+  "pyngrok",
+  "pynini",
+  "pynliner",
+  "pynmea2",
+  "pynmeagps",
+  "pynndescent",
+  "pynng",
+  "pynose",
+  "pynpm",
+  "pynput",
+  "pynrrd",
+  "pyntcloud",
+  "pynvim",
+  "pynvml",
+  "pynvvideocodec",
+  "pynwb",
+  "pyobjc",
+  "pyobvector",
+  "pyocd",
+  "pyocse",
+  "pyod",
+  "pyodata",
+  "pyodbc",
+  "pyodps",
+  "pyogrio",
+  "pyomo",
+  "pyone",
+  "pyop",
+  "pyopencl",
+  "pyopengl",
+  "pyopenjtalk",
+  "pyopenms",
+  "pyopenssl",
+  "pyorbital",
+  "pyorc",
+  "pyotp",
+  "pyowm",
+  "pyoxigraph",
+  "pyoxipng",
+  "pypac",
+  "pypandoc",
+  "pyparsing",
+  "pypartmc",
+  "pypcap",
+  "pypcd4",
+  "pypcode",
+  "pypd",
+  "pypdf",
+  "pypdf2",
+  "pypdf3",
+  "pypdf4",
+  "pypdfform",
+  "pypdfium2",
+  "pypdftk",
+  "pypeg2",
+  "pypeln",
+  "pypemicro",
+  "pyperclip",
+  "pyperf",
+  "pyperformance",
+  "pyperplan",
+  "pypgconfig",
+  "pypgstac",
+  "pyphen",
+  "pyphonetics",
+  "pypi",
+  "pypika",
+  "pypinyin",
+  "pypiserver",
+  "pypistats",
+  "pypiwin32",
+  "pyplayready",
+  "pypng",
+  "pypolyline",
+  "pyportfolioopt",
+  "pypots",
+  "pypowerstore",
+  "pyppeteer",
+  "pyppmd",
+  "pyprctl",
+  "pyprep",
+  "pypresence",
+  "pyprind",
+  "pyprobables",
+  "pyprof2calltree",
+  "pyproj",
+  "pyproject2conda",
+  "pyprojroot",
+  "pypsexec",
+  "pypsrp",
+  "pypubsub",
+  "pypugjs",
+  "pypydispatcher",
+  "pypylon",
+  "pypyodbc",
+  "pypyp",
+  "pyqir",
+  "pyqlib",
+  "pyqrcode",
+  "pyqt5",
+  "pyqt6",
+  "pyqtgraph",
+  "pyqtwebengine",
+  "pyquaternion",
+  "pyquery",
+  "pyquil",
+  "pyqwest",
+  "pyrabbit",
+  "pyrabbit2",
+  "pyrad",
+  "pyrage",
+  "pyramid",
+  "pyranges",
+  "pyrasite",
+  "pyrdfa3",
+  "pyre2",
+  "pyreaddbc",
+  "pyreadline",
+  "pyreadline3",
+  "pyreadr",
+  "pyreadstat",
+  "pyrealsense2",
+  "pyrebase4",
+  "pyrect",
+  "pyrefly",
+  "pyrender",
+  "pyrepl",
+  "pyreqwest",
+  "pyresample",
+  "pyrevm",
+  "pyrfc",
+  "pyrfc3339",
+  "pyrfc6266",
+  "pyric",
+  "pyriemann",
+  "pyright",
+  "pyrit",
+  "pyrnnoise",
+  "pyro4",
+  "pyro5",
+  "pyroaring",
+  "pyrofork",
+  "pyrogram",
+  "pyroma",
+  "pyromark",
+  "pyroot",
+  "pyroots",
+  "pyrootutils",
+  "pyrotgfork",
+  "pyroute2",
+  "pyrr",
+  "pyrsistent",
+  "pyrsmi",
+  "pyrtcm",
+  "pyrtf3",
+  "pyrubberband",
+  "pysage3",
+  "pysam",
+  "pysaml2",
+  "pysbd",
+  "pyscaffold",
+  "pyscf",
+  "pyscipopt",
+  "pyscreenshot",
+  "pyscreeze",
+  "pyscss",
+  "pysdl2",
+  "pyseccomp",
+  "pysen",
+  "pysequoia",
+  "pyserde",
+  "pyserial",
+  "pyserini",
+  "pyseto",
+  "pysftp",
+  "pysha3",
+  "pyshacl",
+  "pyshark",
+  "pysher",
+  "pyshex",
+  "pyshexc",
+  "pyshortcuts",
+  "pyshorteners",
+  "pyshp",
+  "pyside2",
+  "pyside6",
+  "pysigma",
+  "pysignalr",
+  "pysimdjson",
+  "pysimplegui",
+  "pysingleton",
+  "pyslack",
+  "pyslang",
+  "pysmartdl",
+  "pysmb",
+  "pysmbclient",
+  "pysmi",
+  "pysnc",
+  "pysnmp",
+  "pysnmpcrypto",
+  "pysnooper",
+  "pysnow",
+  "pysnowflake",
+  "pysnyk",
+  "pysocks",
+  "pysodium",
+  "pysoem",
+  "pysolarmanv5",
+  "pysolr",
+  "pysonar",
+  "pyspark",
+  "pysparkling",
+  "pyspellchecker",
+  "pyspelling",
+  "pyspnego",
+  "pysqlite3",
+  "pysqlsync",
+  "pysrt",
+  "pystac",
+  "pystache",
+  "pystack",
+  "pystan",
+  "pystardog",
+  "pystaticconfiguration",
+  "pystemmer",
+  "pystoi",
+  "pyston",
+  "pystow",
+  "pystray",
+  "pystrich",
+  "pystyle",
+  "pysubs2",
+  "pysubtypes",
+  "pyswarms",
+  "pyswisseph",
+  "pytabkit",
+  "pytablereader",
+  "pytablewriter",
+  "pytailwindcss",
+  "pytango",
+  "pytapo",
+  "pytd",
+  "pytdc",
+  "pyte",
+  "pytelegrambotapi",
+  "pytenable",
+  "pytensor",
+  "pyteomics",
+  "pytesseract",
+  "pytest",
+  "pytestarch",
+  "pytestify",
+  "pytextrank",
+  "pytgcalls",
+  "pythainlp",
+  "pythena",
+  "pythondialog",
+  "pythonnet",
+  "pythonping",
+  "pythran",
+  "pythreejs",
+  "pytimeparse",
+  "pytimeparse2",
+  "pytkdocs",
+  "pytket",
+  "pytokens",
+  "pytoml",
+  "pytoniq",
+  "pytoolconfig",
+  "pytools",
+  "pytorch",
+  "pytorchcv",
+  "pytoshop",
+  "pytransform3d",
+  "pytrends",
+  "pytricia",
+  "pytrie",
+  "pytrilogy",
+  "pyts",
+  "pyttsx3",
+  "pytube",
+  "pytubefix",
+  "pyturbojpeg",
+  "pytweening",
+  "pytype",
+  "pytz",
+  "pytzdata",
+  "pyu2f",
+  "pyubx2",
+  "pyuca",
+  "pyucis",
+  "pyudev",
+  "pyudorandom",
+  "pyulog",
+  "pyunormalize",
+  "pyunpack",
+  "pyupbit",
+  "pyupgrade",
+  "pyuri",
+  "pyusb",
+  "pyuspto",
+  "pyuvm",
+  "pyuwsgi",
+  "pyvalid",
+  "pyvcd",
+  "pyvcg",
+  "pyventus",
+  "pyvers",
+  "pyverse2d",
+  "pyvertica",
+  "pyvespa",
+  "pyvex",
+  "pyvi",
+  "pyvim",
+  "pyvips",
+  "pyvirtualdisplay",
+  "pyvis",
+  "pyvisa",
+  "pyvista",
+  "pyvistaqt",
+  "pyvmomi",
+  "pyvo",
+  "pyvrl",
+  "pywa",
+  "pywatchman",
+  "pywavelets",
+  "pywebpush",
+  "pywebview",
+  "pywhatkit",
+  "pywhispercpp",
+  "pywidevine",
+  "pywikibot",
+  "pywin32",
+  "pywinauto",
+  "pywinbox",
+  "pywinctl",
+  "pywinpty",
+  "pywinrm",
+  "pyworld",
+  "pyworxcloud",
+  "pywxdump",
+  "pyx",
+  "pyx12",
+  "pyxb",
+  "pyxb-x",
+  "pyxccd",
+  "pyxcp",
+  "pyxdameraulevenshtein",
+  "pyxdg",
+  "pyxdia",
+  "pyxero",
+  "pyxirr",
+  "pyxlsb",
+  "pyxlsx",
+  "pyxnat",
+  "pyxtal",
+  "pyyaml",
+  "pyyml",
+  "pyzabbix",
+  "pyzbar",
+  "pyzipcode",
+  "pyzipper",
+  "pyzk",
+  "pyzmq",
+  "pyzotero",
+  "pyzstd",
+  "pyzxing",
+  "q",
+  "qtpy",
+  "rawpy",
+  "readabilipy",
+  "repartipy",
+  "resampy",
+  "restrictedpython",
+  "ripgrepy",
+  "rlpycairo",
+  "robotspy",
+  "rookiepy",
+  "rpy2",
+  "rpyc",
+  "s3pypi",
+  "saspy",
+  "scanpy",
+  "scapy",
+  "scipy",
+  "scrapy",
+  "serpyco",
+  "shadowcopy",
+  "sharepy",
+  "simplepyble",
+  "simpy",
+  "sodapy",
+  "sparsediffpy",
+  "spiceypy",
+  "spotifywebapipython",
+  "spotipy",
+  "spyder",
+  "spyne",
+  "spython",
+  "sqlescapy",
+  "stpyv8",
+  "strsimpy",
+  "stumpy",
+  "sudachipy",
+  "sunpy",
+  "syllapy",
+  "sympy",
+  "symspellpy",
+  "syrupy",
+  "tapipy",
+  "taskipy",
+  "tcolorpy",
+  "teslajsonpy",
+  "tftpy",
+  "thriftpy2",
+  "tm1py",
+  "traveltimepy",
+  "tronpy",
+  "tsv2py",
+  "tuspy",
+  "tuspyserver",
+  "tweepy",
+  "typedpy",
+  "typepy",
+  "tzfpy",
+  "uncompyle6",
+  "unitypy",
+  "urlpy",
+  "vcrpy",
+  "verticapy",
+  "vispy",
+  "wakepy",
+  "waybackpy",
+  "webexpythonsdk",
+  "wechatpy",
+  "wimpy",
+  "ws4py",
+  "wxpython",
+  "wyzeapy",
+  "y-py",
+  "yourdfpy",
+  "zenpy",
+  "zeroentropy",
+  "zigpy"
+ ],
+ "efa": [
+  "ema-pytorch",
+  "exa-py"
+ ],
+ "efel": [
+  "eel"
+ ],
+ "elasticsearch1": [
+  "elasticsearch",
+  "elasticsearch5",
+  "elasticsearch6",
+  "elasticsearch7",
+  "elasticsearch8",
+  "elasticsearch9"
+ ],
+ "elasticsearch2": [
+  "elasticsearch",
+  "elasticsearch5",
+  "elasticsearch6",
+  "elasticsearch7",
+  "elasticsearch8",
+  "elasticsearch9"
+ ],
+ "emmett-core": [
+  "emmet-core"
+ ],
+ "emojis": [
+  "emoji",
+  "pytest-emoji"
+ ],
+ "env": [
+  "envs",
+  "pyaml-env",
+  "pylint-venv",
+  "pytest-env"
+ ],
+ "envd": [
+  "envs",
+  "pyaml-env",
+  "pytest-env"
+ ],
+ "eon": [
+  "aeon"
+ ],
+ "eparse": [
+  "dparse",
+  "parse",
+  "sparse"
+ ],
+ "eppy": [
+  "cppy",
+  "ecpy",
+  "empy",
+  "peppy"
+ ],
+ "eralchemy2": [
+  "eralchemy"
+ ],
+ "erpc": [
+  "pytest-grpc"
+ ],
+ "esm": [
+  "py-evm"
+ ],
+ "eval7": [
+  "pydantic-evals",
+  "pytrec-eval"
+ ],
+ "eve": [
+  "evo",
+  "py-evm"
+ ],
+ "evoc": [
+  "evo"
+ ],
+ "exam": [
+  "exa-py"
+ ],
+ "example": [
+  "pytest-examples"
+ ],
+ "exe-py": [
+  "exa-py"
+ ],
+ "exhash": [
+  "xxhash"
+ ],
+ "exstruct": [
+  "extruct"
+ ],
+ "fair": [
+  "flair"
+ ],
+ "faiss-gpu-cu11": [
+  "faiss-gpu-cu12"
+ ],
+ "fast-agent-acp": [
+  "fast-agent-mcp"
+ ],
+ "fastapi-authz": [
+  "fastapi-auth0"
+ ],
+ "fastapi-healthcheck": [
+  "fastapi-healthchecks"
+ ],
+ "fastcdc": [
+  "fastcrc"
+ ],
+ "fastrapi": [
+  "fastapi"
+ ],
+ "fastuuid7": [
+  "fastuuid"
+ ],
+ "fbs": [
+  "fs"
+ ],
+ "fdk": [
+  "fdb",
+  "fdt",
+  "ntropy-sdk",
+  "pyannoteai-sdk",
+  "xdk"
+ ],
+ "ffmt": [
+  "pyproject-fmt",
+  "ufmt"
+ ],
+ "fido": [
+  "eido",
+  "fido2",
+  "mido",
+  "pytorch-fid"
+ ],
+ "fixture": [
+  "fixtures"
+ ],
+ "flagr": [
+  "flair"
+ ],
+ "flake8-pytest": [
+  "pytest-flake8",
+  "pytest-flakes"
+ ],
+ "flama": [
+  "flaml"
+ ],
+ "flamo": [
+  "flaml"
+ ],
+ "flashtext2": [
+  "flashtext"
+ ],
+ "flask-accept": [
+  "flask-accepts"
+ ],
+ "flask-bootstrap4": [
+  "bootstrap-flask",
+  "flask-bootstrap"
+ ],
+ "flask-oidc2": [
+  "flask-oidc"
+ ],
+ "flask-pytest": [
+  "pytest-flask"
+ ],
+ "flatdict3": [
+  "flatdict"
+ ],
+ "fleep": [
+  "fleet-python"
+ ],
+ "flent": [
+  "fleet-python",
+  "flet",
+  "fluent-pygments",
+  "flynt"
+ ],
+ "flet-core": [
+  "flit-core"
+ ],
+ "flopy": [
+  "flupy"
+ ],
+ "flyr": [
+  "flwr"
+ ],
+ "fmf": [
+  "pyproject-fmt",
+  "umf"
+ ],
+ "fnv": [
+  "fnc",
+  "pyaml-env",
+  "pytest-env"
+ ],
+ "fonts": [
+  "fints",
+  "pymupdf-fonts"
+ ],
+ "frax": [
+  "brax",
+  "flax",
+  "rax"
+ ],
+ "frontmatter": [
+  "python-frontmatter"
+ ],
+ "fsql": [
+  "ipython-sql",
+  "jsql",
+  "python-sql"
+ ],
+ "ftpretty": [
+  "sftpretty"
+ ],
+ "funcs": [
+  "funcy"
+ ],
+ "fury": [
+  "furl",
+  "furo"
+ ],
+ "futures3": [
+  "futures"
+ ],
+ "fuzzyset": [
+  "fuzzyset2"
+ ],
+ "g2pk2": [
+  "g2pkk"
+ ],
+ "gcache": [
+  "fcache",
+  "jupyter-cache",
+  "pytest-cache"
+ ],
+ "gcip": [
+  "grip"
+ ],
+ "gdata": [
+  "rdata"
+ ],
+ "gdspy": [
+  "dspy"
+ ],
+ "gemma": [
+  "gamma-pytools",
+  "gemmi"
+ ],
+ "geog": [
+  "glog"
+ ],
+ "geohash": [
+  "geohash2",
+  "python-geohash"
+ ],
+ "geoip": [
+  "geoip2"
+ ],
+ "geoutils": [
+  "ipython-genutils"
+ ],
+ "gfm": [
+  "gym"
+ ],
+ "gget": [
+  "wget"
+ ],
+ "ghex": [
+  "chex"
+ ],
+ "gipc": [
+  "pytest-grpc"
+ ],
+ "girth": [
+  "garth"
+ ],
+ "git-lint": [
+  "gitlint"
+ ],
+ "github": [
+  "github3-py"
+ ],
+ "gitlab": [
+  "pylint-gitlab",
+  "python-gitlab"
+ ],
+ "gkx": [
+  "python-okx"
+ ],
+ "glib": [
+  "dlib",
+  "lib",
+  "python-xlib",
+  "python3-xlib",
+  "xlib"
+ ],
+ "gm": [
+  "gmr",
+  "gym",
+  "pyramid-tm"
+ ],
+ "gmail": [
+  "email"
+ ],
+ "goal": [
+  "coal",
+  "gdal"
+ ],
+ "gobject": [
+  "vobject"
+ ],
+ "google-cloud-alloydb-connectors": [
+  "google-cloud-alloydb-connector"
+ ],
+ "google-cloud-config": [
+  "google-cloud-jupyter-config"
+ ],
+ "google-cloud-iap": [
+  "google-cloud-iam"
+ ],
+ "gpudb": [
+  "pudb",
+  "pytest-pudb"
+ ],
+ "gqlalchemy": [
+  "sqlalchemy",
+  "sqlalchemy-pytds"
+ ],
+ "grape": [
+  "pydantic-graph"
+ ],
+ "graphlib2": [
+  "graphlib"
+ ],
+ "gruff": [
+  "pytest-ruff",
+  "ruff"
+ ],
+ "gs": [
+  "chalkpy-rs",
+  "fs",
+  "gsw",
+  "pyfaup-rs",
+  "pysentry-rs",
+  "serpyco-rs",
+  "us"
+ ],
+ "gsd": [
+  "gsw"
+ ],
+ "gtfparse": [
+  "rtfparse",
+  "tfparse"
+ ],
+ "gtin": [
+  "grin"
+ ],
+ "gwpy": [
+  "gpy"
+ ],
+ "h2o-pysparkling-3-3": [
+  "h2o-pysparkling-3-1"
+ ],
+ "h2o-pysparkling-3-4": [
+  "h2o-pysparkling-3-1"
+ ],
+ "h2o-pysparkling-3-5": [
+  "h2o-pysparkling-3-1"
+ ],
+ "h5json": [
+  "hjson"
+ ],
+ "h5pyd": [
+  "h5py"
+ ],
+ "hail": [
+  "hai"
+ ],
+ "hal9": [
+  "halo"
+ ],
+ "harness-sdk-python": [
+  "harness-python-sdk"
+ ],
+ "hda": [
+  "dda",
+  "hya"
+ ],
+ "hdwallets": [
+  "hdwallet"
+ ],
+ "healpix": [
+  "astropy-healpix"
+ ],
+ "healthcheck": [
+  "py-healthcheck"
+ ],
+ "hgraph": [
+  "igraph",
+  "pydantic-graph",
+  "python-igraph"
+ ],
+ "himl": [
+  "pytest-html"
+ ],
+ "hio": [
+  "bio",
+  "bio-grumpy",
+  "h2o",
+  "h5io",
+  "hid",
+  "pyadi-iio",
+  "pyexcel-io",
+  "pyroscope-io",
+  "pytest-aio"
+ ],
+ "hko": [
+  "h2o"
+ ],
+ "hll": [
+  "hl7"
+ ],
+ "hmac": [
+  "hvac"
+ ],
+ "hplib": [
+  "mplib"
+ ],
+ "hqq": [
+  "qq-botpy"
+ ],
+ "hrequests": [
+  "grequests",
+  "requests"
+ ],
+ "hrpc": [
+  "pytest-grpc"
+ ],
+ "hsfs": [
+  "hdfs",
+  "hsms"
+ ],
+ "ht": [
+  "dt",
+  "h2",
+  "h3",
+  "h3-pyspark",
+  "hf",
+  "pytest-qt",
+  "pyyaml-ft",
+  "vt-py"
+ ],
+ "html": [
+  "pytest-html"
+ ],
+ "hud": [
+  "hid",
+  "hud-python",
+  "hug"
+ ],
+ "hudi": [
+  "hud-python"
+ ],
+ "huepy": [
+  "huey"
+ ],
+ "hugo": [
+  "hug"
+ ],
+ "humre": [
+  "hume"
+ ],
+ "hvpy": [
+  "h5py",
+  "htpy"
+ ],
+ "hy": [
+  "h2",
+  "h3",
+  "h3-pyspark",
+  "hf",
+  "hya",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "ry",
+  "ty",
+  "y-py"
+ ],
+ "i2": [
+  "b2",
+  "h2",
+  "id",
+  "pyexcel-io",
+  "pyroscope-io"
+ ],
+ "idutils": [
+  "imutils",
+  "mdutils"
+ ],
+ "ifcdiff": [
+  "icdiff",
+  "pytest-icdiff"
+ ],
+ "ikpy": [
+  "ipy",
+  "ipython"
+ ],
+ "ilpy": [
+  "ipy",
+  "ipython",
+  "islpy"
+ ],
+ "impala": [
+  "impyla"
+ ],
+ "interval": [
+  "intervals"
+ ],
+ "ioh": [
+  "pyexcel-io",
+  "pyroscope-io"
+ ],
+ "iometer": [
+  "aiometer"
+ ],
+ "ipi": [
+  "cpi",
+  "ipy",
+  "ipython",
+  "pyproject-api",
+  "pyro-api",
+  "pytest-mpi",
+  "python-ipmi"
+ ],
+ "iprogress": [
+  "progress",
+  "pytest-progress"
+ ],
+ "iranges": [
+  "python-ranges"
+ ],
+ "iredis": [
+  "hiredis",
+  "py-redis",
+  "pytest-redis",
+  "redis"
+ ],
+ "irwhois": [
+  "ipwhois"
+ ],
+ "isbnlib2": [
+  "isbnlib"
+ ],
+ "ischedule": [
+  "schedule"
+ ],
+ "isim": [
+  "pyvisa-sim"
+ ],
+ "iso639": [
+  "iso-639",
+  "python-iso639"
+ ],
+ "ivy": [
+  "ipy",
+  "ipython",
+  "kivy",
+  "livy"
+ ],
+ "jaal": [
+  "daal"
+ ],
+ "jake": [
+  "make",
+  "pytest-wake",
+  "yake"
+ ],
+ "jamma": [
+  "gamma-pytools"
+ ],
+ "jaraco-test": [
+  "jaraco-text"
+ ],
+ "jbpy": [
+  "bpy",
+  "bpython"
+ ],
+ "jdiff": [
+  "pdiff",
+  "rdiff",
+  "ydiff"
+ ],
+ "jenkins": [
+  "python-jenkins"
+ ],
+ "jep": [
+  "jmp",
+  "zep-python"
+ ],
+ "jinjax": [
+  "jinja2",
+  "pyramid-jinja2"
+ ],
+ "jix": [
+  "jax",
+  "jax-jumpy",
+  "six"
+ ],
+ "jmux": [
+  "mux-python"
+ ],
+ "jpy": [
+  "bpy",
+  "bpython",
+  "gpy",
+  "ipy",
+  "ipython",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "spython"
+ ],
+ "jquantstats": [
+  "quantstats"
+ ],
+ "jsl": [
+  "jsf",
+  "jsql"
+ ],
+ "jsonatapy": [
+  "jsonata-python"
+ ],
+ "jsonfield2": [
+  "jsonfield"
+ ],
+ "jsonpath2": [
+  "jsonpath",
+  "jsonpath-python",
+  "python-jsonpath"
+ ],
+ "junitxml": [
+  "junit-xml"
+ ],
+ "just": [
+  "djust",
+  "rust"
+ ],
+ "jwst": [
+  "jws",
+  "jwt",
+  "python-jwt"
+ ],
+ "k8s": [
+  "k8",
+  "kr8s"
+ ],
+ "kaldi-io": [
+  "kaldi-python-io",
+  "kaldiio"
+ ],
+ "kili": [
+  "kcli"
+ ],
+ "kmlb": [
+  "pmlb"
+ ],
+ "kpress": [
+  "xpress"
+ ],
+ "ksapi": [
+  "qsapi"
+ ],
+ "kss": [
+  "mss",
+  "zss"
+ ],
+ "kvxopt": [
+  "cvxopt"
+ ],
+ "kwasm": [
+  "qwasm"
+ ],
+ "lab": [
+  "lap",
+  "lib",
+  "lob"
+ ],
+ "labric": [
+  "fabric"
+ ],
+ "lastuuid": [
+  "fastuuid"
+ ],
+ "latch": [
+  "hatch",
+  "match",
+  "patch",
+  "pymaven-patch",
+  "pytest-watch"
+ ],
+ "latex": [
+  "altex",
+  "later"
+ ],
+ "lazily": [
+  "lazify"
+ ],
+ "libapi": [
+  "ibapi"
+ ],
+ "libcudf-cu13": [
+  "libcudf-cu12"
+ ],
+ "libcuvs-cu13": [
+  "libcuvs-cu12"
+ ],
+ "libkvikio-cu13": [
+  "libkvikio-cu12"
+ ],
+ "libraft-cu13": [
+  "libraft-cu12"
+ ],
+ "libusb": [
+  "libusb1"
+ ],
+ "limiter": [
+  "pyrate-limiter"
+ ],
+ "linode-api": [
+  "linode-api4"
+ ],
+ "lint": [
+  "cint",
+  "clint",
+  "dlint",
+  "lit",
+  "pint"
+ ],
+ "liver": [
+  "pybloom-live",
+  "river"
+ ],
+ "llmfit": [
+  "lmfit"
+ ],
+ "lock": [
+  "mock",
+  "pytest-mock"
+ ],
+ "loggers": [
+  "logger",
+  "pytest-logger"
+ ],
+ "logust": [
+  "locust"
+ ],
+ "loq": [
+  "lob",
+  "pyats-log"
+ ],
+ "lorm": [
+  "lorem",
+  "loro",
+  "yorm"
+ ],
+ "louvain": [
+  "python-louvain"
+ ],
+ "lqp": [
+  "jupyter-lsp",
+  "jupyterlab-lsp",
+  "lap",
+  "ldp"
+ ],
+ "lse-data": [
+  "lseg-data"
+ ],
+ "lti": [
+  "lit"
+ ],
+ "lxmf": [
+  "lxml"
+ ],
+ "lyteidl": [
+  "flyteidl"
+ ],
+ "lytekit": [
+  "flytekit"
+ ],
+ "mack": [
+  "mock",
+  "pytest-mock"
+ ],
+ "mad2": [
+  "python-mpd2"
+ ],
+ "mailchimp": [
+  "mailchimp3"
+ ],
+ "mailers": [
+  "mailer",
+  "pyramid-mailer"
+ ],
+ "mama": [
+  "maya"
+ ],
+ "max": [
+  "jax",
+  "jax-jumpy",
+  "mlx",
+  "mux-python",
+  "rax",
+  "sax"
+ ],
+ "mayim": [
+  "manim"
+ ],
+ "mblack": [
+  "black",
+  "jupyter-black",
+  "pytest-black"
+ ],
+ "md2adf": [
+  "md2pdf"
+ ],
+ "md2py": [
+  "mdxpy",
+  "mf2py"
+ ],
+ "mdka": [
+  "moka-py"
+ ],
+ "medpy": [
+  "metpy"
+ ],
+ "medutils": [
+  "mdutils"
+ ],
+ "memchunk": [
+  "semchunk"
+ ],
+ "mermaidx": [
+  "mermaid-py",
+  "mermaid-python"
+ ],
+ "mesop": [
+  "meson",
+  "meson-python"
+ ],
+ "metrics": [
+  "pyannote-metrics"
+ ],
+ "meutils": [
+  "eutils",
+  "mdutils"
+ ],
+ "mft": [
+  "pyproject-fmt",
+  "pyyaml-ft"
+ ],
+ "microsoft-teams-ai": [
+  "microsoft-teams-api"
+ ],
+ "migate": [
+  "zigpy-zigate"
+ ],
+ "mime": [
+  "lime",
+  "mike"
+ ],
+ "mimeparse": [
+  "python-mimeparse"
+ ],
+ "misaka": [
+  "misaki"
+ ],
+ "misk": [
+  "mink"
+ ],
+ "mjpl": [
+  "mjml",
+  "mjml-python",
+  "pytest-mpl"
+ ],
+ "mkdoc": [
+  "mkdocs",
+  "mkdocs-jupyter"
+ ],
+ "mkdocs-materialx": [
+  "mkdocs-material"
+ ],
+ "mlcflow": [
+  "mlflow"
+ ],
+ "mllib": [
+  "mplib"
+ ],
+ "mlr": [
+  "m2r",
+  "mlx"
+ ],
+ "mm": [
+  "mp-pyrho",
+  "pyramid-tm",
+  "pytest-md"
+ ],
+ "mmdeploy": [
+  "lmdeploy"
+ ],
+ "mode": [
+  "kiwipiepy-model",
+  "pymilvus-model"
+ ],
+ "modelindex": [
+  "model-index"
+ ],
+ "modules": [
+  "pyasn1-modules"
+ ],
+ "mojo": [
+  "moto"
+ ],
+ "moku": [
+  "moka-py"
+ ],
+ "mongo": [
+  "pydantic-mongo",
+  "pytest-mongo"
+ ],
+ "mongolock": [
+  "mongomock"
+ ],
+ "moss": [
+  "mss"
+ ],
+ "mpe2": [
+  "npe2",
+  "python-mpd2"
+ ],
+ "mph": [
+  "mp-pyrho",
+  "pytest-mpi",
+  "pytest-mpl"
+ ],
+ "mpipe": [
+  "mpire",
+  "pipe"
+ ],
+ "mpu": [
+  "mp-pyrho",
+  "pytest-mpi",
+  "pytest-mpl"
+ ],
+ "msasim": [
+  "pytorch-msssim"
+ ],
+ "mssapi": [
+  "gssapi"
+ ],
+ "mtools": [
+  "pyqt5-tools",
+  "tmtools",
+  "tools"
+ ],
+ "mtranslate": [
+  "translate"
+ ],
+ "mup": [
+  "mcp",
+  "mip",
+  "mp-pyrho",
+  "mux-python",
+  "pymupdf4llm-mcp",
+  "up-pyperplan"
+ ],
+ "muq": [
+  "mux-python"
+ ],
+ "mvg": [
+  "svg-py"
+ ],
+ "mws": [
+  "aws",
+  "jws",
+  "mss"
+ ],
+ "mypy-boto3-sms": [
+  "mypy-boto3-dms",
+  "mypy-boto3-fms",
+  "mypy-boto3-kms",
+  "mypy-boto3-ses",
+  "mypy-boto3-sns",
+  "mypy-boto3-sqs",
+  "mypy-boto3-ssm",
+  "mypy-boto3-sts"
+ ],
+ "myql": [
+  "mysql",
+  "mysql-python",
+  "pytest-mysql"
+ ],
+ "namesgenerator": [
+  "names-generator"
+ ],
+ "nats-python": [
+  "nats-py"
+ ],
+ "nebula5-python": [
+  "nebula3-python"
+ ],
+ "netext": [
+  "wetext"
+ ],
+ "neuron": [
+  "netron",
+  "neutron"
+ ],
+ "nhc": [
+  "nh3"
+ ],
+ "nind": [
+  "find-libpython"
+ ],
+ "ninjax": [
+  "ninja"
+ ],
+ "nle": [
+  "ale-py",
+  "cle"
+ ],
+ "nni": [
+  "uni-pytorch"
+ ],
+ "nob": [
+  "lob",
+  "nox"
+ ],
+ "node": [
+  "none",
+  "nose",
+  "nose-py3"
+ ],
+ "nomad": [
+  "python-nomad"
+ ],
+ "nontainer": [
+  "pytest-container"
+ ],
+ "nose3": [
+  "nose",
+  "nose-py3",
+  "nose2"
+ ],
+ "npm": [
+  "npx",
+  "rpm"
+ ],
+ "nrfutil": [
+  "nr-util"
+ ],
+ "nsapi": [
+  "qsapi"
+ ],
+ "nse": [
+  "ase",
+  "nose",
+  "nose-py3"
+ ],
+ "nsone": [
+  "none"
+ ],
+ "num2words2": [
+  "num2words"
+ ],
+ "numerizer": [
+  "numerize"
+ ],
+ "nvidia-cuda-runtime-cu13": [
+  "nvidia-cuda-runtime-cu11",
+  "nvidia-cuda-runtime-cu12"
+ ],
+ "nvidia-libnvcomp-cu13": [
+  "nvidia-libnvcomp-cu12"
+ ],
+ "nvidia-nvimgcodec-cu13": [
+  "nvidia-nvimgcodec-cu12"
+ ],
+ "nvmeof": [
+  "nameof"
+ ],
+ "nw": [
+  "pydot-ng",
+  "pykube-ng",
+  "wn"
+ ],
+ "oath": [
+  "path",
+  "path-py",
+  "python-path"
+ ],
+ "oauth": [
+  "auth",
+  "oauth2",
+  "rauth"
+ ],
+ "obd": [
+  "od"
+ ],
+ "ocp": [
+  "mcp",
+  "oci",
+  "ocpp",
+  "pymupdf4llm-mcp",
+  "scp"
+ ],
+ "odict": [
+  "pypinyin-dict"
+ ],
+ "odps": [
+  "ops"
+ ],
+ "oem": [
+  "cem",
+  "pem",
+  "python-olm"
+ ],
+ "ogr": [
+  "ogb"
+ ],
+ "omf": [
+  "umf"
+ ],
+ "onnx-tf": [
+  "onnx2tf"
+ ],
+ "openc3": [
+  "opencc",
+  "opencv-python"
+ ],
+ "openmpi": [
+  "openapi",
+  "openapi-pydantic"
+ ],
+ "openstackclient": [
+  "python-openstackclient"
+ ],
+ "orderedset": [
+  "ordered-set"
+ ],
+ "orjsonl": [
+  "orjson"
+ ],
+ "oru": [
+  "koru"
+ ],
+ "osam": [
+  "tsam"
+ ],
+ "oso": [
+  "odo",
+  "python-osc"
+ ],
+ "pacparser": [
+  "pycparser"
+ ],
+ "pam": [
+  "pan-python",
+  "pdm",
+  "pem",
+  "python-pam"
+ ],
+ "panels": [
+  "panel"
+ ],
+ "parch": [
+  "arch",
+  "patch",
+  "pymaven-patch"
+ ],
+ "parsec": [
+  "parse",
+  "parsel",
+  "pycep-parser",
+  "pyproject-parser",
+  "pytiled-parser"
+ ],
+ "paseto": [
+  "pyseto"
+ ],
+ "pause": [
+  "parse"
+ ],
+ "pconf": [
+  "sconf"
+ ],
+ "pcre2": [
+  "pyre2"
+ ],
+ "pd": [
+  "id",
+  "od",
+  "pdm",
+  "pid",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pytest-md",
+  "pyvisa-py",
+  "qpd"
+ ],
+ "pdex": [
+  "pex"
+ ],
+ "pecos": [
+  "ecos"
+ ],
+ "peep": [
+  "pydantic-deep",
+  "zeep"
+ ],
+ "pepeline": [
+  "pyannote-pipeline"
+ ],
+ "pg": [
+  "cg",
+  "py",
+  "py-spy",
+  "pydot-ng",
+  "pykube-ng",
+  "pyodide-py",
+  "pyvisa-py"
+ ],
+ "pg-sql": [
+  "pytest-pgsql",
+  "python-sql"
+ ],
+ "pgmq": [
+  "pgpq"
+ ],
+ "pgpym": [
+  "pgpy"
+ ],
+ "pgraph-python": [
+  "python-igraph"
+ ],
+ "pgsql": [
+  "pytest-pgsql"
+ ],
+ "pgtest": [
+  "pylint-pytest",
+  "pytest",
+  "pytest-astropy",
+  "pytest-ipywidgets",
+  "pytest-mypy",
+  "pytest-pycharm",
+  "pytest-pylint",
+  "pytest-pyodide",
+  "pytest-pytestrail",
+  "pytest-pythonpath"
+ ],
+ "phx": [
+  "pex",
+  "pox",
+  "pyx"
+ ],
+ "pi": [
+  "cpi",
+  "dspy-ai",
+  "jupyter-ai",
+  "pid",
+  "pin",
+  "pip",
+  "piq",
+  "py",
+  "py-spy",
+  "pydantic-ai",
+  "pyodide-py",
+  "pyproject-api",
+  "pyro-api",
+  "pytest-mpi",
+  "pyvisa-py"
+ ],
+ "pickle4": [
+  "pickle5",
+  "pickley"
+ ],
+ "picos": [
+  "picows"
+ ],
+ "pilk": [
+  "pick",
+  "silk-python"
+ ],
+ "pints": [
+  "fints",
+  "pins",
+  "pint"
+ ],
+ "piny": [
+  "pin",
+  "pins",
+  "pint",
+  "pony"
+ ],
+ "pipl": [
+  "pip",
+  "pipe",
+  "pipx",
+  "pyro-ppl"
+ ],
+ "pkn": [
+  "pan-python",
+  "pin"
+ ],
+ "plastex": [
+  "plaster"
+ ],
+ "playsound3": [
+  "playsound"
+ ],
+ "plim": [
+  "plum-py"
+ ],
+ "plip": [
+  "pip"
+ ],
+ "plone": [
+  "pyone"
+ ],
+ "plotpy": [
+  "plotly"
+ ],
+ "plum": [
+  "glum",
+  "plum-py",
+  "plux",
+  "pytest-plus"
+ ],
+ "plumber": [
+  "slumber"
+ ],
+ "plumpy": [
+  "plum-py"
+ ],
+ "pluralize": [
+  "pluralizer"
+ ],
+ "poetry-plugin-dotenv": [
+  "poetry-dotenv-plugin"
+ ],
+ "poi": [
+  "pot",
+  "pox",
+  "qoi"
+ ],
+ "polint": [
+  "pylint",
+  "pylint-pydantic",
+  "pylint-pytest",
+  "pytest-pylint"
+ ],
+ "polyfile": [
+  "plyfile"
+ ],
+ "poppy": [
+  "peppy"
+ ],
+ "powerfox": [
+  "powerfx"
+ ],
+ "ppbt": [
+  "ppft"
+ ],
+ "pq": [
+  "jq",
+  "piq",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "q",
+  "qq-botpy",
+  "rq",
+  "yq"
+ ],
+ "presto-client": [
+  "presto-python-client"
+ ],
+ "prim": [
+  "prime",
+  "primp"
+ ],
+ "procfs": [
+  "proces"
+ ],
+ "prody": [
+  "proxy-py"
+ ],
+ "properties": [
+  "jproperties"
+ ],
+ "protobuf-to-dict": [
+  "protobuf3-to-dict"
+ ],
+ "protobuf3": [
+  "mypy-protobuf",
+  "protobuf",
+  "pylint-protobuf"
+ ],
+ "psims": [
+  "pims"
+ ],
+ "pss": [
+  "mss",
+  "zss"
+ ],
+ "psutils": [
+  "psutil"
+ ],
+ "psy": [
+  "ply",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "spython"
+ ],
+ "ptfkit": [
+  "pdfkit"
+ ],
+ "pu": [
+  "pur",
+  "py",
+  "py-spy",
+  "pyodide-py",
+  "pyvisa-py",
+  "up-pyperplan"
+ ],
+ "publicsuffix": [
+  "publicsuffix2"
+ ],
+ "pugsql": [
+  "pytest-pgsql"
+ ],
+ "pulumi-str": [
+  "pulumi-std"
+ ],
+ "pure-cdb": [
+  "pure-python-adb"
+ ],
+ "pvo": [
+  "evo",
+  "pyvo"
+ ],
+ "py-dateutil": [
+  "python-dateutil"
+ ],
+ "py-sucks": [
+  "python-socks"
+ ],
+ "py-xid": [
+  "py-cid"
+ ],
+ "py-zabbix": [
+  "pyzabbix"
+ ],
+ "py2bit": [
+  "pybit"
+ ],
+ "py2jdbc": [
+  "pyjdbc"
+ ],
+ "pya2l": [
+  "pyaml"
+ ],
+ "pyaarlo": [
+  "pycarlo"
+ ],
+ "pyadf": [
+  "pycadf",
+  "pypdf"
+ ],
+ "pyamqp": [
+  "pamqp"
+ ],
+ "pyarn": [
+  "pyasn"
+ ],
+ "pyavd": [
+  "pyavm"
+ ],
+ "pyaxis": [
+  "pyais"
+ ],
+ "pybbox": [
+  "python-box"
+ ],
+ "pybcsv": [
+  "python-csv"
+ ],
+ "pycap": [
+  "pyap",
+  "pycaw",
+  "pydap",
+  "pypcap"
+ ],
+ "pycapng": [
+  "pycapnp",
+  "python-pcapng"
+ ],
+ "pyccl": [
+  "pycel",
+  "pyhcl"
+ ],
+ "pycdc": [
+  "pytdc"
+ ],
+ "pycddlib": [
+  "pycdlib"
+ ],
+ "pycec": [
+  "pycel"
+ ],
+ "pycef": [
+  "pycel"
+ ],
+ "pyceres": [
+  "pycares"
+ ],
+ "pycldf": [
+  "pycadf",
+  "pycld2",
+  "pycld3"
+ ],
+ "pycli": [
+  "mycli",
+  "pgcli",
+  "pycln",
+  "pycti"
+ ],
+ "pycm": [
+  "pccm",
+  "pycg",
+  "pyct",
+  "pyfcm",
+  "pymc"
+ ],
+ "pycose": [
+  "pynose",
+  "pyocse"
+ ],
+ "pycpd": [
+  "pypd"
+ ],
+ "pycrc": [
+  "pyorc"
+ ],
+ "pycwt": [
+  "pyct",
+  "pyjwt"
+ ],
+ "pydal": [
+  "pydap",
+  "pygal",
+  "pygdal"
+ ],
+ "pydantic-openapi-schema": [
+  "openapi-schema-pydantic"
+ ],
+ "pydantic-partials": [
+  "pydantic-partial"
+ ],
+ "pydantic2-to-typescript": [
+  "pydantic-to-typescript"
+ ],
+ "pydlm": [
+  "pydlt",
+  "pyglm"
+ ],
+ "pydoe2": [
+  "pydoe"
+ ],
+ "pydoe3": [
+  "pydoe"
+ ],
+ "pyebox": [
+  "python-box"
+ ],
+ "pyeda": [
+  "pyedb"
+ ],
+ "pyexcel-xlsxr": [
+  "pyexcel-xlsx"
+ ],
+ "pyfdb": [
+  "pyedb",
+  "pyhdb"
+ ],
+ "pyffmpeg": [
+  "python-ffmpeg"
+ ],
+ "pyfmg": [
+  "pyamg"
+ ],
+ "pyga": [
+  "pygad",
+  "pygal",
+  "pygam",
+  "pywa"
+ ],
+ "pygcode": [
+  "pypcode"
+ ],
+ "pygeoip": [
+  "pygeoif"
+ ],
+ "pygexf": [
+  "pygelf"
+ ],
+ "pygfxd": [
+  "pygfx"
+ ],
+ "pygit": [
+  "pybit",
+  "pygit2",
+  "pyrit"
+ ],
+ "pygmo": [
+  "pyomo"
+ ],
+ "pygris": [
+  "pygrib"
+ ],
+ "pygsp": [
+  "pylsp-mypy"
+ ],
+ "pygt": [
+  "pyct"
+ ],
+ "pygti": [
+  "pycti"
+ ],
+ "pyhammer": [
+  "pyhmmer"
+ ],
+ "pyhdf": [
+  "pyhdb",
+  "pyhdfe",
+  "pypdf"
+ ],
+ "pyhelm": [
+  "pyhelm3"
+ ],
+ "pyheos": [
+  "pygeos"
+ ],
+ "pyhik": [
+  "phik"
+ ],
+ "pyht": [
+  "pyct"
+ ],
+ "pyifu": [
+  "pyicu"
+ ],
+ "pyinstruments": [
+  "pyinstrument"
+ ],
+ "pyjavaproperties": [
+  "pyjavaproperties3"
+ ],
+ "pyjsonq": [
+  "pyjson",
+  "pyjson5"
+ ],
+ "pykube": [
+  "pytube"
+ ],
+ "pykwb": [
+  "pynwb"
+ ],
+ "pykx": [
+  "pykd",
+  "pykrx",
+  "pyx"
+ ],
+ "pylas": [
+  "nylas",
+  "pylast",
+  "pylcs"
+ ],
+ "pyldap": [
+  "pydap",
+  "python-ldap"
+ ],
+ "pylibcudf-cu13": [
+  "pylibcudf-cu12"
+ ],
+ "pylibfst": [
+  "pylibfdt"
+ ],
+ "pylibraft-cu13": [
+  "pylibraft-cu12"
+ ],
+ "pylog": [
+  "pyulog"
+ ],
+ "pylsl": [
+  "pylsp-mypy"
+ ],
+ "pylti": [
+  "pycti"
+ ],
+ "pylzma": [
+  "pylama"
+ ],
+ "pymare": [
+  "pymarc"
+ ],
+ "pymars": [
+  "pygmars",
+  "pymarc"
+ ],
+ "pymcr": [
+  "pymc",
+  "pymc3"
+ ],
+ "pymel": [
+  "pycel",
+  "pymem"
+ ],
+ "pymilter": [
+  "pymitter"
+ ],
+ "pymkl": [
+  "pykml"
+ ],
+ "pymorphy2-dicts-uk": [
+  "pymorphy3-dicts-uk"
+ ],
+ "pymultihash": [
+  "py-multihash"
+ ],
+ "pynina": [
+  "pynini"
+ ],
+ "pynum": [
+  "pynpm"
+ ],
+ "pynws": [
+  "pynwb"
+ ],
+ "pyodc": [
+  "pyocd",
+  "pyod",
+  "pyodbc",
+  "pyorc",
+  "pytdc"
+ ],
+ "pyoo": [
+  "poyo",
+  "pydo",
+  "pymoo",
+  "pyod",
+  "pyomo",
+  "pyop",
+  "pyvo"
+ ],
+ "pyopt": [
+  "pyop",
+  "pyotp"
+ ],
+ "pypar": [
+  "pypac"
+ ],
+ "pyparallel": [
+  "ipyparallel"
+ ],
+ "pypca": [
+  "pypac",
+  "pypcap",
+  "pyuca"
+ ],
+ "pypdl": [
+  "pypd",
+  "pypdf"
+ ],
+ "pyperscan": [
+  "hyperscan"
+ ],
+ "pypi-server": [
+  "pypiserver"
+ ],
+ "pypino": [
+  "pythonping"
+ ],
+ "pypmc": [
+  "pymc",
+  "pypac"
+ ],
+ "pypose": [
+  "pynose"
+ ],
+ "pypred": [
+  "pyprep"
+ ],
+ "pypyr": [
+  "pypyp"
+ ],
+ "pyqldb": [
+  "pyqlib"
+ ],
+ "pyral": [
+  "pygal",
+  "pyrad"
+ ],
+ "pyribbit": [
+  "pyrabbit"
+ ],
+ "pyromat": [
+  "pyroma"
+ ],
+ "pyrpm": [
+  "pynpm"
+ ],
+ "pyrsmq": [
+  "pyrsmi"
+ ],
+ "pyrxing": [
+  "pyzxing"
+ ],
+ "pysaj": [
+  "pysam"
+ ],
+ "pysap": [
+  "pyap",
+  "pydap",
+  "pysam",
+  "pyshp"
+ ],
+ "pysctp": [
+  "pysftp"
+ ],
+ "pysdd": [
+  "pysbd"
+ ],
+ "pysenz": [
+  "pysen"
+ ],
+ "pyseq": [
+  "cyseq",
+  "pysen"
+ ],
+ "pysma": [
+  "pysam",
+  "pysmb",
+  "pysmi"
+ ],
+ "pysmhi": [
+  "pysmi"
+ ],
+ "pysml": [
+  "pyaml",
+  "pykml",
+  "pysmb",
+  "pysmi",
+  "pyyml"
+ ],
+ "pysmt": [
+  "pysmb",
+  "pysmi",
+  "pysrt"
+ ],
+ "pysof": [
+  "pyscf"
+ ],
+ "pysolar": [
+  "pysolr",
+  "pysonar"
+ ],
+ "pysoma": [
+  "pyroma"
+ ],
+ "pyspc": [
+  "pysnc"
+ ],
+ "pyspy": [
+  "py-spy"
+ ],
+ "pysr": [
+  "pyrr",
+  "pysrt"
+ ],
+ "pystemd": [
+  "systemd-python"
+ ],
+ "pysui": [
+  "pysmi"
+ ],
+ "pysvf": [
+  "pyscf"
+ ],
+ "pyt": [
+  "pot",
+  "py",
+  "py-spy",
+  "pyct",
+  "pyodide-py",
+  "pytd",
+  "pyte",
+  "pyts",
+  "pytz",
+  "pyvisa-py",
+  "pyx"
+ ],
+ "pytde": [
+  "pytd",
+  "pytdc",
+  "pyte"
+ ],
+ "pytest-codeblock": [
+  "pytest-codeblocks"
+ ],
+ "pytest-it": [
+  "pytest-qt"
+ ],
+ "pytest-time": [
+  "pytest-timer"
+ ],
+ "python-alipay-sdk": [
+  "alipay-sdk-python"
+ ],
+ "python-bcrypt": [
+  "py-bcrypt"
+ ],
+ "python-constraint2": [
+  "python-constraint"
+ ],
+ "python-dlt": [
+  "pydlt"
+ ],
+ "python-dotenvx": [
+  "python-dotenv"
+ ],
+ "python-gcm": [
+  "python-gdcm"
+ ],
+ "python-gilt": [
+  "git-python"
+ ],
+ "python-git": [
+  "git-python"
+ ],
+ "python-gvm": [
+  "py-evm"
+ ],
+ "python-lzo": [
+  "python-lzf"
+ ],
+ "python-math": [
+  "python-path"
+ ],
+ "python-odata": [
+  "pyodata"
+ ],
+ "python-pdf": [
+  "pypdf"
+ ],
+ "python-prctl": [
+  "pyprctl"
+ ],
+ "python-redis": [
+  "py-redis"
+ ],
+ "python-systemd": [
+  "systemd-python"
+ ],
+ "python-tlsh": [
+  "py-tlsh"
+ ],
+ "python-tmx": [
+  "trx-python"
+ ],
+ "python-xbox": [
+  "python-box"
+ ],
+ "python3-memcached": [
+  "python-memcached"
+ ],
+ "pythonsed": [
+  "pysbd",
+  "pysen"
+ ],
+ "pythontk": [
+  "pytd",
+  "pyte",
+  "pyts",
+  "pytz",
+  "pyzk"
+ ],
+ "pytmd": [
+  "pytd"
+ ],
+ "pytool": [
+  "patool",
+  "pytoml",
+  "pytools"
+ ],
+ "pytray": [
+  "pystray"
+ ],
+ "pyvcf": [
+  "pyscf",
+  "pyvcd",
+  "pyvcg"
+ ],
+ "pyvcloud": [
+  "pyicloud"
+ ],
+ "pyvera": [
+  "pyvers"
+ ],
+ "pyvin": [
+  "pyvi",
+  "pyvim",
+  "pyvis"
+ ],
+ "pyvlx": [
+  "pyvex"
+ ],
+ "pyvoy": [
+  "pyvo"
+ ],
+ "pyway": [
+  "pywa"
+ ],
+ "pyxdf": [
+  "pypdf",
+  "pyxdg"
+ ],
+ "pyxel": [
+  "pycel"
+ ],
+ "pyxlsb2": [
+  "pyxlsb"
+ ],
+ "pyzes": [
+  "pyaes",
+  "pydes"
+ ],
+ "pyzx": [
+  "pyx",
+  "pyzk"
+ ],
+ "qcore": [
+  "anchorpy-core",
+  "ipyflow-core",
+  "jupyter-core",
+  "jupyterlite-core",
+  "ncore",
+  "pyannote-core",
+  "pydantic-core",
+  "pyiceberg-core",
+  "pymatgen-core",
+  "pyobjc-core",
+  "pytoniq-core"
+ ],
+ "qmk": [
+  "qmp"
+ ],
+ "qoco": [
+  "soco"
+ ],
+ "qonnx": [
+  "onnx"
+ ],
+ "qpython": [
+  "bpy",
+  "bpython",
+  "gpy",
+  "ipy",
+  "ipython",
+  "oqpy",
+  "py",
+  "pydoll-python",
+  "python-jobspy",
+  "python-snappy",
+  "qtpy",
+  "spython"
+ ],
+ "qt-py": [
+  "qtpy",
+  "vt-py"
+ ],
+ "qtutils": [
+  "jtutils"
+ ],
+ "quax": [
+  "qubx"
+ ],
+ "quip": [
+  "qutip"
+ ],
+ "quoter": [
+  "pylint-quotes"
+ ],
+ "radar": [
+  "xradar"
+ ],
+ "ragger": [
+  "pytorch-ranger"
+ ],
+ "rb": [
+  "chalkpy-rs",
+  "pyfaup-rs",
+  "pysentry-rs",
+  "rq",
+  "rx",
+  "ry",
+  "serpyco-rs"
+ ],
+ "rbx": [
+  "bx-python",
+  "dbx",
+  "rax",
+  "rx"
+ ],
+ "readability": [
+  "breadability",
+  "readabilipy"
+ ],
+ "readtime": [
+  "realtime"
+ ],
+ "reauth": [
+  "rauth"
+ ],
+ "rebot": [
+  "pyats-robot",
+  "rlbot"
+ ],
+ "redd": [
+  "redo"
+ ],
+ "redis-lock": [
+  "python-redis-lock"
+ ],
+ "registry": [
+  "python-registry"
+ ],
+ "reman": [
+  "roman"
+ ],
+ "response": [
+  "pytest-responses",
+  "responses"
+ ],
+ "results": [
+  "pyats-results",
+  "result"
+ ],
+ "resvg": [
+  "resvg-py"
+ ],
+ "returnn": [
+  "returns"
+ ],
+ "rez": [
+  "rel"
+ ],
+ "rg": [
+  "cg",
+  "chalkpy-rs",
+  "pydot-ng",
+  "pyfaup-rs",
+  "pykube-ng",
+  "pysentry-rs",
+  "pytest-rng",
+  "rq",
+  "rx",
+  "ry",
+  "serpyco-rs"
+ ],
+ "ribs": [
+  "pysnmp-mibs",
+  "tibs"
+ ],
+ "ripgrep-python": [
+  "python-ripgrep"
+ ],
+ "rivers": [
+  "river"
+ ],
+ "rjsonnet": [
+  "jsonnet"
+ ],
+ "rleveldb": [
+  "leveldb"
+ ],
+ "rlms": [
+  "numpy-rms"
+ ],
+ "rloop": [
+  "pytest-loop"
+ ],
+ "rmsd": [
+  "numpy-rms"
+ ],
+ "rns": [
+  "chalkpy-rs",
+  "numpy-rms",
+  "pyfaup-rs",
+  "pysentry-rs",
+  "pytest-rng",
+  "runs",
+  "serpyco-rs"
+ ],
+ "roam": [
+  "roma"
+ ],
+ "robot": [
+  "pyats-robot",
+  "rlbot"
+ ],
+ "robotframework-imaplibrary": [
+  "robotframework-imaplibrary2"
+ ],
+ "robotsuite": [
+  "robosuite"
+ ],
+ "romy": [
+  "roma"
+ ],
+ "ropt": [
+  "rope"
+ ],
+ "rova": [
+  "roma"
+ ],
+ "rpi-lgpio": [
+  "rpi-gpio"
+ ],
+ "rpn": [
+  "rpm"
+ ],
+ "rsconnect": [
+  "rsconnect-python"
+ ],
+ "rtpy": [
+  "htpy",
+  "prtpy",
+  "ptpython",
+  "qtpy",
+  "rtp"
+ ],
+ "rtyaml": [
+  "ruyaml"
+ ],
+ "ruid": [
+  "cuid",
+  "uuid"
+ ],
+ "rumps": [
+  "humps"
+ ],
+ "rxv": [
+  "rx"
+ ],
+ "ryaml": [
+  "aspy-yaml",
+  "oyaml",
+  "pyaml",
+  "pydantic-yaml",
+  "ruyaml"
+ ],
+ "ryl": [
+  "rel",
+  "ry"
+ ],
+ "ryu": [
+  "ry"
+ ],
+ "s4cmd": [
+  "s3cmd",
+  "s5cmd"
+ ],
+ "safer": [
+  "safe-pysha3"
+ ],
+ "sanix": [
+  "sanic"
+ ],
+ "sarpy": [
+  "arpy",
+  "saspy"
+ ],
+ "sbase": [
+  "cvxpy-base"
+ ],
+ "sbi": [
+  "sbe"
+ ],
+ "sbp": [
+  "pyqt5-sip",
+  "pyqt6-sip",
+  "sbe",
+  "scp",
+  "sip",
+  "smp",
+  "srp"
+ ],
+ "scalpl": [
+  "python-scalpel"
+ ],
+ "scanf": [
+  "scann",
+  "sconf"
+ ],
+ "scikit-fmm": [
+  "scikit-fem"
+ ],
+ "scio": [
+  "pydantic-scim"
+ ],
+ "scrapyd": [
+  "scrapy"
+ ],
+ "sctokenizer": [
+  "s3tokenizer"
+ ],
+ "sdb": [
+  "fdb",
+  "ntropy-sdk",
+  "pyannoteai-sdk",
+  "sdv",
+  "tsdb",
+  "ydb"
+ ],
+ "sde4onnx": [
+  "sne4onnx"
+ ],
+ "sds": [
+  "ntropy-sdk",
+  "pyannoteai-sdk",
+  "python-tds",
+  "scs",
+  "sdv",
+  "suds",
+  "suds-py3"
+ ],
+ "segment": [
+  "segments"
+ ],
+ "selenium-axe-python": [
+  "axe-selenium-python"
+ ],
+ "selenium-base": [
+  "seleniumbase"
+ ],
+ "serializable": [
+  "py-serializable"
+ ],
+ "sfq": [
+  "saq"
+ ],
+ "shin": [
+  "shiny",
+  "shiv",
+  "spin"
+ ],
+ "shub": [
+  "pytest-stub",
+  "shrub-py"
+ ],
+ "simple-loggers": [
+  "python-simple-logger"
+ ],
+ "skpy": [
+  "py-spy",
+  "spython"
+ ],
+ "slash": [
+  "oslash",
+  "scrapy-splash"
+ ],
+ "slub": [
+  "pytest-stub"
+ ],
+ "smac": [
+  "snac",
+  "stac-pydantic"
+ ],
+ "smile": [
+  "simile"
+ ],
+ "smt": [
+  "pyproject-fmt",
+  "python-sat",
+  "smp",
+  "srt"
+ ],
+ "sna4onnx": [
+  "sne4onnx",
+  "sng4onnx"
+ ],
+ "snappy": [
+  "python-snappy",
+  "snappi"
+ ],
+ "snc4onnx": [
+  "sne4onnx",
+  "sng4onnx"
+ ],
+ "snd4onnx": [
+  "sne4onnx",
+  "sng4onnx"
+ ],
+ "socketio": [
+  "python-socketio"
+ ],
+ "sockio": [
+  "socksio"
+ ],
+ "sockjs": [
+  "python-socks",
+  "socks"
+ ],
+ "sog4onnx": [
+  "sng4onnx"
+ ],
+ "solars": [
+  "polars",
+  "solara"
+ ],
+ "sourcery": [
+  "sorcery"
+ ],
+ "sparkai": [
+  "sparkaid"
+ ],
+ "sparknlp": [
+  "spark-nlp"
+ ],
+ "sphinx-jinja2": [
+  "sphinx-jinja"
+ ],
+ "spicy": [
+  "spacy"
+ ],
+ "spy-der": [
+  "spyder"
+ ],
+ "sql": [
+  "eql",
+  "gql",
+  "ipython-sql",
+  "jsql",
+  "numpy-stl",
+  "python-sql"
+ ],
+ "sqlalchemy-clickhouse": [
+  "clickhouse-sqlalchemy"
+ ],
+ "squape": [
+  "pylink-square"
+ ],
+ "ssl": [
+  "ipython-sql",
+  "numpy-stl",
+  "python-sql",
+  "sasl",
+  "ssh-python"
+ ],
+ "ssort": [
+  "isort",
+  "pytest-isort",
+  "usort"
+ ],
+ "ssz": [
+  "ssh-python"
+ ],
+ "stacker": [
+  "slacker"
+ ],
+ "stata-mcp": [
+  "mcp-stata"
+ ],
+ "staticx": [
+  "static3"
+ ],
+ "stats": [
+  "python-statsd",
+  "python-status",
+  "statsd",
+  "statsd-python",
+  "status"
+ ],
+ "steam": [
+  "seam",
+  "stem",
+  "stream-python"
+ ],
+ "stopwords": [
+  "stop-words"
+ ],
+ "storey": [
+  "pycrdt-store"
+ ],
+ "stpipe": [
+  "stripe"
+ ],
+ "streamz": [
+  "stream-python"
+ ],
+ "stua": [
+  "pytest-stub"
+ ],
+ "stylus": [
+  "pygments-styles"
+ ],
+ "surt": [
+  "srt",
+  "sure"
+ ],
+ "swagger-ui-python": [
+  "swagger-ui-py"
+ ],
+ "swat": [
+  "python-sat"
+ ],
+ "sym": [
+  "gym",
+  "pyvisa-sim"
+ ],
+ "symbolic": [
+  "pymbolic"
+ ],
+ "systemd": [
+  "systemd-python"
+ ],
+ "tabulate2": [
+  "tabulate"
+ ],
+ "tamp": [
+  "pytest-tap",
+  "tap-py",
+  "temp"
+ ],
+ "tapo": [
+  "pytest-tap",
+  "tap-py",
+  "taplo"
+ ],
+ "tblite": [
+  "tflite"
+ ],
+ "tboxsdk": [
+  "boxsdk"
+ ],
+ "tbp-nightly": [
+  "tb-nightly",
+  "tfp-nightly"
+ ],
+ "tcloud": [
+  "gcloud",
+  "hcloud"
+ ],
+ "tcping": [
+  "typing"
+ ],
+ "tdxpy": [
+  "mdxpy"
+ ],
+ "telepot": [
+  "telebot"
+ ],
+ "tencentcloud-sdk-python-cdn": [
+  "tencentcloud-sdk-python-cdb"
+ ],
+ "tencentcloud-sdk-python-cds": [
+  "tencentcloud-sdk-python-cdb"
+ ],
+ "tencentcloud-sdk-python-clb": [
+  "tencentcloud-sdk-python-cdb"
+ ],
+ "tencentcloud-sdk-python-dcdb": [
+  "tencentcloud-sdk-python-cdb"
+ ],
+ "tensorflow-gpu": [
+  "tensorflow-cpu"
+ ],
+ "termaid": [
+  "mermaid-py",
+  "mermaid-python"
+ ],
+ "testrail": [
+  "pytest-testrail"
+ ],
+ "testrail-pytest": [
+  "pytest-testrail"
+ ],
+ "tfx": [
+  "tox",
+  "trx-python",
+  "tsx"
+ ],
+ "thriftpy": [
+  "thriftpy2"
+ ],
+ "timezonefinderl": [
+  "timezonefinder"
+ ],
+ "tinycss": [
+  "tinycss2"
+ ],
+ "tko": [
+  "tk"
+ ],
+ "tldparse": [
+  "tlparse"
+ ],
+ "tmb": [
+  "pyramid-tm",
+  "tbb"
+ ],
+ "tmm": [
+  "pyramid-tm",
+  "timm"
+ ],
+ "tmt": [
+  "pyproject-fmt",
+  "pyramid-tm"
+ ],
+ "toga": [
+  "yoga"
+ ],
+ "toil": [
+  "pyproject-toml",
+  "toml"
+ ],
+ "tokenizer": [
+  "pytorch-tokenizers",
+  "tokenizers"
+ ],
+ "tomlq": [
+  "pyproject-toml",
+  "toml",
+  "tomli"
+ ],
+ "toronado": [
+  "pytest-tornado",
+  "tornado"
+ ],
+ "tors": [
+  "cherrypy-cors",
+  "tos"
+ ],
+ "tpot": [
+  "pot"
+ ],
+ "tree-sitter-luau": [
+  "tree-sitter-lua"
+ ],
+ "trlc": [
+  "trl"
+ ],
+ "trlib": [
+  "tblib"
+ ],
+ "tsai": [
+  "tsam"
+ ],
+ "ttls": [
+  "python3-dtls",
+  "tts"
+ ],
+ "twitter": [
+  "python-twitter"
+ ],
+ "types-aiobotocore-dms": [
+  "types-aiobotocore-kms"
+ ],
+ "types-aiobotocore-drs": [
+  "types-aiobotocore-rds"
+ ],
+ "types-aiobotocore-ds": [
+  "types-aiobotocore-rds"
+ ],
+ "types-aiobotocore-ebs": [
+  "types-aiobotocore-ecs",
+  "types-aiobotocore-eks"
+ ],
+ "types-aiobotocore-efs": [
+  "types-aiobotocore-ecs",
+  "types-aiobotocore-eks"
+ ],
+ "types-aiobotocore-emr": [
+  "types-aiobotocore-ecr"
+ ],
+ "types-aiobotocore-es": [
+  "types-aiobotocore-ecs",
+  "types-aiobotocore-eks",
+  "types-aiobotocore-ses"
+ ],
+ "types-aiobotocore-evs": [
+  "types-aiobotocore-ecs",
+  "types-aiobotocore-eks"
+ ],
+ "types-aiobotocore-fms": [
+  "types-aiobotocore-kms"
+ ],
+ "types-aiobotocore-oam": [
+  "types-aiobotocore-iam"
+ ],
+ "types-aiobotocore-pcs": [
+  "types-aiobotocore-ecs"
+ ],
+ "types-aiobotocore-ram": [
+  "types-aiobotocore-iam"
+ ],
+ "types-aiobotocore-sms": [
+  "types-aiobotocore-kms",
+  "types-aiobotocore-ses",
+  "types-aiobotocore-sns",
+  "types-aiobotocore-sqs",
+  "types-aiobotocore-ssm",
+  "types-aiobotocore-sts"
+ ],
+ "types-aiobotocore-sso": [
+  "types-aiobotocore-ssm"
+ ],
+ "types-boto3-eks": [
+  "types-boto3-ecs"
+ ],
+ "typing-compat": [
+  "numpy-typing-compat"
+ ],
+ "typo": [
+  "typos",
+  "tyro"
+ ],
+ "uctools": [
+  "udtools"
+ ],
+ "udata": [
+  "mudata",
+  "rdata"
+ ],
+ "ufbt": [
+  "ufmt"
+ ],
+ "ufile": [
+  "cufile-python",
+  "uvfile"
+ ],
+ "uiautomator": [
+  "uiautomator2"
+ ],
+ "umongo": [
+  "pydantic-mongo",
+  "pytest-mongo"
+ ],
+ "una": [
+  "tuna",
+  "uni-pytorch"
+ ],
+ "unipatch": [
+  "unipath"
+ ],
+ "unlzw": [
+  "unlzw3"
+ ],
+ "unxt": [
+  "unyt"
+ ],
+ "upd": [
+  "qpd",
+  "up-pyperplan"
+ ],
+ "uptime-kuma-api2": [
+  "uptime-kuma-api"
+ ],
+ "urnparse": [
+  "arnparse"
+ ],
+ "uro": [
+  "furo",
+  "url-py"
+ ],
+ "usdata": [
+  "xsdata",
+  "xsdata-pydantic"
+ ],
+ "utiles": [
+  "pyats-utils",
+  "pyavd-utils",
+  "pyhelper-utils",
+  "pyjon-utils",
+  "python-utils",
+  "utils"
+ ],
+ "utitools": [
+  "uritools"
+ ],
+ "uxarray": [
+  "xarray"
+ ],
+ "v": [
+  "aiohappyeyeballs",
+  "alexapy",
+  "allpairspy",
+  "amplpy",
+  "anchorpy",
+  "antropy",
+  "antspyx",
+  "apysc",
+  "arcadepy",
+  "arpy",
+  "asciichartpy",
+  "assertpy",
+  "astrapy",
+  "astropy",
+  "av",
+  "awsiotpythonsdk",
+  "bagpy",
+  "bapy",
+  "basedpyright",
+  "beaupy",
+  "binapy",
+  "bincopy",
+  "biopython",
+  "boilerpy3",
+  "boschshcpy",
+  "bpy",
+  "bpylist2",
+  "bpython",
+  "bpyutils",
+  "brotlipy",
+  "cartopy",
+  "cedarpy",
+  "cellpylib",
+  "certipy",
+  "chalkpy",
+  "cherrypy",
+  "claripy",
+  "cmdstanpy",
+  "complexipy",
+  "contourpy",
+  "copybook",
+  "cosmpy",
+  "cppy",
+  "cvxpy",
+  "daal4py",
+  "dafnyruntimepython",
+  "datacompy",
+  "datadogpy",
+  "dearpygui",
+  "debugpy",
+  "decompyle3",
+  "dendropy",
+  "depyf",
+  "digitalpy",
+  "dipy",
+  "distinctipy",
+  "dkimpy",
+  "dmpython",
+  "dnspython",
+  "docx2python",
+  "dracopy",
+  "driftpy",
+  "dspy",
+  "dtlpymetrics",
+  "dukpy",
+  "durationpy",
+  "eciespy",
+  "ecpy",
+  "editdistpy",
+  "eigenpy",
+  "empy",
+  "ffmpy",
+  "fhirpathpy",
+  "fhirpy",
+  "filterpy",
+  "findpython",
+  "flupy",
+  "fmpy",
+  "fpylll",
+  "fpyutils",
+  "fusepy",
+  "geoh5py",
+  "geopy",
+  "githubpy",
+  "gitpython",
+  "gmpy2",
+  "gpxpy",
+  "gpy",
+  "gpytorch",
+  "gpytranslate",
+  "graypy",
+  "gremlinpython",
+  "gseapy",
+  "guardpycfn",
+  "guppy3",
+  "gurobipy",
+  "h5py",
+  "happybase",
+  "hdijupyterutils",
+  "hdrpy",
+  "healpy",
+  "highspy",
+  "hiyapyco",
+  "hl7apy",
+  "hpnapy",
+  "htpy",
+  "hyperpyyaml",
+  "hyperspy",
+  "icsneopy",
+  "impyla",
+  "inquirerpy",
+  "ipy",
+  "ipycanvas",
+  "ipycytoscape",
+  "ipydagred3",
+  "ipydatawidgets",
+  "ipyevents",
+  "ipyfilechooser",
+  "ipykernel",
+  "ipylab",
+  "ipyleaflet",
+  "ipympl",
+  "ipynb",
+  "ipynbname",
+  "ipyparallel",
+  "ipypb",
+  "ipysigma",
+  "ipytest",
+  "ipython",
+  "ipytree",
+  "ipyvue",
+  "ipyvuetify",
+  "ipywebrtc",
+  "ipywidgets",
+  "islpy",
+  "jdk4py",
+  "jenkspy",
+  "josepy",
+  "jpype1",
+  "js2py",
+  "jupysql",
+  "jupyter",
+  "jupyterhub",
+  "jupyterlab",
+  "jupytext",
+  "kdepy",
+  "kiwipiepy",
+  "konlpy",
+  "kylinpy",
+  "laspy",
+  "latex2sympy2",
+  "lesscpy",
+  "libpysal",
+  "libretranslatepy",
+  "linopy",
+  "liquidpy",
+  "lucopy",
+  "marketorestpython",
+  "markuppy",
+  "matscipy",
+  "mdxpy",
+  "mediapy",
+  "mergepythonclient",
+  "metpy",
+  "mf2py",
+  "mfusepy",
+  "missingpy",
+  "mockredispy",
+  "momepy",
+  "moviepy",
+  "moyopy",
+  "mpi4py",
+  "mulpyplexer",
+  "multipyvu",
+  "mypy",
+  "mypyllant",
+  "nipype",
+  "norenrestapipy",
+  "numpy",
+  "numpydantic",
+  "numpydoc",
+  "numpyencoder",
+  "numpyro",
+  "obspy",
+  "odfpy",
+  "openfermionpyscf",
+  "openpyxl",
+  "openseespy",
+  "openseespylinux",
+  "oqpy",
+  "overpy",
+  "oxapy",
+  "p4python",
+  "pampy",
+  "pdpyras",
+  "peppy",
+  "perturbopy",
+  "pgcopy",
+  "pgmpy",
+  "pgpy",
+  "pgpy13",
+  "phono3py",
+  "phonopy",
+  "pipablepytorch3d",
+  "plpygis",
+  "pm4py",
+  "preppy",
+  "primepy",
+  "prtpy",
+  "psmpy",
+  "ptpython",
+  "pubchempy",
+  "py",
+  "py2app",
+  "py2neo",
+  "py2opsin",
+  "py3createtorrent",
+  "py3dbp",
+  "py3dmol",
+  "py3dns",
+  "py3langid",
+  "py3nvml",
+  "py3rijndael",
+  "py3rosmsgs",
+  "py4j",
+  "py4vasp",
+  "py7zr",
+  "pyaaf2",
+  "pyacoustid",
+  "pyactiveresource",
+  "pyadomd",
+  "pyaes",
+  "pyaescrypt",
+  "pyahocorasick",
+  "pyairtable",
+  "pyais",
+  "pyalex",
+  "pyamg",
+  "pyaml",
+  "pyandoc",
+  "pyang",
+  "pyangbind",
+  "pyannotate",
+  "pyap",
+  "pyap2",
+  "pyapacheatlas",
+  "pyarabic",
+  "pyarango",
+  "pyarmor",
+  "pyarrow",
+  "pyartifactory",
+  "pyas2lib",
+  "pyaskalono",
+  "pyasn",
+  "pyasn1",
+  "pyasynchat",
+  "pyasyncore",
+  "pyathena",
+  "pyathenajdbc",
+  "pyatlan",
+  "pyats",
+  "pyattest",
+  "pyatv",
+  "pyaudio",
+  "pyautogen",
+  "pyautogui",
+  "pyautoit",
+  "pyavm",
+  "pyawscron",
+  "pyaxmlparser",
+  "pybacklogpy",
+  "pybamm",
+  "pybammsolvers",
+  "pybars3",
+  "pybars4",
+  "pybase62",
+  "pybase64",
+  "pybaseball",
+  "pybaselines",
+  "pybatchexecute",
+  "pybatfish",
+  "pybboxes",
+  "pybcj",
+  "pybedtools",
+  "pybids",
+  "pybigquery",
+  "pybigtools",
+  "pybigwig",
+  "pybind11",
+  "pybindgen",
+  "pybiomart",
+  "pybit",
+  "pybktree",
+  "pyboxen",
+  "pybreaker",
+  "pybtex",
+  "pybuildkite",
+  "pybullet",
+  "pybytebuffer",
+  "pycadf",
+  "pycairo",
+  "pycalverter",
+  "pycampbellcr1000",
+  "pycapnp",
+  "pycares",
+  "pycaret",
+  "pycarlo",
+  "pycasbin",
+  "pycausalimpact",
+  "pycaw",
+  "pyccolo",
+  "pycdlib",
+  "pycel",
+  "pycg",
+  "pychrome",
+  "pychromecast",
+  "pycifrw",
+  "pyclamd",
+  "pyclang",
+  "pycld2",
+  "pycld3",
+  "pyclean",
+  "pyclibrary",
+  "pyclipper",
+  "pycln",
+  "pyclothoids",
+  "pycnite",
+  "pycobertura",
+  "pycocoevalcap",
+  "pycocotools",
+  "pycodestyle",
+  "pycognito",
+  "pycoin",
+  "pycoingecko",
+  "pycollada",
+  "pycolmap",
+  "pycomposefile",
+  "pyconfigurator",
+  "pyconify",
+  "pycosat",
+  "pycountry",
+  "pycowsay",
+  "pycparser",
+  "pycpfcnpj",
+  "pycrashreport",
+  "pycrdt",
+  "pycron",
+  "pycronofy",
+  "pycrypto",
+  "pycryptodome",
+  "pycryptodomex",
+  "pycstruct",
+  "pycsvschema",
+  "pyct",
+  "pyctcdecode",
+  "pycti",
+  "pycuda",
+  "pycups",
+  "pycurl",
+  "pydantic",
+  "pydap",
+  "pydash",
+  "pydbml",
+  "pyddq",
+  "pydeck",
+  "pydeequ",
+  "pydemumble",
+  "pydeprecate",
+  "pydeps",
+  "pydes",
+  "pydeseq2",
+  "pydevd",
+  "pydevicetree",
+  "pydgraph",
+  "pydicom",
+  "pydifact",
+  "pydirectinput",
+  "pydispatcher",
+  "pydivert",
+  "pydlt",
+  "pydo",
+  "pydocket",
+  "pydoclint",
+  "pydocstringformatter",
+  "pydocstyle",
+  "pydoctor",
+  "pydocumentdb",
+  "pydoe",
+  "pydomo",
+  "pydoris",
+  "pydot",
+  "pydotplus",
+  "pydriller",
+  "pydrive",
+  "pydrive2",
+  "pydruid",
+  "pydssp",
+  "pydub",
+  "pydyf",
+  "pydynamodb",
+  "pyeapi",
+  "pyeasee",
+  "pyecharts",
+  "pyedb",
+  "pyedflib",
+  "pyee",
+  "pyelftools",
+  "pyemvue",
+  "pyenchant",
+  "pyensembl",
+  "pyepics",
+  "pyerfa",
+  "pyescrypt",
+  "pyeventsystem",
+  "pyevtk",
+  "pyexasol",
+  "pyexcel",
+  "pyexcelerate",
+  "pyexecjs",
+  "pyexiftool",
+  "pyexiv2",
+  "pyextremes",
+  "pyfacer",
+  "pyfaidx",
+  "pyfakefs",
+  "pyfarmhash",
+  "pyfcm",
+  "pyfftw",
+  "pyffx",
+  "pyfiglet",
+  "pyfinite",
+  "pyfixest",
+  "pyflakes",
+  "pyflux",
+  "pyfmodex",
+  "pyformance",
+  "pyformlang",
+  "pyftdi",
+  "pyftpdlib",
+  "pyfunctional",
+  "pyfzf",
+  "pygad",
+  "pygal",
+  "pygaljs",
+  "pygam",
+  "pygame",
+  "pygdal",
+  "pygdbmi",
+  "pygelf",
+  "pygeocodio",
+  "pygeodesy",
+  "pygeohash",
+  "pygeoif",
+  "pygeos",
+  "pygeotile",
+  "pygerduty",
+  "pygerrit2",
+  "pygetwindow",
+  "pygfx",
+  "pyghidra",
+  "pyghmi",
+  "pygit2",
+  "pygitguardian",
+  "pygithub",
+  "pyglet",
+  "pyglm",
+  "pyglove",
+  "pygls",
+  "pygltflib",
+  "pygmars",
+  "pygments",
+  "pygnmi",
+  "pygnuutils",
+  "pygobject",
+  "pygogo",
+  "pygount",
+  "pygraphviz",
+  "pygresql",
+  "pygrib",
+  "pygrinder",
+  "pygrok",
+  "pygsheets",
+  "pygtail",
+  "pygtrie",
+  "pygwalker",
+  "pyhamcrest",
+  "pyhanko",
+  "pyhcl",
+  "pyhdb",
+  "pyhdfe",
+  "pyheck",
+  "pyheif",
+  "pyhelm3",
+  "pyhive",
+  "pyhmmer",
+  "pyhocon",
+  "pyhpke",
+  "pyhs2",
+  "pyhumps",
+  "pyhwp",
+  "pyhwpx",
+  "pyiceberg",
+  "pyicloud",
+  "pyicu",
+  "pyicumessageformat",
+  "pyimg4",
+  "pyinfra",
+  "pyink",
+  "pyinotify",
+  "pyinstaller",
+  "pyinstrument",
+  "pyinvoke",
+  "pyion2json",
+  "pyiotools",
+  "pyiqa",
+  "pyisemail",
+  "pyiso8583",
+  "pyjanitor",
+  "pyjarowinkler",
+  "pyjavaproperties3",
+  "pyjdbc",
+  "pyjks",
+  "pyjls",
+  "pyjnius",
+  "pyjokes",
+  "pyjpegls",
+  "pyjq",
+  "pyjsg",
+  "pyjslint",
+  "pyjson",
+  "pyjson5",
+  "pyjsonpatch",
+  "pyjsparser",
+  "pyjwkest",
+  "pyjwt",
+  "pykafka",
+  "pykakasi",
+  "pykalman",
+  "pykaos",
+  "pykcs11",
+  "pykd",
+  "pykdebugparser",
+  "pykdtree",
+  "pykeepass",
+  "pykerberos",
+  "pykka",
+  "pykmip",
+  "pykml",
+  "pykrige",
+  "pykrx",
+  "pykwalify",
+  "pylama",
+  "pylance",
+  "pylast",
+  "pylate",
+  "pylatex",
+  "pylatexenc",
+  "pylbfgs",
+  "pylcs",
+  "pyld",
+  "pyldavis",
+  "pyleak",
+  "pylerc",
+  "pyleri",
+  "pylertalertmanager",
+  "pylev",
+  "pylibdmtx",
+  "pylibfdt",
+  "pylibftdi",
+  "pylibiio",
+  "pylibjpeg",
+  "pyliblzfse",
+  "pylibmagic",
+  "pylibmc",
+  "pylibsrtp",
+  "pylibyear",
+  "pylightxl",
+  "pylinalg",
+  "pylink",
+  "pylint",
+  "pylmcf",
+  "pylogbeat",
+  "pylogix",
+  "pyloudnorm",
+  "pylru",
+  "pylspci",
+  "pylsqpack",
+  "pylti1p3",
+  "pyluach",
+  "pylxd",
+  "pylzss",
+  "pymacaroons",
+  "pymammotion",
+  "pymannkendall",
+  "pymantic",
+  "pymap3d",
+  "pymarc",
+  "pymarkdownlnt",
+  "pymatching",
+  "pymatgen",
+  "pymatreader",
+  "pymatting",
+  "pymavlink",
+  "pymaybe",
+  "pymbolic",
+  "pymc",
+  "pymc3",
+  "pymcubes",
+  "pymediainfo",
+  "pymeeus",
+  "pymem",
+  "pymemcache",
+  "pymemoryeditor",
+  "pymeshfix",
+  "pymeshlab",
+  "pymeta3",
+  "pymetis",
+  "pymgclient",
+  "pymiele",
+  "pymilvus",
+  "pyminizip",
+  "pymiscutils",
+  "pymisp",
+  "pymitter",
+  "pymobiledetect",
+  "pymobiledevice3",
+  "pymochow",
+  "pymodbus",
+  "pymodbustcp",
+  "pymonctl",
+  "pymonetdb",
+  "pymongo",
+  "pymongoarrow",
+  "pymongocrypt",
+  "pymonocypher",
+  "pymoo",
+  "pymorphy2",
+  "pymorphy3",
+  "pymp3",
+  "pymp4",
+  "pympler",
+  "pymqi",
+  "pymsalruntime",
+  "pymsgbox",
+  "pymssql",
+  "pymsteams",
+  "pymunk",
+  "pymupdf",
+  "pymupdf4llm",
+  "pymupdfb",
+  "pymupdfpro",
+  "pymyenergi",
+  "pymysql",
+  "pymysqllock",
+  "pymzml",
+  "pynacl",
+  "pynamodb",
+  "pynautobot",
+  "pynetbox",
+  "pynetdicom",
+  "pyngrok",
+  "pynini",
+  "pynliner",
+  "pynmea2",
+  "pynmeagps",
+  "pynndescent",
+  "pynng",
+  "pynose",
+  "pynpm",
+  "pynput",
+  "pynrrd",
+  "pyntcloud",
+  "pynvim",
+  "pynvml",
+  "pynvvideocodec",
+  "pynwb",
+  "pyobjc",
+  "pyobvector",
+  "pyocd",
+  "pyocse",
+  "pyod",
+  "pyodata",
+  "pyodbc",
+  "pyodps",
+  "pyogrio",
+  "pyomo",
+  "pyone",
+  "pyop",
+  "pyopencl",
+  "pyopengl",
+  "pyopenjtalk",
+  "pyopenms",
+  "pyopenssl",
+  "pyorbital",
+  "pyorc",
+  "pyotp",
+  "pyowm",
+  "pyoxigraph",
+  "pyoxipng",
+  "pypac",
+  "pypandoc",
+  "pyparsing",
+  "pypartmc",
+  "pypcap",
+  "pypcd4",
+  "pypcode",
+  "pypd",
+  "pypdf",
+  "pypdf2",
+  "pypdf3",
+  "pypdf4",
+  "pypdfform",
+  "pypdfium2",
+  "pypdftk",
+  "pypeg2",
+  "pypeln",
+  "pypemicro",
+  "pyperclip",
+  "pyperf",
+  "pyperformance",
+  "pyperplan",
+  "pypgconfig",
+  "pypgstac",
+  "pyphen",
+  "pyphonetics",
+  "pypi",
+  "pypika",
+  "pypinyin",
+  "pypiserver",
+  "pypistats",
+  "pypiwin32",
+  "pyplayready",
+  "pypng",
+  "pypolyline",
+  "pyportfolioopt",
+  "pypots",
+  "pypowerstore",
+  "pyppeteer",
+  "pyppmd",
+  "pyprctl",
+  "pyprep",
+  "pypresence",
+  "pyprind",
+  "pyprobables",
+  "pyprof2calltree",
+  "pyproj",
+  "pyproject2conda",
+  "pyprojroot",
+  "pypsexec",
+  "pypsrp",
+  "pypubsub",
+  "pypugjs",
+  "pypydispatcher",
+  "pypylon",
+  "pypyodbc",
+  "pypyp",
+  "pyqir",
+  "pyqlib",
+  "pyqrcode",
+  "pyqt5",
+  "pyqt6",
+  "pyqtgraph",
+  "pyqtwebengine",
+  "pyquaternion",
+  "pyquery",
+  "pyquil",
+  "pyqwest",
+  "pyrabbit",
+  "pyrabbit2",
+  "pyrad",
+  "pyrage",
+  "pyramid",
+  "pyranges",
+  "pyrasite",
+  "pyrdfa3",
+  "pyre2",
+  "pyreaddbc",
+  "pyreadline",
+  "pyreadline3",
+  "pyreadr",
+  "pyreadstat",
+  "pyrealsense2",
+  "pyrebase4",
+  "pyrect",
+  "pyrefly",
+  "pyrender",
+  "pyrepl",
+  "pyreqwest",
+  "pyresample",
+  "pyrevm",
+  "pyrfc",
+  "pyrfc3339",
+  "pyrfc6266",
+  "pyric",
+  "pyriemann",
+  "pyright",
+  "pyrit",
+  "pyrnnoise",
+  "pyro4",
+  "pyro5",
+  "pyroaring",
+  "pyrofork",
+  "pyrogram",
+  "pyroma",
+  "pyromark",
+  "pyroot",
+  "pyroots",
+  "pyrootutils",
+  "pyrotgfork",
+  "pyroute2",
+  "pyrr",
+  "pyrsistent",
+  "pyrsmi",
+  "pyrtcm",
+  "pyrtf3",
+  "pyrubberband",
+  "pysage3",
+  "pysam",
+  "pysaml2",
+  "pysbd",
+  "pyscaffold",
+  "pyscf",
+  "pyscipopt",
+  "pyscreenshot",
+  "pyscreeze",
+  "pyscss",
+  "pysdl2",
+  "pyseccomp",
+  "pysen",
+  "pysequoia",
+  "pyserde",
+  "pyserial",
+  "pyserini",
+  "pyseto",
+  "pysftp",
+  "pysha3",
+  "pyshacl",
+  "pyshark",
+  "pysher",
+  "pyshex",
+  "pyshexc",
+  "pyshortcuts",
+  "pyshorteners",
+  "pyshp",
+  "pyside2",
+  "pyside6",
+  "pysigma",
+  "pysignalr",
+  "pysimdjson",
+  "pysimplegui",
+  "pysingleton",
+  "pyslack",
+  "pyslang",
+  "pysmartdl",
+  "pysmb",
+  "pysmbclient",
+  "pysmi",
+  "pysnc",
+  "pysnmp",
+  "pysnmpcrypto",
+  "pysnooper",
+  "pysnow",
+  "pysnowflake",
+  "pysnyk",
+  "pysocks",
+  "pysodium",
+  "pysoem",
+  "pysolarmanv5",
+  "pysolr",
+  "pysonar",
+  "pyspark",
+  "pysparkling",
+  "pyspellchecker",
+  "pyspelling",
+  "pyspnego",
+  "pysqlite3",
+  "pysqlsync",
+  "pysrt",
+  "pystac",
+  "pystache",
+  "pystack",
+  "pystan",
+  "pystardog",
+  "pystaticconfiguration",
+  "pystemmer",
+  "pystoi",
+  "pyston",
+  "pystow",
+  "pystray",
+  "pystrich",
+  "pystyle",
+  "pysubs2",
+  "pysubtypes",
+  "pyswarms",
+  "pyswisseph",
+  "pytabkit",
+  "pytablereader",
+  "pytablewriter",
+  "pytailwindcss",
+  "pytango",
+  "pytapo",
+  "pytd",
+  "pytdc",
+  "pyte",
+  "pytelegrambotapi",
+  "pytenable",
+  "pytensor",
+  "pyteomics",
+  "pytesseract",
+  "pytest",
+  "pytestarch",
+  "pytestify",
+  "pytextrank",
+  "pytgcalls",
+  "pythainlp",
+  "pythena",
+  "pythondialog",
+  "pythonnet",
+  "pythonping",
+  "pythran",
+  "pythreejs",
+  "pytimeparse",
+  "pytimeparse2",
+  "pytkdocs",
+  "pytket",
+  "pytokens",
+  "pytoml",
+  "pytoniq",
+  "pytoolconfig",
+  "pytools",
+  "pytorch",
+  "pytorchcv",
+  "pytoshop",
+  "pytransform3d",
+  "pytrends",
+  "pytricia",
+  "pytrie",
+  "pytrilogy",
+  "pyts",
+  "pyttsx3",
+  "pytube",
+  "pytubefix",
+  "pyturbojpeg",
+  "pytweening",
+  "pytype",
+  "pytz",
+  "pytzdata",
+  "pyu2f",
+  "pyubx2",
+  "pyuca",
+  "pyucis",
+  "pyudev",
+  "pyudorandom",
+  "pyulog",
+  "pyunormalize",
+  "pyunpack",
+  "pyupbit",
+  "pyupgrade",
+  "pyuri",
+  "pyusb",
+  "pyuspto",
+  "pyuvm",
+  "pyuwsgi",
+  "pyvalid",
+  "pyvcd",
+  "pyvcg",
+  "pyventus",
+  "pyvers",
+  "pyverse2d",
+  "pyvertica",
+  "pyvespa",
+  "pyvex",
+  "pyvi",
+  "pyvim",
+  "pyvips",
+  "pyvirtualdisplay",
+  "pyvis",
+  "pyvisa",
+  "pyvista",
+  "pyvistaqt",
+  "pyvmomi",
+  "pyvo",
+  "pyvrl",
+  "pywa",
+  "pywatchman",
+  "pywavelets",
+  "pywebpush",
+  "pywebview",
+  "pywhatkit",
+  "pywhispercpp",
+  "pywidevine",
+  "pywikibot",
+  "pywin32",
+  "pywinauto",
+  "pywinbox",
+  "pywinctl",
+  "pywinpty",
+  "pywinrm",
+  "pyworld",
+  "pyworxcloud",
+  "pywxdump",
+  "pyx",
+  "pyx12",
+  "pyxb",
+  "pyxb-x",
+  "pyxccd",
+  "pyxcp",
+  "pyxdameraulevenshtein",
+  "pyxdg",
+  "pyxdia",
+  "pyxero",
+  "pyxirr",
+  "pyxlsb",
+  "pyxlsx",
+  "pyxnat",
+  "pyxtal",
+  "pyyaml",
+  "pyyml",
+  "pyzabbix",
+  "pyzbar",
+  "pyzipcode",
+  "pyzipper",
+  "pyzk",
+  "pyzmq",
+  "pyzotero",
+  "pyzstd",
+  "pyzxing",
+  "q",
+  "qtpy",
+  "rawpy",
+  "readabilipy",
+  "repartipy",
+  "resampy",
+  "restrictedpython",
+  "ripgrepy",
+  "rlpycairo",
+  "robotspy",
+  "rookiepy",
+  "rpy2",
+  "rpyc",
+  "s3pypi",
+  "saspy",
+  "scanpy",
+  "scapy",
+  "scipy",
+  "scrapy",
+  "serpyco",
+  "shadowcopy",
+  "sharepy",
+  "simplepyble",
+  "simpy",
+  "sodapy",
+  "sparsediffpy",
+  "spiceypy",
+  "spotifywebapipython",
+  "spotipy",
+  "spyder",
+  "spyne",
+  "spython",
+  "sqlescapy",
+  "stpyv8",
+  "strsimpy",
+  "stumpy",
+  "sudachipy",
+  "sunpy",
+  "syllapy",
+  "sympy",
+  "symspellpy",
+  "syrupy",
+  "tapipy",
+  "taskipy",
+  "tcolorpy",
+  "teslajsonpy",
+  "tftpy",
+  "thriftpy2",
+  "tm1py",
+  "traveltimepy",
+  "tronpy",
+  "tsv2py",
+  "tuspy",
+  "tuspyserver",
+  "tweepy",
+  "typedpy",
+  "typepy",
+  "tzfpy",
+  "uncompyle6",
+  "unitypy",
+  "urlpy",
+  "uv",
+  "vcrpy",
+  "verticapy",
+  "vispy",
+  "vt-py",
+  "wakepy",
+  "waybackpy",
+  "webexpythonsdk",
+  "wechatpy",
+  "wimpy",
+  "ws4py",
+  "wxpython",
+  "wyzeapy",
+  "y-py",
+  "yourdfpy",
+  "zenpy",
+  "zeroentropy",
+  "zigpy"
+ ],
+ "v1": [
+  "vt-py"
+ ],
+ "vapi-python": [
+  "wapi-python"
+ ],
+ "vcfpy": [
+  "vcrpy"
+ ],
+ "vedo": [
+  "redo",
+  "vedro"
+ ],
+ "venn": [
+  "pylint-venv"
+ ],
+ "vents": [
+  "events",
+  "jupyter-events"
+ ],
+ "venv-pack2": [
+  "venv-pack"
+ ],
+ "verdin": [
+  "vermin"
+ ],
+ "vharfbuzz": [
+  "uharfbuzz"
+ ],
+ "vise": [
+  "vine",
+  "viser"
+ ],
+ "vllm-cpu": [
+  "vllm-tpu"
+ ],
+ "vmlx": [
+  "mlx"
+ ],
+ "vpython": [
+  "bpy",
+  "bpython",
+  "gpy",
+  "ipy",
+  "ipython",
+  "py",
+  "pydoll-python",
+  "python-jobspy",
+  "python-snappy",
+  "spython"
+ ],
+ "vsg": [
+  "svg-py",
+  "vsa"
+ ],
+ "vsure": [
+  "sure"
+ ],
+ "vvm": [
+  "py-evm"
+ ],
+ "wars": [
+  "wads",
+  "warp"
+ ],
+ "wat": [
+  "python-sat"
+ ],
+ "wbt": [
+  "dbt"
+ ],
+ "webdrivermanager": [
+  "webdriver-manager"
+ ],
+ "wecom-aibot-sdk": [
+  "wecom-aibot-python-sdk",
+  "wecom-aibot-sdk-python"
+ ],
+ "wexpect": [
+  "pexpect"
+ ],
+ "whoosh3": [
+  "whoosh"
+ ],
+ "winotify": [
+  "inotify"
+ ],
+ "wraps": [
+  "wrapt"
+ ],
+ "wrds": [
+  "crds",
+  "wads"
+ ],
+ "xerox": [
+  "xero-python"
+ ],
+ "xlrd2": [
+  "xlrd"
+ ],
+ "xlrd3": [
+  "xlrd"
+ ],
+ "xsentinels": [
+  "sentinels"
+ ],
+ "yasa": [
+  "python-kasa",
+  "rasa",
+  "yara-python"
+ ],
+ "yatl": [
+  "aspy-yaml",
+  "pydantic-yaml",
+  "yaql",
+  "yarl"
+ ],
+ "yml": [
+  "aspy-yaml",
+  "lml",
+  "pydantic-xml",
+  "pydantic-yaml",
+  "pytest-xml",
+  "xml-python"
+ ],
+ "yretry": [
+  "pyramid-retry",
+  "pytest-retry",
+  "python-retry",
+  "retry"
+ ],
+ "yt": [
+  "dt",
+  "pytest-qt",
+  "pyyaml-ft",
+  "ty",
+  "vt-py",
+  "y-py",
+  "yq",
+  "yte"
+ ],
+ "ytm": [
+  "pyramid-tm",
+  "utm",
+  "yte"
+ ],
+ "yurl": [
+  "furl",
+  "purl",
+  "url-py",
+  "yarl"
+ ],
+ "yxdb": [
+  "ydb"
+ ],
+ "zaft": [
+  "daft"
+ ],
+ "zarrs": [
+  "zarr"
+ ],
+ "zengl": [
+  "zenml"
+ ],
+ "zfpy": [
+  "tzfpy"
+ ],
+ "zirium": [
+  "airium"
+ ],
+ "zmqtt": [
+  "amqtt",
+  "gmqtt"
+ ],
+ "zodb3": [
+  "zodb"
+ ],
+ "zpl": [
+  "pyro-ppl",
+  "pytest-mpl"
+ ],
+ "zulu": [
+  "izulu"
+ ]
+}

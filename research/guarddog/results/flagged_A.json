@@ -1,0 +1,862 @@
+{
+ "-": [
+  "d",
+  "i"
+ ],
+ "@aws-cdk/core": [
+  "@aws-sdk/core"
+ ],
+ "@nx/nest": [
+  "@nx/jest"
+ ],
+ "@octokit/oauth-app": [
+  "@octokit/auth-app"
+ ],
+ "@orpc/client": [
+  "@trpc/client"
+ ],
+ "@react-native/normalize-color": [
+  "@react-native/normalize-colors"
+ ],
+ "@sentry/nestjs": [
+  "@sentry/nextjs"
+ ],
+ "@storybook/builder-webpack4": [
+  "@storybook/builder-webpack5"
+ ],
+ "@storybook/jest": [
+  "@storybook/test"
+ ],
+ "@tsconfig/node18": [
+  "@tsconfig/node10",
+  "@tsconfig/node12",
+  "@tsconfig/node14",
+  "@tsconfig/node16"
+ ],
+ "@tsconfig/node20": [
+  "@tsconfig/node10"
+ ],
+ "@tsconfig/node22": [
+  "@tsconfig/node12"
+ ],
+ "@tsconfig/node24": [
+  "@tsconfig/node14"
+ ],
+ "@types/googlemaps": [
+  "@types/google.maps"
+ ],
+ "@types/jws": [
+  "@types/ws"
+ ],
+ "@types/mssql": [
+  "@types/mysql"
+ ],
+ "@types/mv": [
+  "@types/ms"
+ ],
+ "@types/mz": [
+  "@types/ms"
+ ],
+ "@types/pug": [
+  "@types/pg"
+ ],
+ "@types/stylus": [
+  "@types/stylis"
+ ],
+ "@types/tap": [
+  "@types/tmp"
+ ],
+ "@types/temp": [
+  "@types/tmp"
+ ],
+ "@types/yazl": [
+  "@types/yauzl"
+ ],
+ "@vitejs/plugin-vue2": [
+  "@vitejs/plugin-vue"
+ ],
+ "@vitest/coverage-c8": [
+  "@vitest/coverage-v8"
+ ],
+ "@webassemblyjs/wast-parser": [
+  "@webassemblyjs/wasm-parser"
+ ],
+ "amp": [
+  "tmp"
+ ],
+ "ansi-color": [
+  "ansi-colors"
+ ],
+ "ansi-wrap": [
+  "wrap-ansi"
+ ],
+ "ansistyles": [
+  "ansi-styles"
+ ],
+ "aos": [
+  "os"
+ ],
+ "argv": [
+  "arg",
+  "args"
+ ],
+ "argx": [
+  "arg",
+  "args"
+ ],
+ "asar": [
+  "asap"
+ ],
+ "atoa": [
+  "atob",
+  "btoa"
+ ],
+ "bach": [
+  "batch"
+ ],
+ "base64-url": [
+  "base64url"
+ ],
+ "bent": [
+  "ent"
+ ],
+ "binaryextensions": [
+  "binary-extensions"
+ ],
+ "blob": [
+  "glob"
+ ],
+ "bower": [
+  "bowser"
+ ],
+ "brace": [
+  "braces"
+ ],
+ "buffer-json": [
+  "json-buffer"
+ ],
+ "c8": [
+  "co"
+ ],
+ "caf": [
+  "cac",
+  "raf"
+ ],
+ "camel-case": [
+  "camelcase"
+ ],
+ "caw": [
+  "cac"
+ ],
+ "cborg": [
+  "cbor"
+ ],
+ "charset": [
+  "chardet"
+ ],
+ "chat": [
+  "chai"
+ ],
+ "ci-env": [
+  "env-ci"
+ ],
+ "cli-spinner": [
+  "cli-spinners"
+ ],
+ "cli-table2": [
+  "cli-table",
+  "cli-table3"
+ ],
+ "clui": [
+  "cliui"
+ ],
+ "code": [
+  "xcode"
+ ],
+ "coffee-script": [
+  "coffeescript"
+ ],
+ "color-space": [
+  "colorspace"
+ ],
+ "compare-version": [
+  "compare-versions"
+ ],
+ "coz": [
+  "co",
+  "coa"
+ ],
+ "crypto": [
+  "crypt"
+ ],
+ "cryptr": [
+  "crypt"
+ ],
+ "css-parse": [
+  "csv-parse"
+ ],
+ "csurf": [
+  "csrf"
+ ],
+ "ctype": [
+  "type"
+ ],
+ "cuid": [
+  "scuid",
+  "uid",
+  "uuid"
+ ],
+ "cva": [
+  "coa"
+ ],
+ "dedent-js": [
+  "ts-dedent"
+ ],
+ "delegate": [
+  "delegates"
+ ],
+ "desm": [
+  "esm"
+ ],
+ "diacritic": [
+  "diacritics"
+ ],
+ "didyoumean2": [
+  "didyoumean"
+ ],
+ "diff3": [
+  "diff"
+ ],
+ "dox": [
+  "dot"
+ ],
+ "dtype": [
+  "type"
+ ],
+ "dup": [
+  "yup"
+ ],
+ "dva": [
+  "dfa"
+ ],
+ "emitter-component": [
+  "component-emitter"
+ ],
+ "enquire-js": [
+  "enquire.js"
+ ],
+ "enzyme-adapter-react-15": [
+  "enzyme-adapter-react-16"
+ ],
+ "error": [
+  "verror"
+ ],
+ "es-cookie": [
+  "cookie-es",
+  "js-cookie"
+ ],
+ "es5-shim": [
+  "es6-shim"
+ ],
+ "esdoc": [
+  "jsdoc"
+ ],
+ "eslint-plugin-es5": [
+  "eslint-plugin-es"
+ ],
+ "eslint-plugin-json": [
+  "eslint-plugin-jsonc"
+ ],
+ "evt": [
+  "ent",
+  "ext"
+ ],
+ "expresso": [
+  "express"
+ ],
+ "fclone": [
+  "clone"
+ ],
+ "fd": [
+  "d"
+ ],
+ "fetch": [
+  "ofetch"
+ ],
+ "file-save": [
+  "file-saver"
+ ],
+ "find": [
+  "fined"
+ ],
+ "findup": [
+  "find-up"
+ ],
+ "flatten": [
+  "flatted"
+ ],
+ "fn-name": [
+  "fn.name"
+ ],
+ "fs": [
+  "is",
+  "ms",
+  "os",
+  "qs",
+  "ws"
+ ],
+ "fs-promise": [
+  "is-promise"
+ ],
+ "fstream": [
+  "stream"
+ ],
+ "g": [
+  "d",
+  "gm",
+  "i",
+  "pg"
+ ],
+ "gar": [
+  "tar"
+ ],
+ "gel": [
+  "del"
+ ],
+ "ghooks": [
+  "ahooks"
+ ],
+ "glur": [
+  "plur"
+ ],
+ "grant": [
+  "grunt"
+ ],
+ "graphiql": [
+  "graphql"
+ ],
+ "hast": [
+  "has"
+ ],
+ "hast-util-to-mdast": [
+  "mdast-util-to-hast"
+ ],
+ "hat": [
+  "has"
+ ],
+ "hbs": [
+  "has"
+ ],
+ "hdb": [
+  "idb"
+ ],
+ "html-tag": [
+  "html-tags"
+ ],
+ "htmlescape": [
+  "escape-html"
+ ],
+ "http": [
+  "https"
+ ],
+ "http2-proxy": [
+  "http-proxy"
+ ],
+ "i18n": [
+  "y18n"
+ ],
+ "ics": [
+  "is"
+ ],
+ "idx": [
+  "idb"
+ ],
+ "ipx": [
+  "ip"
+ ],
+ "is-blob": [
+  "is-glob"
+ ],
+ "is-png": [
+  "png-js"
+ ],
+ "is-tar": [
+  "tar-fs"
+ ],
+ "is-type": [
+  "type-is"
+ ],
+ "is-window": [
+  "is-windows"
+ ],
+ "is2": [
+  "is"
+ ],
+ "isurl": [
+  "is-url"
+ ],
+ "jade": [
+  "jake",
+  "sade"
+ ],
+ "js-sha1": [
+  "js-sha3"
+ ],
+ "js2xmlparser2": [
+  "js2xmlparser"
+ ],
+ "jsan": [
+  "jsbn"
+ ],
+ "jscs": [
+  "jss"
+ ],
+ "jsii": [
+  "jsbi"
+ ],
+ "jslint": [
+  "eslint",
+  "jshint"
+ ],
+ "json": [
+  "bson",
+  "jsbn",
+  "json5"
+ ],
+ "json-schema-to-zod": [
+  "zod-to-json-schema"
+ ],
+ "json3": [
+  "json5"
+ ],
+ "jsonp": [
+  "json5"
+ ],
+ "jsts": [
+  "jss"
+ ],
+ "lead": [
+  "read"
+ ],
+ "leva": [
+  "levn"
+ ],
+ "li": [
+  "ai",
+  "di",
+  "i",
+  "lie",
+  "lit"
+ ],
+ "lock": [
+  "nock"
+ ],
+ "lop": [
+  "log"
+ ],
+ "maath": [
+  "mpath"
+ ],
+ "memjs": [
+  "memfs"
+ ],
+ "memoize": [
+  "memoizee"
+ ],
+ "mimer": [
+  "immer",
+  "mime"
+ ],
+ "mixme": [
+  "mime"
+ ],
+ "ml-matrix": [
+  "gl-matrix"
+ ],
+ "mockjs": [
+  "sockjs"
+ ],
+ "murmurhash": [
+  "imurmurhash"
+ ],
+ "murmurhash3js": [
+  "murmurhash-js"
+ ],
+ "n": [
+  "d",
+  "i",
+  "nx",
+  "pn",
+  "yn"
+ ],
+ "net": [
+  "ent",
+  "next",
+  "ret"
+ ],
+ "new-date": [
+  "date-now"
+ ],
+ "node-mock-http": [
+  "node-mocks-http"
+ ],
+ "not": [
+  "dot",
+  "got",
+  "nopt"
+ ],
+ "np": [
+  "ip",
+  "ncp",
+  "npm",
+  "nx",
+  "pn"
+ ],
+ "npm-run-all2": [
+  "npm-run-all"
+ ],
+ "npm-which": [
+  "which-pm"
+ ],
+ "nps": [
+  "npm"
+ ],
+ "npx": [
+  "npm",
+  "nx"
+ ],
+ "nsp": [
+  "ncp"
+ ],
+ "oas": [
+  "has",
+  "os"
+ ],
+ "obug": [
+  "obuf"
+ ],
+ "ogl": [
+  "ol"
+ ],
+ "ono": [
+  "hono"
+ ],
+ "opn": [
+  "open",
+  "pn"
+ ],
+ "ox": [
+  "nx",
+  "ol",
+  "os",
+  "ow",
+  "rx",
+  "zx"
+ ],
+ "parsejson": [
+  "parse-json"
+ ],
+ "pascal-case": [
+  "pascalcase"
+ ],
+ "passport-oauth": [
+  "passport-oauth2"
+ ],
+ "path2": [
+  "path",
+  "pathe"
+ ],
+ "pegjs": [
+  "pngjs"
+ ],
+ "pkg": [
+  "pg",
+  "pug"
+ ],
+ "plyr": [
+  "plur"
+ ],
+ "poi": [
+  "joi"
+ ],
+ "postcss-jsx": [
+  "postcss-js"
+ ],
+ "postcss-sass": [
+  "postcss-scss"
+ ],
+ "prettier-stylelint": [
+  "stylelint-prettier"
+ ],
+ "q": [
+  "d",
+  "i",
+  "qs"
+ ],
+ "querystring": [
+  "query-string"
+ ],
+ "random-bytes": [
+  "randombytes"
+ ],
+ "rax": [
+  "raf",
+  "rx",
+  "sax"
+ ],
+ "re2": [
+  "ret"
+ ],
+ "react-autosize-textarea": [
+  "react-textarea-autosize"
+ ],
+ "react-date-picker": [
+  "react-datepicker"
+ ],
+ "react-lottie": [
+  "lottie-react"
+ ],
+ "react-rnd": [
+  "react-dnd"
+ ],
+ "react-selecto": [
+  "react-select"
+ ],
+ "readline2": [
+  "readline"
+ ],
+ "regexp-clone": [
+  "clone-regexp"
+ ],
+ "rehype-remark": [
+  "remark-rehype"
+ ],
+ "requestretry": [
+  "retry-request"
+ ],
+ "retry-axios": [
+  "axios-retry"
+ ],
+ "right-pad": [
+  "pad-right"
+ ],
+ "rollup-plugin-polyfill-node": [
+  "rollup-plugin-node-polyfills"
+ ],
+ "rollup-plugin-ts": [
+  "rollup-plugin-dts"
+ ],
+ "rollup-plugin-typescript": [
+  "rollup-plugin-typescript2"
+ ],
+ "rootpath": [
+  "path-root"
+ ],
+ "safe-regex2": [
+  "safe-regex"
+ ],
+ "save": [
+  "sade",
+  "sane"
+ ],
+ "scss": [
+  "css",
+  "sass"
+ ],
+ "scss-loader": [
+  "css-loader",
+  "sass-loader"
+ ],
+ "select": [
+  "select2"
+ ],
+ "selecto": [
+  "select2"
+ ],
+ "sha": [
+  "sha1",
+  "sha3",
+  "shx"
+ ],
+ "sqlite": [
+  "sqlite3"
+ ],
+ "sswr": [
+  "swr"
+ ],
+ "stable": [
+  "table"
+ ],
+ "store": [
+  "store2"
+ ],
+ "string": [
+  "astring"
+ ],
+ "string-ts": [
+  "is-string"
+ ],
+ "swrv": [
+  "sirv",
+  "swr"
+ ],
+ "tap": [
+  "tar",
+  "tmp"
+ ],
+ "tape": [
+  "type"
+ ],
+ "temp-file": [
+  "tempfile"
+ ],
+ "test": [
+  "jest"
+ ],
+ "textextensions": [
+  "text-extensions"
+ ],
+ "time-zone": [
+  "one-time"
+ ],
+ "tldjs": [
+  "tlds",
+  "tldts"
+ ],
+ "tmcp": [
+  "tmp"
+ ],
+ "trouter": [
+  "router"
+ ],
+ "tryor": [
+  "tryer"
+ ],
+ "ts-map": [
+  "is-map"
+ ],
+ "ts-type": [
+  "type-is"
+ ],
+ "tsc": [
+  "tsx"
+ ],
+ "tsd": [
+  "tsx"
+ ],
+ "tsdx": [
+  "tsx"
+ ],
+ "tslint": [
+  "eslint"
+ ],
+ "tslint-config-airbnb": [
+  "eslint-config-airbnb"
+ ],
+ "tslint-config-prettier": [
+  "eslint-config-prettier"
+ ],
+ "tslint-config-standard": [
+  "eslint-config-standard"
+ ],
+ "tslint-plugin-prettier": [
+  "eslint-plugin-prettier"
+ ],
+ "tslog": [
+  "ts-log"
+ ],
+ "tsm": [
+  "esm",
+  "tsx"
+ ],
+ "ttypescript": [
+  "typescript"
+ ],
+ "uglify-es": [
+  "uglify-js"
+ ],
+ "uglifyjs": [
+  "uglify-js"
+ ],
+ "ulidx": [
+  "ulid"
+ ],
+ "umd": [
+  "uid"
+ ],
+ "uniqs": [
+  "uniq"
+ ],
+ "upath2": [
+  "upath"
+ ],
+ "urql": [
+  "url"
+ ],
+ "usb": [
+  "use"
+ ],
+ "user": [
+  "bser",
+  "use"
+ ],
+ "user-home": [
+  "userhome"
+ ],
+ "utf7": [
+  "utf8"
+ ],
+ "utif": [
+  "util"
+ ],
+ "util-promisify": [
+  "util.promisify"
+ ],
+ "utile": [
+  "util",
+  "utila"
+ ],
+ "vasync": [
+  "async"
+ ],
+ "vm2": [
+  "pm2"
+ ],
+ "wd": [
+  "cwd",
+  "d",
+  "ws"
+ ],
+ "wif": [
+  "wmf"
+ ],
+ "wouter": [
+  "router"
+ ],
+ "x-path": [
+  "xpath"
+ ],
+ "xcase": [
+  "case"
+ ],
+ "xmldoc": [
+  "xmldom"
+ ],
+ "xo": [
+  "co"
+ ],
+ "xstream": [
+  "stream"
+ ],
+ "yaml-js": [
+  "js-yaml",
+  "yamljs"
+ ],
+ "yo": [
+  "co",
+  "yn"
+ ],
+ "youch": [
+  "touch"
+ ]
+}
