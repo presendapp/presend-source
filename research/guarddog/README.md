@@ -34,9 +34,9 @@ one of its targets is within the top N):
 | top 4,000 / 5,000 | 217 | 234 |
 | full list (8,000 / 10,000) | 263 | 351 |
 
-Detection of known typosquats (27, from Presend's test fixtures) does not grow past a few thousand targets:
+Detection of known typosquats (26, from Presend's test fixtures) does not grow past a few thousand targets:
 npm 10, 12, 14 and 14 of 15 with 1,000, 2,000, 4,000 and 8,000 targets (`moongose` is two edits away from
-`mongoose`); PyPI 11 of 12 with 1,000 and 12 of 12 with 2,500 and 5,000.
+`mongoose`); PyPI 10 of 11 with 1,000 and 11 of 11 with 2,500 targets or more.
 
 ## Caveats
 
@@ -44,8 +44,8 @@ npm 10, 12, 14 and 14 of 15 with 1,000, 2,000, 4,000 and 8,000 targets (`moongos
   recent package (`cartapy`, first release August 2026, one letter from `cartopy`) deserves a look.
   The flagged lists are in `results/`.
 - The known-typosquat set is small and targets very popular packages: read the detection figures as a trend.
-  It lists `beautifulsoup`, which is the legitimate Beautiful Soup 3 project, so its "miss" with 10,000 and
-  15,000 targets (where it is itself in the list) is not a real loss.
+  It no longer lists `beautifulsoup`: that is the legitimate Beautiful Soup 3 project, removed from the set on
+  3 October 2026 after this measurement brought it up.
 - B approximates the list of #799 with the hugovk ranking.
 
 ## Reproduce

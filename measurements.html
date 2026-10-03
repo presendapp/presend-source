@@ -43,7 +43,7 @@
   <ul>
     <li><strong>Top 15,000 PyPI packages:</strong> 11 flagged. Each was reviewed by hand and left flagged deliberately.</li>
     <li><strong>17,338 high-impact npm packages</strong> (the npm-high-impact list): 1 flagged, reviewed and left flagged deliberately.</li>
-    <li><strong>Known typosquats in our test set:</strong> 27 of 27 detected.</li>
+    <li><strong>Known typosquats in our test set:</strong> 26 of 26 detected.</li>
   </ul>
   <p>The popular-package lists move. On 1 October, four packages that had recently entered the top 15,000 PyPI (djongo, tmol, orgparse, webp) were flagged; we checked each repository and added them to the reviewed list the same day.</p>
   <p><strong>Blind spot:</strong> only names close to a list of popular targets are checked. A name that an AI model invents and that resembles no real package (slopsquatting) is not caught by name similarity.</p>
@@ -78,7 +78,7 @@ node tests/package-age/measure.mjs 20000     # whole lists, about 14 minutes (ne
 
   <h2>Contributions to other tools</h2>
   <ul>
-    <li><strong>NVIDIA SkillSpector</strong>, typosquat rule SC6 (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged 28 September 2026). Measured with the project's own code: 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, 13 of 27 known typosquats detected. After the fix (native, no dependency on Presend): 6 and 0, 27 of 27.</li>
+    <li><strong>NVIDIA SkillSpector</strong>, typosquat rule SC6 (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged 28 September 2026). Measured with the project's own code: 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, 12 of 26 known typosquats detected. After the fix (native, no dependency on Presend): 6 and 0, 26 of 26.</li>
     <li><strong>twyn</strong> (<a href="https://github.com/elementsinteractive/twyn/pull/540" target="_blank" rel="noopener noreferrer">PR #540</a>, in review). Its trusted-package lists had not been refreshed since March (PyPI) and December (npm) because the weekly update workflow failed silently. With fresh lists, false positives on top PyPI packages went from 407 to 0; on npm they went from 218 to 284 (a different source list, not investigated).</li>
   </ul>
 

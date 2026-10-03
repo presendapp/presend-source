@@ -51,7 +51,7 @@
     <li><strong>Trusting npm scopes.</strong> <code>@aws-sdk/client-sso</code> is one edit from <code>@aws-sdk/client-s3</code>, but a scope belongs to one organisation, so a package is never flagged against a target in its own scope.</li>
     <li><strong>A reviewed list of legitimate neighbours.</strong> Some real packages are close to a popular name: <code>psycopg</code>, <code>niquests</code>, <code>preact</code>. Each one was checked by hand (repository, age, history) before being listed: 51 on PyPI and 57 on npm today. We never remove a target to silence a warning.</li>
   </ul>
-  <p>Result on popular packages: from 58 flagged to 11 on PyPI and from 65 to 1 on npm. The remaining 12 were reviewed and left flagged deliberately. All 27 known typosquats in our test set are still detected.</p>
+  <p>Result on popular packages: from 58 flagged to 11 on PyPI and from 65 to 1 on npm. The remaining 12 were reviewed and left flagged deliberately. All 26 known typosquats in our test set are still detected.</p>
 
   <h2>Tests that fail when the noise comes back</h2>
   <p>The three measurement scripts fail if a popular package is flagged without having been reviewed. Any change to the list of targets or to the legitimate neighbours has to pass them, so a fix for one false alarm cannot quietly create others.</p>
@@ -67,7 +67,7 @@
   </ul>
 
   <h2>Measuring other tools the same way</h2>
-  <p>The same method works on any typosquat rule. Applied to the SC6 rule of NVIDIA's SkillSpector, with its own code, it found 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, with 13 of 27 known typosquats detected. After a native fix (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged), the figures were 6, 0 and 27 of 27.</p>
+  <p>The same method works on any typosquat rule. Applied to the SC6 rule of NVIDIA's SkillSpector, with its own code, it found 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, with 12 of 26 known typosquats detected. After a native fix (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged), the figures were 6, 0 and 26 of 26.</p>
 
   <h2>Try it, reproduce it</h2>
   <pre><code>curl "https://presend.pages.dev/api/typosquat-check?ecosystem=PyPI&amp;package=reqeusts"</code></pre>

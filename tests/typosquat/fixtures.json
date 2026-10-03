@@ -207,7 +207,6 @@
    "djanga": "django",
    "colourama": "colorama",
    "python3-dateutil": "python-dateutil",
-   "beautifulsoup": "beautifulsoup4",
    "tenserflow": "tensorflow",
    "numpi": "numpy",
    "panadas": "pandas",
