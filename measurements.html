@@ -79,13 +79,14 @@
   <h2>Reproduce it</h2>
   <p>The code and test sets are in the public <a href="https://github.com/presendapp/presend-source" target="_blank" rel="noopener noreferrer">presend-source</a> repository (Node.js, no dependencies):</p>
   <pre><code>node tests/typosquat/run.mjs                 # offline test set
+node tests/typosquat/osv-malicious.mjs       # 1,023 real malicious packages, offline
 node tests/typosquat/top-pypi.mjs            # top 15,000 PyPI (network)
 node tests/typosquat/top-npm.mjs             # npm-high-impact (network)
 node tests/maintainer-change/top-npm.mjs 200 # about 3 minutes (network)
 node tests/package-age/measure.mjs 20000     # whole lists, about 14 minutes (network)
 python3 research/malicious-packages/extract.py /tmp && node research/malicious-packages/measure.mjs /tmp   # about 240 MB
 node research/malicious-packages/legit.mjs    # PyPI ranks 15,001-30,000 (network)</code></pre>
-  <p>The typosquat and publisher-change scripts fail if a popular package is flagged without having been reviewed; the new-package script reports the counts by age.</p>
+  <p>The typosquat and publisher-change scripts fail if a popular package is flagged without having been reviewed; the new-package script reports the counts by age. A regression test also fails if any of the 1,023 real malicious packages the typosquat check flagged on 3 October 2026 stops being flagged.</p>
 
   <h2>Contributions to other tools</h2>
   <ul>
