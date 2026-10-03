@@ -195,10 +195,10 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで最大 100 件の名前を送れ、レート制限上は 1 リクエストとして数えます。無効な項目はその項目だけエラーを返し、バッチ全体は失敗しません。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodahs","expres","react"]}' https://presend.pages.dev/api/typosquat-check</pre>
   <h3 id="GET-api-maintainer-change-check">GET /api/maintainer-change-check</h3>
-  <p style="color:var(--color-muted); max-width:60ch;"><strong>npm のみ。</strong>過去 365 日以内に、180 日以上更新のなかったパッケージを、これまで見られなかった人間の公開者が引き継いだ場合に検出します。event-stream 侵害（2018 年）の背後にあったパターンです。週 10 万ダウンロード以上の別パッケージを既に保守している公開者への引き継ぎや、npm の trusted publishing への移行は、フラグを立てずに別途報告します。公開者の ID は変わらないため、既存のメンテナーアカウントの乗っ取りや、元のメンテナーによる悪意あるリリースは検出<strong>しません</strong>。</p>
+  <p style="color:var(--color-muted); max-width:60ch;"><strong>npm と PyPI。</strong>npm では、過去 365 日以内に、180 日以上更新のなかったパッケージを、これまで見られなかった人間の公開者が引き継いだ場合に検出します。event-stream 侵害（2018 年）の背後にあったパターンです。週 10 万ダウンロード以上の別パッケージを既に保守している公開者への引き継ぎや、npm の trusted publishing への移行は、フラグを立てずに別途報告します。公開者の ID は変わらないため、既存のメンテナーアカウントの乗っ取りや、元のメンテナーによる悪意あるリリースは検出<strong>しません</strong>。PyPI では存在と経過日数のみを返します。PyPI は各リリースの公開者を公開していないため、公開者の分析は <code>maintainer_analysis: "npm_only"</code> を返します。両レジストリで、<code>first_published</code> と <code>package_age_days</code> がパッケージの経過日数を示し、初回公開から 30 日未満のパッケージでは <code>new_package</code> が true になります。PyPI では PyPI に残っている最も古いファイルを基準にするため、リリースが削除されているとプロジェクトが実際より新しく見えます。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/maintainer-change-check?ecosystem=npm&amp;package=lodash"</pre>
   <h3 id="POST-api-maintainer-change-check">POST /api/maintainer-change-check</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで最大 20 件の npm パッケージを送れ、レート制限上は 1 リクエストとして数えます。存在しないパッケージやレジストリの障害は項目ごとに報告され、バッチ全体は失敗しません。</p>
+  <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで同じレジストリ（npm または PyPI）のパッケージを最大 20 件送れ、レート制限上は 1 リクエストとして数えます。存在しないパッケージやレジストリの障害は項目ごとに報告され、バッチ全体は失敗しません。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodash","express"]}' https://presend.pages.dev/api/maintainer-change-check</pre>
   <h3 id="GET-api-vulnerability-check">GET /api/vulnerability-check</h3>
   <p style="color:var(--color-muted); max-width:60ch;">パッケージのバージョンを OSV.dev で確認します: npm、PyPI、Go、crates.io、Maven、RubyGems、Packagist、NuGet。CVE や GHSA の識別子を直接調べるには cve-lookup を使ってください。</p>
@@ -207,7 +207,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">GitHub REST API 経由で、GitHub リポジトリのスター数、フォーク数、未解決の Issue 数、ライセンス、アーカイブ状態、最終 push からの日数を取得します。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/repo-health-check?repo=lodash/lodash"</pre>
   <h3 id="GET-api-supply-chain-check">GET /api/supply-chain-check</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">maintainer-change-check（npm のみ）、vulnerability-check、typosquat-check、repo-health-check（可能な場合はレジストリのメタデータからリポジトリを特定）を 1 回の呼び出しにまとめ、総合判定を返します。</p>
+  <p style="color:var(--color-muted); max-width:60ch;">maintainer-change-check（公開者の分析、npm のみ）、vulnerability-check、typosquat-check、repo-health-check（可能な場合はレジストリのメタデータからリポジトリを特定）を 1 回の呼び出しにまとめ、総合判定を返します。初回公開から 30 日未満のパッケージには <code>new_package</code> フラグが付き、総合判定は少なくとも <code>review_recommended</code> になります。脆弱性は任意の <code>version</code> パラメーターで指定したバージョン、指定がなければ最新の公開バージョンについて確認します（<code>version_checked</code>、<code>version_source</code>）。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/supply-chain-check?ecosystem=npm&amp;package=lodash"</pre>
 
   <h2>ブロックチェーン</h2>
