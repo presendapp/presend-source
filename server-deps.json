@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.presendapp/presend-deps",
+  "title": "Presend dependency checks",
+  "description": "Check an npm/PyPI package before an AI agent installs it: 5 focused supply-chain tools.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/presendapp/presend-source",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://presend.pages.dev/mcp-deps"
+    }
+  ]
+}
