@@ -17,7 +17,8 @@ export async function onRequest(context) {
         request.headers.get("X-Presend-Test") !== "1") {
       const day = new Date().toISOString().slice(0, 10);
       const endpoint = endpointOf(new URL(request.url).pathname);
-      const family = uaFamily(request.headers.get("User-Agent"));
+      // Our own /check page identifies itself (js/check-deps.js); only this exact value is kept.
+      const family = request.headers.get("X-Presend-Client") === "check" ? "web:check" : uaFamily(request.headers.get("User-Agent"));
       context.waitUntil(env.DB.prepare(UPSERT).bind(day, endpoint, family).run().catch(() => {}));
     }
   } catch (e) {

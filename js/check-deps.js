@@ -32,7 +32,7 @@
   }
 
   async function post(endpoint, ecosystem, names) {
-    var r = await fetch('/api/' + endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    var r = await fetch('/api/' + endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Presend-Client': 'check' },
       body: JSON.stringify({ ecosystem: ecosystem, packages: names }) });
     if (r.status === 429) throw new Error('rate limited, wait a minute and try again');
     if (!r.ok) throw new Error('HTTP ' + r.status);
