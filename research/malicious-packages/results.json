@@ -1,0 +1,18 @@
+{
+ "date": "2026-10-03",
+ "PyPI": {
+  "total": 11776,
+  "flagged": 628,
+  "percent": 5.3
+ },
+ "npm, published in 2025": {
+  "total": 191307,
+  "flagged": 302,
+  "percent": 0.2
+ },
+ "npm, other years": {
+  "total": 30554,
+  "flagged": 93,
+  "percent": 0.3
+ }
+}

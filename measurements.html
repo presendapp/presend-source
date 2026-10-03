@@ -36,17 +36,26 @@
 </header>
 <main class="wrap m" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">Measured false-positive rates</h1>
-  <p>A dependency check that flags popular, legitimate packages gets ignored. So we measure how often ours do, on the most-used packages, and publish the result, the method and the blind spots. Last runs: 1 October 2026, and 2 October 2026 for the new-package signal.</p>
+  <p>A dependency check that flags popular, legitimate packages gets ignored. So we measure how often ours do, on the most-used packages, and publish the result, the method and the blind spots. Last runs: 1 October 2026, 2 October for the new-package signal and 3 October for real malicious packages.</p>
   <p>Want these checks on every pull request and for your AI coding agents? <a href="/teams">Presend for teams</a> is a waitlist while we test demand.</p>
 
   <h2>Typosquat check (npm and PyPI)</h2>
   <ul>
     <li><strong>Top 15,000 PyPI packages:</strong> 11 flagged. Each was reviewed by hand and left flagged deliberately.</li>
     <li><strong>17,338 high-impact npm packages</strong> (the npm-high-impact list): 1 flagged, reviewed and left flagged deliberately.</li>
+    <li><strong>PyPI packages ranked 15,001&ndash;30,000</strong> by September 2026 downloads, never used to tune the check: 41 of 15,000 flagged (0.3%), not reviewed one by one. The two lists above are the ones the reviewed exceptions were drawn from.</li>
     <li><strong>Typosquat test set</strong> (26 look-alikes of popular packages, several from real incidents such as <code>crossenv</code> and <code>python3-dateutil</code>): 26 of 26 detected.</li>
   </ul>
   <p>The popular-package lists move. On 1 October, four packages that had recently entered the top 15,000 PyPI (djongo, tmol, orgparse, webp) were flagged; we checked each repository and added them to the reviewed list the same day.</p>
   <p><strong>Blind spot:</strong> only names close to a list of popular targets are checked. A name that an AI model invents and that resembles no real package (slopsquatting) is not caught by name similarity.</p>
+
+  <h2>Against real malicious packages</h2>
+  <p>Name similarity only catches malware that imitates a popular name. To see how much that is, we ran the typosquat check on the malicious packages recorded in OSV (OpenSSF malicious-packages advisories, withdrawn ones excluded), on 3 October 2026:</p>
+  <ul>
+    <li><strong>PyPI:</strong> 628 of 11,776 flagged (5.3%).</li>
+    <li><strong>npm:</strong> 93 of 30,554 flagged (0.3%), and 302 of 191,307 (0.2%) for packages published in 2025, most with random-looking names.</li>
+  </ul>
+  <p>Most malicious packages do not imitate a popular name. On npm, many are internal company names published for dependency confusion, or spam. On PyPI, names that add a word to a target (<code>requests-beta</code>) are not caught by edit distance. The flagged ones aim at the expected targets: <code>requests</code>, <code>beautifulsoup4</code> and <code>colorama</code> on PyPI, <code>electron</code> on npm. This is why the check is a triage signal to use alongside a malware scanner, not instead of one. Details and scripts: <a href="https://github.com/presendapp/presend-source/tree/main/research/malicious-packages" target="_blank" rel="noopener noreferrer">research/malicious-packages</a>.</p>
 
   <h2>Publisher-change check (npm only)</h2>
   <ul>
@@ -73,7 +82,9 @@
 node tests/typosquat/top-pypi.mjs            # top 15,000 PyPI (network)
 node tests/typosquat/top-npm.mjs             # npm-high-impact (network)
 node tests/maintainer-change/top-npm.mjs 200 # about 3 minutes (network)
-node tests/package-age/measure.mjs 20000     # whole lists, about 14 minutes (network)</code></pre>
+node tests/package-age/measure.mjs 20000     # whole lists, about 14 minutes (network)
+python3 research/malicious-packages/extract.py /tmp && node research/malicious-packages/measure.mjs /tmp   # about 240 MB
+node research/malicious-packages/legit.mjs    # PyPI ranks 15,001-30,000 (network)</code></pre>
   <p>The typosquat and publisher-change scripts fail if a popular package is flagged without having been reviewed; the new-package script reports the counts by age.</p>
 
   <h2>Contributions to other tools</h2>
