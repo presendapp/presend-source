@@ -47,7 +47,7 @@ import { callInternal } from './_shared/internal-call.js';
 // pas seulement techniquement plus complexe.
 // Généré automatiquement à partir de openapi.json -- garantit la cohérence avec la doc réelle.
 
-function corsHeaders(extra = {}) {
+export function corsHeaders(extra = {}) {
   return {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -56,7 +56,7 @@ function corsHeaders(extra = {}) {
   };
 }
 
-const PROTOCOL_VERSION = '2025-06-18';
+export const PROTOCOL_VERSION = '2025-06-18';
 
 // Tools that compute locally without contacting any external service (openWorldHint: false).
 // Verified 2026-09-26: no fetch()/validateAndResolve()/connect() in their endpoint files or imports.
@@ -126,7 +126,7 @@ function recordUsage(ctx, endpoint, status) {
   }
 }
 
-const TOOLS = [
+export const TOOLS = [
   {
     name: 'address_risk',
     description: "Screens a crypto address against every OFAC SDN digital currency address list. EVM (0x...) and Bitcoin (bc1..., 1..., 3...) addresses are fully covered (sanctioned true or false, with the matching lists). Addresses of other chains are flagged when listed; Cosmos SDK bech32 addresses return sanctioned: null when not listed, as OFAC publishes none. A sanctions signal only, not a full risk score.",
@@ -377,18 +377,19 @@ const TOOLS = [
 function jsonRpcResult(id, result) {
   return { jsonrpc: '2.0', id, result };
 }
-function jsonRpcError(id, code, message) {
+export function jsonRpcError(id, code, message) {
   return { jsonrpc: '2.0', id, error: { code, message } };
 }
 
-async function handleRequest(body, ctx) {
+// tools / serverName / serverVersion default to the full server; /mcp-deps passes a subset.
+export async function handleRequest(body, ctx, tools = TOOLS, serverName = 'presend-mcp', serverVersion = '3.1.2') {
   const { id, method, params } = body;
 
   if (method === 'initialize') {
     return jsonRpcResult(id, {
       protocolVersion: PROTOCOL_VERSION,
       capabilities: { tools: {} },
-      serverInfo: { name: 'presend-mcp', version: '3.1.2' },
+      serverInfo: { name: serverName, version: serverVersion },
     });
   }
 
@@ -398,7 +399,7 @@ async function handleRequest(body, ctx) {
 
   if (method === 'tools/list') {
     return jsonRpcResult(id, {
-      tools: TOOLS.map(({ name, description, inputSchema }) => ({
+      tools: tools.map(({ name, description, inputSchema }) => ({
         name, description, inputSchema,
         annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: !CLOSED_WORLD.has(name) },
       })),
@@ -406,7 +407,7 @@ async function handleRequest(body, ctx) {
   }
 
   if (method === 'tools/call') {
-    const tool = TOOLS.find((t) => t.name === params?.name);
+    const tool = tools.find((t) => t.name === params?.name);
     if (!tool) {
       return jsonRpcError(id, -32602, `Unknown tool: ${params?.name}`);
     }
