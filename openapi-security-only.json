@@ -1919,8 +1919,36 @@
                     "version": {
                       "type": "string"
                     },
+                    "scope": {
+                      "type": "string",
+                      "description": "Which versions the result covers: \"version <x>\", or \"all versions\" when no version is given (advisories affecting any version, including old ones, are counted)."
+                    },
+                    "existence": {
+                      "type": "string",
+                      "enum": [
+                        "found",
+                        "not_found",
+                        "unavailable",
+                        "not_checked"
+                      ],
+                      "description": "Whether the package exists on its registry. Checked for npm and PyPI when OSV.dev returns no advisory: not_found = no package with this name; unavailable = the registry could not be reached; not_checked = other ecosystems."
+                    },
+                    "found": {
+                      "type": "boolean",
+                      "description": "Present, and false, when no package with this name exists on npm or PyPI."
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "Explains a not-found package, an unconfirmed existence, a missing version or truncated results."
+                    },
+                    "results_truncated": {
+                      "type": "boolean",
+                      "description": "true when OSV.dev returned more than 5 pages of results; only the first 5 are counted."
+                    },
                     "vulnerable": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "nullable": true,
+                      "description": "true if at least one advisory matches. null when the package does not exist on npm or PyPI, or when its existence could not be confirmed: never read null as clean."
                     },
                     "count": {
                       "type": "integer"

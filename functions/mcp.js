@@ -362,7 +362,7 @@ export const TOOLS = [
   },
   {
     name: 'vulnerability_check',
-    description: "Checks a package (optionally a specific version) against OSV.dev for known vulnerabilities: npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist and NuGet. Use cve_lookup when you already have a CVE/GHSA ID, or supply_chain_check for a combined verdict.",
+    description: "Checks a package (optionally a specific version) against OSV.dev for known vulnerabilities: npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist and NuGet. For npm and PyPI, a name that does not exist returns found: false and vulnerable: null, never a clean result. Use cve_lookup when you already have a CVE/GHSA ID, or supply_chain_check for a combined verdict.",
     inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Package ecosystem, e.g. npm, PyPI, Go, crates.io, Maven, RubyGems, Packagist, or NuGet."}, "package": {"type": "string", "description": "Package name to check against OSV.dev for known CVEs."}, "version": {"type": "string", "description": "Omit to check all versions of the package."}}, "required": ["ecosystem", "package"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/vulnerability-check?${new URLSearchParams(args).toString()}` }),
   },

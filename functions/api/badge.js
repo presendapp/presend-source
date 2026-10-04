@@ -58,6 +58,14 @@ export async function onRequestGet(context) {
       }), { headers: { ...cors, 'Cache-Control': 'no-store' } });
     }
 
+    // Nom inexistant ou registre injoignable : jamais de vert (vulnerability-check, 4 oct. 2026).
+    if (vulnData.found === false || vulnData.vulnerable === null) {
+      return new Response(JSON.stringify({
+        schemaVersion: 1, label: `presend: ${pkg}`,
+        message: vulnData.found === false ? 'package not found' : 'check unavailable', color: 'lightgrey'
+      }), { headers: { ...cors, 'Cache-Control': 'no-store' } });
+    }
+
     const vulnCount = vulnData.vulnerabilities.length;
     const suspicious = maintData !== undefined && maintData.suspicious;
 
