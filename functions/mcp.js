@@ -61,6 +61,51 @@ export const PROTOCOL_VERSION = '2025-06-18';
 // Tools that compute locally without contacting any external service (openWorldHint: false).
 // Verified 2026-09-26: no fetch()/validateAndResolve()/connect() in their endpoint files or imports.
 const CLOSED_WORLD = new Set(['base64', 'color', 'csv_json', 'email_disposable', 'iban_validate', 'jwt_decode', 'password', 'phone_verify', 'text_similarity', 'timestamp', 'tx_decode', 'typosquat_check', 'url_clean', 'user_agent', 'uuid']);
+
+// Titre lisible de chaque outil (spec MCP : `title` et `annotations.title`) ; exige par l'annuaire
+// des connecteurs de Claude (« every tool includes a title and readOnlyHint or destructiveHint »).
+const TITLES = {
+  address_risk: "Crypto address sanctions check",
+  ai_crawler_check: "AI crawler check",
+  base64: "Base64 encode / decode",
+  color: "Color converter",
+  csv_json: "CSV / JSON converter",
+  cve_lookup: "CVE lookup",
+  dns_lookup: "DNS lookup",
+  email_disposable: "Disposable email check",
+  email_security: "Email domain security check",
+  email_validate: "Email address validation",
+  email_verify: "Email verification",
+  favicon: "Favicon lookup",
+  iban_validate: "IBAN validation",
+  ip_reputation: "IP reputation check",
+  jwt_decode: "JWT decode",
+  jwt_verify: "JWT signature verification",
+  link_metadata: "Link preview metadata",
+  maintainer_change_check: "Package maintainer change check",
+  password: "Password generator",
+  password_breach: "Password breach check",
+  password_check: "Password strength check",
+  phone_verify: "Phone number validation",
+  redirect_trace: "Redirect trace",
+  repo_health_check: "Repository health check",
+  rpc_check: "Cosmos RPC endpoint check",
+  security_headers: "HTTP security headers check",
+  security_scan: "Website security scan",
+  subdomains: "Subdomain discovery",
+  supply_chain_check: "Package supply-chain check",
+  text_similarity: "Text similarity",
+  timestamp: "Timestamp converter",
+  tx_decode: "Cosmos transaction decoder",
+  typosquat_check: "Package typosquat check",
+  url_clean: "URL tracking-parameter cleaner",
+  url_reputation: "URL reputation check",
+  user_agent: "User-Agent parser",
+  uuid: "UUID generator",
+  vat_validate: "EU VAT number validation",
+  vulnerability_check: "Package vulnerability check",
+  whois_lookup: "WHOIS lookup",
+};
 const API_BASE = 'https://presend.pages.dev/api';
 
 // Endpoint modules called in-process by tools/call (see callInternal).
@@ -400,8 +445,8 @@ export async function handleRequest(body, ctx, tools = TOOLS, serverName = 'pres
   if (method === 'tools/list') {
     return jsonRpcResult(id, {
       tools: tools.map(({ name, description, inputSchema }) => ({
-        name, description, inputSchema,
-        annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: !CLOSED_WORLD.has(name) },
+        name, title: TITLES[name] || name, description, inputSchema,
+        annotations: { title: TITLES[name] || name, readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: !CLOSED_WORLD.has(name) },
       })),
     });
   }
