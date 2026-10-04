@@ -201,7 +201,7 @@ print(json.load(urllib.request.urlopen(req)))</pre>
   <p style="color:var(--color-muted); max-width:60ch;">バッチモード: 1 リクエストで同じレジストリ（npm または PyPI）のパッケージを最大 20 件送れ、レート制限上は 1 リクエストとして数えます。存在しないパッケージやレジストリの障害は項目ごとに報告され、バッチ全体は失敗しません。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl -X POST -H "Content-Type: application/json" -d '{"ecosystem":"npm","packages":["lodash","express"]}' https://presend.pages.dev/api/maintainer-change-check</pre>
   <h3 id="GET-api-vulnerability-check">GET /api/vulnerability-check</h3>
-  <p style="color:var(--color-muted); max-width:60ch;">パッケージのバージョンを OSV.dev で確認します: npm、PyPI、Go、crates.io、Maven、RubyGems、Packagist、NuGet。CVE や GHSA の識別子を直接調べるには cve-lookup を使ってください。</p>
+  <p style="color:var(--color-muted); max-width:60ch;">パッケージのバージョンを OSV.dev で確認します: npm、PyPI、Go、crates.io、Maven、RubyGems、Packagist、NuGet。CVE や GHSA の識別子を直接調べるには cve-lookup を使ってください。バージョンを指定しない場合は、すべてのバージョンに関する勧告が数えられます（<code>scope</code>）。npm と PyPI では、存在しない名前には <code>found: false</code> と <code>vulnerable: null</code> を返し、「問題なし」とは判定しません。</p>
   <pre style="background:var(--color-surface); padding:1rem; border-radius:8px; overflow-x:auto;">curl "https://presend.pages.dev/api/vulnerability-check?ecosystem=npm&amp;package=lodash&amp;version=4.17.15"</pre>
   <h3 id="GET-api-repo-health-check">GET /api/repo-health-check</h3>
   <p style="color:var(--color-muted); max-width:60ch;">GitHub REST API 経由で、GitHub リポジトリのスター数、フォーク数、未解決の Issue 数、ライセンス、アーカイブ状態、最終 push からの日数を取得します。</p>
