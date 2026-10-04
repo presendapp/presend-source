@@ -42,7 +42,7 @@
 <main class="wrap teams" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">Presend for teams</h1>
   <p><strong>Typosquat and publisher-change checks for npm and PyPI dependencies, in your pull requests and before your AI agent installs a package, with a false-positive rate we measure and publish, so the checks stay switched on.</strong></p>
-  <p>Nothing is for sale yet: this page tests whether teams want more. The checks themselves are free today.</p>
+  <p>Nothing is for sale yet: this page tests whether teams want more. The checks themselves are free today. If your platform's agents or users install packages, you can ask for a free one-month pilot: send us package names (no code) and we report what would have been flagged, why, and how many of those alerts were false. Write to <a href="mailto:presendapp@gmail.com">presendapp@gmail.com</a>.</p>
 
   <h2>Use it today, free</h2>
   <p>In a GitHub workflow, after <code>actions/checkout</code>:</p>
@@ -73,6 +73,7 @@
     <li>Higher limits for AI coding agents that check every package before installing it (MCP).</li>
     <li>API keys with higher limits than the free tier.</li>
     <li>The measurements re-run and published with every release of the checks.</li>
+    <li>A weekly check of the install commands in your public READMEs, docs and MCP configurations, with an alert when one points to a package name that is not registered on npm or PyPI (anyone could publish under it). We can run a first check by hand on request.</li>
   </ul>
 
   <h2>The price we are testing</h2>
