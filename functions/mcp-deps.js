@@ -3,7 +3,15 @@
 import { TOOLS, PROTOCOL_VERSION, corsHeaders, jsonRpcError, handleRequest } from './mcp.js';
 
 const DEPS = ['supply_chain_check', 'typosquat_check', 'maintainer_change_check', 'vulnerability_check', 'repo_health_check'];
-const DEPS_TOOLS = TOOLS.filter((t) => DEPS.includes(t.name));
+// Descriptions written for /mcp may name tools that this server does not serve (cve_lookup):
+// adjust them here so every description matches this server's own tool list (tests/mcp/check-server.py).
+const DEPS_ONLY = {
+  vulnerability_check: [' Use cve_lookup when you already have a CVE/GHSA ID, or supply_chain_check for a combined verdict.', ' Use supply_chain_check for a combined verdict.'],
+};
+const DEPS_TOOLS = TOOLS.filter((t) => DEPS.includes(t.name)).map((t) => {
+  const r = DEPS_ONLY[t.name];
+  return r ? { ...t, description: t.description.replace(r[0], r[1]) } : t;
+});
 
 export async function onRequestOptions() {
   return new Response(null, { headers: corsHeaders() });

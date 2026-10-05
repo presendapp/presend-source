@@ -347,7 +347,7 @@ export const TOOLS = [
   },
   {
     name: 'supply_chain_check',
-    description: "Call this before installing or adding a package (npm install, pip install, a new entry in a manifest), especially one whose name you recalled or that a model suggested. One-call risk check: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. A package that does not exist on npm or PyPI gets overall_risk 'package_not_found': the name may be invented, do not install it. A package first published less than 30 days ago gets the 'new_package' flag and overall_risk 'review_recommended': new packages are where invented and look-alike names get registered, so confirm the name against the project's own documentation before installing (on PyPI the age is that of the oldest release still published; being new does not make a package malicious). Use the individual tools to investigate one signal. Vulnerabilities are checked for the given version, or the latest published one (version_checked, version_source). If a check could not run (rate limit, upstream error), it is listed in unavailable_checks and overall_risk is 'incomplete', never 'no_signals_found'.",
+    description: "Call this before installing or adding a package (npm install, pip install, a new entry in a manifest), especially one whose name you recalled or that a model suggested. One-call risk check: combines vulnerability_check (OSV.dev), typosquat_check, maintainer_change_check (npm only) and repo_health_check (when the GitHub repo can be resolved) into one overall verdict. A package that does not exist on npm or PyPI gets overall_risk 'package_not_found': the name may be invented and should not be installed. A package first published less than 30 days ago gets the 'new_package' flag and overall_risk 'review_recommended': new packages are where invented and look-alike names get registered, so the name is worth confirming against the project's own documentation before installing (on PyPI the age is that of the oldest release still published; being new does not make a package malicious). Use the individual tools to investigate one signal. Vulnerabilities are checked for the given version, or the latest published one (version_checked, version_source). If a check could not run (rate limit, upstream error), it is listed in unavailable_checks and overall_risk is 'incomplete', never 'no_signals_found'.",
     inputSchema: {"type": "object", "properties": {"ecosystem": {"type": "string", "description": "Package ecosystem, e.g. npm. maintainer-change-check only runs for npm."}, "package": {"type": "string", "description": "Package name to check."}, "version": {"type": "string", "description": "Exact version to check for known vulnerabilities. Optional: defaults to the latest published version (npm and PyPI)."}}, "required": ["ecosystem", "package"]},
     request: (args) => ({ method: 'GET', url: `${API_BASE}/supply-chain-check?${new URLSearchParams(args).toString()}` }),
   },
@@ -457,6 +457,17 @@ export async function handleRequest(body, ctx, tools = TOOLS, serverName = 'pres
       return jsonRpcError(id, -32602, `Unknown tool: ${params?.name}`);
     }
     const args = params.arguments || {};
+    if (typeof args !== 'object' || Array.isArray(args)) {
+      return jsonRpcResult(id, { content: [{ type: 'text', text: 'Error: arguments must be a JSON object.' }], isError: true });
+    }
+    // Required arguments come from the tool's own inputSchema, so this covers every tool. A missing
+    // value used to reach the endpoint, which answered with its REST usage text (user_agent even
+    // parsed our own internal User-Agent).
+    const missing = (tool.inputSchema?.required || []).filter((k) => args[k] === undefined || args[k] === null);
+    if (missing.length) {
+      const expected = Object.keys(tool.inputSchema?.properties || {}).join(', ');
+      return jsonRpcResult(id, { content: [{ type: 'text', text: `Error: missing required argument${missing.length > 1 ? 's' : ''}: ${missing.join(', ')}. Arguments of ${tool.name}: ${expected}.` }], isError: true });
+    }
     const invalid = tool.validate ? tool.validate(args) : null;
     if (invalid) {
       return jsonRpcResult(id, { content: [{ type: 'text', text: `Error: ${invalid}` }], isError: true });
