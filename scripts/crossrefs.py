@@ -36,11 +36,14 @@ def ref_of(url):
     return m.group(1) + "#" + m.group(2) if m else url
 
 watch = set()
+thirdparty = set()  # entrees [TIERS] : suivies sans explorer leur chronologie (cascade evitee, 5 oct.)
 for line in Path(__file__).with_name("watch.txt").read_text().splitlines():
     if line.strip() and not line.startswith("#"):
         watch.add(line.split()[0])
+        if "[TIERS]" in line:
+            thirdparty.add(line.split()[0])
 
-targets = {ref_of(i["url"]) for i in search("author:" + ME + " is:open")} | watch
+targets = {ref_of(i["url"]) for i in search("author:" + ME + " is:open")} | (watch - thirdparty)
 found = {}
 for it in search("mentions:" + ME + " -author:" + ME):
     found[ref_of(it["url"])] = (it["title"], it["state"], it["user"]["login"], "mention @" + ME)
