@@ -186,7 +186,6 @@
  "typosquats": {
   "npm": {
    "lodahs": "lodash",
-   "expres": "express",
    "recat": "react",
    "axois": "axios",
    "crossenv": "cross-env",
@@ -208,7 +207,6 @@
    "colourama": "colorama",
    "python3-dateutil": "python-dateutil",
    "tenserflow": "tensorflow",
-   "numpi": "numpy",
    "panadas": "pandas",
    "discordpy": "discord.py",
    "python-dotnev": "python-dotenv",
@@ -234,9 +232,11 @@
   "pyjpt",
   "none",
   "tool",
-  "xoto3"
+  "xoto3",
+  "numpi"
  ],
  "reviewed_flagged_npm": [
-  "scss"
+  "scss",
+  "expres"
  ]
 }
