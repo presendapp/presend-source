@@ -488,10 +488,16 @@ export async function handleRequest(body, ctx, tools = TOOLS, serverName = 'pres
         userAgent: 'presend-mcp', env: ctx && ctx.env,
         waitUntil: ctx ? (pr) => ctx.waitUntil(pr) : undefined,
       });
-      recordUsage(ctx, endpoint, res.status);
       const data = await res.json();
+      // Rate-limited (429) and incomplete results are counted under their own label
+      // ("<endpoint>:429", "<endpoint>:incomplete"), so limits shared by many users behind one
+      // egress IP (Claude's connector directory) become measurable. No new data is stored.
+      const label = res.status === 429 ? `${endpoint}:429`
+        : (data && data.overall_risk === 'incomplete' ? `${endpoint}:incomplete` : endpoint);
+      recordUsage(ctx, label, res.status);
       return jsonRpcResult(id, {
-        content: [{ type: 'text', text: JSON.stringify(data, null, 2) }],
+        // Compact JSON: fewer tokens in the model's context (directory policy 5.B).
+        content: [{ type: 'text', text: JSON.stringify(data) }],
         isError: !res.ok,
       });
     } catch (e) {
