@@ -36,7 +36,7 @@
 </header>
 <main class="wrap m" style="padding:3rem 0;">
   <h1 style="font-family:var(--font-display);">Measured false-positive rates</h1>
-  <p>A dependency check that flags popular, legitimate packages gets ignored. So we measure how often ours do, on the most-used packages, and publish the result, the method and the blind spots. Last runs: 1 October 2026, 2 October for the new-package signal and 3 October for real malicious packages.</p>
+  <p>A dependency check that flags popular, legitimate packages gets ignored. So we measure how often ours do, on the most-used packages, and publish the result, the method and the blind spots. Last runs: 8 October 2026 (all measurements).</p>
   <p>Want these checks on every pull request and for your AI coding agents? <a href="/teams">Presend for teams</a> is a waitlist while we test demand.</p>
 
   <h2>Typosquat check (npm and PyPI)</h2>
@@ -65,10 +65,10 @@
   <p><strong>Blind spots:</strong> it cannot see a hijacked account that keeps the same publisher name (as with ua-parser-js) or a malicious release by the original maintainer (as with colors.js). An attacker who has already taken over a popular package would pass the established-publisher rule. When the npm search API rate-limits us, the publisher check is reported as unavailable and the event stays flagged.</p>
 
   <h2>New-package signal (npm and PyPI)</h2>
-  <p>A package first published less than 30 days ago is flagged <code>new_package</code> and the overall verdict becomes at least <code>review_recommended</code>: a name registered a few days ago deserves a look before it is installed. Measured on 2 October 2026, on the same lists:</p>
+  <p>A package first published less than 30 days ago is flagged <code>new_package</code> and the overall verdict becomes at least <code>review_recommended</code>: a name registered a few days ago deserves a look before it is installed. Measured on 8 October 2026, on the same lists:</p>
   <ul>
-    <li><strong>Top 15,000 PyPI packages:</strong> 20 first published less than 30 days ago (1 under 7 days, 148 under 90 days, 900 under a year).</li>
-    <li><strong>17,338 high-impact npm packages:</strong> none under 30 days (238 under a year). This list favours long-established packages, so it says little about how often the signal fires on the rest of npm.</li>
+    <li><strong>Top 15,000 PyPI packages:</strong> 9 first published less than 30 days ago (1 under 7 days, 141 under 90 days, 890 under a year).</li>
+    <li><strong>17,338 high-impact npm packages:</strong> none under 30 days (236 under a year). This list favours long-established packages, so it says little about how often the signal fires on the rest of npm.</li>
     <li><strong>Reference packages:</strong> tmol (first published 20 May 2026), requests (2011) and express (2010) get their exact dates.</li>
   </ul>
   <p><strong>Blind spots:</strong> on PyPI the age is that of the oldest file still on PyPI, so a project that deleted its earlier releases looks new. In our run, pikobs, an older project whose only remaining release had been uploaded the day before, was flagged for this reason. And age is no guarantee: an old package can still change hands or ship a malicious release.</p>
