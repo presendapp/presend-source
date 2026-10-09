@@ -3,7 +3,7 @@
 // Usage: node mcp-preflight.mjs path/to/mcp.json        (Claude Desktop, Cursor, .mcp.json format)
 // Exit code: 0 = nothing to block, 1 = a package to block (not found), 2 = review recommended.
 // "incomplete" means a sub-check (e.g. OSV) could not be reached: treat it as you see fit.
-// Not covered: deprecated packages, malware (this is not a malware scanner).
+// Deprecated (npm) and yanked (PyPI) versions are flagged too. Not covered: malware (this is not a malware scanner).
 // No dependencies (Node 18+). Uses Presend's free API: https://presend.pages.dev/api (10 checks per minute).
 import { readFileSync } from 'node:fs';
 

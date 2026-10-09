@@ -144,6 +144,23 @@ export async function onRequestGet(context) {
     const unavailable = Object.keys(results).filter((k) => results[k]?.unavailable);
     if (registryStatus === 'unavailable') unavailable.push('registry');
     const versionChecked = await versionP;
+    // Deprecated by its maintainer (npm: the version checked carries a deprecation message) or yanked (PyPI:
+    // every file of the version checked is yanked). Read from the registry document already downloaded.
+    let deprecated = null;
+    let deprecationMessage = null;
+    if (registryStatus === 'found' && versionChecked) {
+      if (ecosystem === 'npm') {
+        const v = registryData?.versions?.[versionChecked];
+        if (v) { deprecated = typeof v.deprecated === 'string' && v.deprecated.length > 0; deprecationMessage = deprecated ? v.deprecated.slice(0, 500) : null; }
+      } else if (ecosystem === 'pypi') {
+        const files = registryData?.releases?.[versionChecked];
+        if (Array.isArray(files) && files.length > 0) {
+          deprecated = files.every((f) => f.yanked === true);
+          deprecationMessage = deprecated ? (files.find((f) => f.yanked_reason)?.yanked_reason || 'All files of this version are yanked.').slice(0, 500) : null;
+        }
+      }
+    }
+    if (deprecated) flags.push(ecosystem === 'npm' ? 'deprecated' : 'yanked');
 
     return new Response(JSON.stringify({
       package: pkg,
@@ -167,6 +184,8 @@ export async function onRequestGet(context) {
       unavailable_checks: unavailable,
       version_checked: versionChecked,
       version_source: versionParam ? 'requested' : (versionChecked ? 'latest' : null),
+      deprecated,
+      deprecation_message: deprecationMessage,
       version_note: versionChecked ? null : 'The version to check could not be determined: vulnerability results cover all versions of the package.',
       flags,
       checks: results,
