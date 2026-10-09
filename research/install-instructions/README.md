@@ -58,6 +58,16 @@ The output of `scan_bins.py` (`hits.json`) lists package names, and those names 
 available to anyone. We do not publish them. A reported case will be listed once it is fixed, or 90 days after
 the report.
 
+## Fixed after a report
+
+- `@contentrain/mcp` (Contentrain): `npx contentrain-mcp`, unclaimed. Reported 9 October 2026; name registered by the
+  maintainers the same day, README update to follow.
+- Windmill (related case, names inferred from Python imports): `import pptx`, `OpenSSL`, `win32api`, `ruamel.yaml` and
+  `speech_recognition` resolved to unclaimed PyPI names. Reported 9 October 2026; fixed the same day
+  (windmill-labs/windmill#11638).
+- `bibverify`: `npx --yes @hylouis233/bibverify` before the scope existed. Reported 9 October 2026; package published
+  by the author the same day.
+
 ## Reproduce it
 
     python3 scan_bins.py          # several minutes, npm registry only -> hits.json

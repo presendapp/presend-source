@@ -60,6 +60,13 @@
   <h2>Names are withheld</h2>
   <p>The names behind these counts are, by definition, still available to anyone, so we do not publish them. A reported case will be listed once it is fixed, or 90 days after the report.</p>
 
+  <h2>Fixed after a report</h2>
+  <ul>
+    <li><strong>@contentrain/mcp</strong> (Contentrain): the standalone command <code>npx contentrain-mcp</code> pointed to an unclaimed name. Reported 9 October 2026; the maintainers registered the name the same day, and are updating the README.</li>
+    <li><strong>Windmill</strong> (a related case: package names inferred from Python imports, not an npx line): <code>import pptx</code>, <code>import OpenSSL</code>, <code>import win32api</code>, <code>import ruamel.yaml</code> and <code>import speech_recognition</code> resolved to unclaimed PyPI names, so a script with one of those imports would have installed whatever package got registered under them. Reported 9 October 2026; fixed the same day (<a href="https://github.com/windmill-labs/windmill/pull/11638" target="_blank" rel="noopener noreferrer">windmill#11638</a>).</li>
+    <li><strong>bibverify</strong>: the README and MCP configuration ran <code>npx --yes @hylouis233/bibverify</code> before that scope existed on npm. Reported 9 October 2026; the author published the package under that scope the same day.</li>
+  </ul>
+
   <h2>Reproduce it</h2>
   <p>The scripts are in the public <a href="https://github.com/presendapp/presend-source/tree/main/research/install-instructions" target="_blank" rel="noopener noreferrer">presend-source</a> repository (Python, no dependencies):</p>
   <pre><code>python3 research/install-instructions/scan_bins.py   # npm registry only -&gt; hits.json
@@ -74,7 +81,7 @@ python3 research/install-instructions/classify.py    # counts</code></pre>
   </ul>
 
   <h2>Check your own</h2>
-  <p>If you publish a package, a CLI or an MCP server, check that every name in your install commands and configurations is a package you own. Presend's <a href="/check">dependency check</a> and <a href="/api">API</a> report names that do not exist, and we can review the install commands in your READMEs, docs and MCP configurations on request: presendapp@gmail.com.</p>
+  <p>If you publish a package, a CLI or an MCP server, check that every name in your install commands and configurations is a package you own. Presend's <a href="/check">dependency check</a> and <a href="/api">API</a> report names that do not exist. To check an MCP configuration before its servers are launched, <a href="https://github.com/presendapp/presend-source/blob/main/examples/mcp-preflight.mjs" target="_blank" rel="noopener noreferrer">mcp-preflight.mjs</a> (Node 18+, no dependencies) reads the <code>npx</code> and <code>uvx</code> entries, checks each package with the API and exits non-zero when one does not exist. We can also review the install commands in your READMEs, docs and MCP configurations on request: presendapp@gmail.com.</p>
 </main>
 <footer class="site-footer wrap">
   <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
