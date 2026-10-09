@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install commands that point to unclaimed package names</title>
+<meta name="description" content="How many npm READMEs of MCP and AI-agent packages tell people to run npx with a command name that nobody has registered on npm, and what that means. Measured on 4,830 packages, with the method to reproduce it.">
+<meta property="og:title" content="Install commands that point to unclaimed package names (Presend)">
+<meta property="og:description" content="80 of 4,830 MCP and AI-agent npm READMEs run npx with a command name that is not a registered package. Method, caveats and scripts included.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/install-names">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Install commands that point to unclaimed package names (Presend)">
+<meta name="twitter:description" content="80 of 4,830 MCP and AI-agent npm READMEs run npx with a command name that is not a registered package. Method, caveats and scripts included.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/install-names">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .m pre { overflow-x: auto; padding: .8rem; border: 1px solid currentColor; border-radius: 8px; max-width: 66ch; }
+  .m table { border-collapse: collapse; max-width: 66ch; }
+  .m td, .m th { border-bottom: 1px solid currentColor; padding: .35rem .6rem; text-align: left; color: var(--color-muted); }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a> <a class="nav-link" href="/measurements">Measurements</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Install commands that point to unclaimed package names</h1>
+  <p>An install command in a README or an MCP configuration is code that other people run as written, often pasted straight into an AI client. When it names a package that nobody has registered, it fails today. But anyone can register that name, and from then on the same command installs and runs their package, with whatever credentials the user passed to it. Measured on 8 October 2026.</p>
+
+  <h2>The pattern: <code>npx &lt;command&gt;</code></h2>
+  <p>Many packages ship a command whose name differs from the package name, and their README says <code>npx &lt;command&gt;</code>. If the package is installed in the project or globally, npx uses that command. If it is not, npx looks for a <em>package</em> called <code>&lt;command&gt;</code> on the registry, and with <code>-y</code> it installs it without asking. The safe form names the package explicitly: <code>npx -y -p &lt;package&gt; &lt;command&gt;</code>.</p>
+
+  <h2>How often it happens</h2>
+  <p>We read the npm READMEs of 4,830 packages related to MCP and AI agents (the top results of six npm searches) and kept the lines that run one of the package's own commands through <code>npx</code>, <code>bunx</code> or <code>pnpm dlx</code>, where that command name is not a registered package.</p>
+  <table>
+    <tr><th>Packages scanned</th><td>4,830</td></tr>
+    <tr><th>READMEs with at least one such line</th><td>80 (1.7%)</td></tr>
+    <tr><th>... that never install the package itself</th><td>22 (0.5%)</td></tr>
+    <tr><th>Distinct unclaimed command names</th><td>86</td></tr>
+  </table>
+  <p>When the README installs the package earlier (58 of the 80), the line works if the reader follows the steps in order, in the same project. It does not when the line is copied on its own, into an MCP client configuration, a CI job or another machine. When the README never installs the package (22 of 80), the line only works by accident.</p>
+  <p>We reviewed the newest findings by hand and reported privately the cases where the command receives credentials: API keys, a wallet's private key, session cookies, a <code>.env</code> file piped into it. One related name had already been used: a command name that an MCP server's README runs through npx was published as a package by a third party on 31 July 2026, and replaced by npm with a security holding package 1 hour 46 minutes later.</p>
+
+  <h2>The official MCP registry</h2>
+  <p>On the same day we checked the 750 npm and PyPI packages declared by 6,031 active entries of the official MCP registry: 1 declared package does not exist, 13 entries declare a version that no longer exists, and 11 entries point to packages deprecated by their maintainers. The registry checks ownership when an entry is published, not afterwards. We reported this privately to its maintainers.</p>
+
+  <h2>Names are withheld</h2>
+  <p>The names behind these counts are, by definition, still available to anyone, so we do not publish them. A reported case will be listed once it is fixed, or 90 days after the report.</p>
+
+  <h2>Reproduce it</h2>
+  <p>The scripts are in the public <a href="https://github.com/presendapp/presend-source/tree/main/research/install-instructions" target="_blank" rel="noopener noreferrer">presend-source</a> repository (Python, no dependencies):</p>
+  <pre><code>python3 research/install-instructions/scan_bins.py   # npm registry only -&gt; hits.json
+python3 research/install-instructions/classify.py    # counts</code></pre>
+  <p>Results change from day to day. The registry figures come from a separate script that is not published yet.</p>
+
+  <h2>Caveats</h2>
+  <ul>
+    <li>Only npm READMEs are read, not GitHub READMEs or documentation sites, and only the package's own commands are considered.</li>
+    <li>The six searches are a sample of MCP and agent packages, not all of them.</li>
+    <li>Whether a README installs the package is detected by a text search, which can miss unusual install steps.</li>
+  </ul>
+
+  <h2>Check your own</h2>
+  <p>If you publish a package, a CLI or an MCP server, check that every name in your install commands and configurations is a package you own. Presend's <a href="/check">dependency check</a> and <a href="/api">API</a> report names that do not exist, and we can review the install commands in your READMEs, docs and MCP configurations on request: presendapp@gmail.com.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>

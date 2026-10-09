@@ -88,6 +88,9 @@ python3 research/malicious-packages/extract.py /tmp && node research/malicious-p
 node research/malicious-packages/legit.mjs    # PyPI ranks 15,001-30,000 (network)</code></pre>
   <p>The typosquat and publisher-change scripts fail if a popular package is flagged without having been reviewed; the new-package script reports the counts by age. A regression test also fails if any of the 1,023 real malicious packages the typosquat check flagged on 3 October 2026 stops being flagged.</p>
 
+  <h2>Install commands that point to unclaimed names</h2>
+  <p>A separate measurement, of documentation rather than of our checks: how many npm READMEs of MCP and AI-agent packages run <code>npx</code> with a command name that nobody has registered. <a href="/install-names">80 of 4,830 on 8 October 2026</a>.</p>
+
   <h2>Contributions to other tools</h2>
   <ul>
     <li><strong>NVIDIA SkillSpector</strong>, typosquat rule SC6 (<a href="https://github.com/NVIDIA/SkillSpector/pull/647" target="_blank" rel="noopener noreferrer">PR #647</a>, merged 28 September 2026). Measured with the project's own code: 97 high-severity false positives on the top 15,000 PyPI packages and 26 on high-impact npm, 10 of the 24 names of our typosquat test set detected. After the fix (native, no dependency on Presend): 6 and 0, 24 of 24.</li>

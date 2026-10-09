@@ -29,7 +29,17 @@ function check(name, condition, detail) {
     failed++;
     failures.push(name + (detail ? ` — ${detail}` : ''));
     console.log(`  ❌ ${name}${detail ? ' — ' + detail : ''}`);
+    annotate(name, detail);
   }
+}
+
+// Dans GitHub Actions, chaque échec devient aussi une annotation : elle reste
+// lisible dans le résumé du run et via l'API, sans télécharger le log complet.
+function annotate(name, detail) {
+  if (!process.env.GITHUB_ACTIONS) return;
+  const msg = (name + (detail ? ' — ' + String(detail).slice(0, 400) : ''))
+    .replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+  console.log(`::error title=API test failed::${msg}`);
 }
 
 async function testCase(name, fn) {
@@ -40,6 +50,7 @@ async function testCase(name, fn) {
     failed++;
     failures.push(`${name} — EXCEPTION: ${e.message}`);
     console.log(`  ❌ EXCEPTION: ${e.message}`);
+    annotate(name, 'EXCEPTION: ' + e.message);
   }
 }
 
@@ -94,7 +105,9 @@ async function testPassword() {
     body: JSON.stringify({ password: 'password123', check_breach: true }),
   });
   const j2 = await res2.json();
-  check('password-check: weak+breached password flagged', j2.strength === 'fair' && j2.breach && j2.breach.breached === true, JSON.stringify(j2));
+  // Depuis le 2 oct. 2026 (8a8e2a2), un mot de passe trouvé dans une fuite est
+  // classé very_weak quelle que soit son entropie.
+  check('password-check: weak+breached password flagged', j2.strength === 'very_weak' && j2.breach && j2.breach.breached === true, JSON.stringify(j2));
 
   const res3 = await fetch(BASE + '/api/password-breach?password=password123');
   const j3 = await res3.json();
