@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check the install commands in your README — Presend</title>
+<meta name="description" content="Paste a README, a docs page or an MCP configuration, or give a GitHub URL: Presend finds every npx, npm install, pip install and uvx command and checks that each package exists, is not deprecated, is not brand new or a look-alike, and that pinned versions have no known vulnerabilities. Free, no account.">
+<meta property="og:title" content="Check the install commands in your README">
+<meta property="og:description" content="Every npx, npm install, pip install and uvx line in a README, docs page or MCP configuration, checked against npm and PyPI: names nobody has registered, deprecated packages, look-alikes, vulnerable pinned versions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/install-check">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Check the install commands in your README">
+<meta name="twitter:description" content="Every npx, npm install, pip install and uvx line in a README, docs page or MCP configuration, checked against npm and PyPI.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/install-check">
+<style>
+  .chk p, .chk li { color: var(--color-muted); max-width: 64ch; }
+  .chk h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .chk textarea { width: 100%; max-width: 48rem; min-height: 12rem; padding: .6rem; font: .9rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; box-sizing: border-box; }
+  .chk input[type=url] { width: 100%; max-width: 32rem; padding: .5rem; font: inherit; box-sizing: border-box; }
+  .chk button { margin-top: .8rem; padding: .6rem 1.2rem; font: inherit; cursor: pointer; }
+  .chk .row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: flex-end; }
+  .chk .row button { margin-top: 0; }
+  .chk .wrapx { overflow-x: auto; max-width: 100%; }
+  .chk table { border-collapse: collapse; margin-top: 1rem; width: 100%; max-width: 64rem; }
+  .chk th, .chk td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid currentColor; vertical-align: top; }
+  .chk td code { font-size: .8rem; overflow-wrap: anywhere; }
+  .chk th:nth-child(1) { width: 18%; } .chk th:nth-child(2) { width: 30%; } .chk th:nth-child(4) { width: 36%; }
+  .chk td:first-child, .chk td:last-child { overflow-wrap: anywhere; }
+  .chk .tag { font-size: .8rem; padding: .1rem .4rem; border-radius: 4px; border: 1px solid currentColor; white-space: nowrap; }
+  .chk .note { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a> <a class="nav-link" href="/install-names">Why</a>
+</header>
+<main class="wrap chk" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Check the install commands in your README</h1>
+  <p><strong>Install commands are code other people run as written</strong>, often pasted straight into a terminal, a CI job or an AI client's MCP configuration. Presend finds every <code>npx</code>, <code>npm install</code>, <code>pip install</code>, <code>uvx</code> (and bunx, pnpm, yarn, uv, pipx, poetry) command in your text and checks each package on npm or PyPI:</p>
+  <ul>
+    <li>names <strong>nobody has registered</strong>: the command fails today, and installs whatever anyone publishes under that name tomorrow (<a href="/install-names">how often it happens</a>);</li>
+    <li>packages whose latest version is <strong>deprecated</strong>, packages <strong>first published less than 30 days ago</strong>, names <strong>close to a popular package</strong>, and recent <strong>publisher changes</strong> (npm);</li>
+    <li><strong>known vulnerabilities</strong> in versions the commands pin (<code>npx tool@1.4.2</code>, <code>pip install lib==0.3</code>).</li>
+  </ul>
+
+  <label for="ghUrl">GitHub repository or file</label><br>
+  <div class="row">
+    <input type="url" id="ghUrl" placeholder="https://github.com/owner/repo" spellcheck="false">
+    <button type="button" id="loadGh">Load and check</button>
+  </div>
+  <p class="note">Public repositories only: your browser reads the README (or the file you link) directly from GitHub.</p>
+
+  <label for="installSource">Or paste a README, a docs page or an MCP configuration (JSON)</label><br>
+  <textarea id="installSource" spellcheck="false" placeholder='```
+npx -y my-mcp-server
+pip install my_lib==0.3
+```
+{"mcpServers": {"github": {"command": "uvx", "args": ["mcp-server-github"]}}}'></textarea><br>
+  <button type="button" id="runInstall">Check</button>
+  <p class="note">The text is read in your browser. Only the package names, and the versions the commands pin, are sent to Presend's API. Up to 100 packages per check; per-minute rate limits apply.</p>
+
+  <p id="installStatus" aria-live="polite"></p>
+  <div class="wrapx"><table id="installResults" hidden><thead><tr><th>Package</th><th>Where</th><th>Result</th><th>Details</th></tr></thead><tbody></tbody></table></div>
+  <p hidden><strong>No signal:</strong> <span id="installOk"></span></p>
+
+  <h2>How commands are read</h2>
+  <ul>
+    <li>In code blocks, inline code, lines that start with the command (or a prompt such as <code>$</code>, <code>RUN</code>, <code>run:</code>), and MCP configurations (<code>"command": "npx"</code> or <code>"uvx"</code> with its <code>"args"</code>). Commands in plain sentences are ignored.</li>
+    <li><code>npx</code>, <code>bunx</code>, <code>pnpm dlx</code> and <code>uvx</code> install the package named by <code>-p</code> / <code>--package</code> / <code>--from</code>, or else the package named like the command: that is the name checked.</li>
+    <li>Placeholders (<code>&lt;package&gt;</code>, <code>your-package</code>, <code>$PKG</code>), local paths, URLs and git sources are skipped: they are not registry names.</li>
+  </ul>
+
+  <h2>What this page does not check</h2>
+  <ul>
+    <li><strong>Whether a name is yours.</strong> A package that exists may belong to someone else: if the command is meant to run your own package, check that the name is one you publish.</li>
+    <li><strong>Docker images, curl | sh scripts, Homebrew, cargo or go install.</strong> Only npm and PyPI.</li>
+    <li><strong>Malware.</strong> These are signals worth a look before publishing your docs, not an analysis of the package code.</li>
+  </ul>
+
+  <h2>For your whole documentation</h2>
+  <p>Docs sites, several repositories, MCP server listings, templates and examples: we can review every install command you publish, and tell you which ones point to a name you do not own. Write to <a href="mailto:presendapp@gmail.com">presendapp@gmail.com</a>. For a single dependency file, use the <a href="/check">dependency check</a>; for an MCP configuration in CI, <a href="https://github.com/presendapp/presend-source/blob/main/examples/mcp-preflight.mjs" target="_blank" rel="noopener noreferrer">mcp-preflight.mjs</a>.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/js/install-commands.js?v=1"></script>
+<script src="/js/install-check.js?v=1"></script>
+<script src="/sw-register.js"></script>
+</body>
+</html>

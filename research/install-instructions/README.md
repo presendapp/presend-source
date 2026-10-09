@@ -67,6 +67,9 @@ the report.
   (windmill-labs/windmill#11638).
 - `bibverify`: `npx --yes @hylouis233/bibverify` before the scope existed. Reported 9 October 2026; package published
   by the author the same day.
+- `investor-agent` (MCP server): README and Claude Code plugin config ran `npx -y investor-agent`, not on npm.
+  Reported publicly 4 October 2026 (ferdousbhai/investor-agent#19); fixed 9 October 2026 (ca41e64) by pointing both
+  to the hosted MCP endpoint.
 
 ## Reproduce it
 

@@ -17,8 +17,9 @@ export async function onRequest(context) {
         request.headers.get("X-Presend-Test") !== "1") {
       const day = new Date().toISOString().slice(0, 10);
       const endpoint = endpointOf(new URL(request.url).pathname);
-      // Our own /check page identifies itself (js/check-deps.js); only this exact value is kept.
-      const family = request.headers.get("X-Presend-Client") === "check" ? "web:check" : uaFamily(request.headers.get("User-Agent"));
+      // Our own /check and /install-check pages identify themselves (js/check-deps.js, js/install-check.js); only these exact values are kept.
+      const client = request.headers.get("X-Presend-Client");
+      const family = client === "check" || client === "install-check" ? "web:" + client : uaFamily(request.headers.get("User-Agent"));
       context.waitUntil(env.DB.prepare(UPSERT).bind(day, endpoint, family).run().catch(() => {}));
     }
   } catch (e) {

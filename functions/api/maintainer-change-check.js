@@ -189,8 +189,13 @@ async function checkPackage(pkg) {
     // Package age from the same registry document (no extra request): created less than NEW_PACKAGE_DAYS ago = new_package.
     const firstPub = firstPublished('npm', data);
     const ageDays = ageInDays(firstPub);
+    // Latest version marked deprecated by its maintainer (same document, no extra request).
+    const latestTag = data['dist-tags']?.latest;
+    const dep = latestTag ? data.versions?.[latestTag]?.deprecated : undefined;
+    const latestDeprecated = latestTag && data.versions?.[latestTag] ? typeof dep === 'string' && dep.length > 0 : null;
     return { status: 200, body: { package: pkg, ecosystem: 'npm', found: true, ...analysis,
-      first_published: firstPub, package_age_days: ageDays, new_package: ageDays === null ? null : ageDays < NEW_PACKAGE_DAYS } };
+      first_published: firstPub, package_age_days: ageDays, new_package: ageDays === null ? null : ageDays < NEW_PACKAGE_DAYS,
+      latest_deprecated: latestDeprecated, latest_deprecation_message: latestDeprecated ? dep.slice(0, 500) : null } };
   } catch (e) {
     if (e.name === 'AbortError') return { status: 504, body: { package: pkg, error: 'npm registry request timed out. Try again shortly.' } };
     return { status: 502, body: { package: pkg, error: 'Could not complete maintainer change check.', detail: e.message } };
