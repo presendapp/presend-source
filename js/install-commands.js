@@ -99,6 +99,7 @@
     var name = t, version = null, at = t.lastIndexOf('@');
     if (at > 0) { name = t.slice(0, at); version = t.slice(at + 1) || null; }
     if (!NPM_NAME.test(name) || name.length > 214) return null;
+    if (version) version = version.replace(/[^\w.^~<>=*|+-].*$/, '') || null;   // "1.2.3)" from a quoted echo
     if (version === 'latest') version = null;
     return { name: name, version: version };
   }

@@ -50,4 +50,5 @@ eq('quoted extras with spaces', '```\npip install -e ".[test, deploy]"\npip inst
 eq('possessive and one-line json', "npx's flags; {\"x\": {\"command\": \"uvx\", \"args\": [\"mcp-server-fetch\"]}}", ['pypi:mcp-server-fetch:runner']);
 eq('sentence end', 'Then run `uv tool install mytool`.', ['pypi:mytool:package']);
 eq('alternatives and substitution', '```\nnpm install / yarn install\nnpm install needed\npython -m pip install "$(python -c "import json")"\nnpx -y some-existing-server\n```', []);
+eq('version inside a quoted echo', '```\necho "run: npm install -g newman@6.2.1 htmlextra@1.23.1)" >&2\n```', ['npm:newman@6.2.1:package', 'npm:htmlextra@1.23.1:package']);
 process.exit(fail ? 1 : 0);

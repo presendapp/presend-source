@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example apps that ship vulnerable dependencies</title>
+<meta name="description" content="We checked the public example apps and templates of 12 funded developer-tool companies: 168 of 517 example projects resolve a dependency with a critical advisory. Method, caveats and what it takes to keep examples current.">
+<meta property="og:title" content="Example apps that ship vulnerable dependencies (Presend)">
+<meta property="og:description" content="9 of 12 funded developer-tool companies publish example apps that resolve a dependency with a critical advisory: 168 of 517 projects. Method and caveats included.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/example-apps">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Example apps that ship vulnerable dependencies (Presend)">
+<meta name="twitter:description" content="9 of 12 funded developer-tool companies publish example apps that resolve a dependency with a critical advisory: 168 of 517 projects. Method and caveats included.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/example-apps">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .m pre { overflow-x: auto; padding: .8rem; border: 1px solid currentColor; border-radius: 8px; max-width: 66ch; }
+  .m table { border-collapse: collapse; max-width: 66ch; }
+  .m td, .m th { border-bottom: 1px solid currentColor; padding: .35rem .6rem; text-align: left; color: var(--color-muted); }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a> <a class="nav-link" href="/measurements">Measurements</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Example apps that ship vulnerable dependencies</h1>
+  <p>Developer-tool companies publish example apps, starters and templates so that people can clone one and have something running in minutes. Many of those repositories commit a lockfile, so a fresh install reproduces exactly the versions that were current when the example was written. Months later, those versions have known critical vulnerabilities, and every new project started from the example inherits them. Measured between 12 and 15 October 2026.</p>
+
+  <h2>How often it happens</h2>
+  <p>We looked at the public example and template repositories of 12 funded developer-tool and AI-infrastructure companies (seed to Series B). Most were chosen because they publish many examples; two because we had already noticed one outdated example in their repositories, which is a bias towards finding problems. For each project with a dependency manifest, we took the versions resolved in its committed lockfile (or an exact pin when there is no lockfile) and compared the production dependencies with the GitHub Advisory Database.</p>
+  <table>
+    <tr><th>Companies</th><td>12</td></tr>
+    <tr><th>... with at least one example resolving a critical advisory</th><td>9</td></tr>
+    <tr><th>Example projects checked</th><td>517</td></tr>
+    <tr><th>... resolving a dependency with a critical advisory</th><td>168 (32%)</td></tr>
+    <tr><th>... with a high-severity advisory only</th><td>34</td></tr>
+  </table>
+  <p>Most of it is one dependency: Next.js. Starters pinned to 14.x, 15.x or early 16.x versions are affected by advisories such as GHSA-2xp9-vwfh-vxw4 (unauthenticated remote code execution in the Image Optimization API under certain configurations, fixed in 15.5.24 and 16.3.3). For examples still on 14.x there is no fixed 14.x release: the fix is a migration, not a one-line bump. The Python examples show the same pattern with exact pins in <code>requirements.txt</code>.</p>
+  <p>The repositories are not abandoned: several had commits in the same week. What drifts is the dependencies, because nobody owns them. Three of the twelve companies had no example resolving a critical advisory. In one of them we checked why: its templates do not commit lockfiles and use version ranges, so a fresh install picks up fixed releases.</p>
+
+  <h2>Companies are not named</h2>
+  <p>We report what we find to each company directly. This page gives the aggregate only.</p>
+
+  <h2>Caveats</h2>
+  <ul>
+    <li>An advisory affecting a version does not mean every app using it is exploitable: several Next.js advisories depend on configuration (image optimization settings, Windows hosting). The point is that people deploy these examples as they are, without checking.</li>
+    <li>Only production dependencies, only high and critical advisories reviewed by GitHub, and only repositories we could identify as examples or templates. Development tooling is excluded.</li>
+    <li>Without a lockfile or an exact pin, a project was not judged: a fresh install may resolve to a fixed version.</li>
+    <li>A "project" is a directory with its own dependency manifest; a large example repository counts for many.</li>
+  </ul>
+
+  <h2>Keeping examples current</h2>
+  <p>Bringing an example up to date takes one to two hours: bump the dependencies, regenerate the lockfiles, check that it still builds and type-checks, sometimes migrate a major version. Multiplied by dozens of examples, every time a new advisory lands, it is the kind of work that slips. We do it for teams: a catch-up pass with one tested pull request per repository, then a pull request within 48 hours whenever a new advisory or deprecation reaches one of your examples. Write to <a href="mailto:presendapp@gmail.com">presendapp@gmail.com</a>.</p>
+  <p>To check a single README, docs page or MCP configuration yourself, use the free <a href="/install-check">install command check</a>.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>
