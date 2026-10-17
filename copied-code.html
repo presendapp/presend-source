@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The code your users copy: a checklist for install commands and example apps</title>
+<meta name="description" content="Install commands, MCP configurations and example apps are code your users run without reading. What we found when we measured them in October 2026, and a short checklist to keep yours safe: npx and uvx names, placeholders, registry entries, lockfiles and scheduled CI.">
+<meta property="og:title" content="The code your users copy: a checklist for install commands and example apps">
+<meta property="og:description" content="1.7% of MCP and agent READMEs run npx with an unclaimed name; 32% of example projects from funded developer-tool companies resolve a critical advisory. What causes it, and a checklist to fix it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/copied-code">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The code your users copy: a checklist for install commands and example apps">
+<meta name="twitter:description" content="1.7% of MCP and agent READMEs run npx with an unclaimed name; 32% of example projects from funded developer-tool companies resolve a critical advisory.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/copied-code">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.2rem; }
+  .m h3 { font-size: 1.05rem; margin-top: 1.6rem; }
+  .m pre { overflow-x: auto; padding: .8rem; border: 1px solid currentColor; border-radius: 8px; max-width: 66ch; }
+  .m .meta { font-size: .9rem; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/api">API</a> <a class="nav-link" href="/measurements">Measurements</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">The code your users copy</h1>
+  <p class="meta">A checklist for install commands, MCP configurations and example apps. 17 October 2026.</p>
+
+  <p>Most of the code a developer-tool company ships is reviewed, tested and released on purpose. Some of it is not: the one-line install command in the README, the JSON block people paste into Claude Desktop or Cursor, the starter app they clone to get going. Nobody reads that code before running it, because it is meant to be run as written. And it rarely has an owner, so it drifts.</p>
+  <p>In October 2026 we measured two kinds of it. This page sums up what we found, why it happens, and what to check in your own docs and examples. The detailed numbers and methods are on two separate pages: <a href="/install-names">install commands</a> and <a href="/example-apps">example apps</a>.</p>
+
+  <h2>What we found</h2>
+  <ul>
+    <li><strong>Install commands that point to nobody's package.</strong> Of 4,830 npm READMEs of MCP and AI-agent packages, 80 (1.7%) run one of the package's own commands through <code>npx</code>, <code>bunx</code> or <code>pnpm dlx</code> under a name that no one has registered. Today that line fails. Once someone registers the name, the same line installs and runs their code, with whatever API key or wallet key the user passes to it. This is not hypothetical: one such name was registered by a third party on 31 July 2026, and npm replaced it with a security holding package less than two hours later.</li>
+    <li><strong>Registry entries that rot.</strong> In the official MCP registry, 13 active entries declared a package version that no longer exists, 11 pointed to deprecated packages, and 1 to a package that was never published.</li>
+    <li><strong>Example apps that freeze vulnerable versions.</strong> We checked 517 example projects published by 12 funded developer-tool companies. 168 of them (32%) resolve a production dependency with a critical advisory, at 9 of the 12 companies. Most of it is one framework, Next.js, pinned by a committed lockfile at a version that has since received a critical fix.</li>
+  </ul>
+  <p>None of this comes from careless teams. The repositories were active, several with commits that same week. What was missing is an owner for this kind of code, and a check that fails when it drifts.</p>
+
+  <h2>Why it happens</h2>
+  <h3>npx runs whatever matches the name</h3>
+  <p>Many packages ship a command whose name differs from the package name: the package <code>@acme/mcp</code> installs a command <code>acme-mcp</code>. Inside a project where the package is installed, <code>npx acme-mcp</code> finds that command. On a fresh machine, or inside an MCP client configuration, npx looks for a <em>package</em> called <code>acme-mcp</code> on the registry instead, and with <code>-y</code> installs it without asking. The README was right in the context where it was written, and wrong everywhere it was copied to. <code>uvx</code> has the same behaviour on PyPI.</p>
+  <h3>Placeholders that are real names</h3>
+  <p>Documentation needs example names. A placeholder such as <code>example-mcp-server</code> looks harmless, but it is a valid package name: anyone can publish it, and readers who paste the snippet unchanged will install it. In one hosting platform's docs, that exact name was unregistered on PyPI and already taken on npm by an unrelated personal package. The team is now replacing it with clear placeholders.</p>
+  <h3>Lockfiles keep the past exactly</h3>
+  <p>Committing a lockfile in an example is good practice: a fresh install reproduces a known-good set of versions. It also reproduces their vulnerabilities, for as long as nobody regenerates it. Of the three companies with no affected example, the one we looked at more closely does not commit lockfiles in its templates, so a fresh install picks up fixed releases. Keeping lockfiles and refreshing them works too. A committed lockfile that nobody refreshes does not.</p>
+
+  <h2>The checklist</h2>
+  <h3>Install commands and MCP configurations</h3>
+  <ul>
+    <li><strong>Name the package explicitly</strong> when the command name differs from it:
+<pre><code>npx -y -p &lt;package&gt; &lt;command&gt;
+uvx --from &lt;package&gt; &lt;command&gt;</code></pre>
+    In an MCP configuration, the same goes into <code>"args"</code>: <code>["-y", "-p", "&lt;package&gt;", "&lt;command&gt;"]</code>.</li>
+    <li><strong>Every name in a command should be one you own.</strong> If a name is on your page and you do not publish it, either register it (an empty placeholder package is enough) or change the command.</li>
+    <li><strong>Use placeholders that cannot resolve.</strong> <code>&lt;your-package&gt;</code> fails in a shell instead of installing something; <code>example-mcp-server</code> installs whatever is published under it.</li>
+    <li><strong>Pin versions in configurations meant to be pasted</strong> (<code>&lt;package&gt;@1.4.2</code>), and update them with your releases. A pinned version also means that a hijacked new release is not installed automatically.</li>
+    <li><strong>Keep registry entries in step with releases.</strong> A directory or registry listing is one more copy of your install command; check it when you deprecate or rename a package.</li>
+  </ul>
+  <h3>Example apps and starters</h3>
+  <ul>
+    <li><strong>Give each example an owner</strong>, or mark it clearly as unmaintained and archive it. An example nobody owns will be several majors behind within a year.</li>
+    <li><strong>Let a bot propose updates, grouped</strong> so they stay reviewable. One pull request a week per example, minor and patch versions together:
+<pre><code># .github/dependabot.yml
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories: ["/examples/*"]
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]</code></pre></li>
+    <li><strong>Run CI on a schedule, not only on push.</strong> Examples rarely get commits, so a check that runs only on push never runs. A weekly job that installs from the lockfile, builds, and fails on high or critical advisories in production dependencies makes the drift visible:
+<pre><code>on:
+  schedule: [{ cron: "0 6 * * 1" }]
+  push:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm run build
+      - run: npm audit --omit=dev --audit-level=high</code></pre></li>
+    <li><strong>Plan the majors.</strong> Bots handle patch releases; they do not migrate a framework. When a fix only exists in a newer major, as it does for Next.js 14 examples today, someone has to do the migration and test the app. Budget one to two hours per real app, less for small examples.</li>
+  </ul>
+
+  <h2>What fixing it looks like</h2>
+  <p>When maintainers acted, the fix was small and quick: one registered the missing npm name on the day of our report; a workflow engine stopped resolving five Python imports to unclaimed PyPI names in a single pull request, the same day; an MCP server switched its README and plugin configuration to its hosted endpoint within a week. Finding it is the hard part, because the command works on the machine of the person who wrote it.</p>
+
+  <h2>Check your own</h2>
+  <ul>
+    <li>The free <a href="/install-check">install command check</a> reads a README, a docs page, an MCP configuration or a GitHub URL, and checks every package its commands would install: names nobody has registered, deprecations, look-alikes, new packages and vulnerable pinned versions.</li>
+    <li>In CI, <a href="https://github.com/presendapp/presend-source/blob/main/examples/mcp-preflight.mjs" target="_blank" rel="noopener noreferrer">mcp-preflight.mjs</a> (Node 18+, no dependencies) exits non-zero when an MCP configuration launches a package that does not exist.</li>
+    <li>For a whole docs site or a repository of examples, we review every install command and example for you, and keep them current afterwards: <a href="mailto:presendapp@gmail.com">presendapp@gmail.com</a>.</li>
+  </ul>
+  <p>The measurements behind this page, their caveats and the scripts to reproduce them: <a href="/install-names">install commands</a>, <a href="/example-apps">example apps</a>, <a href="/measurements">false-positive rates of our checks</a>.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>

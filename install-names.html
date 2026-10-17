@@ -83,6 +83,7 @@ python3 research/install-instructions/classify.py    # counts</code></pre>
 
   <h2>Check your own</h2>
   <p>If you publish a package, a CLI or an MCP server, check that every name in your install commands and configurations is a package you own. The <a href="/install-check">install command check</a> reads a README, a docs page or an MCP configuration (or a GitHub URL) and checks every package its commands would install. Presend's <a href="/check">dependency check</a> and <a href="/api">API</a> report names that do not exist. To check an MCP configuration before its servers are launched, <a href="https://github.com/presendapp/presend-source/blob/main/examples/mcp-preflight.mjs" target="_blank" rel="noopener noreferrer">mcp-preflight.mjs</a> (Node 18+, no dependencies) reads the <code>npx</code> and <code>uvx</code> entries, checks each package with the API and exits non-zero when one does not exist. We can also review the install commands in your READMEs, docs and MCP configurations on request: presendapp@gmail.com.</p>
+  <p>A checklist for your own install commands and examples: <a href="/copied-code">the code your users copy</a>.</p>
 </main>
 <footer class="site-footer wrap">
   <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
