@@ -1,0 +1,90 @@
+{
+  "$schema": "https://floss.fund/schema/v1.0.0/funding.schema.json#",
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "owner",
+    "name": "Presend (presendapp)",
+    "email": "presendapp@gmail.com",
+    "phone": "",
+    "description": "Independent developer based in Switzerland, publishing under the name Presend. I build and maintain Presend alone: the code, the measurements and the reports sent to projects.",
+    "webpageUrl": {
+      "url": "https://presend.pages.dev"
+    }
+  },
+  "projects": [
+    {
+      "guid": "presend",
+      "name": "Presend",
+      "description": "Free checks for npm and PyPI packages before they are installed by people, CI jobs or AI agents. Presend flags names nobody has registered (an install command that pulls whatever gets published under that name later), brand-new packages, look-alikes of popular packages, sudden npm publisher changes, deprecations and known vulnerabilities of the exact version. It is available as a web page, a public JSON API and an MCP server, with no account. The false-positive rate is measured on the most-used npm and PyPI packages and published with the method to reproduce it. Unclaimed install names found with it are reported privately to the projects concerned, several of which have fixed them.",
+      "webpageUrl": {
+        "url": "https://presend.pages.dev"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/presendapp/presend-source",
+        "wellKnown": "https://github.com/presendapp/presend-source/blob/main/.well-known/funding-manifest-urls"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "security",
+        "supply-chain-security",
+        "npm",
+        "pypi",
+        "mcp",
+        "ai-agents",
+        "developer-tools"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "bank",
+        "type": "bank",
+        "address": "",
+        "description": "Bank transfer. Please e-mail presendapp@gmail.com for details."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "fulltime-yearly",
+        "status": "active",
+        "name": "One year of full-time development and maintenance",
+        "description": "Full-time work on Presend for a year: keeping the checks, the API and the MCP server up to date with npm and PyPI changes; extending them to the install paths people and AI agents actually use (READMEs, MCP configurations, CI); re-running and publishing the false-positive measurements; and scaling up the free reports of unclaimed install names and vulnerable example apps to open-source projects.",
+        "amount": 72000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": [
+          "bank"
+        ]
+      },
+      {
+        "guid": "maintenance-yearly",
+        "status": "active",
+        "name": "One year of part-time maintenance",
+        "description": "Keeps the checks, the API and the MCP server running and up to date with npm and PyPI changes, re-runs and publishes the false-positive measurements, and continues the free reports of unclaimed install names to open-source projects.",
+        "amount": 30000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": [
+          "bank"
+        ]
+      },
+      {
+        "guid": "goodwill",
+        "status": "active",
+        "name": "Goodwill",
+        "description": "Any amount, to support the project.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "bank"
+        ]
+      }
+    ],
+    "history": []
+  }
+}
