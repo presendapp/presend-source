@@ -1,6 +1,6 @@
 // Focused MCP server: only the dependency checks an agent needs before installing a package.
 // Same tools, same code path and same rate limits as /mcp (handleRequest from mcp.js), with 5 tools instead of 40.
-import { TOOLS, PROTOCOL_VERSION, corsHeaders, jsonRpcError, handleRequest } from './mcp.js';
+import { TOOLS, PROTOCOL_VERSION, corsHeaders, jsonRpcError, handleRequest, sseNotSupported } from './mcp.js';
 
 const DEPS = ['supply_chain_check', 'typosquat_check', 'maintainer_change_check', 'vulnerability_check', 'repo_health_check'];
 // Descriptions written for /mcp may name tools that this server does not serve (cve_lookup):
@@ -17,7 +17,9 @@ export async function onRequestOptions() {
   return new Response(null, { headers: corsHeaders() });
 }
 
-export async function onRequestGet() {
+export async function onRequestGet(context) {
+  const sse = sseNotSupported(context && context.request);
+  if (sse) return sse;
   return new Response(JSON.stringify({
     name: 'Presend dependency checks (MCP)',
     description: 'Check an npm or PyPI package before an AI agent installs it: typosquats, names that do not exist, new packages, publisher changes (npm), known vulnerabilities of the version, repository health.',

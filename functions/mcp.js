@@ -515,7 +515,19 @@ export async function onRequestOptions() {
   return new Response(null, { headers: corsHeaders() });
 }
 
-export async function onRequestGet() {
+// Streamable HTTP: a client opens GET with Accept: text/event-stream to receive server-initiated
+// messages. This server sends none, so the spec answer is 405. A 200 with a JSON body made some
+// clients (Claude Code seen on 24 Oct. 2026: ~46,000 requests from one machine in a day) treat the
+// stream as closed and reopen it at once, in a loop. Browsers and curl still get the description.
+export function sseNotSupported(request) {
+  const accept = (request && request.headers.get('Accept')) || '';
+  if (!accept.includes('text/event-stream')) return null;
+  return new Response(null, { status: 405, headers: { Allow: 'POST, OPTIONS', ...corsHeaders() } });
+}
+
+export async function onRequestGet(context) {
+  const sse = sseNotSupported(context && context.request);
+  if (sse) return sse;
   return new Response(JSON.stringify({
     name: 'Presend MCP Server',
     protocol: 'Model Context Protocol (Streamable HTTP)',
