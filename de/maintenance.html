@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wartung von Abhängigkeiten und Sicherheit als Monatspauschale — Presend</title>
+<meta name="description" content="Wir halten die Abhängigkeiten Ihrer Anwendung aktuell und gepatcht: getestete Pull Requests, geplante Migrationen, monatlicher Bericht und das Schwachstellenmanagement, das der EU Cyber Resilience Act verlangt. Für Teams, die dafür niemanden einstellen wollen.">
+<meta property="og:title" content="Wartung von Abhängigkeiten und Sicherheit als Monatspauschale (Presend)">
+<meta property="og:description" content="Getestete Pull Requests, geplante Migrationen, monatlicher Bericht und CRA-taugliches Schwachstellenmanagement.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/de/maintenance">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/de/maintenance">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/maintenance">
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/maintenance">
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/maintenance">
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/maintenance">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.4rem; }
+  .m h3 { font-size: 1.05rem; margin: 1.4rem 0 .3rem; }
+  .m .lead { font-size: 1.1rem; }
+  .m .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); max-width: 66rem; margin-top: 1rem; }
+  .m .step { border: 1px solid currentColor; border-radius: 10px; padding: 1rem 1.1rem; }
+  .m .step h3 { margin-top: 0; }
+  .m .step p { margin: .3rem 0 0; }
+  .m .cta { display: inline-block; margin-top: .6rem; padding: .6rem 1.1rem; border: 1px solid currentColor; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class="nav-link" href="/maintenance">English</a> <a class="nav-link" href="/fr/maintenance">Français</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Ihre Abhängigkeiten, jeden Monat aktuell</h1>
+  <p class="lead">Jede Anwendung baut auf Hunderten Open-Source-Paketen auf. Sicherheitskorrekturen erscheinen jede Woche, und die grossen Versionssprünge stauen sich, bis jeder davon ein eigenes Projekt wird. Wir übernehmen diese Arbeit: getestete Pull Requests, ein monatlicher Bericht und ein Plan für die grossen Updates, zu einer festen Monatspauschale statt einer Neueinstellung.</p>
+  <p><a class="cta" href="mailto:presendapp@gmail.com?subject=Wartung%20der%20Abh%C3%A4ngigkeiten">Erste Analyse anfragen</a></p>
+
+  <h2>Das Problem, das wir übernehmen</h2>
+  <ul>
+    <li><strong>Bot-Pull-Requests, die niemand merged.</strong> Dependabot und Renovate schlagen die Updates vor, aber jedes braucht jemanden, der das Changelog liest, die Anwendung startet und merged. Sie bleiben monatelang offen, und die Sicherheitskorrekturen mit ihnen.</li>
+    <li><strong>Major-Versionen, die verschoben werden.</strong> Ein Bot migriert keine Major-Version. Wenn eine Schwachstelle erst in der nächsten Version behoben ist, wird die Korrektur zur Migration, und niemand ist dafür zuständig.</li>
+    <li><strong>Fragen ohne schnelle Antwort.</strong> «Sind wir von dieser neuen Schwachstelle betroffen? Welches Produkt, welche Version?» Dafür braucht es ein aktuelles Inventar dessen, was Sie ausliefern.</li>
+  </ul>
+
+  <h2>So funktioniert es</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Erste Analyse</h3>
+      <p>Festpreis, im Voraus vereinbart. Wir prüfen Ihre Repositories: bekannte Schwachstellen in dem, was Sie deployen, wie weit jede Abhängigkeit zurückliegt, verwaiste oder veraltete Pakete, offene Bot-Pull-Requests. Sie erhalten einen schriftlichen Bericht mit priorisiertem Plan, den Sie behalten, ob Sie weitermachen oder nicht.</p>
+    </div>
+    <div class="step">
+      <h3>2. Monatliche Wartung</h3>
+      <p>Jeden Monat: Sicherheitskorrekturen und Updates als kleine, getestete Pull Requests, die Ihr Team nur noch reviewen muss; offene Bot-Pull-Requests geprüft, getestet und gemerged oder begründet; ein geplanter Migrationsschritt nach dem anderen für Major-Versionen; ein kurzer Bericht über Änderungen und nächste Schritte.</p>
+    </div>
+    <div class="step">
+      <h3>3. Wenn eine Schwachstelle bekannt wird</h3>
+      <p>Wenn eine kritische Schwachstelle etwas betrifft, das Sie ausliefern, hören Sie von uns, mit den betroffenen Repositories und Versionen und einer Korrektur als Pull Request, bevor ein Scanner oder ein Kunde Sie darauf hinweist.</p>
+    </div>
+  </div>
+
+  <h2>Der EU Cyber Resilience Act (CRA)</h2>
+  <p>Seit dem 11. September 2026 müssen Hersteller von Software, die in der EU vertrieben wird, aktiv ausgenutzte Schwachstellen innerhalb von 24 Stunden an die ENISA melden; ab Dezember 2027 gelten alle Pflichten, darunter eine Software-Stückliste (SBOM) für jedes Produkt und ein dokumentierter Prozess für den Umgang mit Schwachstellen. Optional erstellen und pflegen wir die SBOM jeder Version und übernehmen das Schwachstellenmanagement Ihrer Abhängigkeiten: Überwachung, Bewertung, Korrekturen und Protokoll der Massnahmen. Das ist technische Unterstützung für Ihren Prozess, keine Rechtsberatung.</p>
+
+  <h2>Wie wir arbeiten</h2>
+  <ul>
+    <li>Alles kommt als Pull Request in Ihre Repositories, über Ihren normalen Review-Prozess. Wir brauchen keinen Zugang zur Produktion.</li>
+    <li>Jeder Pull Request beschreibt, was geprüft wurde: Build, Typen, Tests, und was nicht getestet werden konnte und warum.</li>
+    <li>Wir sagen, wenn sich ein Update nicht lohnt oder eine Abhängigkeit besser ersetzt als gepatcht wird.</li>
+    <li>JavaScript und TypeScript (Node.js, Next.js, React) sowie Python. Andere Technologien auf Anfrage.</li>
+  </ul>
+
+  <h2>Unsere Arbeit, öffentlich</h2>
+  <p>Wir messen und veröffentlichen, was wir in fremdem Code finden: <a href="/example-apps">Beispiel-Apps mit verwundbaren Abhängigkeiten</a>, <a href="/install-names">Installationsbefehle mit nicht registrierten Paketnamen</a> und <a href="/measurements">die Fehlalarmrate unserer eigenen Prüfungen</a> (Seiten auf Englisch). Von uns vorgeschlagene Korrekturen wurden unter anderem von NVIDIA SkillSpector, OpenHands und Countly übernommen.</p>
+
+  <h2>Mit einer Analyse beginnen</h2>
+  <p>Schreiben Sie an <a href="mailto:presendapp@gmail.com?subject=Wartung%20der%20Abh%C3%A4ngigkeiten">presendapp@gmail.com</a> mit dem Link zu Ihren Repositories (oder einer kurzen Beschreibung, falls sie privat sind). Wir antworten mit dem Umfang der ersten Analyse und ihrem Festpreis.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend. <a href="/de/about">Über</a> · <a href="/de/privacy">Privatsphäre</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>

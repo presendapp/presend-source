@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintenance des dépendances et de la sécurité, au forfait mensuel — Presend</title>
+<meta name="description" content="Nous gardons les dépendances de votre application à jour et corrigées : pull requests testées, migrations planifiées, rapport mensuel et gestion des failles exigée par le CRA européen. Pour les équipes qui préfèrent ne pas recruter pour cela.">
+<meta property="og:title" content="Maintenance des dépendances et de la sécurité, au forfait mensuel (Presend)">
+<meta property="og:description" content="Pull requests testées, migrations planifiées, rapport mensuel et gestion des failles prête pour le CRA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/fr/maintenance">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/fr/maintenance">
+<link rel="alternate" hreflang="en" href="https://presend.pages.dev/maintenance">
+<link rel="alternate" hreflang="fr" href="https://presend.pages.dev/fr/maintenance">
+<link rel="alternate" hreflang="de" href="https://presend.pages.dev/de/maintenance">
+<link rel="alternate" hreflang="x-default" href="https://presend.pages.dev/maintenance">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.4rem; }
+  .m h3 { font-size: 1.05rem; margin: 1.4rem 0 .3rem; }
+  .m .lead { font-size: 1.1rem; }
+  .m .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); max-width: 66rem; margin-top: 1rem; }
+  .m .step { border: 1px solid currentColor; border-radius: 10px; padding: 1rem 1.1rem; }
+  .m .step h3 { margin-top: 0; }
+  .m .step p { margin: .3rem 0 0; }
+  .m .cta { display: inline-block; margin-top: .6rem; padding: .6rem 1.1rem; border: 1px solid currentColor; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class="nav-link" href="/maintenance">English</a> <a class="nav-link" href="/de/maintenance">Deutsch</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Vos dépendances, à jour chaque mois</h1>
+  <p class="lead">Chaque application repose sur des centaines de paquets open source. Des correctifs de sécurité sortent chaque semaine, et les mises à jour majeures s'accumulent jusqu'à devenir un projet en soi. Nous prenons ce travail en charge : des pull requests testées, un rapport mensuel et un plan pour les grosses mises à jour, pour un forfait mensuel plutôt qu'un recrutement.</p>
+  <p><a class="cta" href="mailto:presendapp@gmail.com?subject=Maintenance%20des%20d%C3%A9pendances">Demander une revue initiale</a></p>
+
+  <h2>Le problème que nous prenons en charge</h2>
+  <ul>
+    <li><strong>Des PR de robots que personne ne fusionne.</strong> Dependabot et Renovate proposent les mises à jour, mais chacune demande quelqu'un pour lire le changelog, lancer l'application et fusionner. Elles restent ouvertes des mois, et les correctifs de sécurité avec elles.</li>
+    <li><strong>Des versions majeures qu'on repousse.</strong> Un robot ne fait pas une migration de version majeure. Quand une faille n'est corrigée que dans la version suivante, le correctif devient une migration, et personne n'en est responsable.</li>
+    <li><strong>Des questions sans réponse rapide.</strong> « Sommes-nous touchés par cette nouvelle faille ? Quel produit, quelle version ? » Pour répondre, il faut un inventaire à jour de ce que vous livrez.</li>
+  </ul>
+
+  <h2>Comment ça marche</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Revue initiale</h3>
+      <p>Prix fixe, convenu à l'avance. Nous passons vos dépôts en revue : failles connues dans ce que vous déployez, retard de chaque dépendance, paquets abandonnés ou dépréciés, PR de robots en attente. Vous recevez un rapport écrit avec un plan priorisé, que vous gardez, que vous continuiez ou non.</p>
+    </div>
+    <div class="step">
+      <h3>2. Maintenance mensuelle</h3>
+      <p>Chaque mois : correctifs de sécurité et mises à jour sous forme de petites PR testées, que votre équipe n'a plus qu'à relire ; les PR de robots relues, testées, puis fusionnées ou expliquées ; une étape de migration planifiée à la fois pour les versions majeures ; un court rapport de ce qui a changé et de la suite.</p>
+    </div>
+    <div class="step">
+      <h3>3. Quand une faille tombe</h3>
+      <p>Quand une faille critique touche ce que vous livrez, nous vous prévenons avec les dépôts et versions concernés, et un correctif en PR, avant qu'un scanner ou un client ne vous l'apprenne.</p>
+    </div>
+  </div>
+
+  <h2>Le règlement européen sur la cyberrésilience (CRA)</h2>
+  <p>Depuis le 11 septembre 2026, les fabricants de logiciels vendus dans l'UE doivent signaler à l'ENISA les failles activement exploitées dans les 24 heures, et l'ensemble des obligations s'applique dès décembre 2027, dont une nomenclature logicielle (SBOM) pour chaque produit et un processus documenté de gestion des vulnérabilités. En option, nous produisons et tenons à jour le SBOM de chaque version, et assurons la gestion des failles de vos dépendances : surveillance, évaluation, correctifs et registre des actions. Il s'agit d'un appui technique à votre processus, pas d'un conseil juridique.</p>
+
+  <h2>Notre façon de travailler</h2>
+  <ul>
+    <li>Tout arrive en pull requests dans vos dépôts, par votre circuit de relecture habituel. Aucun accès à la production n'est nécessaire.</li>
+    <li>Chaque PR dit ce qui a été vérifié : compilation, types, tests, et ce qui n'a pas pu être testé, avec la raison.</li>
+    <li>Nous disons quand une mise à jour n'en vaut pas la peine, ou quand une dépendance doit être remplacée plutôt que corrigée.</li>
+    <li>JavaScript et TypeScript (Node.js, Next.js, React) et Python. Autres technologies sur demande.</li>
+  </ul>
+
+  <h2>Notre travail en public</h2>
+  <p>Nous mesurons et publions ce que nous trouvons dans le code d'autrui : <a href="/example-apps">applications d'exemple aux dépendances vulnérables</a>, <a href="/install-names">commandes d'installation qui pointent vers des noms de paquets libres</a> et <a href="/measurements">le taux de faux positifs de nos propres contrôles</a> (pages en anglais). Des correctifs que nous avons proposés ont été fusionnés par des projets comme NVIDIA SkillSpector, OpenHands et Countly.</p>
+
+  <h2>Commencer par une revue</h2>
+  <p>Écrivez à <a href="mailto:presendapp@gmail.com?subject=Maintenance%20des%20d%C3%A9pendances">presendapp@gmail.com</a> avec le lien vers vos dépôts (ou une courte description s'ils sont privés). Nous répondons avec le contenu de la revue initiale et son prix fixe.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend. <a href="/fr/about">À propos</a> · <a href="/fr/privacy">Confidentialité</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>
