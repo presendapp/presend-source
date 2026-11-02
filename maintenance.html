@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependency and security maintenance, as a monthly service — Presend</title>
+<meta name="description" content="We keep the dependencies of your production application patched and current: tested pull requests for security fixes and upgrades, planned major migrations, a monthly report, and the vulnerability handling the EU Cyber Resilience Act asks for. For teams that would rather not hire for it.">
+<meta property="og:title" content="Dependency and security maintenance, as a monthly service (Presend)">
+<meta property="og:description" content="Tested pull requests for security fixes and upgrades, planned major migrations, a monthly report, and CRA-ready vulnerability handling. For teams that would rather not hire for it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/maintenance">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dependency and security maintenance, as a monthly service (Presend)">
+<meta name="twitter:description" content="Tested pull requests for security fixes and upgrades, planned major migrations, a monthly report, and CRA-ready vulnerability handling.">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/maintenance">
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.4rem; }
+  .m h3 { font-size: 1.05rem; margin: 1.4rem 0 .3rem; }
+  .m .lead { font-size: 1.1rem; }
+  .m .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); max-width: 66rem; margin-top: 1rem; }
+  .m .step { border: 1px solid currentColor; border-radius: 10px; padding: 1rem 1.1rem; }
+  .m .step h3 { margin-top: 0; }
+  .m .step p { margin: .3rem 0 0; }
+  .m .cta { display: inline-block; margin-top: .6rem; padding: .6rem 1.1rem; border: 1px solid currentColor; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/measurements">Measurements</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Your dependencies, kept current every month</h1>
+  <p class="lead">Every application depends on hundreds of open-source packages. Security fixes for them come out every week, and the major upgrades pile up until one of them becomes a project. We take that work off your team: tested pull requests, a monthly report, and a plan for the big upgrades, for a fixed monthly fee instead of a hire.</p>
+  <p><a class="cta" href="mailto:presendapp@gmail.com?subject=Dependency%20maintenance">Ask for an initial review</a></p>
+
+  <h2>The problem we take over</h2>
+  <ul>
+    <li><strong>Bot pull requests nobody merges.</strong> Dependabot and Renovate open the updates, but each one needs someone to read the changelog, run the app and merge. They sit for months, and the security fixes sit with them.</li>
+    <li><strong>Major versions that get skipped.</strong> A framework major cannot be bumped by a bot. When an advisory is fixed only in the next major, the fix becomes a migration, and that migration has no owner.</li>
+    <li><strong>Questions you cannot answer quickly.</strong> "Are we affected by this new advisory? In which product, which version?" Answering takes an up-to-date inventory of what you ship.</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="step">
+      <h3>1. Initial review</h3>
+      <p>Fixed price, agreed up front. We go through your repositories: known vulnerabilities in what you deploy, how far behind each dependency is, abandoned or deprecated packages, open bot pull requests. You get a written report with a prioritised plan, yours to keep whether or not you continue.</p>
+    </div>
+    <div class="step">
+      <h3>2. Monthly maintenance</h3>
+      <p>Each month: security fixes and upgrades as small, tested pull requests your team only has to review; the open bot pull requests reviewed, tested and either merged or explained; one planned migration step at a time for the major versions; a short report of what changed and what is next.</p>
+    </div>
+    <div class="step">
+      <h3>3. When an advisory lands</h3>
+      <p>When a critical advisory affects something you ship, you hear from us with the affected repositories and versions, and a fix as a pull request, rather than finding out from a scanner or a customer.</p>
+    </div>
+  </div>
+
+  <h2>The EU Cyber Resilience Act</h2>
+  <p>Since 11 September 2026, manufacturers of software with digital elements sold in the EU must report actively exploited vulnerabilities to ENISA within 24 hours, and the full set of obligations applies from December 2027, including a software bill of materials (SBOM) for each product and a documented vulnerability handling process. As an option, we produce and keep the SBOM of each release current, and run the vulnerability handling for your dependencies: monitoring, assessment, fixes and the record of what was done. This is technical support for your process, not legal advice.</p>
+
+  <h2>How we work</h2>
+  <ul>
+    <li>Everything comes as pull requests in your repositories, through your normal review. We do not need production access.</li>
+    <li>Each pull request says what was checked: build, type check, tests, and what could not be tested and why.</li>
+    <li>We say when an upgrade is not worth it, or when a dependency should be replaced rather than patched.</li>
+    <li>JavaScript and TypeScript (Node.js, Next.js, React) and Python. Ask for other stacks.</li>
+  </ul>
+
+  <h2>Our work in public</h2>
+  <p>We measure and publish what we find in other people's code: <a href="/example-apps">example apps that ship vulnerable dependencies</a>, <a href="/install-names">install commands that point to unclaimed package names</a>, and <a href="/measurements">the false-positive rate of our own checks</a>. Fixes we contributed have been merged by projects such as NVIDIA SkillSpector, OpenHands and Countly.</p>
+
+  <h2>Start with a review</h2>
+  <p>Write to <a href="mailto:presendapp@gmail.com?subject=Dependency%20maintenance">presendapp@gmail.com</a> with a link to the repositories (or a short description if they are private). We reply with what the initial review would cover and its fixed price.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend — free browser-based tools. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="https://presend.betteruptime.com" target="_blank" rel="noopener">Status</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>
