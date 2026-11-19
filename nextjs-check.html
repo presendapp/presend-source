@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next.js version and vulnerability check for any website — Presend</title>
+<meta name="description" content="Free check: enter a website address to see which Next.js version it ships and which published security advisories affect that version, with the version to upgrade to. Reads public files only.">
+<meta property="og:title" content="Next.js version and vulnerability check (Presend)">
+<meta property="og:description" content="See which Next.js version a site ships and which security advisories affect it. Free, public files only.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://presend.pages.dev/nextjs-check">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/nextjs-check">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Next.js version and vulnerability check","url":"https://presend.pages.dev/nextjs-check","applicationCategory":"SecurityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.4rem; }
+  .m .lead { font-size: 1.1rem; }
+  .m form { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; max-width: 42rem; }
+  .m input[type=text] { flex: 1 1 16rem; min-width: 0; font: inherit; padding: .65rem .8rem; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-bg-raised); color: var(--color-ink); }
+  .m button { font: inherit; font-weight: 600; padding: .65rem 1.1rem; border-radius: 8px; border: 1px solid var(--color-accent); background: var(--color-accent); color: var(--color-accent-ink); cursor: pointer; }
+  .m button[disabled] { opacity: .6; cursor: progress; }
+  .m input:focus-visible, .m button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  #result { margin-top: 1.6rem; max-width: 60rem; }
+  .card { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem 1.1rem; background: var(--color-bg-raised); }
+  .card h3 { margin: 0 0 .4rem; font-size: 1.15rem; }
+  .pills { display: flex; gap: .4rem; flex-wrap: wrap; margin: .6rem 0; }
+  .pill { font-size: .85rem; font-weight: 600; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--color-line); font-variant-numeric: tabular-nums; }
+  .pill.crit { border-color: var(--color-danger); color: var(--color-danger); }
+  .tbl { overflow-x: auto; margin-top: .8rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; padding: .45rem .5rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+  td.sev { text-transform: capitalize; font-weight: 600; white-space: nowrap; }
+  td.sev.critical { color: var(--color-danger); }
+  .cta { margin-top: 1rem; padding: .9rem 1rem; border-radius: 10px; background: var(--color-accent-soft); }
+  .cta p { color: var(--color-ink); margin: 0 0 .4rem; }
+  .muted { color: var(--color-muted); font-size: .9rem; }
+  code { font-family: var(--font-mono); font-size: .9em; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/'>All tools</a> <a class="nav-link" href="/maintenance">Maintenance for teams</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <h1 style="font-family:var(--font-display);">Is this site's Next.js up to date?</h1>
+  <p class="lead">Enter a website address. We read the Next.js version from the JavaScript files its homepage loads, and list the published security advisories for that version, with the version to move to.</p>
+  <form id="f" autocomplete="off">
+    <label for="url" class="visually-hidden" style="position:absolute;left:-9999px;">Website address</label>
+    <input type="text" id="url" name="url" placeholder="https://example.com" inputmode="url" required>
+    <button type="submit" id="go">Check</button>
+  </form>
+  <p class="muted">Free, no sign-up. Only public files are read, like a browser or Wappalyzer would; nothing is tested or sent to the site. Results are cached for an hour.</p>
+  <div id="result" aria-live="polite"></div>
+
+  <h2>Why it matters</h2>
+  <p>Next.js has published several critical advisories in 2026, including unauthenticated remote code execution in the image optimisation API. Some are fixed only in 15.5 and 16.x: sites still on 13.x or 14.x have no patch release left and need a major upgrade. Many sites keep running the version they launched with, because nobody is paid to update them after delivery.</p>
+  <h2>How it works</h2>
+  <ul>
+    <li>The page fetches the homepage and up to 20 of the <code>/_next/static/</code> scripts it references, and reads the version Next.js embeds in them.</li>
+    <li>Advisories come from the public <a href="https://osv.dev">OSV database</a>, which mirrors the GitHub Security Advisories for the <code>next</code> package.</li>
+    <li>It only covers Next.js itself, not the site's other dependencies, its server configuration or its code.</li>
+  </ul>
+  <p>Some sites hide the version (custom builds, scripts served from another domain): the check then says it could not read it.</p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/api">API</a> · <a href="/maintenance">Dependency maintenance</a></p>
+</footer>
+<script>
+(function () {
+  var f = document.getElementById('f'), out = document.getElementById('result'), go = document.getElementById('go');
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function host(u) { try { return new URL(u).host.replace(/^www\./, ''); } catch (e) { return u; } }
+  function render(j) {
+    if (j.error && !j.version) return '<div class="card"><p>' + esc(j.error) + '</p></div>';
+    var h = host(j.final_url || j.url);
+    if (j.nextjs === false) return '<div class="card"><h3>' + esc(h) + '</h3><p>This site does not look like a Next.js site.</p></div>';
+    if (!j.version) return '<div class="card"><h3>' + esc(h) + '</h3><p>The site uses Next.js, but its version is not readable from the public files (custom build, or scripts served from another domain).</p></div>';
+    var html = '<div class="card"><h3>' + esc(h) + ': Next.js ' + esc(j.version) + '</h3>';
+    if (j.error) return html + '<p>' + esc(j.error) + '</p></div>';
+    if (!j.total) return html + '<p>No published advisory affects this version today. Nothing to do.</p></div>';
+    var c = j.counts;
+    html += '<div class="pills"><span class="pill' + (c.critical ? ' crit' : '') + '">' + c.critical + ' critical</span><span class="pill">' + c.high + ' high</span><span class="pill">' + c.moderate + ' moderate</span><span class="pill">' + c.low + ' low</span></div>';
+    html += '<p><strong>' + esc(j.recommended.note) + '</strong></p>';
+    html += '<div class="tbl"><table><thead><tr><th>Severity</th><th>Advisory</th><th>Summary</th><th>Fixed in</th></tr></thead><tbody>';
+    j.advisories.forEach(function (a) {
+      html += '<tr><td class="sev ' + esc(a.severity) + '">' + esc(a.severity) + '</td><td><a href="https://github.com/advisories/' + encodeURIComponent(a.id) + '" target="_blank" rel="noopener">' + esc(a.id) + '</a>' + (a.cve ? '<br><span class="muted">' + esc(a.cve) + '</span>' : '') + '</td><td>' + esc(a.summary) + '</td><td>' + esc((a.fixed || []).slice(-3).join(', ')) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+    html += '<div class="cta"><p><strong>Want it fixed?</strong> We do this upgrade as a tested pull request in your repository, at a fixed price, and can keep the site current every month afterwards. Agencies: under your name if you prefer.</p><p><a href="mailto:presendapp@gmail.com?subject=' + encodeURIComponent('Next.js upgrade for ' + h) + '">presendapp@gmail.com</a> · <a href="/maintenance">How it works</a></p></div>';
+    return html + '</div>';
+  }
+  function run(u) {
+    go.disabled = true; out.innerHTML = '<p class="muted">Checking ' + esc(u) + '… this takes a few seconds.</p>';
+    fetch('/api/nextjs-check?url=' + encodeURIComponent(u)).then(function (r) { return r.json(); })
+      .then(function (j) { out.innerHTML = render(j); })
+      .catch(function () { out.innerHTML = '<div class="card"><p>The check failed. Try again in a moment.</p></div>'; })
+      .then(function () { go.disabled = false; });
+  }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var u = document.getElementById('url').value.trim();
+    if (!u) return;
+    try { history.replaceState(null, '', '?url=' + encodeURIComponent(u)); } catch (e2) {}
+    run(u);
+  });
+  var q = new URLSearchParams(location.search).get('url');
+  if (q) { document.getElementById('url').value = q; run(q); }
+})();
+</script>
+<script src="/sw-register.js"></script>
+</body>
+</html>
