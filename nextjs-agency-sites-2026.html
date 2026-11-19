@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2 in 3 agency-built Next.js sites ship a critical vulnerability — Presend</title>
+<meta name="description" content="We read the Next.js version of 328 websites delivered by agencies listed in the DatoCMS, Storyblok and Netlify partner directories. 66% serve a version with at least one critical advisory; 28% are on 13.x or 14.x, where no fixed release exists.">
+<meta property="og:title" content="2 in 3 agency-built Next.js sites ship a critical vulnerability">
+<meta property="og:description" content="328 agency-built Next.js sites checked in November 2026: 66% affected by a critical advisory, 28% stuck on 13.x or 14.x.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://presend.pages.dev/nextjs-agency-sites-2026">
+<meta property="og:image" content="https://presend.pages.dev/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link href="/style.min.css" rel="stylesheet">
+<link rel="canonical" href="https://presend.pages.dev/nextjs-agency-sites-2026">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"2 in 3 agency-built Next.js sites ship a critical vulnerability","datePublished":"2026-11-20","author":{"@type":"Organization","name":"Presend"},"publisher":{"@type":"Organization","name":"Presend"}}</script>
+<style>
+  .m p, .m li { color: var(--color-muted); max-width: 66ch; }
+  .m h2 { font-family: var(--font-display); font-size: 1.3rem; margin-top: 2.4rem; }
+  .m .lead { font-size: 1.1rem; }
+  .figs { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); max-width: 52rem; margin: 1.6rem 0; }
+  .fig { border: 1px solid var(--color-line); border-radius: 10px; padding: 1rem; background: var(--color-bg-raised); }
+  .fig b { display: block; font-family: var(--font-display); font-size: 2rem; color: var(--color-ink); font-variant-numeric: tabular-nums; }
+  .fig span { color: var(--color-muted); font-size: .92rem; }
+  .bars { max-width: 40rem; display: grid; gap: .5rem; margin-top: 1rem; }
+  .bar { display: grid; grid-template-columns: 4.5rem 1fr 3.5rem; gap: .6rem; align-items: center; font-variant-numeric: tabular-nums; }
+  .bar i { display: block; height: .9rem; border-radius: 3px; background: var(--color-accent); }
+  .bar i.old { background: var(--color-danger); }
+  .tbl { overflow-x: auto; }
+  table { border-collapse: collapse; font-size: .93rem; }
+  th, td { text-align: left; padding: .4rem .8rem .4rem 0; border-bottom: 1px solid var(--color-line); }
+  .cta { display: inline-block; margin-top: .6rem; padding: .6rem 1.1rem; border: 1px solid currentColor; border-radius: 8px; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="site-header wrap">
+  <a class='brand' href='/'><span class="brand-mark">●</span> Presend</a>
+  <a class='nav-link' href='/nextjs-check'>Check a site</a> <a class="nav-link" href="/maintenance">Maintenance for teams</a>
+</header>
+<main class="wrap m" style="padding:3rem 0;">
+  <p class="muted" style="color:var(--color-muted)">November 2026</p>
+  <h1 style="font-family:var(--font-display);">2 in 3 agency-built Next.js sites ship a critical vulnerability</h1>
+  <p class="lead">We read the Next.js version served by websites that agencies list as their own work in the DatoCMS, Storyblok and Netlify partner directories, and matched each version against the published advisories. Most of these sites were never updated after launch.</p>
+
+  <div class="figs">
+    <div class="fig"><b>328</b><span>Next.js sites with a readable version (out of about 1,300 addresses checked)</span></div>
+    <div class="fig"><b>66%</b><span>serve a version with at least one critical advisory (216 sites)</span></div>
+    <div class="fig"><b>28%</b><span>are on Next.js 13.x or 14.x, where no fixed release exists any more (92 sites)</span></div>
+  </div>
+
+  <h2>Which versions they run</h2>
+  <div class="bars" role="img" aria-label="Major versions: 16.x 155 sites, 15.x 81, 14.x 70, 13.x 22">
+    <div class="bar"><span>16.x</span><i style="width:100%"></i><span>155</span></div>
+    <div class="bar"><span>15.x</span><i style="width:52%"></i><span>81</span></div>
+    <div class="bar"><span>14.x</span><i class="old" style="width:45%"></i><span>70</span></div>
+    <div class="bar"><span>13.x</span><i class="old" style="width:14%"></i><span>22</span></div>
+  </div>
+  <p>Being on 16.x is not enough: many 16.x sites run a release from before the fixes for the critical advisories published in 2026 (fixed in 16.3.3 and 16.4.1). On 15.x the same fixes landed in 15.5.24 and 15.5.28.</p>
+
+  <h2>The critical advisories behind the numbers</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Advisory</th><th>What it is</th><th>Fixed in</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://github.com/advisories/GHSA-2xp9-vwfh-vxw4">GHSA-2xp9-vwfh-vxw4</a></td><td>Unauthenticated remote code execution in the image optimisation API (AVIF)</td><td>15.5.24, 16.3.3</td></tr>
+      <tr><td><a href="https://github.com/advisories/GHSA-2464-fhr4-w9xw">GHSA-2464-fhr4-w9xw</a></td><td>Unauthenticated remote code execution in the image optimisation API (SVG)</td><td>15.5.28, 16.4.1</td></tr>
+      <tr><td><a href="https://github.com/advisories/GHSA-p293-qw3h-jr36">GHSA-p293-qw3h-jr36</a></td><td>Unauthenticated remote code execution on Windows-hosted servers</td><td>15.5.24, 16.3.3</td></tr>
+    </tbody>
+  </table></div>
+  <p>Whether a given site is exploitable depends on its configuration (for example, whether image optimisation is enabled and how it is hosted). We did not test any site: the figures say which sites run an affected version, not which ones can be attacked.</p>
+
+  <h2>Why agency sites in particular</h2>
+  <p>An agency builds the site, launches it, and moves on to the next project. Bots such as Dependabot open update pull requests, but someone has to read the changelog, test and deploy, and that work is rarely in anyone's contract. A major version (13 or 14 to 16) is a small project in itself, so it keeps being postponed. Meanwhile, the framework publishes critical fixes every few weeks.</p>
+
+  <h2>Method</h2>
+  <ul>
+    <li>Sites: those listed by agencies as their projects in the public partner showcases of DatoCMS, Storyblok and Netlify, plus the agencies' own websites; about 1,300 addresses, collected on 19 November 2026.</li>
+    <li>Version: read from the public JavaScript files each homepage loads (Next.js embeds its version there). Only the homepage and those files were requested; nothing was tested.</li>
+    <li>Advisories: the public <a href="https://osv.dev">OSV</a> database for the <code>next</code> npm package, which mirrors the GitHub Security Advisories, queried the same day.</li>
+    <li>Limits: about one Next.js site in five did not expose a readable version and are not counted; a site behind a CDN may serve an older build than its repository; the sample is agency work, not the whole web.</li>
+    <li>We contacted most of the agencies concerned privately. No site is named on this page.</li>
+  </ul>
+
+  <h2>Check a site</h2>
+  <p>The same check is free for any address: it shows the version, the advisories that affect it and the version to move to.</p>
+  <p><a class="cta" href="/nextjs-check">Check a site's Next.js version</a> <a class="cta" href="/maintenance">Have it maintained</a></p>
+</main>
+<footer class="site-footer wrap">
+  <p>Presend. <a href="/about">About</a> · <a href="/privacy">Privacy</a> · <a href="/nextjs-check">Next.js check</a> · <a href="/maintenance">Dependency maintenance</a></p>
+</footer>
+<script src="/sw-register.js"></script>
+</body>
+</html>
